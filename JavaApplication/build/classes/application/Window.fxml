@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="640.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Soubor">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Přidat Java třídu" />
+                        <MenuItem mnemonicParsing="false" text="Upravit Java třídu" />
+                        <MenuItem mnemonicParsing="false" text="Odstranit Java třídu" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Přidat programovací jazyk" />
+                        <MenuItem mnemonicParsing="false" text="Upravit programovací jazyk" />
+                        <MenuItem mnemonicParsing="false" text="Odstranit programovací jazyk" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Ukončit program" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Úpravy">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Kopírovat kód" />
+                        <MenuItem mnemonicParsing="false" text="Upravit kód" />
+                        <MenuItem mnemonicParsing="false" text="Vložit kód" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Uložit změny" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Nápověda">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="O programu" />
+                     </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <GridPane prefHeight="327.0" prefWidth="1024.0" VBox.vgrow="SOMETIMES">
+              <columnConstraints>
+                <ColumnConstraints minWidth="30.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" minHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Vyhledávání Java třídy">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin></Label>
+                  <Label text="Programovací jazyk" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin></Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="1">
+                     <children>
+                        <TextField fx:id="classSearchTextField" promptText="Zadejte název třídy" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></TextField>
+                        <Button fx:id="classSearchButton" mnemonicParsing="false" onAction="#handleClassSearchButtonAction" text="Najít">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </HBox>
+                  <ListView fx:id="classNamesListView" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin></ListView>
+                  <Label text="Seznam dostupných Java tříd" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin></Label>
+                  <Label text="Zdrojový kód obalové knihovny" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin></Label>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <children>
+                        <TextArea fx:id="codeTextArea" editable="false" prefHeight="512.0" prefWidth="512.0" VBox.vgrow="SOMETIMES">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </TextArea>
+                        <HBox alignment="TOP_RIGHT" spacing="5.0">
+                           <children>
+                              <FlowPane prefHeight="25.0" prefWidth="781.0">
+                                 <children>
+                                    <Button fx:id="copyCodeButton" mnemonicParsing="false" onAction="#handleCopyCodeButtonAction" text="Kopírovat kód" />
+                                    <Button fx:id="editCodeButton" mnemonicParsing="false" onAction="#handleEditCodeButtonAction" text="Upravit kód" />
+                                    <Button fx:id="pasteCodeButton" disable="true" mnemonicParsing="false" onAction="#handlePasteCodeButtonAction" text="Vložit kód" />
+                                    <Button fx:id="saveCodeButton" disable="true" mnemonicParsing="false" onAction="#handleSaveCodeButtonAction" text="Uložit úpravy" />
+                                 </children>
+                              </FlowPane>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </VBox>
+                  <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <ComboBox fx:id="langSelectComboBox" promptText="Vyberte programovací jazyk" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

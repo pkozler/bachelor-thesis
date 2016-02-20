@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<translations>
+
+    <translation lang="C">#include "System.h"
+
+void System_out_printB(bool b) {
+    printf("%s", b ? "true" : "false");
+}
+
+void System_out_printC(char c) {
+    printf("%c", c);
+}
+
+void System_out_printS(char* s) {
+    printf("%s", s);
+}
+
+void System_out_printD(double d) {
+    printf("%lf", d);
+}
+
+void System_out_printF(float f) {
+    printf("%f", f);
+}
+
+void System_out_printI(int i) {
+    printf("%d", i);
+}
+
+void System_out_printL(long l) {
+    printf("%ld", l);
+}
+
+void System_out_printStr(String *s) {
+    printf("%s", s->s);
+}
+
+void System_out_println() {
+    printf("\n");
+}
+
+void System_out_printlnB(bool b) {
+    printf("%s\n", b ? "true" : "false");
+}
+
+void System_out_printlnC(char c) {
+    printf("%c\n", c);
+}
+
+void System_out_printlnS(char* s) {
+    printf("%s\n", s);
+}
+
+void System_out_printlnD(double d) {
+    printf("%lf\n", d);
+}
+
+void System_out_printlnF(float f) {
+    printf("%f\n", f);
+}
+
+void System_out_printlnI(int i) {
+    printf("%d\n", i);
+}
+
+void System_out_printlnL(long l) {
+    printf("%ld\n", l);
+}
+
+void System_out_printlnStr(String *s) {
+    printf("%s\n", s->s);
+}
+</translation>
+    
+    <translation lang="C++">#include "System.h"
+
+#include &lt;iostream&gt;
+
+PrintStream::PrintStream() {}
+
+PrintStream::~PrintStream() {}
+
+void PrintStream::print(bool b)
+{
+    std::cout &lt;&lt; (b ? "true" : "false");
+}
+
+void PrintStream::print(char c)
+{
+    std::cout &lt;&lt; c;
+}
+
+void PrintStream::print(char* s)
+{
+    std::cout &lt;&lt; s;
+}
+
+void PrintStream::print(double d)
+{
+    std::cout &lt;&lt; d;
+}
+
+void PrintStream::print(float f)
+{
+    std::cout &lt;&lt; f;
+}
+
+void PrintStream::print(int i)
+{
+    std::cout &lt;&lt; i;
+}
+
+void PrintStream::print(long l)
+{
+    std::cout &lt;&lt; l;
+}
+
+void PrintStream::print(String *s)
+{
+    std::cout &lt;&lt; s->toString();
+}
+
+void PrintStream::println(bool b)
+{
+    std::cout &lt;&lt; (b ? "true" : "false") &lt;&lt; std::endl;
+}
+
+void PrintStream::println(char c)
+{
+    std::cout &lt;&lt; c &lt;&lt; std::endl;
+}
+
+void PrintStream::println(char* s)
+{
+    std::cout &lt;&lt; s &lt;&lt; std::endl;
+}
+
+void PrintStream::println(double d)
+{
+    std::cout &lt;&lt; d &lt;&lt; std::endl;
+}
+
+void PrintStream::println(float f)
+{
+    std::cout &lt;&lt; f &lt;&lt; std::endl;
+}
+
+void PrintStream::println(int i)
+{
+    std::cout &lt;&lt; i &lt;&lt; std::endl;
+}
+
+void PrintStream::println(long l)
+{
+    std::cout &lt;&lt; l &lt;&lt; std::endl;
+}
+
+void PrintStream::println(String *s)
+{
+    std::cout &lt;&lt; s->toString() &lt;&lt; std::endl;
+}
+
+void *System::in = nullptr;
+
+PrintStream *System::out = new PrintStream();
+
+System::System() {}
+
+System::~System() {}
+
+void delete_out()
+{
+    delete System::out;
+}
+
+const int result = std::atexit(delete_out);
+</translation>
+    
+    <translation lang="C#">using System;
+    class PrintStream
+	{
+		public void print(bool b)
+		{
+			Console.Write(b);
+		}
+
+		public void print(char c)
+		{
+			Console.Write(c);
+		}
+
+		public void print(char[] s)
+		{
+			Console.Write(s);
+		}
+
+		public void print(double d)
+		{
+			Console.Write(d);
+		}
+
+		public void print(float f)
+		{
+			Console.Write(f);
+		}
+
+		public void print(int i)
+		{
+			Console.Write(i);
+		}
+
+		public void print(long l)
+		{
+			Console.Write(l);
+		}
+
+		public void print(object obj)
+		{
+			Console.Write(obj);
+		}
+
+		public void print(String s)
+		{
+			Console.Write(s);
+		}
+
+		public void println()
+		{
+			Console.WriteLine();
+		}
+
+		public void println(bool b)
+		{
+			Console.WriteLine(b);
+		}
+
+		public void println(char c)
+		{
+			Console.WriteLine(c);
+		}
+
+		public void println(char[] s)
+		{
+			Console.WriteLine(s);
+		}
+
+		public void println(double d)
+		{
+			Console.WriteLine(d);
+		}
+
+		public void println(float f)
+		{
+			Console.WriteLine(f);
+		}
+
+		public void println(int i)
+		{
+			Console.WriteLine(i);
+		}
+
+		public void println(long l)
+		{
+			Console.WriteLine(l);
+		}
+
+		public void println(object obj)
+		{
+			Console.WriteLine(obj);
+		}
+
+		public void println(String s)
+		{
+			Console.WriteLine(s);
+		}
+	}
+
+    class System_
+    {
+		public readonly static object @in = null;
+		public readonly static PrintStream @out = new PrintStream();
+    }</translation>
+    
+    <translation lang="Pascal">unit JSystem;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  JString;
+
+type
+  PrintStream = Class
+    private
+      function charArrayToString(s: array of char): AnsiString;
+    public
+      constructor Create();
+      procedure print(b: Boolean);
+      procedure print(c: Char);
+      procedure print(s: array of Char);
+      procedure print(d: Double);
+      procedure print(f: Single);
+      procedure print(i: LongInt);
+      procedure print(l: Int64);
+      procedure print(obj: TObject);
+      procedure print(s: String_);
+      procedure println();
+      procedure println(b: Boolean);
+      procedure println(c: Char);
+      procedure println(s: array of Char);
+      procedure println(d: Double);
+      procedure println(f: Single);
+      procedure println(i: LongInt);
+      procedure println(l: Int64);
+      procedure println(obj: TObject);
+      procedure println(s: String_);
+  end;
+
+  System_ = Class
+    public
+      var
+        in_ : TObject; static;
+        out_ : PrintStream; static;
+  end;
+
+implementation
+
+uses
+  SysUtils;
+
+function PrintStream.charArrayToString(s: array of char): AnsiString;
+var
+  str: AnsiString;
+  i: LongInt;
+begin
+  str := '';
+  for i := Low(s) to High(s) do
+    str := str + s[i];
+  charArrayToString := str;
+end;
+
+constructor PrintStream.Create();
+begin
+end;
+
+procedure PrintStream.print(b: Boolean);
+begin
+  Write(b);
+end;
+
+procedure PrintStream.print(c: Char);
+begin
+  Write(c);
+end;
+
+procedure PrintStream.print(s: array of Char);
+begin
+  Write(charArrayToString(s));
+end;
+
+procedure PrintStream.print(d: Double);
+begin
+  Write(d);
+end;
+
+procedure PrintStream.print(f: Single);
+begin
+  Write(f);
+end;
+
+procedure PrintStream.print(i: LongInt);
+begin
+  Write(i);
+end;
+
+procedure PrintStream.print(l: Int64);
+begin
+  Write(l);
+end;
+
+procedure PrintStream.print(obj: TObject);
+begin
+  Write(obj.ToString);
+end;
+
+procedure PrintStream.print(s: String_);
+begin
+  Write(s.toString);
+end;
+
+procedure PrintStream.println();
+begin
+  WriteLn;
+end;
+
+procedure PrintStream.println(b: Boolean);
+begin
+  WriteLn(b);
+end;
+
+procedure PrintStream.println(c: Char);
+begin
+  WriteLn(c);
+end;
+
+procedure PrintStream.println(s: array of Char);
+begin
+  WriteLn(charArrayToString(s));
+end;
+
+procedure PrintStream.println(d: Double);
+begin
+  WriteLn(d);
+end;
+
+procedure PrintStream.println(f: Single);
+begin
+  WriteLn(f);
+end;
+
+procedure PrintStream.println(i: LongInt);
+begin
+  WriteLn(i);
+end;
+
+procedure PrintStream.println(l: Int64);
+begin
+  WriteLn(l);
+end;
+
+procedure PrintStream.println(obj: TObject);
+begin
+  WriteLn(obj.ToString);
+end;
+
+procedure PrintStream.println(s: String_);
+begin
+  WriteLn(s.toString);
+end;
+
+end.
+</translation>
+    
+</translations>

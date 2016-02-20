@@ -1,0 +1,33 @@
+program project;
+
+{$mode objfpc}{$H+}
+
+uses
+  MathUnit, StringUnit, CharacterUnit, IntegerUnit, SystemUnit, ScannerUnit,
+  StringTokenizerUnit, ArraysUnit, CollectionsUnit, ArrayListUnit,
+  LinkedListUnit, BooleanUnit, ByteUnit, ShortUnit, LongUnit, FloatUnit,
+DoubleUnit;
+
+const
+  ARR_LEN = 5;
+
+var
+  i: longInt;
+  arr: array of longInt;
+begin
+  setLength(arr, ARR_LEN);
+  writeLn(length(arr));
+
+  for i := 0 to ARR_LEN - 1 do begin
+    read(arr[i]);
+  end;
+
+  readLn();
+
+  for i := 0 to ARR_LEN - 1 do begin
+    writeLn(arr[i]);
+  end;
+
+  writeLn(Math_.PI);
+  readLn();
+end.
