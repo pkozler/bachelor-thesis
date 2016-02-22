@@ -5,7 +5,7 @@ unit ArrayListUnit;
 interface
 
 uses
-  StringUnit;
+  StringUnit, Contnrs;
 
 type
   TObjectArray = array of TObject;

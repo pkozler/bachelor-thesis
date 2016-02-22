@@ -74,7 +74,7 @@ void addAt(ArrayList *ptr, int index, void *element) {
     }
 
     // vložení nového prvku na požadovaný index
-    ptr->dynamicArray[i] = element;
+    ptr->dynamicArray[index] = element;
     _expandList(ptr);
 }
 

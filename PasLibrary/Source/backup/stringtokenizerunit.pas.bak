@@ -61,7 +61,7 @@ begin
     end;
   end;
 
-  tokens[index] := copy(strStr, tmp, i - tmp);
+  tokens[index] := copy(tmp, i - tmp);
 end;
 
 destructor StringTokenizer.destroy();
