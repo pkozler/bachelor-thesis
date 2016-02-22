@@ -6,18 +6,18 @@
 
 #define _MAX_INT_STRLEN 11
 
-Integer *new_Integer(int value) {
+Integer *new_Integer(int32_t value) {
     Integer *i = malloc(sizeof(Integer));
     i->v = value;
 
     return i;
 }
 
-int intValue(Integer *ptr) {
+int32_t intValue(Integer *ptr) {
     return ptr->v;
 }
 
-int compareToI(Integer *ptr, Integer *anotherInteger) {
+int32_t compareToI(Integer *ptr, Integer *anotherInteger) {
     return (ptr->v - anotherInteger->v);
 }
 
@@ -37,7 +37,7 @@ String *toStringI(Integer *ptr) {
     return Integer_toString(ptr->v);
 }
 
-String *Integer_toString(int i) {
+String *Integer_toString(int32_t i) {
     char *str = malloc(_MAX_INT_STRLEN + 1);
     char buf[_MAX_INT_STRLEN];
 
@@ -48,6 +48,6 @@ String *Integer_toString(int i) {
     return new_String(str);
 }
 
-int Integer_parseInt(String *s) {
+int32_t Integer_parseInt(String *s) {
     return strtol(s->s, NULL, 10);
 }

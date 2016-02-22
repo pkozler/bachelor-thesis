@@ -26,29 +26,29 @@ bool Scanner::nextBoolean() {
     return b;
 }
 
-char Scanner::nextByte() {
-    int b;
+int8_t Scanner::nextByte() {
+    int8_t b;
     std::cin >> b;
 
-    return (char) b;
+    return b;
 }
 
-short Scanner::nextShort() {
-    short s;
+int16_t Scanner::nextShort() {
+    int16_t s;
     std::cin >> s;
 
     return s;
 }
 
-int Scanner::nextInt() {
-    int i;
+int32_t Scanner::nextInt() {
+    int32_t i;
     std::cin >> i;
 
     return i;
 }
 
-long Scanner::nextLong() {
-    long l;
+int64_t Scanner::nextLong() {
+    int64_t l;
     std::cin >> l;
 
     return l;

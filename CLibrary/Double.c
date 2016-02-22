@@ -18,7 +18,7 @@ double doubleValue(Double *ptr) {
     return ptr->v;
 }
 
-int compareToD(Double *ptr, Double *anotherDouble) {
+int32_t compareToD(Double *ptr, Double *anotherDouble) {
     double val = ptr->v - anotherDouble->v;
 
     if (val > 0) {

@@ -1,10 +1,10 @@
 #include "System.h"
 
-void _merge(void **array, void **aux, int left, int right, int (*compare)(const void *, const void *)) {
-    int middleIndex = (left + right) / 2;
-    int leftIndex = left;
-    int rightIndex = middleIndex + 1;
-    int auxIndex = left;
+void _merge(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *)) {
+    int32_t middleIndex = (left + right) / 2;
+    int32_t leftIndex = left;
+    int32_t rightIndex = middleIndex + 1;
+    int32_t auxIndex = left;
 
     while (leftIndex <= middleIndex && rightIndex <= right) {
         if (compare((void *) array[leftIndex], (void *) array[rightIndex]) <= 0) {
@@ -27,18 +27,18 @@ void _merge(void **array, void **aux, int left, int right, int (*compare)(const 
     }
 }
 
-void _mergeSort(void **array, void **aux, int left, int right, int (*compare)(const void *, const void *)) {
+void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *)) {
     if (left == right) {
         return;
     }
 
-    int middleIndex = (left + right) / 2;
+    int32_t middleIndex = (left + right) / 2;
 
     _mergeSort(array, aux, left, middleIndex, compare);
     _mergeSort(array, aux, middleIndex + 1, right, compare);
     _merge(array, aux, left, right, compare);
 
-    int i;
+    int32_t i;
     for (i = left; i <= right; i++) {
         array[i] = aux[i];
     }
@@ -64,11 +64,11 @@ void System_out_printF(float f) {
     printf("%f", f);
 }
 
-void System_out_printI(int i) {
+void System_out_printI(int32_t i) {
     printf("%d", i);
 }
 
-void System_out_printL(long l) {
+void System_out_printL(int64_t l) {
     printf("%lld", l);
 }
 
@@ -100,11 +100,11 @@ void System_out_printlnF(float f) {
     printf("%f\n", f);
 }
 
-void System_out_printlnI(int i) {
+void System_out_printlnI(int32_t i) {
     printf("%d\n", i);
 }
 
-void System_out_printlnL(long l) {
+void System_out_printlnL(int64_t l) {
     printf("%lld\n", l);
 }
 

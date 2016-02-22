@@ -2,6 +2,7 @@
 #define	STRINGTOKENIZER_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class StringTokenizer {
     std::string str;
@@ -10,7 +11,7 @@ public:
     StringTokenizer(String *str);
     StringTokenizer(String *str, String *delim);
     ~StringTokenizer();
-    int countTokens();
+    int32_t countTokens();
     bool hasMoreTokens();
     String *nextToken();
 };

@@ -2,20 +2,21 @@
 #define LONG_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class Long {
-    long v;
+    int64_t v;
 public:
-    static const long MIN_VALUE;
-    static const long MAX_VALUE;
-    Long(long value);
+    static const int64_t MIN_VALUE;
+    static const int64_t MAX_VALUE;
+    Long(int64_t value);
     ~Long();
-    long longValue();
-    int compareTo(Long *anotherLong);
+    int64_t longValue();
+    int32_t compareTo(Long *anotherLong);
     bool equals(Long *obj);
     String *toString();
-    static String *toString(long l);
-    static long parseLong(String *s);
+    static String *toString(int64_t l);
+    static int64_t parseLong(String *s);
     friend std::ostream &operator<<(std::ostream &s, Long &obj);
 };
 

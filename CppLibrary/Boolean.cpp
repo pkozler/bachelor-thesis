@@ -11,7 +11,7 @@ bool Boolean::booleanValue() {
     return v;
 }
 
-int Boolean::compareTo(Boolean *anotherBoolean) {
+int32_t Boolean::compareTo(Boolean *anotherBoolean) {
     if (v == true && anotherBoolean->v == false) {
         return 1;
     }

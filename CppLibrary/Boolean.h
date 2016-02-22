@@ -2,6 +2,7 @@
 #define BOOLEAN_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class Boolean {
     bool v;
@@ -9,7 +10,7 @@ public:
     Boolean(bool value);
     ~Boolean();
     bool booleanValue();
-    int compareTo(Boolean *anotherBoolean);
+    int32_t compareTo(Boolean *anotherBoolean);
     bool equals(Boolean *obj);
     String *toString();
     static String *toString(bool b);

@@ -2,6 +2,7 @@
 #define	SYSTEM_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class PrintStream {
 public:
@@ -12,8 +13,8 @@ public:
     void print(char* s);
     void print(double d);
     void print(float f);
-    void print(int i);
-    void print(long l);
+    void print(int32_t i);
+    void print(int64_t l);
     void print(String *s);
     void println();
     void println(bool b);
@@ -21,13 +22,13 @@ public:
     void println(char* s);
     void println(double d);
     void println(float f);
-    void println(int i);
-    void println(long l);
+    void println(int32_t i);
+    void println(int64_t l);
     void println(String *s);
 };
 
 class System {
-    static const int DEFAULT_RADIX;
+    static const int32_t DEFAULT_RADIX;
     System();
     ~System();
 public:

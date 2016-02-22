@@ -7,7 +7,7 @@ String::String(char *value) {
     this->s = value;
 }
 
-String::String(char *value, int offset, int count) {
+String::String(char *value, int32_t offset, int32_t count) {
     this->s = value;
     this->s = this->s.substr(offset, count);
 }
@@ -19,7 +19,7 @@ String::String(std::string original) {
 String::~String() {
 }
 
-int String::compareTo(String *anotherString) {
+int32_t String::compareTo(String *anotherString) {
     return this->s.compare(anotherString->s);
 }
 
@@ -27,31 +27,31 @@ bool String::equals(String *anObject) {
     return (bool) !this->s.compare(anObject->s);
 }
 
-String *String::substring(int beginIndex) {
+String *String::substring(int32_t beginIndex) {
     return new String(this->s.substr(beginIndex));
 }
 
-String *String::substring(int beginIndex, int endIndex) {
+String *String::substring(int32_t beginIndex, int32_t endIndex) {
     return new String(this->s.substr(beginIndex, endIndex - beginIndex + 1));
 }
 
-int String::indexOf(int ch) {
+int32_t String::indexOf(int32_t ch) {
     return this->s.find((char) ch);
 }
 
-int String::indexOf(int ch, int fromIndex) {
+int32_t String::indexOf(int32_t ch, int32_t fromIndex) {
     return this->s.find((char) ch, fromIndex);
 }
 
-int String::indexOf(String *str) {
+int32_t String::indexOf(String *str) {
     return this->s.find(str->s);
 }
 
-int String::indexOf(String *str, int fromIndex) {
+int32_t String::indexOf(String *str, int32_t fromIndex) {
     return this->s.find(str->s, fromIndex);
 }
 
-int String::length() {
+int32_t String::length() {
     return this->s.length();
 }
 
@@ -59,7 +59,7 @@ String *String::trim() {
     const char* white_spaces = " \t\n\r\f";
 
     // nalezení prvního nebílého znaku
-    int first = this->s.find_first_not_of(white_spaces);
+    int32_t first = this->s.find_first_not_of(white_spaces);
 
     // všechny znaky bílé, vytvořen prázdný řetězec
     if (first == std::string::npos) {
@@ -67,7 +67,7 @@ String *String::trim() {
     }
 
     // nalezení posledního nebílého znaku
-    int last = this->s.find_last_not_of(white_spaces);
+    int32_t last = this->s.find_last_not_of(white_spaces);
 
     return new String(this->s.substr(first, last - first + 1));
 }
@@ -84,7 +84,7 @@ String *String::toUpperCase() {
     return new String(upperCaseStr);
 }
 
-char String::charAt(int index) {
+char String::charAt(int32_t index) {
     return this->s.at(index);
 }
 

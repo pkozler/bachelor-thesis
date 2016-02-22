@@ -14,7 +14,7 @@ String *new_String(char *original) {
     return str;
 }
 
-String *new_StringRange(char *value, int offset, int count) {
+String *new_StringRange(char *value, int32_t offset, int32_t count) {
     char *s = (char*) malloc(count);
     strncpy(s, value + offset, (size_t) count);
     String *str = new_String(s);
@@ -28,7 +28,7 @@ void delete_String(String *ptr) {
     free(ptr);
 }
 
-int compareTo(String *ptr, String *anotherString) {
+int32_t compareTo(String *ptr, String *anotherString) {
     return strcmp(ptr->s, anotherString->s);
 }
 
@@ -36,12 +36,12 @@ bool equals(String *ptr, String *anObject) {
     return !strcmp(ptr->s, anObject->s);
 }
 
-String *substring(String *ptr, int beginIndex) {
+String *substring(String *ptr, int32_t beginIndex) {
     return substringTo(ptr, 0, strlen(ptr->s) - 1);
 }
 
-String *substringTo(String *ptr, int beginIndex, int endIndex) {
-    int len = endIndex - beginIndex;
+String *substringTo(String *ptr, int32_t beginIndex, int32_t endIndex) {
+    int32_t len = endIndex - beginIndex;
     char *to = (char*) malloc(len);
     strncpy(to, ptr->s + beginIndex, (size_t) endIndex - beginIndex);
 
@@ -51,40 +51,40 @@ String *substringTo(String *ptr, int beginIndex, int endIndex) {
     return str;
 }
 
-int indexOfC(String *ptr, int ch) {
+int32_t indexOfC(String *ptr, int32_t ch) {
     return indexOfFromC(ptr, ch, 0);
 }
 
-int indexOfFromC(String *ptr, int ch, int fromIndex) {
+int32_t indexOfFromC(String *ptr, int32_t ch, int32_t fromIndex) {
     char* str = ptr->s + fromIndex;
 
     char* c = strchr(str, ch);
-    int index = (int)(c - str);
+    int32_t index = (int32_t)(c - str);
 
     return index;
 }
 
-int indexOfStr(String *ptr, String *str) {
+int32_t indexOfStr(String *ptr, String *str) {
     return indexOfFromStr(ptr, str, 0);
 }
 
-int indexOfFromStr(String *ptr, String *str, int fromIndex) {
+int32_t indexOfFromStr(String *ptr, String *str, int32_t fromIndex) {
     char* str0 = ptr->s + fromIndex;
-    int index = (int) strcspn(str0, str->s);
+    int32_t index = (int32_t) strcspn(str0, str->s);
 
     return index;
 }
 
-int length(String *ptr) {
+int32_t length(String *ptr) {
     return ptr->len;
 }
 
 String *trim(String *ptr) {
-    int i, j;
+    int32_t i, j;
 
     for (i = 0; isspace(ptr->s[i]); i++);
     for (j = ptr->len - 1; isspace(ptr->s[j]); j--);
-    int num = j - i + 1;
+    int32_t num = j - i + 1;
 
     char *str = (char *) malloc(num + 1);
     strncpy(str, ptr->s + i, num);
@@ -99,11 +99,11 @@ String *trim(String *ptr) {
 String *toLowerCase(String *ptr) {
     char *str = (char*) malloc(ptr->len);
 
-    int i = 0;
+    int32_t i = 0;
     char c;
     while (ptr->s[i]) {
         c = ptr->s[i];
-        str[i] = tolower((int)c);
+        str[i] = tolower((int32_t)c);
         i++;
     }
     str[i] = '\0';
@@ -117,11 +117,11 @@ String *toLowerCase(String *ptr) {
 String *toUpperCase(String *ptr) {
     char *str = (char*) malloc(ptr->len);
 
-    int i = 0;
+    int32_t i = 0;
     char c;
     while (ptr->s[i]) {
         c = ptr->s[i];
-        str[i] = toupper((int)c);
+        str[i] = toupper((int32_t)c);
         i++;
     }
     str[i] = '\0';
@@ -132,13 +132,13 @@ String *toUpperCase(String *ptr) {
     return changedStr;
 }
 
-char charAt(String *ptr, int index) {
+char charAt(String *ptr, int32_t index) {
     return ptr->s[index];
 }
 
 String *replace(String *ptr, char oldChar, char newChar) {
     char *str = (char*) malloc(ptr->len);
-    int i;
+    int32_t i;
 
     for (i = 0; ptr->s[i]; i++) {
         if (ptr->s[i] == oldChar) {

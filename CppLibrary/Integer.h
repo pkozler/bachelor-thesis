@@ -1,23 +1,24 @@
 #ifndef INTEGER_INCLUDED
 #define	INTEGER_INCLUDED
 
+#include "String.h"
 #include <iostream>
 #include <sstream>
-#include "String.h"
+#include <cstdint>
 
 class Integer {
-    int v;
+    int32_t v;
 public:
-    static const int MIN_VALUE;
-    static const int MAX_VALUE;
-    Integer(int value);
+    static const int32_t MIN_VALUE;
+    static const int32_t MAX_VALUE;
+    Integer(int32_t value);
     ~Integer();
-    int intValue();
-    int compareTo(Integer *anotherInteger);
+    int32_t intValue();
+    int32_t compareTo(Integer *anotherInteger);
     bool equals(Integer *obj);
     String *toString();
-    static String *toString(int i);
-    static int parseInt(String *s);
+    static String *toString(int32_t i);
+    static int32_t parseInt(String *s);
     friend std::ostream &operator<<(std::ostream &s, Integer &obj);
 };
 

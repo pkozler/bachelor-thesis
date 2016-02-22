@@ -2,6 +2,7 @@
 #define FLOAT_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class Float {
     float v;
@@ -11,7 +12,7 @@ public:
     Float(float value);
     ~Float();
     float floatValue();
-    int compareTo(Float *anotherFloat);
+    int32_t compareTo(Float *anotherFloat);
     bool equals(Float *obj);
     String *toString();
     static String *toString(float f);

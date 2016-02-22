@@ -23,7 +23,7 @@ ArrayList *new_ArrayListAddAll(ArrayList *c) {
     list->capacity = c->capacity;
     list->dynamicArray = malloc(list->capacity * sizeof(void *));
 
-    int i;
+    int32_t i;
     for (i = 0; i < list->count; i++) {
         list->dynamicArray[i] = c->dynamicArray[i];
     }
@@ -65,8 +65,8 @@ bool add(ArrayList *ptr, void *e) {
     return true;
 }
 
-void addAt(ArrayList *ptr, int index, void *element) {
-    int i;
+void addAt(ArrayList *ptr, int32_t index, void *element) {
+    int32_t i;
 
     // přesun prvků od požadovaného indexu o jednu pozici dále
     for (i = ptr->count; i > index; i--) {
@@ -78,11 +78,11 @@ void addAt(ArrayList *ptr, int index, void *element) {
     _expandList(ptr);
 }
 
-void *get(ArrayList *ptr, int index) {
+void *get(ArrayList *ptr, int32_t index) {
     return ptr->dynamicArray[index];
 }
 
-void *set(ArrayList *ptr, int index, void *element) {
+void *set(ArrayList *ptr, int32_t index, void *element) {
     void *original = ptr->dynamicArray[index];
     // nastavení nového prvku
     ptr->dynamicArray[index] = element;
@@ -90,9 +90,9 @@ void *set(ArrayList *ptr, int index, void *element) {
     return original;
 }
 
-void *removeAt(ArrayList *ptr, int index) {
+void *removeAt(ArrayList *ptr, int32_t index) {
     void *removed = ptr->dynamicArray[index];
-    int i;
+    int32_t i;
 
     // přesun prvků za indexem o jednu pozici k počátku seznamu
     for (i = index; i < ptr->count - 1; i++) {
@@ -103,7 +103,7 @@ void *removeAt(ArrayList *ptr, int index) {
     return removed;
 }
 
-int size(ArrayList *ptr) {
+int32_t size(ArrayList *ptr) {
     return ptr->count;
 }
 
@@ -121,11 +121,11 @@ void clear(ArrayList *ptr) {
     ptr->dynamicArray = malloc(ptr->capacity * sizeof(void *));
 }
 
-String *toStringAl(ArrayList *ptr, int size, char *(*toString)(void *)) {
+String *toStringAl(ArrayList *ptr, int32_t size, char *(*toString)(void *)) {
     void **a = ptr->dynamicArray;
-    int length = ptr->count;
+    int32_t length = ptr->count;
     char *s = malloc((size + _LIST_DELIM_STRLEN) * length + 1);
-    int i;
+    int32_t i;
     s[0] = '\0';
     strcat(s, "[");
 

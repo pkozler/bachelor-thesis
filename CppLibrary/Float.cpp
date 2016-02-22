@@ -17,7 +17,7 @@ float Float::floatValue() {
     return v;
 }
 
-int Float::compareTo(Float *anotherFloat) {
+int32_t Float::compareTo(Float *anotherFloat) {
     float val = v - anotherFloat->v;
 
     if (val > 0) {

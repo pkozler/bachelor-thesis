@@ -2,6 +2,7 @@
 #define DOUBLE_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class Double {
     double v;
@@ -11,7 +12,7 @@ public:
     Double(double value);
     ~Double();
     double doubleValue();
-    int compareTo(Double *anotherDouble);
+    int32_t compareTo(Double *anotherDouble);
     bool equals(Double *obj);
     String *toString();
     static String *toString(double d);

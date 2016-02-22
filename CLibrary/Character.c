@@ -18,7 +18,7 @@ char charValue(Character *ptr) {
     return ptr->v;
 }
 
-int compareToC(Character *ptr, Character *anotherCharacter) {
+int32_t compareToC(Character *ptr, Character *anotherCharacter) {
     return (ptr->v - anotherCharacter->v);
 }
 
@@ -50,9 +50,9 @@ String *Character_toString(char c) {
 }
 
 bool Character_isDigit(char ch) {
-    return isdigit((int)ch);
+    return isdigit((int32_t)ch);
 }
 
 bool Character_isLetter(char ch) {
-    return isalpha((int)ch);
+    return isalpha((int32_t)ch);
 }

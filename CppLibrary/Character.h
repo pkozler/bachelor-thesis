@@ -2,6 +2,7 @@
 #define	CHARACTER_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class Character {
     char v;
@@ -9,7 +10,7 @@ public:
     Character(char value);
     ~Character();
     char charValue();
-    int compareTo(Character *anotherCharacter);
+    int32_t compareTo(Character *anotherCharacter);
     bool equals(Character *obj);
     String *toString();
     static String *toString(char c);

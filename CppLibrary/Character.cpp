@@ -13,7 +13,7 @@ char Character::charValue() {
     return v;
 }
 
-int Character::compareTo(Character *anotherCharacter) {
+int32_t Character::compareTo(Character *anotherCharacter) {
     return (v - anotherCharacter->v);
 }
 

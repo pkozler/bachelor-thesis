@@ -15,11 +15,11 @@
 #define ARR_LEN 6
 
 typedef struct {
-    int value;
-    int anotherValue;
+    int32_t value;
+    int32_t anotherValue;
 } Object;
 
-int compare (const void * a, const void * b) {
+int32_t compare (const void * a, const void * b) {
   return ( ((Object*)a)->value - ((Object*)b)->value );
 }
 
@@ -30,13 +30,13 @@ char *cToStr(void *s) {
 /*
  *
  */
-int main(int argc, char** argv) {
-    int keys[] = {7, 5, 7, 3, 5, 3};
-    int values[] = {1, 2, 3, 4, 5, 6};
+int32_t main(int32_t argc, char** argv) {
+    int32_t keys[] = {7, 5, 7, 3, 5, 3};
+    int32_t values[] = {1, 2, 3, 4, 5, 6};
 
     Object **arr = malloc(sizeof(Object *) * ARR_LEN);
 
-    int i;
+    int32_t i;
     for(i = 0; i < ARR_LEN; i++) {
         arr[i] = malloc(sizeof(Object));
         arr[i]->value = keys[i];

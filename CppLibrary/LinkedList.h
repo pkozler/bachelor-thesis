@@ -1,8 +1,9 @@
 #ifndef LINKEDLIST_INCLUDED
 #define LINKEDLIST_INCLUDED
 
-#include <list>
 #include "String.h"
+#include <list>
+#include <cstdint>
 
 template <class E>
 class LinkedList {
@@ -13,11 +14,11 @@ public:
     ~LinkedList();
     std::list<E> getList();
     bool add(E e);
-    void add(int index, E element);
-    E get(int index);
-    E set(int index, E element);
-    E remove(int index);
-    int size();
+    void add(int32_t index, E element);
+    E get(int32_t index);
+    E set(int32_t index, E element);
+    E remove(int32_t index);
+    int32_t size();
     bool isEmpty();
     void clear();
     String *toString();
@@ -46,18 +47,18 @@ template <class E> bool LinkedList<E>::add(E e) {
     return true;
 }
 
-template <class E> void LinkedList<E>::add(int index, E element) {
+template <class E> void LinkedList<E>::add(int32_t index, E element) {
     l.insert(index, element);
 }
 
-template <class E> E LinkedList<E>::get(int index) {
+template <class E> E LinkedList<E>::get(int32_t index) {
     auto it = l.begin();
     std::advance(it, index);
 
     return *it;
 }
 
-template <class E> E LinkedList<E>::set(int index, E element) {
+template <class E> E LinkedList<E>::set(int32_t index, E element) {
     E original;
     auto it = l.begin();
     std::advance(it, index);
@@ -67,7 +68,7 @@ template <class E> E LinkedList<E>::set(int index, E element) {
     return original;
 }
 
-template <class E> E LinkedList<E>::remove(int index) {
+template <class E> E LinkedList<E>::remove(int32_t index) {
     E removed;
     auto it = l.begin();
     std::advance(it, index);
@@ -77,7 +78,7 @@ template <class E> E LinkedList<E>::remove(int index) {
     return removed;
 }
 
-template <class E> int LinkedList<E>::size() {
+template <class E> int32_t LinkedList<E>::size() {
     return l.size();
 }
 
@@ -91,13 +92,13 @@ template <class E> void LinkedList<E>::clear() {
 
 template <class E> String *LinkedList<E>::toString() {
     std::string s = "[";
-    int len = l.size();
+    int32_t len = l.size();
 
     if (len > 0) {
         s += l.begin().toString();
     }
 
-    for (int i = 1; i < len; i++) {
+    for (int32_t i = 1; i < len; i++) {
         auto it = l.begin();
         std::advance(it, i);
         s += ", " + it.toString();

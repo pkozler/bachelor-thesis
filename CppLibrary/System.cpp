@@ -33,12 +33,12 @@ void PrintStream::print(float f)
     std::cout << f;
 }
 
-void PrintStream::print(int i)
+void PrintStream::print(int32_t i)
 {
     std::cout << i;
 }
 
-void PrintStream::print(long l)
+void PrintStream::print(int64_t l)
 {
     std::cout << l;
 }
@@ -78,12 +78,12 @@ void PrintStream::println(float f)
     std::cout << f << std::endl;
 }
 
-void PrintStream::println(int i)
+void PrintStream::println(int32_t i)
 {
     std::cout << i << std::endl;
 }
 
-void PrintStream::println(long l)
+void PrintStream::println(int64_t l)
 {
     std::cout << l << std::endl;
 }
@@ -106,4 +106,4 @@ void delete_out()
     delete System::out;
 }
 
-const int result = std::atexit(delete_out);
+const int32_t result = std::atexit(delete_out);

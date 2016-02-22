@@ -2,21 +2,21 @@
 
 #include <string>
 
-const int Integer::MAX_VALUE = 2147483647;
-const int Integer::MIN_VALUE = -2147483648;
+const int32_t Integer::MAX_VALUE = 2147483647;
+const int32_t Integer::MIN_VALUE = -2147483648;
 
-Integer::Integer(int value) {
+Integer::Integer(int32_t value) {
     v = value;
 }
 
 Integer::~Integer() {
 }
 
-int Integer::intValue() {
+int32_t Integer::intValue() {
     return v;
 }
 
-int Integer::compareTo(Integer *anotherInteger) {
+int32_t Integer::compareTo(Integer *anotherInteger) {
     return (v - anotherInteger->v);
 }
 
@@ -32,11 +32,11 @@ String *Integer::toString() {
     return toString(v);
 }
 
-String *Integer::toString(int i) {
+String *Integer::toString(int32_t i) {
     return new String(std::to_string(i));
 }
 
-int Integer::parseInt(String *s) {
+int32_t Integer::parseInt(String *s) {
     return std::stoi(s->toString(), nullptr, 10);
 }
 

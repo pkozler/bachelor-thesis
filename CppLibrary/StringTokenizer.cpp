@@ -16,9 +16,9 @@ StringTokenizer::StringTokenizer(String *str, String *delim) {
 StringTokenizer::~StringTokenizer() {
 }
 
-int StringTokenizer::countTokens() {
-    int count = 0;
-    unsigned int pos = 0;
+int32_t StringTokenizer::countTokens() {
+    int32_t count = 0;
+    int32_t pos = 0;
 
     // dokud existuje další token
     while (pos != std::string::npos) {
@@ -35,7 +35,7 @@ bool StringTokenizer::hasMoreTokens() {
 }
 
 String *StringTokenizer::nextToken() {
-    int pos = this->str.find_first_of(delim);
+    int32_t pos = this->str.find_first_of(delim);
     std::string s = this->str.substr(0, pos);
     this->str.erase(0, pos);
 

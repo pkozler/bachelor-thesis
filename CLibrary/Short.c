@@ -6,18 +6,18 @@
 
 #define _MAX_SHORT_STRLEN 6
 
-Short *new_Short(short value) {
+Short *new_Short(int16_t value) {
     Short *s = malloc(sizeof(Short));
     s->v = value;
 
     return s;
 }
 
-short shortValue(Short *ptr) {
+int16_t shortValue(Short *ptr) {
     return ptr->v;
 }
 
-int compareToS(Short *ptr, Short *anotherShort) {
+int32_t compareToS(Short *ptr, Short *anotherShort) {
     return (ptr->v - anotherShort->v);
 }
 
@@ -37,7 +37,7 @@ String *toStringS(Short *ptr) {
     return Short_toString(ptr->v);
 }
 
-String *Short_toString(short s) {
+String *Short_toString(int16_t s) {
     char *str = malloc(_MAX_SHORT_STRLEN + 1);
     char buf[_MAX_SHORT_STRLEN];
 
@@ -48,6 +48,6 @@ String *Short_toString(short s) {
     return new_String(str);
 }
 
-short Short_parseShort(String *s) {
+int16_t Short_parseShort(String *s) {
     return strtol(s->s, NULL, 10);
 }

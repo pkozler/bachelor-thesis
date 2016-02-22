@@ -2,8 +2,8 @@
 
 #include <cmath>
 
-const int Math::E = 2.7182818284590452354;
-const int Math::PI = 3.14159265358979323846;
+const int32_t Math::E = 2.7182818284590452354;
+const int32_t Math::PI = 3.14159265358979323846;
 
 Math::Math() {
 }
@@ -19,11 +19,11 @@ float Math::abs(float a) {
     return std::fabs(a);
 }
 
-int Math::abs(int a) {
+int32_t Math::abs(int32_t a) {
     return std::abs(a);
 }
 
-long Math::abs(long a) {
+int64_t Math::abs(int64_t a) {
     return std::abs(a);
 }
 
@@ -35,11 +35,11 @@ float Math::max(float a, float b) {
     return max(a, b);
 }
 
-int Math::max(int a, int b) {
+int32_t Math::max(int32_t a, int32_t b) {
     return max(a, b);
 }
 
-long Math::max(long a, long b) {
+int64_t Math::max(int64_t a, int64_t b) {
     return max(a, b);
 }
 
@@ -51,11 +51,11 @@ float Math::min(float a, float b) {
     return min(a, b);
 }
 
-int Math::min(int a, int b) {
+int32_t Math::min(int32_t a, int32_t b) {
     return min(a, b);
 }
 
-long Math::min(long a, long b) {
+int64_t Math::min(int64_t a, int64_t b) {
     return min(a, b);
 }
 
@@ -99,10 +99,10 @@ double Math::atan(double a) {
     return std::atan(a);
 }
 
-long Math::round(double a) {
-    return (long) std::round(a);
+int64_t Math::round(double a) {
+    return (int64_t) std::round(a);
 }
 
-int Math::round(float a) {
-    return (int) std::round(a);
+int32_t Math::round(float a) {
+    return (int32_t) std::round(a);
 }

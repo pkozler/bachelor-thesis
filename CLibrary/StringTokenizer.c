@@ -20,8 +20,8 @@ void delete_StringTokenizer(StringTokenizer *ptr) {
     free(ptr);
 }
 
-int countTokens(StringTokenizer *ptr) {
-    int n = 0;
+int32_t countTokens(StringTokenizer *ptr) {
+    int32_t n = 0;
     char *s = strdup(ptr->str);
 
     while((s = strpbrk(s, ptr->delim)) != NULL) {

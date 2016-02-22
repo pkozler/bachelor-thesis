@@ -17,7 +17,7 @@ bool booleanValue(Boolean *ptr) {
     return ptr->v;
 }
 
-int compareToBool(Boolean *ptr, Boolean *anotherBoolean) {
+int32_t compareToBool(Boolean *ptr, Boolean *anotherBoolean) {
     if (ptr->v == true && anotherBoolean->v == false) {
         return 1;
     }

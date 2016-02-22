@@ -105,7 +105,7 @@ bool addL(LinkedList *ptr, void *e) {
     return true;
 }
 
-void addAtL(LinkedList *ptr, int index, void *element) {
+void addAtL(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = element;
 
@@ -115,7 +115,7 @@ void addAtL(LinkedList *ptr, int index, void *element) {
     else {
         LinkedListNode *node = ptr->first;
 
-        int i;
+        int32_t i;
         for (i = 0; i < index; i++) {
             node = node->next;
         }
@@ -126,10 +126,10 @@ void addAtL(LinkedList *ptr, int index, void *element) {
     ptr->count++;
 }
 
-void *getL(LinkedList *ptr, int index) {
+void *getL(LinkedList *ptr, int32_t index) {
     LinkedListNode *node = ptr->first;
 
-    int i;
+    int32_t i;
     for (i = 0; i < index; i++) {
         node = node->next;
     }
@@ -137,7 +137,7 @@ void *getL(LinkedList *ptr, int index) {
     return node->value;
 }
 
-void *setL(LinkedList *ptr, int index, void *element) {
+void *setL(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *original;
 
     if (index < 1) {
@@ -147,7 +147,7 @@ void *setL(LinkedList *ptr, int index, void *element) {
     else {
         LinkedListNode *node = ptr->first;
 
-        int i;
+        int32_t i;
         for (i = 0; i < index; i++) {
             node = node->next;
         }
@@ -159,7 +159,7 @@ void *setL(LinkedList *ptr, int index, void *element) {
     return original;
 }
 
-void *removeAtL(LinkedList *ptr, int index) {
+void *removeAtL(LinkedList *ptr, int32_t index) {
     LinkedListNode *removed;
     LinkedListNode *node;
 
@@ -172,7 +172,7 @@ void *removeAtL(LinkedList *ptr, int index) {
     else {
         node = ptr->first;
 
-        int i;
+        int32_t i;
         for (i = 0; i < index; i++) {
             node = node->next;
         }
@@ -187,7 +187,7 @@ void *removeAtL(LinkedList *ptr, int index) {
     return removed;
 }
 
-int sizeL(LinkedList *ptr) {
+int32_t sizeL(LinkedList *ptr) {
     return ptr->count;
 }
 
@@ -201,8 +201,8 @@ void clearL(LinkedList *ptr) {
     }
 }
 
-String *toStringLl(LinkedList *ptr, int size, char *(*toString)(void *)) {
-    int length = ptr->count;
+String *toStringLl(LinkedList *ptr, int32_t size, char *(*toString)(void *)) {
+    int32_t length = ptr->count;
     char *s = malloc((size + _LLIST_DELIM_STRLEN) * length + 1);
     s[0] = '\0';
     strcat(s, "[");

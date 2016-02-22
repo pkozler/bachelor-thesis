@@ -2,21 +2,21 @@
 
 #include <string>
 
-const char Byte::MAX_VALUE = 127;
-const char Byte::MIN_VALUE = -128;
+const int8_t Byte::MAX_VALUE = 127;
+const int8_t Byte::MIN_VALUE = -128;
 
-Byte::Byte(char value) {
+Byte::Byte(int8_t value) {
     v = value;
 }
 
 Byte::~Byte() {
 }
 
-char Byte::byteValue() {
+int8_t Byte::byteValue() {
     return v;
 }
 
-int Byte::compareTo(Byte *anotherByte) {
+int32_t Byte::compareTo(Byte *anotherByte) {
     return (v - anotherByte->v);
 }
 
@@ -32,12 +32,12 @@ String *Byte::toString() {
     return toString(v);
 }
 
-String *Byte::toString(char b) {
+String *Byte::toString(int8_t b) {
     return new String(std::to_string(b));
 }
 
-char Byte::parseByte(String *s) {
-    return (char) std::stoi(s->toString(), nullptr, 10);
+int8_t Byte::parseByte(String *s) {
+    return (int8_t) std::stoi(s->toString(), nullptr, 10);
 }
 
 std::ostream &operator<<(std::ostream &s, Byte &obj) {

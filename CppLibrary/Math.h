@@ -1,24 +1,26 @@
 #ifndef MATH_INCLUDED
 #define	MATH_INCLUDED
 
+#include <cstdint>
+
 class Math {
     Math();
     ~Math();
 public:
-    static const int E;
-    static const int PI;
+    static const int32_t E;
+    static const int32_t PI;
     static double abs(double a);
     static float abs(float a);
-    static int abs(int a);
-    static long abs(long a);
+    static int32_t abs(int32_t a);
+    static int64_t abs(int64_t a);
     static double max(double a, double b);
     static float max(float a, float b);
-    static int max(int a, int b);
-    static long max(long a, long b);
+    static int32_t max(int32_t a, int32_t b);
+    static int64_t max(int64_t a, int64_t b);
     static double min(double a, double b);
     static float min(float a, float b);
-    static int min(int a, int b);
-    static long min(long a, long b);
+    static int32_t min(int32_t a, int32_t b);
+    static int64_t min(int64_t a, int64_t b);
     static double pow(double a, double b);
     static double sqrt(double a);
     static double log(double a);
@@ -29,8 +31,8 @@ public:
     static double asin(double a);
     static double acos(double a);
     static double atan(double a);
-    static long round(double a);
-    static int round(float a);
+    static int64_t round(double a);
+    static int32_t round(float a);
 };
 
 #endif	// MATH_INCLUDED

@@ -35,29 +35,29 @@ bool nextBoolean() {
     return value;
 }
 
-char nextByte() {
-    int b;
-    scanf("%d", &b);
+int8_t nextByte() {
+    int32_t b;
+    scanf("%hd", &b);
 
-    return (char) b;
+    return (int8_t) b;
 }
 
-short nextShort() {
-    short s;
+int16_t nextShort() {
+    int16_t s;
     scanf("%hd", &s);
 
     return s;
 }
 
-int nextInt() {
-    int i;
+int32_t nextInt() {
+    int32_t i;
     scanf("%d", &i);
 
     return i;
 }
 
-long nextLong() {
-    long l;
+int64_t nextLong() {
+    int64_t l;
     scanf("%ld", &l);
 
     return l;
@@ -81,7 +81,7 @@ String *nextLine() {
     char * line = malloc(100);
     char * linep = line;
     size_t lenmax = 100, len = lenmax;
-    int c;
+    int32_t c;
 
     if(line == NULL)
         return NULL;

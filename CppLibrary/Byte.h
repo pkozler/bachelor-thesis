@@ -2,20 +2,21 @@
 #define BYTE_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class Byte {
-    char v;
+    int8_t v;
 public:
-    static const char MIN_VALUE;
-    static const char MAX_VALUE;
-    Byte(char value);
+    static const int8_t MIN_VALUE;
+    static const int8_t MAX_VALUE;
+    Byte(int8_t value);
     ~Byte();
-    char byteValue();
-    int compareTo(Byte *anotherByte);
+    int8_t byteValue();
+    int32_t compareTo(Byte *anotherByte);
     bool equals(Byte *obj);
     String *toString();
-    static String *toString(char b);
-    static char parseByte(String *s);
+    static String *toString(int8_t b);
+    static int8_t parseByte(String *s);
     friend std::ostream &operator<<(std::ostream &s, Byte &obj);
 };
 

@@ -11,11 +11,11 @@ float Math_absF(float a) {
     return fabsf(a);
 }
 
-int Math_absI(int a) {
+int32_t Math_absI(int32_t a) {
     return abs(a);
 }
 
-long Math_absL(long a) {
+int64_t Math_absL(int64_t a) {
     return labs(a);
 }
 
@@ -27,11 +27,11 @@ float Math_maxF(float a, float b) {
     return fmaxf(a, b);
 }
 
-int Math_maxI(int a, int b) {
+int32_t Math_maxI(int32_t a, int32_t b) {
     return fmaxl(a, b);
 }
 
-long Math_maxL(long a, long b) {
+int64_t Math_maxL(int64_t a, int64_t b) {
     return fmaxl(a, b);
 }
 
@@ -43,11 +43,11 @@ float Math_minF(float a, float b) {
     return fminf(a, b);
 }
 
-int Math_minI(int a, int b) {
+int32_t Math_minI(int32_t a, int32_t b) {
     return fminl(a, b);
 }
 
-long Math_minL(long a, long b) {
+int64_t Math_minL(int64_t a, int64_t b) {
     return fminl(a, b);
 }
 
@@ -91,10 +91,10 @@ double Math_atan(double a) {
     return atan(a);
 }
 
-long Math_roundD(double a) {
-    return (long) round(a);
+int64_t Math_roundD(double a) {
+    return (int64_t) round(a);
 }
 
-int Math_roundF(float a) {
-    return (int) roundf(a);
+int32_t Math_roundF(float a) {
+    return (int32_t) roundf(a);
 }

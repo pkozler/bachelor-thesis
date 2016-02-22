@@ -2,21 +2,21 @@
 
 #include <string>
 
-const long Long::MAX_VALUE = 9223372036854775807;
-const long Long::MIN_VALUE = -9223372036854775808;
+const int64_t Long::MAX_VALUE = 9223372036854775807;
+const int64_t Long::MIN_VALUE = -9223372036854775808;
 
-Long::Long(long value) {
+Long::Long(int64_t value) {
     v = value;
 }
 
 Long::~Long() {
 }
 
-long Long::longValue() {
+int64_t Long::longValue() {
     return v;
 }
 
-int Long::compareTo(Long *anotherLong) {
+int32_t Long::compareTo(Long *anotherLong) {
     return (v - anotherLong->v);
 }
 
@@ -32,11 +32,11 @@ String *Long::toString() {
     return toString(v);
 }
 
-String *Long::toString(long l) {
+String *Long::toString(int64_t l) {
     return new String(std::to_string(l));
 }
 
-long Long::parseLong(String *s) {
+int64_t Long::parseLong(String *s) {
     return std::stol(s->toString(), nullptr, 10);
 }
 

@@ -6,18 +6,18 @@
 
 #define _MAX_LONG_STRLEN 20
 
-Long *new_Long(long value) {
+Long *new_Long(int64_t value) {
     Long *l = malloc(sizeof(Long));
     l->v = value;
 
     return l;
 }
 
-long longValue(Long *ptr) {
+int64_t longValue(Long *ptr) {
     return ptr->v;
 }
 
-int compareToL(Long *ptr, Long *anotherLong) {
+int32_t compareToL(Long *ptr, Long *anotherLong) {
     return (ptr->v - anotherLong->v);
 }
 
@@ -37,7 +37,7 @@ String *toStringL(Long *ptr) {
     return Long_toString(ptr->v);
 }
 
-String *Long_toString(long l) {
+String *Long_toString(int64_t l) {
     char *str = malloc(_MAX_LONG_STRLEN + 1);
     char buf[_MAX_LONG_STRLEN];
 
@@ -48,6 +48,6 @@ String *Long_toString(long l) {
     return new_String(str);
 }
 
-long Long_parseLong(String *s) {
+int64_t Long_parseLong(String *s) {
     return strtol(s->s, NULL, 10);
 }

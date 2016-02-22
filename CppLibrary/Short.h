@@ -2,20 +2,21 @@
 #define SHORT_INCLUDED
 
 #include "String.h"
+#include <cstdint>
 
 class Short {
-    short v;
+    int16_t v;
 public:
-    static const short MIN_VALUE;
-    static const short MAX_VALUE;
-    Short(short value);
+    static const int16_t MIN_VALUE;
+    static const int16_t MAX_VALUE;
+    Short(int16_t value);
     ~Short();
-    short shortValue();
-    int compareTo(Short *anotherShort);
-    short equals(Short *obj);
+    int16_t shortValue();
+    int32_t compareTo(Short *anotherShort);
+    int16_t equals(Short *obj);
     String *toString();
-    static String *toString(short s);
-    static short parseShort(String *s);
+    static String *toString(int16_t s);
+    static int16_t parseShort(String *s);
     friend std::ostream &operator<<(std::ostream &s, Short &obj);
 };
 

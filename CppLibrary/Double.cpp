@@ -17,7 +17,7 @@ double Double::doubleValue() {
     return v;
 }
 
-int Double::compareTo(Double *anotherDouble) {
+int32_t Double::compareTo(Double *anotherDouble) {
     double val = v - anotherDouble->v;
 
     if (val > 0) {

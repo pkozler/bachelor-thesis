@@ -18,7 +18,7 @@ float floatValue(Float *ptr) {
     return ptr->v;
 }
 
-int compareToF(Float *ptr, Float *anotherFloat) {
+int32_t compareToF(Float *ptr, Float *anotherFloat) {
     float val = ptr->v - anotherFloat->v;
 
     if (val > 0) {
