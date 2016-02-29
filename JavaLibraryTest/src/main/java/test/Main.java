@@ -11,23 +11,27 @@ package test;
  */
 public class Main {
     
+    static {
+        System.setProperty("log4j.configurationFile", "log4j-config.xml");
+    }
+    
     public static void main(String[] args) {
-        MathTest.runTestSuite();
-        BooleanTest.runTestSuite();
+        PrintStreamTest.runTestSuite();
+        StringTest.runTestSuite();
         ByteTest.runTestSuite();
         ShortTest.runTestSuite();
         IntegerTest.runTestSuite();
         LongTest.runTestSuite();
         FloatTest.runTestSuite();
         DoubleTest.runTestSuite();
+        BooleanTest.runTestSuite();
         CharacterTest.runTestSuite();
-        StringTest.runTestSuite();
-        StringTokenizerTest.runTestSuite();
+        MathTest.runTestSuite();
+        ArraysTest.runTestSuite();
         ArrayListTest.runTestSuite();
         LinkedListTest.runTestSuite();
-        ArraysTest.runTestSuite();
         CollectionsTest.runTestSuite();
-        PrintStreamTest.runTestSuite();
+        StringTokenizerTest.runTestSuite();
         ScannerTest.runTestSuite();
     }
     

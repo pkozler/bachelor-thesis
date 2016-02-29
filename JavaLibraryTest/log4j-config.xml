@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Properties>
+  	<Property name="format">[%level - %logger{1}.%method()] - %msg%n</Property>
+  </Properties>
+  <Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+	  <PatternLayout pattern="${format}"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="ALL">
+      <AppenderRef ref="console"></AppenderRef>
+    </Root>
+  </Loggers>
+</Configuration>
