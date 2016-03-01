@@ -44,6 +44,7 @@ public class PrintStreamTest {
      */
     public static void printTestCase() {
         boolean a;
+        // výpisy obou logických hodnot
         a = true;
         System.out.print(a);
         System.out.println();
@@ -57,18 +58,21 @@ public class PrintStreamTest {
      */
     public static void printTestCase2() {
         char a;
+        // výpis malých písmen
         a = 'a';
         System.out.print(a);
         System.out.println();
         a = 'z';
         System.out.print(a);
         System.out.println();
+        // výpis velkých písmen
         a = 'A';
         System.out.print(a);
         System.out.println();
         a = 'Z';
         System.out.print(a);
         System.out.println();
+        // výpis číslic
         a = '0';
         System.out.print(a);
         System.out.println();
@@ -82,12 +86,15 @@ public class PrintStreamTest {
      */
     public static void printTestCase3() {
         char[] a;
+        // prázdné pole znaků
         a = new char[]{};
         System.out.print(a);
         System.out.println();
+        // pole s jedním znakem
         a = new char[]{'a'};
         System.out.print(a);
         System.out.println();
+        // pole s několika znaky
         a = new char[]{'a', 'z', 'A', 'Z', '0', '9'};
         System.out.print(a);
         System.out.println();
@@ -98,24 +105,28 @@ public class PrintStreamTest {
      */
     public static void printTestCase4() {
         double a;
+        // nuly s a bez znaménka
         a = 0;
         System.out.print(a);
         System.out.println();
         a = -0;
         System.out.print(a);
         System.out.println();
+        // jedničky s a bez znaménka
         a = 1;
         System.out.print(a);
         System.out.println();
         a = -1;
         System.out.print(a);
         System.out.println();
+        // největší možná absolutní hodnota s a bez znaménka
         a = Double.MAX_VALUE;
         System.out.print(a);
         System.out.println();
         a = -Double.MAX_VALUE;
         System.out.print(a);
         System.out.println();
+        // nejmenší možná absolutní hodnota s a bez znaménka
         a = Double.MIN_VALUE;
         System.out.print(a);
         System.out.println();
@@ -160,15 +171,18 @@ public class PrintStreamTest {
      */
     public static void printTestCase6() {
         int a;
+        // nula
         a = 0;
         System.out.print(a);
         System.out.println();
+        // jedničky s a bez znaménka
         a = 1;
         System.out.print(a);
         System.out.println();
         a = -1;
         System.out.print(a);
         System.out.println();
+        // největší a nejmenší možná hodnota
         a = Integer.MAX_VALUE;
         System.out.print(a);
         System.out.println();
@@ -204,15 +218,18 @@ public class PrintStreamTest {
      */
     public static void printTestCase8() {
         DummyObject a;
+        // objekt s prázdným řetězcem
         a = new DummyObject("", 0);
         System.out.print(a);
         System.out.println();
+        // objekty s čísly
         a = new DummyObject("0", 1);
         System.out.print(a);
         System.out.println();
         a = new DummyObject("9", -1);
         System.out.print(a);
         System.out.println();
+        // objekty s písmeny
         a = new DummyObject("Aa", Integer.MAX_VALUE);
         System.out.print(a);
         System.out.println();
@@ -226,12 +243,15 @@ public class PrintStreamTest {
      */
     public static void printTestCase9() {
         String a;
+        // prázdný řetězec
         a = "";
         System.out.print(a);
         System.out.println();
+        // řetězec s jedním znakem
         a = "a";
         System.out.print(a);
         System.out.println();
+        // řetězec s několika znaky
         a = "azAZ09";
         System.out.print(a);
         System.out.println();
@@ -241,6 +261,7 @@ public class PrintStreamTest {
      * Otestuje výpis ukončení řádky.
      */
     public static void printlnTestCase() {
+        // výpis prázdné řádky
         System.out.println();
     }
     

@@ -31,6 +31,13 @@ public class LongTest {
      * Otestuje vytvoření hodnoty.
      */
     public static void longTestCase() {
+        // otestováno pomocí testu získání hodnoty
+    }
+    
+    /**
+     * Otestuje získání hodnoty příslušného vestavěného datového typu.
+     */
+    public static void longValueTestCase() {
         Long a;
         long b;
         a = new Long(Long.MIN_VALUE);
@@ -40,20 +47,6 @@ public class LongTest {
         b = a.longValue();
         logger.info(b);
         a = new Long(Long.MAX_VALUE);
-        b = a.longValue();
-        logger.info(b);
-    }
-    
-    /**
-     * Otestuje získání hodnoty příslušného vestavěného datového typu.
-     */
-    public static void longValueTestCase() {
-        Long a;
-        long b;
-        a = new Long((long)0);
-        b = a.longValue();
-        logger.info(b);
-        a = Long.parseLong("0");
         b = a.longValue();
         logger.info(b);
     }

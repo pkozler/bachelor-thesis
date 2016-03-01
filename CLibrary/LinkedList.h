@@ -28,6 +28,6 @@ void *removeAtL(LinkedList *ptr, int32_t index);
 int32_t sizeL(LinkedList *ptr);
 bool isEmptyL(LinkedList *ptr);
 void clearL(LinkedList *ptr);
-String *toStringLl(LinkedList *ptr, int32_t size, char *(*toString)(void *));
+String *toStringLl(LinkedList *ptr, int32_t size, String *(*toString)(void *));
 
 #endif /* LINKEDLIST_INCLUDED */

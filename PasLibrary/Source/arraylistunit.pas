@@ -13,8 +13,8 @@ type
   ArrayList = class
     private
       const
-           DEFAULT_CAPACITY = 10;
-           RESIZE_COEF = 2;
+        DEFAULT_CAPACITY = 10;
+        RESIZE_COEF = 2;
       var
         dynamicArray: array of TObject;
         count: longInt;
@@ -40,7 +40,7 @@ type
 implementation
 
 uses
-  Classes, SysUtils;
+  StringBuilderUint, Classes, SysUtils;
 
 constructor ArrayList.create();
 begin
@@ -50,7 +50,7 @@ end;
 
 constructor ArrayList.create(c: ArrayList);
 var
-  len, i: longInt;
+  i: longInt;
 begin
   setLength(dynamicArray, length(c.dynamicArray));
   count := c.count;
@@ -161,21 +161,36 @@ end;
 
 function ArrayList.toString() : ansiString;
 var
-  s: ansiString;
+  sb: StringBuilder;
+  str: String_;
   i: longInt;
 begin
-  s := '[';
+  sb := StringBuilder.create();
+  str := '[';
+  sb.append(str);
+  freeAndNil(str);
 
   if count > 0 then begin
-    s += dynamicArray[0].toString();
+    str := dynamicArray[0].toString();
+    sb.append(str);
+    freeAndNil(str);
   end;
 
   for i := 1 to count - 1 do begin
-    s += ', ' + dynamicArray[i].toString();
+    str := ', ';
+    sb.append(str);
+    freeAndNil(str);
+    str := dynamicArray[i].toString();
+    sb.append(str);
+    freeAndNil(str);
   end;
 
-  s += ']';
-  toString := s;
+  str := ']';
+  sb.append(str);
+  freeAndNil(str);
+  str := sb.toString();
+  freeAndNil(sb);
+  toString := str.toString();
 end;
 
 function ArrayList.toString() : String_;

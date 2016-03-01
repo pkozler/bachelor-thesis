@@ -46,7 +46,7 @@ type
 implementation
 
 uses
-  Classes, SysUtils;
+  StringBuilderUint, Classes, SysUtils;
 
 procedure LinkedList.addAfter(node, newNode: LinkedListNode);
 begin
@@ -264,24 +264,39 @@ end;
 
 function LinkedList.toString() : ansiString;
 var
-  s: ansiString;
+  sb: StringBuilder;
+  str: String_;
   node: LinkedListNode;
 begin
-  s := '[';
+  sb := StringBuilder.create();
+  str := '[';
+  sb.append(str);
+  freeAndNil(str);
+  node := first;
 
   if first <> nil then begin
-    node := first;
-    s += node.toString();
+    str := node.value.toString();
+    sb.append(str);
+    freeAndNil(str);
     node := node.next;
-
-    while node <> nil do begin
-      s += ', ' + node.value.toString();
-      node := node.next;
-    end;
   end;
 
-  s += ']';
-  toString := s;
+  while node <> nil do begin
+    str := ', ';
+    sb.append(str);
+    freeAndNil(str);
+    str := node.value.toString();
+    sb.append(str);
+    freeAndNil(str);
+    node := node.next;
+  end;
+
+  str := ']';
+  sb.append(str);
+  freeAndNil(str);
+  str := sb.toString();
+  freeAndNil(sb);
+  toString := str.toString();
 end;
 
 function LinkedList.toString() : String_;

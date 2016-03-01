@@ -60,6 +60,7 @@
     <Compile Include="Scanner.cs" />
     <Compile Include="Short.cs" />
     <Compile Include="String.cs" />
+    <Compile Include="StringBuilder.cs" />
     <Compile Include="StringTokenizer.cs" />
     <Compile Include="System_.cs" />
   </ItemGroup>

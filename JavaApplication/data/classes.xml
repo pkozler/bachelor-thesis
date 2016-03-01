@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <languages>
+        <language>C</language>
+        <language>C++</language>
+        <language>C#</language>
+        <language>Pascal</language>
+    </languages>
+    
+    <classes>
+        <class>System</class>
+        <class>Scanner</class>
+        <class>StringTokenizer</class>
+        <class>String</class>
+        <class>Character</class>
+        <class>Integer</class>
+        <class>Math</class>
+        <class>Arrays</class>
+        <class>Collections</class>
+        <class>ArrayList</class>
+        <class>Comparable</class>
+        <class>Comparator</class>
+    </classes>
+</data>

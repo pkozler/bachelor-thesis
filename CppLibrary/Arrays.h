@@ -208,11 +208,15 @@ template <class T> String *Arrays::toStringGeneric(T *a, int32_t length, String 
     std::ostringstream oss("[");
 
     if (length > 0) {
-        oss << toString(a[0])->toString();
+        String *str = toString(a[0])->toString();
+        oss << str->toString();
+        delete str;
     }
 
     for (int32_t i = 1; i < length; i++) {
-        oss << ", " << toString(a[i])->toString();
+        String *str = toString(a[i])->toString();
+        oss << ", " << str->toString();
+        delete str;
     }
 
     oss << "]";

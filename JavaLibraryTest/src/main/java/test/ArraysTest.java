@@ -119,8 +119,10 @@ public class ArraysTest {
         int b;
         a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
         Arrays.sort(a);
+        // hledání existujícího prvku
         b = Arrays.binarySearch(a, (byte)8);
         logger.info(b);
+        // hledání neexistujícího prvku
         b = Arrays.binarySearch(a, (byte)4);
         logger.info(b);
     }
@@ -133,8 +135,10 @@ public class ArraysTest {
         int b;
         a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
         Arrays.sort(a);
+        // hledání existujícího prvku v části pole
         b = Arrays.binarySearch(a, 1, 4, (byte)8);
         logger.info(b);
+        // hledání neexistujícího prvku v části pole
         b = Arrays.binarySearch(a, 1, 4, (byte)4);
         logger.info(b);
     }
@@ -418,12 +422,15 @@ public class ArraysTest {
         boolean[] a, b;
         String c;
         a = new boolean[]{true, false, false, false, true};
+        // nové pole je kratší než původní
         b = Arrays.copyOf(a, 3);
         c = Arrays.toString(b);
         logger.info(c);
+        // nové pole je stejně dlouhé jako původní
         b = Arrays.copyOf(a, 5);
         c = Arrays.toString(b);
         logger.info(c);
+        // nové pole je delší než původní
         b = Arrays.copyOf(a, 7);
         c = Arrays.toString(b);
         logger.info(c);
@@ -586,12 +593,15 @@ public class ArraysTest {
         boolean[] a, b;
         String c;
         a = new boolean[]{true, false, false, false, true};
+        // kopírování od počátečního prvku
         b = Arrays.copyOfRange(a, 0, 3);
         c = Arrays.toString(b);
         logger.info(c);
+        // kopírování od prostředního prvku
         b = Arrays.copyOfRange(a, 2, 5);
         c = Arrays.toString(b);
         logger.info(c);
+        // kopírování od posledního prvku
         b = Arrays.copyOfRange(a, 4, 7);
         c = Arrays.toString(b);
         logger.info(c);
@@ -754,18 +764,23 @@ public class ArraysTest {
         boolean[] a, b;
         boolean c;
         a = new boolean[]{true, false, false, false, true};
+        // odkaz na druhé pole je NULL
         b = null;
         c = Arrays.equals(a, b);
         logger.info(c);
+        // nové pole nemá stejnou velikost
         b = new boolean[]{true};
         c = Arrays.equals(a, b);
         logger.info(c);
+        // nové pole má stejnou velikost ale nestejné prvky
         b = new boolean[]{true, false, false, false, false};
         c = Arrays.equals(a, b);
         logger.info(c);
+        // nové pole má stejnou velikost i totožné prvky
         b = new boolean[]{true, false, false, false, true};
         c = Arrays.equals(a, b);
         logger.info(c);
+        // odkazy na obě pole se rovnají
         b = a;
         c = Arrays.equals(a, b);
         logger.info(c);
@@ -989,6 +1004,7 @@ public class ArraysTest {
     public static void fillTestCase() {
         boolean[] a;
         String b;
+        // pole pro naplnění
         a = new boolean[5];
         Arrays.fill(a, true);
         b = Arrays.toString(a);
@@ -1001,6 +1017,7 @@ public class ArraysTest {
     public static void fillTestCase2() {
         boolean[] a;
         String b;
+        // pole pro naplnění uprostřed
         a = new boolean[5];
         Arrays.fill(a, 1, 4, true);
         b = Arrays.toString(a);
@@ -1205,6 +1222,7 @@ public class ArraysTest {
     public static void sortTestCase() {
         byte[] a;
         String b;
+        // pole pro seřazení
         a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
         Arrays.sort(a);
         b = Arrays.toString(a);
@@ -1217,6 +1235,7 @@ public class ArraysTest {
     public static void sortTestCase2() {
         byte[] a;
         String b;
+        // pole pro částečné seřazení
         a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
         Arrays.sort(a, 1, 4);
         b = Arrays.toString(a);
@@ -1469,12 +1488,15 @@ public class ArraysTest {
     public static void toStringTestCase() {
         boolean[] a;
         String b;
+        // podpis prázdného pole
         a = new boolean[]{};
         b = Arrays.toString(a);
         logger.info(b);
+        // podpis pole s jedním prvkem
         a = new boolean[]{true};
         b = Arrays.toString(a);
         logger.info(b);
+        // podpis pole s několika prvky
         a = new boolean[]{true, false, false, false, true};
         b = Arrays.toString(a);
         logger.info(b);

@@ -50,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Scanner.o \
 	${OBJECTDIR}/Short.o \
 	${OBJECTDIR}/String.o \
+	${OBJECTDIR}/StringBuilder.o \
 	${OBJECTDIR}/StringTokenizer.o \
 	${OBJECTDIR}/System.o \
 	${OBJECTDIR}/main.o
@@ -153,6 +154,11 @@ ${OBJECTDIR}/String.o: String.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/String.o String.cpp
+
+${OBJECTDIR}/StringBuilder.o: StringBuilder.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringBuilder.o StringBuilder.cpp
 
 ${OBJECTDIR}/StringTokenizer.o: StringTokenizer.cpp 
 	${MKDIR} -p ${OBJECTDIR}

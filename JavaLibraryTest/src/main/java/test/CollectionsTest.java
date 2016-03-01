@@ -84,12 +84,14 @@ public class CollectionsTest {
     public static void copyTestCase() {
         ArrayList<DummyObject> a, b;
         String c;
+        // zdrojový seznam
         a = new ArrayList<>();
         a.add(new DummyObject("first", 3));
         a.add(new DummyObject("second", 2));
         a.add(new DummyObject("third", 8));
         a.add(new DummyObject("fourth", 7));
         a.add(new DummyObject("fifth", 6));
+        // cílový seznam
         b = new ArrayList<>();
         b.add(new DummyObject("zeroth", 0));
         b.add(new DummyObject("zeroth", 0));

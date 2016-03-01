@@ -31,6 +31,13 @@ public class IntegerTest {
      * Otestuje vytvoření hodnoty.
      */
     public static void integerTestCase() {
+        // otestováno pomocí testu získání hodnoty
+    }
+    
+    /**
+     * Otestuje získání hodnoty příslušného vestavěného datového typu.
+     */
+    public static void intValueTestCase() {
         Integer a;
         int b;
         a = new Integer(Integer.MIN_VALUE);
@@ -40,20 +47,6 @@ public class IntegerTest {
         b = a.intValue();
         logger.info(b);
         a = new Integer(Integer.MAX_VALUE);
-        b = a.intValue();
-        logger.info(b);
-    }
-    
-    /**
-     * Otestuje získání hodnoty příslušného vestavěného datového typu.
-     */
-    public static void intValueTestCase() {
-        Integer a;
-        int b;
-        a = new Integer((int)0);
-        b = a.intValue();
-        logger.info(b);
-        a = Integer.parseInt("0");
         b = a.intValue();
         logger.info(b);
     }

@@ -161,7 +161,7 @@ type
 implementation
 
 uses
-  BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, SysUtils, Classes;
+  BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, StringBuilderUint, SysUtils, Classes;
 
 function _compareB(a, b: pointer) : longInt;
 begin
@@ -502,52 +502,70 @@ end;
 
 class function Arrays.toStringPointer(a: pointer; length, size: longInt; ts: ToStringFunction) : String_;
 var
-  str, s: String_;
-  buf: ansiString;
+  sb: StringBuilder;
+  str: String_;
   i: longInt;
 begin
-  buf := '[';
+  sb := StringBuilder.create();
+  str := '[';
+  sb.append(str);
+  freeAndNil(str);
 
   if length > 0 then begin
-    s := ts(a);
-    buf += s.toString();
-    freeAndNil(s);
+    str := ts(a);
+    sb.append(str);
+    freeAndNil(str);
   end;
 
   for i := 1 to length - 1 do begin
-    s := ts(a + i);
-    buf += ', ' + s.toString();
-    freeAndNil(s);
+    str := ', ';
+    sb.append(str);
+    freeAndNil(str);
+    str := ts(a + i * size);
+    sb.append(str);
+    freeAndNil(str);
   end;
 
-  buf += ']';
-  str.create(buf);
+  str := ']';
+  sb.append(str);
+  freeAndNil(str);
+  str := sb.toString();
+  freeAndNil(sb);
   toStringPointer := str;
 end;
 
 class function Arrays.toStringTObject(a: array of TObject) : String_;
 var
-  str, s: String_;
-  buf: ansiString;
+  sb: StringBuilder;
+  str: String_;
   len, i: longInt;
 begin
   len := length(a);
-  buf := '[';
+  sb := StringBuilder.create();
+  str := '[';
+  sb.append(str);
+  freeAndNil(str);
 
   if len > 0 then begin
-    s := a[0].toString();
-    buf += s.toString();
-    freeAndNil(s);
+    str := a[0].toString();
+    sb.append(str);
+    freeAndNil(str);
   end;
 
   for i := 1 to len - 1 do begin
-    s := a[i].toString();
-    buf += ', ' + s.toString();
-    freeAndNil(s);
+    str := ', ';
+    sb.append(str);
+    freeAndNil(str);
+    str := a[i].toString();
+    sb.append(str);
+    freeAndNil(str);
   end;
 
-  buf += ']';
-  str.create(buf);
+  str := ']';
+  sb.append(str);
+  freeAndNil(str);
+  str := sb.toString();
+  freeAndNil(sb);
   toStringTObject := str;
 end;
 

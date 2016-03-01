@@ -66,6 +66,7 @@
     <Compile Include="MathTest.cs" />
     <Compile Include="ScannerTest.cs" />
     <Compile Include="ShortTest.cs" />
+    <Compile Include="StringBuilderTest.cs" />
     <Compile Include="StringTest.cs" />
     <Compile Include="StringTokenizerTest.cs" />
     <Compile Include="SystemTest.cs" />

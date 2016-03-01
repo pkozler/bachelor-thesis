@@ -3,7 +3,7 @@ program fpcunitproject;
 {$mode objfpc}{$H+}
 
 uses
-  Classes, consoletestrunner, TestCase1;
+  Classes, consoletestrunner, TestCase1, StringBuilderTest;
 
 type
 

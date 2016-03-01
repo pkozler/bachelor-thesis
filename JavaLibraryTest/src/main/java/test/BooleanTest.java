@@ -31,14 +31,7 @@ public class BooleanTest {
      * Otestuje vytvoření hodnoty.
      */
     public static void booleanTestCase() {
-        Boolean a;
-        boolean b;
-        a = new Boolean(true);
-        b = a.booleanValue();
-        logger.info(b);
-        a = new Boolean(false);
-        b = a.booleanValue();
-        logger.info(b);
+        // otestováno pomocí testu získání hodnoty
     }
     
     /**
@@ -47,10 +40,12 @@ public class BooleanTest {
     public static void booleanValueTestCase() {
         Boolean a;
         boolean b;
-        a = new Boolean(false);
+        // test pravdy
+        a = new Boolean(true);
         b = a.booleanValue();
         logger.info(b);
-        a = Boolean.parseBoolean("false");
+        // test nepravdy
+        a = new Boolean(false);
         b = a.booleanValue();
         logger.info(b);
     }
@@ -61,18 +56,22 @@ public class BooleanTest {
     public static void compareToTestCase() {
         Boolean a, b;
         int c;
+        // pravda a nepravda
         a = new Boolean(true);
         b = new Boolean(false);
         c = a.compareTo(b);
         logger.info(c);
+        // nepravda a pravda
         a = new Boolean(false);
         b = new Boolean(true);
         c = a.compareTo(b);
         logger.info(c);
+        // obě hodnoty pravdivé
         a = new Boolean(true);
         b = new Boolean(true);
         c = a.compareTo(b);
         logger.info(c);
+        // obě hodnoty nepravdivé
         a = new Boolean(false);
         b = new Boolean(false);
         c = a.compareTo(b);
@@ -85,18 +84,22 @@ public class BooleanTest {
     public static void equalsTestCase() {
         Boolean a, b;
         boolean c;
+        // pravda a nepravda
         a = new Boolean(true);
         b = new Boolean(false);
         c = a.equals(b);
         logger.info(c);
+        // nepravda a pravda
         a = new Boolean(false);
         b = new Boolean(true);
         c = a.equals(b);
         logger.info(c);
+        // obě hodnoty pravdivé
         a = new Boolean(true);
         b = new Boolean(true);
         c = a.equals(b);
         logger.info(c);
+        // obě hodnoty nepravdivé
         a = new Boolean(false);
         b = new Boolean(false);
         c = a.equals(b);
@@ -109,9 +112,11 @@ public class BooleanTest {
     public static void toStringTestCase() {
         Boolean a;
         String b;
+        // podpis pravdivé hodnoty
         a = new Boolean(true);
         b = a.toString();
         logger.info(b);
+        // podpis nepravdivé hodnoty
         a = new Boolean(false);
         b = a.toString();
         logger.info(b);
@@ -123,9 +128,11 @@ public class BooleanTest {
     public static void toStringTestCase2() {
         Boolean a;
         String b;
+        // podpis pravdivé hodnoty
         a = new Boolean(true);
         b = Boolean.toString(a);
         logger.info(b);
+        // podpis nepravdivé hodnoty
         a = new Boolean(false);
         b = Boolean.toString(a);
         logger.info(b);
@@ -137,9 +144,11 @@ public class BooleanTest {
     public static void parseBooleanTestCase() {
         Boolean a;
         boolean b;
+        // převod pravdivé hodnoty
         a = Boolean.parseBoolean("true");
         b = a.booleanValue();
         logger.info(b);
+        // převod nepravdivé hodnoty
         a = Boolean.parseBoolean("false");
         b = a.booleanValue();
         logger.info(b);

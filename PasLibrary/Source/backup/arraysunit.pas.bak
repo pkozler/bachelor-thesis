@@ -44,7 +44,7 @@ type
       class procedure sortPointer(a: pointer; fromIndex, toIndex, size: longInt; c: CompareFunction);
       class procedure sortTObject(a: array of TObject; fromIndex, toIndex: longInt; c: TObjectCompareFunction);
       class function toStringPointer(a: pointer; length, size: longInt; ts: ToStringFunction) : String_;
-      class function toStringObject(a: array of TObject) : String_;
+      class function toStringTObject(a: array of TObject) : String_;
     public
       class function binarySearch(a: array of shortInt; key: shortInt) : longInt;
       class function binarySearch(a: array of shortInt; fromIndex: longInt; toIndex: longInt; key: shortInt) : longInt;
@@ -161,7 +161,7 @@ type
 implementation
 
 uses
-  BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, SysUtils, Classes;
+  BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, StringBuilderUint, SysUtils, Classes;
 
 function _compareB(a, b: pointer) : longInt;
 begin
@@ -502,53 +502,71 @@ end;
 
 class function Arrays.toStringPointer(a: pointer; length, size: longInt; ts: ToStringFunction) : String_;
 var
-  str, s: String_;
-  buf: ansiString;
+  sb: StringBuilder;
+  str: String_;
   i: longInt;
 begin
-  buf := '[';
+  sb := StringBuilder.create();
+  str := '[';
+  sb.append(str);
+  freeAndNil(str);
 
   if length > 0 then begin
-    s := ts(a);
-    buf += s.toString();
-    freeAndNil(s);
+    str := ts(a);
+    sb.append(str);
+    freeAndNil(str);
   end;
 
   for i := 1 to length - 1 do begin
-    s := ts(a + i);
-    buf += ', ' + s.toString();
-    freeAndNil(s);
+    str := ', ';
+    sb.append(str);
+    freeAndNil(str);
+    str := ts(a + i * size);
+    sb.append(str);
+    freeAndNil(str);
   end;
 
-  buf += ']';
-  str.create(buf);
+  str := ']';
+  sb.append(str);
+  freeAndNil(str);
+  str := sb.toString();
+  freeAndNil(sb);
   toStringPointer := str;
 end;
 
-class function Arrays.toStringObject(a: array of TObject) : String_;
+class function Arrays.toStringTObject(a: array of TObject) : String_;
 var
-  str, s: String_;
-  buf: ansiString;
-  len, i: longInt;
+  sb: StringBuilder;
+  str: String_;
+  length, i: longInt;
 begin
-  len := length(a);
-  buf := '[';
+  length := length(a);
+  sb := StringBuilder.create();
+  str := '[';
+  sb.append(str);
+  freeAndNil(str);
 
-  if len > 0 then begin
-    s := a[0].toString();
-    buf += s.toString();
-    freeAndNil(s);
+  if length > 0 then begin
+    str := a[0].toString();
+    sb.append(str);
+    freeAndNil(str);
   end;
 
-  for i := 1 to len - 1 do begin
-    s := a[i].toString();
-    buf += ', ' + s.toString();
-    freeAndNil(s);
+  for i := 1 to length - 1 do begin
+    str := ', ';
+    sb.append(str);
+    freeAndNil(str);
+    str := a[i].toString();
+    sb.append(str);
+    freeAndNil(str);
   end;
 
-  buf += ']';
-  str.create(buf);
-  toStringObject := str;
+  str := ']';
+  sb.append(str);
+  freeAndNil(str);
+  str := sb.toString();
+  freeAndNil(sb);
+  toStringTObject := str;
 end;
 
 class function Arrays.binarySearch(a: array of shortInt; key: shortInt) : longInt;
@@ -973,7 +991,7 @@ end;
 
 class function Arrays.toString(a: array of TObject) : String_;
 begin
-  toString := toStringObject(a);
+  toString := toStringTObject(a);
 end;
 
 class function Arrays.toString(a: array of smallInt) : String_;

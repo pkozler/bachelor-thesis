@@ -10,16 +10,10 @@
 #include "Long.h"
 #include "Short.h"
 #include "String.h"
+#include "StringBuilder.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-// minimální počet znaků ve výstupu metody toString (závorky + nulový znak)
-#define _MIN_STR_LEN 3
-// počet znaků na oddělovač prvků (čárka + mezera)
-#define _DELIM_STRLEN 2
-// koeficient zvětšení bufferu pro řetězec ve funkci toString
-#define _BUF_RESIZE_COEF 2
 
 int32_t _compareB(const void *a, const void *b) {
     return ( *(int8_t*)a - *(int8_t*)b );
@@ -206,39 +200,34 @@ void _sortPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, int
 }
 
 String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toString)(const void *)) {
-    // počáteční kapacita bufferu (vyhrazen 1 znak pro prvek)
-    int32_t bufCapacity = _MIN_STR_LEN + (_DELIM_STRLEN + 1) * (length - 1) + 1;
-    // počet znaků v bufferu (přičteny závorky a nulový znak)
-    int32_t bufCount = _MIN_STR_LEN;
-    char *buf = malloc(bufCapacity * sizeof(char));
-
-    buf[0] = '\0';
-    strcat(buf, "[");
-
+    StringBuilder *sb = new_StringBuilder();
+    String *str = new_String("[");
+    append(sb, str);
+    delete_String(str);
+    
     if (length > 0) {
-        strcat(buf, toString(a)->s);
+        str = toString(a);
+        append(sb, str);
+        delete_String(str);
     }
 
     int32_t i;
     for (i = 1; i < length; i++) {
-        String *str = toString(a + i * size);
-        
-        // zvětšení kapacity bufferu, pokud se nový prvek nevejde
-        if (bufCount + str->len + _DELIM_STRLEN >= bufCapacity) {
-            bufCapacity *= _BUF_RESIZE_COEF;
-            buf = realloc(buf, bufCapacity);
-        }
-        
-        strcat(buf, ", ");
-        strcat(buf, str->s);
+        str = new_String(", ");
+        append(sb, str);
+        delete_String(str);
+        str = toString(a + i * size);
+        append(sb, str);
         delete_String(str);
     }
 
-    strcat(buf, "]");
-    String *result = new_String(buf);
-    free(buf);
-
-    return result;
+    str = new_String("]");
+    append(sb, str);
+    delete_String(str);
+    str = toStringSb(sb);
+    delete_StringBuilder(sb);
+    
+    return str;
 }
 
 int32_t Arrays_binarySearchB(int8_t *a, int32_t length, int8_t key) {

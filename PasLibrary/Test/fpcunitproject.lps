@@ -4,11 +4,10 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="2">
+    <Units Count="5">
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="82" Y="17"/>
         <UsageCount Value="20"/>
@@ -21,6 +20,29 @@
         <CursorPos X="108" Y="12"/>
         <UsageCount Value="20"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="stringtest.pas"/>
+        <UnitName Value="StringTest"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="stringtokenizertest.pas"/>
+        <UnitName Value="StringTokenizerTest"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="stringbuildertest.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="StringBuilderTest"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="21" Y="8"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit4>
     </Units>
     <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>

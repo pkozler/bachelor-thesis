@@ -31,17 +31,7 @@ public class ByteTest {
      * Otestuje vytvoření hodnoty.
      */
     public static void byteTestCase() {
-        Byte a;
-        byte b;
-        a = new Byte(Byte.MIN_VALUE);
-        b = a.byteValue();
-        logger.info(b);
-        a = new Byte((byte)0);
-        b = a.byteValue();
-        logger.info(b);
-        a = new Byte(Byte.MAX_VALUE);
-        b = a.byteValue();
-        logger.info(b);
+        // otestováno pomocí testu získání hodnoty
     }
     
     /**
@@ -50,10 +40,16 @@ public class ByteTest {
     public static void byteValueTestCase() {
         Byte a;
         byte b;
+        // test nejmenší možné hodnoty
+        a = new Byte(Byte.MIN_VALUE);
+        b = a.byteValue();
+        logger.info(b);
+        // test nulové hodnoty
         a = new Byte((byte)0);
         b = a.byteValue();
         logger.info(b);
-        a = Byte.parseByte("0");
+        // test největší možné hodnoty
+        a = new Byte(Byte.MAX_VALUE);
         b = a.byteValue();
         logger.info(b);
     }
@@ -64,26 +60,32 @@ public class ByteTest {
     public static void compareToTestCase() {
         Byte a, b;
         int c;
+        // nejmenší hodnota a větší záporná hodnota
         a = new Byte(Byte.MIN_VALUE);
         b = new Byte((byte)-1);
         c = a.compareTo(b);
         logger.info(c);
+        // největší hodnota a menší kladná hodnota
         a = new Byte(Byte.MAX_VALUE);
         b = new Byte((byte)1);
         c = a.compareTo(b);
         logger.info(c);
+        // nulová a kladná hodnota
         a = new Byte((byte)0);
         b = new Byte((byte)1);
         c = a.compareTo(b);
         logger.info(c);
+        // nulová a záporná hodnota
         a = new Byte((byte)0);
         b = new Byte((byte)-1);
         c = a.compareTo(b);
         logger.info(c);
+        // dvě stejné kladné hodnoty
         a = new Byte((byte)1);
         b = new Byte((byte)1);
         c = a.compareTo(b);
         logger.info(c);
+        // dvě stejné záporné hodnoty
         a = new Byte((byte)-1);
         b = new Byte((byte)-1);
         c = a.compareTo(b);
@@ -96,26 +98,32 @@ public class ByteTest {
     public static void equalsTestCase() {
         Byte a, b;
         boolean c;
+        // nejmenší hodnota a větší záporná hodnota
         a = new Byte(Byte.MIN_VALUE);
         b = new Byte((byte)-1);
         c = a.equals(b);
         logger.info(c);
+        // největší hodnota a menší kladná hodnota
         a = new Byte(Byte.MAX_VALUE);
         b = new Byte((byte)1);
         c = a.equals(b);
         logger.info(c);
+        // nulová a kladná hodnota
         a = new Byte((byte)0);
         b = new Byte((byte)1);
         c = a.equals(b);
         logger.info(c);
+        // nulová a záporná hodnota
         a = new Byte((byte)0);
         b = new Byte((byte)-1);
         c = a.equals(b);
         logger.info(c);
+        // dvě stejné kladné hodnoty
         a = new Byte((byte)1);
         b = new Byte((byte)1);
         c = a.equals(b);
         logger.info(c);
+        // dvě stejné záporné hodnoty
         a = new Byte((byte)-1);
         b = new Byte((byte)-1);
         c = a.equals(b);
@@ -128,12 +136,15 @@ public class ByteTest {
     public static void toStringTestCase() {
         Byte a;
         String b;
+        // podpis kladné hodnoty
         a = new Byte((byte)100);
         b = a.toString();
         logger.info(b);
+        // podpis nulové hodnoty
         a = new Byte((byte)0);
         b = a.toString();
         logger.info(b);
+        // podpis záporné hodnoty
         a = new Byte((byte)-100);
         b = a.toString();
         logger.info(b);
@@ -145,12 +156,15 @@ public class ByteTest {
     public static void toStringTestCase2() {
         Byte a;
         String b;
+        // podpis kladné hodnoty
         a = new Byte((byte)100);
         b = Byte.toString(a);
         logger.info(b);
+        // podpis nulové hodnoty
         a = new Byte((byte)0);
         b = Byte.toString(a);
         logger.info(b);
+        // podpis záporné hodnoty
         a = new Byte((byte)-100);
         b = Byte.toString(a);
         logger.info(b);
@@ -159,12 +173,15 @@ public class ByteTest {
     public static void parseByteTestCase() {
         Byte a;
         byte b;
+        // převod kladné hodnoty
         a = Byte.parseByte("100");
         b = a.byteValue();
         logger.info(b);
+        // převod nulové hodnoty
         a = Byte.parseByte("0");
         b = a.byteValue();
         logger.info(b);
+        // převod záporné hodnoty
         a = Byte.parseByte("-100");
         b = a.byteValue();
         logger.info(b);

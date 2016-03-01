@@ -35,7 +35,7 @@
         <PackageName Value="FCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="3">
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -45,6 +45,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="TestCase1"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="stringbuildertest.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="StringBuilderTest"/>
+      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

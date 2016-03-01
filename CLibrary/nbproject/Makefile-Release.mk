@@ -50,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Scanner.o \
 	${OBJECTDIR}/Short.o \
 	${OBJECTDIR}/String.o \
+	${OBJECTDIR}/StringBuilder.o \
 	${OBJECTDIR}/StringTokenizer.o \
 	${OBJECTDIR}/System.o \
 	${OBJECTDIR}/main.o
@@ -153,6 +154,11 @@ ${OBJECTDIR}/String.o: String.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/String.o String.c
+
+${OBJECTDIR}/StringBuilder.o: StringBuilder.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringBuilder.o StringBuilder.c
 
 ${OBJECTDIR}/StringTokenizer.o: StringTokenizer.c 
 	${MKDIR} -p ${OBJECTDIR}

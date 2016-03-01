@@ -21,7 +21,7 @@ public:
     int32_t size();
     bool isEmpty();
     void clear();
-    String *toString();
+    String *toString(String *(*toString)(E));
     friend std::ostream &operator<<(std::ostream &s, LinkedList<E> &obj);
 };
 
@@ -90,23 +90,27 @@ template <class E> void LinkedList<E>::clear() {
     l.clear();
 }
 
-template <class E> String *LinkedList<E>::toString() {
-    std::string s = "[";
-    int32_t len = l.size();
+template <class E> String *LinkedList<E>::toString(String *(*toString)(E)) {
+    int32_t length = l.size();
+    std::ostringstream oss("[");
 
-    if (len > 0) {
-        s += l.begin().toString();
+    if (length > 0) {
+        String *str = toString(l.begin())->toString();
+        oss << str->toString();
+        delete str;
     }
 
-    for (int32_t i = 1; i < len; i++) {
+    for (int32_t i = 1; i < length; i++) {
         auto it = l.begin();
         std::advance(it, i);
-        s += ", " + it.toString();
+        String *str = toString(it)->toString();
+        oss << ", " << str->toString();
+        delete str;
     }
 
-    s += "]";
+    oss << "]";
 
-    return s;
+    return new String(oss.str());
 }
 
 template <class E> std::ostream &operator<<(std::ostream &s, LinkedList<E> &obj) {

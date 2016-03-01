@@ -5,7 +5,6 @@
 
 #define _DEFAULT_CAPACITY 10
 #define _RESIZE_COEF 2
-#define _LIST_DELIM_STRLEN 2
 
 ArrayList *new_ArrayList() {
     // alokace paměti pro strukturu seznamu a vnitřní pole ukazatelů
@@ -121,24 +120,33 @@ void clear(ArrayList *ptr) {
     ptr->dynamicArray = malloc(ptr->capacity * sizeof(void *));
 }
 
-String *toStringAl(ArrayList *ptr, int32_t size, char *(*toString)(void *)) {
-    void **a = ptr->dynamicArray;
-    int32_t length = ptr->count;
-    char *s = malloc((size + _LIST_DELIM_STRLEN) * length + 1);
-    int32_t i;
-    s[0] = '\0';
-    strcat(s, "[");
-
+String *toStringAl(ArrayList *ptr, int32_t size, String *(*toString)(void *)) {
+    StringBuilder *sb = new_StringBuilder();
+    String *str = new_String("[");
+    append(sb, str);
+    delete_String(str);
+    
     if (length > 0) {
-        strcat(s, toString(a[0]));
+        str = toString(ptr->dynamicArray[0]);
+        append(sb, str);
+        delete_String(str);
     }
 
+    int32_t i;
     for (i = 1; i < length; i++) {
-        strcat(s, ", ");
-        strcat(s, toString(a[i]));
+        str = new_String(", ");
+        append(sb, str);
+        delete_String(str);
+        str = toString(ptr->dynamicArray[i]);
+        append(sb, str);
+        delete_String(str);
     }
 
-    strcat(s, "]");
-
-    return new_String(s);
+    str = new_String("]");
+    append(sb, str);
+    delete_String(str);
+    str = toStringSb(sb);
+    delete_StringBuilder(sb);
+    
+    return str;
 }

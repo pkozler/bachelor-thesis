@@ -6,7 +6,7 @@ uses
   MathUnit, StringUnit, CharacterUnit, IntegerUnit, SystemUnit, ScannerUnit,
   StringTokenizerUnit, ArraysUnit, CollectionsUnit, ArrayListUnit,
   LinkedListUnit, BooleanUnit, ByteUnit, ShortUnit, LongUnit, FloatUnit,
-DoubleUnit;
+DoubleUnit, stringbuilderuint, unit1;
 
 {class procedure Arrays.quickSort(x: array of shortInt; left, right: longInt);
 var

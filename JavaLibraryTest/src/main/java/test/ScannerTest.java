@@ -81,6 +81,7 @@ public class ScannerTest {
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
         
+        // namátkový test načítání hodnot různých typů
         b = a.next();
         logger.info(b);
         c = a.nextBoolean();
@@ -111,6 +112,7 @@ public class ScannerTest {
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
         
+        // test načítání řetězců oddělených různými počty bílých znaků
         for (int i = 0; i < NEXT_TOKEN_COUNT; i++) {
             b = a.next();
             logger.info(b);
@@ -127,6 +129,7 @@ public class ScannerTest {
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
         
+        // test načítání řetězců představujících logické hodnoty
         for (int i = 0; i < NEXTBOOLEAN_TOKEN_COUNT; i++) {
             b = a.nextBoolean();
             logger.info(b);
@@ -143,6 +146,7 @@ public class ScannerTest {
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
         
+        // test načítání celých čísel (nuly, jedničky a největších možných hodnot kladných i záporných)
         for (int i = 0; i < NEXTBYTE_TOKEN_COUNT; i++) {
             b = a.nextByte();
             logger.info(b);
@@ -207,6 +211,11 @@ public class ScannerTest {
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
         
+        /* 
+            test načítání desetinných čísel
+            (s použitím i bez použití znaménka i desetinné tečky a s vynecháním číslic na různých pozicích,
+            test načtení nuly, jedničky, největší i nejmenší možné absolutní hodnoty)
+        */
         for (int i = 0; i < NEXTFLOAT_TOKEN_COUNT; i++) {
             b = a.nextFloat();
             logger.info(b);
@@ -239,6 +248,7 @@ public class ScannerTest {
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
         
+        // test načtení řádků s různými typy řetězců
         for (int i = 0; i < NEXTLINE_TOKEN_COUNT; i++) {
             b = a.nextLine();
             logger.info(b);

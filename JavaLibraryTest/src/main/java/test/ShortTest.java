@@ -31,6 +31,13 @@ public class ShortTest {
      * Otestuje vytvoření hodnoty.
      */
     public static void shortTestCase() {
+        // otestováno pomocí testu získání hodnoty
+    }
+    
+    /**
+     * Otestuje získání hodnoty příslušného vestavěného datového typu.
+     */
+    public static void shortValueTestCase() {
         Short a;
         short b;
         a = new Short(Short.MIN_VALUE);
@@ -40,20 +47,6 @@ public class ShortTest {
         b = a.shortValue();
         logger.info(b);
         a = new Short(Short.MAX_VALUE);
-        b = a.shortValue();
-        logger.info(b);
-    }
-    
-    /**
-     * Otestuje získání hodnoty příslušného vestavěného datového typu.
-     */
-    public static void shortValueTestCase() {
-        Short a;
-        short b;
-        a = new Short((short)0);
-        b = a.shortValue();
-        logger.info(b);
-        a = Short.parseShort("0");
         b = a.shortValue();
         logger.info(b);
     }

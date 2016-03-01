@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define _LLIST_DELIM_STRLEN 2
-
 LinkedList *new_LinkedList() {
     LinkedList *list = malloc(sizeof(LinkedList));
     list->count = 0;
@@ -201,26 +199,35 @@ void clearL(LinkedList *ptr) {
     }
 }
 
-String *toStringLl(LinkedList *ptr, int32_t size, char *(*toString)(void *)) {
-    int32_t length = ptr->count;
-    char *s = malloc((size + _LLIST_DELIM_STRLEN) * length + 1);
-    s[0] = '\0';
-    strcat(s, "[");
-
-    if (ptr->first != NULL) {
-        LinkedListNode *node = ptr->first;
-        strcat(s, toString(node->value));
+String *toStringLl(LinkedList *ptr, int32_t size, String *(*toString)(void *)) {
+    StringBuilder *sb = new_StringBuilder();
+    String *str = new_String("[");
+    append(sb, str);
+    delete_String(str);
+    LinkedListNode *node = ptr->first;
+    
+    if (node != NULL) {
+        str = toString(node->value);
+        append(sb, str);
+        delete_String(str);
         node = node->next;
-
-        while (node != NULL) {
-            strcat(s, ", ");
-            strcat(s, toString(node->value));
-            node = node->next;
-        }
     }
 
-    strcat(s, "]");
-    String *str = new_String(s);
+    while (node != NULL) {
+        str = new_String(", ");
+        append(sb, str);
+        delete_String(str);
+        str = toString(node->value);
+        append(sb, str);
+        delete_String(str);
+        node = node->next;
+    }
+
+    str = new_String("]");
+    append(sb, str);
+    delete_String(str);
+    str = toStringSb(sb);
+    delete_StringBuilder(sb);
 
     return str;
 }

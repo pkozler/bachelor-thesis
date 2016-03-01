@@ -49,13 +49,24 @@ public class StringTokenizerTest {
     public static void stringTokenizerTestCase() {
         StringTokenizer a;
         String b;
+        // bílé znaky uvnitř řetězce
         a = new StringTokenizer("This is a test.");
         b = getStringArray(a);
         logger.info(b);
+        // bílé znaky uvnitř i vně řetězce
         a = new StringTokenizer(" This is   a test. ");
         b = getStringArray(a);
         logger.info(b);
-        a = new StringTokenizer("This_is_a_test.", "_");
+        // bez bílých znaků
+        a = new StringTokenizer("This_is_a_test.");
+        b = getStringArray(a);
+        logger.info(b);
+        // jeden znak
+        a = new StringTokenizer("_");
+        b = getStringArray(a);
+        logger.info(b);
+        // prázdný řetězec
+        a = new StringTokenizer("");
         b = getStringArray(a);
         logger.info(b);
     }
@@ -66,18 +77,27 @@ public class StringTokenizerTest {
     public static void stringTokenizerTestCase2() {
         StringTokenizer a;
         String b;
+        // nebílý oddělovač (v řetězci neexistuje)
         a = new StringTokenizer("This is a test.", "_");
         b = getStringArray(a);
         logger.info(b);
+        // nebílý oddělovač (v řetězci existuje uvnitř)
         a = new StringTokenizer("This_is_a_test.", "_");
         b = getStringArray(a);
         logger.info(b);
+        // nebílý oddělovač (v řetězci existují i bílé znaky)
+        a = new StringTokenizer("This_is_ a _test.", "_");
+        b = getStringArray(a);
+        logger.info(b);
+        // nebílý oddělovač (v řetězci existuje uvnitř i vně)
         a = new StringTokenizer("_This_is___a_test._", "_");
         b = getStringArray(a);
         logger.info(b);
-        a = new StringTokenizer("This is _ a test.", " _");
+        // více oddělovačů (v řetězci existují)
+        a = new StringTokenizer("This is_a test.", " _");
         b = getStringArray(a);
         logger.info(b);
+        // více oddělovačů (v řetězci neexistují)
         a = new StringTokenizer("Thisisatest.", " _");
         b = getStringArray(a);
         logger.info(b);
@@ -89,13 +109,24 @@ public class StringTokenizerTest {
     public static void countTokensTestCase() {
         StringTokenizer a;
         int b;
+        // rozdělení podle bílých znaků
         a = new StringTokenizer("This is a test.");
         b = a.countTokens();
         logger.info(b);
+        // rozdělení podle bílých znaků (větší počet)
         a = new StringTokenizer(" This is   a test. ");
         b = a.countTokens();
         logger.info(b);
+        // rozdělení podle bílých znaků (žádné)
+        a = new StringTokenizer("This_is_a_test.");
+        b = a.countTokens();
+        logger.info(b);
+        // rozdělení podle nebílých znaků
         a = new StringTokenizer("This_is_a_test.", "_");
+        b = a.countTokens();
+        logger.info(b);
+        // prázdný řetězec
+        a = new StringTokenizer("");
         b = a.countTokens();
         logger.info(b);
     }
@@ -106,13 +137,24 @@ public class StringTokenizerTest {
     public static void hasMoreTokensTestCase() {
         StringTokenizer a;
         boolean b;
+        // rozdělení podle bílých znaků
         a = new StringTokenizer("This is a test.");
         b = a.hasMoreTokens();
         logger.info(b);
-        a = new StringTokenizer("");
+        // rozdělení podle bílých znaků (větší počet)
+        a = new StringTokenizer(" This is   a test. ");
         b = a.hasMoreTokens();
         logger.info(b);
-        a = new StringTokenizer("This_is_a_test.", " ");
+        // rozdělení podle bílých znaků (žádné)
+        a = new StringTokenizer("This_is_a_test.");
+        b = a.hasMoreTokens();
+        logger.info(b);
+        // rozdělení podle nebílých znaků
+        a = new StringTokenizer("This_is_a_test.", "_");
+        b = a.hasMoreTokens();
+        logger.info(b);
+        // prázdný řetězec
+        a = new StringTokenizer("");
         b = a.hasMoreTokens();
         logger.info(b);
     }
@@ -123,6 +165,7 @@ public class StringTokenizerTest {
     public static void nextTokenTestCase() {
         StringTokenizer a;
         String b;
+        // testovací řetězec
         a = new StringTokenizer("This is a test.");
         b = a.nextToken();
         logger.info(b);

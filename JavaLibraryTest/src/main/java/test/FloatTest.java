@@ -31,6 +31,13 @@ public class FloatTest {
      * Otestuje vytvoření hodnoty.
      */
     public static void floatTestCase() {
+        // otestováno pomocí testu získání hodnoty
+    }
+    
+    /**
+     * Otestuje získání hodnoty příslušného vestavěného datového typu.
+     */
+    public static void floatValueTestCase() {
         Float a;
         float b;
         a = new Float(Float.MIN_VALUE);
@@ -40,20 +47,6 @@ public class FloatTest {
         b = a.floatValue();
         logger.info(b);
         a = new Float(Float.MAX_VALUE);
-        b = a.floatValue();
-        logger.info(b);
-    }
-    
-    /**
-     * Otestuje získání hodnoty příslušného vestavěného datového typu.
-     */
-    public static void floatValueTestCase() {
-        Float a;
-        float b;
-        a = new Float((float)0);
-        b = a.floatValue();
-        logger.info(b);
-        a = Float.parseFloat("0");
         b = a.floatValue();
         logger.info(b);
     }
