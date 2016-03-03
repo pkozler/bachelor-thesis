@@ -37,17 +37,20 @@ namespace JavaClasses {
          * Inserts the specified element at the specified position in this list.
          */
         public void add(int index, E element) {
+            // vytvoření prvního uzlu, pokud je spojový seznam prázdný
             if (index < 1) {
                 l.AddFirst(element);
                 return;
             }
-
+            
             LinkedListNode<E> node = l.First;
-
+            
+            // iterace k uzlu na pozici určené parametrem
             for (int i = 0; i < index; i++) {
                 node = node.Next;
             }
 
+            // vložení nového prvku před určený prvek
             l.AddBefore(node, element);
         }
 
@@ -57,10 +60,12 @@ namespace JavaClasses {
         public E get(int index) {
             LinkedListNode<E> node = l.First;
 
+            // iterace k uzlu na pozici určené parametrem
             for (int i = 0; i < index; i++) {
                 node = node.Next;
             }
 
+            // návrat hodnoty z požadovaného uzlu
             return node.Value;
         }
 
@@ -70,6 +75,7 @@ namespace JavaClasses {
         public E set(int index, E element) {
             E original;
 
+            // nahrazení počátečního prvku při určení nulté pozice
             if (index < 1) {
                 original = l.First.Value;
                 l.First.Value = element;
@@ -78,10 +84,12 @@ namespace JavaClasses {
 
             LinkedListNode<E> node = l.First;
 
+            // iterace k uzlu na pozici určené parametrem
             for (int i = 0; i < index; i++) {
                 node = node.Next;
             }
 
+            // návrat původního prvku a nahrazení prvku v seznamu
             original = node.Value;
             node.Value = element;
             return original;
@@ -93,6 +101,7 @@ namespace JavaClasses {
         public E remove(int index) {
             E removed;
 
+            // odstranění počátečního prvku při určení nulté pozice
             if (index < 1) {
                 removed = l.First.Value;
                 l.RemoveFirst();
@@ -101,10 +110,12 @@ namespace JavaClasses {
 
             LinkedListNode<E> node = l.First;
 
+            // iterace k uzlu na pozici určené parametrem
             for (int i = 0; i < index; i++) {
                 node = node.Next;
             }
 
+            // návrat odstraněného prvku a odstranění prvku ze seznamu
             removed = node.Value;
             l.Remove(node);
             return removed;

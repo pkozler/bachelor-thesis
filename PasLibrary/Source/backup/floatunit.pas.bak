@@ -21,14 +21,8 @@ type
       class function getNegativeZeroBits() : longInt;
     public
       const
-           POSITIVE_INFINITY = 1.0f / 0.0f;
-           NEGATIVE_INFINITY = -1.0f / 0.0f;
-           NaN = 0.0f / 0.0f;
            MAX_VALUE = 3.4028235e+38;
            MIN_VALUE = 1.4e-45;
-           MAX_EXPONENT = 127;
-           MIN_EXPONENT = -126;
-           MIN_NORMAL = 1.17549435e-38f;
       constructor create(value: single);
       destructor destroy(); override;
       function floatValue() : single;

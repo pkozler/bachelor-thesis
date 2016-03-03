@@ -1,6 +1,9 @@
 #ifndef STRINGBUILDER_INCLUDED
 #define	STRINGBUILDER_INCLUDED
 
+#include "String.h"
+#include <stdint.h>
+
 typedef struct {
     char *buffer;
     int32_t count;

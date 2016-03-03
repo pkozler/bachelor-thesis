@@ -14,22 +14,60 @@ Double *new_Double(double value) {
     return d;
 }
 
+long _getNegativeZeroDoubleBits() {
+    DoubleInt64 bitConverter;
+    bitConverter.val = -0.0;
+    
+    return bitConverter.bits;
+}
+
 double doubleValue(Double *ptr) {
     return ptr->v;
 }
 
 int32_t compareToD(Double *ptr, Double *anotherDouble) {
-    double val = ptr->v - anotherDouble->v;
+    double v = ptr->v;
+    double v2 = anotherDouble->v;
+    
+    // porovnání hodnoty Not a Number
+    if (isnan(v))
+    {
+        // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
+        if (isnan(v2))
+        {
+            return 0;
+        }
 
-    if (val > 0) {
-        return ceil(val);
+        return 1;
     }
-    else if (val < 0) {
-        return floor(val);
+
+    // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
+    if (isnan(v2))
+    {
+        return -1;
     }
-    else {
-        return 0;
+    
+    DoubleInt64 vBits, v2Bits;
+    vBits.val = v;
+    v2Bits.val = v2;
+    int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
+    
+    // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
+    if (vBits.bits == 0
+        && v2Bits.bits == negativeZeroBits)
+    {
+        return 1;
     }
+
+    // porovnání kladné a záporné nuly (obráceně)
+    if (vBits.bits == negativeZeroBits
+        && v2Bits.bits == 0)
+    {
+        return -1;
+    }
+
+    // běžné porovnání pro ostatní hodnoty
+    return (v > v2 ? 1 : v < v2 ? -1 : 0);
 }
 
 bool equalsD(Double *ptr, Double *obj) {
@@ -40,8 +78,35 @@ bool equalsD(Double *ptr, Double *obj) {
     if (ptr == NULL || obj == NULL) {
         return false;
     }
+    
+    double v = ptr->v;
+    double v2 = obj->v;
 
-    return (ptr->v == obj->v);
+    // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
+    if (isnan(v) && isnan(v2))
+    {
+        return true;
+    }
+    
+    DoubleInt64 vBits, v2Bits;
+    vBits.val = v;
+    v2Bits.val = v2;
+    int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
+
+    // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
+    if (vBits.bits == negativeZeroBits)
+    {
+        return v2Bits.bits == negativeZeroBits;
+    }
+
+    // porovnání kladné a záporné nuly (obráceně)
+    if (v2Bits.bits == negativeZeroBits)
+    {
+        return vBits.bits == negativeZeroBits;
+    }
+
+    // běžné vyhodnocení rovnosti pro ostatní hodnoty
+    return (v == v2);
 }
 
 String *toStringD(Double *ptr) {

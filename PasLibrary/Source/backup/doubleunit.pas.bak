@@ -1,4 +1,4 @@
-unit FloatUnit;
+unit DoubleUnit;
 
 {$mode objfpc}{$H+}
 
@@ -8,36 +8,36 @@ uses
   SysUtils, StringUnit;
 
 type
-  FloatToInt32 = record
+  DoubleToInt64 = record
     case binary: boolean of
-      false: (val: single);
-      true: (bits: longInt);
+      false: (val: double);
+      true: (bits: int64);
   end;
 
-  Float = class
+  Double_ = class
     private
       var
-        v: single;
-      class function getNegativeZeroBits() : longInt;
+        v: double;
+      class function getNegativeZeroBits() : int64;
     public
       const
-           POSITIVE_INFINITY = 1.0f / 0.0f;
-           NEGATIVE_INFINITY = -1.0f / 0.0f;
-           NaN = 0.0f / 0.0f;
-           MAX_VALUE = 3.4028235e+38;
-           MIN_VALUE = 1.4e-45;
-           MAX_EXPONENT = 127;
-           MIN_EXPONENT = -126;
+           POSITIVE_INFINITY = 1.0 / 0.0;
+           NEGATIVE_INFINITY = -1.0 / 0.0;
+           NaN = 0.0 / 0.0;
+           MAX_VALUE = 1.7976931348623157e+308;
+           MIN_VALUE = 4.9e-324;
+           MAX_EXPONENT = 1023;
+           MIN_EXPONENT = -1022;
            MIN_NORMAL = 1.17549435e-38f;
-      constructor create(value: single);
+      constructor create(value: double);
       destructor destroy(); override;
-      function floatValue() : single;
-      function compareTo(anotherFloat: Float) : longInt;
+      function doubleValue() : double;
+      function compareTo(anotherDouble: Double_) : longInt;
       function equals(obj: TObject) : boolean; override;
       function toString() : ansiString; override;
       function toString() : String_;
-      class function toString(f: single) : String_;
-      class function parseFloat(s: String_) : single;
+      class function toString(d: double) : String_;
+      class function parseDouble(s: String_) : double;
   end;
 
 implementation
@@ -45,36 +45,36 @@ implementation
 uses
   Math;
 
-constructor Float.create(value: single);
+constructor Double_.create(value: double);
 begin
   v := value;
 end;
 
-destructor Float.destroy();
+destructor Double_.destroy();
 begin
   inherited;
 end;
 
-class function Float.getNegativeZeroBits(): longInt;
+class function Double_.getNegativeZeroBits(): int64;
 var
-  bitConverter : FloatToInt32;
+  bitConverter : DoubleToInt64;
 begin
   bitConverter.val := -0.0;
   getNegativeZeroBits := bitConverter.bits;
 end;
 
-function Float.floatValue() : single;
+function Double_.doubleValue() : double;
 begin
-  floatValue := v;
+  doubleValue := v;
 end;
 
-function Float.compareTo(anotherFloat: Float) : longInt;
+function Double_.compareTo(anotherDouble: Double_) : longInt;
 var
-  vBits, v2Bits : FloatToInt32;
-  v2 : single;
-  negativeZeroBits : longInt;
+  vBits, v2Bits : DoubleToInt64;
+  v2 : double;
+  negativeZeroBits : int64;
 begin
-  v2 := anotherFloat.v;
+  v2 := anotherDouble.v;
 
   if isNan(v) then begin
     if isNan(v2) then begin
@@ -111,17 +111,17 @@ begin
   end;
 end;
 
-function Float.equals(obj: TObject) : boolean;
+function Double_.equals(obj: TObject) : boolean;
 var
-  vBits, v2Bits : FloatToInt32;
-  v2 : single;
-  negativeZeroBits : longInt;
+  vBits, v2Bits : DoubleToInt64;
+  v2 : double;
+  negativeZeroBits : int64;
 begin
   if obj = nil then begin
     equals := false;
   end;
 
-  v2 := Float(obj).v;
+  v2 := Double_(obj).v;
 
   if isNan(v) and isNan(v2) then begin
     exit(true);
@@ -142,7 +142,7 @@ begin
   equals := (v = v2);
 end;
 
-function Float.toString() : ansiString;
+function Double_.toString() : ansiString;
 var
   s: String_;
 begin
@@ -150,19 +150,19 @@ begin
   toString := s.ToString();
 end;
 
-function Float.toString() : String_;
+function Double_.toString() : String_;
 begin
-  toString := Float.toString(v);
+  toString := Double_.toString(v);
 end;
 
-class function Float.toString(f: single) : String_;
+class function Double_.toString(d: double) : String_;
 begin
-  toString := String_.create(FloatToStr(f));
+  toString := String_.create(FloatToStr(d));
 end;
 
-class function Float.parseFloat(s: String_) : single;
+class function Double_.parseDouble(s: String_) : double;
 begin
-  parseFloat := strToFloat(s.toString());
+  parseDouble := strToFloat(s.toString());
 end;
 
 end.

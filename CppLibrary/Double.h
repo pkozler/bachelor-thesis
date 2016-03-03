@@ -4,11 +4,23 @@
 #include "String.h"
 #include <cstdint>
 
+typedef union {
+    double val;
+    int64_t bits;
+} DoubleInt64;
+
 class Double {
     double v;
+    static int64_t getNegativeZeroBits();
 public:
+    static const double POSITIVE_INFINITY;
+    static const double NEGATIVE_INFINITY;
+    static const double NaN;
     static const double MIN_VALUE;
     static const double MAX_VALUE;
+    static const int32_t MAX_EXPONENT;
+    static const int32_t MIN_EXPONENT;
+    static const double MIN_NORMAL;
     Double(double value);
     ~Double();
     double doubleValue();

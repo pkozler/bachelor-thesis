@@ -8,14 +8,27 @@ uses
   SysUtils, StringUnit;
 
 type
+  DoubleToInt64 = record
+    case binary: boolean of
+      false: (val: double);
+      true: (bits: int64);
+  end;
+
   Double_ = class
     private
       var
         v: double;
+      class function getNegativeZeroBits() : int64;
     public
       const
+           POSITIVE_INFINITY = 1.0 / 0.0;
+           NEGATIVE_INFINITY = -1.0 / 0.0;
+           NaN = 0.0 / 0.0;
            MAX_VALUE = 1.7976931348623157e+308;
            MIN_VALUE = 4.9e-324;
+           MAX_EXPONENT = 1023;
+           MIN_EXPONENT = -1022;
+           MIN_NORMAL = 2.2250738585072014e-308;
       constructor create(value: double);
       destructor destroy(); override;
       function doubleValue() : double;
@@ -42,6 +55,14 @@ begin
   inherited;
 end;
 
+class function Double_.getNegativeZeroBits(): int64;
+var
+  bitConverter : DoubleToInt64;
+begin
+  bitConverter.val := -0.0;
+  getNegativeZeroBits := bitConverter.bits;
+end;
+
 function Double_.doubleValue() : double;
 begin
   doubleValue := v;
@@ -49,31 +70,76 @@ end;
 
 function Double_.compareTo(anotherDouble: Double_) : longInt;
 var
-  cmp : longInt;
-  val : double;
+  vBits, v2Bits : DoubleToInt64;
+  v2 : double;
+  negativeZeroBits : int64;
 begin
-  val := v - anotherDouble.v;
+  v2 := anotherDouble.v;
 
-  if val > 0 then begin
-    cmp := ceil(val);
-  end
-  else if val < 0 then begin
-    cmp := floor(val);
-  end
-  else begin
-    cmp := 0;
+  if isNan(v) then begin
+    if isNan(v2) then begin
+       exit(0);
+    end;
+
+    exit(1);
   end;
 
-  compareTo := cmp;
+  if isNan(v2) then begin
+    exit(-1);
+  end;
+
+  vBits.val := v;
+  v2Bits.val := v2;
+  negativeZeroBits := getNegativeZeroBits();
+
+  if (vBits.bits = 0) and (v2Bits.bits = negativeZeroBits) then begin
+    exit(1);
+  end;
+
+  if (vBits.bits = negativeZeroBits) and (v2Bits.bits = 0) then begin
+    exit(-1);
+  end;
+
+  if v > v2 then begin
+    compareTo := 1;
+  end
+  else if v < v2 then begin
+    compareTo := -1;
+  end
+  else begin
+    compareTo := 0;
+  end;
 end;
 
 function Double_.equals(obj: TObject) : boolean;
+var
+  vBits, v2Bits : DoubleToInt64;
+  v2 : double;
+  negativeZeroBits : int64;
 begin
   if obj = nil then begin
     equals := false;
   end;
 
-  equals := (v = (Double_(obj)).v);
+  v2 := Double_(obj).v;
+
+  if isNan(v) and isNan(v2) then begin
+    exit(true);
+  end;
+
+  vBits.val := v;
+  v2Bits.val := v2;
+  negativeZeroBits := getNegativeZeroBits();
+
+  if vBits.bits = negativeZeroBits then begin
+    exit(v2Bits.bits = negativeZeroBits);
+  end;
+
+  if v2Bits.bits = negativeZeroBits then begin
+    exit(vBits.bits = negativeZeroBits);
+  end;
+
+  equals := (v = v2);
 end;
 
 function Double_.toString() : ansiString;

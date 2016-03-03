@@ -6,7 +6,7 @@ uses
   MathUnit, StringUnit, CharacterUnit, IntegerUnit, SystemUnit, ScannerUnit,
   StringTokenizerUnit, ArraysUnit, CollectionsUnit, ArrayListUnit,
   LinkedListUnit, BooleanUnit, ByteUnit, ShortUnit, LongUnit, FloatUnit,
-DoubleUnit, stringbuilderuint, unit1;
+DoubleUnit, stringbuilderuint;
 
 {class procedure Arrays.quickSort(x: array of shortInt; left, right: longInt);
 var
@@ -330,14 +330,23 @@ begin
   end;
 end;}
 
-const
-  ARR_LEN = 5;
+{const
+   ARR_LEN = 5; }
+
+type
+  DoubleToInt64 = record
+    case binary: boolean of
+      false: (val: double);
+      true: (bits: int64);
+  end;
 
 var
-  i: longInt;
-  arr: array of longInt;
+  {i: longInt;
+  arr: array of longInt;}
+  bitConverter : DoubleToInt64;
+  l : int64;
 begin
-  setLength(arr, ARR_LEN);
+  {setLength(arr, ARR_LEN);
   writeLn(length(arr));
 
   for i := 0 to ARR_LEN - 1 do begin
@@ -350,6 +359,10 @@ begin
     writeLn(arr[i]);
   end;
 
-  writeLn(Math_.PI);
+  writeLn(Math_.PI);}
+
+  bitConverter.val := -0.0;
+  l := bitConverter.bits;
+  writeLn(l);
   readLn();
 end.

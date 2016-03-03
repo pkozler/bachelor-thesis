@@ -31,7 +31,7 @@ char *cToStr(void *s) {
  *
  */
 int32_t main(int32_t argc, char** argv) {
-    int32_t keys[] = {7, 5, 7, 3, 5, 3};
+    /*int32_t keys[] = {7, 5, 7, 3, 5, 3};
     int32_t values[] = {1, 2, 3, 4, 5, 6};
 
     Object **arr = malloc(sizeof(Object *) * ARR_LEN);
@@ -70,7 +70,7 @@ int32_t main(int32_t argc, char** argv) {
     System_out_printlnS(e);
     System_out_printlnS(f);
 
-    System_out_printlnStr(toStringAl(al, 7, cToStr));
+    System_out_printlnStr(toStringAl(al, 7, cToStr));*/
 
     return (EXIT_SUCCESS);
 }

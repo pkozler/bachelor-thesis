@@ -5,8 +5,19 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#define Float_POSITIVE_INFINITY 1.0f / 0.0f
+#define Float_NEGATIVE_INFINITY -1.0f / 0.0f
+#define Float_NaN 0.0f / 0.0f
 #define Float_MAX_VALUE 3.4028235e+38f
 #define Float_MIN_VALUE 1.4e-45f
+#define Float_MAX_EXPONENT 127
+#define Float_MIN_EXPONENT -126
+#define Float_MIN_NORMAL 1.17549435e-38f
+
+typedef union {
+    float val;
+    int32_t bits;
+} FloatInt32;
 
 typedef struct {
     float v;

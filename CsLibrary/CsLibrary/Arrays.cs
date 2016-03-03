@@ -11,6 +11,7 @@ namespace JavaClasses {
      * @author Petr Kozler (A13B0359P)
      */
     public static class Arrays {
+        // komparátor pro porovnání desetinných čísel s dvojitou přesností
         private class DoubleComparer : IComparer<double> {
             int IComparer<double>.Compare(double x, double y) {
                 Double d1 = new Double(x);
@@ -19,7 +20,8 @@ namespace JavaClasses {
                 return d1.compareTo(d2);
             }
         }
-
+        
+        // komparátor pro porovnání desetinných čísel s jednoduchou přesností
         private class FloatComparer : IComparer<float> {
             int IComparer<float>.Compare(float x, float y) {
                 Float f1 = new Float(x);
@@ -29,35 +31,52 @@ namespace JavaClasses {
             }
         }
 
+        // delegát pro definici porovnávací metody předávané metodám pro porovnání pole
         private delegate bool equalsDelegate<T>(T o1, T o2);
         
-        private static int binarySearchGeneric<T>(T[] a, int? fromIndex, int? toIndex, T key, IComparer<T> c) {
+        /*
+         * Provede binární vyhledávání ve zvolené části pole prvků
+         * libovolného datového typu podle předané porovnávací třídy.
+         * Předpokládá, že zvolená část pole je seřazená.
+         */
+        private static int binarySearchGeneric<T>(T[] a, int? fromIndex, int? toIndex, T key, IComparer<T> c = null) {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
 
+            // vyhledávání bez komparátoru
             if (c == null) {
                 return Array.BinarySearch(a, fromIndexValue, toIndexValue, key);
             }
 
+            // vyhledávání s komparátorem
             return Array.BinarySearch(a, fromIndexValue, toIndexValue, key, c);
         }
 
+        /*
+         * Provede kopírování zvolené části pole prvků libovolného datového typu.
+         */
         private static T[] copyOfRangeGeneric<T>(T[] original, int? from, int to) {
             int fromValue = from ?? 0;
 
+            // nové pole s velikostí, která je rovna rozdílu hranic původního pole
             T[] a = new T[to - fromValue];
 
+            // zvolená horní hranice je větší než délka původního pole
             if (to > original.Length) {
+                // kopírování hodnot z původního pole do jeho posledního prvku
                 for (int i = fromValue; i < original.Length; i++) {
                     a[i - fromValue] = original[i];
                 }
 
+                // naplnění zbytku nového pole výchozími hodnotami daného typu
                 for (int i = original.Length; i < to; i++) {
                     a[i - fromValue] =
                      default(T);
                 }
             }
+            // zvolená horní hranice je menší
             else {
+                // kopírování hodnot z původního pole do prvku na zvolené horní hranici
                 for (int i = fromValue; i < to; i++) {
                     a[i - fromValue] = original[i];
                 }
@@ -66,21 +85,29 @@ namespace JavaClasses {
             return a;
         }
 
+        /*
+         * Provede porovnání dvou polí prvků libovolného datového typu
+         * podle předané srovnávací metody.
+         */
         private static bool equalsGeneric<T>(T[] a, T[] a2, equalsDelegate<T> equals) {
+            // porovnání referencí
             if (a == a2) {
                 return true;
             }
 
+            // test na nulové hodnoty referencí
             if (a == null || a2 == null) {
                 return false;
             }
 
             int length = a.Length;
 
+            // porovnání délek polí
             if (a2.Length != length) {
                 return false;
             }
 
+            // porovnání jednotlivých prvků
             for (int i = 0; i < length; i++) {
                 if (!equals(a[i], a2[i])) {
                     return false;
@@ -90,57 +117,71 @@ namespace JavaClasses {
             return true;
         }
 
+        /*
+         * Provede naplnění zvolené části pole prvků libovolného datového typu předanou hodnotou.
+         */
         private static void fillGeneric<T>(T[] a, int? fromIndex, int? toIndex, T val) {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
-
+            
+            // kopírování jednotlivých prvků
             for (int i = fromIndexValue; i < toIndexValue; i++) {
                 a[i] = val;
             }
         }
 
-        private static void sortGeneric<T>(T[] a, int? fromIndex, int? toIndex, IComparer<T> c) {
+        /*
+         * Provede seřazení zvolené části pole prvků
+         * libovolného datového typu podle předané porovnávací třídy.
+         */
+        private static void sortGeneric<T>(T[] a, int? fromIndex = null, int? toIndex = null, IComparer<T> c = null) {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
 
+            // řazení bez komparátoru
             if (c == null) {
                 Array.Sort(a, fromIndexValue, toIndexValue - fromIndexValue);
             }
-            else {
+            // řazení s komparátorem
+            else
+            {
                 Array.Sort(a, fromIndexValue, toIndexValue - fromIndexValue, c);
             }
         }
 
+        /*
+         * Provede vytvoření textové reprezentace pole prvků libovolného datového typu.
+         */
         private static String toStringGeneric<T>(T[] a) {
-            return toStringGeneric(a);
+            return "[" + string.Join(", ", a) + "]";
         }
 
         /**
          * Searches the specified array of sbytes for the specified value using the binary search algorithm
          */
         public static int binarySearch(sbyte[] a, sbyte key) {
-            return binarySearchGeneric(a, null, null, key, null);
+            return binarySearchGeneric(a, null, null, key);
         }
 
         /**
          * Searches a range of the specified array of sbytes for the specified value using the binary search algorithm.
          */
         public static int binarySearch(sbyte[] a, int fromIndex, int toIndex, sbyte key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, null);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
         }
 
         /**
          * Searches the specified array of chars for the specified value using the binary search algorithm.
          */
         public static int binarySearch(char[] a, char key) {
-            return binarySearchGeneric(a, null, null, key, null);
+            return binarySearchGeneric(a, null, null, key);
         }
 
         /**
          * Searches a range of the specified array of chars for the specified value using the binary search algorithm.
          */
         public static int binarySearch(char[] a, int fromIndex, int toIndex, char key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, null);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
         }
 
         /**
@@ -175,70 +216,70 @@ namespace JavaClasses {
          * Searches the specified array of ints for the specified value using the binary search algorithm.
          */
         public static int binarySearch(int[] a, int key) {
-            return binarySearchGeneric(a, null, null, key, null);
+            return binarySearchGeneric(a, null, null, key);
         }
 
         /**
          * Searches a range of the specified array of ints for the specified value using the binary search algorithm.
          */
         public static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, null);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
         }
 
         /**
          * Searches the specified array of longs for the specified value using the binary search algorithm.
          */
         public static int binarySearch(long[] a, long key) {
-            return binarySearchGeneric(a, null, null, key, null);
+            return binarySearchGeneric(a, null, null, key);
         }
 
         /**
          * Searches a range of the specified array of longs for the specified value using the binary search algorithm.
          */
         public static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, null);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
         }
 
         /**
          * Searches the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch(Object[] a, Object key) {
-            return binarySearchGeneric(a, null, null, key, null);
+            return binarySearchGeneric(a, null, null, key);
         }
 
         /**
          * Searches a range of the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch(Object[] a, int fromIndex, int toIndex, Object key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, null);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
         }
 
         /**
          * Searches the specified array of shorts for the specified value using the binary search algorithm.
          */
         public static int binarySearch(short[] a, short key) {
-            return binarySearchGeneric(a, null, null, key, null);
+            return binarySearchGeneric(a, null, null, key);
         }
 
         /**
          * Searches a range of the specified array of shorts for the specified value using the binary search algorithm.
          */
         public static int binarySearch(short[] a, int fromIndex, int toIndex, short key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, null);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
         }
 
         /**
          * Searches the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch<T>(T[] a, T key, Comparer<T> c) {
-            return binarySearchGeneric(a, null, null, key, null);
+            return binarySearchGeneric(a, null, null, key);
         }
 
         /**
          * Searches a range of the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch<T>(T[] a, int fromIndex, int toIndex, T key, Comparer<T> c) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, null);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
         }
 
         /**
@@ -560,84 +601,84 @@ namespace JavaClasses {
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(sbyte[] a) {
-            sortGeneric(a, null, null, null);
+            sortGeneric(a);
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(sbyte[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, null);
+            sortGeneric(a, fromIndex, toIndex - fromIndex);
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(char[] a) {
-            sortGeneric(a, null, null, null);
+            sortGeneric(a);
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(char[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, null);
+            sortGeneric(a, fromIndex, toIndex - fromIndex);
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(double[] a) {
-            Array.Sort(a, new DoubleComparer());
+            sortGeneric(a, null, null, new DoubleComparer());
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(double[] a, int fromIndex, int toIndex) {
-            Array.Sort(a, fromIndex, toIndex - fromIndex, new DoubleComparer());
+            sortGeneric(a, fromIndex, toIndex - fromIndex, new DoubleComparer());
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(float[] a) {
-            Array.Sort(a, new FloatComparer());
+            sortGeneric(a, null, null, new FloatComparer());
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(float[] a, int fromIndex, int toIndex) {
-            Array.Sort(a, fromIndex, toIndex - fromIndex, new FloatComparer());
+            sortGeneric(a, fromIndex, toIndex - fromIndex, new FloatComparer());
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(int[] a) {
-            sortGeneric(a, null, null, null);
+            sortGeneric(a);
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(int[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, null);
+            sortGeneric(a, fromIndex, toIndex - fromIndex);
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(long[] a) {
-            sortGeneric(a, null, null, null);
+            sortGeneric(a);
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(long[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, null);
+            sortGeneric(a, fromIndex, toIndex - fromIndex);
         }
 
         /**
@@ -645,7 +686,7 @@ namespace JavaClasses {
          * according to the natural ordering of its elements.
          */
         public static void sort(Object[] a) {
-            sortGeneric(a, null, null, null);
+            sortGeneric(a);
         }
 
         /**
@@ -653,21 +694,21 @@ namespace JavaClasses {
          * according to the natural ordering of its elements.
          */
         public static void sort(Object[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, null);
+            sortGeneric(a, fromIndex, toIndex - fromIndex);
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(short[] a) {
-            sortGeneric(a, null, null, null);
+            sortGeneric(a);
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(short[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, null);
+            sortGeneric(a, fromIndex, toIndex - fromIndex);
         }
 
         /**

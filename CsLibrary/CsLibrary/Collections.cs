@@ -30,6 +30,7 @@ namespace JavaClasses {
             List<T> destList = dest.l;
             List<T> srcList = src.l;
 
+            // nahrazení prvků cílového seznamu prvky zdrojového seznamu
             for (int i = 0; i < srcList.Count; i++) {
                 destList[i] = srcList[i];
             }
@@ -41,6 +42,7 @@ namespace JavaClasses {
         public static void fill<T>(ArrayList<T> list, T obj) {
             List<T> l = list.l;
 
+            // nahrazení prvků seznamu hodnotou určenou parametrem
             for (int i = 0; i < l.Count; i++) {
                 l[i] = obj;
             }

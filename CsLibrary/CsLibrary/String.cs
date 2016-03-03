@@ -15,6 +15,7 @@ namespace JavaClasses {
          * Constructs a new String by decoding the specified array of bytes using the platform's default charset.
          */
         public String(sbyte[] bytes) {
+            // převod na čísla se znaménkem
             byte[] unsigned = (byte[])(Array)bytes;
             s = Encoding.Default.GetString(unsigned);
         }
@@ -23,6 +24,7 @@ namespace JavaClasses {
          * Constructs a new String by decoding the specified subarray of bytes using the platform's default charset.
          */
         public String(sbyte[] bytes, int offset, int length) {
+            // převod na čísla se znaménkem
             byte[] unsigned = (byte[])(Array)bytes;
             s = Encoding.Default.GetString(unsigned, offset, length);
         }
@@ -56,6 +58,7 @@ namespace JavaClasses {
          * Returns a new string that is a substring of this string.
          */
         public String substring(int beginIndex, int endIndex) {
+            // výpočet délky z konečného indexu pro knihovní metodu
             return s.Substring(beginIndex, endIndex - beginIndex);
         }
 

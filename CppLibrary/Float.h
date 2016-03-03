@@ -4,11 +4,23 @@
 #include "String.h"
 #include <cstdint>
 
+typedef union {
+    float val;
+    int32_t bits;
+} FloatInt32;
+
 class Float {
     float v;
+    static int32_t getNegativeZeroBits();
 public:
+    static const float POSITIVE_INFINITY;
+    static const float NEGATIVE_INFINITY;
+    static const float NaN;
     static const float MIN_VALUE;
     static const float MAX_VALUE;
+    static const int32_t MAX_EXPONENT;
+    static const int32_t MIN_EXPONENT;
+    static const float MIN_NORMAL;
     Float(float value);
     ~Float();
     float floatValue();

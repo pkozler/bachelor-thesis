@@ -1,5 +1,6 @@
 #include "ArrayList.h"
 
+#include "StringBuilder.h"
 #include <stdlib.h>
 #include <string.h>
 

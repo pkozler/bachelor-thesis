@@ -51,6 +51,7 @@ namespace JavaClasses {
          * Replaces the element at the specified position in this list with the specified element.
          */
         public E set(int index, E element) {
+            // uložení nahrazovaného prvku
             E original = l[index];
             l[index] = element;
             return original;
@@ -60,6 +61,7 @@ namespace JavaClasses {
          * Removes the element at the specified position in this list.
          */
         public E remove(int index) {
+            // uložení odstraňovaného prvku
             E removed = l[index];
             l.RemoveAt(index);
             return removed;

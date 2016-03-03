@@ -11,18 +11,23 @@ namespace JavaClasses {
         private string[] tokens;
         private int tokenCounter = 0;
 
+        private void initialize(string str, string delim = " \t\n\r\f") {
+            // rozdělení řetězce do pole podle množiny oddělovačů
+            tokens = str.Split(delim.ToCharArray(), StringSplitOptions.None);
+        }
+
         /**
          * Constructs a string tokenizer for the specified string.
          */
         public StringTokenizer(String str) {
-            tokens = str.ToString().Split(" \t\n\r\f".ToCharArray(), StringSplitOptions.None);
+            initialize(str.ToString());
         }
 
         /**
          * Constructs a string tokenizer for the specified string.
          */
         public StringTokenizer(String str, String delim) {
-            tokens = str.ToString().Split(delim.ToString().ToCharArray(), StringSplitOptions.None);
+            initialize(str.ToString(), delim.ToString());
         }
 
         /**

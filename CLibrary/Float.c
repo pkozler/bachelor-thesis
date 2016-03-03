@@ -8,10 +8,17 @@
 #define _MAX_FLOAT_STRLEN 12
 
 Float *new_Float(float value) {
-    Float *f = malloc(sizeof(Float));
+    Float *f = malloc(sizeof (Float));
     f->v = value;
 
     return f;
+}
+
+long _getNegativeZeroFloatBits() {
+    FloatInt32 bitConverter;
+    bitConverter.val = -0.0;
+
+    return bitConverter.bits;
 }
 
 float floatValue(Float *ptr) {
@@ -19,17 +26,43 @@ float floatValue(Float *ptr) {
 }
 
 int32_t compareToF(Float *ptr, Float *anotherFloat) {
-    float val = ptr->v - anotherFloat->v;
+    float v = ptr->v;
+    float v2 = anotherFloat->v;
 
-    if (val > 0) {
-        return ceilf(val);
+    // porovnání hodnoty Not a Number
+    if (isnan(v)) {
+        // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
+        if (isnan(v2)) {
+            return 0;
+        }
+
+        return 1;
     }
-    else if (val < 0) {
-        return floorf(val);
+
+    // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
+    if (isnan(v2)) {
+        return -1;
     }
-    else {
-        return 0;
+
+    FloatInt32 vBits, v2Bits;
+    vBits.val = v;
+    v2Bits.val = v2;
+    int32_t negativeZeroBits = _getNegativeZeroFloatBits();
+
+    // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
+    if (vBits.bits == 0
+            && v2Bits.bits == negativeZeroBits) {
+        return 1;
     }
+
+    // porovnání kladné a záporné nuly (obráceně)
+    if (vBits.bits == negativeZeroBits
+            && v2Bits.bits == 0) {
+        return -1;
+    }
+
+    // běžné porovnání pro ostatní hodnoty
+    return (v > v2 ? 1 : v < v2 ? -1 : 0);
 }
 
 bool equalsF(Float *ptr, Float *obj) {
@@ -40,8 +73,32 @@ bool equalsF(Float *ptr, Float *obj) {
     if (ptr == NULL || obj == NULL) {
         return false;
     }
+    
+    float v = ptr->v;
+    float v2 = obj->v;
 
-    return (ptr->v == obj->v);
+    // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
+    if (isnan(v) && isnan(v2)) {
+        return true;
+    }
+
+    FloatInt32 vBits, v2Bits;
+    vBits.val = v;
+    v2Bits.val = v2;
+    int32_t negativeZeroBits = _getNegativeZeroFloatBits();
+
+    // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
+    if (vBits.bits == negativeZeroBits) {
+        return v2Bits.bits == negativeZeroBits;
+    }
+
+    // porovnání kladné a záporné nuly (obráceně)
+    if (v2Bits.bits == negativeZeroBits) {
+        return vBits.bits == negativeZeroBits;
+    }
+
+    // běžné vyhodnocení rovnosti pro ostatní hodnoty
+    return (v == v2);
 }
 
 String *toStringF(Float *ptr) {
