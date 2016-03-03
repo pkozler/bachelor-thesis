@@ -2,8 +2,8 @@
 
 #include <string>
 
-const int64_t Long::MAX_VALUE = 9223372036854775807;
-const int64_t Long::MIN_VALUE = -9223372036854775808;
+const int64_t Long::MAX_VALUE = 9223372036854775807L;
+const int64_t Long::MIN_VALUE = -9223372036854775808L;
 
 Long::Long(int64_t value) {
     v = value;
@@ -17,7 +17,11 @@ int64_t Long::longValue() {
 }
 
 int32_t Long::compareTo(Long *anotherLong) {
-    return (v - anotherLong->v);
+    return Long::compare(v, anotherLong->v);
+}
+
+int32_t Long::compare(int64_t x, int64_t y) {
+    return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
 bool Long::equals(Long *obj) {
@@ -25,6 +29,10 @@ bool Long::equals(Long *obj) {
         return false;
     }
 
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
     return (v == obj->v);
 }
 

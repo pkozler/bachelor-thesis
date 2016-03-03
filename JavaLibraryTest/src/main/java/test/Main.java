@@ -34,12 +34,12 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        Character a = 'a';
+        /*Character a = 'a';
         Character b = 'Z';
         
         System.out.println(a.compareTo(b));
         System.out.println(a.compareTo(a));
-        System.out.println(b.compareTo(a));
+        System.out.println(b.compareTo(a));*/
         
         /*Integer a = 5;
         Integer b = -5;
@@ -121,7 +121,7 @@ public class Main {
         printEqualsF(Float.NaN, Float.NaN);
         printEqualsF(Float.NaN, -Float.NaN);*/
 
-        /*
+        
         PrintStreamTest.runTestSuite();
         StringTest.runTestSuite();
         ByteTest.runTestSuite();
@@ -139,7 +139,7 @@ public class Main {
         CollectionsTest.runTestSuite();
         StringTokenizerTest.runTestSuite();
         ScannerTest.runTestSuite();
-        */
+        
     }
     
 }

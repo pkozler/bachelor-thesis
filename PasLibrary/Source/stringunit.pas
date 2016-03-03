@@ -68,6 +68,14 @@ end;
 
 function String_.equals(anObject: TObject) : boolean;
 begin
+  if anObject = nil then begin
+    exit(false);
+  end;
+
+  if typeOf(self) <> typeOf(anObject) then begin
+    exit(false);
+  end;
+
   equals := (ansiCompareStr(self.str, String_(anObject).str) = 0);
 end;
 

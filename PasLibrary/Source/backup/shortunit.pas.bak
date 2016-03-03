@@ -52,7 +52,7 @@ end;
 
 class function Short.compare(x, y: smallInt) : longInt;
 begin
-  compare := x - y;
+  compare := v - anotherShort.v;
 end;
 
 function Short.equals(obj: TObject) : boolean;

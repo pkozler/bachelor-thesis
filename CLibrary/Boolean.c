@@ -18,23 +18,23 @@ bool booleanValue(Boolean *ptr) {
 }
 
 int32_t compareToBool(Boolean *ptr, Boolean *anotherBoolean) {
-    if (ptr->v == true && anotherBoolean->v == false) {
-        return 1;
-    }
-    else if (ptr->v == false && anotherBoolean->v == true) {
-        return -1;
-    }
-    else {
-        return 0;
-    }
+    return Boolean_compare(ptr->v, anotherBoolean->v);
+}
+
+int32_t Boolean_compare(bool x, bool y) {
+    return (x == y) ? 0 : (x ? 1 : -1);
 }
 
 bool equalsBool(Boolean *ptr, Boolean *obj) {
     if (ptr == obj) {
         return true;
     }
-
+    
     if (ptr == NULL || obj == NULL) {
+        return false;
+    }
+    
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

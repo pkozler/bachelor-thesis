@@ -12,6 +12,7 @@ typedef struct {
 Boolean *new_Boolean(bool value);
 bool booleanValue(Boolean *ptr);
 int32_t compareToBool(Boolean *ptr, Boolean *anotherBoolean);
+int32_t Boolean_compare(bool x, bool y);
 bool equalsBool(Boolean *ptr, Boolean *obj);
 String *toStringBool(Boolean *ptr);
 String *Boolean_toString(bool b);

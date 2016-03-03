@@ -17,7 +17,11 @@ int16_t Short::shortValue() {
 }
 
 int32_t Short::compareTo(Short *anotherShort) {
-    return (v - anotherShort->v);
+    return compare(v, anotherShort->v);
+}
+
+int32_t Short::compare(int16_t x, int16_t y) {
+    return x - y;
 }
 
 int16_t Short::equals(Short *obj) {
@@ -25,6 +29,10 @@ int16_t Short::equals(Short *obj) {
         return false;
     }
 
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
     return (v == obj->v);
 }
 

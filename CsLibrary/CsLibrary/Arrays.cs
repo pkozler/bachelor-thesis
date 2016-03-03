@@ -11,26 +11,56 @@ namespace JavaClasses {
      * @author Petr Kozler (A13B0359P)
      */
     public static class Arrays {
+        
+        // komparátor pro porovnání 8-bitových celých čísel
+        private class ByteComparer : IComparer<sbyte> {
+            int IComparer<sbyte>.Compare(sbyte x, sbyte y) {
+                return Byte.compare(x, y);
+            }
+        }
+
+        // komparátor pro porovnání znaků
+        private class CharacterComparer : IComparer<char> {
+            int IComparer<char>.Compare(char x, char y) {
+                return Character.compare(x, y);
+            }
+        }
+        
         // komparátor pro porovnání desetinných čísel s dvojitou přesností
         private class DoubleComparer : IComparer<double> {
             int IComparer<double>.Compare(double x, double y) {
-                Double d1 = new Double(x);
-                Double d2 = new Double(y);
-
-                return d1.compareTo(d2);
+                return Double.compare(x, y);
             }
         }
         
         // komparátor pro porovnání desetinných čísel s jednoduchou přesností
         private class FloatComparer : IComparer<float> {
             int IComparer<float>.Compare(float x, float y) {
-                Float f1 = new Float(x);
-                Float f2 = new Float(y);
-
-                return f1.compareTo(f2);
+                return Float.compare(x, y);
             }
         }
 
+        // komparátor pro porovnání 32-bitových celých čísel
+        private class IntegerComparer : IComparer<int> {
+            int IComparer<int>.Compare(int x, int y) {
+                return Integer.compare(x, y);
+            }
+        }
+
+        // komparátor pro porovnání 64-bitových celých čísel
+        private class LongComparer : IComparer<long> {
+            int IComparer<long>.Compare(long x, long y) {
+                return Long.compare(x, y);
+            }
+        }
+
+        // komparátor pro porovnání 16-bitových celých čísel
+        private class ShortComparer : IComparer<short> {
+            int IComparer<short>.Compare(short x, short y) {
+                return Short.compare(x, y);
+            }
+        }
+        
         // delegát pro definici porovnávací metody předávané metodám pro porovnání pole
         private delegate bool equalsDelegate<T>(T o1, T o2);
         
@@ -160,28 +190,28 @@ namespace JavaClasses {
          * Searches the specified array of sbytes for the specified value using the binary search algorithm
          */
         public static int binarySearch(sbyte[] a, sbyte key) {
-            return binarySearchGeneric(a, null, null, key);
+            return binarySearchGeneric(a, null, null, key, new ByteComparer());
         }
 
         /**
          * Searches a range of the specified array of sbytes for the specified value using the binary search algorithm.
          */
         public static int binarySearch(sbyte[] a, int fromIndex, int toIndex, sbyte key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new ByteComparer());
         }
 
         /**
          * Searches the specified array of chars for the specified value using the binary search algorithm.
          */
         public static int binarySearch(char[] a, char key) {
-            return binarySearchGeneric(a, null, null, key);
+            return binarySearchGeneric(a, null, null, key, new CharacterComparer());
         }
 
         /**
          * Searches a range of the specified array of chars for the specified value using the binary search algorithm.
          */
         public static int binarySearch(char[] a, int fromIndex, int toIndex, char key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new CharacterComparer());
         }
 
         /**
@@ -216,28 +246,28 @@ namespace JavaClasses {
          * Searches the specified array of ints for the specified value using the binary search algorithm.
          */
         public static int binarySearch(int[] a, int key) {
-            return binarySearchGeneric(a, null, null, key);
+            return binarySearchGeneric(a, null, null, key, new IntegerComparer());
         }
 
         /**
          * Searches a range of the specified array of ints for the specified value using the binary search algorithm.
          */
         public static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new IntegerComparer());
         }
 
         /**
          * Searches the specified array of longs for the specified value using the binary search algorithm.
          */
         public static int binarySearch(long[] a, long key) {
-            return binarySearchGeneric(a, null, null, key);
+            return binarySearchGeneric(a, null, null, key, new LongComparer());
         }
 
         /**
          * Searches a range of the specified array of longs for the specified value using the binary search algorithm.
          */
         public static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new LongComparer());
         }
 
         /**
@@ -258,28 +288,28 @@ namespace JavaClasses {
          * Searches the specified array of shorts for the specified value using the binary search algorithm.
          */
         public static int binarySearch(short[] a, short key) {
-            return binarySearchGeneric(a, null, null, key);
+            return binarySearchGeneric(a, null, null, key, new ShortComparer());
         }
 
         /**
          * Searches a range of the specified array of shorts for the specified value using the binary search algorithm.
          */
         public static int binarySearch(short[] a, int fromIndex, int toIndex, short key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new ShortComparer());
         }
 
         /**
          * Searches the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch<T>(T[] a, T key, Comparer<T> c) {
-            return binarySearchGeneric(a, null, null, key);
+            return binarySearchGeneric(a, null, null, key, c);
         }
 
         /**
          * Searches a range of the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch<T>(T[] a, int fromIndex, int toIndex, T key, Comparer<T> c) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, c);
         }
 
         /**
@@ -412,49 +442,49 @@ namespace JavaClasses {
          * Returns true if the two specified arrays of booleans are equal to one another.
          */
         public static bool equals(bool[] a, bool[] a2) {
-            return equalsGeneric(a, a2, (b1, b2) => { return b1 == b2; });
+            return equalsGeneric(a, a2, (x, y) => { return new Boolean(x).equals(new Boolean(y)); });
         }
 
         /**
          * Returns true if the two specified arrays of sbytes are equal to one another.
          */
         public static bool equals(sbyte[] a, sbyte[] a2) {
-            return equalsGeneric(a, a2, (b1, b2) => { return b1 == b2; });
+            return equalsGeneric(a, a2, (x, y) => { return new Byte(x).equals(new Byte(y)); });
         }
 
         /**
          * Returns true if the two specified arrays of chars are equal to one another.
          */
         public static bool equals(char[] a, char[] a2) {
-            return equalsGeneric(a, a2, (c1, c2) => { return c1 == c2; });
+            return equalsGeneric(a, a2, (x, y) => { return new Character(x).equals(new Character(y)); });
         }
 
         /**
          * Returns true if the two specified arrays of doubles are equal to one another.
          */
         public static bool equals(double[] a, double[] a2) {
-            return equalsGeneric(a, a2, (d1, d2) => { return new Double(d1).equals(new Double(d2)); });
+            return equalsGeneric(a, a2, (x, y) => { return new Double(x).equals(new Double(y)); });
         }
 
         /**
          * Returns true if the two specified arrays of floats are equal to one another.
          */
         public static bool equals(float[] a, float[] a2) {
-            return equalsGeneric(a, a2, (f1, f2) => { return new Float(f1).equals(new Float(f2)); });
+            return equalsGeneric(a, a2, (x, y) => { return new Float(x).equals(new Float(y)); });
         }
 
         /**
          * Returns true if the two specified arrays of ints are equal to one another.
          */
         public static bool equals(int[] a, int[] a2) {
-            return equalsGeneric(a, a2, (i1, i2) => { return i1 == i2; });
+            return equalsGeneric(a, a2, (x, y) => { return new Integer(x).equals(new Integer(y)); });
         }
 
         /**
          * Returns true if the two specified arrays of longs are equal to one another.
          */
         public static bool equals(long[] a, long[] a2) {
-            return equalsGeneric(a, a2, (l1, l2) => { return l1 == l2; });
+            return equalsGeneric(a, a2, (x, y) => { return new Long(x).equals(new Long(y)); });
         }
 
         /**
@@ -468,7 +498,7 @@ namespace JavaClasses {
          * Returns true if the two specified arrays of shorts are equal to one another.
          */
         public static bool equals(short[] a, short[] a2) {
-            return equalsGeneric(a, a2, (s1, s2) => { return s1 == s2; } );
+            return equalsGeneric(a, a2, (x, y) => { return new Short(x).equals(new Short(y)); });
         }
 
         /**
@@ -601,28 +631,28 @@ namespace JavaClasses {
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(sbyte[] a) {
-            sortGeneric(a);
+            sortGeneric(a, null, null, new ByteComparer());
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(sbyte[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex);
+            sortGeneric(a, fromIndex, toIndex - fromIndex, new ByteComparer());
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(char[] a) {
-            sortGeneric(a);
+            sortGeneric(a, null, null, new CharacterComparer());
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(char[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex);
+            sortGeneric(a, fromIndex, toIndex - fromIndex, new CharacterComparer());
         }
 
         /**
@@ -657,28 +687,28 @@ namespace JavaClasses {
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(int[] a) {
-            sortGeneric(a);
+            sortGeneric(a, null, null, new IntegerComparer());
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(int[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex);
+            sortGeneric(a, fromIndex, toIndex - fromIndex, new IntegerComparer());
         }
 
         /**
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(long[] a) {
-            sortGeneric(a);
+            sortGeneric(a, null, null, new LongComparer());
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(long[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex);
+            sortGeneric(a, fromIndex, toIndex - fromIndex, new LongComparer());
         }
 
         /**
@@ -701,14 +731,14 @@ namespace JavaClasses {
          * Sorts the specified array into ascending numerical order.
          */
         public static void sort(short[] a) {
-            sortGeneric(a);
+            sortGeneric(a, null, null, new ShortComparer());
         }
 
         /**
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(short[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex);
+            sortGeneric(a, fromIndex, toIndex - fromIndex, new ShortComparer());
         }
 
         /**

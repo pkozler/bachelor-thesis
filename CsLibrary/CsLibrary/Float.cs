@@ -87,32 +87,32 @@ namespace JavaClasses {
          * Compares two Float objects numerically.
          */
         public int compareTo(Float anotherFloat) {
-            float v2 = anotherFloat.v;
+            return compare(v, anotherFloat.v);
+        }
 
-            if (float.IsNaN(v))
-            {
-                if (float.IsNaN(v2))
-                {
+        /**
+         * Compares the two specified float values.
+         */
+        public static int compare(float v, float v2) {
+            if (float.IsNaN(v)) {
+                if (float.IsNaN(v2)) {
                     return 0;
                 }
 
                 return 1;
             }
 
-            if (float.IsNaN(v2))
-            {
+            if (float.IsNaN(v2)) {
                 return -1;
             }
 
             if (floatToInt32Bits(v) == 0
-                && floatToInt32Bits(v2) == negativeZeroBits)
-            {
+                && floatToInt32Bits(v2) == negativeZeroBits) {
                 return 1;
             }
 
             if (floatToInt32Bits(v) == negativeZeroBits
-                && floatToInt32Bits(v2) == 0)
-            {
+                && floatToInt32Bits(v2) == 0) {
                 return -1;
             }
 
@@ -123,25 +123,25 @@ namespace JavaClasses {
          * Compares this object against the specified object.
          */
         public bool equals(Object obj) {
-            if (obj == null)
-            {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
                 return false;
             }
 
             float v2 = (obj as Float).v;
 
-            if (float.IsNaN(v) && float.IsNaN(v2))
-            {
+            if (float.IsNaN(v) && float.IsNaN(v2)) {
                 return true;
             }
 
-            if (floatToInt32Bits(v) == negativeZeroBits)
-            {
+            if (floatToInt32Bits(v) == negativeZeroBits) {
                 return floatToInt32Bits(v2) == negativeZeroBits;
             }
 
-            if (floatToInt32Bits(v2) == negativeZeroBits)
-            {
+            if (floatToInt32Bits(v2) == negativeZeroBits) {
                 return floatToInt32Bits(v) == negativeZeroBits;
             }
 

@@ -15,6 +15,7 @@ typedef struct {
 Short *new_Short(int16_t value);
 int16_t shortValue(Short *ptr);
 int32_t compareToS(Short *ptr, Short *anotherShort);
+int32_t Short_compare(int16_t x, int16_t y);
 bool equalsS(Short *ptr, Short *obj);
 String *toStringS(Short *ptr);
 String *Short_toString(int16_t s);

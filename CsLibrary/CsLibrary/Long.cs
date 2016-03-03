@@ -38,13 +38,28 @@ namespace JavaClasses {
          * Compares two Long objects numerically.
          */
         public int compareTo(Long anotherLong) {
-            return v.CompareTo(anotherLong.v);
+            return compare(v, anotherLong.v);
+        }
+
+        /**
+         * Compares two long values numerically.
+         */
+        public static int compare(long x, long y) {
+            return (x < y) ? -1 : ((x == y) ? 0 : 1);
         }
 
         /**
          * Compares this object to the specified object.
          */
         public bool equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
+                return false;
+            }
+
             return v.Equals((obj as Long).v);
         }
 

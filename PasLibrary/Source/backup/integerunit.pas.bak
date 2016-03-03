@@ -61,6 +61,9 @@ begin
   else begin
     compare := 1;
   end;
+
+
+  compare := v - anotherInteger.v;
 end;
 
 function Integer_.equals(obj: TObject) : boolean;

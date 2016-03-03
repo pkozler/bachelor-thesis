@@ -22,7 +22,7 @@ Float::~Float() {
 int32_t Float::getNegativeZeroBits() {
     FloatInt32 bitConverter;
     bitConverter.val = -0.0;
-    
+
     return bitConverter.bits;
 }
 
@@ -31,12 +31,14 @@ float Float::floatValue() {
 }
 
 int32_t Float::compareTo(Float *anotherFloat) {
-    float v2 = anotherFloat->v;
+    return compare(v, anotherFloat->v);
+}
 
+int32_t Float::compare(float v, float v2) {
     // porovnání hodnoty Not a Number
-    if (isnan(v)) {
+    if (std::isnan(v)) {
         // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
-        if (isnan(v2)) {
+        if (std::isnan(v2)) {
             return 0;
         }
 
@@ -44,7 +46,7 @@ int32_t Float::compareTo(Float *anotherFloat) {
     }
 
     // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
-    if (isnan(v2)) {
+    if (std::isnan(v2)) {
         return -1;
     }
 
@@ -74,10 +76,14 @@ bool Float::equals(Float *obj) {
         return false;
     }
 
+    if (sizeof (*this) != sizeof (*obj)) {
+        return false;
+    }
+
     float v2 = obj->v;
 
     // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
-    if (isnan(v) && isnan(v2)) {
+    if (std::isnan(v) && std::isnan(v2)) {
         return true;
     }
 

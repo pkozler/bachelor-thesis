@@ -33,6 +33,7 @@ type
       destructor destroy(); override;
       function doubleValue() : double;
       function compareTo(anotherDouble: Double_) : longInt;
+      class function compare(val, val2: double) : longInt;
       function equals(obj: TObject) : boolean; override;
       function toString() : ansiString; override;
       function toString() : String_;
@@ -69,27 +70,29 @@ begin
 end;
 
 function Double_.compareTo(anotherDouble: Double_) : longInt;
+begin
+  compareTo := compare(v, anotherDouble.v);
+end;
+
+class function Double_.compare(val, val2: double) : longInt;
 var
   vBits, v2Bits : DoubleToInt64;
-  v2 : double;
   negativeZeroBits : int64;
 begin
-  v2 := anotherDouble.v;
-
-  if isNan(v) then begin
-    if isNan(v2) then begin
+  if isNan(val) then begin
+    if isNan(val2) then begin
        exit(0);
     end;
 
     exit(1);
   end;
 
-  if isNan(v2) then begin
+  if isNan(val2) then begin
     exit(-1);
   end;
 
-  vBits.val := v;
-  v2Bits.val := v2;
+  vBits.val := val;
+  v2Bits.val := val2;
   negativeZeroBits := getNegativeZeroBits();
 
   if (vBits.bits = 0) and (v2Bits.bits = negativeZeroBits) then begin
@@ -100,14 +103,14 @@ begin
     exit(-1);
   end;
 
-  if v > v2 then begin
-    compareTo := 1;
+  if val > val2 then begin
+    compare := 1;
   end
-  else if v < v2 then begin
-    compareTo := -1;
+  else if val < val2 then begin
+    compare := -1;
   end
   else begin
-    compareTo := 0;
+    compare := 0;
   end;
 end;
 
@@ -118,7 +121,11 @@ var
   negativeZeroBits : int64;
 begin
   if obj = nil then begin
-    equals := false;
+    exit(false);
+  end;
+
+  if typeOf(self) <> typeOf(obj) then begin
+    exit(false);
   end;
 
   v2 := Double_(obj).v;

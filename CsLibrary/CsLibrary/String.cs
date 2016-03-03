@@ -10,7 +10,7 @@ namespace JavaClasses {
      */
     public class String {
         private string s;
-
+        
         /**
          * Constructs a new String by decoding the specified array of bytes using the platform's default charset.
          */
@@ -44,6 +44,14 @@ namespace JavaClasses {
          * Compares this string to the specified object.
          */
         public bool equals(Object anObject) {
+            if (anObject == null) {
+                return false;
+            }
+
+            if (GetType() != anObject.GetType()) {
+                return false;
+            }
+
             return s.Equals((anObject as String).s);
         }
 

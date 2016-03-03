@@ -5,20 +5,22 @@
 #include <string.h>
 #include <ctype.h>
 
-String *new_String(char *original) {
+String *new_StringB(int8_t *value, int32_t length) {
+    return new_StringRangeB(value, 0, length);
+}
+
+String *new_StringRangeB(int8_t *value, int32_t offset, int32_t length) {
     String *str = malloc(sizeof(String));
-    char *s = strdup(original);
-    str->s = s;
-    str->len = strlen(s);
+    str->s[0] = '\0';
+    strncat(str->s, (char *) value + offset, length);
 
     return str;
 }
 
-String *new_StringRange(char *value, int32_t offset, int32_t count) {
-    char *s = (char*) malloc(count);
-    strncpy(s, value + offset, (size_t) count);
-    String *str = new_String(s);
-    free(s);
+String *new_String(char *original) {
+    String *str = malloc(sizeof(String));
+    str->s = strdup(original);
+    str->len = strlen(str->s);
 
     return str;
 }
@@ -33,6 +35,18 @@ int32_t compareTo(String *ptr, String *anotherString) {
 }
 
 bool equals(String *ptr, String *anObject) {
+    if (ptr == anObject) {
+        return true;
+    }
+
+    if (anObject == NULL || anObject == NULL) {
+        return false;
+    }
+
+    if (sizeof(*ptr) != sizeof(*anObject)) {
+        return false;
+    }
+
     return !strcmp(ptr->s, anObject->s);
 }
 

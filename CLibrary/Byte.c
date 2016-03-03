@@ -18,7 +18,11 @@ int8_t byteValue(Byte *ptr) {
 }
 
 int32_t compareToB(Byte *ptr, Byte *anotherByte) {
-    return (ptr->v - anotherByte->v);
+    return Byte_compare(ptr->v, anotherByte->v);
+}
+
+int32_t Byte_compare(int8_t x, int8_t y) {
+    return x - y;
 }
 
 bool equalsB(Byte *ptr, Byte *obj) {
@@ -27,6 +31,10 @@ bool equalsB(Byte *ptr, Byte *obj) {
     }
 
     if (ptr == NULL || obj == NULL) {
+        return false;
+    }
+
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

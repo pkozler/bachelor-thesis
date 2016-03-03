@@ -9,8 +9,9 @@ typedef struct {
     int32_t len;
 } String;
 
+String *new_StringB(int8_t *value, int32_t length);
+String *new_StringRangeB(int8_t *value, int32_t offset, int32_t length);
 String *new_String(char *original);
-String *new_StringRange(char *value, int32_t offset, int32_t count);
 void delete_String(String *ptr);
 int32_t compareTo(String *ptr, String *anotherString);
 bool equals(String *ptr, String *anObject);

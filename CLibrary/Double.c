@@ -8,7 +8,7 @@
 #define _MAX_DOUBLE_STRLEN 13
 
 Double *new_Double(double value) {
-    Double *d = malloc(sizeof(Double));
+    Double *d = malloc(sizeof (Double));
     d->v = value;
 
     return d;
@@ -17,7 +17,7 @@ Double *new_Double(double value) {
 long _getNegativeZeroDoubleBits() {
     DoubleInt64 bitConverter;
     bitConverter.val = -0.0;
-    
+
     return bitConverter.bits;
 }
 
@@ -26,15 +26,14 @@ double doubleValue(Double *ptr) {
 }
 
 int32_t compareToD(Double *ptr, Double *anotherDouble) {
-    double v = ptr->v;
-    double v2 = anotherDouble->v;
-    
+    return Double_compare(ptr->v, anotherDouble->v);
+}
+
+int32_t Double_compare(double v, double v2) {
     // porovnání hodnoty Not a Number
-    if (isnan(v))
-    {
+    if (isnan(v)) {
         // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
-        if (isnan(v2))
-        {
+        if (isnan(v2)) {
             return 0;
         }
 
@@ -42,27 +41,24 @@ int32_t compareToD(Double *ptr, Double *anotherDouble) {
     }
 
     // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
-    if (isnan(v2))
-    {
+    if (isnan(v2)) {
         return -1;
     }
-    
+
     DoubleInt64 vBits, v2Bits;
     vBits.val = v;
     v2Bits.val = v2;
     int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
-    
+
     // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
     if (vBits.bits == 0
-        && v2Bits.bits == negativeZeroBits)
-    {
+            && v2Bits.bits == negativeZeroBits) {
         return 1;
     }
 
     // porovnání kladné a záporné nuly (obráceně)
     if (vBits.bits == negativeZeroBits
-        && v2Bits.bits == 0)
-    {
+            && v2Bits.bits == 0) {
         return -1;
     }
 
@@ -78,30 +74,31 @@ bool equalsD(Double *ptr, Double *obj) {
     if (ptr == NULL || obj == NULL) {
         return false;
     }
-    
+
+    if (sizeof (*ptr) != sizeof (*obj)) {
+        return false;
+    }
+
     double v = ptr->v;
     double v2 = obj->v;
 
     // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
-    if (isnan(v) && isnan(v2))
-    {
+    if (isnan(v) && isnan(v2)) {
         return true;
     }
-    
+
     DoubleInt64 vBits, v2Bits;
     vBits.val = v;
     v2Bits.val = v2;
     int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
 
     // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
-    if (vBits.bits == negativeZeroBits)
-    {
+    if (vBits.bits == negativeZeroBits) {
         return v2Bits.bits == negativeZeroBits;
     }
 
     // porovnání kladné a záporné nuly (obráceně)
-    if (v2Bits.bits == negativeZeroBits)
-    {
+    if (v2Bits.bits == negativeZeroBits) {
         return vBits.bits == negativeZeroBits;
     }
 

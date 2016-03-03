@@ -4,6 +4,7 @@
 #include "String.h"
 #include <vector>
 #include <cstdint>
+#include <sstream>
 
 template <class E>
 class ArrayList {
@@ -23,8 +24,10 @@ public:
     bool isEmpty();
     void clear();
     String *toString(String *(*toString)(E));
-    friend std::ostream &operator<<(std::ostream &s, ArrayList<E> &obj);
+    
 };
+
+template <class E> std::ostream &operator<<(std::ostream &s, ArrayList<E> &obj);
 
 template <class E> const int32_t ArrayList<E>::DEFAULT_CAPACITY = 10;
 
@@ -89,13 +92,13 @@ template <class E> String *ArrayList<E>::toString(String *(*toString)(E)) {
     std::ostringstream oss("[");
 
     if (length > 0) {
-        String *str = toString(v[0])->toString();
+        String *str = toString(v[0]);
         oss << str->toString();
         delete str;
     }
 
     for (int32_t i = 1; i < length; i++) {
-        String *str = toString(v[i])->toString();
+        String *str = toString(v[i]);
         oss << ", " << str->toString();
         delete str;
     }

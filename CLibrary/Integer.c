@@ -18,7 +18,11 @@ int32_t intValue(Integer *ptr) {
 }
 
 int32_t compareToI(Integer *ptr, Integer *anotherInteger) {
-    return (ptr->v - anotherInteger->v);
+    return Integer_compare(ptr->v, anotherInteger->v);
+}
+
+int32_t Integer_compare(int32_t x, int32_t y) {
+    return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
 bool equalsI(Integer *ptr, Integer *obj) {
@@ -27,6 +31,10 @@ bool equalsI(Integer *ptr, Integer *obj) {
     }
 
     if (ptr == NULL || obj == NULL) {
+        return false;
+    }
+
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

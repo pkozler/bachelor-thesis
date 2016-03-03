@@ -3,13 +3,14 @@
 
 #include "String.h"
 
-String::String(char *value) {
-    this->s = value;
+#include <iostream>
+
+String::String(int8_t *value, int32_t length) {
+    this->s = ((char *) value, length);
 }
 
-String::String(char *value, int32_t offset, int32_t count) {
-    this->s = value;
-    this->s = this->s.substr(offset, count);
+String::String(int8_t *value, int32_t offset, int32_t length) {
+    this->s = ((char *) (value + offset), length);
 }
 
 String::String(std::string original) {
@@ -24,6 +25,14 @@ int32_t String::compareTo(String *anotherString) {
 }
 
 bool String::equals(String *anObject) {
+    if (anObject == nullptr) {
+        return false;
+    }
+    
+    if (sizeof(*this) != sizeof(*anObject)) {
+        return false;
+    }
+    
     return (bool) !this->s.compare(anObject->s);
 }
 

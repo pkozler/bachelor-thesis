@@ -18,7 +18,11 @@ int64_t longValue(Long *ptr) {
 }
 
 int32_t compareToL(Long *ptr, Long *anotherLong) {
-    return (ptr->v - anotherLong->v);
+    return Long_compare(ptr->v, anotherLong->v);
+}
+
+int32_t Long_compare(int64_t x, int64_t y) {
+    return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
 bool equalsL(Long *ptr, Long *obj) {
@@ -27,6 +31,10 @@ bool equalsL(Long *ptr, Long *obj) {
     }
 
     if (ptr == NULL || obj == NULL) {
+        return false;
+    }
+
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

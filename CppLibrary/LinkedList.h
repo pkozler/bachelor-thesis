@@ -4,6 +4,7 @@
 #include "String.h"
 #include <list>
 #include <cstdint>
+#include <sstream>
 
 template <class E>
 class LinkedList {
@@ -22,8 +23,9 @@ public:
     bool isEmpty();
     void clear();
     String *toString(String *(*toString)(E));
-    friend std::ostream &operator<<(std::ostream &s, LinkedList<E> &obj);
 };
+
+template <class E> std::ostream &operator<<(std::ostream &s, LinkedList<E> &obj);
 
 template <class E> LinkedList<E>::LinkedList() {
     l;
@@ -95,7 +97,7 @@ template <class E> String *LinkedList<E>::toString(String *(*toString)(E)) {
     std::ostringstream oss("[");
 
     if (length > 0) {
-        String *str = toString(l.begin())->toString();
+        String *str = toString(l.begin());
         oss << str->toString();
         delete str;
     }
@@ -103,7 +105,7 @@ template <class E> String *LinkedList<E>::toString(String *(*toString)(E)) {
     for (int32_t i = 1; i < length; i++) {
         auto it = l.begin();
         std::advance(it, i);
-        String *str = toString(it)->toString();
+        String *str = toString(it);
         oss << ", " << str->toString();
         delete str;
     }

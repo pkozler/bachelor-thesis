@@ -72,37 +72,37 @@ namespace JavaClasses {
          * Compares two Double objects numerically.
          */
         public int compareTo(Double anotherDouble) {
-            double v2 = anotherDouble.v;
-            
+            return compare(v, anotherDouble.v);
+        }
+
+        /**
+         * Compares the two specified double values.
+         */
+        public static int compare(double v, double v2) {
             // porovnání hodnoty Not a Number
-            if (double.IsNaN(v))
-            {
+            if (double.IsNaN(v)) {
                 // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
-                if (double.IsNaN(v2))
-                {
+                if (double.IsNaN(v2)) {
                     return 0;
                 }
 
                 return 1;
             }
-            
+
             // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
-            if (double.IsNaN(v2))
-            {
+            if (double.IsNaN(v2)) {
                 return -1;
             }
 
             // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
             if (BitConverter.DoubleToInt64Bits(v) == 0
-                && BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits)
-            {
+                && BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits) {
                 return 1;
             }
 
             // porovnání kladné a záporné nuly (obráceně)
             if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits
-                && BitConverter.DoubleToInt64Bits(v2) == 0)
-            {
+                && BitConverter.DoubleToInt64Bits(v2) == 0) {
                 return -1;
             }
 
@@ -114,28 +114,28 @@ namespace JavaClasses {
          * Compares this object against the specified object.
          */
         public bool equals(Object obj) {
-            if (obj == null)
-            {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
                 return false;
             }
 
             double v2 = (obj as Double).v;
 
             // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
-            if (double.IsNaN(v) && double.IsNaN(v2))
-            {
+            if (double.IsNaN(v) && double.IsNaN(v2)) {
                 return true;
             }
 
             // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
-            if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits)
-            {
+            if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits) {
                 return BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits;
             }
 
             // porovnání kladné a záporné nuly (obráceně)
-            if (BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits)
-            {
+            if (BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits) {
                 return BitConverter.DoubleToInt64Bits(v) == negativeZeroBits;
             }
 

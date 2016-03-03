@@ -52,15 +52,7 @@ end;
 
 class function Long.compare(x, y: int64) : longInt;
 begin
-  if x < y then begin
-     compare := -1;
-  end
-  else if x = y then begin
-     compare := 0;
-  end
-  else begin
-    compare := 1;
-  end;
+  compare := v - anotherLong.v;
 end;
 
 function Long.equals(obj: TObject) : boolean;

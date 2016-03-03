@@ -12,6 +12,7 @@ typedef struct {
 Character *new_Character(char value);
 char charValue(Character *ptr);
 int32_t compareToC(Character *ptr, Character *anotherCharacter);
+int32_t Character_compare(char x, char y);
 bool equalsC(Character *ptr, Character *obj);
 String *toStringC(Character *ptr);
 String *Character_toString(char c);

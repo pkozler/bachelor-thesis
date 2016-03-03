@@ -12,15 +12,11 @@ bool Boolean::booleanValue() {
 }
 
 int32_t Boolean::compareTo(Boolean *anotherBoolean) {
-    if (v == true && anotherBoolean->v == false) {
-        return 1;
-    }
-    else if (v == false && anotherBoolean->v == true) {
-        return -1;
-    }
-    else {
-        return 0;
-    }
+    return compare(v, anotherBoolean->v);
+}
+
+int32_t Boolean::compare(bool x, bool y) {
+    return (x == y) ? 0 : (x ? 1 : -1);
 }
 
 bool Boolean::equals(Boolean *obj) {
@@ -28,6 +24,10 @@ bool Boolean::equals(Boolean *obj) {
         return false;
     }
 
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
     return (v == obj->v);
 }
 

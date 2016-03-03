@@ -13,6 +13,7 @@ public:
     ~Long();
     int64_t longValue();
     int32_t compareTo(Long *anotherLong);
+    static int32_t compare(int64_t x, int64_t y);
     bool equals(Long *obj);
     String *toString();
     static String *toString(int64_t l);

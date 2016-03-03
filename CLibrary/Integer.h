@@ -15,6 +15,7 @@ typedef struct {
 Integer *new_Integer(int32_t value);
 int32_t intValue(Integer *ptr);
 int32_t compareToI(Integer *ptr, Integer *anotherInteger);
+int32_t Integer_compare(int32_t x, int32_t y);
 bool equalsI(Integer *ptr, Integer *obj);
 String *toStringI(Integer *ptr);
 String *Integer_toString(int32_t i);

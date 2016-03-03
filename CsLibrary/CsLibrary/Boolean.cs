@@ -23,12 +23,19 @@ namespace JavaClasses {
         public bool booleanValue() {
             return v;
         }
-
+        
         /**
          * Compares this Boolean instance with another.
          */
         public int compareTo(Boolean anotherBoolean) {
-            return v.CompareTo(anotherBoolean.v);
+            return compare(v, anotherBoolean.v);
+        }
+
+        /**
+         * Compares two boolean values.
+         */
+        public static int compare(bool x, bool y) {
+            return (x == y) ? 0 : (x ? 1 : -1);
         }
 
         /**
@@ -36,6 +43,14 @@ namespace JavaClasses {
          * a Boolean object that represents the same boolean value as this object.
          */
         public bool equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
+                return false;
+            }
+
             return v.Equals((obj as Boolean).v);
         }
 

@@ -17,7 +17,11 @@ int32_t Integer::intValue() {
 }
 
 int32_t Integer::compareTo(Integer *anotherInteger) {
-    return (v - anotherInteger->v);
+    return Integer::compare(v, anotherInteger->v);
+}
+
+int32_t Integer::compare(int32_t x, int32_t y) {
+    return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
 bool Integer::equals(Integer *obj) {
@@ -25,6 +29,10 @@ bool Integer::equals(Integer *obj) {
         return false;
     }
 
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
     return (v == obj->v);
 }
 

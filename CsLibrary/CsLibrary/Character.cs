@@ -28,13 +28,28 @@ namespace JavaClasses {
          * Compares two Character objects numerically.
          */
         public int compareTo(Character anotherCharacter) {
-            return v.CompareTo(anotherCharacter.v);
+            return compare(v, anotherCharacter.v);
+        }
+
+        /**
+         * Compares two char values numerically.
+         */
+        public static int compare(char x, char y) {
+            return x - y;
         }
 
         /**
          * Compares this object against the specified object.
          */
         public bool equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
+                return false;
+            }
+
             return v.Equals((obj as Character).v);
         }
 

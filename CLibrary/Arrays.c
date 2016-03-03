@@ -16,81 +16,111 @@
 #include <stdlib.h>
 
 int32_t _compareB(const void *a, const void *b) {
-    return ( *(int8_t*)a - *(int8_t*)b );
+    return Byte_compare(*(int8_t*)a, *(int8_t*)b);
 }
 
 int32_t _compareC(const void *a, const void *b) {
-    return ( *(char*)a - *(char*)b );
+    return Character_compare(*(char*)a, *(char*)b);
 }
 
 int32_t _compareD(const void *a, const void *b) {
-    Double *d1 = new_Double(*(double*)a);
-    Double *d2 = new_Double(*(double*)b);
-
-    return compareToD(d1, d2);
+    return Double_compare(*(double*)a, *(double*)b);
 }
 
 int32_t _compareF(const void *a, const void *b) {
-    Float *f1 = new_Float(*(float*)a);
-    Float *f2 = new_Float(*(float*)b);
-
-    return compareToF(f1, f2);
+    return Float_compare(*(float*)a, *(float*)b);
 }
 
 int32_t _compareI(const void *a, const void *b) {
-    return ( *(int32_t*)a - *(int32_t*)b );
+    return Integer_compare(*(int32_t*)a, *(int32_t*)b);
 }
 
 int32_t _compareL(const void *a, const void *b) {
-    return ( *(int64_t*)a - *(int64_t*)b );
+    return Long_compare(*(int64_t*)a, *(int64_t*)b);
 }
 
 int32_t _compareS(const void *a, const void *b) {
-    return ( *(int16_t*)a - *(int16_t*)b );
+    return Short_compare(*(int16_t*)a, *(int16_t*)b);
 }
 
 bool _equalsBool(const void *a, const void *b) {
-    return (*(bool*)a == *(bool*)b);
+    Boolean *x = new_Boolean(*(bool*)a);
+    Boolean *y = new_Boolean(*(bool*)b);
+    bool equal = equalsBool(x, y);
+    free(x);
+    free(y);
+    
+    return equal;
 }
 
 bool _equalsB(const void *a, const void *b) {
-    return (*(int8_t*)a == *(int8_t*)b);
+    Byte *x = new_Byte(*(int8_t*)a);
+    Byte *y = new_Byte(*(int8_t*)b);
+    bool equal = equalsB(x, y);
+    free(x);
+    free(y);
+    
+    return equal;
 }
 
 bool _equalsC(const void *a, const void *b) {
-    return (*(char*)a == *(char*)b);
+    Character *x = new_Character(*(char*)a);
+    Character *y = new_Character(*(char*)b);
+    bool equal = equalsC(x, y);
+    free(x);
+    free(y);
+    
+    return equal;
 }
 
 bool _equalsD(const void *a, const void *b) {
-    Double *d1 = new_Double(*(double*)a);
-    Double *d2 = new_Double(*(double*)b);
-    bool equal = equalsD(d1, d2);
-    free(d1);
-    free(d2);
+    Double *x = new_Double(*(double*)a);
+    Double *y = new_Double(*(double*)b);
+    bool equal = equalsD(x, y);
+    free(x);
+    free(y);
     
     return equal;
 }
 
 bool _equalsF(const void *a, const void *b) {
-    Float *f1 = new_Float(*(float*)a);
-    Float *f2 = new_Float(*(float*)b);
-    bool equal = equalsF(f1, f2);
-    free(f1);
-    free(f2);
+    Float *x = new_Float(*(float*)a);
+    Float *y = new_Float(*(float*)b);
+    bool equal = equalsF(x, y);
+    free(x);
+    free(y);
     
     return equal;
 }
 
 bool _equalsI(const void *a, const void *b) {
-    return (*(int32_t*)a == *(int32_t*)b);
+    Integer *x = new_Integer(*(int32_t*)a);
+    Integer *y = new_Integer(*(int32_t*)b);
+    bool equal = equalsI(x, y);
+    free(x);
+    free(y);
+    
+    return equal;
 }
 
 bool _equalsL(const void *a, const void *b) {
-    return (*(int64_t*)a == *(int64_t*)b);
+    Long *x = new_Long(*(int64_t*)a);
+    Long *y = new_Long(*(int64_t*)b);
+    bool equal = equalsL(x, y);
+    free(x);
+    free(y);
+    
+    return equal;
 }
 
 bool _equalsS(const void *a, const void *b) {
-    return (*(int16_t*)a == *(int16_t*)b);
+    Short *x = new_Short(*(int16_t*)a);
+    Short *y = new_Short(*(int16_t*)b);
+    bool equal = equalsS(x, y);
+    free(x);
+    free(y);
+    
+    return equal;
 }
 
 String *_toStringBool(const void *a) {

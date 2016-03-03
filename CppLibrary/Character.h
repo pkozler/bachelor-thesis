@@ -11,6 +11,7 @@ public:
     ~Character();
     char charValue();
     int32_t compareTo(Character *anotherCharacter);
+    static int32_t compare(char x, char y);
     bool equals(Character *obj);
     String *toString();
     static String *toString(char c);

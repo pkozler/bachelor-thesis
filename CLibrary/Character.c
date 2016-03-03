@@ -19,7 +19,11 @@ char charValue(Character *ptr) {
 }
 
 int32_t compareToC(Character *ptr, Character *anotherCharacter) {
-    return (ptr->v - anotherCharacter->v);
+    return Character_compare(ptr->v, anotherCharacter->v);
+}
+
+int32_t Character_compare(char x, char y) {
+    return x - y;
 }
 
 bool equalsC(Character *ptr, Character *obj) {
@@ -28,6 +32,10 @@ bool equalsC(Character *ptr, Character *obj) {
     }
 
     if (ptr == NULL || obj == NULL) {
+        return false;
+    }
+
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

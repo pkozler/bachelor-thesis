@@ -38,13 +38,28 @@ namespace JavaClasses {
          * Compares two Byte objects numerically.
          */
         public int compareTo(Byte anotherByte) {
-            return v.CompareTo(anotherByte.v);
+            return compare(v, anotherByte.v);
         }
-        
+
+        /**
+         * Compares two byte values numerically.
+         */
+        public static int compare(sbyte x, sbyte y) {
+            return x - y;
+        }
+
         /**
          * Compares this object to the specified object.
          */
         public bool equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
+                return false;
+            }
+
             return v.Equals((obj as Byte).v);
         }
 

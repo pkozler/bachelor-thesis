@@ -13,6 +13,7 @@ public:
     ~Byte();
     int8_t byteValue();
     int32_t compareTo(Byte *anotherByte);
+    static int32_t compare(int8_t x, int8_t y);
     bool equals(Byte *obj);
     String *toString();
     static String *toString(int8_t b);

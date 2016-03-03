@@ -14,7 +14,11 @@ char Character::charValue() {
 }
 
 int32_t Character::compareTo(Character *anotherCharacter) {
-    return (v - anotherCharacter->v);
+    return compare(v, anotherCharacter->v);
+}
+
+int32_t Character::compare(char x, char y) {
+    return x - y;
 }
 
 bool Character::equals(Character *obj) {
@@ -22,6 +26,10 @@ bool Character::equals(Character *obj) {
         return false;
     }
 
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
     return (v == obj->v);
 }
 

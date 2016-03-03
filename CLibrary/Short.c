@@ -18,7 +18,11 @@ int16_t shortValue(Short *ptr) {
 }
 
 int32_t compareToS(Short *ptr, Short *anotherShort) {
-    return (ptr->v - anotherShort->v);
+    return Short_compare(ptr->v, anotherShort->v);
+}
+
+int32_t Short_compare(int16_t x, int16_t y) {
+    return x - y;
 }
 
 bool equalsS(Short *ptr, Short *obj) {
@@ -27,6 +31,10 @@ bool equalsS(Short *ptr, Short *obj) {
     }
 
     if (ptr == NULL || obj == NULL) {
+        return false;
+    }
+
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

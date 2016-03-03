@@ -11,6 +11,7 @@ public:
     ~Boolean();
     bool booleanValue();
     int32_t compareTo(Boolean *anotherBoolean);
+    static int32_t compare(bool x, bool y);
     bool equals(Boolean *obj);
     String *toString();
     static String *toString(bool b);

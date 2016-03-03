@@ -50,7 +50,7 @@ end;
 
 class function Character.compare(x, y: ansiChar) : longInt;
 begin
-  compare := shortInt(x) - shortInt(y);
+  compare := shortInt(v) - shortInt(v);
 end;
 
 function Character.equals(obj: TObject) : boolean;

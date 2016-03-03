@@ -68,6 +68,14 @@ end;
 
 function String_.equals(anObject: TObject) : boolean;
 begin
+  if anObject = nil then begin
+    exit(false);
+  end;
+
+  if typeOf(self) <> typeOf(obj) then begin
+    exit(false);
+  end;
+
   equals := (ansiCompareStr(self.str, String_(anObject).str) = 0);
 end;
 
@@ -112,7 +120,7 @@ end;
 
 function String_.length() : longInt;
 begin
-  length := length(str);
+  length := System.length(str);
 end;
 
 function String_.trim() : String_;

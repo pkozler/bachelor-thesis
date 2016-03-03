@@ -49,14 +49,14 @@ end;
 
 class function Boolean_.compare(x, y: boolean) : longInt;
 begin
-  if x = y then begin
-    compare := 0;
-  end
-  else if x then begin
+  if (v = true) and (anotherBoolean.v = false) then begin
     compare := 1;
   end
-  else begin
+  else if (v = false) and (anotherBoolean.v = true) then begin
     compare := -1;
+  end
+  else begin
+    compare := 0;
   end;
 end;
 

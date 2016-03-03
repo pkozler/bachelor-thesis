@@ -6,7 +6,7 @@ using namespace std;
 
 int32_t main(int32_t argc, char** argv) {
     String *str1 = new String("Something");
-    String *str2 = new String(" Else");
+    String *str2 = new String("Else");
 
     String *concatenated = *str1 + *str2;
 

@@ -15,6 +15,7 @@ typedef struct {
 Long *new_Long(int64_t value);
 int64_t longValue(Long *ptr);
 int32_t compareToL(Long *ptr, Long *anotherLong);
+int32_t Long_compare(int64_t x, int64_t y);
 bool equalsL(Long *ptr, Long *obj);
 String *toStringL(Long *ptr);
 String *Long_toString(int64_t l);

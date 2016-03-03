@@ -2,6 +2,7 @@
 #define	STRINGBUILDER_INCLUDED
 
 #include "String.h"
+#include <sstream>
 
 class StringBuilder {
     std::ostringstream oss;

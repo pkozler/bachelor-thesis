@@ -20,6 +20,7 @@ type
       destructor destroy(); override;
       function byteValue() : shortInt;
       function compareTo(anotherByte: Byte_) : longInt;
+      class function compare(x, y: shortInt) : longInt;
       function equals(obj: TObject) : boolean; override;
       function toString() : ansiString; override;
       function toString() : String_;
@@ -46,13 +47,22 @@ end;
 
 function Byte_.compareTo(anotherByte: Byte_) : longInt;
 begin
-  compareTo := v - anotherByte.v;
+  compareTo := compare(v, anotherByte.v);
+end;
+
+class function Byte_.compare(x, y: shortInt) : longInt;
+begin
+  compare := v - anotherByte.v;
 end;
 
 function Byte_.equals(obj: TObject) : boolean;
 begin
   if obj = nil then begin
-    equals := false;
+    exit(false);
+  end;
+
+  if typeOf(self) <> typeOf(obj) then begin
+    exit(false);
   end;
 
   equals := (v = (Byte_(obj)).v);

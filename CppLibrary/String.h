@@ -7,8 +7,8 @@
 class String {
     std::string s;
 public:
-    String(char *value);
-    String(char *value, int32_t offset, int32_t count);
+    String(int8_t *value, int32_t length);
+    String(int8_t *value, int32_t offset, int32_t length);
     String(std::string original);
     ~String();
     int32_t compareTo(String *anotherString);

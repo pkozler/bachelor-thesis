@@ -26,9 +26,10 @@ float floatValue(Float *ptr) {
 }
 
 int32_t compareToF(Float *ptr, Float *anotherFloat) {
-    float v = ptr->v;
-    float v2 = anotherFloat->v;
+    return Float_compare(ptr->v, anotherFloat->v);
+}
 
+int32_t Float_compare(float v, float v2) {
     // porovnání hodnoty Not a Number
     if (isnan(v)) {
         // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
@@ -73,7 +74,11 @@ bool equalsF(Float *ptr, Float *obj) {
     if (ptr == NULL || obj == NULL) {
         return false;
     }
-    
+
+    if (sizeof (*ptr) != sizeof (*obj)) {
+        return false;
+    }
+
     float v = ptr->v;
     float v2 = obj->v;
 

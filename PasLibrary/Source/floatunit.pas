@@ -21,18 +21,19 @@ type
       class function getNegativeZeroBits() : longInt;
     public
       const
-           POSITIVE_INFINITY = 1.0f / 0.0f;
-           NEGATIVE_INFINITY = -1.0f / 0.0f;
-           NaN = 0.0f / 0.0f;
+           POSITIVE_INFINITY = 1.0 / 0.0;
+           NEGATIVE_INFINITY = -1.0 / 0.0;
+           NaN = 0.0 / 0.0;
            MAX_VALUE = 3.4028235e+38;
            MIN_VALUE = 1.4e-45;
            MAX_EXPONENT = 127;
            MIN_EXPONENT = -126;
-           MIN_NORMAL = 1.17549435e-38f;
+           MIN_NORMAL = 1.17549435e-38;
       constructor create(value: single);
       destructor destroy(); override;
       function floatValue() : single;
       function compareTo(anotherFloat: Float) : longInt;
+      class function compare(val, val2: single) : longInt;
       function equals(obj: TObject) : boolean; override;
       function toString() : ansiString; override;
       function toString() : String_;
@@ -69,27 +70,29 @@ begin
 end;
 
 function Float.compareTo(anotherFloat: Float) : longInt;
+begin
+  compareTo := compare(v, anotherFloat.v);
+end;
+
+class function Float.compare(val, val2: single) : longInt;
 var
   vBits, v2Bits : FloatToInt32;
-  v2 : single;
   negativeZeroBits : longInt;
 begin
-  v2 := anotherFloat.v;
-
-  if isNan(v) then begin
-    if isNan(v2) then begin
+  if isNan(val) then begin
+    if isNan(val2) then begin
        exit(0);
     end;
 
     exit(1);
   end;
 
-  if isNan(v2) then begin
+  if isNan(val2) then begin
     exit(-1);
   end;
 
-  vBits.val := v;
-  v2Bits.val := v2;
+  vBits.val := val;
+  v2Bits.val := val2;
   negativeZeroBits := getNegativeZeroBits();
 
   if (vBits.bits = 0) and (v2Bits.bits = negativeZeroBits) then begin
@@ -100,14 +103,14 @@ begin
     exit(-1);
   end;
 
-  if v > v2 then begin
-    compareTo := 1;
+  if val > val2 then begin
+    compare := 1;
   end
-  else if v < v2 then begin
-    compareTo := -1;
+  else if val < val2 then begin
+    compare := -1;
   end
   else begin
-    compareTo := 0;
+    compare := 0;
   end;
 end;
 
@@ -118,7 +121,11 @@ var
   negativeZeroBits : longInt;
 begin
   if obj = nil then begin
-    equals := false;
+    exit(false);
+  end;
+
+  if typeOf(self) <> typeOf(obj) then begin
+    exit(false);
   end;
 
   v2 := Float(obj).v;

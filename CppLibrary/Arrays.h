@@ -9,13 +9,6 @@
 class Arrays {
     Arrays();
     ~Arrays();
-    static int32_t compareB(int8_t a, int8_t b);
-    static int32_t compareC(char a, char b);
-    static int32_t compareD(double a, double b);
-    static int32_t compareF(float a, float b);
-    static int32_t compareI(int32_t a, int32_t b);
-    static int32_t compareL(int64_t a, int64_t b);
-    static int32_t compareS(int16_t a, int16_t b);
     static bool equalsBool(bool a, bool b);
     static bool equalsB(int8_t a, int8_t b);
     static bool equalsC(char a, char b);
@@ -208,13 +201,13 @@ template <class T> String *Arrays::toStringGeneric(T *a, int32_t length, String 
     std::ostringstream oss("[");
 
     if (length > 0) {
-        String *str = toString(a[0])->toString();
+        String *str = toString(a[0]);
         oss << str->toString();
         delete str;
     }
 
     for (int32_t i = 1; i < length; i++) {
-        String *str = toString(a[i])->toString();
+        String *str = toString(a[i]);
         oss << ", " << str->toString();
         delete str;
     }

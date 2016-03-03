@@ -15,6 +15,7 @@ public:
     ~Integer();
     int32_t intValue();
     int32_t compareTo(Integer *anotherInteger);
+    static int32_t compare(int32_t x, int32_t y);
     bool equals(Integer *obj);
     String *toString();
     static String *toString(int32_t i);

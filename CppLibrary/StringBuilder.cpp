@@ -1,7 +1,5 @@
 #include "StringBuilder.h"
 
-#include <sstream>
-
 StringBuilder::StringBuilder() {
 }
 

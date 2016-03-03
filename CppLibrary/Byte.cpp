@@ -17,7 +17,11 @@ int8_t Byte::byteValue() {
 }
 
 int32_t Byte::compareTo(Byte *anotherByte) {
-    return (v - anotherByte->v);
+    return compare(v, anotherByte->v);
+}
+
+int32_t Byte::compare(int8_t x, int8_t y) {
+    return x - y;
 }
 
 bool Byte::equals(Byte *obj) {
@@ -25,6 +29,10 @@ bool Byte::equals(Byte *obj) {
         return false;
     }
 
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
     return (v == obj->v);
 }
 

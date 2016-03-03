@@ -38,13 +38,28 @@ namespace JavaClasses {
          * Compares two Integer objects numerically.
          */
         public int compareTo(Integer anotherInteger) {
-            return v.CompareTo(anotherInteger.v);
+            return compare(v, anotherInteger.v);
+        }
+
+        /**
+         * Compares two int values numerically.
+         */
+        public static int compare(int x, int y) {
+            return (x < y) ? -1 : ((x == y) ? 0 : 1);
         }
 
         /**
          * Compares this object to the specified object.
          */
         public bool equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
+                return false;
+            }
+
             return v.Equals((obj as Integer).v);
         }
 

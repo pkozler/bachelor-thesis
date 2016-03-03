@@ -38,13 +38,28 @@ namespace JavaClasses {
          * Compares two Short objects numerically.
          */
         public int compareTo(Short anotherShort) {
-            return v.CompareTo(anotherShort.v);
+            return compare(v, anotherShort.v);
+        }
+
+        /**
+         * Compares two short values numerically.
+         */
+        public static int compare(short x, short y) {
+            return x - y;
         }
 
         /**
          * Compares this object to the specified object.
          */
         public bool equals(Object obj) {
+            if (obj == null) {
+                return false;
+            }
+
+            if (GetType() != obj.GetType()) {
+                return false;
+            }
+
             return v.Equals((obj as Short).v);
         }
 

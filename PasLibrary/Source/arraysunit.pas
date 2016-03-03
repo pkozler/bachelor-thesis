@@ -165,101 +165,125 @@ uses
 
 function _compareB(a, b: pointer) : longInt;
 begin
-  _compareB := PShortInt(a)^ - PShortInt(b)^;
+  _compareB := Byte_.compare(PShortInt(a)^, PShortInt(b)^);
 end;
 
 function _compareC(a, b: pointer) : longInt;
 begin
-  _compareC := shortInt(PAnsiChar(a)^) - shortInt(PAnsiChar(b)^);
+  _compareC := Character.compare(PAnsiChar(a)^, PAnsiChar(b)^);
 end;
 
 function _compareD(a, b: pointer) : longInt;
-var
-  d1, d2: Double_;
 begin
-  d1 := Double_.create(PDouble(a)^);
-  d2 := Double_.create(PDouble(b)^);
-  _compareD := d1.compareTo(d2);
-  freeAndNil(d1);
-  freeAndNil(d2);
+  _compareD := Double_.compare(PDouble(a)^, PDouble(b)^);
 end;
 
 function _compareF(a, b: pointer) : longInt;
-var
-  f1, f2: Float;
 begin
-  f1 := Float.create(PSingle(a)^);
-  f2 := Float.create(PSingle(b)^);
-  _compareF := f1.compareTo(f2);
-  freeAndNil(f1);
-  freeAndNil(f2);
+  _compareF := Float.compare(PSingle(a)^, PSingle(b)^);
 end;
 
 function _compareI(a, b: pointer) : longInt;
 begin
-  _compareI := PLongInt(a)^ - PLongInt(b)^;
+  _compareI := Integer_.compare(PLongInt(a)^, PLongInt(b)^);
 end;
 
 function _compareL(a, b: pointer) : longInt;
 begin
-  _compareL := PInt64(a)^ - PInt64(b)^;
+  _compareL := Long.compare(PInt64(a)^, PInt64(b)^);
 end;
 
 function _compareS(a, b: pointer) : longInt;
 begin
-  _compareS := PSmallInt(a)^ - PSmallInt(b)^;
+  _compareS := Short.compare(PSmallInt(a)^, PSmallInt(b)^);
 end;
 
 function _equalsBool(a, b: pointer) : boolean;
+var
+  x, y: Boolean_;
 begin
-  _equalsBool := PBoolean(a)^ = PBoolean(b)^;
+  x := Boolean_.create(PBoolean(a)^);
+  y := Boolean_.create(PBoolean(b)^);
+  _equalsBool := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsB(a, b: pointer) : boolean;
+var
+  x, y: Byte_;
 begin
-  _equalsB := PShortInt(a)^ = PShortInt(b)^;
+  x := Byte_.create(PShortInt(a)^);
+  y := Byte_.create(PShortInt(b)^);
+  _equalsB := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsC(a, b: pointer) : boolean;
+var
+  x, y: Character;
 begin
-  _equalsC := PAnsiChar(a)^ = PAnsiChar(b)^;
+  x := Character.create(PAnsiChar(a)^);
+  y := Character.create(PAnsiChar(b)^);
+  _equalsC := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsD(a, b: pointer) : boolean;
 var
-  d1, d2: Double_;
+  x, y: Double_;
 begin
-  d1 := Double_.create(PDouble(a)^);
-  d2 := Double_.create(PDouble(b)^);
-  _equalsD := d1.equals(d2);
-  freeAndNil(d1);
-  freeAndNil(d2);
+  x := Double_.create(PDouble(a)^);
+  y := Double_.create(PDouble(b)^);
+  _equalsD := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsF(a, b: pointer) : boolean;
 var
-  f1, f2: Float;
+  x, y: Float;
 begin
-  f1 := Float.create(PSingle(a)^);
-  f2 := Float.create(PSingle(b)^);
-  _equalsF := f1.equals(f2);
-  freeAndNil(f1);
-  freeAndNil(f2);
+  x := Float.create(PSingle(a)^);
+  y := Float.create(PSingle(b)^);
+  _equalsF := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsI(a, b: pointer) : boolean;
+var
+  x, y: Integer_;
 begin
-  _equalsI := PLongInt(a)^ = PLongInt(b)^;
+  x := Integer_.create(PLongInt(a)^);
+  y := Integer_.create(PLongInt(b)^);
+  _equalsI := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsL(a, b: pointer) : boolean;
+var
+  x, y: Long;
 begin
-  _equalsL := PInt64(a)^ = PInt64(b)^;
+  x := Long.create(PInt64(a)^);
+  y := Long.create(PInt64(b)^);
+  _equalsL := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsS(a, b: pointer) : boolean;
+var
+  x, y: Short;
 begin
-  _equalsS := PSmallInt(a)^ = PSmallInt(b)^;
+  x := Short.create(PSmallInt(a)^);
+  y := Short.create(PSmallInt(b)^);
+  _equalsS := x.equals(y);
+  freeAndNil(x);
+  freeAndNil(y);
 end;
 
 function _equalsObj(o1, o2: TObject) : boolean;
