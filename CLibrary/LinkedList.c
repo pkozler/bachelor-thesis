@@ -200,7 +200,7 @@ void clearL(LinkedList *ptr) {
     }
 }
 
-String *toStringLl(LinkedList *ptr, int32_t size, String *(*toString)(void *)) {
+String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
     StringBuilder *sb = new_StringBuilder();
     String *str = new_String("[");
     append(sb, str);

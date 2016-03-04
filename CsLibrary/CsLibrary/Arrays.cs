@@ -75,11 +75,11 @@ namespace JavaClasses {
 
             // vyhledávání bez komparátoru
             if (c == null) {
-                return Array.BinarySearch(a, fromIndexValue, toIndexValue, key);
+                return Array.BinarySearch(a, fromIndexValue, toIndexValue - fromIndexValue, key);
             }
 
             // vyhledávání s komparátorem
-            return Array.BinarySearch(a, fromIndexValue, toIndexValue, key, c);
+            return Array.BinarySearch(a, fromIndexValue, toIndexValue - fromIndexValue, key, c);
         }
 
         /*
@@ -197,7 +197,7 @@ namespace JavaClasses {
          * Searches a range of the specified array of sbytes for the specified value using the binary search algorithm.
          */
         public static int binarySearch(sbyte[] a, int fromIndex, int toIndex, sbyte key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new ByteComparer());
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new ByteComparer());
         }
 
         /**
@@ -211,7 +211,7 @@ namespace JavaClasses {
          * Searches a range of the specified array of chars for the specified value using the binary search algorithm.
          */
         public static int binarySearch(char[] a, int fromIndex, int toIndex, char key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new CharacterComparer());
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new CharacterComparer());
         }
 
         /**
@@ -225,7 +225,7 @@ namespace JavaClasses {
          * Searches a range of the specified array of doubles for the specified value using the binary search algorithm.
          */
         public static int binarySearch(double[] a, int fromIndex, int toIndex, double key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new DoubleComparer());
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new DoubleComparer());
         }
 
         /**
@@ -239,7 +239,7 @@ namespace JavaClasses {
          * Searches a range of the specified array of floats for the specified value using the binary search algorithm.
          */
         public static int binarySearch(float[] a, int fromIndex, int toIndex, float key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new FloatComparer());
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new FloatComparer());
         }
 
         /**
@@ -253,7 +253,7 @@ namespace JavaClasses {
          * Searches a range of the specified array of ints for the specified value using the binary search algorithm.
          */
         public static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new IntegerComparer());
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new IntegerComparer());
         }
 
         /**
@@ -267,7 +267,7 @@ namespace JavaClasses {
          * Searches a range of the specified array of longs for the specified value using the binary search algorithm.
          */
         public static int binarySearch(long[] a, int fromIndex, int toIndex, long key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new LongComparer());
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new LongComparer());
         }
 
         /**
@@ -281,7 +281,7 @@ namespace JavaClasses {
          * Searches a range of the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch(Object[] a, int fromIndex, int toIndex, Object key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex, key);
         }
 
         /**
@@ -295,7 +295,7 @@ namespace JavaClasses {
          * Searches a range of the specified array of shorts for the specified value using the binary search algorithm.
          */
         public static int binarySearch(short[] a, int fromIndex, int toIndex, short key) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, new ShortComparer());
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new ShortComparer());
         }
 
         /**
@@ -309,7 +309,7 @@ namespace JavaClasses {
          * Searches a range of the specified array for the specified object using the binary search algorithm.
          */
         public static int binarySearch<T>(T[] a, int fromIndex, int toIndex, T key, Comparer<T> c) {
-            return binarySearchGeneric(a, fromIndex, toIndex - fromIndex, key, c);
+            return binarySearchGeneric(a, fromIndex, toIndex, key, c);
         }
 
         /**
@@ -638,7 +638,7 @@ namespace JavaClasses {
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(sbyte[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, new ByteComparer());
+            sortGeneric(a, fromIndex, toIndex, new ByteComparer());
         }
 
         /**
@@ -652,7 +652,7 @@ namespace JavaClasses {
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(char[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, new CharacterComparer());
+            sortGeneric(a, fromIndex, toIndex, new CharacterComparer());
         }
 
         /**
@@ -666,7 +666,7 @@ namespace JavaClasses {
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(double[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, new DoubleComparer());
+            sortGeneric(a, fromIndex, toIndex, new DoubleComparer());
         }
 
         /**
@@ -680,7 +680,7 @@ namespace JavaClasses {
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(float[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, new FloatComparer());
+            sortGeneric(a, fromIndex, toIndex, new FloatComparer());
         }
 
         /**
@@ -694,7 +694,7 @@ namespace JavaClasses {
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(int[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, new IntegerComparer());
+            sortGeneric(a, fromIndex, toIndex, new IntegerComparer());
         }
 
         /**
@@ -708,7 +708,7 @@ namespace JavaClasses {
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(long[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, new LongComparer());
+            sortGeneric(a, fromIndex, toIndex, new LongComparer());
         }
 
         /**
@@ -724,7 +724,7 @@ namespace JavaClasses {
          * according to the natural ordering of its elements.
          */
         public static void sort(Object[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex);
+            sortGeneric(a, fromIndex, toIndex);
         }
 
         /**
@@ -738,7 +738,7 @@ namespace JavaClasses {
          * Sorts the specified range of the array into ascending order.
          */
         public static void sort(short[] a, int fromIndex, int toIndex) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, new ShortComparer());
+            sortGeneric(a, fromIndex, toIndex, new ShortComparer());
         }
 
         /**
@@ -752,7 +752,7 @@ namespace JavaClasses {
          * Sorts the specified range of the specified array of objects according to the order induced by the specified comparator.
          */
         public static void sort<T>(T[] a, int fromIndex, int toIndex, Comparer<T> c) {
-            sortGeneric(a, fromIndex, toIndex - fromIndex, c);
+            sortGeneric(a, fromIndex, toIndex, c);
         }
 
         /**

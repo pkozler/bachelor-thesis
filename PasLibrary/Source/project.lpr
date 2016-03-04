@@ -340,6 +340,33 @@ type
       true: (bits: int64);
   end;
 
+function retValTest(n: longInt) : ansiString;
+begin
+  if n = 0 then begin
+    retValTest := 'nula';
+  end
+  else if n = 1 then begin
+    retValTest := 'jedna';
+  end
+  else begin
+    retValTest := 'neco jineho'
+  end;
+end;
+
+function retValTest2(n: longInt) : ansiString;
+var
+  i : longInt;
+begin
+  for i := 0 to 9 do begin
+    if n <> 0 then begin
+      retValTest2 := 'nenulova hodnota';
+      exit;
+    end;
+  end;
+
+  retValTest2 := 'nula';
+end;
+
 var
   {i: longInt;
   arr: array of longInt;}
@@ -360,6 +387,12 @@ begin
   end;
 
   writeLn(Math_.PI);}
+
+  writeLn(retValTest(0));
+  writeLn(retValTest(1));
+  writeLn(retValTest(-1));
+  writeLn(retValTest2(0));
+  writeLn(retValTest2(1));
 
   bitConverter.val := -0.0;
   l := bitConverter.bits;

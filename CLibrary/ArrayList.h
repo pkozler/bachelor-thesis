@@ -22,7 +22,7 @@ void *removeAt(ArrayList *ptr, int32_t index);
 int32_t size(ArrayList *ptr);
 bool isEmpty(ArrayList *ptr);
 void clear(ArrayList *ptr);
-String *toStringAl(ArrayList *ptr, int32_t size, String *(*toString)(void *));
+String *toStringAl(ArrayList *ptr, String *(*toString)(void *));
 
 #endif	/* ARRAYLIST_INCLUDED */
 

@@ -338,54 +338,56 @@ end;
 
 class function Arrays.binarySearchPointer(a: pointer; fromIndex, toIndex, size: longInt; key: pointer; c: CompareFunction) : longInt;
 var
-  l, m, h, index: longInt;
+  lower, upper, middle : longInt;
+  middleValue : pointer;
 begin
-  l := fromIndex;
-  h := toIndex - 1;
-  index := -1;
+  lower := fromIndex;
+  upper := toIndex - 1;
 
-  while l <= h do begin
-    m := (l + h) div 2;
+  while lower <= upper do begin
+    middle := lower + ((upper - lower) div 2);
+    middleValue := a + middle * size;
 
-    if c(a + m * size, key) > 0 then begin
-      h := m - 1;
+    if c(middleValue, key) < 0 then begin
+      lower := middle + 1;
     end
-    else if c(a + m * size, key) < 0 then begin
-      l := m + 1;
+    else if c(middleValue, key) > 0 then begin
+      upper := middle - 1;
     end
     else begin
-      index := m;
-      break;
+      binarySearchPointer := middle;
+      exit;
     end;
   end;
 
-  binarySearchPointer := index;
+  binarySearchPointer := -(lower + 1);
 end;
 
 class function Arrays.binarySearchTObject(a: array of TObject; fromIndex, toIndex: longInt; key: TObject; c: TObjectCompareFunction) : longInt;
 var
-  l, m, h, index: longInt;
+  lower, upper, middle : longInt;
+  middleValue : TObject;
 begin
-  l := fromIndex;
-  h := toIndex - 1;
-  index := -1;
+  lower := fromIndex;
+  upper := toIndex - 1;
 
-  while l <= h do begin
-    m := (l + h) div 2;
+  while lower <= upper do begin
+    middle := lower + ((upper - lower) div 2);
+    middleValue := a[middle];
 
-    if c(a[m], key) > 0 then begin
-      h := m - 1;
+    if c(middleValue, key) < 0 then begin
+      lower := middle + 1;
     end
-    else if c(a[m], key) < 0 then begin
-      l := m + 1;
+    else if c(middleValue, key) > 0 then begin
+      upper := middle - 1;
     end
     else begin
-      index := m;
-      break;
+      binarySearchTObject := middle;
+      exit;
     end;
   end;
 
-  binarySearchTObject := index;
+  binarySearchTObject := -(lower + 1);
 end;
 
 class function Arrays.copyOfRangePointer(original: pointer; length, size, from, to_: longInt) : pointer;

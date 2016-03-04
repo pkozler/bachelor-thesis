@@ -8,9 +8,10 @@
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="342"/>
-        <CursorPos X="2" Y="343"/>
-        <UsageCount Value="176"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="373"/>
+        <CursorPos X="22" Y="393"/>
+        <UsageCount Value="181"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -20,24 +21,23 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="49"/>
         <CursorPos Y="49"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="44"/>
       </Unit1>
       <Unit2>
         <Filename Value="arraylistunit.pas"/>
         <UnitName Value="ArrayListUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="4"/>
-        <CursorPos X="25" Y="17"/>
+        <TopLine Value="161"/>
+        <CursorPos X="6" Y="167"/>
         <UsageCount Value="80"/>
       </Unit2>
       <Unit3>
         <Filename Value="arraysunit.pas"/>
         <UnitName Value="ArraysUnit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="264"/>
-        <CursorPos X="13" Y="283"/>
-        <UsageCount Value="82"/>
+        <TopLine Value="346"/>
+        <CursorPos Y="359"/>
+        <UsageCount Value="84"/>
         <Loaded Value="True"/>
       </Unit3>
       <Unit4>
@@ -75,8 +75,7 @@
         <Filename Value="floatunit.pas"/>
         <UnitName Value="FloatUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="77"/>
-        <CursorPos X="12" Y="102"/>
+        <CursorPos Y="25"/>
         <UsageCount Value="85"/>
       </Unit8>
       <Unit9>
@@ -99,8 +98,7 @@
         <Filename Value="linkedlistunit.pas"/>
         <UnitName Value="LinkedListUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="173"/>
-        <CursorPos Y="198"/>
+        <CursorPos Y="25"/>
         <UsageCount Value="80"/>
       </Unit11>
       <Unit12>
@@ -146,20 +144,20 @@
         <Filename Value="stringunit.pas"/>
         <UnitName Value="StringUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="64"/>
-        <CursorPos X="5" Y="80"/>
-        <UsageCount Value="81"/>
+        <CursorPos Y="25"/>
+        <UsageCount Value="82"/>
       </Unit17>
       <Unit18>
         <Filename Value="systemunit.pas"/>
         <UnitName Value="SystemUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="35"/>
-        <CursorPos Y="36"/>
-        <UsageCount Value="80"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="113"/>
+        <CursorPos Y="135"/>
+        <UsageCount Value="81"/>
+        <Loaded Value="True"/>
       </Unit18>
     </Units>
-    <JumpHistory Count="8" HistoryIndex="7">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="project.lpr"/>
         <Caret Line="25"/>
@@ -192,6 +190,94 @@
         <Filename Value="arraysunit.pas"/>
         <Caret Line="168" Column="56" TopLine="155"/>
       </Position8>
+      <Position9>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="509" TopLine="509"/>
+      </Position9>
+      <Position10>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="360" TopLine="338"/>
+      </Position10>
+      <Position11>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="363" Column="22" TopLine="351"/>
+      </Position11>
+      <Position12>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="350" TopLine="337"/>
+      </Position12>
+      <Position13>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="21" TopLine="336"/>
+      </Position13>
+      <Position14>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="375" Column="21" TopLine="363"/>
+      </Position14>
+      <Position15>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="21" TopLine="336"/>
+      </Position15>
+      <Position16>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="375" Column="21" TopLine="363"/>
+      </Position16>
+      <Position17>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="21" TopLine="336"/>
+      </Position17>
+      <Position18>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="375" Column="21" TopLine="363"/>
+      </Position18>
+      <Position19>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="21" TopLine="336"/>
+      </Position19>
+      <Position20>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="375" Column="21" TopLine="363"/>
+      </Position20>
+      <Position21>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="21" TopLine="336"/>
+      </Position21>
+      <Position22>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="375" Column="21" TopLine="363"/>
+      </Position22>
+      <Position23>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="21" TopLine="336"/>
+      </Position23>
+      <Position24>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="375" Column="21" TopLine="363"/>
+      </Position24>
+      <Position25>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="15" TopLine="336"/>
+      </Position25>
+      <Position26>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="375" Column="21" TopLine="363"/>
+      </Position26>
+      <Position27>
+        <Filename Value="arraysunit.pas"/>
+        <Caret Line="348" Column="15" TopLine="341"/>
+      </Position27>
+      <Position28>
+        <Filename Value="project.lpr"/>
+        <Caret Line="368" TopLine="344"/>
+      </Position28>
+      <Position29>
+        <Filename Value="project.lpr"/>
+        <Caret Line="343" Column="10" TopLine="331"/>
+      </Position29>
+      <Position30>
+        <Filename Value="project.lpr"/>
+        <Caret Line="378" Column="12" TopLine="361"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

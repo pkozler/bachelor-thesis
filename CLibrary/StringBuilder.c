@@ -1,7 +1,8 @@
 #include "StringBuilder.h"
-#include "String.h"
 
+#include "String.h"
 #include <stdlib.h>
+#include <string.h>
 
 #define _STR_DEFAULT_CAPACITY 16
 #define _STR_RESIZE_COEF 2

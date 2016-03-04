@@ -117,21 +117,25 @@ public:
 };
 
 template <class T> int32_t Arrays::binarySearchGeneric(T *a, int32_t fromIndex, int32_t toIndex, T key, int32_t (*c)(T, T)) {
-    T *i;
+    int32_t lower = fromIndex;
+    int32_t upper = toIndex - 1;
+
+    while (lower <= upper) {
+        int32_t middle = ((uint32_t)lower + (uint32_t)upper) >> 1;
+        T middleValue = a[middle];
+
+        if (c(middleValue, key) < 0) {
+            lower = middle + 1;
+        }
+        else if (c(middleValue, key) > 0) {
+            upper = middle - 1;
+        }
+        else {
+            return middle;
+        }
+    }
     
-    if (c == nullptr) {
-        i = std::lower_bound(a + fromIndex, a + toIndex, key);
-    }
-    else {
-        i = std::lower_bound(a + fromIndex, a + toIndex, key, c);
-    }
-    
-    if (i != a + toIndex && !(key < *i)) {
-        return (int32_t) (i - a);
-    }
-    else {
-        return -1;
-    }
+    return -(lower + 1);
 }
 
 template <class T> T *Arrays::copyOfRangeGeneric(T *original, int32_t length, int32_t from, int32_t to) {

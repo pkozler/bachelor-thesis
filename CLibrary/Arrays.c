@@ -156,14 +156,25 @@ String *_toStringS(const void *a) {
 }
 
 int32_t _binarySearchPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, void *key, int32_t (*c)(const void *, const void *)) {
-    void *i = bsearch(key, a + fromIndex, toIndex, size, c);
+    int32_t lower = fromIndex;
+    int32_t upper = toIndex - 1;
+
+    while (lower <= upper) {
+        int32_t middle = ((uint32_t)lower + (uint32_t)upper) >> 1;
+        void *middleValue = a + middle * size;
+
+        if (c(middleValue, key) < 0) {
+            lower = middle + 1;
+        }
+        else if (c(middleValue, key) > 0) {
+            upper = middle - 1;
+        }
+        else {
+            return middle;
+        }
+    }
     
-    if (i == NULL) {
-        return -1;
-    }
-    else {
-        return (i - a) / size;
-    }
+    return -(lower + 1);
 }
 
 void *_copyOfRangePointer(void *original, int32_t length, int32_t size, int32_t from, int32_t to) {

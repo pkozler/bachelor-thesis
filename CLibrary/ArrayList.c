@@ -121,7 +121,8 @@ void clear(ArrayList *ptr) {
     ptr->dynamicArray = malloc(ptr->capacity * sizeof(void *));
 }
 
-String *toStringAl(ArrayList *ptr, int32_t size, String *(*toString)(void *)) {
+String *toStringAl(ArrayList *ptr, String *(*toString)(void *)) {
+    int32_t length = ptr->count;
     StringBuilder *sb = new_StringBuilder();
     String *str = new_String("[");
     append(sb, str);
