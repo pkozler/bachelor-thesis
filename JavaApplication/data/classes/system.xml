@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<translations>
+<codes>
 
-    <translation lang="C">#include "System.h"
+    <code lang="C">#include "System.h"
 
 void System_out_printB(bool b) {
     printf("%s", b ? "true" : "false");
@@ -71,9 +71,9 @@ void System_out_printlnL(long l) {
 void System_out_printlnStr(String *s) {
     printf("%s\n", s->s);
 }
-</translation>
+</code>
     
-    <translation lang="C++">#include "System.h"
+    <code lang="C++">#include "System.h"
 
 #include &lt;iostream&gt;
 
@@ -175,9 +175,9 @@ void delete_out()
 }
 
 const int result = std::atexit(delete_out);
-</translation>
+</code>
     
-    <translation lang="C#">using System;
+    <code lang="C#">using System;
     class PrintStream
 	{
 		public void print(bool b)
@@ -280,9 +280,9 @@ const int result = std::atexit(delete_out);
     {
 		public readonly static object @in = null;
 		public readonly static PrintStream @out = new PrintStream();
-    }</translation>
+    }</code>
     
-    <translation lang="Pascal">unit JSystem;
+    <code lang="Pascal">unit JSystem;
 
 {$mode objfpc}{$H+}
 
@@ -441,6 +441,6 @@ begin
 end;
 
 end.
-</translation>
+</code>
     
-</translations>
+</codes>

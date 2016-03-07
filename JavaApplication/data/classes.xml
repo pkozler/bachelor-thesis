@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<data>
+<lists>
     <languages>
         <language>C</language>
         <language>C++</language>
@@ -22,4 +22,4 @@
         <class>Comparable</class>
         <class>Comparator</class>
     </classes>
-</data>
+</lists>
