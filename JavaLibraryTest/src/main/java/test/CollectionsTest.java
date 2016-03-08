@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import java.util.ArrayList;
@@ -11,14 +6,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny Collections.
+ * The {@code CollectionsTest} class performs automatic testing of the
+ * {@code Collections} class.
  *
  * @author Petr Kozler
  */
 public class CollectionsTest {
-    
+
     public static Logger logger = LogManager.getLogger(CollectionsTest.class.getName());
-    
+
     public static void runTestSuite() {
         CollectionsTest.binarySearchTestCase();
         CollectionsTest.binarySearchTestCase2();
@@ -27,9 +23,9 @@ public class CollectionsTest {
         CollectionsTest.sortTestCase();
         CollectionsTest.sortTestCase2();
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v seznamu.
+     * Tests the binarySearch method.
      */
     public static void binarySearchTestCase() {
         ArrayList<DummyObject> a;
@@ -51,9 +47,9 @@ public class CollectionsTest {
         b = Collections.binarySearch(a, new DummyObject("sixth", 4));
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků seznamu od zadaného indexu.
+     * Tests the binarySearch method with comparator as a parameter.
      */
     public static void binarySearchTestCase2() {
         ArrayList<DummyObject> a;
@@ -77,21 +73,21 @@ public class CollectionsTest {
         b = Collections.binarySearch(a, new DummyObject("sixth", 4), c);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje kopírování prvků zdrojového seznamu do cílového seznamu.
+     * Tests the copy method.
      */
     public static void copyTestCase() {
         ArrayList<DummyObject> a, b;
         String c;
-        // zdrojový seznam
+        // source list
         a = new ArrayList<>();
         a.add(new DummyObject("first", 3));
         a.add(new DummyObject("second", 2));
         a.add(new DummyObject("third", 8));
         a.add(new DummyObject("fourth", 7));
         a.add(new DummyObject("fifth", 6));
-        // cílový seznam
+        // destination list
         b = new ArrayList<>();
         b.add(new DummyObject("zeroth", 0));
         b.add(new DummyObject("zeroth", 0));
@@ -103,9 +99,9 @@ public class CollectionsTest {
         c = b.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje nahrazování prvků spojového seznamu zadaným prvkem.
+     * Tests the fill method.
      */
     public static void fillTestCase() {
         ArrayList<DummyObject> a;
@@ -120,9 +116,9 @@ public class CollectionsTest {
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení seznamu.
+     * Tests the sort method.
      */
     public static void sortTestCase() {
         ArrayList<DummyObject> a;
@@ -142,9 +138,9 @@ public class CollectionsTest {
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků seznamu od zadaného indexu.
+     * Tests the sort method with comparator as a parameter.
      */
     public static void sortTestCase2() {
         ArrayList<DummyObject> a;
@@ -166,5 +162,5 @@ public class CollectionsTest {
         b = a.toString();
         logger.info(b);
     }
-    
+
 }

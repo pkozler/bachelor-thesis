@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import java.io.ByteArrayInputStream;
@@ -14,14 +9,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny Scanner.
+ * The {@code ScannerTest} class performs automatic testing of the
+ * {@code Scanner} class.
  *
  * @author Petr Kozler
  */
 public class ScannerTest {
-    
+
     public static Logger logger = LogManager.getLogger(ScannerTest.class.getName());
-    
+
     private static final String INITIAL_TEST = "src/main/resources/test.txt";
     private static final String NEXTLINE_TEST = "src/main/resources/nextLineTest.txt";
     private static final String NEXT_TEST = "src/main/resources/nextTest.txt";
@@ -41,7 +37,7 @@ public class ScannerTest {
     private static final int NEXTLONG_TOKEN_COUNT = 10;
     private static final int NEXTFLOAT_TOKEN_COUNT = 30;
     private static final int NEXTDOUBLE_TOKEN_COUNT = 30;
-    
+
     public static void runTestSuite() {
         ScannerTest.scannerTestCase();
         ScannerTest.nextTestCase();
@@ -54,22 +50,21 @@ public class ScannerTest {
         ScannerTest.nextDoubleTestCase();
         ScannerTest.nextLineTestCase();
     }
-    
+
     /*
-        Načte data z testovacího soubor pro simulaci uživatelského vstupu.
-    */
+     Loads the data from a text file for simulating user input.
+     */
     private static void setInput(String testFileName) {
         try {
             String content = new Scanner(new File(testFileName)).useDelimiter("\\Z").next();
             System.setIn(new ByteArrayInputStream(content.getBytes()));
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.err.println(ex.getMessage());
         }
     }
-    
+
     /**
-     * Otestuje vytvoření scanneru.
+     * Tests the constructor.
      */
     public static void scannerTestCase() {
         setInput(INITIAL_TEST);
@@ -80,8 +75,8 @@ public class ScannerTest {
         double e;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
-        // namátkový test načítání hodnot různých typů
+
+        // random test of different type values scanning
         b = a.next();
         logger.info(b);
         c = a.nextBoolean();
@@ -101,9 +96,9 @@ public class ScannerTest {
         b = a.nextLine();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje načtení řetězce tokenu.
+     * Tests the next method.
      */
     public static void nextTestCase() {
         setInput(NEXT_TEST);
@@ -111,16 +106,16 @@ public class ScannerTest {
         String b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
-        // test načítání řetězců oddělených různými počty bílých znaků
+
+        // scanning of strings delimited by different counts of whitespaces
         for (int i = 0; i < NEXT_TOKEN_COUNT; i++) {
             b = a.next();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení logické hodnoty.
+     * Tests the nextBoolean method.
      */
     public static void nextBooleanTestCase() {
         setInput(NEXTBOOLEAN_TEST);
@@ -128,16 +123,16 @@ public class ScannerTest {
         boolean b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
-        // test načítání řetězců představujících logické hodnoty
+
+        // scanning of strings representing boolean values
         for (int i = 0; i < NEXTBOOLEAN_TOKEN_COUNT; i++) {
             b = a.nextBoolean();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení 8-bitového celého čísla.
+     * Tests the nextByte method.
      */
     public static void nextByteTestCase() {
         setInput(NEXTBYTE_TEST);
@@ -145,16 +140,16 @@ public class ScannerTest {
         byte b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
-        // test načítání celých čísel (nuly, jedničky a největších možných hodnot kladných i záporných)
+
+        // scanning of integers (zeroes, ones, positive and negative minimal and maximal values)
         for (int i = 0; i < NEXTBYTE_TOKEN_COUNT; i++) {
             b = a.nextByte();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení 16-bitového celého čísla.
+     * Tests the nextShort method.
      */
     public static void nextShortTestCase() {
         setInput(NEXTSHORT_TEST);
@@ -162,15 +157,15 @@ public class ScannerTest {
         short b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
+
         for (int i = 0; i < NEXTSHORT_TOKEN_COUNT; i++) {
             b = a.nextShort();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení 32-bitového celého čísla.
+     * Tests the nextInt method.
      */
     public static void nextIntTestCase() {
         setInput(NEXTINT_TEST);
@@ -178,15 +173,15 @@ public class ScannerTest {
         int b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
+
         for (int i = 0; i < NEXTINT_TOKEN_COUNT; i++) {
             b = a.nextInt();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení 64-bitového celého čísla.
+     * Tests the nextLong method.
      */
     public static void nextLongTestCase() {
         setInput(NEXTLONG_TEST);
@@ -194,15 +189,15 @@ public class ScannerTest {
         long b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
+
         for (int i = 0; i < NEXTLONG_TOKEN_COUNT; i++) {
             b = a.nextLong();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení desetinného čísla s jednoduchou přesností.
+     * Tests the nextFloat method.
      */
     public static void nextFloatTestCase() {
         setInput(NEXTFLOAT_TEST);
@@ -210,20 +205,20 @@ public class ScannerTest {
         float b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
+
         /* 
-            test načítání desetinných čísel
-            (s použitím i bez použití znaménka i desetinné tečky a s vynecháním číslic na různých pozicích,
-            test načtení nuly, jedničky, největší i nejmenší možné absolutní hodnoty)
-        */
+         scanning of decimal values
+         (with and without sign and decimal dot and with omission of digits on different positions,
+         scanning of zeroes, ones, minimal and maximal absolute values)
+         */
         for (int i = 0; i < NEXTFLOAT_TOKEN_COUNT; i++) {
             b = a.nextFloat();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení desetinného čísla s dvojitou přesností.
+     * Tests the nextDouble method.
      */
     public static void nextDoubleTestCase() {
         setInput(NEXTDOUBLE_TEST);
@@ -231,15 +226,15 @@ public class ScannerTest {
         double b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
+
         for (int i = 0; i < NEXTDOUBLE_TOKEN_COUNT; i++) {
             b = a.nextDouble();
             logger.info(b);
         }
     }
-    
+
     /**
-     * Otestuje načtení řetězce na řádce.
+     * Tests the nextLine method.
      */
     public static void nextLineTestCase() {
         setInput(NEXTLINE_TEST);
@@ -247,12 +242,12 @@ public class ScannerTest {
         String b;
         a = new Scanner(System.in);
         a.useLocale(Locale.US);
-        
-        // test načtení řádků s různými typy řetězců
+
+        // scanning of lines with different types of string
         for (int i = 0; i < NEXTLINE_TOKEN_COUNT; i++) {
             b = a.nextLine();
             logger.info(b);
         }
     }
-    
+
 }

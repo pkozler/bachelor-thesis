@@ -1,157 +1,164 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny Boolean.
+ * The {@code BooleanTest} class performs automatic testing of the
+ * {@code Boolean} class.
  *
  * @author Petr Kozler
  */
 public class BooleanTest {
-    
+
     public static Logger logger = LogManager.getLogger(BooleanTest.class.getName());
-    
+
     public static void runTestSuite() {
-        BooleanTest.booleanTestCase();
         BooleanTest.booleanValueTestCase();
         BooleanTest.compareToTestCase();
+        BooleanTest.compareTestCase();
         BooleanTest.equalsTestCase();
         BooleanTest.toStringTestCase();
         BooleanTest.toStringTestCase2();
         BooleanTest.parseBooleanTestCase();
     }
-    
+
     /**
-     * Otestuje vytvoření hodnoty.
-     */
-    public static void booleanTestCase() {
-        // otestováno pomocí testu získání hodnoty
-    }
-    
-    /**
-     * Otestuje získání hodnoty příslušného vestavěného datového typu.
+     * Tests the booleanValue method.
      */
     public static void booleanValueTestCase() {
         Boolean a;
         boolean b;
-        // test pravdy
+        // true value
         a = new Boolean(true);
         b = a.booleanValue();
         logger.info(b);
-        // test nepravdy
+        // false falue
         a = new Boolean(false);
         b = a.booleanValue();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje porovnání dvou hodnot.
+     * Tests the compareTo method.
      */
     public static void compareToTestCase() {
         Boolean a, b;
         int c;
-        // pravda a nepravda
+        // true and false
         a = new Boolean(true);
         b = new Boolean(false);
         c = a.compareTo(b);
         logger.info(c);
-        // nepravda a pravda
+        // false and true
         a = new Boolean(false);
         b = new Boolean(true);
         c = a.compareTo(b);
         logger.info(c);
-        // obě hodnoty pravdivé
+        // both values are true
         a = new Boolean(true);
         b = new Boolean(true);
         c = a.compareTo(b);
         logger.info(c);
-        // obě hodnoty nepravdivé
+        // both values are false
         a = new Boolean(false);
         b = new Boolean(false);
         c = a.compareTo(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou hodnot.
+     * Tests the compare method.
+     */
+    public static void compareTestCase() {
+        boolean a, b;
+        int c;
+        a = true;
+        b = false;
+        c = Boolean.compare(a, b);
+        logger.info(c);
+        a = false;
+        b = true;
+        c = Boolean.compare(a, b);
+        logger.info(c);
+        a = true;
+        b = true;
+        c = Boolean.compare(a, b);
+        logger.info(c);
+        a = false;
+        b = false;
+        c = Boolean.compare(a, b);
+        logger.info(c);
+    }
+
+    /**
+     * Tests the equals method.
      */
     public static void equalsTestCase() {
         Boolean a, b;
         boolean c;
-        // pravda a nepravda
         a = new Boolean(true);
         b = new Boolean(false);
         c = a.equals(b);
         logger.info(c);
-        // nepravda a pravda
         a = new Boolean(false);
         b = new Boolean(true);
         c = a.equals(b);
         logger.info(c);
-        // obě hodnoty pravdivé
         a = new Boolean(true);
         b = new Boolean(true);
         c = a.equals(b);
         logger.info(c);
-        // obě hodnoty nepravdivé
         a = new Boolean(false);
         b = new Boolean(false);
         c = a.equals(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace hodnoty.
+     * Tests the toString method.
      */
     public static void toStringTestCase() {
         Boolean a;
         String b;
-        // podpis pravdivé hodnoty
+        // true value text representation
         a = new Boolean(true);
         b = a.toString();
         logger.info(b);
-        // podpis nepravdivé hodnoty
+        // false value text representation
         a = new Boolean(false);
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace hodnoty příslušného vestavěného datového typu.
+     * Tests the static toString method.
      */
     public static void toStringTestCase2() {
         Boolean a;
         String b;
-        // podpis pravdivé hodnoty
         a = new Boolean(true);
         b = Boolean.toString(a);
         logger.info(b);
-        // podpis nepravdivé hodnoty
         a = new Boolean(false);
         b = Boolean.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje převod textové reprezentace na hodnotu příslušného vestavěného datového typu.
+     * Tests the parseBoolean method.
      */
     public static void parseBooleanTestCase() {
         Boolean a;
         boolean b;
-        // převod pravdivé hodnoty
+        // true value parsing
         a = Boolean.parseBoolean("true");
         b = a.booleanValue();
         logger.info(b);
-        // převod nepravdivé hodnoty
+        // false value parsing
         a = Boolean.parseBoolean("false");
         b = a.booleanValue();
         logger.info(b);
     }
-    
+
 }

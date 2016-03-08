@@ -1,41 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny Short.
+ * The {@code ShortTest} class performs automatic testing of the {@code Short}
+ * class.
  *
  * @author Petr Kozler
  */
 public class ShortTest {
-    
+
     public static Logger logger = LogManager.getLogger(ShortTest.class.getName());
-    
+
     public static void runTestSuite() {
-        ShortTest.shortTestCase();
         ShortTest.shortValueTestCase();
         ShortTest.compareToTestCase();
+        ShortTest.compareTestCase();
         ShortTest.equalsTestCase();
         ShortTest.toStringTestCase();
         ShortTest.toStringTestCase2();
         ShortTest.parseShortTestCase();
     }
-    
+
     /**
-     * Otestuje vytvoření hodnoty.
-     */
-    public static void shortTestCase() {
-        // otestováno pomocí testu získání hodnoty
-    }
-    
-    /**
-     * Otestuje získání hodnoty příslušného vestavěného datového typu.
+     * Tests the shortValue method.
      */
     public static void shortValueTestCase() {
         Short a;
@@ -43,112 +32,147 @@ public class ShortTest {
         a = new Short(Short.MIN_VALUE);
         b = a.shortValue();
         logger.info(b);
-        a = new Short((short)0);
+        a = new Short((short) 0);
         b = a.shortValue();
         logger.info(b);
         a = new Short(Short.MAX_VALUE);
         b = a.shortValue();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje porovnání dvou hodnot.
+     * Tests the compareTo method.
      */
     public static void compareToTestCase() {
         Short a, b;
         int c;
         a = new Short(Short.MIN_VALUE);
-        b = new Short((short)-1);
+        b = new Short((short) -1);
         c = a.compareTo(b);
         logger.info(c);
         a = new Short(Short.MAX_VALUE);
-        b = new Short((short)1);
+        b = new Short((short) 1);
         c = a.compareTo(b);
         logger.info(c);
-        a = new Short((short)0);
-        b = new Short((short)1);
+        a = new Short((short) 0);
+        b = new Short((short) 1);
         c = a.compareTo(b);
         logger.info(c);
-        a = new Short((short)0);
-        b = new Short((short)-1);
+        a = new Short((short) 0);
+        b = new Short((short) -1);
         c = a.compareTo(b);
         logger.info(c);
-        a = new Short((short)1);
-        b = new Short((short)1);
+        a = new Short((short) 1);
+        b = new Short((short) 1);
         c = a.compareTo(b);
         logger.info(c);
-        a = new Short((short)-1);
-        b = new Short((short)-1);
+        a = new Short((short) -1);
+        b = new Short((short) -1);
         c = a.compareTo(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou hodnot.
+     * Tests the compare method.
+     */
+    public static void compareTestCase() {
+        short a, b;
+        int c;
+        a = Short.MIN_VALUE;
+        b = (short) -1;
+        c = Short.compare(a, b);
+        logger.info(c);
+        a = Short.MAX_VALUE;
+        b = (short) 1;
+        c = Short.compare(a, b);
+        logger.info(c);
+        a = (short) 0;
+        b = (short) 1;
+        c = Short.compare(a, b);
+        logger.info(c);
+        a = (short) 0;
+        b = (short) -1;
+        c = Short.compare(a, b);
+        logger.info(c);
+        a = (short) 1;
+        b = (short) 1;
+        c = Short.compare(a, b);
+        logger.info(c);
+        a = (short) -1;
+        b = (short) -1;
+        c = Short.compare(a, b);
+        logger.info(c);
+    }
+
+    /**
+     * Tests the equals method.
      */
     public static void equalsTestCase() {
         Short a, b;
         boolean c;
         a = new Short(Short.MIN_VALUE);
-        b = new Short((short)-1);
+        b = new Short((short) -1);
         c = a.equals(b);
         logger.info(c);
         a = new Short(Short.MAX_VALUE);
-        b = new Short((short)1);
+        b = new Short((short) 1);
         c = a.equals(b);
         logger.info(c);
-        a = new Short((short)0);
-        b = new Short((short)1);
+        a = new Short((short) 0);
+        b = new Short((short) 1);
         c = a.equals(b);
         logger.info(c);
-        a = new Short((short)0);
-        b = new Short((short)-1);
+        a = new Short((short) 0);
+        b = new Short((short) -1);
         c = a.equals(b);
         logger.info(c);
-        a = new Short((short)1);
-        b = new Short((short)1);
+        a = new Short((short) 1);
+        b = new Short((short) 1);
         c = a.equals(b);
         logger.info(c);
-        a = new Short((short)-1);
-        b = new Short((short)-1);
+        a = new Short((short) -1);
+        b = new Short((short) -1);
         c = a.equals(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace hodnoty.
+     * Tests the toString method.
      */
     public static void toStringTestCase() {
         Short a;
         String b;
-        a = new Short((short)1000);
+        a = new Short((short) 1000);
         b = a.toString();
         logger.info(b);
-        a = new Short((short)0);
+        a = new Short((short) 0);
         b = a.toString();
         logger.info(b);
-        a = new Short((short)-1000);
+        a = new Short((short) -1000);
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace hodnoty příslušného vestavěného datového typu.
+     * Tests the static toString method.
      */
     public static void toStringTestCase2() {
         Short a;
         String b;
-        a = new Short((short)1000);
+        a = new Short((short) 1000);
         b = Short.toString(a);
         logger.info(b);
-        a = new Short((short)0);
+        a = new Short((short) 0);
         b = Short.toString(a);
         logger.info(b);
-        a = new Short((short)-1000);
+        a = new Short((short) -1000);
         b = Short.toString(a);
         logger.info(b);
     }
-    
+
+    /**
+     * Tests the parseShort method.
+     */
     public static void parseShortTestCase() {
         Short a;
         short b;
@@ -162,5 +186,5 @@ public class ShortTest {
         b = a.shortValue();
         logger.info(b);
     }
-    
+
 }

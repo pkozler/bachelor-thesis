@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny Math.
+ * The {@code MathTest} class performs automatic testing of the {@code Math}
+ * class.
  *
  * @author Petr Kozler
  */
 public class MathTest {
-    
+
     public static Logger logger = LogManager.getLogger(MathTest.class.getName());
-    
+
     public static void runTestSuite() {
         MathTest.absTestCase();
         MathTest.absTestCase2();
@@ -43,28 +39,28 @@ public class MathTest {
         MathTest.roundTestCase();
         MathTest.roundTestCase2();
     }
-    
+
     /**
-     * Otestuje výpočet absolutní hodnoty desetinného čísla s dvojitou přesností.
+     * Tests the abs method with a double value.
      */
     public static void absTestCase() {
         double a, b;
-        // test pro záporné číslo
+        // negative value
         a = Double.MIN_VALUE + 1;
         b = Math.abs(a);
         logger.info(b);
-        // test pro nulu
+        // zero value
         a = 0;
         b = Math.abs(a);
         logger.info(b);
-        // test pro kladné číslo
+        // positive value
         a = Double.MAX_VALUE - 1;
         b = Math.abs(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet absolutní hodnoty desetinného čísla s jednoduchou přesností.
+     * Tests the abs method with a float value.
      */
     public static void absTestCase2() {
         float a, b;
@@ -78,9 +74,9 @@ public class MathTest {
         b = Math.abs(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet absolutní hodnoty 32-bitového celého čísla.
+     * Tests the abs method with an int value.
      */
     public static void absTestCase3() {
         int a, b;
@@ -94,9 +90,9 @@ public class MathTest {
         b = Math.abs(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet absolutní hodnoty 64-bitového celého čísla.
+     * Tests the abs method with a long value.
      */
     public static void absTestCase4() {
         long a, b;
@@ -110,41 +106,41 @@ public class MathTest {
         b = Math.abs(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje určení většího ze dvou desetinných čísel s dvojitou přesností.
+     * Tests the max method with a double value.
      */
     public static void maxTestCase() {
         double a, b, c;
-        // záporné a kladné číslo
+        // negative and positive value
         a = Double.MIN_VALUE;
         b = Double.MAX_VALUE;
         c = Math.max(a, b);
         logger.info(c);
-        // kladné a záporné číslo
+        // positive and negative value
         a = Double.MAX_VALUE;
         b = Double.MIN_VALUE;
         c = Math.max(a, b);
         logger.info(c);
-        // záporné a kladné číslo (menší rozdíl)
+        // negative and positive value (smaller difference)
         a = -1;
         b = 1;
         c = Math.max(a, b);
         logger.info(c);
-        // kladné a záporné číslo (menší rozdíl)
+        // positive and negative value (bigger difference)
         a = 1;
         b = -1;
         c = Math.max(a, b);
-        // stejná čísla
+        // equal values
         logger.info(c);
         a = 0;
         b = 0;
         c = Math.max(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje určení většího ze dvou desetinných čísel s jednoduchou přesností.
+     * Tests the max method with a float value.
      */
     public static void maxTestCase2() {
         float a, b, c;
@@ -169,9 +165,9 @@ public class MathTest {
         c = Math.max(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje určení většího ze dvou 32-bitových celých čísel.
+     * Tests the max method with an int value.
      */
     public static void maxTestCase3() {
         int a, b, c;
@@ -196,9 +192,9 @@ public class MathTest {
         c = Math.max(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje určení většího ze dvou 64-bitových celých čísel.
+     * Tests the max method with a long value.
      */
     public static void maxTestCase4() {
         long a, b, c;
@@ -223,41 +219,36 @@ public class MathTest {
         c = Math.max(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje určení menšího ze dvou desetinných čísel s dvojitou přesností.
+     * Tests the min method with a double value.
      */
     public static void minTestCase() {
         double a, b, c;
-        // záporné a kladné číslo
         a = Double.MIN_VALUE;
         b = Double.MAX_VALUE;
         c = Math.min(a, b);
         logger.info(c);
-        // kladné a záporné číslo
         a = Double.MAX_VALUE;
         b = Double.MIN_VALUE;
         c = Math.min(a, b);
         logger.info(c);
-        // záporné a kladné číslo (menší rozdíl)
         a = -1;
         b = 1;
         c = Math.min(a, b);
         logger.info(c);
-        // kladné a záporné číslo (menší rozdíl)
         a = 1;
         b = -1;
         c = Math.min(a, b);
         logger.info(c);
-        // stejná čísla
         a = 0;
         b = 0;
         c = Math.min(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje určení menšího ze dvou desetinných čísel s jednoduchou přesností.
+     * Tests the min method with a float value.
      */
     public static void minTestCase2() {
         float a, b, c;
@@ -282,9 +273,9 @@ public class MathTest {
         c = Math.min(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje určení menšího ze dvou 32-bitových celých čísel.
+     * Tests the min method with an int value.
      */
     public static void minTestCase3() {
         int a, b, c;
@@ -309,9 +300,9 @@ public class MathTest {
         c = Math.min(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje určení menšího ze dvou 64-bitových celých čísel.
+     * Tests the min method with a long value.
      */
     public static void minTestCase4() {
         long a, b, c;
@@ -336,231 +327,231 @@ public class MathTest {
         c = Math.min(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje výpočet zadané mocniny.
+     * Test the pow method.
      */
     public static void powTestCase() {
         double a, b, c;
-        // kladná mocnina kladného čísla
+        // positive power of positive value
         a = 10;
         b = 2;
         c = Math.pow(a, b);
         logger.info(c);
-        // kladná mocnina záporného čísla
+        // positive power of negative value
         a = -10;
         b = 2;
         c = Math.pow(a, b);
         logger.info(c);
-        // záporná mocnina kladného čísla
+        // negative power of positive value
         a = 10;
         b = -2;
         c = Math.pow(a, b);
-        // nultá mocnina
+        // zore power
         logger.info(c);
         a = 10;
         b = 0;
         c = Math.pow(a, b);
         logger.info(c);
-        // mocnina nuly
+        // power of zero
         a = 0;
         b = 10;
         c = Math.pow(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje výpočet odmocniny.
+     * Tests the sqrt method.
      */
     public static void sqrtTestCase() {
         double a, b;
-        // odmocnina většího čísla
+        // square root of bigger value
         a = 100;
         b = Math.sqrt(a);
         logger.info(b);
-        // odmocnina jedné
+        // square root of one
         a = 1;
         b = Math.sqrt(a);
         logger.info(b);
-        // odmocnina nuly
+        // square root of zero
         a = 0;
         b = Math.sqrt(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet přirozeného logaritmu.
+     * Tests the log method.
      */
     public static void logTestCase() {
         double a, b;
-        // logaritmus druhé mocniny E
+        // logarithm of the square of E
         a = Math.E * Math.E;
         b = Math.log(a);
         logger.info(b);
-        // logaritmus E
+        // logarithm of E
         a = Math.E;
         b = Math.log(a);
         logger.info(b);
-        // logaritmus 1
+        // logarithm of one
         a = 1;
         b = Math.log(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet desítkového logaritmu.
+     * Tests the log10 method.
      */
     public static void log10TestCase() {
         double a, b;
-        // logaritmus druhé mocniny 10
+        // logarithm of the square of ten
         a = 100;
         b = Math.log10(a);
         logger.info(b);
-        // logaritmus 10
+        // logarithm of ten
         a = 10;
         b = Math.log10(a);
         logger.info(b);
-        // logaritmus 1
+        // logarithm of one
         a = 1;
         b = Math.log10(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet sinu.
+     * Tests the sin method.
      */
     public static void sinTestCase() {
         double a, b;
-        // sinus PÍ
+        // sine of PI
         a = Math.PI;
         b = Math.sin(a);
         logger.info(b);
-        // sinus -PÍ
+        // sine of minus PI
         a = -Math.PI;
         b = Math.sin(a);
         logger.info(b);
-        // sinus 0
+        // sine of zero
         a = 0;
         b = Math.sin(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet kosinu.
+     * Tests the cos method.
      */
     public static void cosTestCase() {
         double a, b;
-        // kosinus PÍ
+        // cosine of PI
         a = Math.PI;
         b = Math.cos(a);
         logger.info(b);
-        // kosinus -PÍ
+        // cosine of minus PI
         a = -Math.PI;
         b = Math.cos(a);
         logger.info(b);
-        // kosinus 0
+        // cosine of zero
         a = 0;
         b = Math.cos(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet tangentu.
+     * Tests the tan method.
      */
     public static void tanTestCase() {
         double a, b;
-        // tangens PÍ
+        // tangent of PI
         a = Math.PI;
         b = Math.tan(a);
         logger.info(b);
-        // tangens -PÍ
+        // tangent of minus PI
         a = -Math.PI;
         b = Math.tan(a);
         logger.info(b);
-        // tangens 0
+        // tangent of zero
         a = 0;
         b = Math.tan(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet úhlu ze sinu.
+     * Tests the asin method.
      */
     public static void asinTestCase() {
         double a, b;
-        // arkus sinus 1
+        // arcsine of one
         a = 1;
         b = Math.asin(a);
         logger.info(b);
-        // arkus sinus -1
+        // arcsine of minus one
         a = -1;
         b = Math.asin(a);
         logger.info(b);
-        // arkus sinus 0
+        // arcsine of zero
         a = 0;
         b = Math.asin(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet úhlu z kosinu.
+     * Tests the acos method.
      */
     public static void acosTestCase() {
         double a, b;
-        // arkus kosinus 1
+        // arccosine of one
         a = 1;
         b = Math.acos(a);
         logger.info(b);
-        // arkus kosinus -1
+        // arccosine of minus one
         a = -1;
         b = Math.acos(a);
         logger.info(b);
-        // arkus kosinus 0
+        // arccosine of zero
         a = 0;
         b = Math.acos(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje výpočet úhlu z tangentu.
+     * Tests the atan method.
      */
     public static void atanTestCase() {
         double a, b;
-        // arkus tangens 1
+        // arctangent of one
         a = 1;
         b = Math.atan(a);
         logger.info(b);
-        // arkus tangens -1
+        // arctangent of minus one
         a = -1;
         b = Math.atan(a);
         logger.info(b);
-        // arkus tangens 0
+        // arctangent of zero
         a = 0;
         b = Math.atan(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje zaokrouhlení desetinného čísla s dvojitou přesností.
+     * Tests the round method with a double value.
      */
     public static void roundTestCase() {
         double a, b;
-        // zaokrouhlení k sudému číslu
+        // rounding to even value
         a = 1.5;
         b = Math.round(a);
         logger.info(b);
-        // zaokrouhlení k lichému číslu
+        // rounding to odd value
         a = 0.5;
         b = Math.round(a);
         logger.info(b);
-        // zaokrouhlení záporného čísla
+        // rounding of negative value
         a = -0.5;
         b = Math.round(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje zaokrouhlení desetinného čísla s jednoduchou přesností.
+     * Tests the round method with a float value.
      */
     public static void roundTestCase2() {
         float a, b;
@@ -574,5 +565,5 @@ public class MathTest {
         b = Math.round(a);
         logger.info(b);
     }
-    
+
 }

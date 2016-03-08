@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import java.util.ArrayList;
@@ -10,14 +5,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny ArrayList.
+ * The {@code ArrayListTest} class performs automatic testing of the
+ * {@code ArrayList} class.
  *
  * @author Petr Kozler
  */
 public class ArrayListTest {
-    
+
     public static Logger logger = LogManager.getLogger(ArrayListTest.class.getName());
-    
+
     public static void runTestSuite() {
         ArrayListTest.arrayListTestCase();
         ArrayListTest.arrayListTestCase2();
@@ -31,39 +27,39 @@ public class ArrayListTest {
         ArrayListTest.clearTestCase();
         ArrayListTest.toStringTestCase();
     }
-    
+
     /**
-     * Otestuje vytvoření prázdného seznamu.
+     * Tests the constructor.
      */
     public static void arrayListTestCase() {
         ArrayList<DummyObject> a;
         String b;
-        // prázdný seznam
+        // empty list
         a = new ArrayList<>();
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření seznamu s prvky zkopírovanými z jiného seznamu.
+     * Tests the constructor with ArrayList as a parameter.
      */
     public static void arrayListTestCase2() {
         ArrayList<DummyObject> a, b;
         DummyObject c;
         String d;
-        // vytvoření seznamu z prázdného
+        // creating the list from an empty list
         a = new ArrayList<>();
         b = new ArrayList<>(a);
         d = b.toString();
         logger.info(d);
-        // vytvoření seznamu ze seznamu s jedním prvkem
+        // creating the list from a list with one element
         a = new ArrayList<>();
         c = new DummyObject("first", 1);
         a.add(c);
         b = new ArrayList<>(a);
         d = b.toString();
         logger.info(d);
-        // vytvoření seznamu ze seznamu s několika prvky
+        // creating the list from a list with some elements
         a = new ArrayList<>();
         c = new DummyObject("first", 1);
         a.add(c);
@@ -75,15 +71,15 @@ public class ArrayListTest {
         d = b.toString();
         logger.info(d);
     }
-    
+
     /**
-     * Otestuje vložení prvku na konec seznamu.
+     * Tests the add method.
      */
     public static void addTestCase() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
-        // přidání několika prvků na konec seznamu
+        // adding some elements at the end of the list
         a = new ArrayList<>();
         b = new DummyObject("first", 1);
         a.add(b);
@@ -106,63 +102,63 @@ public class ArrayListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje vložení prvku na zadaný index.
+     * Tests the add method with index as a parameter.
      */
     public static void addTestCase2() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
         a = new ArrayList<>();
-        // přidání prvku na začátek
+        // adding an element at the beginning
         b = new DummyObject("first", 1);
         a.add(0, b);
         c = a.toString();
         logger.info(c);
-        // přidání prvku na konec
+        // adding an element at the end
         b = new DummyObject("second", 2);
         a.add(1, b);
         c = a.toString();
         logger.info(c);
-        // přidání prvku na začátek
+        // adding an element at the beginning
         b = new DummyObject("third", 3);
         a.add(0, b);
         c = a.toString();
         logger.info(c);
-        // přidání prvku doprostřed
+        // adding an element in the middle
         b = new DummyObject("fourth", 4);
         a.add(1, b);
         c = a.toString();
         logger.info(c);
-        // přidání prvku doprostřed
+        // adding an element in the middle
         b = new DummyObject("fifth", 5);
         a.add(2, b);
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje výběr prvku ze seznamu.
+     * Tests the get method.
      */
     public static void getTestCase() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
         a = new ArrayList<>();
-        // výběr ze začátku seznamu
+        // getting an element from the beginning
         b = new DummyObject("first", 1);
         a.add(b);
         b = a.get(0);
         c = b.toString();
         logger.info(c);
-        // výběr ze začátku seznamu (více prvků v seznamu)
+        // getting an element from the beginning (more elements in the list)
         b = new DummyObject("second", 2);
         a.add(b);
         b = a.get(0);
         c = b.toString();
         logger.info(c);
-        // výběr z konce seznamu
+        // getting an element from the end
         b = a.get(1);
         c = b.toString();
         logger.info(c);
@@ -172,18 +168,18 @@ public class ArrayListTest {
         a.add(b);
         b = new DummyObject("fifth", 5);
         a.add(b);
-        // výběr ze začátku seznamu
+        // getting an element from the beginning
         b = a.get(0);
         c = b.toString();
         logger.info(c);
-        // výběr z konce seznamu
+        // getting an element from the end
         b = a.get(4);
         c = b.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje nastavení prvku seznamu.
+     * Tests the set method.
      */
     public static void setTestCase() {
         ArrayList<DummyObject> a;
@@ -201,24 +197,24 @@ public class ArrayListTest {
         b = new DummyObject("fifth", 5);
         a.add(b);
         b = new DummyObject("sixth", 6);
-        // nahrazení prvku na začátku seznamu
+        // replacing an element at the beginning
         a.set(0, b);
         c = a.toString();
         logger.info(c);
-        // nahrazení prvku uprostřed seznamu
+        // replacing an element in the middle
         b = new DummyObject("seventh", 7);
         a.set(2, b);
         c = a.toString();
         logger.info(c);
-        // nahrazení prvku na konci seznamu
+        // replacing an element at the end
         b = new DummyObject("eighth", 8);
         a.set(4, b);
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje odstranění prvku seznamu.
+     * Tests the remove method.
      */
     public static void removeTestCase() {
         ArrayList<DummyObject> a;
@@ -234,108 +230,103 @@ public class ArrayListTest {
         b = new DummyObject("fourth", 4);
         a.add(b);
         b = new DummyObject("fifth", 5);
-        // odstranění prvku na začátku seznamu
+        // removing an element from the beginning
         a.add(b);
         a.remove(0);
         c = a.toString();
         logger.info(c);
-        // odstranění prvku uprostřed seznamu
+        // removing the element from the middle
         a.remove(1);
         c = a.toString();
         logger.info(c);
-        // odstranění prvku na konci seznamu
+        // removing an element from the end
         a.remove(2);
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění velikosti seznamu.
+     * Tests the size method.
      */
     public static void sizeTestCase() {
         ArrayList<DummyObject> a;
         DummyObject b;
         int c;
         a = new ArrayList<>();
-        // velikost na počátku
+        // size in the beginning
         c = a.size();
         logger.info(c);
         b = new DummyObject("first", 1);
-        // velikost po přidání jednoho prvku
+        // size after adding one element
         a.add(b);
         c = a.size();
         logger.info(c);
-        // velikost po přidání více prvků
+        // size after adding more elements
         b = new DummyObject("second", 2);
         a.add(b);
         b = new DummyObject("third", 3);
         a.add(b);
         c = a.size();
         logger.info(c);
-        // velikost po odstranění jednoho prvku
+        // size after removing one element
         a.remove(0);
         c = a.size();
         logger.info(c);
-        // velikost po odstranění více prvků
+        // size after removing more elements
         a.remove(0);
         a.remove(0);
         c = a.size();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění, zda je seznam prázdný.
+     * Tests the isEmpty method.
      */
     public static void isEmptyTestCase() {
         ArrayList<DummyObject> a;
         DummyObject b;
         boolean c;
         a = new ArrayList<>();
-        // test zaplnění seznamu na počátku
         c = a.isEmpty();
         logger.info(c);
-        // test zaplnění seznamu po přidání jednoho prvku
         b = new DummyObject("first", 1);
         a.add(b);
         c = a.isEmpty();
         logger.info(c);
-        // test zaplnění seznamu po přidání více prvků
         b = new DummyObject("second", 2);
         a.add(b);
         b = new DummyObject("third", 3);
         a.add(b);
         c = a.isEmpty();
         logger.info(c);
-        // test zaplnění seznamu po odstranění jednoho prvku
         a.remove(0);
         c = a.isEmpty();
         logger.info(c);
-        // test zaplnění seznamu po odstranění více prvků
         a.remove(0);
         a.remove(0);
         c = a.isEmpty();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje odstranění všech prvků seznamu.
+     * Tests the clear method.
      */
     public static void clearTestCase() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
         a = new ArrayList<>();
-        // vyčištění seznamu na počátku
+        // clear in the beginning
         a.clear();
         c = a.toString();
         logger.info(c);
-        // vyčištění seznamu po přidání jednoho prvku
+        // clear after adding one element
         b = new DummyObject("first", 1);
         a.add(b);
         a.clear();
         c = a.toString();
         logger.info(c);
-        // vyčištění seznamu po přidání několika prvků
+        // clear after adding more elements
         b = new DummyObject("first", 1);
         a.add(b);
         b = new DummyObject("second", 2);
@@ -346,24 +337,24 @@ public class ArrayListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace seznamu.
+     * Tests the toString method.
      */
     public static void toStringTestCase() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
-        // podpis prázdného seznamu
+        // the text representation of an empty list
         a = new ArrayList<>();
         c = a.toString();
         logger.info(c);
-        // podpis seznamu s jedním prvkem
+        // the text representation of a list with one element
         b = new DummyObject("first", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        // podpis seznamu s několika prvky
+        // the text representation of a list with some elements
         b = new DummyObject("second", 2);
         a.add(b);
         b = new DummyObject("third", 3);
@@ -371,5 +362,5 @@ public class ArrayListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
 }

@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny String.
+ * The {@code StringTest} class performs automatic testing of the {@code String}
+ * class.
  *
  * @author Petr Kozler
  */
 public class StringTest {
-    
+
     public static Logger logger = LogManager.getLogger(StringTest.class.getName());
-    
+
     public static void runTestSuite() {
         StringTest.stringTestCase();
         StringTest.stringTestCase2();
@@ -40,187 +36,182 @@ public class StringTest {
         StringTest.isEmptyTestCase();
         StringTest.toStringTestCase();
     }
-    
+
     /**
-     * Otestuje vytvoření řetězce z literálu.
+     * Tests the constructor with standard string as a parameter.
      */
     public static void stringTestCase() {
         String a;
-        // řetězec s bílými znaky
+        // a string with whitespaces
         a = "This is a test.";
         logger.info(a);
-        // písmena
+        // letters
         a = "test";
         logger.info(a);
-        // číslice
+        // digits
         a = "1234";
         logger.info(a);
-        // jeden znak
+        // one char
         a = "a";
         logger.info(a);
-        // žádný znak
+        // empty string
         a = "";
         logger.info(a);
     }
-    
+
     /**
-     * Otestuje vytvoření řetězce z pole bytů.
+     * Tests the constructor with array of bytes as a parameter.
      */
     public static void stringTestCase2() {
-        byte[] a; 
+        byte[] a;
         String b;
-        // pole s větším počtem prvků včetně bílých znaků
+        // array with some whitespaces
         a = new byte[]{'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 't', 'e', 's', 't', '.'};
         b = new String(a);
         logger.info(b);
-        // pole bez bílých znaků
+        // array without whitespaces
         a = new byte[]{'1', '2', '3', '4'};
         b = new String(a);
         logger.info(b);
-        // prázdné pole
+        // empty array
         a = new byte[]{};
         b = new String(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření řetězce ze zadaného počtu bytů v poli od zadaného indexu.
+     * Tests the constructor with array of bytes and indexes as parameters.
      */
     public static void stringTestCase3() {
-        byte[] a; 
+        byte[] a;
         String b;
-        // zvolení části pole s větším počtem znaků
+        // choosing a part of array with some chars
         a = new byte[]{'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 't', 'e', 's', 't', '.'};
         b = new String(a, 10, 4);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje porovnání dvou řetězců.
+     * Tests the compareTo method.
      */
     public static void compareToTestCase() {
         String a, b;
         int c;
-        // rozdílné řetězce od začátku
+        // differens strings at the beginning
         a = "aaa";
         b = "bbb";
         c = a.compareTo(b);
         logger.info(c);
-        // rozdílné řetězce na konci
+        // different strings at the end
         a = "aaaa";
         b = "aaab";
         c = a.compareTo(b);
         logger.info(c);
-        // rozdílné řetězce od začátku (prohozené)
+        // differens strings at the beginning (swapped)
         a = "bbb";
         b = "aaa";
         c = a.compareTo(b);
         logger.info(c);
-        // rozdílné řetězce na konci (prohozené)
+        // different strings at the end (swapped)
         a = "aaab";
         b = "aaaa";
         c = a.compareTo(b);
         logger.info(c);
-        // shodné řetězce
+        // equal strings
         a = "aaa";
         b = "aaa";
         c = a.compareTo(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou řetězců.
+     * Tests the equals method.
      */
     public static void equalsTestCase() {
         String a, b;
         boolean c;
-        // rozdílné řetězce od začátku
         a = "aaa";
         b = "bbb";
         c = a.equals(b);
         logger.info(c);
-        // rozdílné řetězce na konci
         a = "aaaa";
         b = "aaab";
         c = a.equals(b);
         logger.info(c);
-        // rozdílné řetězce od začátku (prohozené)
         a = "bbb";
         b = "aaa";
         c = a.equals(b);
         logger.info(c);
-        // rozdílné řetězce na konci (prohozené)
         a = "aaab";
         b = "aaaa";
         c = a.equals(b);
         logger.info(c);
-        // shodné řetězce
         a = "aaa";
         b = "aaa";
         c = a.equals(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje získání podřetězce od zadaného indexu.
+     * Tests the substring method.
      */
     public static void substringTestCase() {
         String a, b;
         a = "This is a test.";
-        // řetězec od počátku
+        // string from the beginning
         b = a.substring(0);
         logger.info(b);
-        // řetězec od jiné pozice
+        // string from some other position
         b = a.substring(10);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje získání podřetězce zadané délky od zadaného indexu.
+     * Tests the substring method with end index as a parameter.
      */
     public static void substringTestCase2() {
         String a, b;
         a = "This is a test.";
-        // řetězec od počátku do pozice blízké počátku
+        // string from the beginning to the position near the beginning
         b = a.substring(0, 4);
         logger.info(b);
-        // řetězec od pozice vzdálenější počátku
+        // string from the beginning to the position far from the beginning
         b = a.substring(10, 14);
         logger.info(b);
-        // řetězec z konce
+        // string from the end
         b = a.substring(14, 15);
         logger.info(b);
-        // stejná počáteční i konečná pozice
+        // equal indexes
         b = a.substring(10, 10);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje určení indexu prvního výskytu znaku.
+     * Tests the indexOf method with a char value.
      */
     public static void indexOfTestCase() {
         String a;
         int b;
         a = "This is a test.";
-        // znak vyskytující se jednou (uvnitř)
+        // char occurring once
         b = a.indexOf('a');
         logger.info(b);
-        // znak vyskytující se vícekrát
+        // char occuring more times
         b = a.indexOf('t');
         logger.info(b);
-        // znak vyskytující se jednou (na začátku)
+        // char occurring once (at the beginning)
         b = a.indexOf('T');
         logger.info(b);
-        // znak vyskytující se jednou (na konci)
+        // char occurring once (at the end)
         b = a.indexOf('.');
         logger.info(b);
-        // nevyskytující se znak
+        // char not occurring
         b = a.indexOf('_');
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje určení indexu prvního výskytu znaku od zadané pozice v řetězci.
+     * Tests the indexOf method with a char value and end index as a parameter.
      */
     public static void indexOfTestCase2() {
         String a;
@@ -237,27 +228,27 @@ public class StringTest {
         b = a.indexOf('i', 10);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje určení indexu prvního výskytu podřetězce.
+     * Tests the indexOf method with a string.
      */
     public static void indexOfTestCase3() {
         String a;
         int b;
         a = "This is a test.";
-        // vyskytující se řetězec (na začátku)
+        // occurring string (at the beginning)
         b = a.indexOf("This");
         logger.info(b);
-        // vyskytující se řetězec (na konci)
+        // occurring string (at the end)
         b = a.indexOf("test");
         logger.info(b);
-        // nevyskytující se řetězec
+        // non-occurring string
         b = a.indexOf("aaa");
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje určení indexu prvního výskytu podřetězce od zadané pozice v řetězci.
+     * Tests the indexOf method with a string and end index as a parameter.
      */
     public static void indexOfTestCase4() {
         String a;
@@ -270,209 +261,203 @@ public class StringTest {
         b = a.indexOf("This", 10);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje určení délky řetězce.
+     * Tests the length method.
      */
     public static void lengthTestCase() {
         String a;
         int b;
-        // řetězec o nenulové délce
+        // string with multiple chars
         a = "This is a test.";
         b = a.length();
         logger.info(b);
-        // řetězec o délce jednoho znaku
+        // string with one char
         a = ".";
         b = a.length();
         logger.info(b);
-        // řetězec o nulové délce
+        // empty string
         a = "";
         b = a.length();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje odstranění bílých znaků ze začátku a konce řetězce.
+     * Tests the trim method.
      */
     public static void trimTestCase() {
         String a, b;
-        // řetězec bez bílých znaků
+        // string without whitespaces
         a = "test";
         b = a.trim();
         logger.info(b);
-        // levostranné bílé znaky
+        // whitespaces on the left side
         a = "   test";
         b = a.trim();
         logger.info(b);
-        // pravostranné bílé znaky
+        // whitespaces on the right side
         a = "test   ";
         b = a.trim();
         logger.info(b);
-        // oboustranné bílé znaky
+        // whitespaces on bots sides
         a = " test ";
         b = a.trim();
         logger.info(b);
-        // bílé znaky uvnitř
+        // whitespaces inside
         a = "t e s t";
         b = a.trim();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje převod řětezce na malá písmena.
+     * Tests the toLower method.
      */
     public static void toLowerCaseTestCase() {
         String a, b;
-        // všechna písmena malá
+        // all letters lowercase
         a = "test";
         b = a.toLowerCase();
         logger.info(b);
-        // všechna písmena velká
+        // all letters uppercase
         a = "TEST";
         b = a.toLowerCase();
         logger.info(b);
-        // různá velikost písmen
+        // different cases
         a = "TesT";
         b = a.toLowerCase();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje převod řětezce na velká písmena.
+     * Tests the toUpper method.
      */
     public static void toUpperCaseTestCase() {
         String a, b;
-        // všechna písmena malá
         a = "test";
         b = a.toUpperCase();
         logger.info(b);
-        // všechna písmena velká
         a = "TEST";
         b = a.toUpperCase();
         logger.info(b);
-        // různá velikost písmen
         a = "TesT";
         b = a.toUpperCase();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje získání znaku na určitém indexu řetězce.
+     * Tests the charAt method.
      */
     public static void charAtTestCase() {
         String a;
         char b;
         a = "This is a test.";
-        // na počátku
+        // at the beginning
         b = a.charAt(0);
         logger.info(b);
-        // uvnitř
+        // in the middle
         b = a.charAt(10);
         logger.info(b);
-        // na konci
+        // at the end
         b = a.charAt(14);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje nahrazení všech výskytů zadaného znaku v řetězci druhým zadaným znakem.
+     * Tests the replace method.
      */
     public static void replaceTestCase() {
         String a, b;
         a = "This is a test.";
-        // nahrazení znaků uvnitř řetězce
+        // replacing chars inside the string
         b = a.replace(' ', '_');
         logger.info(b);
-        // nahrazení znaku z počátku
+        // replacing chars in the beginning of the string
         b = a.replace('T', 't');
         logger.info(b);
-        // nahrazení znaku z konce
+        // replacing chars in the end of the string
         b = a.replace('.', '!');
         logger.info(b);
-        // nahrazení neexistujícího znaku
+        // replacing of the non-existent chars
         b = a.replace('?', ':');
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje zjištění, zda řetězec začíná zadaným podřetězcem.
+     * Tests the startsWith method.
      */
     public static void startsWithTestCase() {
         String a, b;
         boolean c;
         a = "This is a test.";
-        // řetězec na začátku
+        // string at the beginning
         b = "This ";
         c = a.startsWith(b);
         logger.info(c);
-        // řetězec uvnitř
+        // string inside
         b = "is";
         c = a.startsWith(b);
         logger.info(c);
-        // řetězec na konci
+        // string at the end
         b = "test.";
         c = a.startsWith(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění, zda řetězec končí zadaným podřetězcem.
+     * Tests the endsWith method.
      */
     public static void endsWithTestCase() {
         String a, b;
         boolean c;
         a = "This is a test.";
-        // řetězec na začátku
         b = "This ";
         c = a.endsWith(b);
         logger.info(c);
-        // řetězec uvnitř
         b = "is";
         c = a.endsWith(b);
         logger.info(c);
-        // řetězec na konci
         b = "test.";
         c = a.endsWith(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění, zda je řetězec prázdný.
+     * Tests the isEmpty method.
      */
     public static void isEmptyTestCase() {
         String a;
         boolean b;
-        // neprázdný řetězec
+        // non-empty string
         a = "This is a test.";
         b = a.isEmpty();
         logger.info(b);
-        // neprázdný řetězec s jediným znakem
+        // non-empty string with a single char
         a = ".";
         b = a.isEmpty();
         logger.info(b);
-        // prázdný řetězec
+        // empty string
         a = "";
         b = a.isEmpty();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje získání textové reprezentace v podobě standardního řetězce.
+     * Tests the toString method.
      */
     public static void toStringTestCase() {
         String a, b;
-        // několik znaků
+        // multiple chars
         a = "This is a test.";
         b = a.toString();
         logger.info(b);
-        // jeden znak
+        // one char
         a = ".";
         b = a.toString();
         logger.info(b);
-        // žádný znak
+        // no char
         a = "";
         b = a.toString();
         logger.info(b);
     }
-    
+
 }

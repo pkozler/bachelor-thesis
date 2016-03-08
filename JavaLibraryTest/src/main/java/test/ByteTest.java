@@ -1,190 +1,205 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny Byte.
+ * The {@code ByteTest} class performs automatic testing of the {@code Byte}
+ * class.
  *
  * @author Petr Kozler
  */
 public class ByteTest {
-    
+
     public static Logger logger = LogManager.getLogger(ByteTest.class.getName());
-    
+
     public static void runTestSuite() {
-        ByteTest.byteTestCase();
         ByteTest.byteValueTestCase();
         ByteTest.compareToTestCase();
+        ByteTest.compareTestCase();
         ByteTest.equalsTestCase();
         ByteTest.toStringTestCase();
         ByteTest.toStringTestCase2();
         ByteTest.parseByteTestCase();
     }
-    
+
     /**
-     * Otestuje vytvoření hodnoty.
-     */
-    public static void byteTestCase() {
-        // otestováno pomocí testu získání hodnoty
-    }
-    
-    /**
-     * Otestuje získání hodnoty příslušného vestavěného datového typu.
+     * Tests the byteValue method.
      */
     public static void byteValueTestCase() {
         Byte a;
         byte b;
-        // test nejmenší možné hodnoty
+        // minimal value
         a = new Byte(Byte.MIN_VALUE);
         b = a.byteValue();
         logger.info(b);
-        // test nulové hodnoty
-        a = new Byte((byte)0);
+        // zero value
+        a = new Byte((byte) 0);
         b = a.byteValue();
         logger.info(b);
-        // test největší možné hodnoty
+        // maximal value
         a = new Byte(Byte.MAX_VALUE);
         b = a.byteValue();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje porovnání dvou hodnot.
+     * Tests the compareTo method.
      */
     public static void compareToTestCase() {
         Byte a, b;
         int c;
-        // nejmenší hodnota a větší záporná hodnota
+        // minimal and bigger negative value
         a = new Byte(Byte.MIN_VALUE);
-        b = new Byte((byte)-1);
+        b = new Byte((byte) -1);
         c = a.compareTo(b);
         logger.info(c);
-        // největší hodnota a menší kladná hodnota
+        // maximal and smaller positive value
         a = new Byte(Byte.MAX_VALUE);
-        b = new Byte((byte)1);
+        b = new Byte((byte) 1);
         c = a.compareTo(b);
         logger.info(c);
-        // nulová a kladná hodnota
-        a = new Byte((byte)0);
-        b = new Byte((byte)1);
+        // zero and positive value
+        a = new Byte((byte) 0);
+        b = new Byte((byte) 1);
         c = a.compareTo(b);
         logger.info(c);
-        // nulová a záporná hodnota
-        a = new Byte((byte)0);
-        b = new Byte((byte)-1);
+        // zero and negative value
+        a = new Byte((byte) 0);
+        b = new Byte((byte) -1);
         c = a.compareTo(b);
         logger.info(c);
-        // dvě stejné kladné hodnoty
-        a = new Byte((byte)1);
-        b = new Byte((byte)1);
+        // both values are positive
+        a = new Byte((byte) 1);
+        b = new Byte((byte) 1);
         c = a.compareTo(b);
         logger.info(c);
-        // dvě stejné záporné hodnoty
-        a = new Byte((byte)-1);
-        b = new Byte((byte)-1);
+        // both values are negative
+        a = new Byte((byte) -1);
+        b = new Byte((byte) -1);
         c = a.compareTo(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou hodnot.
+     * Tests the compare method.
+     */
+    public static void compareTestCase() {
+        byte a, b;
+        int c;
+        a = Byte.MIN_VALUE;
+        b = (byte) -1;
+        c = Byte.compare(a, b);
+        logger.info(c);
+        a = Byte.MAX_VALUE;
+        b = (byte) 1;
+        c = Byte.compare(a, b);
+        logger.info(c);
+        a = (byte) 0;
+        b = (byte) 1;
+        c = Byte.compare(a, b);
+        logger.info(c);
+        a = (byte) 0;
+        b = (byte) -1;
+        c = Byte.compare(a, b);
+        logger.info(c);
+        a = (byte) 1;
+        b = (byte) 1;
+        c = Byte.compare(a, b);
+        logger.info(c);
+        a = (byte) -1;
+        b = (byte) -1;
+        c = Byte.compare(a, b);
+        logger.info(c);
+    }
+
+    /**
+     * Tests the equals method.
      */
     public static void equalsTestCase() {
         Byte a, b;
         boolean c;
-        // nejmenší hodnota a větší záporná hodnota
         a = new Byte(Byte.MIN_VALUE);
-        b = new Byte((byte)-1);
+        b = new Byte((byte) -1);
         c = a.equals(b);
         logger.info(c);
-        // největší hodnota a menší kladná hodnota
         a = new Byte(Byte.MAX_VALUE);
-        b = new Byte((byte)1);
+        b = new Byte((byte) 1);
         c = a.equals(b);
         logger.info(c);
-        // nulová a kladná hodnota
-        a = new Byte((byte)0);
-        b = new Byte((byte)1);
+        a = new Byte((byte) 0);
+        b = new Byte((byte) 1);
         c = a.equals(b);
         logger.info(c);
-        // nulová a záporná hodnota
-        a = new Byte((byte)0);
-        b = new Byte((byte)-1);
+        a = new Byte((byte) 0);
+        b = new Byte((byte) -1);
         c = a.equals(b);
         logger.info(c);
-        // dvě stejné kladné hodnoty
-        a = new Byte((byte)1);
-        b = new Byte((byte)1);
+        a = new Byte((byte) 1);
+        b = new Byte((byte) 1);
         c = a.equals(b);
         logger.info(c);
-        // dvě stejné záporné hodnoty
-        a = new Byte((byte)-1);
-        b = new Byte((byte)-1);
+        a = new Byte((byte) -1);
+        b = new Byte((byte) -1);
         c = a.equals(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace hodnoty.
+     * Tests the toString method.
      */
     public static void toStringTestCase() {
         Byte a;
         String b;
-        // podpis kladné hodnoty
-        a = new Byte((byte)100);
+        // positive value text representation
+        a = new Byte((byte) 100);
         b = a.toString();
         logger.info(b);
-        // podpis nulové hodnoty
-        a = new Byte((byte)0);
+        // zero value text representation
+        a = new Byte((byte) 0);
         b = a.toString();
         logger.info(b);
-        // podpis záporné hodnoty
-        a = new Byte((byte)-100);
+        // negative value text representation
+        a = new Byte((byte) -100);
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace hodnoty příslušného vestavěného datového typu.
+     * Tests the static toString method.
      */
     public static void toStringTestCase2() {
         Byte a;
         String b;
-        // podpis kladné hodnoty
-        a = new Byte((byte)100);
+        a = new Byte((byte) 100);
         b = Byte.toString(a);
         logger.info(b);
-        // podpis nulové hodnoty
-        a = new Byte((byte)0);
+        a = new Byte((byte) 0);
         b = Byte.toString(a);
         logger.info(b);
-        // podpis záporné hodnoty
-        a = new Byte((byte)-100);
+        a = new Byte((byte) -100);
         b = Byte.toString(a);
         logger.info(b);
     }
-    
+
+    /**
+     * Tests the parseByte method.
+     */
     public static void parseByteTestCase() {
         Byte a;
         byte b;
-        // převod kladné hodnoty
+        // positive value parsing
         a = Byte.parseByte("100");
         b = a.byteValue();
         logger.info(b);
-        // převod nulové hodnoty
+        // zero value parsing
         a = Byte.parseByte("0");
         b = a.byteValue();
         logger.info(b);
-        // převod záporné hodnoty
+        // negative value parsing
         a = Byte.parseByte("-100");
         b = a.byteValue();
         logger.info(b);
     }
-    
+
 }

@@ -1,76 +1,72 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny StringBuilder.
+ * The {@code StringBuilderTest} class performs automatic testing of the
+ * {@code StringBuilder} class.
  *
  * @author Petr Kozler
  */
 public class StringBuilderTest {
-    
+
     public static Logger logger = LogManager.getLogger(StringBuilderTest.class.getName());
-    
+
     public static void runTestSuite() {
         StringBuilderTest.stringBuilderTestCase();
         StringBuilderTest.appendTestCase();
         StringBuilderTest.toStringTestCase();
     }
-    
+
     /**
-     * Otestuje vytvoření stringbuilderu.
+     * Tests the constructor.
      */
     public static void stringBuilderTestCase() {
         StringBuilder a;
         String b;
-        // nový prázdný stringbuilder
+        // new empty stringbuilder
         a = new StringBuilder();
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje připojení nového řetězce.
+     * Tests the append method.
      */
     public static void appendTestCase() {
         StringBuilder a;
         String b;
-        // připojení prázdného řetězce
+        // appending of empty string
         a = new StringBuilder();
         a.append("");
         b = a.toString();
         logger.info(b);
-        // připojení jednoho znaku
+        // appending of one char
         a = new StringBuilder();
         a.append(".");
         b = a.toString();
         logger.info(b);
-        // připojení více znaků
+        // appending of more chars
         a = new StringBuilder();
         a.append("test");
         b = a.toString();
         logger.info(b);
-        // vícenásobné připojení (prázdný řetězec na konci)
+        // multiple appendings (empty string at the beginning)
         a = new StringBuilder();
         a.append("test");
-        a.append(".");
-        a.append("");
-        b = a.toString();
-        logger.info(b);
-        // vícenásobné připojení (prázdný řetězec uprostřed)
-        a = new StringBuilder();
         a.append(".");
         a.append("");
+        b = a.toString();
+        logger.info(b);
+        // multiple appendings (empty string in the middle)
+        a = new StringBuilder();
+        a.append(".");
+        a.append("");
         a.append("test");
         b = a.toString();
         logger.info(b);
-        // vícenásobné připojení (prázdný řetězec na začátku)
+        // multiple appendings (empty string at the end)
         a = new StringBuilder();
         a.append("");
         a.append("test");
@@ -78,28 +74,28 @@ public class StringBuilderTest {
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření výsledného řetězce.
+     * Tests the toString method.
      */
     public static void toStringTestCase() {
         StringBuilder a;
         String b;
-        // připojení řetězce najednou
+        // appending a string at once
         a = new StringBuilder();
         a.append("This is a test");
         b = a.toString();
         logger.info(b);
-        // připojení řetězce po částech
+        // appending a string piecewise
         a = new StringBuilder();
         a.append("This").append(" is").append(" a").append(" test.");
         b = a.toString();
         logger.info(b);
-        // připojení řetězce po částech (větší počet)
+        // appending a string piecewise (more pieces)
         a = new StringBuilder();
         a.append("This").append(" ").append("is").append(" ").append("a").append(" ").append("test").append(".");
         b = a.toString();
         logger.info(b);
     }
-    
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import java.util.LinkedList;
@@ -10,14 +5,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny LinkedList.
+ * The {@code LinkedListTest} class performs automatic testing of the
+ * {@code LinkedList} class.
  *
  * @author Petr Kozler
  */
 public class LinkedListTest {
-    
+
     public static Logger logger = LogManager.getLogger(LinkedListTest.class.getName());
-    
+
     public static void runTestSuite() {
         LinkedListTest.linkedListTestCase();
         LinkedListTest.linkedListTestCase2();
@@ -31,9 +27,9 @@ public class LinkedListTest {
         LinkedListTest.clearTestCase();
         LinkedListTest.toStringTestCase();
     }
-    
+
     /**
-     * Otestuje vytvoření prázdného seznamu.
+     * Tests the constructor.
      */
     public static void linkedListTestCase() {
         LinkedList<DummyObject> a;
@@ -42,9 +38,9 @@ public class LinkedListTest {
         b = a.toString();
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření seznamu s prvky zkopírovanými z jiného seznamu.
+     * Tests the constructor with LinkedList as a parameter.
      */
     public static void linkedListTestCase2() {
         LinkedList<DummyObject> a, b;
@@ -71,9 +67,9 @@ public class LinkedListTest {
         d = b.toString();
         logger.info(d);
     }
-    
+
     /**
-     * Otestuje vložení prvku na konec seznamu.
+     * Tests the add method.
      */
     public static void addTestCase() {
         LinkedList<DummyObject> a;
@@ -101,9 +97,9 @@ public class LinkedListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje vložení prvku na zadaný index.
+     * Tests the add method with index as a parameter.
      */
     public static void addTestCase2() {
         LinkedList<DummyObject> a;
@@ -131,9 +127,9 @@ public class LinkedListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje výběr prvku ze seznamu.
+     * Tests the get method.
      */
     public static void getTestCase() {
         LinkedList<DummyObject> a;
@@ -166,9 +162,9 @@ public class LinkedListTest {
         c = b.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje nastavení prvku seznamu.
+     * Tests the set method.
      */
     public static void setTestCase() {
         LinkedList<DummyObject> a;
@@ -198,9 +194,9 @@ public class LinkedListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje odstranění prvku seznamu.
+     * Tests the remove method.
      */
     public static void removeTestCase() {
         LinkedList<DummyObject> a;
@@ -227,9 +223,9 @@ public class LinkedListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění velikosti seznamu.
+     * Tests the size method.
      */
     public static void sizeTestCase() {
         LinkedList<DummyObject> a;
@@ -256,9 +252,9 @@ public class LinkedListTest {
         c = a.size();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění, zda je seznam prázdný.
+     * Tests the isEmpty method.
      */
     public static void isEmptyTestCase() {
         LinkedList<DummyObject> a;
@@ -285,9 +281,9 @@ public class LinkedListTest {
         c = a.isEmpty();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje odstranění všech prvků seznamu.
+     * Tests the clear method.
      */
     public static void clearTestCase() {
         LinkedList<DummyObject> a;
@@ -312,9 +308,9 @@ public class LinkedListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace seznamu.
+     * Tests the toString method.
      */
     public static void toStringTestCase() {
         LinkedList<DummyObject> a;
@@ -338,5 +334,5 @@ public class LinkedListTest {
         c = a.toString();
         logger.info(c);
     }
-    
+
 }

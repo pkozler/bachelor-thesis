@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import java.util.Arrays;
@@ -10,14 +5,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny Arrays.
+ * The {@code ArraysTest} class performs automatic testing of the {@code Arrays}
+ * class.
  *
  * @author Petr Kozler
  */
 public class ArraysTest {
-    
+
     public static Logger logger = LogManager.getLogger(ArraysTest.class.getName());
-    
+
     public static void runTestSuite() {
         ArraysTest.binarySearchTestCase();
         ArraysTest.binarySearchTestCase2();
@@ -110,41 +106,42 @@ public class ArraysTest {
         ArraysTest.toStringTestCase8();
         ArraysTest.toStringTestCase9();
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli 8-bitových celých čísel.
+     * Tests the binarySearch method with array of bytes.
      */
     public static void binarySearchTestCase() {
         byte[] a;
         int b;
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         Arrays.sort(a);
-        // hledání existujícího prvku
-        b = Arrays.binarySearch(a, (byte)8);
+        // existing element search
+        b = Arrays.binarySearch(a, (byte) 8);
         logger.info(b);
-        // hledání neexistujícího prvku
-        b = Arrays.binarySearch(a, (byte)4);
+        // non-existent element search
+        b = Arrays.binarySearch(a, (byte) 4);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole 8-bitových celých čísel od zadaného indexu.
+     * Tests the binarySearch method with array of bytes and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase2() {
         byte[] a;
         int b;
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         Arrays.sort(a);
-        // hledání existujícího prvku v části pole
-        b = Arrays.binarySearch(a, 1, 4, (byte)8);
+        // existing element search
+        b = Arrays.binarySearch(a, 1, 4, (byte) 8);
         logger.info(b);
-        // hledání neexistujícího prvku v části pole
-        b = Arrays.binarySearch(a, 1, 4, (byte)4);
+        // non-existent element search in a part of array
+        b = Arrays.binarySearch(a, 1, 4, (byte) 4);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli znaků.
+     * Tests the binarySearch method with array of chars.
      */
     public static void binarySearchTestCase3() {
         char[] a;
@@ -156,9 +153,10 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 'd');
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole znaků od zadaného indexu.
+     * Tests the binarySearch method with array of chars and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase4() {
         char[] a;
@@ -170,9 +168,9 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 1, 4, 'd');
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli desetinných čísel s dvojitou přesností.
+     * Tests the binarySearch method with array of doubles.
      */
     public static void binarySearchTestCase5() {
         double[] a;
@@ -184,9 +182,10 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 4.0);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole desetinných čísel s dvojitou přesností od zadaného indexu.
+     * Tests the binarySearch method with array of doubles and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase6() {
         double[] a;
@@ -198,9 +197,9 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 1, 4, 4.0);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli desetinných čísel s jednoduchou přesností.
+     * Tests the binarySearch method with array of floats.
      */
     public static void binarySearchTestCase7() {
         float[] a;
@@ -212,9 +211,10 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 4.0F);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole desetinných čísel s jednoduchou přesností od zadaného indexu.
+     * Tests the binarySearch method with array of floats and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase8() {
         float[] a;
@@ -226,9 +226,9 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 1, 4, 4.0F);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli 32-bitových celých čísel.
+     * Tests the binarySearch method with array of ints.
      */
     public static void binarySearchTestCase9() {
         int[] a;
@@ -240,9 +240,10 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 4);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole 32-bitových celých čísel od zadaného indexu.
+     * Tests the binarySearch method with array of ints and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase10() {
         int[] a;
@@ -254,9 +255,9 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 1, 4, 4);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli 64-bitových celých čísel.
+     * Tests the binarySearch method with array of longs.
      */
     public static void binarySearchTestCase11() {
         long[] a;
@@ -268,9 +269,10 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 4L);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole 64-bitových celých čísel od zadaného indexu.
+     * Tests the binarySearch method with array of longs and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase12() {
         long[] a;
@@ -282,9 +284,9 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 1, 4, 4L);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli porovnatelných objektů.
+     * Tests the binarySearch method with array of objects.
      */
     public static void binarySearchTestCase13() {
         DummyObject[] a;
@@ -307,9 +309,10 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, new DummyObject("sixth", 4));
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole porovnatelných objektů od zadaného indexu.
+     * Tests the binarySearch method with array of objects and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase14() {
         DummyObject[] a;
@@ -332,37 +335,39 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 1, 4, new DummyObject("sixth", 4));
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli 16-bitových celých čísel.
+     * Tests the binarySearch method with array of shorts.
      */
     public static void binarySearchTestCase15() {
         short[] a;
         int b;
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         Arrays.sort(a);
-        b = Arrays.binarySearch(a, (short)8);
+        b = Arrays.binarySearch(a, (short) 8);
         logger.info(b);
-        b = Arrays.binarySearch(a, (short)4);
+        b = Arrays.binarySearch(a, (short) 4);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole 16-bitových celých čísel od zadaného indexu.
+     * Tests the binarySearch method with array of shorts and indexes as
+     * parameters.
      */
     public static void binarySearchTestCase16() {
         short[] a;
         int b;
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         Arrays.sort(a);
-        b = Arrays.binarySearch(a, 1, 4, (short)8);
+        b = Arrays.binarySearch(a, 1, 4, (short) 8);
         logger.info(b);
-        b = Arrays.binarySearch(a, 1, 4, (short)4);
+        b = Arrays.binarySearch(a, 1, 4, (short) 4);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v poli objektů podle zadaného komparátoru.
+     * Tests the binarySearch method with array of objects and comparator as a
+     * parameter.
      */
     public static void binarySearchTestCase17() {
         DummyObject[] a;
@@ -387,9 +392,10 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, new DummyObject("sixth", 4), c);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje binární vyhledávání v zadaném počtu prvků pole objektů podle zadaného komparátoru od zadaného indexu.
+     * Tests the binarySearch method with array of shorts and indexes and
+     * comparator as parameters.
      */
     public static void binarySearchTestCase18() {
         DummyObject[] a;
@@ -414,35 +420,35 @@ public class ArraysTest {
         b = Arrays.binarySearch(a, 1, 4, new DummyObject("sixth", 4), c);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole logických hodnot do druhého.
+     * Tests the copyOf method with array of booleans.
      */
     public static void copyOfTestCase() {
         boolean[] a, b;
         String c;
         a = new boolean[]{true, false, false, false, true};
-        // nové pole je kratší než původní
+        // new array is smaller
         b = Arrays.copyOf(a, 3);
         c = Arrays.toString(b);
         logger.info(c);
-        // nové pole je stejně dlouhé jako původní
+        // new array has the same length
         b = Arrays.copyOf(a, 5);
         c = Arrays.toString(b);
         logger.info(c);
-        // nové pole je delší než původní
+        // new array is bigger
         b = Arrays.copyOf(a, 7);
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole 8-bitových celých čísel do druhého.
+     * Tests the copyOf method with array of bytes.
      */
     public static void copyOfTestCase2() {
         byte[] a, b;
         String c;
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         b = Arrays.copyOf(a, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -453,9 +459,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole znaků do druhého.
+     * Tests the copyOf method with array of chars.
      */
     public static void copyOfTestCase3() {
         char[] a, b;
@@ -471,9 +477,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole desetinných čísel s dvojitou přesností do druhého.
+     * Tests the copyOf method with array of doubles.
      */
     public static void copyOfTestCase4() {
         double[] a, b;
@@ -489,9 +495,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole desetinných čísel s jednoduchou přesností do druhého.
+     * Tests the copyOf method with array of floats.
      */
     public static void copyOfTestCase5() {
         float[] a, b;
@@ -507,9 +513,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole 32-bitových celých čísel do druhého.
+     * Tests the copyOf method with array of ints.
      */
     public static void copyOfTestCase6() {
         int[] a, b;
@@ -525,9 +531,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole 64-bitových celých čísel do druhého.
+     * Tests the copyOf method with array of longs.
      */
     public static void copyOfTestCase7() {
         long[] a, b;
@@ -543,14 +549,14 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole 16-bitových celých čísel do druhého.
+     * Tests the copyOf method with array of shorts.
      */
     public static void copyOfTestCase8() {
         short[] a, b;
         String c;
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         b = Arrays.copyOf(a, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -561,9 +567,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu jednoho pole objektů do druhého.
+     * Tests the copyOf method with array of objects.
      */
     public static void copyOfTestCase9() {
         DummyObject[] a, b;
@@ -573,8 +579,7 @@ public class ArraysTest {
             new DummyObject("second", 2),
             new DummyObject("third", 8),
             new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-        };
+            new DummyObject("fifth", 6),};
         b = Arrays.copyOf(a, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -585,35 +590,35 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole logických hodnot od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of booleans.
      */
     public static void copyOfRangeTestCase1() {
         boolean[] a, b;
         String c;
         a = new boolean[]{true, false, false, false, true};
-        // kopírování od počátečního prvku
+        // copy from the beginning
         b = Arrays.copyOfRange(a, 0, 3);
         c = Arrays.toString(b);
         logger.info(c);
-        // kopírování od prostředního prvku
+        // copy from the middle
         b = Arrays.copyOfRange(a, 2, 5);
         c = Arrays.toString(b);
         logger.info(c);
-        // kopírování od posledního prvku
+        // copy from the end
         b = Arrays.copyOfRange(a, 4, 7);
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole 8-bitových celých čísel od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of bytes.
      */
     public static void copyOfRangeTestCase2() {
         byte[] a, b;
         String c;
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         b = Arrays.copyOfRange(a, 0, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -624,9 +629,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole znaků od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of chars.
      */
     public static void copyOfRangeTestCase3() {
         char[] a, b;
@@ -642,9 +647,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole desetinných čísel s dvojitou přesností od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of doubles.
      */
     public static void copyOfRangeTestCase4() {
         double[] a, b;
@@ -660,9 +665,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole desetinných čísel s jednoduchou přesností od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of floats.
      */
     public static void copyOfRangeTestCase5() {
         float[] a, b;
@@ -678,9 +683,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole 32-bitových celých čísel od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of ints.
      */
     public static void copyOfRangeTestCase6() {
         int[] a, b;
@@ -696,9 +701,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole 64-bitových celých čísel od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of longs.
      */
     public static void copyOfRangeTestCase7() {
         long[] a, b;
@@ -714,14 +719,14 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole 16-bitových celých čísel od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of shorts.
      */
     public static void copyOfRangeTestCase8() {
         short[] a, b;
         String c;
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         b = Arrays.copyOfRange(a, 0, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -732,9 +737,9 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje kopírování obsahu zadaného počtu prvků jednoho pole objektů od zadaného indexu do druhého pole.
+     * Tests the copyOfRange method with array of objects.
      */
     public static void copyOfRangeTestCase9() {
         DummyObject[] a, b;
@@ -744,8 +749,7 @@ public class ArraysTest {
             new DummyObject("second", 2),
             new DummyObject("third", 8),
             new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-        };
+            new DummyObject("fifth", 6),};
         b = Arrays.copyOfRange(a, 0, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -756,62 +760,62 @@ public class ArraysTest {
         c = Arrays.toString(b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí logických hodnot.
+     * Tests the equals method with array of booleans.
      */
     public static void equalsTestCase() {
         boolean[] a, b;
         boolean c;
         a = new boolean[]{true, false, false, false, true};
-        // odkaz na druhé pole je NULL
+        // reference to the second array is null
         b = null;
         c = Arrays.equals(a, b);
         logger.info(c);
-        // nové pole nemá stejnou velikost
+        // arrays do not have the same length
         b = new boolean[]{true};
         c = Arrays.equals(a, b);
         logger.info(c);
-        // nové pole má stejnou velikost ale nestejné prvky
+        // arrays have the same length but different elements
         b = new boolean[]{true, false, false, false, false};
         c = Arrays.equals(a, b);
         logger.info(c);
-        // nové pole má stejnou velikost i totožné prvky
+        // arrays have the same length and elements
         b = new boolean[]{true, false, false, false, true};
         c = Arrays.equals(a, b);
         logger.info(c);
-        // odkazy na obě pole se rovnají
+        // references are equal
         b = a;
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí 8-bitových celých čísel.
+     * Tests the equals method with array of bytes.
      */
     public static void equalsTestCase2() {
         byte[] a, b;
         boolean c;
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         b = null;
         c = Arrays.equals(a, b);
         logger.info(c);
-        b = new byte[]{(byte)3};
+        b = new byte[]{(byte) 3};
         c = Arrays.equals(a, b);
         logger.info(c);
-        b = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)3};
+        b = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 3};
         c = Arrays.equals(a, b);
         logger.info(c);
-        b = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        b = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         c = Arrays.equals(a, b);
         logger.info(c);
         b = a;
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí znaků.
+     * Tests the equals method with array of chars.
      */
     public static void equalsTestCase3() {
         char[] a, b;
@@ -833,9 +837,9 @@ public class ArraysTest {
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí desetinných čísel s dvojitou přesností.
+     * Tests the equals method with array of doubles.
      */
     public static void equalsTestCase4() {
         double[] a, b;
@@ -857,9 +861,9 @@ public class ArraysTest {
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí desetinných čísel s jednoduchou přesností.
+     * Tests the equals method with array of floats.
      */
     public static void equalsTestCase5() {
         float[] a, b;
@@ -881,9 +885,9 @@ public class ArraysTest {
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí 32-bitových celých čísel.
+     * Tests the equals method with array of ints.
      */
     public static void equalsTestCase6() {
         int[] a, b;
@@ -905,9 +909,9 @@ public class ArraysTest {
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí 64-bitových celých čísel.
+     * Tests the equals method with array of longs.
      */
     public static void equalsTestCase7() {
         long[] a, b;
@@ -929,9 +933,9 @@ public class ArraysTest {
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí objektů.
+     * Tests the equals method with array of objects.
      */
     public static void equalsTestCase8() {
         DummyObject[] a, b;
@@ -941,8 +945,7 @@ public class ArraysTest {
             new DummyObject("second", 2),
             new DummyObject("third", 8),
             new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-        };
+            new DummyObject("fifth", 6),};
         b = null;
         c = Arrays.equals(a, b);
         logger.info(c);
@@ -956,8 +959,7 @@ public class ArraysTest {
             new DummyObject("second", 2),
             new DummyObject("third", 8),
             new DummyObject("fourth", 7),
-            new DummyObject("fifth", 3),
-        };
+            new DummyObject("fifth", 3),};
         c = Arrays.equals(a, b);
         logger.info(c);
         b = new DummyObject[]{
@@ -973,83 +975,83 @@ public class ArraysTest {
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje zjištění rovnosti dvou polí 16-bitových celých čísel.
+     * Tests the equals method with array of shorts.
      */
     public static void equalsTestCase9() {
         short[] a, b;
         boolean c;
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         b = null;
         c = Arrays.equals(a, b);
         logger.info(c);
-        b = new short[]{(short)3};
+        b = new short[]{(short) 3};
         c = Arrays.equals(a, b);
         logger.info(c);
-        b = new short[]{(short)3, (short)2, (short)8, (short)7, (short)3};
+        b = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 3};
         c = Arrays.equals(a, b);
         logger.info(c);
-        b = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        b = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         c = Arrays.equals(a, b);
         logger.info(c);
         b = a;
         c = Arrays.equals(a, b);
         logger.info(c);
     }
-    
+
     /**
-     * Otestuje naplnění pole logických hodnot zadaným prvkem.
+     * Tests the fill method with array of booleans.
      */
     public static void fillTestCase() {
         boolean[] a;
         String b;
-        // pole pro naplnění
+        // the array for filling
         a = new boolean[5];
         Arrays.fill(a, true);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole logických hodnot od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of booleans and indexes as parameters.
      */
     public static void fillTestCase2() {
         boolean[] a;
         String b;
-        // pole pro naplnění uprostřed
+        // the array for partial filling
         a = new boolean[5];
         Arrays.fill(a, 1, 4, true);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole 8-bitových celých čísel zadaným prvkem.
+     * Tests the fill method with array of bytes.
      */
     public static void fillTestCase3() {
         byte[] a;
         String b;
         a = new byte[5];
-        Arrays.fill(a, (byte)8);
+        Arrays.fill(a, (byte) 8);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole 8-bitových celých čísel od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of bytes and indexes as parameters.
      */
     public static void fillTestCase4() {
         byte[] a;
         String b;
         a = new byte[5];
-        Arrays.fill(a, 1, 4, (byte)8);
+        Arrays.fill(a, 1, 4, (byte) 8);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole znaků zadaným prvkem.
+     * Tests the fill method with array of chars.
      */
     public static void fillTestCase5() {
         char[] a;
@@ -1059,9 +1061,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole znaků od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of chars and indexes as parameters.
      */
     public static void fillTestCase6() {
         char[] a;
@@ -1071,9 +1073,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole desetinných čísel s dvojitou přesností zadaným prvkem.
+     * Tests the fill method with array of doubles.
      */
     public static void fillTestCase7() {
         double[] a;
@@ -1083,9 +1085,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole desetinných čísel s dvojitou přesností od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of doubles and indexes as parameters.
      */
     public static void fillTestCase8() {
         double[] a;
@@ -1095,9 +1097,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole desetinných čísel s jednoduchou přesností zadaným prvkem.
+     * Tests the fill method with array of floats.
      */
     public static void fillTestCase9() {
         float[] a;
@@ -1107,9 +1109,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole desetinných čísel s jednoduchou přesností od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of floats and indexes as parameters.
      */
     public static void fillTestCase10() {
         float[] a;
@@ -1119,9 +1121,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole 32-bitových celých čísel zadaným prvkem.
+     * Tests the fill method with array of ints.
      */
     public static void fillTestCase11() {
         int[] a;
@@ -1131,9 +1133,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole 32-bitových celých čísel od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of ints and indexes as parameters.
      */
     public static void fillTestCase12() {
         int[] a;
@@ -1143,9 +1145,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole 64-bitových celých čísel zadaným prvkem.
+     * Tests the fill method with array of longs.
      */
     public static void fillTestCase13() {
         long[] a;
@@ -1155,9 +1157,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole 64-bitových celých čísel od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of longs and indexes as parameters.
      */
     public static void fillTestCase14() {
         long[] a;
@@ -1167,9 +1169,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole objektů zadaným prvkem.
+     * Tests the fill method with array of objects.
      */
     public static void fillTestCase15() {
         DummyObject[] a;
@@ -1179,9 +1181,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole objektů od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of objects and indexes as parameters.
      */
     public static void fillTestCase16() {
         DummyObject[] a;
@@ -1191,59 +1193,59 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění pole 16-bitových celých čísel zadaným prvkem.
+     * Tests the fill method with array of shorts.
      */
     public static void fillTestCase17() {
         short[] a;
         String b;
         a = new short[5];
-        Arrays.fill(a, (short)8);
+        Arrays.fill(a, (short) 8);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje naplnění zadaného počtu prvků pole 16-bitových celých čísel od zadaného indexu zadaným prvkem.
+     * Tests the fill method with array of shorts and indexes as parameters.
      */
     public static void fillTestCase18() {
         short[] a;
         String b;
         a = new short[5];
-        Arrays.fill(a, 1, 4, (short)8);
+        Arrays.fill(a, 1, 4, (short) 8);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole 8-bitových celých čísel.
+     * Tests the sort method with array of bytes.
      */
     public static void sortTestCase() {
         byte[] a;
         String b;
-        // pole pro seřazení
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        // the array for sorting
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         Arrays.sort(a);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole 8-bitových celých čísel od zadaného indexu.
+     * Tests the sort method with array of bytes and indexes as parameters.
      */
     public static void sortTestCase2() {
         byte[] a;
         String b;
-        // pole pro částečné seřazení
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        // the array for partial sorting
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         Arrays.sort(a, 1, 4);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole znaků.
+     * Tests the sort method with array of chars.
      */
     public static void sortTestCase3() {
         char[] a;
@@ -1253,9 +1255,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole znaků od zadaného indexu.
+     * Tests the sort method with array of chars and indexes as parameters.
      */
     public static void sortTestCase4() {
         char[] a;
@@ -1265,9 +1267,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole desetinných čísel s dvojitou přesností.
+     * Tests the sort method with array of doubles.
      */
     public static void sortTestCase5() {
         double[] a;
@@ -1277,9 +1279,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole desetinných čísel s dvojitou přesností od zadaného indexu.
+     * Tests the sort method with array of doubles and indexes as parameters.
      */
     public static void sortTestCase6() {
         double[] a;
@@ -1289,9 +1291,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole desetinných čísel s jednoduchou přesností.
+     * Tests the sort method with array of floats.
      */
     public static void sortTestCase7() {
         float[] a;
@@ -1301,9 +1303,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole desetinných čísel s jednoduchou přesností od zadaného indexu.
+     * Tests the sort method with array of floats and indexes as parameters.
      */
     public static void sortTestCase8() {
         float[] a;
@@ -1313,9 +1315,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole 32-bitových celých čísel.
+     * Tests the sort method with array of ints.
      */
     public static void sortTestCase9() {
         int[] a;
@@ -1325,9 +1327,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole 32-bitových celých čísel od zadaného indexu.
+     * Tests the sort method with array of ints and indexes as parameters.
      */
     public static void sortTestCase10() {
         int[] a;
@@ -1337,9 +1339,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole 64-bitových celých čísel.
+     * Tests the sort method with array of longs.
      */
     public static void sortTestCase11() {
         long[] a;
@@ -1349,9 +1351,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole 64-bitových celých čísel od zadaného indexu.
+     * Tests the sort method with array of longs and indexes as parameters.
      */
     public static void sortTestCase12() {
         long[] a;
@@ -1361,9 +1363,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole porovnatelných objektů.
+     * Tests the sort method with array of objects.
      */
     public static void sortTestCase13() {
         DummyObject[] a;
@@ -1384,9 +1386,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole porovnatelných objektů od zadaného indexu.
+     * Tests the sort method with array of objects and indexes as parameters.
      */
     public static void sortTestCase14() {
         DummyObject[] a;
@@ -1407,33 +1409,34 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole 16-bitových celých čísel.
+     * Tests the sort method with array of shorts.
      */
     public static void sortTestCase15() {
         short[] a;
         String b;
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         Arrays.sort(a);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole 16-bitových celých čísel od zadaného indexu.
+     * Tests the sort method with array of shorts and indexes as parameters.
      */
     public static void sortTestCase16() {
         short[] a;
         String b;
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         Arrays.sort(a, 1, 4);
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení pole objektů podle zadaného komparátoru.
+     * Tests the sort method with array of objects and comparator as a
+     * parameter.
      */
     public static void sortTestCase17() {
         DummyObject[] a;
@@ -1456,9 +1459,10 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje řazení zadaného počtu prvků pole objektů podle zadaného komparátoru od zadaného indexu.
+     * Tests the sort method with array of objects and indexes and comparator as
+     * parameters.
      */
     public static void sortTestCase18() {
         DummyObject[] a;
@@ -1481,29 +1485,29 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole logických hodnot.
+     * Tests the toString method with array of booleans.
      */
     public static void toStringTestCase() {
         boolean[] a;
         String b;
-        // podpis prázdného pole
+        // the text represenation of an empty array
         a = new boolean[]{};
         b = Arrays.toString(a);
         logger.info(b);
-        // podpis pole s jedním prvkem
+        // the text represenation of an array with one element
         a = new boolean[]{true};
         b = Arrays.toString(a);
         logger.info(b);
-        // podpis pole s několika prvky
+        // the text represenation of an array with some elements
         a = new boolean[]{true, false, false, false, true};
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole 8-bitových celých čísel.
+     * Tests the toString method with array of bytes.
      */
     public static void toStringTestCase2() {
         byte[] a;
@@ -1511,16 +1515,16 @@ public class ArraysTest {
         a = new byte[]{};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new byte[]{(byte)3};
+        a = new byte[]{(byte) 3};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new byte[]{(byte)3, (byte)2, (byte)8, (byte)7, (byte)6};
+        a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole znaků.
+     * Tests the toString method with array of chars.
      */
     public static void toStringTestCase3() {
         char[] a;
@@ -1535,9 +1539,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole desetinných čísel s dvojitou přesností.
+     * Tests the toString method with array of doubles.
      */
     public static void toStringTestCase4() {
         double[] a;
@@ -1552,9 +1556,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole desetinných čísel s jednoduchou přesností.
+     * Tests the toString method with array of floats.
      */
     public static void toStringTestCase5() {
         float[] a;
@@ -1569,9 +1573,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole 32-bitových celých čísel.
+     * Tests the toString method with array of ints.
      */
     public static void toStringTestCase6() {
         int[] a;
@@ -1586,9 +1590,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole 64-bitových celých čísel.
+     * Tests the toString method with array of longs.
      */
     public static void toStringTestCase7() {
         long[] a;
@@ -1603,9 +1607,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole objektů.
+     * Tests the toString method with array of objects.
      */
     public static void toStringTestCase8() {
         DummyObject[] a;
@@ -1629,9 +1633,9 @@ public class ArraysTest {
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
     /**
-     * Otestuje vytvoření textové reprezentace pole 16-bitových celých čísel.
+     * Tests the toString method with array of shorts.
      */
     public static void toStringTestCase9() {
         short[] a;
@@ -1639,12 +1643,12 @@ public class ArraysTest {
         a = new short[]{};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new short[]{(short)3};
+        a = new short[]{(short) 3};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new short[]{(short)3, (short)2, (short)8, (short)7, (short)6};
+        a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
         b = Arrays.toString(a);
         logger.info(b);
     }
-    
+
 }

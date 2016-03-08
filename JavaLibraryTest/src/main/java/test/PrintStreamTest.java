@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Třída pro automatické testování knihovny PrintStream.
+ * The {@code PrintStreamTest} class performs automatic testing of the
+ * {@code PrintStream} class.
  *
  * @author Petr Kozler
  */
 public class PrintStreamTest {
-    
+
     public static Logger logger = LogManager.getLogger(PrintStreamTest.class.getName());
-    
+
     public static void runTestSuite() {
         PrintStreamTest.printTestCase();
         PrintStreamTest.printTestCase2();
@@ -38,13 +34,13 @@ public class PrintStreamTest {
         PrintStreamTest.printlnTestCase9();
         PrintStreamTest.printlnTestCase10();
     }
-    
+
     /**
-     * Otestuje výpis logické hodnoty.
+     * Tests the print method with a boolean value.
      */
     public static void printTestCase() {
         boolean a;
-        // výpisy obou logických hodnot
+        // print of boolean values
         a = true;
         System.out.print(a);
         System.out.println();
@@ -52,27 +48,27 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis znaku.
+     * Tests the print method with a char value.
      */
     public static void printTestCase2() {
         char a;
-        // výpis malých písmen
+        // print of lowercase letters
         a = 'a';
         System.out.print(a);
         System.out.println();
         a = 'z';
         System.out.print(a);
         System.out.println();
-        // výpis velkých písmen
+        // print of uppercase letters
         a = 'A';
         System.out.print(a);
         System.out.println();
         a = 'Z';
         System.out.print(a);
         System.out.println();
-        // výpis číslic
+        // print of digits
         a = '0';
         System.out.print(a);
         System.out.println();
@@ -80,53 +76,53 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis pole znaků.
+     * Tests the print method with array of chars.
      */
     public static void printTestCase3() {
         char[] a;
-        // prázdné pole znaků
+        // empty char array
         a = new char[]{};
         System.out.print(a);
         System.out.println();
-        // pole s jedním znakem
+        // char array with one char
         a = new char[]{'a'};
         System.out.print(a);
         System.out.println();
-        // pole s několika znaky
+        // char array with some chars
         a = new char[]{'a', 'z', 'A', 'Z', '0', '9'};
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis desetinného čísla s dvojitou přesností.
+     * Tests the print method with a double value.
      */
     public static void printTestCase4() {
         double a;
-        // nuly s a bez znaménka
+        // zeros with and without sign
         a = 0;
         System.out.print(a);
         System.out.println();
         a = -0;
         System.out.print(a);
         System.out.println();
-        // jedničky s a bez znaménka
+        // ones with and without sign
         a = 1;
         System.out.print(a);
         System.out.println();
         a = -1;
         System.out.print(a);
         System.out.println();
-        // největší možná absolutní hodnota s a bez znaménka
+        // maximal absolute value with and without sign
         a = Double.MAX_VALUE;
         System.out.print(a);
         System.out.println();
         a = -Double.MAX_VALUE;
         System.out.print(a);
         System.out.println();
-        // nejmenší možná absolutní hodnota s a bez znaménka
+        // minimal absolute value with and without sign
         a = Double.MIN_VALUE;
         System.out.print(a);
         System.out.println();
@@ -134,9 +130,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis desetinného čísla s jednoduchou přesností.
+     * Tests the print method with a float value.
      */
     public static void printTestCase5() {
         float a;
@@ -165,24 +161,24 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis 32-bitového celého čísla.
+     * Tests the print method with an int value.
      */
     public static void printTestCase6() {
         int a;
-        // nula
+        // zero
         a = 0;
         System.out.print(a);
         System.out.println();
-        // jedničky s a bez znaménka
+        // ones with and without sign
         a = 1;
         System.out.print(a);
         System.out.println();
         a = -1;
         System.out.print(a);
         System.out.println();
-        // největší a nejmenší možná hodnota
+        // maximal and minimal value
         a = Integer.MAX_VALUE;
         System.out.print(a);
         System.out.println();
@@ -190,9 +186,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis 64-bitového celého čísla.
+     * Tests the print method with a long value.
      */
     public static void printTestCase7() {
         long a;
@@ -212,24 +208,24 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis textové reprezentace objektu.
+     * Tests the print method with an object.
      */
     public static void printTestCase8() {
         DummyObject a;
-        // objekt s prázdným řetězcem
+        // object with an empty string
         a = new DummyObject("", 0);
         System.out.print(a);
         System.out.println();
-        // objekty s čísly
+        // object with digits
         a = new DummyObject("0", 1);
         System.out.print(a);
         System.out.println();
         a = new DummyObject("9", -1);
         System.out.print(a);
         System.out.println();
-        // objekty s písmeny
+        // object with letters
         a = new DummyObject("Aa", Integer.MAX_VALUE);
         System.out.print(a);
         System.out.println();
@@ -237,36 +233,36 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis řetězce.
+     * Tests the print method with a string.
      */
     public static void printTestCase9() {
         String a;
-        // prázdný řetězec
+        // empty string
         a = "";
         System.out.print(a);
         System.out.println();
-        // řetězec s jedním znakem
+        // string with one char
         a = "a";
         System.out.print(a);
         System.out.println();
-        // řetězec s několika znaky
+        // string with some chars
         a = "azAZ09";
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis ukončení řádky.
+     * Tests the println method.
      */
     public static void printlnTestCase() {
-        // výpis prázdné řádky
+        // print of an empty line
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis logické hodnoty s ukončením řádky.
+     * Tests the println method with a boolean value.
      */
     public static void printlnTestCase2() {
         boolean a;
@@ -277,9 +273,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis znaku s ukončením řádky.
+     * Tests the println method with a char value.
      */
     public static void printlnTestCase3() {
         char a;
@@ -302,9 +298,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis pole znaků s ukončením řádky.
+     * Tests the println method with array of chars.
      */
     public static void printlnTestCase4() {
         char[] a;
@@ -318,9 +314,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis desetinného čísla s dvojitou přesností s ukončením řádky.
+     * Tests the println method with a double value.
      */
     public static void printlnTestCase5() {
         double a;
@@ -349,9 +345,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis desetinného čísla s jednoduchou přesností s ukončením řádky.
+     * Tests the println method with a float value.
      */
     public static void printlnTestCase6() {
         float a;
@@ -380,9 +376,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis 32-bitového celého čísla s ukončením řádky.
+     * Tests the println method with an int value.
      */
     public static void printlnTestCase7() {
         int a;
@@ -402,9 +398,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis 64-bitového celého čísla s ukončením řádky.
+     * Tests the println method with a long value.
      */
     public static void printlnTestCase8() {
         long a;
@@ -424,9 +420,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis textové reprezentace objektu s ukončením řádky.
+     * Tests the println method with an object.
      */
     public static void printlnTestCase9() {
         DummyObject a;
@@ -446,9 +442,9 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
     /**
-     * Otestuje výpis řetězce s ukončením řádky.
+     * Tests the println method with a string.
      */
     public static void printlnTestCase10() {
         String a;
@@ -462,5 +458,5 @@ public class PrintStreamTest {
         System.out.print(a);
         System.out.println();
     }
-    
+
 }

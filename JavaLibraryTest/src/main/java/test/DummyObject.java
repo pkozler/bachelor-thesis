@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 /**
- * Třída pro testování knihoven pracujících s objekty.
+ * The {@code DummyObject} class represents a simple object that serves
+ * for demonstration the functionality of libraries working with objects.
  *
  * @author Petr Kozler
  */
@@ -16,10 +12,10 @@ public class DummyObject implements Comparable<DummyObject> {
     private int i;
 
     /**
-     * Vytvoří testovací objekt.
-     * 
-     * @param str řetězcový atribut
-     * @param i číselný atribut
+     * Creates a new object.
+     *
+     * @param str string value
+     * @param i integer value
      */
     public DummyObject(String str, int i) {
         this.str = str;
@@ -27,83 +23,83 @@ public class DummyObject implements Comparable<DummyObject> {
     }
 
     /**
-     * Vrátí hodnotu řetězce.
-     * 
-     * @return hodnota řetězce
+     * Returns a value of the string field.
+     *
+     * @return string value
      */
     public String getStr() {
         return str;
     }
 
     /**
-     * Nastaví hodnotu řetězce.
-     * 
-     * @param str hodnota řetězce
+     * Changes a value of the string field.
+     *
+     * @param str string value
      */
     public void setStr(String str) {
         this.str = str;
     }
 
     /**
-     * Vrátí hodnotu čísla.
-     * 
-     * @return hodnota čísla
+     * Returns a value of the integer field.
+     *
+     * @return integer value
      */
     public int getI() {
         return i;
     }
 
     /**
-     * Nastaví hodnotu čísla.
-     * 
-     * @param str hodnota čísla
+     * Changes a value of the integer field.
+     *
+     * @param str integer value
      */
     public void setI(int i) {
         this.i = i;
     }
 
     /**
-     * Vrátí hashcode objektu podle porovnávaného atributu. 
-     * 
-     * @return hashcode objektu
+     * Returns a hash code value for the object.
+     *
+     * @return objects hashcode
      */
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 31 * hash + this.i;
-        
+
         return hash;
     }
 
     /**
-     * Určí, zda má objekt stejnou hodnotu porovnávaného atributu jako jiný objekt.
-     * 
-     * @param obj jiný objekt
-     * @return TRUE, pokud je stejná hodnota, jinak FALSE
+     * Indicates whether some other object is equal to this one.
+     *
+     * @param obj another object
+     * @return TRUE if objects are equal, FALSE otherwise
      */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
-        
+
         if (getClass() != obj.getClass()) {
             return false;
         }
-        
+
         final DummyObject other = (DummyObject) obj;
-        
+
         if (this.i != other.i) {
             return false;
         }
-        
+
         return true;
     }
-    
+
     /**
-     * Vytvoří textovou reprezentaci objektu.
-     * 
-     * @return textová reprezentace
+     * Returns a string representation of the object.
+     *
+     * @return string representation
      */
     @Override
     public String toString() {
@@ -111,10 +107,10 @@ public class DummyObject implements Comparable<DummyObject> {
     }
 
     /**
-     * Porovná hodnotu atributu objektu s hodnotou atributu jiného objektu.
-     * 
-     * @param o jiný objekt
-     * @return výsledek porovnání
+     * Compares this object with the specified object for order.
+     *
+     * @param o another object
+     * @return comparison result
      */
     @Override
     public int compareTo(DummyObject o) {
