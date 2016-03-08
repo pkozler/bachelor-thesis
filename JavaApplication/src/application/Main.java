@@ -25,16 +25,18 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) {
+        // načtení textů pro GUI
+        ResourceBundle rb = ResourceBundle.getBundle(Config.STRINGS_BUNDLE, Config.DEFAULT_LOCALE);
+        DialogFactory df = new DialogFactory(rb);
+        
         XmlManager xmlManager = null;
 
         try {
             xmlManager = new XmlManager(Config.MAIN_DATA_FILE, Config.DATA_FILES_FOLDER);
         } catch (ParserConfigurationException | SAXException | IOException ex) {
-            ex.printStackTrace();
+            df.showExceptionInDialog(ex, "dataInit", "error", "dataInitError");
         }
 
-        // načtení textů pro GUI
-        ResourceBundle rb = ResourceBundle.getBundle(Config.STRINGS_BUNDLE, Config.DEFAULT_LOCALE);
         // načtení FXML dokumentu
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Config.WINDOW_FXML_DOCUMENT), rb);
 
@@ -43,11 +45,11 @@ public class Main extends Application {
         try {
             root = (Parent) fxmlLoader.load();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            df.showExceptionInDialog(ex, "fxmlLoad", "error", "fxmlLoadError");
         }
 
         WindowController controller = fxmlLoader.<WindowController>getController();
-        controller.setDialogFactory(new DialogFactory(rb));
+        controller.setDialogFactory(df);
         controller.setXmlManager(xmlManager);
 
         // vytvoření okna

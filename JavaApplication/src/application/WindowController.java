@@ -544,7 +544,7 @@ public class WindowController implements Initializable {
         try {
             codeTextArea.setText(xmlManager.loadCode(clazz, lang));
         } catch (SAXException | IOException ex) {
-            Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
+            dialogFactory.showExceptionInDialog(ex, "codeLoad", "error", "codeLoadError");
         }
     }
 
