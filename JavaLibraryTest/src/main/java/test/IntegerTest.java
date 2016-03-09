@@ -14,19 +14,19 @@ public class IntegerTest {
     public static Logger logger = LogManager.getLogger(IntegerTest.class.getName());
 
     public static void runTestSuite() {
-        IntegerTest.intValueTestCase();
-        IntegerTest.compareToTestCase();
-        IntegerTest.compareTestCase();
-        IntegerTest.equalsTestCase();
-        IntegerTest.toStringTestCase();
-        IntegerTest.toStringTestCase2();
-        IntegerTest.parseIntTestCase();
+        IntegerTest.intValueTest();
+        IntegerTest.compareToTest();
+        IntegerTest.compareTest();
+        IntegerTest.equalsTest();
+        IntegerTest.toStringTest();
+        IntegerTest.toStringTest2();
+        IntegerTest.parseIntTest();
     }
 
     /**
      * Tests the intValue method.
      */
-    public static void intValueTestCase() {
+    public static void intValueTest() {
         Integer a;
         int b;
         a = new Integer(Integer.MIN_VALUE);
@@ -43,7 +43,7 @@ public class IntegerTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Integer a, b;
         int c;
         a = new Integer(Integer.MIN_VALUE);
@@ -75,7 +75,7 @@ public class IntegerTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         int a, b;
         int c;
         a = Integer.MIN_VALUE;
@@ -107,7 +107,7 @@ public class IntegerTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Integer a, b;
         boolean c;
         a = new Integer(Integer.MIN_VALUE);
@@ -139,7 +139,7 @@ public class IntegerTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Integer a;
         String b;
         a = new Integer((int) 100000);
@@ -156,7 +156,7 @@ public class IntegerTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Integer a;
         String b;
         a = new Integer((int) 100000);
@@ -173,7 +173,7 @@ public class IntegerTest {
     /**
      * Tests the parseInt method.
      */
-    public static void parseIntTestCase() {
+    public static void parseIntTest() {
         Integer a;
         int b;
         a = Integer.parseInt("100000");

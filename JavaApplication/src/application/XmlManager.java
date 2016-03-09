@@ -22,219 +22,94 @@ import org.xml.sax.SAXException;
 
 
 /**
- * Třída {@code XmlManager} poskytuje metody pro čtení, vytváření, úpravu a
- * odstraňování XML souborů s daty aplikace a slouží tak jako správce datové
- * části aplikace.
+ * The class {@code XmlManager} provides methods for reading, creating,
+ * updating and deleting XML files with source codes and lists and therefore
+ * serves as an application data management class.
  *
  * @author Petr Kozler
  */
-public class XmlManager {
+public class XmlManager implements ICodeManager {
 
-    // objekt pro načítání XML dokumentů
-    private final DocumentBuilder DOCUMENT_BUILDER;
-    // hlavní datový XML dokument
-    private final Document MAIN_DOCUMENT;
-    // adresář ostatních XML dokumentů
-    private final String DIRECTORY_PATH;
-    
-    private interface IDocumentCallable {
-        
-        public void callOnDocument(Document document);
-        
-    }
-
-    /**
-     * Vytvoří nový XML manažer a načte základní data ze souborů.
-     * 
-     * @param mainFilePath cesta k hlavnímu souboru
-     * @param directoryPath adresář ostatních souborů
-     * @throws ParserConfigurationException chyba parseru
-     * @throws SAXException SAX chyba
-     * @throws IOException IO chyba
-     */
-    public XmlManager(String mainFilePath, String directoryPath)
-            throws ParserConfigurationException, SAXException, IOException {
-        File mainFile = new File(mainFilePath);
-
-        if (!mainFile.exists()) {
-            // TODO vyhodit výjimku
-        }
-
-        File directory = new File(directoryPath);
-
-        if (!directory.isDirectory()) {
-            // TODO vyhodit výjimku
-        }
-
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DOCUMENT_BUILDER = dbf.newDocumentBuilder();
-        MAIN_DOCUMENT = DOCUMENT_BUILDER.parse(mainFile);
-        MAIN_DOCUMENT.getDocumentElement().normalize();
-        DIRECTORY_PATH = directoryPath;
-    }
+    // path to the main XML data file with the lists of available Java classes and programming languages
+    private static final String MAIN_DATA_FILE_DEST = "data/classes.xml";
+    // path to the folder with XML data files with translations of each class to each language
+    private static final String DATA_FILES_FOLDER_DEST = "data/classes/";
+    // object for XML documents parsing
+    private DocumentBuilder documentBuilder;
+    // main XML document
+    private Document mainDocument;
+    // folder with another documents
+    private String directoryPath;
     
     /**
-     * Načte seznam dostupných Java tříd z hlavního XML souboru.
+     * Loads the main document and tests if the directory exists.
      * 
-     * @return seznam Java tříd
+     * @throws application.CodeManagementException error
      */
-    public ArrayList<String> loadClassList() {
-        return loadArrayListFromDocument("class");
-    }
-
-    /**
-     * Načte seznam dostupných programovacích jazyků z hlavního XML souboru.
-     * 
-     * @return seznam programovacích jazyků
-     */
-    public ArrayList<String> loadLangList() {
-        return loadArrayListFromDocument("language");
-    }
-    
-    /**
-     * Přidá novou třídu.
-     * 
-     * @param clazz název třídy
-     * @throws TransformerException chyba vytváření XML souboru
-     */
-    public void addClass(String clazz) throws TransformerException {
-        createDocument(clazz);
-        Element classList = getClassList();
-        addClassItem(classList, clazz);
-    }
-
-    /**
-     * Přejmenuje třídu.
-     * 
-     * @param oldClass původní název
-     * @param newClass nový název
-     */
-    public void editClass(String oldClass, String newClass) {
-        renameDocument(oldClass, newClass);
-        Element classList = getClassList();
-        editClassItem(classList, oldClass, newClass);
-    }
-
-    /**
-     * Odstraní třídu.
-     * 
-     * @param clazz název třídy
-     */
-    public void removeClass(String clazz) {
-        deleteDocument(clazz);
-        Element classList = getClassList();
-        removeClassItem(classList, clazz);
-    }
-
-    /**
-     * Přidá nový jazyk.
-     * 
-     * @param lang název jazyka
-     * @throws SAXException SAX chyba
-     * @throws IOException IO chyba
-     */
-    public void addLang(String lang) throws SAXException, IOException {
-        Element classList = getClassList();
-        NodeList classes = classList.getChildNodes();
-        iterateClasses((document) -> addCodeItem(document, lang), classes);
-        Element langList = getLangList();
-        addLangItem(langList, lang);
-    }
-
-    /**
-     * Přejmenuje jazyk.
-     * 
-     * @param oldLang původní název
-     * @param newLang nový název
-     * @throws SAXException SAX chyba
-     * @throws IOException IO chyba
-     */
-    public void editLang(String oldLang, String newLang) throws SAXException, IOException {
-        Element classList = getClassList();
-        NodeList classes = classList.getChildNodes();
-        iterateClasses((document) -> editCodeItem(document, oldLang, newLang), classes);
-        Element langList = getLangList();
-        editLangItem(langList, oldLang, newLang);
-    }
-
-    /**
-     * Odstraní jazyk.
-     * 
-     * @param lang název jazyka
-     * @throws SAXException SAX chyba
-     * @throws IOException IO chyba
-     */
-    public void removeLang(String lang) throws SAXException, IOException {
-        Element classList = getClassList();
-        NodeList classes = classList.getChildNodes();
-        iterateClasses((document) -> removeCodeItem(document, lang), classes);
-        Element langList = getLangList();
-        removeLangItem(langList, lang);
-    }
-    
-    /**
-     * Načte zdrojový kód v daném jazyce pro danou třídu.
-     * 
-     * @param clazz název třídy
-     * @param lang název jazyka
-     * @return zdrojový kód
-     * @throws SAXException SAX chyba
-     * @throws IOException IO chyba
-     */
-    public String loadCode(String clazz, String lang) 
-            throws SAXException, IOException {
-        Document document = openDocument(clazz);
-        Element codeElement = getCodeItem(document, lang);
-        
-        if (codeElement != null) {
-            return codeElement.getTextContent();
-        }
-        
-        return "";
-    }
-
-    /**
-     * Uloží zdrojový kód v daném jazyce pro danou třídu.
-     * 
-     * @param clazz název třídy
-     * @param lang název jazyka
-     * @throws SAXException SAX chyba
-     * @throws IOException IO chyba
-     */
-    public void saveCode(String clazz, String lang, String code) 
-            throws SAXException, IOException {
-        String escapedCode = StringEscapeUtils.escapeXml10(code);
-        Document document = openDocument(clazz);
-        Element codeElement = getCodeItem(document, lang);
-        
-        if (codeElement != null) {
-            codeElement.setTextContent(escapedCode);
-        }
-        else {
-            // TODO výjimka
-        }
-    }
-    
-    private void iterateClasses(IDocumentCallable callable, NodeList classes) throws SAXException, IOException {
-        for (int i = 0; i < classes.getLength(); i++) {
-            Node classNode = classes.item(i);
+    public void setPaths() throws CodeManagementException {
+        try {
+            // testing the main file
+            File mainFile = new File(MAIN_DATA_FILE_DEST);
             
-            if (classNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element classElement = (Element) classNode;
-                Document document = openDocument(
-                        DIRECTORY_PATH + classElement.getTextContent().toLowerCase() + ".xml");
-                callable.callOnDocument(document);
+            if (!mainFile.exists()) {
+                // TODO vyhodit výjimku
             }
+            
+            // testing the directory
+            File directory = new File(DATA_FILES_FOLDER_DEST);
+            
+            if (!directory.isDirectory()) {
+                // TODO vyhodit výjimku
+            }
+            
+            // parsing the main XML file
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            documentBuilder = dbf.newDocumentBuilder();
+            mainDocument = documentBuilder.parse(mainFile);
+            mainDocument.getDocumentElement().normalize();
+            directoryPath = DATA_FILES_FOLDER_DEST;
+        } catch (SAXException | IOException | ParserConfigurationException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
         }
     }
     
-    private ArrayList<String> loadArrayListFromDocument(String tagName) {
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#loadClassList()
+     */
+    @Override
+    public ArrayList<String> loadClassList() throws CodeManagementException {
         ArrayList<String> list = new ArrayList<>();
-        NodeList nodes = MAIN_DOCUMENT.getElementsByTagName(tagName);
+        NodeList nodes = mainDocument.getElementsByTagName("class");
 
+        // iterating through the class elements in the main XML file
         for (int i = 0; i < nodes.getLength(); i++) {
             Node language = nodes.item(i);
 
+            // adding the class elements contents to array list
+            if (language.getNodeType() == Node.ELEMENT_NODE) {
+                Element languageElement = (Element) language;
+                list.add(languageElement.getTextContent());
+            }
+        }
+
+        return list;
+    }
+
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#loadLangList()
+     */
+    @Override
+    public ArrayList<String> loadLangList() throws CodeManagementException {
+        ArrayList<String> list = new ArrayList<>();
+        NodeList nodes = mainDocument.getElementsByTagName("language");
+
+        // iterating through the language elements in the main XML file
+        for (int i = 0; i < nodes.getLength(); i++) {
+            Node language = nodes.item(i);
+
+            // adding the language element content to array list
             if (language.getNodeType() == Node.ELEMENT_NODE) {
                 Element languageElement = (Element) language;
                 list.add(languageElement.getTextContent());
@@ -244,40 +119,237 @@ public class XmlManager {
         return list;
     }
     
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#addClass()
+     */
+    @Override
+    public void addClass(String clazz) throws CodeManagementException {
+        try {
+            // creating a new XML class file
+            createDocument(clazz);
+            Element classList = getClassList();
+            // adding a class item to the main XML file list
+            addClassItem(classList, clazz);
+        } catch (TransformerException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
+    }
+
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#editClass()
+     */
+    @Override
+    public void editClass(String oldClass, String newClass) throws CodeManagementException {
+        // renaming the XML class file
+        renameDocument(oldClass, newClass);
+        Element classList = getClassList();
+        // editing the class item in the main XML file list
+        editClassItem(classList, oldClass, newClass);
+    }
+
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#removeClass()
+     */
+    @Override
+    public void removeClass(String clazz) throws CodeManagementException {
+        // deleting the XML class file
+        deleteDocument(clazz);
+        Element classList = getClassList();
+        // removing the class item from the main XML file list
+        removeClassItem(classList, clazz);
+    }
+
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#addLang()
+     */
+    @Override
+    public void addLang(String lang) throws CodeManagementException {
+        try {
+            Element classList = getClassList();
+            NodeList classes = classList.getChildNodes();
+            
+            // iterating through the XML class files
+            for (int i = 0; i < classes.getLength(); i++) {
+                Node classNode = classes.item(i);
+
+                // adding a new code element to the XML class file
+                if (classNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element classElement = (Element) classNode;
+                    Document document = openDocument(directoryPath 
+                            + classElement.getTextContent().toLowerCase() + ".xml");
+                    addCodeItem(document, lang);
+                }
+            }
+            
+            Element langList = getLangList();
+            addLangItem(langList, lang);
+        } catch (SAXException | IOException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
+    }
+
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#editLang()
+     */
+    @Override
+    public void editLang(String oldLang, String newLang) throws CodeManagementException {
+        try {
+            Element classList = getClassList();
+            NodeList classes = classList.getChildNodes();
+            
+            // iterating through the XML class files
+            for (int i = 0; i < classes.getLength(); i++) {
+                Node classNode = classes.item(i);
+
+                // editig the code element to the XML class file
+                if (classNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element classElement = (Element) classNode;
+                    Document document = openDocument(directoryPath 
+                            + classElement.getTextContent().toLowerCase() + ".xml");
+                    editCodeItem(document, oldLang, newLang);
+                }
+            }
+            
+            Element langList = getLangList();
+            editLangItem(langList, oldLang, newLang);
+        } catch (SAXException | IOException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
+    }
+
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#removeLang()
+     */
+    @Override
+    public void removeLang(String lang) throws CodeManagementException {
+        try {
+            Element classList = getClassList();
+            NodeList classes = classList.getChildNodes();
+            
+            // iterating through the XML class files
+            for (int i = 0; i < classes.getLength(); i++) {
+                Node classNode = classes.item(i);
+
+                // removing the code element to the XML class file
+                if (classNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element classElement = (Element) classNode;
+                    Document document = openDocument(directoryPath 
+                            + classElement.getTextContent().toLowerCase() + ".xml");
+                    removeCodeItem(document, lang);
+                }
+            }
+            
+            Element langList = getLangList();
+            removeLangItem(langList, lang);
+        } catch (SAXException | IOException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
+    }
+    
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#loadCode()
+     */
+    @Override
+    public String loadCode(String clazz, String lang) throws CodeManagementException {
+        try {
+            // opening the XML class file
+            Document document = openDocument(clazz);
+            // retrieving the code element
+            Element codeElement = getCodeItem(document, lang);
+            
+            if (codeElement != null) {
+                // reading the code element content
+                return codeElement.getTextContent();
+            }
+            
+            return "";
+        } catch (SAXException | IOException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
+    }
+
+    /*
+        (non-Javadoc)
+        @see application.ICodeManager#saveCode()
+     */
+    @Override
+    public void saveCode(String clazz, String lang, String code) throws CodeManagementException {
+        try {
+            String escapedCode = StringEscapeUtils.escapeXml10(code);
+            // opening the XML class file
+            Document document = openDocument(clazz);
+            // retrieving the code element
+            Element codeElement = getCodeItem(document, lang);
+            
+            if (codeElement != null) {
+                // rewriting the code element content
+                codeElement.setTextContent(escapedCode);
+            }
+            else {
+                // TODO výjimka
+            }
+        } catch (SAXException | IOException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
+    }
+    
+    /*
+        Opens the XML data file with the specified name, 
+        parses the XML code and creates a document object from it.
+    */
     private Document openDocument(String clazz) 
             throws SAXException, IOException {
-        Document document = DOCUMENT_BUILDER.parse(
-                new File(DIRECTORY_PATH + clazz.toLowerCase() + ".xml"));
+        // parsing and normalizing the specified document
+        Document document = documentBuilder.parse(new File(directoryPath 
+                + clazz.toLowerCase() + ".xml"));
         document.getDocumentElement().normalize();
 
         return document;
     }
     
+    /*
+        Creates a new XML data file with the 
+        specified name from a document object.
+    */
     private void createDocument(String newClass) throws TransformerException {
-        File file = new File(DIRECTORY_PATH + newClass.toLowerCase() + ".xml");
+        File file = new File(directoryPath + newClass.toLowerCase() + ".xml");
         
         if (file.exists()) {
             // TODO výjimka
         }
         
+        // creating the stream for a new file
         StreamResult result = new StreamResult(file);
-        Document document = DOCUMENT_BUILDER.newDocument();
+        Document document = documentBuilder.newDocument();
         Element root = document.createElement("codes");
         document.appendChild(root);
+        // creating a new DOM source
         DOMSource source = new DOMSource(document);
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer = factory.newTransformer();
+        // writing the DOM to the stream
         transformer.transform(source, result);
     }
     
+    /*
+        Renames an XML data file represented by the specified name
+        with a specified new name.
+    */
     private void renameDocument(String oldClass, String newClass) {
-        File oldFile = new File(DIRECTORY_PATH + oldClass.toLowerCase() + ".xml");
+        File oldFile = new File(directoryPath + oldClass.toLowerCase() + ".xml");
         
         if (!oldFile.exists()) {
             // TODO výjimka
         }
         
-        File newFile = new File(DIRECTORY_PATH + newClass.toLowerCase() + ".xml");
+        File newFile = new File(directoryPath + newClass.toLowerCase() + ".xml");
         
         if (newFile.exists()) {
             // TODO výjimka
@@ -290,8 +362,11 @@ public class XmlManager {
         }
     }
     
+    /*
+        Deletes an XML data file represented by the specified name.
+    */
     private void deleteDocument(String oldClass) {
-        File file = new File(DIRECTORY_PATH + oldClass.toLowerCase() + ".xml");
+        File file = new File(directoryPath + oldClass.toLowerCase() + ".xml");
         
         if (!file.exists()) {
             // TODO výjimka
@@ -300,20 +375,11 @@ public class XmlManager {
         file.delete();
     }
     
+    /*
+        Returns an XML element representing the list of all created classes.
+    */
     private Element getClassList() {
-        return getList(MAIN_DOCUMENT, "classes");
-    }
-    
-    private Element getLangList() {
-        return getList(MAIN_DOCUMENT, "languages");
-    }
-    
-    private Element getCodeList(Document clazz) {
-        return getList(clazz, "codes");
-    }
-    
-    private Element getList(Document document, String tagName) {
-        NodeList items = document.getElementsByTagName(tagName);
+        NodeList items = mainDocument.getElementsByTagName("classes");
         
         if (items.getLength() != 1) {
             // TODO výjimka
@@ -328,6 +394,49 @@ public class XmlManager {
         return (Element) itemsNode;
     }
     
+    /*
+        Returns an XML element representing the list of all created languages.
+    */
+    private Element getLangList() {
+        NodeList items = mainDocument.getElementsByTagName("languages");
+        
+        if (items.getLength() != 1) {
+            // TODO výjimka
+        }
+        
+        Node itemsNode = items.item(0);
+        
+        if (itemsNode.getNodeType() != Node.ELEMENT_NODE) {
+            // TODO výjimka
+        }
+        
+        return (Element) itemsNode;
+    }
+    
+    /*
+        Returns an XML element wrapping the source code elements
+        in a specified document.
+    */
+    private Element getCodeList(Document clazz) {
+        NodeList items = clazz.getElementsByTagName("codes");
+        
+        if (items.getLength() != 1) {
+            // TODO výjimka
+        }
+        
+        Node itemsNode = items.item(0);
+        
+        if (itemsNode.getNodeType() != Node.ELEMENT_NODE) {
+            // TODO výjimka
+        }
+        
+        return (Element) itemsNode;
+    }
+    
+    /*
+        Returns an XML element representing the item in the list
+        of classes in the main XML document.
+    */
     private Element getClassItem(Element classList, String clazz) {
         NodeList classes = classList.getElementsByTagName("class");
         
@@ -337,6 +446,7 @@ public class XmlManager {
             if (classNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element classElement = (Element) classNode;
                 
+                // finding the specified class element
                 if (classElement.getTextContent().equals(clazz)) {
                     return classElement;
                 }
@@ -346,6 +456,10 @@ public class XmlManager {
         return null;
     }
     
+    /*
+        Returns an XML element representing the item in the list
+        of languages in the main XML document.
+    */
     private Element getLangItem(Element langList, String lang) {
         NodeList languages = langList.getElementsByTagName("language");
         
@@ -355,6 +469,7 @@ public class XmlManager {
             if (langNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element langElement = (Element) langNode;
                 
+                // finding the specified language element
                 if (langElement.getTextContent().equals(lang)) {
                     return langElement;
                 }
@@ -364,6 +479,10 @@ public class XmlManager {
         return null;
     }
     
+    /*
+        Returns an XML element containing the source code in the specified
+        XML document.
+    */
     private Element getCodeItem(Document clazz, String lang) {
         NodeList codeNodes = clazz.getElementsByTagName("code");
         
@@ -373,6 +492,7 @@ public class XmlManager {
             if (codeNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element codeElement = (Element) codeNode;
 
+                // finding the specified code element
                 if (lang.equals(codeElement.getAttribute("lang"))) {
                     return codeElement;
                 }
@@ -382,6 +502,10 @@ public class XmlManager {
         return null;
     }
     
+    /*
+        Creates an XML element representing the item in the list
+        of classes in the main XML document.
+    */
     private void addClassItem(Element classList, String newClass) {
         Element newClassElement = getClassItem(classList, newClass);
         
@@ -389,11 +513,15 @@ public class XmlManager {
             // TODO výjimka
         }
         
-        newClassElement = MAIN_DOCUMENT.createElement("class");
+        newClassElement = mainDocument.createElement("class");
         newClassElement.setTextContent(newClass);
         classList.appendChild(newClassElement);
     }
     
+    /*
+        Creates an XML element representing the item in the list
+        of languages in the main XML document.
+    */
     private void addLangItem(Element langList, String newLang) {
         Element newLangElement = getLangItem(langList, newLang);
         
@@ -401,11 +529,15 @@ public class XmlManager {
             // TODO výjimka
         }
         
-        newLangElement = MAIN_DOCUMENT.createElement("language");
+        newLangElement = mainDocument.createElement("language");
         newLangElement.setTextContent(newLang);
         langList.appendChild(newLangElement);
     }
     
+    /*
+        Creates an XML element containing the source code in the specified
+        XML document.
+    */
     private void addCodeItem(Document clazz, String newLang) {
         Element newCodeElement = getCodeItem(clazz, newLang);
         
@@ -418,6 +550,10 @@ public class XmlManager {
         getCodeList(clazz).appendChild(newCodeElement);
     }
     
+    /*
+        Updates an XML element representing the item in the list
+        of classes in the main XML document.
+    */
     private void editClassItem(Element classList, String oldClass, String newClass) {
         Element oldClassElement = getClassItem(classList, oldClass);
         
@@ -434,6 +570,10 @@ public class XmlManager {
         oldClassElement.setTextContent(newClass);
     }
     
+    /*
+        Updates an XML element representing the item in the list
+        of languages in the main XML document.
+    */
     private void editLangItem(Element langList, String oldLang, String newLang) {
         Element oldLangElement = getClassItem(langList, oldLang);
         
@@ -450,6 +590,10 @@ public class XmlManager {
         oldLangElement.setTextContent(newLang);
     }
     
+    /*
+        Updates an XML element containing the source code in the specified
+        XML document.
+    */
     private void editCodeItem(Document clazz, String oldLang, String newLang) {
         Element oldCodeElement = getCodeItem(clazz, oldLang);
         
@@ -466,6 +610,10 @@ public class XmlManager {
         oldCodeElement.setAttribute("lang", newLang);
     }
     
+    /*
+        Deletes an XML element representing the item in the list
+        of classes in the main XML document.
+    */
     private void removeClassItem(Element classList, String oldClass) {
         Element oldClassElement = getClassItem(classList, oldClass);
         
@@ -476,6 +624,10 @@ public class XmlManager {
         classList.removeChild(oldClassElement);
     }
     
+    /*
+        Deletes an XML element representing the item in the list
+        of languages in the main XML document.
+    */
     private void removeLangItem(Element langList, String oldLang) {
         Element oldLangElement = getClassItem(langList, oldLang);
         
@@ -486,6 +638,10 @@ public class XmlManager {
         langList.removeChild(oldLangElement);
     }
     
+    /*
+        Deletes an XML element containing the source code in the specified
+        XML document.
+    */
     private void removeCodeItem(Document clazz, String oldLang) {
         Element oldCodeElement = getCodeItem(clazz, oldLang);
         
@@ -496,6 +652,10 @@ public class XmlManager {
         getCodeList(clazz).removeChild(oldCodeElement);
     }
 
+    /*
+        (non-Javadoc)
+        @see java.lang.Object#finalize()
+     */
     @Override
     protected void finalize() throws Throwable {
         // TODO zavřít soubory

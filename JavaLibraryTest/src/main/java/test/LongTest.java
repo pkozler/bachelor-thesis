@@ -14,19 +14,19 @@ public class LongTest {
     public static Logger logger = LogManager.getLogger(LongTest.class.getName());
 
     public static void runTestSuite() {
-        LongTest.longValueTestCase();
-        LongTest.compareToTestCase();
-        LongTest.compareTestCase();
-        LongTest.equalsTestCase();
-        LongTest.toStringTestCase();
-        LongTest.toStringTestCase2();
-        LongTest.parseLongTestCase();
+        LongTest.longValueTest();
+        LongTest.compareToTest();
+        LongTest.compareTest();
+        LongTest.equalsTest();
+        LongTest.toStringTest();
+        LongTest.toStringTest2();
+        LongTest.parseLongTest();
     }
 
     /**
      * Tests the longValue method.
      */
-    public static void longValueTestCase() {
+    public static void longValueTest() {
         Long a;
         long b;
         a = new Long(Long.MIN_VALUE);
@@ -43,7 +43,7 @@ public class LongTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Long a, b;
         int c;
         a = new Long(Long.MIN_VALUE);
@@ -75,7 +75,7 @@ public class LongTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         long a, b;
         int c;
         a = Long.MIN_VALUE;
@@ -107,7 +107,7 @@ public class LongTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Long a, b;
         boolean c;
         a = new Long(Long.MIN_VALUE);
@@ -139,7 +139,7 @@ public class LongTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Long a;
         String b;
         a = new Long((long) 10000000000L);
@@ -156,7 +156,7 @@ public class LongTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Long a;
         String b;
         a = new Long((long) 10000000000L);
@@ -173,7 +173,7 @@ public class LongTest {
     /**
      * Tests the parseLong method.
      */
-    public static void parseLongTestCase() {
+    public static void parseLongTest() {
         Long a;
         long b;
         a = Long.parseLong("10000000000");

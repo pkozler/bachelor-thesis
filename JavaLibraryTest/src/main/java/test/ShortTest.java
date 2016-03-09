@@ -14,19 +14,19 @@ public class ShortTest {
     public static Logger logger = LogManager.getLogger(ShortTest.class.getName());
 
     public static void runTestSuite() {
-        ShortTest.shortValueTestCase();
-        ShortTest.compareToTestCase();
-        ShortTest.compareTestCase();
-        ShortTest.equalsTestCase();
-        ShortTest.toStringTestCase();
-        ShortTest.toStringTestCase2();
-        ShortTest.parseShortTestCase();
+        ShortTest.shortValueTest();
+        ShortTest.compareToTest();
+        ShortTest.compareTest();
+        ShortTest.equalsTest();
+        ShortTest.toStringTest();
+        ShortTest.toStringTest2();
+        ShortTest.parseShortTest();
     }
 
     /**
      * Tests the shortValue method.
      */
-    public static void shortValueTestCase() {
+    public static void shortValueTest() {
         Short a;
         short b;
         a = new Short(Short.MIN_VALUE);
@@ -43,7 +43,7 @@ public class ShortTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Short a, b;
         int c;
         a = new Short(Short.MIN_VALUE);
@@ -75,7 +75,7 @@ public class ShortTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         short a, b;
         int c;
         a = Short.MIN_VALUE;
@@ -107,7 +107,7 @@ public class ShortTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Short a, b;
         boolean c;
         a = new Short(Short.MIN_VALUE);
@@ -139,7 +139,7 @@ public class ShortTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Short a;
         String b;
         a = new Short((short) 1000);
@@ -156,7 +156,7 @@ public class ShortTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Short a;
         String b;
         a = new Short((short) 1000);
@@ -173,7 +173,7 @@ public class ShortTest {
     /**
      * Tests the parseShort method.
      */
-    public static void parseShortTestCase() {
+    public static void parseShortTest() {
         Short a;
         short b;
         a = Short.parseShort("1000");

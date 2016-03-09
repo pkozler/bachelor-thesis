@@ -14,33 +14,33 @@ public class StringTest {
     public static Logger logger = LogManager.getLogger(StringTest.class.getName());
 
     public static void runTestSuite() {
-        StringTest.stringTestCase();
-        StringTest.stringTestCase2();
-        StringTest.stringTestCase3();
-        StringTest.compareToTestCase();
-        StringTest.equalsTestCase();
-        StringTest.substringTestCase();
-        StringTest.substringTestCase2();
-        StringTest.indexOfTestCase();
-        StringTest.indexOfTestCase2();
-        StringTest.indexOfTestCase3();
-        StringTest.indexOfTestCase4();
-        StringTest.lengthTestCase();
-        StringTest.trimTestCase();
-        StringTest.toLowerCaseTestCase();
-        StringTest.toUpperCaseTestCase();
-        StringTest.charAtTestCase();
-        StringTest.replaceTestCase();
-        StringTest.startsWithTestCase();
-        StringTest.endsWithTestCase();
-        StringTest.isEmptyTestCase();
-        StringTest.toStringTestCase();
+        StringTest.stringTest();
+        StringTest.stringTest2();
+        StringTest.stringTest3();
+        StringTest.compareToTest();
+        StringTest.equalsTest();
+        StringTest.substringTest();
+        StringTest.substringTest2();
+        StringTest.indexOfTest();
+        StringTest.indexOfTest2();
+        StringTest.indexOfTest3();
+        StringTest.indexOfTest4();
+        StringTest.lengthTest();
+        StringTest.trimTest();
+        StringTest.toLowerCaseTest();
+        StringTest.toUpperCaseTest();
+        StringTest.charAtTest();
+        StringTest.replaceTest();
+        StringTest.startsWithTest();
+        StringTest.endsWithTest();
+        StringTest.isEmptyTest();
+        StringTest.toStringTest();
     }
 
     /**
      * Tests the constructor with standard string as a parameter.
      */
-    public static void stringTestCase() {
+    public static void stringTest() {
         String a;
         // a string with whitespaces
         a = "This is a test.";
@@ -62,7 +62,7 @@ public class StringTest {
     /**
      * Tests the constructor with array of bytes as a parameter.
      */
-    public static void stringTestCase2() {
+    public static void stringTest2() {
         byte[] a;
         String b;
         // array with some whitespaces
@@ -82,7 +82,7 @@ public class StringTest {
     /**
      * Tests the constructor with array of bytes and indexes as parameters.
      */
-    public static void stringTestCase3() {
+    public static void stringTest3() {
         byte[] a;
         String b;
         // choosing a part of array with some chars
@@ -94,7 +94,7 @@ public class StringTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         String a, b;
         int c;
         // differens strings at the beginning
@@ -127,7 +127,7 @@ public class StringTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         String a, b;
         boolean c;
         a = "aaa";
@@ -155,7 +155,7 @@ public class StringTest {
     /**
      * Tests the substring method.
      */
-    public static void substringTestCase() {
+    public static void substringTest() {
         String a, b;
         a = "This is a test.";
         // string from the beginning
@@ -169,7 +169,7 @@ public class StringTest {
     /**
      * Tests the substring method with end index as a parameter.
      */
-    public static void substringTestCase2() {
+    public static void substringTest2() {
         String a, b;
         a = "This is a test.";
         // string from the beginning to the position near the beginning
@@ -189,7 +189,7 @@ public class StringTest {
     /**
      * Tests the indexOf method with a char value.
      */
-    public static void indexOfTestCase() {
+    public static void indexOfTest() {
         String a;
         int b;
         a = "This is a test.";
@@ -213,7 +213,7 @@ public class StringTest {
     /**
      * Tests the indexOf method with a char value and end index as a parameter.
      */
-    public static void indexOfTestCase2() {
+    public static void indexOfTest2() {
         String a;
         int b;
         a = "This is a test.";
@@ -232,7 +232,7 @@ public class StringTest {
     /**
      * Tests the indexOf method with a string.
      */
-    public static void indexOfTestCase3() {
+    public static void indexOfTest3() {
         String a;
         int b;
         a = "This is a test.";
@@ -250,7 +250,7 @@ public class StringTest {
     /**
      * Tests the indexOf method with a string and end index as a parameter.
      */
-    public static void indexOfTestCase4() {
+    public static void indexOfTest4() {
         String a;
         int b;
         a = "This is a test.";
@@ -265,7 +265,7 @@ public class StringTest {
     /**
      * Tests the length method.
      */
-    public static void lengthTestCase() {
+    public static void lengthTest() {
         String a;
         int b;
         // string with multiple chars
@@ -285,7 +285,7 @@ public class StringTest {
     /**
      * Tests the trim method.
      */
-    public static void trimTestCase() {
+    public static void trimTest() {
         String a, b;
         // string without whitespaces
         a = "test";
@@ -312,7 +312,7 @@ public class StringTest {
     /**
      * Tests the toLower method.
      */
-    public static void toLowerCaseTestCase() {
+    public static void toLowerCaseTest() {
         String a, b;
         // all letters lowercase
         a = "test";
@@ -331,7 +331,7 @@ public class StringTest {
     /**
      * Tests the toUpper method.
      */
-    public static void toUpperCaseTestCase() {
+    public static void toUpperCaseTest() {
         String a, b;
         a = "test";
         b = a.toUpperCase();
@@ -347,7 +347,7 @@ public class StringTest {
     /**
      * Tests the charAt method.
      */
-    public static void charAtTestCase() {
+    public static void charAtTest() {
         String a;
         char b;
         a = "This is a test.";
@@ -365,7 +365,7 @@ public class StringTest {
     /**
      * Tests the replace method.
      */
-    public static void replaceTestCase() {
+    public static void replaceTest() {
         String a, b;
         a = "This is a test.";
         // replacing chars inside the string
@@ -385,7 +385,7 @@ public class StringTest {
     /**
      * Tests the startsWith method.
      */
-    public static void startsWithTestCase() {
+    public static void startsWithTest() {
         String a, b;
         boolean c;
         a = "This is a test.";
@@ -406,7 +406,7 @@ public class StringTest {
     /**
      * Tests the endsWith method.
      */
-    public static void endsWithTestCase() {
+    public static void endsWithTest() {
         String a, b;
         boolean c;
         a = "This is a test.";
@@ -424,7 +424,7 @@ public class StringTest {
     /**
      * Tests the isEmpty method.
      */
-    public static void isEmptyTestCase() {
+    public static void isEmptyTest() {
         String a;
         boolean b;
         // non-empty string
@@ -444,7 +444,7 @@ public class StringTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         String a, b;
         // multiple chars
         a = "This is a test.";

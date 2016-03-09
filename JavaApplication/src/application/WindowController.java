@@ -1,6 +1,5 @@
 package application;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -10,6 +9,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -23,110 +23,82 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javax.xml.transform.TransformerException;
-import org.xml.sax.SAXException;
+import javafx.stage.WindowEvent;
 
 /**
- * Třída {@code WindowController} poskytuje metody pro obsluhu událostí nad
- * grafickými komponentami hlavního okna aplikace a slouží tak jako prostředník
- * mezi GUI a logickou vrstvou představovanou objekty pro správu datových XML
- * souborů.
- *
+ * The class {@code WindowController} provides methods for GUI components
+ * event handling and therefore serves as a mediator between the GUI components
+ * and the core data management application logic.
+ * 
  * @author Petr Kozler
  */
 public class WindowController implements Initializable {
 
-    // kořenový element okna
     @FXML
     private AnchorPane mainWindow;
-    // seznam dostupných programovacích jazyků
     @FXML
     private ComboBox<String> langSelectComboBox;
-    // seznam dostupných Java tříd
     @FXML
     private ListView<String> classNamesListView;
-    // textové pole pro vyhledávání třídy
     @FXML
     private TextField classSearchTextField;
-    // tlačítko pro vyhledávání třídy
     @FXML
     private Button classSearchButton;
-    // textové pole pro zdrojový kód překladu třídy
     @FXML
     private TextArea codeTextArea;
-    // položka menu pro kopírování kódu
     @FXML
     private MenuItem copyCodeMenuItem;
-    // položka menu pro vložení kódu
     @FXML
     private MenuItem editCodeMenuItem;
-    // položka menu pro vložení kódu
     @FXML
     private MenuItem pasteCodeMenuItem;
-    // položka menu pro uložení změn v kódu
     @FXML
     private MenuItem saveCodeMenuItem;
-    // tlačítko pro kopírování kódu
     @FXML
     private Button copyCodeButton;
-    // tlačítko pro úpravy kódu
     @FXML
     private Button editCodeButton;
-    // tlačítko pro vložení kódu
     @FXML
     private Button pasteCodeButton;
-    // tlačítko pro uložení změn v kódu
     @FXML
     private Button saveCodeButton;
-    // položka menu pro vytvoření třídy
     @FXML
     private MenuItem addClassMenuItem;
-    // položka menu pro úpravu názvu třídy
     @FXML
     private MenuItem editClassMenuItem;
-    // položka menu pro odstranění třídy
     @FXML
     private MenuItem removeClassMenuItem;
-    // tlačítko pro vytvoření třídy
     @FXML
     private Button addClassButton;
-    // tlačítko pro úpravu názvu třídy
     @FXML
     private Button editClassButton;
-    // tlačítko pro odstranění třídy
     @FXML
     private Button removeClassButton;
-    // položka menu pro vytvoření jazyka
     @FXML
     private MenuItem addLangMenuItem;
-    // položka menu pro úpravu názvu jazyka
     @FXML
     private MenuItem editLangMenuItem;
-    // položka menu pro odstranění jazyka
     @FXML
     private MenuItem removeLangMenuItem;
-    // tlačítko pro vytvoření jazyka
     @FXML
     private Button addLangButton;
-    // tlačítko pro úpravu názvu jazyka
     @FXML
     private Button editLangButton;
-    // tlačítko pro odstranění jazyka
     @FXML
     private Button removeLangButton;
-    // zdroj textů
+    
+    // resource bundle for strings
     private ResourceBundle bundle;
-    // správce XML souborů
-    private XmlManager xmlManager;
-    // továrna pro vytváření dialogů
+    // source code manager
+    private ICodeManager codeManager;
+    // factory for creating the dialog windows
     private DialogFactory dialogFactory;
 
     /**
-     * Spustí vyhledávání třídy s názvem zadaným ve vyhledávacím poli po stisku
-     * tlačítka vyhledávání a při nalezení záznamu vybere příslušnou položku v
-     * seznamu.
-     *
-     * @param event událost
+     * Starts the class search after clicking the search button
+     * and shows the result in a class list.
+     * 
+     * @param event
      */
     @FXML
     public void handleSearchClassAction(ActionEvent event) {
@@ -134,10 +106,10 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Spustí vytváření záznamu o nové třídě po stisku příslušného tlačítka nabo
-     * položky menu.
-     *
-     * @param event událost
+     * Starts adding a new class after clicking the corresponding button
+     * or menu item.
+     * 
+     * @param event
      */
     @FXML
     public void handleAddClassAction(ActionEvent event) {
@@ -145,8 +117,8 @@ public class WindowController implements Initializable {
 
         if (name != null) {
             try {
-                xmlManager.addClass(name);
-            } catch (TransformerException ex) {
+                codeManager.addClass(name);
+            } catch (CodeManagementException ex) {
                 Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -155,10 +127,10 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Spustí úpravu názvu třídy po stisku příslušného tlačítka nabo položky
-     * menu.
-     *
-     * @param event událost
+     * Starts editing a selected class after clicking the corresponding button
+     * or menu item.
+     * 
+     * @param event
      */
     @FXML
     public void handleEditClassAction(ActionEvent event) {
@@ -166,43 +138,9 @@ public class WindowController implements Initializable {
         String name = dialogFactory.getNameFromDialog("editClass", "enterName", "editClassText");
 
         if (name != null) {
-            xmlManager.editClass(oldName, name);
-        }
-
-        setListItems();
-    }
-
-    /**
-     * Spustí odstranění záznamu o třídě po stisku příslušného tlačítka nabo
-     * položky menu.
-     *
-     * @param event událost
-     */
-    @FXML
-    public void handleRemoveClassAction(ActionEvent event) {
-        String name = classNamesListView.getSelectionModel().getSelectedItem();
-
-        if (dialogFactory.isConfirmedInDialog("removeClass", "confirmation", "removeClassText")) {
-            xmlManager.removeClass(name);
-        }
-
-        setListItems();
-    }
-
-    /**
-     * Spustí vytváření záznamu o novém jazyku po stisku příslušného tlačítka
-     * nabo položky menu.
-     *
-     * @param event událost
-     */
-    @FXML
-    public void handleAddLangAction(ActionEvent event) {
-        String name = dialogFactory.getNameFromDialog("addLang", "enterName", "addLangText");
-
-        if (name != null) {
             try {
-                xmlManager.addLang(name);
-            } catch (SAXException | IOException ex) {
+                codeManager.editClass(oldName, name);
+            } catch (CodeManagementException ex) {
                 Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -211,10 +149,52 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Spustí úpravu názvu jazyka po stisku příslušného tlačítka nabo položky
-     * menu.
+     * Starts removing a selected class after clicking the corresponding button
+     * or menu item.
+     * 
+     * @param event
+     */
+    @FXML
+    public void handleRemoveClassAction(ActionEvent event) {
+        String name = classNamesListView.getSelectionModel().getSelectedItem();
+
+        if (dialogFactory.isConfirmedInDialog("removeClass", "confirmation", "removeClassText")) {
+            try {
+                codeManager.removeClass(name);
+            } catch (CodeManagementException ex) {
+                Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        setListItems();
+    }
+
+    /**
+     * Starts adding a new language after clicking the corresponding button
+     * or menu item.
      *
-     * @param event událost
+     * @param event
+     */
+    @FXML
+    public void handleAddLangAction(ActionEvent event) {
+        String name = dialogFactory.getNameFromDialog("addLang", "enterName", "addLangText");
+
+        if (name != null) {
+            try {
+                codeManager.addLang(name);
+            } catch (CodeManagementException ex) {
+                Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        setListItems();
+    }
+
+    /**
+     * Starts editing a selected language after clicking the corresponding button
+     * or menu item.
+     *
+     * @param event
      */
     @FXML
     public void handleEditLangAction(ActionEvent event) {
@@ -223,8 +203,8 @@ public class WindowController implements Initializable {
 
         if (name != null) {
             try {
-                xmlManager.editLang(oldName, name);
-            } catch (SAXException | IOException ex) {
+                codeManager.editLang(oldName, name);
+            } catch (CodeManagementException ex) {
                 Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -233,10 +213,10 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Spustí odstranění záznamu o jazyku po stisku příslušného tlačítka nabo
-     * položky menu.
+     * Starts removing a selected language after clicking the corresponding button
+     * or menu item.
      *
-     * @param event událost
+     * @param event
      */
     @FXML
     public void handleRemoveLangAction(ActionEvent event) {
@@ -244,8 +224,8 @@ public class WindowController implements Initializable {
 
         if (dialogFactory.isConfirmedInDialog("removeLang", "confirmation", "removeLangText")) {
             try {
-                xmlManager.removeLang(name);
-            } catch (SAXException | IOException ex) {
+                codeManager.removeLang(name);
+            } catch (CodeManagementException ex) {
                 Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -254,9 +234,9 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Vyvolá ukončení aplikace po stisku příslušné položky menu.
+     * Cause program termination after clicking the corresponding menu item.
      *
-     * @param event událost
+     * @param event
      */
     @FXML
     public void handleExitAction(ActionEvent event) {
@@ -270,10 +250,9 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Zkopíruje do schránky kompletní obsah textového pole pro zobrazení
-     * zdrojového kódu po stistku příslušného tlačítka nebo položky menu.
-     *
-     * @param event událost
+     * Copies the source code text area content to the system clipboard.
+     * 
+     * @param event
      */
     @FXML
     public void handleCopyCodeAction(ActionEvent event) {
@@ -285,10 +264,10 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Po stisku příslušného tlačítka nebo položky menu přepne rozhraní aplikace
-     * do režimu úpravy zdrojového kódu (umožní editovat obsah textového pole).
-     *
-     * @param event událost
+     * Switch the application window interface to the source code edit mode
+     * (enables editing of the source code text area).
+     * 
+     * @param event
      */
     @FXML
     public void handleEditCodeAction(ActionEvent event) {
@@ -296,10 +275,9 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Přepíše zdrojový kód aktuálně zobrazený v textovém poli obsahem schránky
-     * po stistku příslušného tlačítka nebo položky menu.
-     *
-     * @param event událost
+     * Pastes the content of the system clipboard to the source code text area.
+     * 
+     * @param event
      */
     @FXML
     public void handlePasteCodeAction(ActionEvent event) {
@@ -313,31 +291,29 @@ public class WindowController implements Initializable {
     }
 
     /**
-     * Po stisku příslušného tlačítka nebo položky menu spustí uložení
-     * provedených změn v aktuálním zdrojovém kódu a vrátí rozhraní aplikace do
-     * režimu vyhledávání a zobrazení kódu (znemožní editovat obsah textového
-     * pole).
-     *
-     * @param event událost
+     * Saves the changes made in the current source code showed in the
+     * source code text area and switches the application window interface
+     * back to the showing mode (disables editing of the source code text area).
+     * 
+     * @param event
      */
     @FXML
     public void handleSaveCodeAction(ActionEvent event) {
         try {
-            xmlManager.saveCode(
+            codeManager.saveCode(
                     classNamesListView.getSelectionModel().getSelectedItem(),
                     langSelectComboBox.getSelectionModel().getSelectedItem(),
                     codeTextArea.getText());
-        } catch (SAXException | IOException ex) {
+            refreshCodeTextArea();
+        } catch (CodeManagementException ex) {
             Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        refreshCodeTextArea();
     }
 
     /**
-     * Vyvolá zobrazení dialogu se základním popisem aplikace po stisku
-     * příslušné položky menu.
+     * Shows the dialog with the application info.
      *
-     * @param event událost
+     * @param event
      */
     @FXML
     public void handleAboutAction(ActionEvent event) {
@@ -345,46 +321,43 @@ public class WindowController implements Initializable {
     }
     
     /**
-     * Inicializuje továrnu pro vytváření dialogových oken.
+     * Initializes the dialog window factory.
      * 
-     * @param dialogFactory továrna dialogů
+     * @param dialogFactory dialog window factory
      */
     public void setDialogFactory(DialogFactory dialogFactory) {
         this.dialogFactory = dialogFactory;
     }
 
     /**
-     * Inicializuje manažera datových XML souborů se zdrojovými kódy
-     * (zahrnuje načtení záznamů dostupných tříd a jazyků
-     * z hlavního datového souboru pro zobrazení do seznamů).
+     * Initializes the source code manager and fills the lists of available 
+     * Java classes and programming languages.
      * 
-     * @param xmlManager XML manažer
+     * @param codeManager source code manager
      */
-    public void setXmlManager(XmlManager xmlManager) {
-        this.xmlManager = xmlManager;
+    public void setCodeManager(ICodeManager codeManager) {
+        this.codeManager = codeManager;
         setListItems();
         setCodeEditMode(false);
     }
 
     /**
-     * Provede inicializaci komponent kontroleru při zobrazení okna aplikace.
-     *
-     * @param url adresa
-     * @param rb zdroje
+     * Initialize the windows controller components.
+     * 
+     * @param url address
+     * @param rb resources
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*((Stage) mainWindow.getScene().getWindow()).onCloseRequestProperty()
-                .addListener(event -> handleExitAction(null));*/
         bundle = rb;
         classNamesListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         setListeners();
     }
 
     /*
-     Po stisku příslušného tlačítka nebo položky menu zruší provedené změny 
-     ve zdrojovém kódu, spustí načtení původní podoby z datového souboru
-     a vrátí rozhraní aplikace do režimu vyhledávání a zobrazení kódu.
+        Cancels the changes made in the current source code,
+        loads the previous version of the code and disables
+        the edit mode.
      */
     private void handleCancelCodeAction(ActionEvent event) {
         if (dialogFactory.isConfirmedInDialog("cancelCode", "confirmation", "cancelCodeText")) {
@@ -393,20 +366,24 @@ public class WindowController implements Initializable {
     }
 
     /*
-     Nastaví záznamy o dostupných třídách a jazycích načtené při inicializaci
-     XML manažera jako položky do odpovídajících grafických komponent okna
-     představujících seznamy.
+        Sets the items of a list view component representing the list of
+        available Java classes and the items of a combo box component
+        representing the list of available programming languages.
      */
     private void setListItems() {
-        classNamesListView.setItems(new SortedList(
-                FXCollections.observableArrayList(xmlManager.loadClassList()), String.CASE_INSENSITIVE_ORDER));
-        langSelectComboBox.setItems(new SortedList(
-                FXCollections.observableArrayList(xmlManager.loadLangList()), String.CASE_INSENSITIVE_ORDER));
+        try {
+            classNamesListView.setItems(new SortedList(
+                    FXCollections.observableArrayList(codeManager.loadClassList()), String.CASE_INSENSITIVE_ORDER));
+            langSelectComboBox.setItems(new SortedList(
+                    FXCollections.observableArrayList(codeManager.loadLangList()), String.CASE_INSENSITIVE_ORDER));
+        } catch (CodeManagementException ex) {
+            Logger.getLogger(WindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /*
-     Nastaví posluchače vyhledávání a výběru položky v seznamu tříd nebo jazyků
-     pro aktualizaci obsahu textového pole pro zobrazení zdrojového kódu.
+        Sets the action listeners for class list view, 
+        language combo box and search text field components.
      */
     private void setListeners() {
         classNamesListView.getSelectionModel().selectedIndexProperty().addListener(
@@ -419,7 +396,7 @@ public class WindowController implements Initializable {
     }
 
     /*
-     Nastaví aktivaci komponent pro úpravu zdrojového kódu.
+        Sets the activation of components for source code editing.
      */
     private void setCodeControlsEnabled(boolean enabled) {
         if (enabled) {
@@ -459,7 +436,7 @@ public class WindowController implements Initializable {
     }
 
     /*
-     Nastaví aktivaci komponent pro práci se seznamem tříd.
+        Sets the activation of components for class list management.
      */
     private void setClassControlsEnabled(boolean enabled) {
         if (classNamesListView.getSelectionModel().getSelectedItem() != null) {
@@ -482,7 +459,7 @@ public class WindowController implements Initializable {
     }
 
     /*
-     Nastaví aktivaci komponent pro práci se seznamem jazyků.
+        Sets the activation of components for language list management.
      */
     private void setLangControlsEnabled(boolean enabled) {
         if (langSelectComboBox.getSelectionModel().getSelectedItem() != null) {
@@ -503,8 +480,9 @@ public class WindowController implements Initializable {
     }
 
     /*
-     Přepne aktivaci jednotlivých skupin komponent podle zvoleného režimu rozhraní aplikace
-     (hodnota TRUE nastaví režim úpravy kódu, hodnota FALSE nastaví režim vyhledávání a zobrazení).
+        Sets the activation of each group of components according to the current
+        application interface mode (TRUE sets the source code editing mode,
+        FALSE sets the showing / searching mode).
      */
     private void setCodeEditMode(boolean activated) {
         setCodeControlsEnabled(activated);
@@ -513,8 +491,8 @@ public class WindowController implements Initializable {
     }
 
     /*
-     Nastaví tlačítko vyhledávání třídy jako výchozí (umožní stisk 
-     pomocí klávesy Enter) při zadávání vstupu do vyhledávacího pole.
+        Sets the class search button as a default button when the class search
+        text field has focus.
      */
     private void setSearchButtonAsDefault(Boolean newPropertyValue) {
         if (newPropertyValue) {
@@ -525,11 +503,12 @@ public class WindowController implements Initializable {
     }
 
     /*
-     Provede obnovu okna při změně výběru třídy nebo jazyka nebo při
-     uložení nebo zrušení změn ve zdrojovém kódu, tj. nastaví rozhraní
-     na režim vyhledávání a zobrazení a spustí načtení zdrojového kódu
-     knihovny odpovídající aktuálně vybrané třídě pro vybraný jazyk
-     z datového souboru a jeho zobrazení do textového pole.
+        Performs the main window components refresh after selecting 
+        the new class or language from the corresponding list, which includes
+        disabling the code edit mode (if enabled), loading
+        the corresponding source code for the current selected Java class
+        in the current selected programming language and showing this code
+        in the source code text area.
      */
     private void refreshCodeTextArea() {
         setCodeEditMode(false);
@@ -542,10 +521,20 @@ public class WindowController implements Initializable {
         }
 
         try {
-            codeTextArea.setText(xmlManager.loadCode(clazz, lang));
-        } catch (SAXException | IOException ex) {
+            codeTextArea.setText(codeManager.loadCode(clazz, lang));
+        } catch (CodeManagementException ex) {
             dialogFactory.showExceptionInDialog(ex, "codeLoad", "error", "codeLoadError");
         }
+    }
+
+    /**
+     * Sets the handler for the window closing request.
+     */
+    public void setOnCloseHandler() {
+        ((Stage) mainWindow.getScene().getWindow()).setOnCloseRequest((WindowEvent event) -> {
+            event.consume();
+            handleExitAction(null);
+        });
     }
 
 }

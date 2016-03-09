@@ -14,19 +14,19 @@ public class ByteTest {
     public static Logger logger = LogManager.getLogger(ByteTest.class.getName());
 
     public static void runTestSuite() {
-        ByteTest.byteValueTestCase();
-        ByteTest.compareToTestCase();
-        ByteTest.compareTestCase();
-        ByteTest.equalsTestCase();
-        ByteTest.toStringTestCase();
-        ByteTest.toStringTestCase2();
-        ByteTest.parseByteTestCase();
+        ByteTest.byteValueTest();
+        ByteTest.compareToTest();
+        ByteTest.compareTest();
+        ByteTest.equalsTest();
+        ByteTest.toStringTest();
+        ByteTest.toStringTest2();
+        ByteTest.parseByteTest();
     }
 
     /**
      * Tests the byteValue method.
      */
-    public static void byteValueTestCase() {
+    public static void byteValueTest() {
         Byte a;
         byte b;
         // minimal value
@@ -46,7 +46,7 @@ public class ByteTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Byte a, b;
         int c;
         // minimal and bigger negative value
@@ -84,7 +84,7 @@ public class ByteTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         byte a, b;
         int c;
         a = Byte.MIN_VALUE;
@@ -116,7 +116,7 @@ public class ByteTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Byte a, b;
         boolean c;
         a = new Byte(Byte.MIN_VALUE);
@@ -148,7 +148,7 @@ public class ByteTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Byte a;
         String b;
         // positive value text representation
@@ -168,7 +168,7 @@ public class ByteTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Byte a;
         String b;
         a = new Byte((byte) 100);
@@ -185,7 +185,7 @@ public class ByteTest {
     /**
      * Tests the parseByte method.
      */
-    public static void parseByteTestCase() {
+    public static void parseByteTest() {
         Byte a;
         byte b;
         // positive value parsing

@@ -14,19 +14,19 @@ public class FloatTest {
     public static Logger logger = LogManager.getLogger(FloatTest.class.getName());
 
     public static void runTestSuite() {
-        FloatTest.floatValueTestCase();
-        FloatTest.compareToTestCase();
-        FloatTest.compareTestCase();
-        FloatTest.equalsTestCase();
-        FloatTest.toStringTestCase();
-        FloatTest.toStringTestCase2();
-        FloatTest.parseFloatTestCase();
+        FloatTest.floatValueTest();
+        FloatTest.compareToTest();
+        FloatTest.compareTest();
+        FloatTest.equalsTest();
+        FloatTest.toStringTest();
+        FloatTest.toStringTest2();
+        FloatTest.parseFloatTest();
     }
 
     /**
      * Tests the floatValue method.
      */
-    public static void floatValueTestCase() {
+    public static void floatValueTest() {
         Float a;
         float b;
         a = new Float(Float.MIN_VALUE);
@@ -43,7 +43,7 @@ public class FloatTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Float a, b;
         int c;
         a = new Float(Float.MIN_VALUE);
@@ -75,7 +75,7 @@ public class FloatTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         float a, b;
         int c;
         a = Float.MIN_VALUE;
@@ -107,7 +107,7 @@ public class FloatTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Float a, b;
         boolean c;
         a = new Float(Float.MIN_VALUE);
@@ -139,7 +139,7 @@ public class FloatTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Float a;
         String b;
         a = new Float((float) 0.1);
@@ -156,7 +156,7 @@ public class FloatTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Float a;
         String b;
         a = new Float((float) 0.1);
@@ -173,7 +173,7 @@ public class FloatTest {
     /**
      * Tests the parseFloat method.
      */
-    public static void parseFloatTestCase() {
+    public static void parseFloatTest() {
         Float a;
         float b;
         a = Float.parseFloat("0.1");

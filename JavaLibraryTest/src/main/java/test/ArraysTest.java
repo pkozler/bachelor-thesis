@@ -15,102 +15,102 @@ public class ArraysTest {
     public static Logger logger = LogManager.getLogger(ArraysTest.class.getName());
 
     public static void runTestSuite() {
-        ArraysTest.binarySearchTestCase();
-        ArraysTest.binarySearchTestCase2();
-        ArraysTest.binarySearchTestCase3();
-        ArraysTest.binarySearchTestCase4();
-        ArraysTest.binarySearchTestCase5();
-        ArraysTest.binarySearchTestCase6();
-        ArraysTest.binarySearchTestCase7();
-        ArraysTest.binarySearchTestCase8();
-        ArraysTest.binarySearchTestCase9();
-        ArraysTest.binarySearchTestCase10();
-        ArraysTest.binarySearchTestCase11();
-        ArraysTest.binarySearchTestCase12();
-        ArraysTest.binarySearchTestCase13();
-        ArraysTest.binarySearchTestCase14();
-        ArraysTest.binarySearchTestCase15();
-        ArraysTest.binarySearchTestCase16();
-        ArraysTest.binarySearchTestCase17();
-        ArraysTest.binarySearchTestCase18();
-        ArraysTest.copyOfTestCase();
-        ArraysTest.copyOfTestCase2();
-        ArraysTest.copyOfTestCase3();
-        ArraysTest.copyOfTestCase4();
-        ArraysTest.copyOfTestCase5();
-        ArraysTest.copyOfTestCase6();
-        ArraysTest.copyOfTestCase7();
-        ArraysTest.copyOfTestCase8();
-        ArraysTest.copyOfTestCase9();
-        ArraysTest.copyOfRangeTestCase1();
-        ArraysTest.copyOfRangeTestCase2();
-        ArraysTest.copyOfRangeTestCase3();
-        ArraysTest.copyOfRangeTestCase4();
-        ArraysTest.copyOfRangeTestCase5();
-        ArraysTest.copyOfRangeTestCase6();
-        ArraysTest.copyOfRangeTestCase7();
-        ArraysTest.copyOfRangeTestCase8();
-        ArraysTest.copyOfRangeTestCase9();
-        ArraysTest.equalsTestCase();
-        ArraysTest.equalsTestCase2();
-        ArraysTest.equalsTestCase3();
-        ArraysTest.equalsTestCase4();
-        ArraysTest.equalsTestCase5();
-        ArraysTest.equalsTestCase6();
-        ArraysTest.equalsTestCase7();
-        ArraysTest.equalsTestCase8();
-        ArraysTest.equalsTestCase9();
-        ArraysTest.fillTestCase();
-        ArraysTest.fillTestCase2();
-        ArraysTest.fillTestCase3();
-        ArraysTest.fillTestCase4();
-        ArraysTest.fillTestCase5();
-        ArraysTest.fillTestCase6();
-        ArraysTest.fillTestCase7();
-        ArraysTest.fillTestCase8();
-        ArraysTest.fillTestCase9();
-        ArraysTest.fillTestCase10();
-        ArraysTest.fillTestCase11();
-        ArraysTest.fillTestCase12();
-        ArraysTest.fillTestCase13();
-        ArraysTest.fillTestCase14();
-        ArraysTest.fillTestCase15();
-        ArraysTest.fillTestCase16();
-        ArraysTest.fillTestCase17();
-        ArraysTest.fillTestCase18();
-        ArraysTest.sortTestCase();
-        ArraysTest.sortTestCase2();
-        ArraysTest.sortTestCase3();
-        ArraysTest.sortTestCase4();
-        ArraysTest.sortTestCase5();
-        ArraysTest.sortTestCase6();
-        ArraysTest.sortTestCase7();
-        ArraysTest.sortTestCase8();
-        ArraysTest.sortTestCase9();
-        ArraysTest.sortTestCase10();
-        ArraysTest.sortTestCase11();
-        ArraysTest.sortTestCase12();
-        ArraysTest.sortTestCase13();
-        ArraysTest.sortTestCase14();
-        ArraysTest.sortTestCase15();
-        ArraysTest.sortTestCase16();
-        ArraysTest.sortTestCase17();
-        ArraysTest.sortTestCase18();
-        ArraysTest.toStringTestCase();
-        ArraysTest.toStringTestCase2();
-        ArraysTest.toStringTestCase3();
-        ArraysTest.toStringTestCase4();
-        ArraysTest.toStringTestCase5();
-        ArraysTest.toStringTestCase6();
-        ArraysTest.toStringTestCase7();
-        ArraysTest.toStringTestCase8();
-        ArraysTest.toStringTestCase9();
+        ArraysTest.binarySearchTest();
+        ArraysTest.binarySearchTest2();
+        ArraysTest.binarySearchTest3();
+        ArraysTest.binarySearchTest4();
+        ArraysTest.binarySearchTest5();
+        ArraysTest.binarySearchTest6();
+        ArraysTest.binarySearchTest7();
+        ArraysTest.binarySearchTest8();
+        ArraysTest.binarySearchTest9();
+        ArraysTest.binarySearchTest10();
+        ArraysTest.binarySearchTest11();
+        ArraysTest.binarySearchTest12();
+        ArraysTest.binarySearchTest13();
+        ArraysTest.binarySearchTest14();
+        ArraysTest.binarySearchTest15();
+        ArraysTest.binarySearchTest16();
+        ArraysTest.binarySearchTest17();
+        ArraysTest.binarySearchTest18();
+        ArraysTest.copyOfTest();
+        ArraysTest.copyOfTest2();
+        ArraysTest.copyOfTest3();
+        ArraysTest.copyOfTest4();
+        ArraysTest.copyOfTest5();
+        ArraysTest.copyOfTest6();
+        ArraysTest.copyOfTest7();
+        ArraysTest.copyOfTest8();
+        ArraysTest.copyOfTest9();
+        ArraysTest.copyOfRangeTest1();
+        ArraysTest.copyOfRangeTest2();
+        ArraysTest.copyOfRangeTest3();
+        ArraysTest.copyOfRangeTest4();
+        ArraysTest.copyOfRangeTest5();
+        ArraysTest.copyOfRangeTest6();
+        ArraysTest.copyOfRangeTest7();
+        ArraysTest.copyOfRangeTest8();
+        ArraysTest.copyOfRangeTest9();
+        ArraysTest.equalsTest();
+        ArraysTest.equalsTest2();
+        ArraysTest.equalsTest3();
+        ArraysTest.equalsTest4();
+        ArraysTest.equalsTest5();
+        ArraysTest.equalsTest6();
+        ArraysTest.equalsTest7();
+        ArraysTest.equalsTest8();
+        ArraysTest.equalsTest9();
+        ArraysTest.fillTest();
+        ArraysTest.fillTest2();
+        ArraysTest.fillTest3();
+        ArraysTest.fillTest4();
+        ArraysTest.fillTest5();
+        ArraysTest.fillTest6();
+        ArraysTest.fillTest7();
+        ArraysTest.fillTest8();
+        ArraysTest.fillTest9();
+        ArraysTest.fillTest10();
+        ArraysTest.fillTest11();
+        ArraysTest.fillTest12();
+        ArraysTest.fillTest13();
+        ArraysTest.fillTest14();
+        ArraysTest.fillTest15();
+        ArraysTest.fillTest16();
+        ArraysTest.fillTest17();
+        ArraysTest.fillTest18();
+        ArraysTest.sortTest();
+        ArraysTest.sortTest2();
+        ArraysTest.sortTest3();
+        ArraysTest.sortTest4();
+        ArraysTest.sortTest5();
+        ArraysTest.sortTest6();
+        ArraysTest.sortTest7();
+        ArraysTest.sortTest8();
+        ArraysTest.sortTest9();
+        ArraysTest.sortTest10();
+        ArraysTest.sortTest11();
+        ArraysTest.sortTest12();
+        ArraysTest.sortTest13();
+        ArraysTest.sortTest14();
+        ArraysTest.sortTest15();
+        ArraysTest.sortTest16();
+        ArraysTest.sortTest17();
+        ArraysTest.sortTest18();
+        ArraysTest.toStringTest();
+        ArraysTest.toStringTest2();
+        ArraysTest.toStringTest3();
+        ArraysTest.toStringTest4();
+        ArraysTest.toStringTest5();
+        ArraysTest.toStringTest6();
+        ArraysTest.toStringTest7();
+        ArraysTest.toStringTest8();
+        ArraysTest.toStringTest9();
     }
 
     /**
      * Tests the binarySearch method with array of bytes.
      */
-    public static void binarySearchTestCase() {
+    public static void binarySearchTest() {
         byte[] a;
         int b;
         a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
@@ -127,7 +127,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of bytes and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase2() {
+    public static void binarySearchTest2() {
         byte[] a;
         int b;
         a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
@@ -143,7 +143,7 @@ public class ArraysTest {
     /**
      * Tests the binarySearch method with array of chars.
      */
-    public static void binarySearchTestCase3() {
+    public static void binarySearchTest3() {
         char[] a;
         int b;
         a = new char[]{'c', 'b', 'h', 'g', 'f'};
@@ -158,7 +158,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of chars and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase4() {
+    public static void binarySearchTest4() {
         char[] a;
         int b;
         a = new char[]{'c', 'b', 'h', 'g', 'f'};
@@ -172,7 +172,7 @@ public class ArraysTest {
     /**
      * Tests the binarySearch method with array of doubles.
      */
-    public static void binarySearchTestCase5() {
+    public static void binarySearchTest5() {
         double[] a;
         int b;
         a = new double[]{3.0, 2.0, 8.0, 7.0, 6.0};
@@ -187,7 +187,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of doubles and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase6() {
+    public static void binarySearchTest6() {
         double[] a;
         int b;
         a = new double[]{3.0, 2.0, 8.0, 7.0, 6.0};
@@ -201,7 +201,7 @@ public class ArraysTest {
     /**
      * Tests the binarySearch method with array of floats.
      */
-    public static void binarySearchTestCase7() {
+    public static void binarySearchTest7() {
         float[] a;
         int b;
         a = new float[]{3.0F, 2.0F, 8.0F, 7.0F, 6.0F};
@@ -216,7 +216,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of floats and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase8() {
+    public static void binarySearchTest8() {
         float[] a;
         int b;
         a = new float[]{3.0F, 2.0F, 8.0F, 7.0F, 6.0F};
@@ -230,7 +230,7 @@ public class ArraysTest {
     /**
      * Tests the binarySearch method with array of ints.
      */
-    public static void binarySearchTestCase9() {
+    public static void binarySearchTest9() {
         int[] a;
         int b;
         a = new int[]{3, 2, 8, 7, 6};
@@ -245,7 +245,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of ints and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase10() {
+    public static void binarySearchTest10() {
         int[] a;
         int b;
         a = new int[]{3, 2, 8, 7, 6};
@@ -259,7 +259,7 @@ public class ArraysTest {
     /**
      * Tests the binarySearch method with array of longs.
      */
-    public static void binarySearchTestCase11() {
+    public static void binarySearchTest11() {
         long[] a;
         int b;
         a = new long[]{3L, 2L, 8L, 7L, 6L};
@@ -274,7 +274,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of longs and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase12() {
+    public static void binarySearchTest12() {
         long[] a;
         int b;
         a = new long[]{3L, 2L, 8L, 7L, 6L};
@@ -288,7 +288,7 @@ public class ArraysTest {
     /**
      * Tests the binarySearch method with array of objects.
      */
-    public static void binarySearchTestCase13() {
+    public static void binarySearchTest13() {
         DummyObject[] a;
         int b;
         a = new DummyObject[]{
@@ -314,7 +314,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of objects and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase14() {
+    public static void binarySearchTest14() {
         DummyObject[] a;
         int b;
         a = new DummyObject[]{
@@ -339,7 +339,7 @@ public class ArraysTest {
     /**
      * Tests the binarySearch method with array of shorts.
      */
-    public static void binarySearchTestCase15() {
+    public static void binarySearchTest15() {
         short[] a;
         int b;
         a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
@@ -354,7 +354,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of shorts and indexes as
      * parameters.
      */
-    public static void binarySearchTestCase16() {
+    public static void binarySearchTest16() {
         short[] a;
         int b;
         a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
@@ -369,7 +369,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of objects and comparator as a
      * parameter.
      */
-    public static void binarySearchTestCase17() {
+    public static void binarySearchTest17() {
         DummyObject[] a;
         int b;
         DummyObjectComparer c;
@@ -397,7 +397,7 @@ public class ArraysTest {
      * Tests the binarySearch method with array of shorts and indexes and
      * comparator as parameters.
      */
-    public static void binarySearchTestCase18() {
+    public static void binarySearchTest18() {
         DummyObject[] a;
         int b;
         DummyObjectComparer c;
@@ -424,7 +424,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of booleans.
      */
-    public static void copyOfTestCase() {
+    public static void copyOfTest() {
         boolean[] a, b;
         String c;
         a = new boolean[]{true, false, false, false, true};
@@ -445,7 +445,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of bytes.
      */
-    public static void copyOfTestCase2() {
+    public static void copyOfTest2() {
         byte[] a, b;
         String c;
         a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
@@ -463,7 +463,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of chars.
      */
-    public static void copyOfTestCase3() {
+    public static void copyOfTest3() {
         char[] a, b;
         String c;
         a = new char[]{'c', 'b', 'h', 'g', 'f'};
@@ -481,7 +481,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of doubles.
      */
-    public static void copyOfTestCase4() {
+    public static void copyOfTest4() {
         double[] a, b;
         String c;
         a = new double[]{3.0, 2.0, 8.0, 7.0, 6.0};
@@ -499,7 +499,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of floats.
      */
-    public static void copyOfTestCase5() {
+    public static void copyOfTest5() {
         float[] a, b;
         String c;
         a = new float[]{3.0F, 2.0F, 8.0F, 7.0F, 6.0F};
@@ -517,7 +517,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of ints.
      */
-    public static void copyOfTestCase6() {
+    public static void copyOfTest6() {
         int[] a, b;
         String c;
         a = new int[]{3, 2, 8, 7, 6};
@@ -535,7 +535,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of longs.
      */
-    public static void copyOfTestCase7() {
+    public static void copyOfTest7() {
         long[] a, b;
         String c;
         a = new long[]{3L, 2L, 8L, 7L, 6L};
@@ -553,7 +553,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of shorts.
      */
-    public static void copyOfTestCase8() {
+    public static void copyOfTest8() {
         short[] a, b;
         String c;
         a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
@@ -571,7 +571,7 @@ public class ArraysTest {
     /**
      * Tests the copyOf method with array of objects.
      */
-    public static void copyOfTestCase9() {
+    public static void copyOfTest9() {
         DummyObject[] a, b;
         String c;
         a = new DummyObject[]{
@@ -594,7 +594,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of booleans.
      */
-    public static void copyOfRangeTestCase1() {
+    public static void copyOfRangeTest1() {
         boolean[] a, b;
         String c;
         a = new boolean[]{true, false, false, false, true};
@@ -615,7 +615,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of bytes.
      */
-    public static void copyOfRangeTestCase2() {
+    public static void copyOfRangeTest2() {
         byte[] a, b;
         String c;
         a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
@@ -633,7 +633,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of chars.
      */
-    public static void copyOfRangeTestCase3() {
+    public static void copyOfRangeTest3() {
         char[] a, b;
         String c;
         a = new char[]{'c', 'b', 'h', 'g', 'f'};
@@ -651,7 +651,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of doubles.
      */
-    public static void copyOfRangeTestCase4() {
+    public static void copyOfRangeTest4() {
         double[] a, b;
         String c;
         a = new double[]{3.0, 2.0, 8.0, 7.0, 6.0};
@@ -669,7 +669,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of floats.
      */
-    public static void copyOfRangeTestCase5() {
+    public static void copyOfRangeTest5() {
         float[] a, b;
         String c;
         a = new float[]{3.0F, 2.0F, 8.0F, 7.0F, 6.0F};
@@ -687,7 +687,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of ints.
      */
-    public static void copyOfRangeTestCase6() {
+    public static void copyOfRangeTest6() {
         int[] a, b;
         String c;
         a = new int[]{3, 2, 8, 7, 6};
@@ -705,7 +705,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of longs.
      */
-    public static void copyOfRangeTestCase7() {
+    public static void copyOfRangeTest7() {
         long[] a, b;
         String c;
         a = new long[]{3L, 2L, 8L, 7L, 6L};
@@ -723,7 +723,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of shorts.
      */
-    public static void copyOfRangeTestCase8() {
+    public static void copyOfRangeTest8() {
         short[] a, b;
         String c;
         a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
@@ -741,7 +741,7 @@ public class ArraysTest {
     /**
      * Tests the copyOfRange method with array of objects.
      */
-    public static void copyOfRangeTestCase9() {
+    public static void copyOfRangeTest9() {
         DummyObject[] a, b;
         String c;
         a = new DummyObject[]{
@@ -764,7 +764,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of booleans.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         boolean[] a, b;
         boolean c;
         a = new boolean[]{true, false, false, false, true};
@@ -793,7 +793,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of bytes.
      */
-    public static void equalsTestCase2() {
+    public static void equalsTest2() {
         byte[] a, b;
         boolean c;
         a = new byte[]{(byte) 3, (byte) 2, (byte) 8, (byte) 7, (byte) 6};
@@ -817,7 +817,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of chars.
      */
-    public static void equalsTestCase3() {
+    public static void equalsTest3() {
         char[] a, b;
         boolean c;
         a = new char[]{'c', 'b', 'h', 'g', 'f'};
@@ -841,7 +841,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of doubles.
      */
-    public static void equalsTestCase4() {
+    public static void equalsTest4() {
         double[] a, b;
         boolean c;
         a = new double[]{3.0, 2.0, 8.0, 7.0, 6.0};
@@ -865,7 +865,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of floats.
      */
-    public static void equalsTestCase5() {
+    public static void equalsTest5() {
         float[] a, b;
         boolean c;
         a = new float[]{3.0F, 2.0F, 8.0F, 7.0F, 6.0F};
@@ -889,7 +889,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of ints.
      */
-    public static void equalsTestCase6() {
+    public static void equalsTest6() {
         int[] a, b;
         boolean c;
         a = new int[]{3, 2, 8, 7, 6};
@@ -913,7 +913,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of longs.
      */
-    public static void equalsTestCase7() {
+    public static void equalsTest7() {
         long[] a, b;
         boolean c;
         a = new long[]{3L, 2L, 8L, 7L, 6L};
@@ -937,7 +937,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of objects.
      */
-    public static void equalsTestCase8() {
+    public static void equalsTest8() {
         DummyObject[] a, b;
         boolean c;
         a = new DummyObject[]{
@@ -979,7 +979,7 @@ public class ArraysTest {
     /**
      * Tests the equals method with array of shorts.
      */
-    public static void equalsTestCase9() {
+    public static void equalsTest9() {
         short[] a, b;
         boolean c;
         a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
@@ -1003,7 +1003,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of booleans.
      */
-    public static void fillTestCase() {
+    public static void fillTest() {
         boolean[] a;
         String b;
         // the array for filling
@@ -1016,7 +1016,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of booleans and indexes as parameters.
      */
-    public static void fillTestCase2() {
+    public static void fillTest2() {
         boolean[] a;
         String b;
         // the array for partial filling
@@ -1029,7 +1029,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of bytes.
      */
-    public static void fillTestCase3() {
+    public static void fillTest3() {
         byte[] a;
         String b;
         a = new byte[5];
@@ -1041,7 +1041,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of bytes and indexes as parameters.
      */
-    public static void fillTestCase4() {
+    public static void fillTest4() {
         byte[] a;
         String b;
         a = new byte[5];
@@ -1053,7 +1053,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of chars.
      */
-    public static void fillTestCase5() {
+    public static void fillTest5() {
         char[] a;
         String b;
         a = new char[5];
@@ -1065,7 +1065,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of chars and indexes as parameters.
      */
-    public static void fillTestCase6() {
+    public static void fillTest6() {
         char[] a;
         String b;
         a = new char[5];
@@ -1077,7 +1077,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of doubles.
      */
-    public static void fillTestCase7() {
+    public static void fillTest7() {
         double[] a;
         String b;
         a = new double[5];
@@ -1089,7 +1089,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of doubles and indexes as parameters.
      */
-    public static void fillTestCase8() {
+    public static void fillTest8() {
         double[] a;
         String b;
         a = new double[5];
@@ -1101,7 +1101,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of floats.
      */
-    public static void fillTestCase9() {
+    public static void fillTest9() {
         float[] a;
         String b;
         a = new float[5];
@@ -1113,7 +1113,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of floats and indexes as parameters.
      */
-    public static void fillTestCase10() {
+    public static void fillTest10() {
         float[] a;
         String b;
         a = new float[5];
@@ -1125,7 +1125,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of ints.
      */
-    public static void fillTestCase11() {
+    public static void fillTest11() {
         int[] a;
         String b;
         a = new int[5];
@@ -1137,7 +1137,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of ints and indexes as parameters.
      */
-    public static void fillTestCase12() {
+    public static void fillTest12() {
         int[] a;
         String b;
         a = new int[5];
@@ -1149,7 +1149,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of longs.
      */
-    public static void fillTestCase13() {
+    public static void fillTest13() {
         long[] a;
         String b;
         a = new long[5];
@@ -1161,7 +1161,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of longs and indexes as parameters.
      */
-    public static void fillTestCase14() {
+    public static void fillTest14() {
         long[] a;
         String b;
         a = new long[5];
@@ -1173,7 +1173,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of objects.
      */
-    public static void fillTestCase15() {
+    public static void fillTest15() {
         DummyObject[] a;
         String b;
         a = new DummyObject[5];
@@ -1185,7 +1185,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of objects and indexes as parameters.
      */
-    public static void fillTestCase16() {
+    public static void fillTest16() {
         DummyObject[] a;
         String b;
         a = new DummyObject[5];
@@ -1197,7 +1197,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of shorts.
      */
-    public static void fillTestCase17() {
+    public static void fillTest17() {
         short[] a;
         String b;
         a = new short[5];
@@ -1209,7 +1209,7 @@ public class ArraysTest {
     /**
      * Tests the fill method with array of shorts and indexes as parameters.
      */
-    public static void fillTestCase18() {
+    public static void fillTest18() {
         short[] a;
         String b;
         a = new short[5];
@@ -1221,7 +1221,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of bytes.
      */
-    public static void sortTestCase() {
+    public static void sortTest() {
         byte[] a;
         String b;
         // the array for sorting
@@ -1234,7 +1234,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of bytes and indexes as parameters.
      */
-    public static void sortTestCase2() {
+    public static void sortTest2() {
         byte[] a;
         String b;
         // the array for partial sorting
@@ -1247,7 +1247,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of chars.
      */
-    public static void sortTestCase3() {
+    public static void sortTest3() {
         char[] a;
         String b;
         a = new char[]{'c', 'b', 'h', 'g', 'f'};
@@ -1259,7 +1259,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of chars and indexes as parameters.
      */
-    public static void sortTestCase4() {
+    public static void sortTest4() {
         char[] a;
         String b;
         a = new char[]{'c', 'b', 'h', 'g', 'f'};
@@ -1271,7 +1271,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of doubles.
      */
-    public static void sortTestCase5() {
+    public static void sortTest5() {
         double[] a;
         String b;
         a = new double[]{3.0, 2.0, 8.0, 7.0, 6.0};
@@ -1283,7 +1283,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of doubles and indexes as parameters.
      */
-    public static void sortTestCase6() {
+    public static void sortTest6() {
         double[] a;
         String b;
         a = new double[]{3.0, 2.0, 8.0, 7.0, 6.0};
@@ -1295,7 +1295,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of floats.
      */
-    public static void sortTestCase7() {
+    public static void sortTest7() {
         float[] a;
         String b;
         a = new float[]{3.0F, 2.0F, 8.0F, 7.0F, 6.0F};
@@ -1307,7 +1307,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of floats and indexes as parameters.
      */
-    public static void sortTestCase8() {
+    public static void sortTest8() {
         float[] a;
         String b;
         a = new float[]{3.0F, 2.0F, 8.0F, 7.0F, 6.0F};
@@ -1319,7 +1319,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of ints.
      */
-    public static void sortTestCase9() {
+    public static void sortTest9() {
         int[] a;
         String b;
         a = new int[]{3, 2, 8, 7, 6};
@@ -1331,7 +1331,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of ints and indexes as parameters.
      */
-    public static void sortTestCase10() {
+    public static void sortTest10() {
         int[] a;
         String b;
         a = new int[]{3, 2, 8, 7, 6};
@@ -1343,7 +1343,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of longs.
      */
-    public static void sortTestCase11() {
+    public static void sortTest11() {
         long[] a;
         String b;
         a = new long[]{3L, 2L, 8L, 7L, 6L};
@@ -1355,7 +1355,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of longs and indexes as parameters.
      */
-    public static void sortTestCase12() {
+    public static void sortTest12() {
         long[] a;
         String b;
         a = new long[]{3L, 2L, 8L, 7L, 6L};
@@ -1367,7 +1367,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of objects.
      */
-    public static void sortTestCase13() {
+    public static void sortTest13() {
         DummyObject[] a;
         String b;
         a = new DummyObject[]{
@@ -1390,7 +1390,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of objects and indexes as parameters.
      */
-    public static void sortTestCase14() {
+    public static void sortTest14() {
         DummyObject[] a;
         String b;
         a = new DummyObject[]{
@@ -1413,7 +1413,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of shorts.
      */
-    public static void sortTestCase15() {
+    public static void sortTest15() {
         short[] a;
         String b;
         a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
@@ -1425,7 +1425,7 @@ public class ArraysTest {
     /**
      * Tests the sort method with array of shorts and indexes as parameters.
      */
-    public static void sortTestCase16() {
+    public static void sortTest16() {
         short[] a;
         String b;
         a = new short[]{(short) 3, (short) 2, (short) 8, (short) 7, (short) 6};
@@ -1438,7 +1438,7 @@ public class ArraysTest {
      * Tests the sort method with array of objects and comparator as a
      * parameter.
      */
-    public static void sortTestCase17() {
+    public static void sortTest17() {
         DummyObject[] a;
         String b;
         DummyObjectComparer c;
@@ -1464,7 +1464,7 @@ public class ArraysTest {
      * Tests the sort method with array of objects and indexes and comparator as
      * parameters.
      */
-    public static void sortTestCase18() {
+    public static void sortTest18() {
         DummyObject[] a;
         String b;
         DummyObjectComparer c;
@@ -1489,7 +1489,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of booleans.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         boolean[] a;
         String b;
         // the text represenation of an empty array
@@ -1509,7 +1509,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of bytes.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         byte[] a;
         String b;
         a = new byte[]{};
@@ -1526,7 +1526,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of chars.
      */
-    public static void toStringTestCase3() {
+    public static void toStringTest3() {
         char[] a;
         String b;
         a = new char[]{};
@@ -1543,7 +1543,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of doubles.
      */
-    public static void toStringTestCase4() {
+    public static void toStringTest4() {
         double[] a;
         String b;
         a = new double[]{};
@@ -1560,7 +1560,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of floats.
      */
-    public static void toStringTestCase5() {
+    public static void toStringTest5() {
         float[] a;
         String b;
         a = new float[]{};
@@ -1577,7 +1577,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of ints.
      */
-    public static void toStringTestCase6() {
+    public static void toStringTest6() {
         int[] a;
         String b;
         a = new int[]{};
@@ -1594,7 +1594,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of longs.
      */
-    public static void toStringTestCase7() {
+    public static void toStringTest7() {
         long[] a;
         String b;
         a = new long[]{};
@@ -1611,7 +1611,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of objects.
      */
-    public static void toStringTestCase8() {
+    public static void toStringTest8() {
         DummyObject[] a;
         String b;
         a = new DummyObject[]{};
@@ -1637,7 +1637,7 @@ public class ArraysTest {
     /**
      * Tests the toString method with array of shorts.
      */
-    public static void toStringTestCase9() {
+    public static void toStringTest9() {
         short[] a;
         String b;
         a = new short[]{};

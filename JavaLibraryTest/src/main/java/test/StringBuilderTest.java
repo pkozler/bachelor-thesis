@@ -14,15 +14,15 @@ public class StringBuilderTest {
     public static Logger logger = LogManager.getLogger(StringBuilderTest.class.getName());
 
     public static void runTestSuite() {
-        StringBuilderTest.stringBuilderTestCase();
-        StringBuilderTest.appendTestCase();
-        StringBuilderTest.toStringTestCase();
+        StringBuilderTest.stringBuilderTest();
+        StringBuilderTest.appendTest();
+        StringBuilderTest.toStringTest();
     }
 
     /**
      * Tests the constructor.
      */
-    public static void stringBuilderTestCase() {
+    public static void stringBuilderTest() {
         StringBuilder a;
         String b;
         // new empty stringbuilder
@@ -34,7 +34,7 @@ public class StringBuilderTest {
     /**
      * Tests the append method.
      */
-    public static void appendTestCase() {
+    public static void appendTest() {
         StringBuilder a;
         String b;
         // appending of empty string
@@ -78,7 +78,7 @@ public class StringBuilderTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         StringBuilder a;
         String b;
         // appending a string at once

@@ -14,36 +14,36 @@ public class MathTest {
     public static Logger logger = LogManager.getLogger(MathTest.class.getName());
 
     public static void runTestSuite() {
-        MathTest.absTestCase();
-        MathTest.absTestCase2();
-        MathTest.absTestCase3();
-        MathTest.absTestCase4();
-        MathTest.maxTestCase();
-        MathTest.maxTestCase2();
-        MathTest.maxTestCase3();
-        MathTest.maxTestCase4();
-        MathTest.minTestCase();
-        MathTest.minTestCase2();
-        MathTest.minTestCase3();
-        MathTest.minTestCase4();
-        MathTest.powTestCase();
-        MathTest.sqrtTestCase();
-        MathTest.logTestCase();
-        MathTest.log10TestCase();
-        MathTest.sinTestCase();
-        MathTest.cosTestCase();
-        MathTest.tanTestCase();
-        MathTest.asinTestCase();
-        MathTest.acosTestCase();
-        MathTest.atanTestCase();
-        MathTest.roundTestCase();
-        MathTest.roundTestCase2();
+        MathTest.absTest();
+        MathTest.absTest2();
+        MathTest.absTest3();
+        MathTest.absTest4();
+        MathTest.maxTest();
+        MathTest.maxTest2();
+        MathTest.maxTest3();
+        MathTest.maxTest4();
+        MathTest.minTest();
+        MathTest.minTest2();
+        MathTest.minTest3();
+        MathTest.minTest4();
+        MathTest.powTest();
+        MathTest.sqrtTest();
+        MathTest.logTest();
+        MathTest.log10Test();
+        MathTest.sinTest();
+        MathTest.cosTest();
+        MathTest.tanTest();
+        MathTest.asinTest();
+        MathTest.acosTest();
+        MathTest.atanTest();
+        MathTest.roundTest();
+        MathTest.roundTest2();
     }
 
     /**
      * Tests the abs method with a double value.
      */
-    public static void absTestCase() {
+    public static void absTest() {
         double a, b;
         // negative value
         a = Double.MIN_VALUE + 1;
@@ -62,7 +62,7 @@ public class MathTest {
     /**
      * Tests the abs method with a float value.
      */
-    public static void absTestCase2() {
+    public static void absTest2() {
         float a, b;
         a = Float.MIN_VALUE + 1;
         b = Math.abs(a);
@@ -78,7 +78,7 @@ public class MathTest {
     /**
      * Tests the abs method with an int value.
      */
-    public static void absTestCase3() {
+    public static void absTest3() {
         int a, b;
         a = Integer.MIN_VALUE + 1;
         b = Math.abs(a);
@@ -94,7 +94,7 @@ public class MathTest {
     /**
      * Tests the abs method with a long value.
      */
-    public static void absTestCase4() {
+    public static void absTest4() {
         long a, b;
         a = Long.MIN_VALUE + 1;
         b = Math.abs(a);
@@ -110,7 +110,7 @@ public class MathTest {
     /**
      * Tests the max method with a double value.
      */
-    public static void maxTestCase() {
+    public static void maxTest() {
         double a, b, c;
         // negative and positive value
         a = Double.MIN_VALUE;
@@ -142,7 +142,7 @@ public class MathTest {
     /**
      * Tests the max method with a float value.
      */
-    public static void maxTestCase2() {
+    public static void maxTest2() {
         float a, b, c;
         a = Float.MIN_VALUE;
         b = Float.MAX_VALUE;
@@ -169,7 +169,7 @@ public class MathTest {
     /**
      * Tests the max method with an int value.
      */
-    public static void maxTestCase3() {
+    public static void maxTest3() {
         int a, b, c;
         a = Integer.MIN_VALUE;
         b = Integer.MAX_VALUE;
@@ -196,7 +196,7 @@ public class MathTest {
     /**
      * Tests the max method with a long value.
      */
-    public static void maxTestCase4() {
+    public static void maxTest4() {
         long a, b, c;
         a = Long.MIN_VALUE;
         b = Long.MAX_VALUE;
@@ -223,7 +223,7 @@ public class MathTest {
     /**
      * Tests the min method with a double value.
      */
-    public static void minTestCase() {
+    public static void minTest() {
         double a, b, c;
         a = Double.MIN_VALUE;
         b = Double.MAX_VALUE;
@@ -250,7 +250,7 @@ public class MathTest {
     /**
      * Tests the min method with a float value.
      */
-    public static void minTestCase2() {
+    public static void minTest2() {
         float a, b, c;
         a = Float.MIN_VALUE;
         b = Float.MAX_VALUE;
@@ -277,7 +277,7 @@ public class MathTest {
     /**
      * Tests the min method with an int value.
      */
-    public static void minTestCase3() {
+    public static void minTest3() {
         int a, b, c;
         a = Integer.MIN_VALUE;
         b = Integer.MAX_VALUE;
@@ -304,7 +304,7 @@ public class MathTest {
     /**
      * Tests the min method with a long value.
      */
-    public static void minTestCase4() {
+    public static void minTest4() {
         long a, b, c;
         a = Long.MIN_VALUE;
         b = Long.MAX_VALUE;
@@ -331,7 +331,7 @@ public class MathTest {
     /**
      * Test the pow method.
      */
-    public static void powTestCase() {
+    public static void powTest() {
         double a, b, c;
         // positive power of positive value
         a = 10;
@@ -363,7 +363,7 @@ public class MathTest {
     /**
      * Tests the sqrt method.
      */
-    public static void sqrtTestCase() {
+    public static void sqrtTest() {
         double a, b;
         // square root of bigger value
         a = 100;
@@ -382,7 +382,7 @@ public class MathTest {
     /**
      * Tests the log method.
      */
-    public static void logTestCase() {
+    public static void logTest() {
         double a, b;
         // logarithm of the square of E
         a = Math.E * Math.E;
@@ -401,7 +401,7 @@ public class MathTest {
     /**
      * Tests the log10 method.
      */
-    public static void log10TestCase() {
+    public static void log10Test() {
         double a, b;
         // logarithm of the square of ten
         a = 100;
@@ -420,7 +420,7 @@ public class MathTest {
     /**
      * Tests the sin method.
      */
-    public static void sinTestCase() {
+    public static void sinTest() {
         double a, b;
         // sine of PI
         a = Math.PI;
@@ -439,7 +439,7 @@ public class MathTest {
     /**
      * Tests the cos method.
      */
-    public static void cosTestCase() {
+    public static void cosTest() {
         double a, b;
         // cosine of PI
         a = Math.PI;
@@ -458,7 +458,7 @@ public class MathTest {
     /**
      * Tests the tan method.
      */
-    public static void tanTestCase() {
+    public static void tanTest() {
         double a, b;
         // tangent of PI
         a = Math.PI;
@@ -477,7 +477,7 @@ public class MathTest {
     /**
      * Tests the asin method.
      */
-    public static void asinTestCase() {
+    public static void asinTest() {
         double a, b;
         // arcsine of one
         a = 1;
@@ -496,7 +496,7 @@ public class MathTest {
     /**
      * Tests the acos method.
      */
-    public static void acosTestCase() {
+    public static void acosTest() {
         double a, b;
         // arccosine of one
         a = 1;
@@ -515,7 +515,7 @@ public class MathTest {
     /**
      * Tests the atan method.
      */
-    public static void atanTestCase() {
+    public static void atanTest() {
         double a, b;
         // arctangent of one
         a = 1;
@@ -534,7 +534,7 @@ public class MathTest {
     /**
      * Tests the round method with a double value.
      */
-    public static void roundTestCase() {
+    public static void roundTest() {
         double a, b;
         // rounding to even value
         a = 1.5;
@@ -553,7 +553,7 @@ public class MathTest {
     /**
      * Tests the round method with a float value.
      */
-    public static void roundTestCase2() {
+    public static void roundTest2() {
         float a, b;
         a = 1.5f;
         b = Math.round(a);

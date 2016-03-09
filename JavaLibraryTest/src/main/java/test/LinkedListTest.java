@@ -15,23 +15,23 @@ public class LinkedListTest {
     public static Logger logger = LogManager.getLogger(LinkedListTest.class.getName());
 
     public static void runTestSuite() {
-        LinkedListTest.linkedListTestCase();
-        LinkedListTest.linkedListTestCase2();
-        LinkedListTest.addTestCase();
-        LinkedListTest.addTestCase2();
-        LinkedListTest.getTestCase();
-        LinkedListTest.setTestCase();
-        LinkedListTest.removeTestCase();
-        LinkedListTest.sizeTestCase();
-        LinkedListTest.isEmptyTestCase();
-        LinkedListTest.clearTestCase();
-        LinkedListTest.toStringTestCase();
+        LinkedListTest.linkedListTest();
+        LinkedListTest.linkedListTest2();
+        LinkedListTest.addTest();
+        LinkedListTest.addTest2();
+        LinkedListTest.getTest();
+        LinkedListTest.setTest();
+        LinkedListTest.removeTest();
+        LinkedListTest.sizeTest();
+        LinkedListTest.isEmptyTest();
+        LinkedListTest.clearTest();
+        LinkedListTest.toStringTest();
     }
 
     /**
      * Tests the constructor.
      */
-    public static void linkedListTestCase() {
+    public static void linkedListTest() {
         LinkedList<DummyObject> a;
         String b;
         a = new LinkedList<>();
@@ -42,7 +42,7 @@ public class LinkedListTest {
     /**
      * Tests the constructor with LinkedList as a parameter.
      */
-    public static void linkedListTestCase2() {
+    public static void linkedListTest2() {
         LinkedList<DummyObject> a, b;
         DummyObject c;
         String d;
@@ -71,7 +71,7 @@ public class LinkedListTest {
     /**
      * Tests the add method.
      */
-    public static void addTestCase() {
+    public static void addTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         String c;
@@ -101,7 +101,7 @@ public class LinkedListTest {
     /**
      * Tests the add method with index as a parameter.
      */
-    public static void addTestCase2() {
+    public static void addTest2() {
         LinkedList<DummyObject> a;
         DummyObject b;
         String c;
@@ -131,7 +131,7 @@ public class LinkedListTest {
     /**
      * Tests the get method.
      */
-    public static void getTestCase() {
+    public static void getTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         String c;
@@ -166,7 +166,7 @@ public class LinkedListTest {
     /**
      * Tests the set method.
      */
-    public static void setTestCase() {
+    public static void setTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         String c;
@@ -198,7 +198,7 @@ public class LinkedListTest {
     /**
      * Tests the remove method.
      */
-    public static void removeTestCase() {
+    public static void removeTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         String c;
@@ -227,7 +227,7 @@ public class LinkedListTest {
     /**
      * Tests the size method.
      */
-    public static void sizeTestCase() {
+    public static void sizeTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         int c;
@@ -256,7 +256,7 @@ public class LinkedListTest {
     /**
      * Tests the isEmpty method.
      */
-    public static void isEmptyTestCase() {
+    public static void isEmptyTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         boolean c;
@@ -285,7 +285,7 @@ public class LinkedListTest {
     /**
      * Tests the clear method.
      */
-    public static void clearTestCase() {
+    public static void clearTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         String c;
@@ -312,7 +312,7 @@ public class LinkedListTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         LinkedList<DummyObject> a;
         DummyObject b;
         String c;

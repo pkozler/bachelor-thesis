@@ -14,31 +14,31 @@ public class PrintStreamTest {
     public static Logger logger = LogManager.getLogger(PrintStreamTest.class.getName());
 
     public static void runTestSuite() {
-        PrintStreamTest.printTestCase();
-        PrintStreamTest.printTestCase2();
-        PrintStreamTest.printTestCase3();
-        PrintStreamTest.printTestCase4();
-        PrintStreamTest.printTestCase5();
-        PrintStreamTest.printTestCase6();
-        PrintStreamTest.printTestCase7();
-        PrintStreamTest.printTestCase8();
-        PrintStreamTest.printTestCase9();
-        PrintStreamTest.printlnTestCase();
-        PrintStreamTest.printlnTestCase2();
-        PrintStreamTest.printlnTestCase3();
-        PrintStreamTest.printlnTestCase4();
-        PrintStreamTest.printlnTestCase5();
-        PrintStreamTest.printlnTestCase6();
-        PrintStreamTest.printlnTestCase7();
-        PrintStreamTest.printlnTestCase8();
-        PrintStreamTest.printlnTestCase9();
-        PrintStreamTest.printlnTestCase10();
+        PrintStreamTest.printTest();
+        PrintStreamTest.printTest2();
+        PrintStreamTest.printTest3();
+        PrintStreamTest.printTest4();
+        PrintStreamTest.printTest5();
+        PrintStreamTest.printTest6();
+        PrintStreamTest.printTest7();
+        PrintStreamTest.printTest8();
+        PrintStreamTest.printTest9();
+        PrintStreamTest.printlnTest();
+        PrintStreamTest.printlnTest2();
+        PrintStreamTest.printlnTest3();
+        PrintStreamTest.printlnTest4();
+        PrintStreamTest.printlnTest5();
+        PrintStreamTest.printlnTest6();
+        PrintStreamTest.printlnTest7();
+        PrintStreamTest.printlnTest8();
+        PrintStreamTest.printlnTest9();
+        PrintStreamTest.printlnTest10();
     }
 
     /**
      * Tests the print method with a boolean value.
      */
-    public static void printTestCase() {
+    public static void printTest() {
         boolean a;
         // print of boolean values
         a = true;
@@ -52,7 +52,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with a char value.
      */
-    public static void printTestCase2() {
+    public static void printTest2() {
         char a;
         // print of lowercase letters
         a = 'a';
@@ -80,7 +80,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with array of chars.
      */
-    public static void printTestCase3() {
+    public static void printTest3() {
         char[] a;
         // empty char array
         a = new char[]{};
@@ -99,7 +99,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with a double value.
      */
-    public static void printTestCase4() {
+    public static void printTest4() {
         double a;
         // zeros with and without sign
         a = 0;
@@ -134,7 +134,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with a float value.
      */
-    public static void printTestCase5() {
+    public static void printTest5() {
         float a;
         a = 0;
         System.out.print(a);
@@ -165,7 +165,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with an int value.
      */
-    public static void printTestCase6() {
+    public static void printTest6() {
         int a;
         // zero
         a = 0;
@@ -190,7 +190,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with a long value.
      */
-    public static void printTestCase7() {
+    public static void printTest7() {
         long a;
         a = 0;
         System.out.print(a);
@@ -212,7 +212,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with an object.
      */
-    public static void printTestCase8() {
+    public static void printTest8() {
         DummyObject a;
         // object with an empty string
         a = new DummyObject("", 0);
@@ -237,7 +237,7 @@ public class PrintStreamTest {
     /**
      * Tests the print method with a string.
      */
-    public static void printTestCase9() {
+    public static void printTest9() {
         String a;
         // empty string
         a = "";
@@ -256,7 +256,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method.
      */
-    public static void printlnTestCase() {
+    public static void printlnTest() {
         // print of an empty line
         System.out.println();
     }
@@ -264,7 +264,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with a boolean value.
      */
-    public static void printlnTestCase2() {
+    public static void printlnTest2() {
         boolean a;
         a = true;
         System.out.print(a);
@@ -277,7 +277,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with a char value.
      */
-    public static void printlnTestCase3() {
+    public static void printlnTest3() {
         char a;
         a = 'a';
         System.out.print(a);
@@ -302,7 +302,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with array of chars.
      */
-    public static void printlnTestCase4() {
+    public static void printlnTest4() {
         char[] a;
         a = new char[]{};
         System.out.print(a);
@@ -318,7 +318,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with a double value.
      */
-    public static void printlnTestCase5() {
+    public static void printlnTest5() {
         double a;
         a = 0;
         System.out.print(a);
@@ -349,7 +349,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with a float value.
      */
-    public static void printlnTestCase6() {
+    public static void printlnTest6() {
         float a;
         a = 0;
         System.out.print(a);
@@ -380,7 +380,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with an int value.
      */
-    public static void printlnTestCase7() {
+    public static void printlnTest7() {
         int a;
         a = 0;
         System.out.print(a);
@@ -402,7 +402,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with a long value.
      */
-    public static void printlnTestCase8() {
+    public static void printlnTest8() {
         long a;
         a = 0;
         System.out.print(a);
@@ -424,7 +424,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with an object.
      */
-    public static void printlnTestCase9() {
+    public static void printlnTest9() {
         DummyObject a;
         a = new DummyObject("", 0);
         System.out.print(a);
@@ -446,7 +446,7 @@ public class PrintStreamTest {
     /**
      * Tests the println method with a string.
      */
-    public static void printlnTestCase10() {
+    public static void printlnTest10() {
         String a;
         a = "";
         System.out.print(a);

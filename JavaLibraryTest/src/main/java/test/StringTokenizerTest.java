@@ -16,11 +16,11 @@ public class StringTokenizerTest {
     public static Logger logger = LogManager.getLogger(StringTokenizerTest.class.getName());
 
     public static void runTestSuite() {
-        StringTokenizerTest.stringTokenizerTestCase();
-        StringTokenizerTest.stringTokenizerTestCase2();
-        StringTokenizerTest.countTokensTestCase();
-        StringTokenizerTest.hasMoreTokensTestCase();
-        StringTokenizerTest.nextTokenTestCase();
+        StringTokenizerTest.stringTokenizerTest();
+        StringTokenizerTest.stringTokenizerTest2();
+        StringTokenizerTest.countTokensTest();
+        StringTokenizerTest.hasMoreTokensTest();
+        StringTokenizerTest.nextTokenTest();
     }
 
     /*
@@ -43,7 +43,7 @@ public class StringTokenizerTest {
     /**
      * Tests the constructor.
      */
-    public static void stringTokenizerTestCase() {
+    public static void stringTokenizerTest() {
         StringTokenizer a;
         String b;
         // whitespaces inside the string
@@ -71,7 +71,7 @@ public class StringTokenizerTest {
     /**
      * Tests the constructor with a set of delimiters as a parameter.
      */
-    public static void stringTokenizerTestCase2() {
+    public static void stringTokenizerTest2() {
         StringTokenizer a;
         String b;
         // non-white delimiter (non-existent in string)
@@ -103,7 +103,7 @@ public class StringTokenizerTest {
     /**
      * Tests the countTokens method.
      */
-    public static void countTokensTestCase() {
+    public static void countTokensTest() {
         StringTokenizer a;
         int b;
         // tokenize with whitespaces as delimiters
@@ -131,7 +131,7 @@ public class StringTokenizerTest {
     /**
      * Tests the hasMoreTokens method.
      */
-    public static void hasMoreTokensTestCase() {
+    public static void hasMoreTokensTest() {
         StringTokenizer a;
         boolean b;
         a = new StringTokenizer("This is a test.");
@@ -154,7 +154,7 @@ public class StringTokenizerTest {
     /**
      * Tests the nextToken method.
      */
-    public static void nextTokenTestCase() {
+    public static void nextTokenTest() {
         StringTokenizer a;
         String b;
         // a test string

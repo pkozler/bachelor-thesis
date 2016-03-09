@@ -14,19 +14,19 @@ public class DoubleTest {
     public static Logger logger = LogManager.getLogger(DoubleTest.class.getName());
 
     public static void runTestSuite() {
-        DoubleTest.doubleValueTestCase();
-        DoubleTest.compareToTestCase();
-        DoubleTest.compareTestCase();
-        DoubleTest.equalsTestCase();
-        DoubleTest.toStringTestCase();
-        DoubleTest.toStringTestCase2();
-        DoubleTest.parseDoubleTestCase();
+        DoubleTest.doubleValueTest();
+        DoubleTest.compareToTest();
+        DoubleTest.compareTest();
+        DoubleTest.equalsTest();
+        DoubleTest.toStringTest();
+        DoubleTest.toStringTest2();
+        DoubleTest.parseDoubleTest();
     }
 
     /**
      * Tests the doubleValue method.
      */
-    public static void doubleValueTestCase() {
+    public static void doubleValueTest() {
         Double a;
         double b;
         // minimal non-zero absolute value
@@ -46,7 +46,7 @@ public class DoubleTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Double a, b;
         int c;
         // minimal non-zero absolute value and bigger fractional value
@@ -84,7 +84,7 @@ public class DoubleTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         double a, b;
         int c;
         a = Double.MIN_VALUE;
@@ -116,7 +116,7 @@ public class DoubleTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Double a, b;
         boolean c;
         a = new Double(Double.MIN_VALUE);
@@ -148,7 +148,7 @@ public class DoubleTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Double a;
         String b;
         // positive value text representation
@@ -168,7 +168,7 @@ public class DoubleTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Double a;
         String b;
         a = new Double((double) 0.0000000000000000000000000000000000000000000001);
@@ -185,7 +185,7 @@ public class DoubleTest {
     /**
      * Tests the parseDouble method.
      */
-    public static void parseDoubleTestCase() {
+    public static void parseDoubleTest() {
         Double a;
         double b;
         // positive value parsing

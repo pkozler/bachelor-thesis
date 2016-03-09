@@ -16,18 +16,18 @@ public class CollectionsTest {
     public static Logger logger = LogManager.getLogger(CollectionsTest.class.getName());
 
     public static void runTestSuite() {
-        CollectionsTest.binarySearchTestCase();
-        CollectionsTest.binarySearchTestCase2();
-        CollectionsTest.copyTestCase();
-        CollectionsTest.fillTestCase();
-        CollectionsTest.sortTestCase();
-        CollectionsTest.sortTestCase2();
+        CollectionsTest.binarySearchTest();
+        CollectionsTest.binarySearchTest2();
+        CollectionsTest.copyTest();
+        CollectionsTest.fillTest();
+        CollectionsTest.sortTest();
+        CollectionsTest.sortTest2();
     }
 
     /**
      * Tests the binarySearch method.
      */
-    public static void binarySearchTestCase() {
+    public static void binarySearchTest() {
         ArrayList<DummyObject> a;
         int b;
         a = new ArrayList<>();
@@ -51,7 +51,7 @@ public class CollectionsTest {
     /**
      * Tests the binarySearch method with comparator as a parameter.
      */
-    public static void binarySearchTestCase2() {
+    public static void binarySearchTest2() {
         ArrayList<DummyObject> a;
         int b;
         DummyObjectComparer c;
@@ -77,7 +77,7 @@ public class CollectionsTest {
     /**
      * Tests the copy method.
      */
-    public static void copyTestCase() {
+    public static void copyTest() {
         ArrayList<DummyObject> a, b;
         String c;
         // source list
@@ -103,7 +103,7 @@ public class CollectionsTest {
     /**
      * Tests the fill method.
      */
-    public static void fillTestCase() {
+    public static void fillTest() {
         ArrayList<DummyObject> a;
         String b;
         a = new ArrayList<>();
@@ -120,7 +120,7 @@ public class CollectionsTest {
     /**
      * Tests the sort method.
      */
-    public static void sortTestCase() {
+    public static void sortTest() {
         ArrayList<DummyObject> a;
         String b;
         a = new ArrayList<>();
@@ -142,7 +142,7 @@ public class CollectionsTest {
     /**
      * Tests the sort method with comparator as a parameter.
      */
-    public static void sortTestCase2() {
+    public static void sortTest2() {
         ArrayList<DummyObject> a;
         String b;
         DummyObjectComparer c;

@@ -14,20 +14,20 @@ public class CharacterTest {
     public static Logger logger = LogManager.getLogger(CharacterTest.class.getName());
 
     public static void runTestSuite() {
-        CharacterTest.charValueTestCase();
-        CharacterTest.compareToTestCase();
-        CharacterTest.compareTestCase();
-        CharacterTest.equalsTestCase();
-        CharacterTest.toStringTestCase();
-        CharacterTest.toStringTestCase2();
-        CharacterTest.isDigitTestCase();
-        CharacterTest.isLetterTestCase();
+        CharacterTest.charValueTest();
+        CharacterTest.compareToTest();
+        CharacterTest.compareTest();
+        CharacterTest.equalsTest();
+        CharacterTest.toStringTest();
+        CharacterTest.toStringTest2();
+        CharacterTest.isDigitTest();
+        CharacterTest.isLetterTest();
     }
 
     /**
      * Tests the charValue method.
      */
-    public static void charValueTestCase() {
+    public static void charValueTest() {
         Character a;
         char b;
         // uppercase letter
@@ -47,7 +47,7 @@ public class CharacterTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Character a, b;
         int c;
         // digit and uppercase letter
@@ -85,7 +85,7 @@ public class CharacterTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         char a, b;
         int c;
         a = '9';
@@ -117,7 +117,7 @@ public class CharacterTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Character a, b;
         boolean c;
         a = new Character('9');
@@ -149,7 +149,7 @@ public class CharacterTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Character a;
         String b;
         // digit text representation
@@ -169,7 +169,7 @@ public class CharacterTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Character a;
         String b;
         a = new Character('0');
@@ -186,7 +186,7 @@ public class CharacterTest {
     /**
      * Tests the isDigit method.
      */
-    public static void isDigitTestCase() {
+    public static void isDigitTest() {
         Character a;
         boolean b;
         // lowercase letter
@@ -214,7 +214,7 @@ public class CharacterTest {
     /**
      * Tests the isLetter method.
      */
-    public static void isLetterTestCase() {
+    public static void isLetterTest() {
         Character a;
         boolean b;
         a = new Character('a');

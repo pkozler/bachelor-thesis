@@ -4,41 +4,134 @@
  * and open the template in the editor.
  */
 
+import application.CodeManagementException;
+import application.XmlManager;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author pkout
+ * The {@code XmlManagerTest} class performs automatic testing of the
+ * {@code XmlManager} class.
+ * 
+ * @author Petr Kozler
  */
 public class XmlManagerTest {
+
+    XmlManager xmlManager;
     
-    public XmlManagerTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+    /**
+     * Initializes the XmlManager.
+     */
     @Before
     public void setUp() {
+        xmlManager = new XmlManager();
     }
     
+    /**
+     * Tests the setPaths method.
+     */
+    @Test
+    public void setPathsTest() throws CodeManagementException {
+        
+    }
+    
+    /**
+     * Tests the loadClassList method.
+     */
+    @Test
+    public void loadClassListTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the loadLangList method.
+     */
+    @Test
+    public void loadLangListTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the addClass method.
+     */
+    @Test
+    public void addClassTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the editClass method.
+     */
+    @Test
+    public void editClassTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the removeClass method.
+     */
+    @Test
+    public void removeClassTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the addLang method.
+     */
+    @Test
+    public void addLangTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the editLang method.
+     */
+    @Test
+    public void editLangTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the removeLang method.
+     */
+    @Test
+    public void removeLangTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the loadCode method.
+     */
+    @Test
+    public void loadCodeTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Tests the saveCode method.
+     */
+    @Test
+    public void saveCodeTest() throws CodeManagementException {
+        xmlManager.setPaths();
+        
+    }
+    
+    /**
+     * Finalizes the XmlManager.
+     */
     @After
     public void tearDown() {
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
 }

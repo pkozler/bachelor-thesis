@@ -15,23 +15,23 @@ public class ArrayListTest {
     public static Logger logger = LogManager.getLogger(ArrayListTest.class.getName());
 
     public static void runTestSuite() {
-        ArrayListTest.arrayListTestCase();
-        ArrayListTest.arrayListTestCase2();
-        ArrayListTest.addTestCase();
-        ArrayListTest.addTestCase2();
-        ArrayListTest.getTestCase();
-        ArrayListTest.setTestCase();
-        ArrayListTest.removeTestCase();
-        ArrayListTest.sizeTestCase();
-        ArrayListTest.isEmptyTestCase();
-        ArrayListTest.clearTestCase();
-        ArrayListTest.toStringTestCase();
+        ArrayListTest.arrayListTest();
+        ArrayListTest.arrayListTest2();
+        ArrayListTest.addTest();
+        ArrayListTest.addTest2();
+        ArrayListTest.getTest();
+        ArrayListTest.setTest();
+        ArrayListTest.removeTest();
+        ArrayListTest.sizeTest();
+        ArrayListTest.isEmptyTest();
+        ArrayListTest.clearTest();
+        ArrayListTest.toStringTest();
     }
 
     /**
      * Tests the constructor.
      */
-    public static void arrayListTestCase() {
+    public static void arrayListTest() {
         ArrayList<DummyObject> a;
         String b;
         // empty list
@@ -43,7 +43,7 @@ public class ArrayListTest {
     /**
      * Tests the constructor with ArrayList as a parameter.
      */
-    public static void arrayListTestCase2() {
+    public static void arrayListTest2() {
         ArrayList<DummyObject> a, b;
         DummyObject c;
         String d;
@@ -75,7 +75,7 @@ public class ArrayListTest {
     /**
      * Tests the add method.
      */
-    public static void addTestCase() {
+    public static void addTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
@@ -106,7 +106,7 @@ public class ArrayListTest {
     /**
      * Tests the add method with index as a parameter.
      */
-    public static void addTestCase2() {
+    public static void addTest2() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
@@ -141,7 +141,7 @@ public class ArrayListTest {
     /**
      * Tests the get method.
      */
-    public static void getTestCase() {
+    public static void getTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
@@ -181,7 +181,7 @@ public class ArrayListTest {
     /**
      * Tests the set method.
      */
-    public static void setTestCase() {
+    public static void setTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
@@ -216,7 +216,7 @@ public class ArrayListTest {
     /**
      * Tests the remove method.
      */
-    public static void removeTestCase() {
+    public static void removeTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
@@ -248,7 +248,7 @@ public class ArrayListTest {
     /**
      * Tests the size method.
      */
-    public static void sizeTestCase() {
+    public static void sizeTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         int c;
@@ -282,7 +282,7 @@ public class ArrayListTest {
     /**
      * Tests the isEmpty method.
      */
-    public static void isEmptyTestCase() {
+    public static void isEmptyTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         boolean c;
@@ -311,7 +311,7 @@ public class ArrayListTest {
     /**
      * Tests the clear method.
      */
-    public static void clearTestCase() {
+    public static void clearTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;
@@ -341,7 +341,7 @@ public class ArrayListTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         ArrayList<DummyObject> a;
         DummyObject b;
         String c;

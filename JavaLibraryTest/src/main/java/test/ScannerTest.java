@@ -39,16 +39,16 @@ public class ScannerTest {
     private static final int NEXTDOUBLE_TOKEN_COUNT = 30;
 
     public static void runTestSuite() {
-        ScannerTest.scannerTestCase();
-        ScannerTest.nextTestCase();
-        ScannerTest.nextBooleanTestCase();
-        ScannerTest.nextByteTestCase();
-        ScannerTest.nextShortTestCase();
-        ScannerTest.nextIntTestCase();
-        ScannerTest.nextLongTestCase();
-        ScannerTest.nextFloatTestCase();
-        ScannerTest.nextDoubleTestCase();
-        ScannerTest.nextLineTestCase();
+        ScannerTest.scannerTest();
+        ScannerTest.nextTest();
+        ScannerTest.nextBooleanTest();
+        ScannerTest.nextByteTest();
+        ScannerTest.nextShortTest();
+        ScannerTest.nextIntTest();
+        ScannerTest.nextLongTest();
+        ScannerTest.nextFloatTest();
+        ScannerTest.nextDoubleTest();
+        ScannerTest.nextLineTest();
     }
 
     /*
@@ -66,7 +66,7 @@ public class ScannerTest {
     /**
      * Tests the constructor.
      */
-    public static void scannerTestCase() {
+    public static void scannerTest() {
         setInput(INITIAL_TEST);
         Scanner a;
         String b;
@@ -100,7 +100,7 @@ public class ScannerTest {
     /**
      * Tests the next method.
      */
-    public static void nextTestCase() {
+    public static void nextTest() {
         setInput(NEXT_TEST);
         Scanner a;
         String b;
@@ -117,7 +117,7 @@ public class ScannerTest {
     /**
      * Tests the nextBoolean method.
      */
-    public static void nextBooleanTestCase() {
+    public static void nextBooleanTest() {
         setInput(NEXTBOOLEAN_TEST);
         Scanner a;
         boolean b;
@@ -134,7 +134,7 @@ public class ScannerTest {
     /**
      * Tests the nextByte method.
      */
-    public static void nextByteTestCase() {
+    public static void nextByteTest() {
         setInput(NEXTBYTE_TEST);
         Scanner a;
         byte b;
@@ -151,7 +151,7 @@ public class ScannerTest {
     /**
      * Tests the nextShort method.
      */
-    public static void nextShortTestCase() {
+    public static void nextShortTest() {
         setInput(NEXTSHORT_TEST);
         Scanner a;
         short b;
@@ -167,7 +167,7 @@ public class ScannerTest {
     /**
      * Tests the nextInt method.
      */
-    public static void nextIntTestCase() {
+    public static void nextIntTest() {
         setInput(NEXTINT_TEST);
         Scanner a;
         int b;
@@ -183,7 +183,7 @@ public class ScannerTest {
     /**
      * Tests the nextLong method.
      */
-    public static void nextLongTestCase() {
+    public static void nextLongTest() {
         setInput(NEXTLONG_TEST);
         Scanner a;
         long b;
@@ -199,7 +199,7 @@ public class ScannerTest {
     /**
      * Tests the nextFloat method.
      */
-    public static void nextFloatTestCase() {
+    public static void nextFloatTest() {
         setInput(NEXTFLOAT_TEST);
         Scanner a;
         float b;
@@ -220,7 +220,7 @@ public class ScannerTest {
     /**
      * Tests the nextDouble method.
      */
-    public static void nextDoubleTestCase() {
+    public static void nextDoubleTest() {
         setInput(NEXTDOUBLE_TEST);
         Scanner a;
         double b;
@@ -236,7 +236,7 @@ public class ScannerTest {
     /**
      * Tests the nextLine method.
      */
-    public static void nextLineTestCase() {
+    public static void nextLineTest() {
         setInput(NEXTLINE_TEST);
         Scanner a;
         String b;

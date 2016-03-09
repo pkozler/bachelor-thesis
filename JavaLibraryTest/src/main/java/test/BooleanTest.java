@@ -14,19 +14,19 @@ public class BooleanTest {
     public static Logger logger = LogManager.getLogger(BooleanTest.class.getName());
 
     public static void runTestSuite() {
-        BooleanTest.booleanValueTestCase();
-        BooleanTest.compareToTestCase();
-        BooleanTest.compareTestCase();
-        BooleanTest.equalsTestCase();
-        BooleanTest.toStringTestCase();
-        BooleanTest.toStringTestCase2();
-        BooleanTest.parseBooleanTestCase();
+        BooleanTest.booleanValueTest();
+        BooleanTest.compareToTest();
+        BooleanTest.compareTest();
+        BooleanTest.equalsTest();
+        BooleanTest.toStringTest();
+        BooleanTest.toStringTest2();
+        BooleanTest.parseBooleanTest();
     }
 
     /**
      * Tests the booleanValue method.
      */
-    public static void booleanValueTestCase() {
+    public static void booleanValueTest() {
         Boolean a;
         boolean b;
         // true value
@@ -42,7 +42,7 @@ public class BooleanTest {
     /**
      * Tests the compareTo method.
      */
-    public static void compareToTestCase() {
+    public static void compareToTest() {
         Boolean a, b;
         int c;
         // true and false
@@ -70,7 +70,7 @@ public class BooleanTest {
     /**
      * Tests the compare method.
      */
-    public static void compareTestCase() {
+    public static void compareTest() {
         boolean a, b;
         int c;
         a = true;
@@ -94,7 +94,7 @@ public class BooleanTest {
     /**
      * Tests the equals method.
      */
-    public static void equalsTestCase() {
+    public static void equalsTest() {
         Boolean a, b;
         boolean c;
         a = new Boolean(true);
@@ -118,7 +118,7 @@ public class BooleanTest {
     /**
      * Tests the toString method.
      */
-    public static void toStringTestCase() {
+    public static void toStringTest() {
         Boolean a;
         String b;
         // true value text representation
@@ -134,7 +134,7 @@ public class BooleanTest {
     /**
      * Tests the static toString method.
      */
-    public static void toStringTestCase2() {
+    public static void toStringTest2() {
         Boolean a;
         String b;
         a = new Boolean(true);
@@ -148,7 +148,7 @@ public class BooleanTest {
     /**
      * Tests the parseBoolean method.
      */
-    public static void parseBooleanTestCase() {
+    public static void parseBooleanTest() {
         Boolean a;
         boolean b;
         // true value parsing

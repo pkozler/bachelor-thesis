@@ -13,31 +13,31 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
 /**
- * Třída {@code DialogFactory} poskytuje metody pro vytváření dialogů různého
- * typu a návrat uživatelského vstupu pro kontrolery.
- *
+ * The class {@code DialogFactory} provides methods for creating dialog windows
+ * of various types and returning user input to controllers.
+ * 
  * @author Petr Kozler
  */
 public class DialogFactory {
 
-    // zdroj textů
+    // resource bundle for strings
     private final ResourceBundle BUNDLE;
 
     /**
-     * Vytvoří novou továrnu dialogů.
+     * Creates a new dialog factory.
      *
-     * @param bundle zdroj textů
+     * @param bundle resource bundle
      */
     public DialogFactory(ResourceBundle bundle) {
         this.BUNDLE = bundle;
     }
 
     /**
-     * Zobrazí informační dialog.
+     * Shows an information dialog.
      *
-     * @param titleKey klíč textu pro titulek dialogu
-     * @param headerKey klíč textu pro hlavičku dialogu
-     * @param contentKey klíč textu pro obsah dialogu
+     * @param titleKey resource bundle key for a dialog title
+     * @param headerKey resource bundle key for a dialog header
+     * @param contentKey resource bundle key for a dialog content
      */
     public void showInfoInDialog(String titleKey, String headerKey, String contentKey) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -48,12 +48,12 @@ public class DialogFactory {
     }
 
     /**
-     * Zobrazí potvrzovací dialog.
+     * Shows a confirmation dialog.
      *
-     * @param titleKey klíč textu pro titulek dialogu
-     * @param headerKey klíč textu pro hlavičku dialogu
-     * @param contentKey klíč textu pro obsah dialogu
-     * @return TRUE, pokud uživatel dialog potvrdil, jinak FALSE
+     * @param titleKey resource bundle key for a dialog title
+     * @param headerKey resource bundle key for a dialog header
+     * @param contentKey resource bundle key for a dialog content
+     * @return TRUE, if user confirmed the dialog, FALSE otherwise
      */
     public boolean isConfirmedInDialog(String titleKey, String headerKey, String contentKey) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -66,12 +66,12 @@ public class DialogFactory {
     }
 
     /**
-     * Zobrazí dialog pro zadání textu.
+     * Shows a text input dialog.
      *
-     * @param titleKey klíč textu pro titulek dialogu
-     * @param headerKey klíč textu pro hlavičku dialogu
-     * @param contentKey klíč textu pro obsah dialogu
-     * @return uživatelem zadaný text nebo NULL, pokud uživatel dialog zrušil
+     * @param titleKey resource bundle key for a dialog title
+     * @param headerKey resource bundle key for a dialog header
+     * @param contentKey resource bundle key for a dialog content
+     * @return user input text or NULL, if user canceled the dialog
      */
     public String getNameFromDialog(String titleKey, String headerKey, String contentKey) {
         TextInputDialog dialog = new TextInputDialog();
@@ -84,12 +84,12 @@ public class DialogFactory {
     }
     
     /**
-     * Zobrazí dialog s chybovou hláškou.
+     * Shows an error dialog.
      * 
      * @param ex výjimka
-     * @param titleKey klíč textu pro titulek dialogu
-     * @param headerKey klíč textu pro hlavičku dialogu
-     * @param contentKey klíč textu pro obsah dialogu
+     * @param titleKey resource bundle key for a dialog title
+     * @param headerKey resource bundle key for a dialog header
+     * @param contentKey resource bundle key for a dialog content
      */
     public void showExceptionInDialog(Exception ex, String titleKey, String headerKey, String contentKey) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -97,6 +97,7 @@ public class DialogFactory {
         alert.setHeaderText(BUNDLE.getString(headerKey));
         alert.setContentText(BUNDLE.getString(contentKey));
         
+        // write a stack trace to string
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         ex.printStackTrace(pw);
@@ -104,6 +105,7 @@ public class DialogFactory {
 
         Label label = new Label(BUNDLE.getString("exceptionLabel"));
 
+        // creating a text area with a stack trace 
         TextArea textArea = new TextArea(exceptionText);
         textArea.setEditable(false);
         textArea.setWrapText(true);
