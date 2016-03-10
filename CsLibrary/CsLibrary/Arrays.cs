@@ -10,101 +10,102 @@ namespace JavaClasses {
      */
     public static class Arrays {
         
-        // komparátor pro porovnání 8-bitových celých čísel
+        // comparator for 8-bit signed integer values
         private class ByteComparer : IComparer<sbyte> {
             int IComparer<sbyte>.Compare(sbyte x, sbyte y) {
                 return Byte.compare(x, y);
             }
         }
 
-        // komparátor pro porovnání znaků
+        // comparator for characters
         private class CharacterComparer : IComparer<char> {
             int IComparer<char>.Compare(char x, char y) {
                 return Character.compare(x, y);
             }
         }
-        
-        // komparátor pro porovnání desetinných čísel s dvojitou přesností
+
+        // comparator for double-precision decimal values
         private class DoubleComparer : IComparer<double> {
             int IComparer<double>.Compare(double x, double y) {
                 return Double.compare(x, y);
             }
         }
-        
-        // komparátor pro porovnání desetinných čísel s jednoduchou přesností
+
+        // comparator for single-precision decimal values
         private class FloatComparer : IComparer<float> {
             int IComparer<float>.Compare(float x, float y) {
                 return Float.compare(x, y);
             }
         }
 
-        // komparátor pro porovnání 32-bitových celých čísel
+        // comparator for 32-bit signed integer values
         private class IntegerComparer : IComparer<int> {
             int IComparer<int>.Compare(int x, int y) {
                 return Integer.compare(x, y);
             }
         }
 
-        // komparátor pro porovnání 64-bitových celých čísel
+        // comparator for 64-bit signed integer values
         private class LongComparer : IComparer<long> {
             int IComparer<long>.Compare(long x, long y) {
                 return Long.compare(x, y);
             }
         }
 
-        // komparátor pro porovnání 16-bitových celých čísel
+        // comparator for 16-bit signed integer values
         private class ShortComparer : IComparer<short> {
             int IComparer<short>.Compare(short x, short y) {
                 return Short.compare(x, y);
             }
         }
         
-        // delegát pro definici porovnávací metody předávané metodám pro porovnání pole
+        // delegate for testing if two values are equal
         private delegate bool equalsDelegate<T>(T o1, T o2);
         
         /*
-         * Provede binární vyhledávání ve zvolené části pole prvků
-         * libovolného datového typu podle předané porovnávací třídy.
-         * Předpokládá, že zvolená část pole je seřazená.
+            Represents the type-agnostic method for binary searching
+            in the specified sorted part of any array according to a specified comparator.
          */
         private static int binarySearchGeneric<T>(T[] a, int? fromIndex, int? toIndex, T key, IComparer<T> c = null) {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
 
-            // vyhledávání bez komparátoru
+            // searching without comparator
             if (c == null) {
                 return Array.BinarySearch(a, fromIndexValue, toIndexValue - fromIndexValue, key);
             }
 
-            // vyhledávání s komparátorem
+            // searching with comparator
             return Array.BinarySearch(a, fromIndexValue, toIndexValue - fromIndexValue, key, c);
         }
 
         /*
-         * Provede kopírování zvolené části pole prvků libovolného datového typu.
+            Represents the type-agnostic method for copying
+            the specified part of any array.
          */
         private static T[] copyOfRangeGeneric<T>(T[] original, int? from, int to) {
             int fromValue = from ?? 0;
-
-            // nové pole s velikostí, která je rovna rozdílu hranic původního pole
+            
+            // a new array with the length equal to the difference of boundaries of the original array
             T[] a = new T[to - fromValue];
 
-            // zvolená horní hranice je větší než délka původního pole
+            // the specified upper boundary if greater than the original array length
             if (to > original.Length) {
-                // kopírování hodnot z původního pole do jeho posledního prvku
+                // copying the values from the original array to its last element
                 for (int i = fromValue; i < original.Length; i++) {
                     a[i - fromValue] = original[i];
                 }
 
-                // naplnění zbytku nového pole výchozími hodnotami daného typu
+                // filling the rest of the new array with the default value of the given type
                 for (int i = original.Length; i < to; i++) {
                     a[i - fromValue] =
                      default(T);
                 }
             }
-            // zvolená horní hranice je menší
-            else {
-                // kopírování hodnot z původního pole do prvku na zvolené horní hranici
+            // the specified upper boundary is less then the original array length
+            else
+            {
+                // copying the values from the original array to the element on the specified upper boundary
                 for (int i = fromValue; i < to; i++) {
                     a[i - fromValue] = original[i];
                 }
@@ -114,28 +115,28 @@ namespace JavaClasses {
         }
 
         /*
-         * Provede porovnání dvou polí prvků libovolného datového typu
-         * podle předané srovnávací metody.
+            Represents the type-agnostic method for testing if two
+            specified arrays are equal.
          */
         private static bool equalsGeneric<T>(T[] a, T[] a2, equalsDelegate<T> equals) {
-            // porovnání referencí
+            // comparing references
             if (a == a2) {
                 return true;
             }
 
-            // test na nulové hodnoty referencí
+            // testing the references for a NULL value
             if (a == null || a2 == null) {
                 return false;
             }
 
             int length = a.Length;
 
-            // porovnání délek polí
+            // compring the array lengths
             if (a2.Length != length) {
                 return false;
             }
 
-            // porovnání jednotlivých prvků
+            // comparing corresponding elements of arrays
             for (int i = 0; i < length; i++) {
                 if (!equals(a[i], a2[i])) {
                     return false;
@@ -146,31 +147,32 @@ namespace JavaClasses {
         }
 
         /*
-         * Provede naplnění zvolené části pole prvků libovolného datového typu předanou hodnotou.
+            Represents the type-agnostic method for filling
+            the specified part of any array with the specified value.
          */
         private static void fillGeneric<T>(T[] a, int? fromIndex, int? toIndex, T val) {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
             
-            // kopírování jednotlivých prvků
+            // setting each element with the value
             for (int i = fromIndexValue; i < toIndexValue; i++) {
                 a[i] = val;
             }
         }
 
         /*
-         * Provede seřazení zvolené části pole prvků
-         * libovolného datového typu podle předané porovnávací třídy.
+            Represents the type-agnostic method for sorting
+            the specified part of any array according to a specified comparator.
          */
         private static void sortGeneric<T>(T[] a, int? fromIndex = null, int? toIndex = null, IComparer<T> c = null) {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
 
-            // řazení bez komparátoru
+            // sorting without comparator
             if (c == null) {
                 Array.Sort(a, fromIndexValue, toIndexValue - fromIndexValue);
             }
-            // řazení s komparátorem
+            // sorting with comparator
             else
             {
                 Array.Sort(a, fromIndexValue, toIndexValue - fromIndexValue, c);
@@ -178,7 +180,8 @@ namespace JavaClasses {
         }
 
         /*
-         * Provede vytvoření textové reprezentace pole prvků libovolného datového typu.
+            Represents the type-agnostic method for creating
+            the string representation of any array.
          */
         private static String toStringGeneric<T>(T[] a) {
             return "[" + string.Join(", ", a) + "]";
@@ -489,7 +492,7 @@ namespace JavaClasses {
          * Returns true if the two specified arrays of Objects are equal to one another.
          */
         public static bool equals(Object[] a, Object[] a2) {
-            return equalsGeneric(a, a2, (o1, o2) => { return (o1 == null ? o2 == null : o1.Equals(o2)); });
+            return equalsGeneric(a, a2, (x, y) => { return (x == null ? y == null : x.Equals(y)); });
         }
 
         /**

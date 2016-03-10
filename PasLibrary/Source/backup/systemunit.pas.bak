@@ -24,15 +24,15 @@ type
       procedure print(obj: TObject);
       procedure print(s: String_);
       procedure println();
-      procedure println(b: boolean);
-      procedure println(c: ansiChar);
-      procedure println(s: array of ansiChar);
-      procedure println(d: double);
-      procedure println(f: single);
-      procedure println(i: longInt);
-      procedure println(l: int64);
-      procedure println(obj: TObject);
-      procedure println(s: String_);
+      procedure println(x: boolean);
+      procedure println(x: ansiChar);
+      procedure println(x: array of ansiChar);
+      procedure println(x: double);
+      procedure println(x: single);
+      procedure println(x: longInt);
+      procedure println(x: int64);
+      procedure println(x: TObject);
+      procedure println(x: String_);
   end;
 
   System_ = class
@@ -43,7 +43,7 @@ type
   end;
 
   CompareFunction = function(a, b: pointer) : longInt;
-  TObjectCompareFunction = function(a, b: TObject) : longInt;
+  TObjectCompareFunction = function(o1, o2: TObject) : longInt;
 
   _java = class
     private

@@ -29,41 +29,35 @@ int32_t compareToF(Float *ptr, Float *anotherFloat) {
     return Float_compare(ptr->v, anotherFloat->v);
 }
 
-int32_t Float_compare(float v, float v2) {
-    // porovnání hodnoty Not a Number
-    if (isnan(v)) {
-        // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
-        if (isnan(v2)) {
+int32_t Float_compare(float f1, float f2) {
+    if (isnan(f1)) {
+        if (isnan(f2)) {
             return 0;
         }
 
         return 1;
     }
 
-    // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
-    if (isnan(v2)) {
+    if (isnan(f2)) {
         return -1;
     }
 
     FloatInt32 vBits, v2Bits;
-    vBits.val = v;
-    v2Bits.val = v2;
+    vBits.val = f1;
+    v2Bits.val = f2;
     int32_t negativeZeroBits = _getNegativeZeroFloatBits();
 
-    // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
     if (vBits.bits == 0
             && v2Bits.bits == negativeZeroBits) {
         return 1;
     }
 
-    // porovnání kladné a záporné nuly (obráceně)
     if (vBits.bits == negativeZeroBits
             && v2Bits.bits == 0) {
         return -1;
     }
 
-    // běžné porovnání pro ostatní hodnoty
-    return (v > v2 ? 1 : v < v2 ? -1 : 0);
+    return (f1 > f2 ? 1 : f1 < f2 ? -1 : 0);
 }
 
 bool equalsF(Float *ptr, Float *obj) {
@@ -82,7 +76,6 @@ bool equalsF(Float *ptr, Float *obj) {
     float v = ptr->v;
     float v2 = obj->v;
 
-    // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
     if (isnan(v) && isnan(v2)) {
         return true;
     }
@@ -92,17 +85,14 @@ bool equalsF(Float *ptr, Float *obj) {
     v2Bits.val = v2;
     int32_t negativeZeroBits = _getNegativeZeroFloatBits();
 
-    // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
     if (vBits.bits == negativeZeroBits) {
         return v2Bits.bits == negativeZeroBits;
     }
 
-    // porovnání kladné a záporné nuly (obráceně)
     if (v2Bits.bits == negativeZeroBits) {
         return vBits.bits == negativeZeroBits;
     }
 
-    // běžné vyhodnocení rovnosti pro ostatní hodnoty
     return (v == v2);
 }
 

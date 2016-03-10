@@ -10,6 +10,7 @@ Byte::Byte(int8_t value) {
 }
 
 Byte::~Byte() {
+    // really no code
 }
 
 int8_t Byte::byteValue() {

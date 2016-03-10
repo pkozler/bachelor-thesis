@@ -49,9 +49,8 @@ namespace JavaClasses {
          */
         public const double MIN_NORMAL = 2.2250738585072014E-308;
         
-        // binární reprezentace záporné nuly (pro účely porovnávání)
+        // binary representation of negative zero value for comparison purposes
         private static readonly long negativeZeroBits = BitConverter.DoubleToInt64Bits(-0.0);
-
         private double v;
 
         /**
@@ -78,36 +77,38 @@ namespace JavaClasses {
         /**
          * Compares the two specified double values.
          */
-        public static int compare(double v, double v2) {
-            // porovnání hodnoty Not a Number
-            if (double.IsNaN(v)) {
-                // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
-                if (double.IsNaN(v2)) {
+        public static int compare(double d1, double d2) {
+            /* testing for NaN values (a NaN value is considered greated
+               than any other, including positive infinity,
+               and two NaN values are considered equal)*/
+            if (double.IsNaN(d1)) {
+                if (double.IsNaN(d2)) {
                     return 0;
                 }
 
                 return 1;
             }
-
-            // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
-            if (double.IsNaN(v2)) {
+            
+            if (double.IsNaN(d2)) {
                 return -1;
             }
 
-            // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
-            if (BitConverter.DoubleToInt64Bits(v) == 0
-                && BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits) {
+            /* testing for +0.0 and -0.0 value (a positive zero
+               is considered greater than a negative zero) */
+            if (BitConverter.DoubleToInt64Bits(d1) == 0
+                && BitConverter.DoubleToInt64Bits(d2) == negativeZeroBits) {
                 return 1;
             }
-
-            // porovnání kladné a záporné nuly (obráceně)
-            if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits
-                && BitConverter.DoubleToInt64Bits(v2) == 0) {
+            
+            if (BitConverter.DoubleToInt64Bits(d1) == negativeZeroBits
+                && BitConverter.DoubleToInt64Bits(d2) == 0) {
                 return -1;
             }
 
-            // běžné porovnání pro ostatní hodnoty
-            return (v > v2 ? 1 : v < v2 ? -1 : 0);
+            /* testing for other values and returning
+               1 if first value is greater, 0 if first value 
+               equals second value, -1 otherwise (same as for a float type) */
+            return (d1 > d2 ? 1 : d1 < d2 ? -1 : 0);
         }
 
         /**
@@ -124,22 +125,21 @@ namespace JavaClasses {
 
             double v2 = (obj as Double).v;
 
-            // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
+            // testing for NaN values (two NaN values are considered equal)
             if (double.IsNaN(v) && double.IsNaN(v2)) {
                 return true;
             }
 
-            // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
+            // testing for zero values (+0.0 is considered greater than -0.0)
             if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits) {
                 return BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits;
             }
-
-            // porovnání kladné a záporné nuly (obráceně)
+            
             if (BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits) {
                 return BitConverter.DoubleToInt64Bits(v) == negativeZeroBits;
             }
 
-            // běžné vyhodnocení rovnosti pro ostatní hodnoty
+            // testing other values
             return (v == v2);
         }
 

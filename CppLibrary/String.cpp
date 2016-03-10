@@ -18,6 +18,7 @@ String::String(std::string original) {
 }
 
 String::~String() {
+    // really no code
 }
 
 int32_t String::compareTo(String *anotherString) {
@@ -28,11 +29,11 @@ bool String::equals(String *anObject) {
     if (anObject == nullptr) {
         return false;
     }
-    
-    if (sizeof(*this) != sizeof(*anObject)) {
+
+    if (sizeof (*this) != sizeof (*anObject)) {
         return false;
     }
-    
+
     return (bool) !this->s.compare(anObject->s);
 }
 
@@ -67,15 +68,12 @@ int32_t String::length() {
 String *String::trim() {
     const char* white_spaces = " \t\n\r\f";
 
-    // nalezení prvního nebílého znaku
     int32_t first = this->s.find_first_not_of(white_spaces);
 
-    // všechny znaky bílé, vytvořen prázdný řetězec
     if (first == std::string::npos) {
         return new String(std::string(""));
     }
 
-    // nalezení posledního nebílého znaku
     int32_t last = this->s.find_last_not_of(white_spaces);
 
     return new String(this->s.substr(first, last - first + 1));
@@ -110,7 +108,7 @@ bool String::startsWith(String *prefix) {
 
 bool String::endsWith(String *suffix) {
     return (s.size() >= suffix->toString().size() &&
-           s.compare(s.size() - suffix->toString().size(), suffix->toString().size(), suffix->toString()) == 0);
+            s.compare(s.size() - suffix->toString().size(), suffix->toString().size(), suffix->toString()) == 0);
 }
 
 bool String::isEmpty() {

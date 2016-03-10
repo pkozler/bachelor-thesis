@@ -1,9 +1,11 @@
 #include "StringBuilder.h"
 
 StringBuilder::StringBuilder() {
+    // really no code
 }
 
-StringBuilder::~StringBuilder() {    
+StringBuilder::~StringBuilder() {
+    // really no code
 }
 
 StringBuilder *StringBuilder::append(String *str) {

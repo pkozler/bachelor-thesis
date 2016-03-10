@@ -4,12 +4,15 @@
 #include <sstream>
 
 Scanner::Scanner(void *source) {
+    // really no code
 }
 
 Scanner::Scanner() {
+    // really no code
 }
 
 Scanner::~Scanner() {
+    // really no code
 }
 
 String *Scanner::next() {

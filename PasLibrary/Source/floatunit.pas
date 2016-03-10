@@ -33,7 +33,7 @@ type
       destructor destroy(); override;
       function floatValue() : single;
       function compareTo(anotherFloat: Float) : longInt;
-      class function compare(val, val2: single) : longInt;
+      class function compare(f1, f2: single) : longInt;
       function equals(obj: TObject) : boolean; override;
       function toString() : ansiString; override;
       function toString() : String_;
@@ -74,25 +74,25 @@ begin
   compareTo := compare(v, anotherFloat.v);
 end;
 
-class function Float.compare(val, val2: single) : longInt;
+class function Float.compare(f1, f2: single) : longInt;
 var
   vBits, v2Bits : FloatToInt32;
   negativeZeroBits : longInt;
 begin
-  if isNan(val) then begin
-    if isNan(val2) then begin
+  if isNan(f1) then begin
+    if isNan(f2) then begin
        exit(0);
     end;
 
     exit(1);
   end;
 
-  if isNan(val2) then begin
+  if isNan(f2) then begin
     exit(-1);
   end;
 
-  vBits.val := val;
-  v2Bits.val := val2;
+  vBits.val := f1;
+  v2Bits.val := f2;
   negativeZeroBits := getNegativeZeroBits();
 
   if (vBits.bits = 0) and (v2Bits.bits = negativeZeroBits) then begin
@@ -103,10 +103,10 @@ begin
     exit(-1);
   end;
 
-  if val > val2 then begin
+  if f1 > f2 then begin
     compare := 1;
   end
-  else if val < val2 then begin
+  else if f1 < f2 then begin
     compare := -1;
   end
   else begin

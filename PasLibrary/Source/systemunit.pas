@@ -24,15 +24,15 @@ type
       procedure print(obj: TObject);
       procedure print(s: String_);
       procedure println();
-      procedure println(b: boolean);
-      procedure println(c: ansiChar);
-      procedure println(s: array of ansiChar);
-      procedure println(d: double);
-      procedure println(f: single);
-      procedure println(i: longInt);
-      procedure println(l: int64);
-      procedure println(obj: TObject);
-      procedure println(s: String_);
+      procedure println(x: boolean);
+      procedure println(x: ansiChar);
+      procedure println(x: array of ansiChar);
+      procedure println(x: double);
+      procedure println(x: single);
+      procedure println(x: longInt);
+      procedure println(x: int64);
+      procedure println(x: TObject);
+      procedure println(x: String_);
   end;
 
   System_ = class
@@ -227,49 +227,49 @@ begin
   writeLn;
 end;
 
-procedure PrintStream.println(b: boolean);
+procedure PrintStream.println(x: boolean);
 begin
-  writeLn(b);
+  writeLn(x);
 end;
 
-procedure PrintStream.println(c: ansiChar);
+procedure PrintStream.println(x: ansiChar);
 begin
-  writeLn(c);
+  writeLn(x);
 end;
 
-procedure PrintStream.println(s: array of ansiChar);
+procedure PrintStream.println(x: array of ansiChar);
 begin
-  writeLn(charArrayToString(s));
+  writeLn(charArrayToString(x));
 end;
 
-procedure PrintStream.println(d: double);
+procedure PrintStream.println(x: double);
 begin
-  writeLn(d);
+  writeLn(x);
 end;
 
-procedure PrintStream.println(f: single);
+procedure PrintStream.println(x: single);
 begin
-  writeLn(f);
+  writeLn(x);
 end;
 
-procedure PrintStream.println(i: longInt);
+procedure PrintStream.println(x: longInt);
 begin
-  writeLn(i);
+  writeLn(x);
 end;
 
-procedure PrintStream.println(l: int64);
+procedure PrintStream.println(x: int64);
 begin
-  writeLn(l);
+  writeLn(x);
 end;
 
-procedure PrintStream.println(obj: TObject);
+procedure PrintStream.println(x: TObject);
 begin
-  writeLn(obj.toString);
+  writeLn(x.toString);
 end;
 
-procedure PrintStream.println(s: String_);
+procedure PrintStream.println(x: String_);
 begin
-  writeLn(s.toString);
+  writeLn(x.toString);
 end;
 
 end.

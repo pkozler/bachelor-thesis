@@ -80,34 +80,34 @@ void System_out_println() {
     printf("\n");
 }
 
-void System_out_printlnB(bool b) {
-    printf("%s\n", b ? "true" : "false");
+void System_out_printlnB(bool x) {
+    printf("%s\n", x ? "true" : "false");
 }
 
-void System_out_printlnC(char c) {
-    printf("%c\n", c);
+void System_out_printlnC(char x) {
+    printf("%c\n", x);
 }
 
-void System_out_printlnS(char *s) {
-    printf("%s\n", s);
+void System_out_printlnS(char *x) {
+    printf("%s\n", x);
 }
 
-void System_out_printlnD(double d) {
-    printf("%lf\n", d);
+void System_out_printlnD(double x) {
+    printf("%lf\n", x);
 }
 
-void System_out_printlnF(float f) {
-    printf("%f\n", f);
+void System_out_printlnF(float x) {
+    printf("%f\n", x);
 }
 
-void System_out_printlnI(int32_t i) {
-    printf("%d\n", i);
+void System_out_printlnI(int32_t x) {
+    printf("%d\n", x);
 }
 
-void System_out_printlnL(int64_t l) {
-    printf("%lld\n", l);
+void System_out_printlnL(int64_t x) {
+    printf("%lld\n", x);
 }
 
-void System_out_printlnStr(String *s) {
-    printf("%s\n", s->s);
+void System_out_printlnStr(String *x) {
+    printf("%s\n", x->s);
 }

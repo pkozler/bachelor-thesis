@@ -3,13 +3,14 @@
 #include <string>
 
 const int64_t Long::MAX_VALUE = 9223372036854775807L;
-const int64_t Long::MIN_VALUE = -9223372036854775808L;
+const int64_t Long::MIN_VALUE = 9223372036854775808L;
 
 Long::Long(int64_t value) {
     v = value;
 }
 
 Long::~Long() {
+    // really no code
 }
 
 int64_t Long::longValue() {

@@ -17,6 +17,7 @@ Double::Double(double value) {
 }
 
 Double::~Double() {
+    // really no code
 }
 
 int64_t Double::getNegativeZeroBits() {
@@ -34,41 +35,35 @@ int32_t Double::compareTo(Double *anotherDouble) {
     return compare(v, anotherDouble->v);
 }
 
-int32_t Double::compare(double v, double v2) {
-    // porovnání hodnoty Not a Number
-    if (std::isnan(v)) {
-        // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
-        if (std::isnan(v2)) {
+int32_t Double::compare(double d1, double d2) {
+    if (std::isnan(d1)) {
+        if (std::isnan(d2)) {
             return 0;
         }
 
         return 1;
     }
 
-    // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
-    if (std::isnan(v2)) {
+    if (std::isnan(d2)) {
         return -1;
     }
 
     DoubleInt64 vBits, v2Bits;
-    vBits.val = v;
-    v2Bits.val = v2;
+    vBits.val = d1;
+    v2Bits.val = d2;
     int64_t negativeZeroBits = getNegativeZeroBits();
 
-    // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
     if (vBits.bits == 0
             && v2Bits.bits == negativeZeroBits) {
         return 1;
     }
 
-    // porovnání kladné a záporné nuly (obráceně)
     if (vBits.bits == negativeZeroBits
             && v2Bits.bits == 0) {
         return -1;
     }
 
-    // běžné porovnání pro ostatní hodnoty
-    return (v > v2 ? 1 : v < v2 ? -1 : 0);
+    return (d1 > d2 ? 1 : d1 < d2 ? -1 : 0);
 }
 
 bool Double::equals(Double *obj) {
@@ -82,7 +77,6 @@ bool Double::equals(Double *obj) {
 
     double v2 = obj->v;
 
-    // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
     if (std::isnan(v) && std::isnan(v2)) {
         return true;
     }
@@ -92,17 +86,14 @@ bool Double::equals(Double *obj) {
     v2Bits.val = v2;
     int64_t negativeZeroBits = getNegativeZeroBits();
 
-    // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
     if (vBits.bits == negativeZeroBits) {
         return v2Bits.bits == negativeZeroBits;
     }
 
-    // porovnání kladné a záporné nuly (obráceně)
     if (v2Bits.bits == negativeZeroBits) {
         return vBits.bits == negativeZeroBits;
     }
 
-    // běžné vyhodnocení rovnosti pro ostatní hodnoty
     return (v == v2);
 }
 

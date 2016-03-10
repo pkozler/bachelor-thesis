@@ -29,41 +29,35 @@ int32_t compareToD(Double *ptr, Double *anotherDouble) {
     return Double_compare(ptr->v, anotherDouble->v);
 }
 
-int32_t Double_compare(double v, double v2) {
-    // porovnání hodnoty Not a Number
-    if (isnan(v)) {
-        // dvě NaN hodnoty se při tomto způsobu porovnání rovnají
-        if (isnan(v2)) {
+int32_t Double_compare(double d1, double d2) {
+    if (isnan(d1)) {
+        if (isnan(d2)) {
             return 0;
         }
 
         return 1;
     }
 
-    // hodnota NaN je větší než jakákoliv jiná hodnota (včetně kladného nekonečna)
-    if (isnan(v2)) {
+    if (isnan(d2)) {
         return -1;
     }
 
     DoubleInt64 vBits, v2Bits;
-    vBits.val = v;
-    v2Bits.val = v2;
+    vBits.val = d1;
+    v2Bits.val = d2;
     int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
 
-    // porovnání kladné a záporné nuly (kladná je vyhodnocena jako větší)
     if (vBits.bits == 0
             && v2Bits.bits == negativeZeroBits) {
         return 1;
     }
 
-    // porovnání kladné a záporné nuly (obráceně)
     if (vBits.bits == negativeZeroBits
             && v2Bits.bits == 0) {
         return -1;
     }
 
-    // běžné porovnání pro ostatní hodnoty
-    return (v > v2 ? 1 : v < v2 ? -1 : 0);
+    return (d1 > d2 ? 1 : d1 < d2 ? -1 : 0);
 }
 
 bool equalsD(Double *ptr, Double *obj) {
@@ -82,7 +76,6 @@ bool equalsD(Double *ptr, Double *obj) {
     double v = ptr->v;
     double v2 = obj->v;
 
-    // porovnání hodnoty Not a Number (dvě NaN hodnoty se považují za shodné)
     if (isnan(v) && isnan(v2)) {
         return true;
     }
@@ -92,17 +85,14 @@ bool equalsD(Double *ptr, Double *obj) {
     v2Bits.val = v2;
     int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
 
-    // porovnání kladné a záporné nuly (považují se za rozdílné hodnoty)
     if (vBits.bits == negativeZeroBits) {
         return v2Bits.bits == negativeZeroBits;
     }
 
-    // porovnání kladné a záporné nuly (obráceně)
     if (v2Bits.bits == negativeZeroBits) {
         return vBits.bits == negativeZeroBits;
     }
 
-    // běžné vyhodnocení rovnosti pro ostatní hodnoty
     return (v == v2);
 }
 

@@ -14,15 +14,14 @@ StringTokenizer::StringTokenizer(String *str, String *delim) {
 }
 
 StringTokenizer::~StringTokenizer() {
+    // really no code
 }
 
 int32_t StringTokenizer::countTokens() {
     int32_t count = 0;
     int32_t pos = 0;
 
-    // dokud existuje další token
     while (pos != std::string::npos) {
-        // hledá se dále od pozice posledního tokenu a uloží se nová pozice
         pos += this->str.find_first_of(delim, pos) + 1;
         count++;
     }

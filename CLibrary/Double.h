@@ -26,7 +26,7 @@ typedef struct {
 Double *new_Double(double value);
 double doubleValue(Double *ptr);
 int32_t compareToD(Double *ptr, Double *anotherDouble);
-int32_t Double_compare(double v, double v2);
+int32_t Double_compare(double d1, double d2);
 bool equalsD(Double *ptr, Double *obj);
 String *toStringD(Double *ptr);
 String *Double_toString(double d);

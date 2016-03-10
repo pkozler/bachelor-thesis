@@ -10,9 +10,11 @@
 #include "Short.h"
 
 Arrays::Arrays() {
+    // really no code
 }
 
 Arrays::~Arrays() {
+    // really no code
 }
 
 bool Arrays::equalsBool(bool a, bool b) {

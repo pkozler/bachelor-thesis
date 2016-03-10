@@ -7,6 +7,7 @@ Character::Character(char value) {
 }
 
 Character::~Character() {
+    // really no code
 }
 
 char Character::charValue() {

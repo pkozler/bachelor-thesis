@@ -49,9 +49,7 @@ namespace JavaClasses {
          */
         public const double MIN_NORMAL = 1.17549435E-38f;
         
-        // binární reprezentace záporné nuly (pro účely porovnávání)
         private static readonly int negativeZeroBits = floatToInt32Bits(-0.0f);
-
         private float v;
         
         /**
@@ -62,17 +60,17 @@ namespace JavaClasses {
         }
 
         /*
-         * Převede desetinné číslo s jednoduchou přesností
-         * na 32-bitové celé se stejnou binární reprezentací.
+            Converts a single-precision decimal value to the 32-bit integer value
+            with exactly the same binary representation.
          */
         private static int floatToInt32Bits(float f)
         {
-            // zkopírování pole se zadanou zadaným desetinným číslem do pole bajtů
+            // copying the array with one float value to the byte array with corresponding length
             float[] floats = new[] { f };
             byte[] bytes = new byte[4];
             Buffer.BlockCopy(floats, 0, bytes, 0, 4);
 
-            // převod pole bajtů na celé číslo
+            // converting the byte array to the corresponding integer value
             return BitConverter.ToInt32(bytes, 0);
         }
 
@@ -93,30 +91,30 @@ namespace JavaClasses {
         /**
          * Compares the two specified float values.
          */
-        public static int compare(float v, float v2) {
-            if (float.IsNaN(v)) {
-                if (float.IsNaN(v2)) {
+        public static int compare(float f1, float f2) {
+            if (float.IsNaN(f1)) {
+                if (float.IsNaN(f2)) {
                     return 0;
                 }
 
                 return 1;
             }
 
-            if (float.IsNaN(v2)) {
+            if (float.IsNaN(f2)) {
                 return -1;
             }
 
-            if (floatToInt32Bits(v) == 0
-                && floatToInt32Bits(v2) == negativeZeroBits) {
+            if (floatToInt32Bits(f1) == 0
+                && floatToInt32Bits(f2) == negativeZeroBits) {
                 return 1;
             }
 
-            if (floatToInt32Bits(v) == negativeZeroBits
-                && floatToInt32Bits(v2) == 0) {
+            if (floatToInt32Bits(f1) == negativeZeroBits
+                && floatToInt32Bits(f2) == 0) {
                 return -1;
             }
 
-            return (v > v2 ? 1 : v < v2 ? -1 : 0);
+            return (f1 > f2 ? 1 : f1 < f2 ? -1 : 0);
         }
 
         /**

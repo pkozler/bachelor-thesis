@@ -52,8 +52,8 @@ begin
   strPCopy(cStr, str.toString());
 
   if count + len >= capacity then begin
-    capacity += len * RESIZE_COEF;
-    buffer = reAllocMem(buffer, capacity);
+    capacity := count + len * RESIZE_COEF;
+    buffer := reAllocMem(buffer, capacity);
   end;
 
   strcat(buffer, cStr);

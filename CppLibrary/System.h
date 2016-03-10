@@ -17,14 +17,14 @@ public:
     void print(int64_t l);
     void print(String *s);
     void println();
-    void println(bool b);
-    void println(char c);
-    void println(char* s);
-    void println(double d);
-    void println(float f);
-    void println(int32_t i);
-    void println(int64_t l);
-    void println(String *s);
+    void println(bool x);
+    void println(char x);
+    void println(char* x);
+    void println(double x);
+    void println(float x);
+    void println(int32_t x);
+    void println(int64_t x);
+    void println(String *x);
 };
 
 class System {

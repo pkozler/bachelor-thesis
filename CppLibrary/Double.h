@@ -25,7 +25,7 @@ public:
     ~Double();
     double doubleValue();
     int32_t compareTo(Double *anotherDouble);
-    static int32_t compare(double v, double v2);
+    static int32_t compare(double d1, double d2);
     bool equals(Double *obj);
     String *toString();
     static String *toString(double d);

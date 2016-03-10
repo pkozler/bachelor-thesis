@@ -10,6 +10,7 @@ Short::Short(int16_t value) {
 }
 
 Short::~Short() {
+    // really no code
 }
 
 int16_t Short::shortValue() {

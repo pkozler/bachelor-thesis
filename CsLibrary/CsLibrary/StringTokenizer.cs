@@ -8,11 +8,13 @@ namespace JavaClasses {
      * @author Petr Kozler (A13B0359P)
      */
     public class StringTokenizer {
+        // current string array containing tokens
         private string[] tokens;
+        // current position in the array
         private int tokenCounter = 0;
 
         private void initialize(string str, string delim = " \t\n\r\f") {
-            // rozdělení řetězce do pole podle množiny oddělovačů
+            // splitting the string to the array by the specified set of delimiters
             tokens = str.Split(delim.ToCharArray(), StringSplitOptions.None);
         }
 

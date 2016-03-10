@@ -3,107 +3,89 @@
 #include <iostream>
 
 PrintStream::PrintStream() {
+    // really no code
 }
 
 PrintStream::~PrintStream() {
+    // really no code
 }
 
-void PrintStream::print(bool b)
-{
+void PrintStream::print(bool b) {
     std::cout << (b ? "true" : "false");
 }
 
-void PrintStream::print(char c)
-{
+void PrintStream::print(char c) {
     std::cout << c;
 }
 
-void PrintStream::print(char* s)
-{
+void PrintStream::print(char* s) {
     std::cout << s;
 }
 
-void PrintStream::print(double d)
-{
+void PrintStream::print(double d) {
     std::cout << d;
 }
 
-void PrintStream::print(float f)
-{
+void PrintStream::print(float f) {
     std::cout << f;
 }
 
-void PrintStream::print(int32_t i)
-{
+void PrintStream::print(int32_t i) {
     std::cout << i;
 }
 
-void PrintStream::print(int64_t l)
-{
+void PrintStream::print(int64_t l) {
     std::cout << l;
 }
 
-void PrintStream::print(String *s)
-{
+void PrintStream::print(String *s) {
     std::cout << s->toString();
 }
 
-void PrintStream::println()
-{
+void PrintStream::println() {
     std::cout << std::endl;
 }
 
-void PrintStream::println(bool b)
-{
-    std::cout << (b ? "true" : "false") << std::endl;
+void PrintStream::println(bool x) {
+    std::cout << (x ? "true" : "false") << std::endl;
 }
 
-void PrintStream::println(char c)
-{
-    std::cout << c << std::endl;
+void PrintStream::println(char x) {
+    std::cout << x << std::endl;
 }
 
-void PrintStream::println(char* s)
-{
-    std::cout << s << std::endl;
+void PrintStream::println(char* x) {
+    std::cout << x << std::endl;
 }
 
-void PrintStream::println(double d)
-{
-    std::cout << d << std::endl;
+void PrintStream::println(double x) {
+    std::cout << x << std::endl;
 }
 
-void PrintStream::println(float f)
-{
-    std::cout << f << std::endl;
+void PrintStream::println(float x) {
+    std::cout << x << std::endl;
 }
 
-void PrintStream::println(int32_t i)
-{
-    std::cout << i << std::endl;
+void PrintStream::println(int32_t x) {
+    std::cout << x << std::endl;
 }
 
-void PrintStream::println(int64_t l)
-{
-    std::cout << l << std::endl;
+void PrintStream::println(int64_t x) {
+    std::cout << x << std::endl;
 }
 
-void PrintStream::println(String *s)
-{
-    std::cout << s->toString() << std::endl;
+void PrintStream::println(String *x) {
+    std::cout << x->toString() << std::endl;
 }
 
 void *System::in = nullptr;
 
 PrintStream *System::out = new PrintStream();
 
-System::System() {}
-
-System::~System() {}
-
-void delete_out()
-{
-    delete System::out;
+System::System() {
+    // really no code
 }
 
-const int32_t result = std::atexit(delete_out);
+System::~System() {
+    // really no code
+}

@@ -10,6 +10,7 @@ Integer::Integer(int32_t value) {
 }
 
 Integer::~Integer() {
+    // really no code
 }
 
 int32_t Integer::intValue() {

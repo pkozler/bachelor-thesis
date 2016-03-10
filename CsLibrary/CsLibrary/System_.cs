@@ -11,6 +11,8 @@ namespace JavaClasses {
 
         /**
          * Prints a boolean value.
+         *
+         * @param b The boolean to be printed
          */
         public void print(bool b) {
             Console.Write(b);
@@ -18,6 +20,8 @@ namespace JavaClasses {
 
         /**
          * Prints a character.
+         *
+         * @param c The char to be printed
          */
         public void print(char c) {
             Console.Write(c);
@@ -25,6 +29,8 @@ namespace JavaClasses {
 
         /**
          * Prints an array of characters.
+         *
+         * @param s The array of chars to be printed
          */
         public void print(char[] s) {
             Console.Write(s);
@@ -32,6 +38,8 @@ namespace JavaClasses {
 
         /**
          * Prints a double-precision floating-point number.
+         *
+         * @param d The double to be printed
          */
         public void print(double d) {
             Console.Write(d);
@@ -39,6 +47,8 @@ namespace JavaClasses {
 
         /**
          * Prints a floating-point number.
+         *
+         * @param f The float to be printed
          */
         public void print(float f) {
             Console.Write(f);
@@ -46,6 +56,8 @@ namespace JavaClasses {
 
         /**
          * Prints an integer.
+         *
+         * @param i The int to be printed
          */
         public void print(int i) {
             Console.Write(i);
@@ -53,6 +65,8 @@ namespace JavaClasses {
 
         /**
          * Prints a long integer.
+         *
+         * @param l The long to be printed
          */
         public void print(long l) {
             Console.Write(l);
@@ -60,6 +74,8 @@ namespace JavaClasses {
 
         /**
          * Prints an object.
+         *
+         * @param obj The Object to be printed
          */
         public void print(Object obj) {
             Console.Write(obj);
@@ -67,6 +83,8 @@ namespace JavaClasses {
 
         /**
          * Prints a string.
+         *
+         * @param s The String to be printed
          */
         public void print(String s) {
             Console.Write(s);
@@ -81,66 +99,85 @@ namespace JavaClasses {
 
         /**
          * Prints a boolean and then terminate the line.
+         *
+         * @param x The boolean to be printed
          */
-        public void println(bool b) {
-            Console.WriteLine(b);
+        public void println(bool x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints a character and then terminate the line.
+         *
+         * @param x The char to be printed.
          */
-        public void println(char c) {
-            Console.WriteLine(c);
+        public void println(char x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints an array of characters and then terminate the line.
+         *
+         * @param x an array of chars to print.
          */
-        public void println(char[] s) {
-            Console.WriteLine(s);
+        public void println(char[] x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints a double and then terminate the line.
+         *
+         * @param x The double to be printed.
          */
-        public void println(double d) {
-            Console.WriteLine(d);
+        public void println(double x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints a float and then terminate the line.
+         *
+         * @param x The float to be printed.
          */
-        public void println(float f) {
-            Console.WriteLine(f);
+        public void println(float x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints an integer and then terminate the line.
+         *
+         * @param x The int to be printed.
          */
-        public void println(int i) {
-            Console.WriteLine(i);
+        public void println(int x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints a long and then terminate the line.
+         *
+         * @param x The long to be printed.
          */
-        public void println(long l) {
-            Console.WriteLine(l);
+        public void println(long x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints an Object and then terminate the line.
+         *
+         * @param x The Object to be printed.
          */
-        public void println(Object obj) {
-            Console.WriteLine(obj);
+        public void println(Object x) {
+            Console.WriteLine(x);
         }
 
         /**
          * Prints a String and then terminate the line.
+         *
+         * @param x The String to be printed.
          */
-        public void println(String s) {
-            Console.WriteLine(s);
+        public void println(String x) {
+            Console.WriteLine(x);
         }
+
     }
 
     /**
@@ -160,5 +197,7 @@ namespace JavaClasses {
          * The "standard" output stream.
          */
         public readonly static PrintStream out_ = new PrintStream();
+
     }
+
 }

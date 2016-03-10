@@ -5,6 +5,7 @@ Boolean::Boolean(bool value) {
 }
 
 Boolean::~Boolean() {
+    // really no code
 }
 
 bool Boolean::booleanValue() {

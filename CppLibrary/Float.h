@@ -25,7 +25,7 @@ public:
     ~Float();
     float floatValue();
     int32_t compareTo(Float *anotherFloat);
-    static int32_t compare(float v, float v2);
+    static int32_t compare(float f1, float f2);
     bool equals(Float *obj);
     String *toString();
     static String *toString(float f);

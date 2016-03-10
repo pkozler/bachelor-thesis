@@ -26,7 +26,7 @@ typedef struct {
 Float *new_Float(float value);
 float floatValue(Float *ptr);
 int32_t compareToF(Float *ptr, Float *anotherFloat);
-int32_t Float_compare(float v, float v2);
+int32_t Float_compare(float f1, float f2);
 bool equalsF(Float *ptr, Float *obj);
 String *toStringF(Float *ptr);
 String *Float_toString(float f);

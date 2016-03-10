@@ -6,9 +6,11 @@ const int32_t Math::E = 2.7182818284590452354;
 const int32_t Math::PI = 3.14159265358979323846;
 
 Math::Math() {
+    // really no code
 }
 
 Math::~Math() {
+    // really no code
 }
 
 double Math::abs(double a) {

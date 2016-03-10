@@ -1,18 +1,27 @@
 #include <iostream>
-#include "String.h"
-#include "System.h"
+
+#include "ArrayList.h";
+#include "Arrays.h";
+#include "Boolean.h";
+#include "Byte.h";
+#include "Character.h";
+#include "Collections.h";
+#include "Double.h";
+#include "Float.h";
+#include "Integer.h";
+#include "LinkedList.h";
+#include "Long.h";
+#include "Math.h";
+#include "Scanner.h";
+#include "Short.h";
+#include "String.h";
+#include "StringBuilder.h";
+#include "StringTokenizer.h";
+#include "System.h";
 
 using namespace std;
 
-int32_t main(int32_t argc, char** argv) {
-    String *str1 = new String("Something");
-    String *str2 = new String("Else");
-
-    String *concatenated = *str1 + *str2;
-
-    System::out->print(concatenated);
-
-    delete str1, str2, concatenated;
+int main(int argc, char** argv) {
     return 0;
 }
 
