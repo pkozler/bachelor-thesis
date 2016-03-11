@@ -16,8 +16,6 @@ type
   Scanner = class
     public
       constructor create(source: TObject);
-      constructor create();
-      destructor destroy(); override;
       function next() : String_;
       function nextBoolean() : boolean;
       function nextByte() : shortInt;
@@ -42,15 +40,6 @@ uses
  *)
 constructor Scanner.create(source: TObject);
 begin
-end;
-
-constructor Scanner.create();
-begin
-end;
-
-destructor Scanner.destroy();
-begin
-  inherited;
 end;
 
 (**

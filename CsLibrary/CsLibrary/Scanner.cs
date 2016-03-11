@@ -21,15 +21,7 @@ namespace JavaClasses {
         public Scanner(Object source) {
             // really no code
         }
-
-        /*
-             Serves as the convenience method for creating the new scanner
-             without unnecessary imitation of specifying the Java input stream.
-         */
-        public Scanner() {
-            // really no code
-        }
-
+        
         /*
              Returns the next token of the current line or reads the new line
              from the standard input if the current line was completely scanned.

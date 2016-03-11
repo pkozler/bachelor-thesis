@@ -2,14 +2,6 @@
 
 #include <iostream>
 
-PrintStream::PrintStream() {
-    // really no code
-}
-
-PrintStream::~PrintStream() {
-    // really no code
-}
-
 /**
  * Prints a boolean value.
  *
@@ -191,11 +183,3 @@ void *System::in = nullptr;
  * The "standard" output stream.
  */
 PrintStream *System::out = new PrintStream();
-
-System::System() {
-    // really no code
-}
-
-System::~System() {
-    // really no code
-}

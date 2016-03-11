@@ -21,10 +21,6 @@ Long::Long(int64_t value) {
     v = value;
 }
 
-Long::~Long() {
-    // really no code
-}
-
 /**
  * Returns the value of this Long as a long value.
  *

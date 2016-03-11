@@ -59,13 +59,12 @@ type
            *)
            MIN_NORMAL = 1.17549435e-38;
       constructor create(value: single);
-      destructor destroy(); override;
       function floatValue() : single;
       function compareTo(anotherFloat: Float) : longInt;
       class function compare(f1, f2: single) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : String_;
-      class function toString(f: single) : String_;
+      function toString_() : String_;
+      class function toString_(f: single) : String_;
       class function parseFloat(s: String_) : single;
       function toString() : ansiString; override;
   end;
@@ -84,11 +83,6 @@ uses
 constructor Float.create(value: single);
 begin
   v := value;
-end;
-
-destructor Float.destroy();
-begin
-  inherited;
 end;
 
 class function Float.getNegativeZeroBits(): longInt;
@@ -218,9 +212,9 @@ end;
  *
  * @return a String representation of this object.
  *)
-function Float.toString() : String_;
+function Float.toString_() : String_;
 begin
-  toString := Float.toString(v);
+  toString_ := Float.toString_(v);
 end;
 
 (**
@@ -229,9 +223,9 @@ end;
  * @param f the float to be converted.
  * @return a string representation of the argument.
  *)
-class function Float.toString(f: single) : String_;
+class function Float.toString_(f: single) : String_;
 begin
-  toString := String_.create(FloatToStr(f));
+  toString_ := String_.create(FloatToStr(f));
 end;
 
 (**

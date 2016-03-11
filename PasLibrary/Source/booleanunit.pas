@@ -19,15 +19,14 @@ type
         v : boolean;
     public
       constructor create(value: boolean);
-      destructor destroy(); override;
       function booleanValue() : boolean;
       function compareTo(b: Boolean_) : longInt;
       class function compare(x, y: boolean) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : ansiString; override;
-      function toString() : String_;
-      class function toString(b: boolean) : String_;
+      function toString_() : String_;
+      class function toString_(b: boolean) : String_;
       class function parseBoolean(s: String_) : boolean;
+      function toString() : ansiString; override;
   end;
 
 implementation
@@ -40,11 +39,6 @@ implementation
 constructor Boolean_.create(value: boolean);
 begin
   v := value;
-end;
-
-destructor Boolean_.destroy();
-begin
-  inherited;
 end;
 
 (**
@@ -118,9 +112,9 @@ end;
  *
  * @return a string representation of this object.
  *)
-function Boolean_.toString() : String_;
+function Boolean_.toString_() : String_;
 begin
-  toString := String_.create(BoolToStr(v));
+  toString_ := Boolean_.toString_(v);
 end;
 
 (**
@@ -129,9 +123,9 @@ end;
  * @param b the boolean to be converted
  * @return the string representation of the specified boolean
  *)
-class function Boolean_.toString(b: boolean) : String_;
+class function Boolean_.toString_(b: boolean) : String_;
 begin
-  toString := String_.create(BoolToStr(b));
+  toString_ := String_.create(BoolToStr(b));
 end;
 
 (**

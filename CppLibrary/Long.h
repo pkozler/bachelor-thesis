@@ -15,7 +15,6 @@ public:
     static const int64_t MIN_VALUE;
     static const int64_t MAX_VALUE;
     Long(int64_t value);
-    ~Long();
     int64_t longValue();
     int32_t compareTo(Long *anotherLong);
     static int32_t compare(int64_t x, int64_t y);

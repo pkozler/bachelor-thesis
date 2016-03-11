@@ -12,8 +12,6 @@
  */
 class PrintStream {
 public:
-    PrintStream();
-    ~PrintStream();
     void print(bool b);
     void print(char c);
     void print(char* s);
@@ -41,8 +39,6 @@ public:
  * @author Petr Kozler (A13B0359P)
  */
 class System {
-    System();
-    ~System();
 public:
     static void *in;
     static PrintStream *out;

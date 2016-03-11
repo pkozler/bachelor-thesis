@@ -28,13 +28,12 @@ type
            *)
            MIN_VALUE = -32768;
       constructor create(value: smallInt);
-      destructor destroy(); override;
       function shortValue() : smallInt;
       function compareTo(anotherShort: Short) : longInt;
       class function compare(x, y: smallInt) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : String_;
-      class function toString(s: smallInt) : String_;
+      function toString_() : String_;
+      class function toString_(s: smallInt) : String_;
       class function parseShort(s: String_) : smallInt;
       function toString() : ansiString; override;
   end;
@@ -50,11 +49,6 @@ implementation
 constructor Short.create(value: smallInt);
 begin
   v := value;
-end;
-
-destructor Short.destroy();
-begin
-  inherited;
 end;
 
 (**
@@ -119,9 +113,9 @@ end;
  *
  * @return a string representation of the value of this object in base 10.
  *)
-function Short.toString() : String_;
+function Short.toString_() : String_;
 begin
-  toString := Short.toString(v);
+  toString_ := Short.toString_(v);
 end;
 
 (**
@@ -130,9 +124,9 @@ end;
  * @param s the short to be converted
  * @return the string representation of the specified short
  *)
-class function Short.toString(s: smallInt) : String_;
+class function Short.toString_(s: smallInt) : String_;
 begin
-  toString := String_.create(IntToStr(s));
+  toString_ := String_.create(IntToStr(s));
 end;
 
 (**

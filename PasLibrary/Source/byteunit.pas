@@ -28,13 +28,12 @@ type
            *)
            MIN_VALUE = -128;
       constructor create(value: shortInt);
-      destructor destroy(); override;
       function byteValue() : shortInt;
       function compareTo(anotherByte: Byte_) : longInt;
       class function compare(x, y: shortInt) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : String_;
-      class function toString(b: shortInt) : String_;
+      function toString_() : String_;
+      class function toString_(b: shortInt) : String_;
       class function parseByte(s: String_) : shortInt;
       function toString() : ansiString; override;
   end;
@@ -50,11 +49,6 @@ implementation
 constructor Byte_.create(value: shortInt);
 begin
   v := value;
-end;
-
-destructor Byte_.destroy();
-begin
-  inherited;
 end;
 
 (**
@@ -119,9 +113,9 @@ end;
  *
  * @return a string representation of the value of this object in base 10.
  *)
-function Byte_.toString() : String_;
+function Byte_.toString_() : String_;
 begin
-  toString := Byte_.toString(v);
+  toString_ := Byte_.toString_(v);
 end;
 
 (**
@@ -130,9 +124,9 @@ end;
  * @param b the byte to be converted
  * @return the string representation of the specified byte
  *)
-class function Byte_.toString(b: shortInt) : String_;
+class function Byte_.toString_(b: shortInt) : String_;
 begin
-  toString := String_.create(IntToStr(b));
+  toString_ := String_.create(IntToStr(b));
 end;
 
 (**

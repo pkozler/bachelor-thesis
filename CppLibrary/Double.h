@@ -27,7 +27,6 @@ public:
     static const int32_t MIN_EXPONENT;
     static const double MIN_NORMAL;
     Double(double value);
-    ~Double();
     double doubleValue();
     int32_t compareTo(Double *anotherDouble);
     static int32_t compare(double d1, double d2);

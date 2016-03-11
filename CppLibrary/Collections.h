@@ -12,8 +12,6 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Collections {
-    Collections();
-    ~Collections();
 public:
     template <class T, class Comparator> static int32_t binarySearch (ArrayList<T> *list, T key, Comparator c);
     template <class T> static void copy (ArrayList<T> *dest, ArrayList<T> *src);

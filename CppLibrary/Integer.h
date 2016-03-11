@@ -17,7 +17,6 @@ public:
     static const int32_t MIN_VALUE;
     static const int32_t MAX_VALUE;
     Integer(int32_t value);
-    ~Integer();
     int32_t intValue();
     int32_t compareTo(Integer *anotherInteger);
     static int32_t compare(int32_t x, int32_t y);

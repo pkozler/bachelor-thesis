@@ -59,13 +59,12 @@ type
            *)
            MIN_NORMAL = 2.2250738585072014e-308;
       constructor create(value: double);
-      destructor destroy(); override;
       function doubleValue() : double;
       function compareTo(anotherDouble: Double_) : longInt;
       class function compare(d1, d2: double) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : String_;
-      class function toString(d: double) : String_;
+      function toString_() : String_;
+      class function toString_(d: double) : String_;
       class function parseDouble(s: String_) : double;
       function toString() : ansiString; override;
   end;
@@ -84,11 +83,6 @@ uses
 constructor Double_.create(value: double);
 begin
   v := value;
-end;
-
-destructor Double_.destroy();
-begin
-  inherited;
 end;
 
 class function Double_.getNegativeZeroBits(): int64;
@@ -218,9 +212,9 @@ end;
  *
  * @return a String representation of this object.
  *)
-function Double_.toString() : String_;
+function Double_.toString_() : String_;
 begin
-  toString := Double_.toString(v);
+  toString_ := Double_.toString_(v);
 end;
 
 (**
@@ -229,9 +223,9 @@ end;
  * @param d the double to be converted.
  * @return a string representation of the argument.
  *)
-class function Double_.toString(d: double) : String_;
+class function Double_.toString_(d: double) : String_;
 begin
-  toString := String_.create(FloatToStr(d));
+  toString_ := String_.create(FloatToStr(d));
 end;
 
 (**

@@ -13,14 +13,6 @@ Scanner::Scanner(void *source) {
     // really no code
 }
 
-Scanner::Scanner() {
-    // really no code
-}
-
-Scanner::~Scanner() {
-    // really no code
-}
-
 /**
  * Finds and returns the next complete token from this scanner.
  *

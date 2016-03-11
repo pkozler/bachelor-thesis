@@ -9,10 +9,6 @@ Boolean::Boolean(bool value) {
     v = value;
 }
 
-Boolean::~Boolean() {
-    // really no code
-}
-
 /**
  * Returns the value of this Boolean object as a boolean primitive.
  *

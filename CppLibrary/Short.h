@@ -15,7 +15,6 @@ public:
     static const int16_t MIN_VALUE;
     static const int16_t MAX_VALUE;
     Short(int16_t value);
-    ~Short();
     int16_t shortValue();
     int32_t compareTo(Short *anotherShort);
     static int32_t compare(int16_t x, int16_t y);

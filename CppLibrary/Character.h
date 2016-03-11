@@ -13,7 +13,6 @@ class Character {
     char v;
 public:
     Character(char value);
-    ~Character();
     char charValue();
     int32_t compareTo(Character *anotherCharacter);
     static int32_t compare(char x, char y);

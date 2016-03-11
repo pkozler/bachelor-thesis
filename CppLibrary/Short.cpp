@@ -21,10 +21,6 @@ Short::Short(int16_t value) {
     v = value;
 }
 
-Short::~Short() {
-    // really no code
-}
-
 /**
  * Returns the value of this Short as a short.
  *

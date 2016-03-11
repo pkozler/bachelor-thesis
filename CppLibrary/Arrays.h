@@ -12,8 +12,6 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Arrays {
-    Arrays();
-    ~Arrays();
     static bool equalsBool(bool a, bool b);
     static bool equalsB(int8_t a, int8_t b);
     static bool equalsC(char a, char b);

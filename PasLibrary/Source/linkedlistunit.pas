@@ -44,7 +44,7 @@ type
       function size() : longInt;
       function isEmpty() : boolean;
       procedure clear();
-      function toString() : String_;
+      function toString_() : String_;
       function toString() : ansiString; override;
   end;
 
@@ -326,9 +326,9 @@ end;
  *
  * @return a string representation of the object.
  *)
-function LinkedList.toString() : String_;
+function LinkedList.toString_() : String_;
 begin
-  toString := String_.create(ToString());
+  toString_ := String_.create(ToString());
 end;
 
 function LinkedList.toString() : ansiString;

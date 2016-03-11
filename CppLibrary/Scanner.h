@@ -12,8 +12,6 @@
 class Scanner {
 public:
     Scanner(void *source);
-    Scanner();
-    ~Scanner();
     String *next();
     bool nextBoolean();
     int8_t nextByte();

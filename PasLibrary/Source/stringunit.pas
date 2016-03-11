@@ -17,7 +17,6 @@ type
       constructor create(bytes: array of shortInt);
       constructor create(bytes: array of shortInt; offset: longInt; length: longInt);
       constructor create(original: ansiString);
-      destructor destroy(); override;
       function compareTo(anotherString: String_) : longInt;
       function equals(anObject: TObject) : boolean; override;
       function substring(beginIndex: longInt) : String_;
@@ -82,11 +81,6 @@ end;
 constructor String_.create(original: ansiString);
 begin
   str := original;
-end;
-
-destructor String_.destroy();
-begin
-  inherited;
 end;
 
 (**

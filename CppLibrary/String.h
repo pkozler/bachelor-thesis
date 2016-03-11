@@ -15,7 +15,6 @@ public:
     String(int8_t *value, int32_t length);
     String(int8_t *value, int32_t offset, int32_t length);
     String(std::string original);
-    ~String();
     int32_t compareTo(String *anotherString);
     bool equals(String *anObject);
     String *substring(int32_t beginIndex);

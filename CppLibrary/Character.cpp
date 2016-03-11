@@ -12,10 +12,6 @@ Character::Character(char value) {
     v = value;
 }
 
-Character::~Character() {
-    // really no code
-}
-
 /**
  * Returns the value of this Character object.
  *

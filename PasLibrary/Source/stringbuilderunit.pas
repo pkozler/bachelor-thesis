@@ -23,9 +23,8 @@ type
         count, capacity: longInt;
     public
       constructor create();
-      destructor destroy(); override;
       function append(str: String_) : StringBuilder;
-      function toString() : String_;
+      function toString_() : String_;
       function toString() : ansiString; override;
   end;
 
@@ -44,11 +43,6 @@ begin
   capacity := DEFAULT_CAPACITY;
   buffer := getMem(capacity);
   buffer[0] := #0;
-end;
-
-destructor StringBuilder.destroy();
-begin
-  inherited;
 end;
 
 (**
@@ -81,9 +75,9 @@ end;
  *
  * @return a string representation of this sequence of characters.
  *)
-function StringBuilder.toString() : String_;
+function StringBuilder.toString_() : String_;
 begin
-  toString := String_.create(buffer);
+  toString_ := String_.create(buffer);
 end;
 
 function StringBuilder.toString() : ansiString;

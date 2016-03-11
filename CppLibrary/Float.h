@@ -27,7 +27,6 @@ public:
     static const int32_t MIN_EXPONENT;
     static const float MIN_NORMAL;
     Float(float value);
-    ~Float();
     float floatValue();
     int32_t compareTo(Float *anotherFloat);
     static int32_t compare(float f1, float f2);

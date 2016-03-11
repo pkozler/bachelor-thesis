@@ -8,7 +8,7 @@ uses
   Classes, StringUnit;
 
 type
-  /**
+  (**
    * A mutable sequence of characters.
    *
    * @author Petr Kozler (A13B0359P)
@@ -23,9 +23,8 @@ type
         count, capacity: longInt;
     public
       constructor create();
-      destructor destroy(); override;
       function append(str: String_) : StringBuilder;
-      function toString() : String_;
+      function toString_() : String_;
       function toString() : ansiString; override;
   end;
 
@@ -34,7 +33,7 @@ implementation
 uses
   SysUtils;
 
-/**
+(**
  * Constructs a string builder with no characters in it and an initial
  * capacity of 16 characters.
  *)
@@ -46,12 +45,7 @@ begin
   buffer[0] := #0;
 end;
 
-destructor StringBuilder.destroy();
-begin
-  inherited;
-end;
-
-/**
+(**
  * Appends the specified string to this character sequence.
  *
  * @param str a string.
@@ -76,7 +70,7 @@ begin
   append := self;
 end;
 
-/**
+(**
  * Returns a string representing the data in this sequence.
  *
  * @return a string representation of this sequence of characters.

@@ -28,13 +28,12 @@ type
            *)
            MIN_VALUE = -9223372036854775808;
       constructor create(value: int64);
-      destructor destroy(); override;
       function longValue() : int64;
       function compareTo(anotherLong: Long) : longInt;
       class function compare(x, y: int64) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : String_;
-      class function toString(l: int64) : String_;
+      function toString_() : String_;
+      class function toString_(l: int64) : String_;
       class function parseLong(s: String_) : int64;
       function toString() : ansiString; override;
   end;
@@ -50,11 +49,6 @@ implementation
 constructor Long.create(value: int64);
 begin
   v := value;
-end;
-
-destructor Long.destroy();
-begin
-  inherited;
 end;
 
 (**
@@ -127,9 +121,9 @@ end;
  *
  * @return a string representation of the value of this object in base 10.
  *)
-function Long.toString() : String_;
+function Long.toString_() : String_;
 begin
-  toString := Long.toString(v);
+  toString_ := Long.toString_(v);
 end;
 
 (**
@@ -138,9 +132,9 @@ end;
  * @param l a long to be converted.
  * @return a string representation of the argument in base 10.
  *)
-class function Long.toString(l: int64) : String_;
+class function Long.toString_(l: int64) : String_;
 begin
-  toString := String_.create(IntToStr(l));
+  toString_ := String_.create(IntToStr(l));
 end;
 
 (**

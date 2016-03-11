@@ -28,7 +28,6 @@ type
     public
       constructor create();
       constructor create(c: ArrayList);
-      destructor destroy(); override;
       function getArray() : TObjectArray;
       function add(e: TObject) : boolean;
       procedure add(index: longInt; element: TObject);
@@ -38,8 +37,8 @@ type
       function size() : longInt;
       function isEmpty() : boolean;
       procedure clear();
+      function toString_() : String_;
       function toString() : ansiString; override;
-      function toString() : String_;
   end;
 
 implementation
@@ -72,11 +71,6 @@ begin
   for i := 0 to count - 1 do begin
     dynamicArray[i] := c.dynamicArray[i];
   end;
-end;
-
-destructor ArrayList.destroy();
-begin
-  inherited;
 end;
 
 procedure ArrayList.expand();
@@ -223,7 +217,7 @@ end;
  *
  * @return a string representation of the object.
  *)
-function ArrayList.toString() : String_;
+function ArrayList.toString_() : String_;
 begin
   toString := String_.create(ToString());
 end;

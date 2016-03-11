@@ -18,8 +18,6 @@ type
     private
       class function charArrayToString(s: array of ansiChar): ansiString;
     public
-      constructor create();
-      destructor destroy(); override;
       procedure print(b: boolean);
       procedure print(c: ansiChar);
       procedure print(s: array of ansiChar);
@@ -183,15 +181,6 @@ begin
   end;
 
   charArrayToString := str;
-end;
-
-constructor PrintStream.create();
-begin
-end;
-
-destructor PrintStream.destroy();
-begin
-  inherited;
 end;
 
 (**

@@ -46,10 +46,6 @@ Double::Double(double value) {
     v = value;
 }
 
-Double::~Double() {
-    // really no code
-}
-
 int64_t Double::getNegativeZeroBits() {
     DoubleInt64 bitConverter;
     bitConverter.val = -0.0;

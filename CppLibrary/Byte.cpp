@@ -21,10 +21,6 @@ Byte::Byte(int8_t value) {
     v = value;
 }
 
-Byte::~Byte() {
-    // really no code
-}
-
 /**
  * Returns the value of this Byte as a byte.
  *

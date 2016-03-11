@@ -10,11 +10,9 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Math {
-    Math();
-    ~Math();
 public:
-    static const int32_t E;
-    static const int32_t PI;
+    static const double E;
+    static const double PI;
     static double abs(double a);
     static float abs(float a);
     static int32_t abs(int32_t a);

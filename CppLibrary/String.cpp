@@ -39,10 +39,6 @@ String::String(std::string original) {
     this->s = original;
 }
 
-String::~String() {
-    // really no code
-}
-
 /**
  * Compares two strings lexicographically.
  *

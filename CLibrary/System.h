@@ -14,31 +14,39 @@
  * @author Petr Kozler (A13B0359P)
  */
 
+typedef struct {
+    void *dummy;
+} PrintStream;
+
+void printB(PrintStream *ptr, bool b);
+void printC(PrintStream *ptr, char c);
+void printS(PrintStream *ptr, char *s);
+void printD(PrintStream *ptr, double d);
+void printF(PrintStream *ptr, float f);
+void printI(PrintStream *ptr, int32_t i);
+void printL(PrintStream *ptr, int64_t l);
+void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *));
+void printStr(PrintStream *ptr, String *s);
+void println(PrintStream *ptr);
+void printlnB(PrintStream *ptr, bool x);
+void printlnC(PrintStream *ptr, char x);
+void printlnS(PrintStream *ptr, char *x);
+void printlnD(PrintStream *ptr, double x);
+void printlnF(PrintStream *ptr, float x);
+void printlnI(PrintStream *ptr, int32_t x);
+void printlnL(PrintStream *ptr, int64_t x);
+void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *));
+void printlnStr(PrintStream *ptr, String *x);
+
 /**
  * The System class contains several useful class fields and methods.
  *
  * @author Petr Kozler (A13B0359P)
  */
 
+void *System_in;
+PrintStream *System_out;
+
 void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *));
-void System_out_printB(bool b);
-void System_out_printC(char c);
-void System_out_printS(char *s);
-void System_out_printD(double d);
-void System_out_printF(float f);
-void System_out_printI(int32_t i);
-void System_out_printL(int64_t l);
-void System_out_printObj(void *obj, String *(*toString)(void *));
-void System_out_printStr(String *s);
-void System_out_println();
-void System_out_printlnB(bool x);
-void System_out_printlnC(char x);
-void System_out_printlnS(char *x);
-void System_out_printlnD(double x);
-void System_out_printlnF(float x);
-void System_out_printlnI(int32_t x);
-void System_out_printlnL(int64_t x);
-void System_out_printlnObj(void *obj, String *(*toString)(void *));
-void System_out_printlnStr(String *x);
 
 #endif	/* SYSTEM_INCLUDED */

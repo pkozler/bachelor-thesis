@@ -5,19 +5,11 @@
 /**
  * The double value that is closer than any other to e, the base of the natural logarithms.
  */
-const int32_t Math::E = 2.7182818284590452354;
+const double Math::E = 2.7182818284590452354;
 /**
  * The double value that is closer than any other to pi, the ratio of the circumference of a circle to its diameter.
  */
-const int32_t Math::PI = 3.14159265358979323846;
-
-Math::Math() {
-    // really no code
-}
-
-Math::~Math() {
-    // really no code
-}
+const double Math::PI = 3.14159265358979323846;
 
 /**
  * Returns the absolute value of a double value.

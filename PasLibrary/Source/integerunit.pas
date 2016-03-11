@@ -28,13 +28,12 @@ type
            *)
            MIN_VALUE = -2147483648;
       constructor create(value: longInt);
-      destructor destroy(); override;
       function intValue() : longInt;
       function compareTo(anotherInteger: Integer_) : longInt;
       class function compare(x, y: longInt) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : String_;
-      class function toString(i: longInt) : String_;
+      function toString_() : String_;
+      class function toString_(i: longInt) : String_;
       class function parseInt(s: String_) : longInt;
       function toString() : ansiString; override;
   end;
@@ -50,11 +49,6 @@ implementation
 constructor Integer_.create(value: longInt);
 begin
   v := value;
-end;
-
-destructor Integer_.destroy();
-begin
-  inherited;
 end;
 
 (**
@@ -127,9 +121,9 @@ end;
  *
  * @return a string representation of the value of this object in base 10.
  *)
-function Integer_.toString() : String_;
+function Integer_.toString_() : String_;
 begin
-  toString := Integer_.toString(v);
+  toString_ := Integer_.toString_(v);
 end;
 
 (**
@@ -138,9 +132,9 @@ end;
  * @param i an integer to be converted.
  * @return a string representation of the argument in base 10.
  *)
-class function Integer_.toString(i: longInt) : String_;
+class function Integer_.toString_(i: longInt) : String_;
 begin
-  toString := String_.create(IntToStr(i));
+  toString_ := String_.create(IntToStr(i));
 end;
 
 (**

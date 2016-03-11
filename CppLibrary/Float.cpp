@@ -46,10 +46,6 @@ Float::Float(float value) {
     v = value;
 }
 
-Float::~Float() {
-    // really no code
-}
-
 int32_t Float::getNegativeZeroBits() {
     FloatInt32 bitConverter;
     bitConverter.val = -0.0;

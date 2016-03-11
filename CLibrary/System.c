@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "System.h"
 
 void _merge(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *)) {
@@ -49,7 +51,7 @@ void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (
  *
  * @param b The boolean to be printed
  */
-void System_out_printB(bool b) {
+void printB(PrintStream *ptr, bool b) {
     printf("%s", b ? "true" : "false");
 }
 
@@ -58,7 +60,7 @@ void System_out_printB(bool b) {
  *
  * @param c The char to be printed
  */
-void System_out_printC(char c) {
+void printC(PrintStream *ptr, char c) {
     printf("%c", c);
 }
 
@@ -67,7 +69,7 @@ void System_out_printC(char c) {
  *
  * @param s The array of chars to be printed
  */
-void System_out_printS(char *s) {
+void printS(PrintStream *ptr, char *s) {
     printf("%s", s);
 }
 
@@ -76,7 +78,7 @@ void System_out_printS(char *s) {
  *
  * @param d The double to be printed
  */
-void System_out_printD(double d) {
+void printD(PrintStream *ptr, double d) {
     printf("%lf", d);
 }
 
@@ -85,7 +87,7 @@ void System_out_printD(double d) {
  *
  * @param f The float to be printed
  */
-void System_out_printF(float f) {
+void printF(PrintStream *ptr, float f) {
     printf("%f", f);
 }
 
@@ -94,7 +96,7 @@ void System_out_printF(float f) {
  *
  * @param i The int to be printed
  */
-void System_out_printI(int32_t i) {
+void printI(PrintStream *ptr, int32_t i) {
     printf("%d", i);
 }
 
@@ -103,7 +105,7 @@ void System_out_printI(int32_t i) {
  *
  * @param l The long to be printed
  */
-void System_out_printL(int64_t l) {
+void printL(PrintStream *ptr, int64_t l) {
     printf("%lld", l);
 }
 
@@ -112,7 +114,7 @@ void System_out_printL(int64_t l) {
  *
  * @param obj The Object to be printed
  */
-void System_out_printObj(void *obj, String *(*toString)(void *)) {
+void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);
     printf("%s", s->s);
     delete_String(s);
@@ -123,14 +125,14 @@ void System_out_printObj(void *obj, String *(*toString)(void *)) {
  *
  * @param s The String to be printed
  */
-void System_out_printStr(String *s) {
+void printStr(PrintStream *ptr, String *s) {
     printf("%s", s->s);
 }
 
 /**
  * Terminates the current line by writing the line separator string.
  */
-void System_out_println() {
+void println(PrintStream *ptr) {
     printf("\n");
 }
 
@@ -139,7 +141,7 @@ void System_out_println() {
  *
  * @param x The boolean to be printed
  */
-void System_out_printlnB(bool x) {
+void printlnB(PrintStream *ptr, bool x) {
     printf("%s\n", x ? "true" : "false");
 }
 
@@ -148,7 +150,7 @@ void System_out_printlnB(bool x) {
  *
  * @param x The char to be printed.
  */
-void System_out_printlnC(char x) {
+void printlnC(PrintStream *ptr, char x) {
     printf("%c\n", x);
 }
 
@@ -157,7 +159,7 @@ void System_out_printlnC(char x) {
  *
  * @param x an array of chars to print.
  */
-void System_out_printlnS(char *x) {
+void printlnS(PrintStream *ptr, char *x) {
     printf("%s\n", x);
 }
 
@@ -166,7 +168,7 @@ void System_out_printlnS(char *x) {
  *
  * @param x The double to be printed.
  */
-void System_out_printlnD(double x) {
+void printlnD(PrintStream *ptr, double x) {
     printf("%lf\n", x);
 }
 
@@ -175,7 +177,7 @@ void System_out_printlnD(double x) {
  *
  * @param x The float to be printed.
  */
-void System_out_printlnF(float x) {
+void printlnF(PrintStream *ptr, float x) {
     printf("%f\n", x);
 }
 
@@ -184,7 +186,7 @@ void System_out_printlnF(float x) {
  *
  * @param x The int to be printed.
  */
-void System_out_printlnI(int32_t x) {
+void printlnI(PrintStream *ptr, int32_t x) {
     printf("%d\n", x);
 }
 
@@ -193,7 +195,7 @@ void System_out_printlnI(int32_t x) {
  *
  * @param x The long to be printed.
  */
-void System_out_printlnL(int64_t x) {
+void printlnL(PrintStream *ptr, int64_t x) {
     printf("%lld\n", x);
 }
 
@@ -202,7 +204,7 @@ void System_out_printlnL(int64_t x) {
  *
  * @param x The Object to be printed.
  */
-void System_out_printlnObj(void *obj, String *(*toString)(void *)) {
+void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);
     printf("%s\n", s->s);
     delete_String(s);
@@ -213,6 +215,17 @@ void System_out_printlnObj(void *obj, String *(*toString)(void *)) {
  *
  * @param x The String to be printed.
  */
-void System_out_printlnStr(String *x) {
+void printlnStr(PrintStream *ptr, String *x) {
     printf("%s\n", x->s);
 }
+
+PrintStream sysout;
+
+/**
+ * The "standard" input stream.
+ */
+void *System_in = NULL;
+/**
+ * The "standard" output stream.
+ */
+PrintStream *System_out = &sysout;

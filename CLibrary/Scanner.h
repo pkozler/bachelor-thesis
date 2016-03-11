@@ -10,14 +10,19 @@
  * @author Petr Kozler (A13B0359P)
  */
 
-String *next();
-bool nextBoolean();
-int8_t nextByte();
-int16_t nextShort();
-int32_t nextInt();
-int64_t nextLong();
-float nextFloat();
-double nextDouble();
-String *nextLine();
+typedef struct {
+    void *dummy;
+} Scanner;
+
+Scanner *new_Scanner(void *source);
+String *next(Scanner *ptr);
+bool nextBoolean(Scanner *ptr);
+int8_t nextByte(Scanner *ptr);
+int16_t nextShort(Scanner *ptr);
+int32_t nextInt(Scanner *ptr);
+int64_t nextLong(Scanner *ptr);
+float nextFloat(Scanner *ptr);
+double nextDouble(Scanner *ptr);
+String *nextLine(Scanner *ptr);
 
 #endif	/* SCANNER_INCLUDED */

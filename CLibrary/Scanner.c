@@ -7,11 +7,22 @@
 #include <ctype.h>
 
 /**
+ * Constructs a new Scanner that produces values scanned from the specified
+ * input stream.
+ *
+ * @param source An input stream to be scanned
+ */
+Scanner *new_Scanner(void *source) {
+    Scanner *sc = malloc(sizeof(Scanner));
+    return sc;
+}
+
+/**
  * Finds and returns the next complete token from this scanner.
  *
  * @return the next token
  */
-String *next() {
+String *next(Scanner *ptr) {
     char *s;
     scanf("%s", s);
 
@@ -24,7 +35,7 @@ String *next() {
  *
  * @return the boolean scanned from the input
  */
-bool nextBoolean() {
+bool nextBoolean(Scanner *ptr) {
     char *b;
     scanf("%s", b);
     String *str = new_String(b);
@@ -51,7 +62,7 @@ bool nextBoolean() {
  *
  * @return the byte scanned from the input
  */
-int8_t nextByte() {
+int8_t nextByte(Scanner *ptr) {
     int32_t b;
     scanf("%hd", &b);
 
@@ -63,7 +74,7 @@ int8_t nextByte() {
  *
  * @return the short scanned from the input
  */
-int16_t nextShort() {
+int16_t nextShort(Scanner *ptr) {
     int16_t s;
     scanf("%hd", &s);
 
@@ -75,7 +86,7 @@ int16_t nextShort() {
  *
  * @return the int scanned from the input
  */
-int32_t nextInt() {
+int32_t nextInt(Scanner *ptr) {
     int32_t i;
     scanf("%d", &i);
 
@@ -87,7 +98,7 @@ int32_t nextInt() {
  * 
  * @return the long scanned from the input
  */
-int64_t nextLong() {
+int64_t nextLong(Scanner *ptr) {
     int64_t l;
     scanf("%ld", &l);
 
@@ -99,7 +110,7 @@ int64_t nextLong() {
  * 
  * @return the float scanned from the input
  */
-float nextFloat() {
+float nextFloat(Scanner *ptr) {
     float f;
     scanf("%f", &f);
 
@@ -111,7 +122,7 @@ float nextFloat() {
  * 
  * @return the double scanned from the input
  */
-double nextDouble() {
+double nextDouble(Scanner *ptr) {
     double d;
     scanf("%lf", &d);
 
@@ -123,7 +134,7 @@ double nextDouble() {
  * 
  * @return the line that was skipped
  */
-String *nextLine() {
+String *nextLine(Scanner *ptr) {
     char * line = malloc(100);
     char * linep = line;
     size_t lenmax = 100, len = lenmax;

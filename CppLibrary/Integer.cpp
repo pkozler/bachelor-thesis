@@ -21,10 +21,6 @@ Integer::Integer(int32_t value) {
     v = value;
 }
 
-Integer::~Integer() {
-    // really no code
-}
-
 /**
  * Returns the value of this Integer as an int.
  *

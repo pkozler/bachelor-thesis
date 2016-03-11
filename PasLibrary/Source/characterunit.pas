@@ -19,13 +19,12 @@ type
         v: ansiChar;
     public
       constructor create(value: ansiChar);
-      destructor destroy(); override;
       function charValue() : ansiChar;
       function compareTo(anotherCharacter: Character) : longInt;
       class function compare(x, y: ansiChar) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : String_;
-      class function toString(c: ansiChar) : String_;
+      function toString_() : String_;
+      class function toString_(c: ansiChar) : String_;
       class function isDigit(ch: ansiChar) : boolean;
       class function isLetter(ch: ansiChar) : boolean;
       function toString() : ansiString; override;
@@ -42,11 +41,6 @@ implementation
 constructor Character.create(value: ansiChar);
 begin
   v := value;
-end;
-
-destructor Character.destroy();
-begin
-  inherited;
 end;
 
 (**
@@ -112,9 +106,9 @@ end;
  *
  * @return a string representation of this object.
  *)
-function Character.toString() : String_;
+function Character.toString_() : String_;
 begin
-  toString := Character.toString(v);
+  toString_ := Character.toString_(v);
 end;
 
 (**
@@ -123,9 +117,9 @@ end;
  * @param c the char to be converted
  * @return the string representation of the specified char
  *)
-class function Character.toString(c: ansiChar) : String_;
+class function Character.toString_(c: ansiChar) : String_;
 begin
-  toString := String_.create(c);
+  toString_ := String_.create(c);
 end;
 
 (**

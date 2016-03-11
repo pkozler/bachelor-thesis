@@ -13,7 +13,6 @@ class Boolean {
     bool v;
 public:
     Boolean(bool value);
-    ~Boolean();
     bool booleanValue();
     int32_t compareTo(Boolean *b);
     static int32_t compare(bool x, bool y);

@@ -15,7 +15,6 @@ public:
     static const int8_t MIN_VALUE;
     static const int8_t MAX_VALUE;
     Byte(int8_t value);
-    ~Byte();
     int8_t byteValue();
     int32_t compareTo(Byte *anotherByte);
     static int32_t compare(int8_t x, int8_t y);
