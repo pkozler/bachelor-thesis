@@ -8,7 +8,6 @@
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="3"/>
         <CursorPos Y="28"/>
         <UsageCount Value="183"/>
@@ -40,9 +39,12 @@
       <Unit4>
         <Filename Value="booleanunit.pas"/>
         <UnitName Value="BooleanUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="29"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="35"/>
+        <CursorPos X="30" Y="45"/>
         <UsageCount Value="84"/>
+        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="byteunit.pas"/>

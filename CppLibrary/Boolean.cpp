@@ -12,8 +12,8 @@ bool Boolean::booleanValue() {
     return v;
 }
 
-int32_t Boolean::compareTo(Boolean *anotherBoolean) {
-    return compare(v, anotherBoolean->v);
+int32_t Boolean::compareTo(Boolean *b) {
+    return compare(v, b->v);
 }
 
 int32_t Boolean::compare(bool x, bool y) {

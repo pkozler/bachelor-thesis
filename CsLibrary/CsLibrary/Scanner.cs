@@ -9,34 +9,38 @@ namespace JavaClasses {
      * @author Petr Kozler (A13B0359P)
      */
     public class Scanner {
+
         // current line
         private string line = "";
         
         /**
-         * Constructs a new Scanner that produces values scanned from the specified input stream.
+         * Constructs a new Scanner that produces values scanned from the specified
+         * input stream.
+         *
+         * @param source An input stream to be scanned
          */
         public Scanner(Object source) {
             // really no code
         }
 
         /*
-            Serves as the convenience method for creating the new scanner
-            without unnecessary imitation of specifying the Java input stream.
-        */
+             Serves as the convenience method for creating the new scanner
+             without unnecessary imitation of specifying the Java input stream.
+         */
         public Scanner() {
             // really no code
         }
 
         /*
-            Returns the next token of the current line or reads the new line
-            from the standard input if the current line was completely scanned.
-        */
+             Returns the next token of the current line or reads the new line
+             from the standard input if the current line was completely scanned.
+         */
         private string nextElement() {
             // reading the next line if the current is empty
             if (string.IsNullOrEmpty(line)) {
                 line = Console.ReadLine().TrimStart();
             }
-            
+
             // removes the next token (delimited by whitespaces) from the current line
             Match match = Regex.Match(line, @"(?<=\s)");
             string token = line.Remove(0, match.Index + match.Length).TrimEnd();
@@ -46,13 +50,18 @@ namespace JavaClasses {
 
         /**
          * Finds and returns the next complete token from this scanner.
+         *
+         * @return the next token
          */
         public String next() {
             return nextElement();
         }
 
         /**
-         * Scans the next token of the input into a boolean value and returns that value.
+         * Scans the next token of the input into a boolean value and returns that
+         * value.
+         *
+         * @return the boolean scanned from the input
          */
         public bool nextBoolean() {
             return bool.Parse(nextElement());
@@ -60,6 +69,8 @@ namespace JavaClasses {
 
         /**
          * Scans the next token of the input as a byte.
+         *
+         * @return the byte scanned from the input
          */
         public sbyte nextByte() {
             return sbyte.Parse(nextElement());
@@ -67,6 +78,8 @@ namespace JavaClasses {
 
         /**
          * Scans the next token of the input as a short.
+         *
+         * @return the short scanned from the input
          */
         public short nextShort() {
             return short.Parse(nextElement());
@@ -74,6 +87,8 @@ namespace JavaClasses {
 
         /**
          * Scans the next token of the input as an int.
+         *
+         * @return the int scanned from the input
          */
         public int nextInt() {
             return int.Parse(nextElement());
@@ -81,6 +96,8 @@ namespace JavaClasses {
 
         /**
          * Scans the next token of the input as a long.
+         * 
+         * @return the long scanned from the input
          */
         public long nextLong() {
             return long.Parse(nextElement());
@@ -88,6 +105,8 @@ namespace JavaClasses {
 
         /**
          * Scans the next token of the input as a float.
+         * 
+         * @return the float scanned from the input
          */
         public float nextFloat() {
             return float.Parse(nextElement());
@@ -95,6 +114,8 @@ namespace JavaClasses {
 
         /**
          * Scans the next token of the input as a double.
+         * 
+         * @return the double scanned from the input
          */
         public double nextDouble() {
             return double.Parse(nextElement());
@@ -102,13 +123,14 @@ namespace JavaClasses {
 
         /**
          * Advances this scanner past the current line and returns the input that was skipped.
+         * 
+         * @return the line that was skipped
          */
         public String nextLine() {
             // reading the next line if the current is empty and returning it
             if (string.IsNullOrEmpty(line)) {
                 return Console.ReadLine();
-            }
-            // reading the rest of the current line if it is not empty
+            } // reading the rest of the current line if it is not empty
             else {
                 String str = line;
                 line = "";
@@ -116,5 +138,7 @@ namespace JavaClasses {
                 return str;
             }
         }
+
     }
+
 }

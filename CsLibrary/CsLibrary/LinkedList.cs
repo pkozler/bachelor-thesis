@@ -8,6 +8,7 @@ namespace JavaClasses {
      * @author Petr Kozler (A13B0359P)
      */
     public class LinkedList<E> {
+
         public System.Collections.Generic.LinkedList<E> l { get; private set; }
 
         /**
@@ -18,15 +19,20 @@ namespace JavaClasses {
         }
 
         /**
-         * Constructs a list containing the elements of the specified collection,
-         * in the order they are returned by the collection's iterator.
+         * Constructs a list containing the elements of the specified collection, in
+         * the order they are returned by the collection's iterator.
+         *
+         * @param c the collection whose elements are to be placed into this list
          */
         public LinkedList(LinkedList<E> c) {
             l = new System.Collections.Generic.LinkedList<E>(c.l);
         }
-        
+
         /**
          * Appends the specified element to the end of this list.
+         *
+         * @param e element to be appended to this list
+         * @return true (as specified by Collection.add(E))
          */
         public bool add(E e) {
             l.AddLast(e);
@@ -35,6 +41,9 @@ namespace JavaClasses {
 
         /**
          * Inserts the specified element at the specified position in this list.
+         *
+         * @param index index at which the specified element is to be inserted
+         * @param element element to be inserted
          */
         public void add(int index, E element) {
             // creating the first node, if the list is empty
@@ -42,9 +51,9 @@ namespace JavaClasses {
                 l.AddFirst(element);
                 return;
             }
-            
+
             LinkedListNode<E> node = l.First;
-            
+
             // iterating to the node at the specified position in the list
             for (int i = 0; i < index; i++) {
                 node = node.Next;
@@ -56,6 +65,9 @@ namespace JavaClasses {
 
         /**
          * Returns the element at the specified position in this list.
+         *
+         * @param index index of the element to return
+         * @return the element at the specified position in this list
          */
         public E get(int index) {
             LinkedListNode<E> node = l.First;
@@ -70,7 +82,12 @@ namespace JavaClasses {
         }
 
         /**
-         * Replaces the element at the specified position in this list with the specified element.
+         * Replaces the element at the specified position in this list with the
+         * specified element.
+         *
+         * @param index index of the element to replace
+         * @param element element to be stored at the specified position
+         * @return the element previously at the specified position
          */
         public E set(int index, E element) {
             E original;
@@ -97,6 +114,9 @@ namespace JavaClasses {
 
         /**
          * Removes the element at the specified position in this list.
+         *
+         * @param index the index of the element to be removed
+         * @return the element previously at the specified position
          */
         public E remove(int index) {
             E removed;
@@ -123,6 +143,8 @@ namespace JavaClasses {
 
         /**
          * Returns the number of elements in this list.
+         *
+         * @return the number of elements in this list
          */
         public int size() {
             return l.Count;
@@ -130,6 +152,8 @@ namespace JavaClasses {
 
         /**
          * Returns true if this list contains no elements.
+         *
+         * @return true if this list contains no elements
          */
         public bool isEmpty() {
             return l.Count == 0;
@@ -142,16 +166,16 @@ namespace JavaClasses {
             l.Clear();
         }
 
-        public override string ToString() {
-            return "[" + string.Join(", ", l) + "]";
-        }
-
         /**
          * Returns a string representation of the object.
+         *
+         * @return a string representation of the object.
          */
         public String toString() {
             return new String(ToString());
         }
+
     }
+
 }
 

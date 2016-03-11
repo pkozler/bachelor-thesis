@@ -54,7 +54,10 @@ namespace JavaClasses {
         private double v;
 
         /**
-         * Constructs a newly allocated Double object that represents the primitive double argument.
+         * Constructs a newly allocated Double object that represents the primitive
+         * double argument.
+         *
+         * @param value the value to be represented by the Double.
          */
         public Double(double value) {
             v = value;
@@ -62,6 +65,8 @@ namespace JavaClasses {
 
         /**
          * Returns the double value of this Double object.
+         *
+         * @return the double value represented by this object
          */
         public double doubleValue() {
             return v;
@@ -69,6 +74,12 @@ namespace JavaClasses {
 
         /**
          * Compares two Double objects numerically.
+         *
+         * @param anotherDouble the Double to be compared.
+         * @return the value 0 if anotherDouble is numerically equal to this Double;
+         * a value less than 0 if this Double is numerically less than
+         * anotherDouble; and a value greater than 0 if this Double is numerically
+         * greater than anotherDouble.
          */
         public int compareTo(Double anotherDouble) {
             return compare(v, anotherDouble.v);
@@ -76,11 +87,17 @@ namespace JavaClasses {
 
         /**
          * Compares the two specified double values.
+         *
+         * @param d1 the first double to compare
+         * @param d2 the second double to compare
+         * @return the value 0 if d1 is numerically equal to d2; a value less than 0
+         * if d1 is numerically less than d2; and a value greater than 0 if d1 is
+         * numerically greater than d2.
          */
         public static int compare(double d1, double d2) {
             /* testing for NaN values (a NaN value is considered greated
                than any other, including positive infinity,
-               and two NaN values are considered equal)*/
+               and two NaN values are considered equal) */
             if (double.IsNaN(d1)) {
                 if (double.IsNaN(d2)) {
                     return 0;
@@ -88,7 +105,7 @@ namespace JavaClasses {
 
                 return 1;
             }
-            
+
             if (double.IsNaN(d2)) {
                 return -1;
             }
@@ -99,7 +116,7 @@ namespace JavaClasses {
                 && BitConverter.DoubleToInt64Bits(d2) == negativeZeroBits) {
                 return 1;
             }
-            
+
             if (BitConverter.DoubleToInt64Bits(d1) == negativeZeroBits
                 && BitConverter.DoubleToInt64Bits(d2) == 0) {
                 return -1;
@@ -113,6 +130,9 @@ namespace JavaClasses {
 
         /**
          * Compares this object against the specified object.
+         *
+         * @param obj the object to compare with.
+         * @return true if the objects are the same; false otherwise.
          */
         public bool equals(Object obj) {
             if (obj == null) {
@@ -134,7 +154,7 @@ namespace JavaClasses {
             if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits) {
                 return BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits;
             }
-            
+
             if (BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits) {
                 return BitConverter.DoubleToInt64Bits(v) == negativeZeroBits;
             }
@@ -143,12 +163,10 @@ namespace JavaClasses {
             return (v == v2);
         }
 
-        public override string ToString() {
-            return toString().ToString();
-        }
-
         /**
          * Returns a string representation of this Double object.
+         *
+         * @return a String representation of this object.
          */
         public String toString() {
             return Double.toString(v);
@@ -156,17 +174,29 @@ namespace JavaClasses {
 
         /**
          * Returns a string representation of the double argument.
+         *
+         * @param d the double to be converted.
+         * @return a string representation of the argument.
          */
         public static String toString(double d) {
             return d.ToString();
         }
 
         /**
-         * Returns a new double initialized to the value represented by the specified String,
-         * as performed by the valueOf method of class Double.
+         * Returns a new double initialized to the value represented by the
+         * specified String, as performed by the valueOf method of class Double.
+         *
+         * @param s the string to be parsed.
+         * @return the double value represented by the string argument.
          */
         public static double parseDouble(String s) {
             return double.Parse(s.ToString());
         }
+        
+        public override string ToString() {
+            return toString().ToString();
+        }
+
     }
+
 }

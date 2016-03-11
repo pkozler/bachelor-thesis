@@ -17,8 +17,8 @@ bool booleanValue(Boolean *ptr) {
     return ptr->v;
 }
 
-int32_t compareToBool(Boolean *ptr, Boolean *anotherBoolean) {
-    return Boolean_compare(ptr->v, anotherBoolean->v);
+int32_t compareToBool(Boolean *ptr, Boolean *b) {
+    return Boolean_compare(ptr->v, b->v);
 }
 
 int32_t Boolean_compare(bool x, bool y) {

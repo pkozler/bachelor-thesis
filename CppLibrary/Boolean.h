@@ -10,7 +10,7 @@ public:
     Boolean(bool value);
     ~Boolean();
     bool booleanValue();
-    int32_t compareTo(Boolean *anotherBoolean);
+    int32_t compareTo(Boolean *b);
     static int32_t compare(bool x, bool y);
     bool equals(Boolean *obj);
     String *toString();

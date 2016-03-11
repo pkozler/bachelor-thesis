@@ -8,8 +8,9 @@
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="2"/>
-        <CursorPos X="3" Y="28"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="3"/>
+        <CursorPos Y="28"/>
         <UsageCount Value="183"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -108,12 +109,9 @@
       <Unit13>
         <Filename Value="mathunit.pas"/>
         <UnitName Value="MathUnit"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="94"/>
-        <CursorPos Y="108"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="5" Y="10"/>
         <UsageCount Value="80"/>
-        <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="scannerunit.pas"/>

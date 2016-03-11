@@ -16,7 +16,7 @@ type
       constructor create(value: boolean);
       destructor destroy(); override;
       function booleanValue() : boolean;
-      function compareTo(anotherBoolean: Boolean_) : longInt;
+      function compareTo(b: Boolean_) : longInt;
       class function compare(x, y: boolean) : longInt;
       function equals(obj: TObject) : boolean; override;
       function toString() : ansiString; override;
@@ -42,7 +42,7 @@ begin
   booleanValue := v;
 end;
 
-function Boolean_.compareTo(anotherBoolean: Boolean_) : longInt;
+function Boolean_.compareTo(b: Boolean_) : longInt;
 begin
   compareTo := compare(v, anotherBoolean.v);
 end;
