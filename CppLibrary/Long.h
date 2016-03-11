@@ -4,6 +4,11 @@
 #include "String.h"
 #include <cstdint>
 
+/**
+ * The Long class wraps a value of the primitive type long in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Long {
     int64_t v;
 public:

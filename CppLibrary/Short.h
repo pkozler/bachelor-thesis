@@ -4,6 +4,11 @@
 #include "String.h"
 #include <cstdint>
 
+/**
+ * The Short class wraps a value of primitive type short in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Short {
     int16_t v;
 public:

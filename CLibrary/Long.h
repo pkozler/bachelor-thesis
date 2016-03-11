@@ -5,7 +5,19 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Long class wraps a value of the primitive type long in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+/**
+ * A constant holding the maximum value a long can have, 2^63-1.
+ */
 #define Long_MAX_VALUE 9223372036854775807
+/**
+ * A constant holding the minimum value a long can have, -2^63.
+ */
 #define Long_MIN_VALUE -9223372036854775808
 
 typedef struct {

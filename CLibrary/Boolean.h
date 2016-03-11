@@ -5,6 +5,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Boolean class wraps a value of the primitive type boolean in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 typedef struct {
     bool v;
 } Boolean;

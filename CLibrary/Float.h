@@ -5,13 +5,43 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Float class wraps a value of primitive type float in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+/**
+ * A constant holding the positive infinity of type float.
+ */
 #define Float_POSITIVE_INFINITY 1.0f / 0.0f
+/**
+ * A constant holding the negative infinity of type float.
+ */
 #define Float_NEGATIVE_INFINITY -1.0f / 0.0f
+/**
+ * A constant holding a Not-a-Number (NaN) value of type float.
+ */
 #define Float_NaN 0.0f / 0.0f
+/**
+ * A constant holding the largest positive finite value of type float, (2-2^-23)·2^127.
+ */
 #define Float_MAX_VALUE 3.4028235e+38f
+/**
+ * A constant holding the smallest positive nonzero value of type float, 2-^149.
+ */
 #define Float_MIN_VALUE 1.4e-45f
+/**
+ * Maximum exponent a finite float variable may hav
+ */
 #define Float_MAX_EXPONENT 127
+/**
+ * Minimum exponent a normalized float variable may have.
+ */
 #define Float_MIN_EXPONENT -126
+/**
+ * A constant holding the smallest positive normal value of type float, 2^-126.
+ */
 #define Float_MIN_NORMAL 1.17549435e-38f
 
 typedef union {

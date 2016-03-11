@@ -6,6 +6,11 @@
 #include <sstream>
 #include <cstdint>
 
+/**
+ * The Integer class wraps a value of the primitive type int in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Integer {
     int32_t v;
 public:

@@ -4,6 +4,11 @@
 #include "String.h"
 #include <cstdint>
 
+/**
+ * The Character class wraps a value of the primitive type char in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Character {
     char v;
 public:

@@ -9,6 +9,11 @@ typedef union {
     int64_t bits;
 } DoubleInt64;
 
+/**
+ * The Double class wraps a value of the primitive type double in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Double {
     double v;
     static int64_t getNegativeZeroBits();

@@ -5,6 +5,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * Resizable-array implementation of the List interface.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 typedef struct {
     int32_t count;
     int32_t capacity;

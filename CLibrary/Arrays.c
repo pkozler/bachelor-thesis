@@ -271,346 +271,1145 @@ String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toStri
     return str;
 }
 
+/**
+ * Searches the specified array of bytes for the specified value using the
+ * binary search algorithm
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 int32_t Arrays_binarySearchB(int8_t *a, int32_t length, int8_t key) {
     return _binarySearchPointer(a, 0, length, sizeof(int8_t), &key, _compareC);
 }
 
+/**
+ * Searches a range of the specified array of bytes for the specified value
+ * using the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 int32_t Arrays_binarySearchRangeB(int8_t *a, int32_t fromIndex, int32_t toIndex, int8_t key) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int8_t), &key, _compareC);
 }
 
+/**
+ * Searches the specified array of chars for the specified value using the
+ * binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 int32_t Arrays_binarySearchC(char *a, int32_t length, char key) {
     return _binarySearchPointer(a, 0, length, sizeof(char), &key, _compareC);
 }
 
+/**
+ * Searches a range of the specified array of chars for the specified value
+ * using the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 int32_t Arrays_binarySearchRangeC(char *a, int32_t fromIndex, int32_t toIndex, char key) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(char), &key, _compareC);
 }
 
+/**
+ * Searches the specified array of doubles for the specified value using the
+ * binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 int32_t Arrays_binarySearchD(double *a, int32_t length, double key) {
     return _binarySearchPointer(a, 0, length, sizeof(double), &key, _compareD);
 }
 
+/**
+ * Searches a range of the specified array of doubles for the specified
+ * value using the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 int32_t Arrays_binarySearchRangeD(double *a, int32_t fromIndex, int32_t toIndex, double key) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(double), &key, _compareD);
 }
 
+/**
+ * Searches the specified array of floats for the specified value using the
+ * binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 int32_t Arrays_binarySearchF(float *a, int32_t length, float key) {
     return _binarySearchPointer(a, 0, length, sizeof(float), &key, _compareF);
 }
 
+/**
+ * Searches a range of the specified array of floats for the specified value
+ * using the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 int32_t Arrays_binarySearchFloatF(float *a, int32_t fromIndex, int32_t toIndex, float key) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(float), &key, _compareF);
 }
 
+/**
+ * Searches the specified array of ints for the specified value using the
+ * binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 int32_t Arrays_binarySearchI(int32_t *a, int32_t length, int32_t key) {
     return _binarySearchPointer(a, 0, length, sizeof(int32_t), &key, _compareI);
 }
 
+/**
+ * Searches a range of the specified array of ints for the specified value
+ * using the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 int32_t Arrays_binarySearchRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex, int32_t key) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int32_t), &key, _compareI);
 }
 
+/**
+ * Searches the specified array of longs for the specified value using the
+ * binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 int32_t Arrays_binarySearchL(int64_t *a, int32_t length, int64_t key) {
     return _binarySearchPointer(a, 0, length, sizeof(int64_t), &key, _compareL);
 }
 
+/**
+ * Searches a range of the specified array of longs for the specified value
+ * using the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 int32_t Arrays_binarySearchRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t key) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int64_t), &key, _compareL);
 }
 
-int32_t Arrays_binarySearchS(int16_t *a, int32_t length, int16_t key) {
-    return _binarySearchPointer(a, 0, length, sizeof(int16_t), &key, _compareS);
-}
-
-int32_t Arrays_binarySearchRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int16_t), &key, _compareS);
-}
-
+/**
+ * Searches the specified array for the specified object using the binary
+ * search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 int32_t Arrays_binarySearchObj(void **a, int32_t length, void *key, int32_t (*c)(const void *, const void *)) {
     return _binarySearchPointer(a, 0, length, sizeof(void *), &key, c);
 }
 
+/**
+ * Searches a range of the specified array for the specified object using
+ * the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 int32_t Arrays_binarySearchRangeObj(void **a, int32_t fromIndex, int32_t toIndex, void *key, int32_t (*c)(const void *, const void *)) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(void *), &key, c);
 }
 
+/**
+ * Searches the specified array of shorts for the specified value using the
+ * binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
+int32_t Arrays_binarySearchS(int16_t *a, int32_t length, int16_t key) {
+    return _binarySearchPointer(a, 0, length, sizeof(int16_t), &key, _compareS);
+}
+
+/**
+ * Searches a range of the specified array of shorts for the specified value
+ * using the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
+int32_t Arrays_binarySearchRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t key) {
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int16_t), &key, _compareS);
+}
+
+/**
+ * Copies the specified array, truncating or padding with false (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with false
+ * elements to obtain the specified length
+ */
 bool *Arrays_copyOfBool(bool *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(bool), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with zeros (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with zeros to
+ * obtain the specified length
+ */
 int8_t *Arrays_copyOfB(int8_t *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(int8_t), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with null characters
+ * (if necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with null
+ * characters to obtain the specified length
+ */
 char *Arrays_copyOfC(char *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(char), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with zeros (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with zeros to
+ * obtain the specified length
+ */
 double *Arrays_copyOfD(double *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(double), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with zeros (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with zeros to
+ * obtain the specified length
+ */
 float *Arrays_copyOfF(float *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(float), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with zeros (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with zeros to
+ * obtain the specified length
+ */
 int32_t *Arrays_copyOfI(int32_t *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(int32_t), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with zeros (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with zeros to
+ * obtain the specified length
+ */
 int64_t *Arrays_copyOfL(int64_t *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(int64_t), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with zeros (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with zeros to
+ * obtain the specified length
+ */
 int16_t *Arrays_copyOfS(int16_t *original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(int16_t), 0, newLength);
 }
 
+/**
+ * Copies the specified array, truncating or padding with nulls (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with nulls to
+ * obtain the specified length
+ */
 void **Arrays_copyOfObj(void **original, int32_t length, int32_t newLength) {
     return _copyOfRangePointer(original, length, sizeof(void *), 0, newLength);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with false elements to obtain the required
+ * length
+ */
 bool *Arrays_copyOfRangeBool(bool *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(bool), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with zeros to obtain the required length
+ */
 int8_t *Arrays_copyOfRangeB(int8_t *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(int8_t), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with null characters to obtain the required
+ * length
+ */
 char *Arrays_copyOfRangeC(char *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(char), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with zeros to obtain the required length
+ */
 double *Arrays_copyOfRangeD(double *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(double), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with zeros to obtain the required length
+ */
 float *Arrays_copyOfRangeF(float *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(float), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with zeros to obtain the required length
+ */
 int32_t *Arrays_copyOfRangeI(int32_t *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(int32_t), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with zeros to obtain the required length
+ */
 int64_t *Arrays_copyOfRangeL(int64_t *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(int64_t), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with zeros to obtain the required length
+ */
 int16_t *Arrays_copyOfRangeS(int16_t *original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(int16_t), from, to);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with nulls to obtain the required length
+ */
 void **Arrays_copyOfRangeObj(void **original, int32_t length, int32_t from, int32_t to) {
     return _copyOfRangePointer(original, length, sizeof(void *), from, to);
 }
 
+/**
+ * Returns true if the two specified arrays of booleans are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsBool(bool *a, int32_t length, bool *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(bool), _equalsBool);
 }
 
+/**
+ * Returns true if the two specified arrays of bytes are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsB(int8_t *a, int32_t length, int8_t *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(int8_t), _equalsC);
 }
 
+/**
+ * Returns true if the two specified arrays of chars are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsC(char *a, int32_t length, char *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(char), _equalsC);
 }
 
+/**
+ * Returns true if the two specified arrays of doubles are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsD(double *a, int32_t length, double *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(double), _equalsD);
 }
 
+/**
+ * Returns true if the two specified arrays of floats are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsF(float *a, int32_t length, float *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(float), _equalsF);
 }
 
+/**
+ * Returns true if the two specified arrays of ints are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsI(int32_t *a, int32_t length, int32_t *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(int32_t), _equalsI);
 }
 
+/**
+ * Returns true if the two specified arrays of longs are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsL(int64_t *a, int32_t length, int64_t *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(int64_t), _equalsL);
 }
 
+/**
+ * Returns true if the two specified arrays of Objects are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsObj(void **a, int32_t length, void **a2, int32_t length2, bool (*equals)(const void *, const void *)) {
     return _equalsPointer(a, length, a2, length2, sizeof(void *), equals);
 }
 
+/**
+ * Returns true if the two specified arrays of shorts are equal to one
+ * another.
+ *
+ * @param a one array to be tested for equality
+ * @param a2 the other array to be tested for equality
+ * @return true if the two arrays are equal
+ */
 bool Arrays_equalsS(int16_t *a, int32_t length, int16_t *a2, int32_t length2) {
     return _equalsPointer(a, length, a2, length2, sizeof(int16_t), _equalsS);
 }
 
+/**
+ * Assigns the specified boolean value to each element of the specified
+ * array of booleans.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillBool(bool *a, int32_t length, bool val) {
     _fillPointer(a, 0, length, sizeof(bool), &val);
 }
 
+/**
+ * Assigns the specified boolean value to each element of the specified
+ * range of the specified array of booleans.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeBool(bool *a, int32_t fromIndex, int32_t toIndex, bool val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(bool), &val);
 }
 
+/**
+ * Assigns the specified byte value to each element of the specified array
+ * of bytes.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillB(int8_t *a, int32_t length, int8_t val) {
     _fillPointer(a, 0, length, sizeof(int8_t), &val);
 }
 
+/**
+ * Assigns the specified byte value to each element of the specified range
+ * of the specified array of bytes.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeB(int8_t *a, int32_t fromIndex, int32_t toIndex, int8_t val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(int8_t), &val);
 }
 
+/**
+ * Assigns the specified char value to each element of the specified array
+ * of chars.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillC(char *a, int32_t length, char val) {
     _fillPointer(a, 0, length, sizeof(char), &val);
 }
 
+/**
+ * Assigns the specified char value to each element of the specified range
+ * of the specified array of chars.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeC(char *a, int32_t fromIndex, int32_t toIndex, char val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(char), &val);
 }
 
+/**
+ * Assigns the specified double value to each element of the specified array
+ * of doubles.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillD(double *a, int32_t length, double val) {
     _fillPointer(a, 0, length, sizeof(double), &val);
 }
 
+/**
+ * Assigns the specified double value to each element of the specified range
+ * of the specified array of doubles.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeD(double *a, int32_t fromIndex, int32_t toIndex, double val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(double), &val);
 }
 
+/**
+ * Assigns the specified float value to each element of the specified array
+ * of floats.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillF(float *a, int32_t length, float val) {
     _fillPointer(a, 0, length, sizeof(float), &val);
 }
 
+/**
+ * Assigns the specified float value to each element of the specified range
+ * of the specified array of floats.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeF(float *a, int32_t fromIndex, int32_t toIndex, float val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(float), &val);
 }
 
+/**
+ * Assigns the specified int value to each element of the specified array of
+ * ints.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillI(int32_t *a, int32_t length, int32_t val) {
     _fillPointer(a, 0, length, sizeof(int32_t), &val);
 }
 
+/**
+ * Assigns the specified int value to each element of the specified range of
+ * the specified array of ints.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex, int32_t val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(int32_t), &val);
 }
 
+/**
+ * Assigns the specified long value to each element of the specified array
+ * of longs.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillL(int64_t *a, int32_t length, int64_t val) {
     _fillPointer(a, 0, length, sizeof(int64_t), &val);
 }
 
+/**
+ * Assigns the specified long value to each element of the specified range
+ * of the specified array of longs.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(int64_t), &val);
 }
 
+/**
+ * Assigns the specified Object reference to each element of the specified
+ * array of Objects.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillObj(void **a, int32_t length, void *val) {
     _fillPointer(a, 0, length, sizeof(void *), &val);
 }
 
+/**
+ * Assigns the specified Object reference to each element of the specified
+ * range of the specified array of Objects.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeObj(void **a, int32_t fromIndex, int32_t toIndex, void *val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(void *), &val);
 }
 
+/**
+ * Assigns the specified short value to each element of the specified array
+ * of shorts.
+ *
+ * @param a the array to be filled
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillS(int16_t *a, int32_t length, int16_t val) {
     _fillPointer(a, 0, length, sizeof(int16_t), &val);
 }
 
+/**
+ * Assigns the specified short value to each element of the specified range
+ * of the specified array of shorts.
+ *
+ * @param a the array to be filled
+ * @param fromIndex the index of the first element (inclusive) to be filled
+ * with the specified value
+ * @param toIndex the index of the last element (exclusive) to be filled
+ * with the specified value
+ * @param val the value to be stored in all elements of the array
+ */
 void Arrays_fillRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t val) {
     _fillPointer(a, fromIndex, toIndex, sizeof(int16_t), &val);
 }
 
+/**
+ * Sorts the specified array into ascending numerical order.
+ *
+ * @param a the array to be sorted
+ */
 void Arrays_sortB(int8_t *a, int32_t length) {
     _sortPointer(a, 0, length, sizeof(int8_t), _compareC, false);
 }
 
+/**
+ * Sorts the specified range of the array into ascending order.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
 void Arrays_sortRangeB(int8_t *a, int32_t fromIndex, int32_t toIndex) {
     _sortPointer(a, fromIndex, toIndex, sizeof(int8_t), _compareC, false);
 }
 
+/**
+ * Sorts the specified array into ascending numerical order.
+ *
+ * @param a the array to be sorted
+ */
 void Arrays_sortC(char *a, int32_t length) {
     _sortPointer(a, 0, length, sizeof(char), _compareC, false);
 }
 
+/**
+ * Sorts the specified range of the array into ascending order.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
 void Arrays_sortRangeC(char *a, int32_t fromIndex, int32_t toIndex) {
     _sortPointer(a, fromIndex, toIndex, sizeof(char), _compareC, false);
 }
 
+/**
+ * Sorts the specified array into ascending numerical order.
+ *
+ * @param a the array to be sorted
+ */
 void Arrays_sortD(double *a, int32_t length) {
     _sortPointer(a, 0, length, sizeof(double), _compareD, false);
 }
 
+/**
+ * Sorts the specified range of the array into ascending order.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
 void Arrays_sortRangeD(double *a, int32_t fromIndex, int32_t toIndex) {
     _sortPointer(a, fromIndex, toIndex, sizeof(double), _compareD, false);
 }
 
+/**
+ * Sorts the specified array into ascending numerical order.
+ *
+ * @param a the array to be sorted
+ */
 void Arrays_sortF(float *a, int32_t length) {
     _sortPointer(a, 0, length, sizeof(float), _compareF, false);
 }
 
+/**
+ * Sorts the specified range of the array into ascending order.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
 void Arrays_sortRangeF(float *a, int32_t fromIndex, int32_t toIndex) {
     _sortPointer(a, fromIndex, toIndex, sizeof(float), _compareF, false);
 }
 
+/**
+ * Sorts the specified array into ascending numerical order.
+ *
+ * @param a the array to be sorted
+ */
 void Arrays_sortI(int32_t *a, int32_t length) {
     _sortPointer(a, 0, length, sizeof(int32_t), _compareI, false);
 }
 
+/**
+ * Sorts the specified range of the array into ascending order.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
 void Arrays_sortRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex) {
     _sortPointer(a, fromIndex, toIndex, sizeof(int32_t), _compareI, false);
 }
 
+/**
+ * Sorts the specified array into ascending numerical order.
+ *
+ * @param a the array to be sorted
+ */
 void Arrays_sortL(int64_t *a, int32_t length) {
     _sortPointer(a, 0, length, sizeof(int64_t), _compareL, false);
 }
 
+/**
+ * Sorts the specified range of the array into ascending order.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
 void Arrays_sortRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex) {
     _sortPointer(a, fromIndex, toIndex, sizeof(int64_t), _compareL, false);
 }
 
-void Arrays_sortS(int16_t *a, int32_t length) {
-    _sortPointer(a, 0, length, sizeof(int16_t), _compareS, false);
-}
-
-void Arrays_sortRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex) {
-    _sortPointer(a, fromIndex, toIndex, sizeof(int16_t), _compareS, false);
-}
-
+/**
+ * Sorts the specified array of objects into ascending order, according to
+ * the natural ordering of its elements.
+ *
+ * @param a the array to be sorted
+ */
 void Arrays_sortObj(void **a, int32_t length, int32_t (*c)(const void *, const void *)) {
     _sortPointer(a, 0, length, sizeof(void *), c, true);
 }
 
+/**
+ * Sorts the specified range of the specified array of objects into
+ * ascending order, according to the natural ordering of its elements.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
 void Arrays_sortRangeObj(void **a, int32_t fromIndex, int32_t toIndex, int32_t (*c)(const void *, const void *)) {
     _sortPointer(a, fromIndex, toIndex, sizeof(void *), c, true);
 }
 
+/**
+ * Sorts the specified array into ascending numerical order.
+ *
+ * @param a the array to be sorted
+ */
+void Arrays_sortS(int16_t *a, int32_t length) {
+    _sortPointer(a, 0, length, sizeof(int16_t), _compareS, false);
+}
+
+/**
+ * Sorts the specified range of the array into ascending order.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ */
+void Arrays_sortRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex) {
+    _sortPointer(a, fromIndex, toIndex, sizeof(int16_t), _compareS, false);
+}
+
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringBool(bool *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(bool), _toStringBool);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringB(int8_t *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(int8_t), _toStringC);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringC(char *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(char), _toStringC);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringD(double *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(double), _toStringD);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringF(float *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(float), _toStringF);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringI(int32_t *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(int32_t), _toStringI);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringL(int64_t *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(int64_t), _toStringL);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringObj(void **a, int32_t length, int32_t size, String *(*toString)(const void *)) {
     return _toStringPointer(a, length, size, toString);
 }
 
+/**
+ * Returns a string representation of the contents of the specified array.
+ *
+ * @param a the array whose string representation to return
+ * @return a string representation of a
+ */
 String *Arrays_toStringS(int16_t *a, int32_t length) {
     return _toStringPointer(a, length, sizeof(int16_t), _toStringS);
 }

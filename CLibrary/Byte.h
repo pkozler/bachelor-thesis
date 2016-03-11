@@ -5,7 +5,19 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Byte class wraps a value of primitive type byte in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+/**
+ * A constant holding the maximum value a byte can have, 2^7-1.
+ */
 #define Byte_MAX_VALUE 127
+/**
+ * A constant holding the minimum value a byte can have, -2^7.
+ */
 #define Byte_MIN_VALUE -128
 
 typedef struct {

@@ -4,6 +4,11 @@
 #include "String.h"
 #include <cstdint>
 
+/**
+ * A simple text scanner which can parse primitive types and strings using regular expressions.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Scanner {
 public:
     Scanner(void *source);

@@ -6,6 +6,11 @@
 #include <algorithm>
 #include <cstdint>
 
+/**
+ * This class contains various methods for manipulating arrays (such as sorting and searching).
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Arrays {
     Arrays();
     ~Arrays();
@@ -221,26 +226,97 @@ template <class T> String *Arrays::toStringGeneric(T *a, int32_t length, String 
     return new String(oss.str());
 }
 
+/**
+ * Searches the specified array for the specified object using the binary
+ * search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @param c the comparator by which the array is ordered. A null value
+ * indicates that the elements' natural ordering should be used.
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ */
 template <class T> int32_t Arrays::binarySearch(T *a, int32_t length, T key, int32_t (*c)(T, T)) {
     return binarySearchGeneric(a, 0, length, key, c);
 }
 
+/**
+ * Searches a range of the specified array for the specified object using
+ * the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @param c the comparator by which the array is ordered. A null value
+ * indicates that the elements' natural ordering should be used.
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ */
 template <class T> int32_t Arrays::binarySearch(T *a, int32_t fromIndex, int32_t toIndex, T key, int32_t (*c)(T, T)) {
     return binarySearchGeneric(a, fromIndex, toIndex, key, c);
 }
 
+/**
+ * Copies the specified array, truncating or padding with nulls (if
+ * necessary) so the copy has the specified length.
+ *
+ * @param original the array to be copied
+ * @param newLength the length of the copy to be returned
+ * @return a copy of the original array, truncated or padded with nulls to
+ * obtain the specified length
+ */
 template <class T> T *Arrays::copyOf(T *original, int32_t length, int32_t newLength) {
     return copyOfRangeGeneric(original, length, 0, newLength);
 }
 
+/**
+ * Copies the specified range of the specified array into a new array.
+ *
+ * @param original the array from which a range is to be copied
+ * @param from the initial index of the range to be copied, inclusive
+ * @param to the final index of the range to be copied, exclusive. (This
+ * index may lie outside the array.)
+ * @return a new array containing the specified range from the original
+ * array, truncated or padded with nulls to obtain the required length
+ */
 template <class T> T *Arrays::copyOfRange(T *original, int32_t length, int32_t from, int32_t to) {
     return copyOfRangeGeneric(original, length, from, to);
 }
 
+/**
+ * Sorts the specified array of objects according to the order induced by
+ * the specified comparator.
+ *
+ * @param a the array to be sorted
+ * @param c the comparator to determine the order of the array. A null value
+ * indicates that the elements' natural ordering should be used.
+ */
 template <class T> void Arrays::sort(T *a, int32_t length, int32_t (*c)(T, T)) {
     sortGeneric(a, 0, length, c, true);
 }
 
+/**
+ * Sorts the specified range of the specified array of objects according to
+ * the order induced by the specified comparator.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ * @param c the comparator to determine the order of the array. A null value
+ * indicates that the elements' natural ordering should be used.
+ */
 template <class T> void Arrays::sort(T *a, int32_t fromIndex, int32_t toIndex, int32_t (*c)(T, T)) {
     sortGeneric(a, fromIndex, toIndex, c, true);
 }

@@ -4,6 +4,11 @@
 #include "String.h"
 #include <cstdint>
 
+/**
+ * The Byte class wraps a value of primitive type byte in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Byte {
     int8_t v;
 public:

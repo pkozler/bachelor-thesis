@@ -8,13 +8,24 @@ uses
   SysUtils, StringUnit;
 
 type
+  (**
+   * The Long class wraps a value of the primitive type long in an object.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   Long = class
     private
       var
         v: int64;
     public
       const
+          (**
+           * A constant holding the maximum value a long can have, 2^63-1.
+           *)
            MAX_VALUE = 9223372036854775807;
+          (**
+           * A constant holding the minimum value a long can have, -2^63.
+           *)
            MIN_VALUE = -9223372036854775808;
       constructor create(value: int64);
       destructor destroy(); override;
@@ -22,14 +33,20 @@ type
       function compareTo(anotherLong: Long) : longInt;
       class function compare(x, y: int64) : longInt;
       function equals(obj: TObject) : boolean; override;
-      function toString() : ansiString; override;
       function toString() : String_;
       class function toString(l: int64) : String_;
       class function parseLong(s: String_) : int64;
+      function toString() : ansiString; override;
   end;
 
 implementation
 
+(**
+ * Constructs a newly allocated Long object that represents the specified
+ * long argument.
+ *
+ * @param value the value to be represented by the Long object.
+ *)
 constructor Long.create(value: int64);
 begin
   v := value;
@@ -40,16 +57,39 @@ begin
   inherited;
 end;
 
+(**
+ * Returns the value of this Long as a long value.
+ *
+ * @return the numeric value represented by this object after conversion to
+ * type long.
+ *)
 function Long.longValue() : int64;
 begin
   longValue := v;
 end;
 
+(**
+ * Compares two Long objects numerically.
+ *
+ * @param anotherLong the Long to be compared.
+ * @return the value 0 if this Long is equal to the argument Long; a value
+ * less than 0 if this Long is numerically less than the argument Long; and
+ * a value greater than 0 if this Long is numerically greater than the
+ * argument Long (signed comparison).
+ *)
 function Long.compareTo(anotherLong: Long) : longInt;
 begin
   compareTo := compare(v, anotherLong.v);
 end;
 
+(**
+ * Compares two long values numerically.
+ *
+ * @param x the first long to compare
+ * @param y the second long to compare
+ * @return the value 0 if x == y; a value less than 0 if x < y; and a value greater than 0 if x
+ * > y
+ *)
 class function Long.compare(x, y: int64) : longInt;
 begin
   if x < y then begin
@@ -63,6 +103,12 @@ begin
   end;
 end;
 
+(**
+ * Compares this object to the specified object.
+ *
+ * @param obj the object to compare with.
+ * @return true if the objects are the same; false otherwise.
+ *)
 function Long.equals(obj: TObject) : boolean;
 begin
   if obj = nil then begin
@@ -76,27 +122,45 @@ begin
   equals := (v = (Long(obj)).v);
 end;
 
+(**
+ * Returns a String object representing this Long's value.
+ *
+ * @return a string representation of the value of this object in base 10.
+ *)
+function Long.toString() : String_;
+begin
+  toString := Long.toString(v);
+end;
+
+(**
+ * Returns a String object representing the specified long.
+ *
+ * @param l a long to be converted.
+ * @return a string representation of the argument in base 10.
+ *)
+class function Long.toString(l: int64) : String_;
+begin
+  toString := String_.create(IntToStr(l));
+end;
+
+(**
+ * Parses the string argument as a signed long in the radix specified by the
+ * second argument.
+ *
+ * @param s a String containing the long representation to be parsed
+ * @return the long represented by the argument in decimal.
+ *)
+class function Long.parseLong(s: String_) : int64;
+begin
+  parseLong := strToInt64(s.toString());
+end;
+
 function Long.toString() : ansiString;
 var
   s: String_;
 begin
   s := toString();
   toString := s.ToString();
-end;
-
-function Long.toString() : String_;
-begin
-  toString := Long.toString(v);
-end;
-
-class function Long.toString(l: int64) : String_;
-begin
-  toString := String_.create(IntToStr(l));
-end;
-
-class function Long.parseLong(s: String_) : int64;
-begin
-  parseLong := strToInt64(s.toString());
 end;
 
 end.

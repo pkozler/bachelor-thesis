@@ -5,6 +5,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * Doubly-linked list implementation of the List and Deque interfaces.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 typedef struct LINKED_LIST_NODE {
     void *value;
     struct LINKED_LIST_NODE *next;

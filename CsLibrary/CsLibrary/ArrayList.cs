@@ -27,7 +27,7 @@ namespace JavaClasses {
         public ArrayList(ArrayList<E> c) {
             l = new List<E>(c.l);
         }
-
+        
         /**
          * Appends the specified element to the end of this list.
          *

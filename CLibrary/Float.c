@@ -7,6 +7,12 @@
 
 #define _MAX_FLOAT_STRLEN 12
 
+/**
+ * Constructs a newly allocated Float object that represents the primitive
+ * float argument.
+ *
+ * @param value the value to be represented by the Float.
+ */
 Float *new_Float(float value) {
     Float *f = malloc(sizeof (Float));
     f->v = value;
@@ -21,14 +27,37 @@ long _getNegativeZeroFloatBits() {
     return bitConverter.bits;
 }
 
+/**
+ * Returns the float value of this Float object.
+ *
+ * @return the float value represented by this object
+ */
 float floatValue(Float *ptr) {
     return ptr->v;
 }
 
+/**
+ * Compares two Float objects numerically.
+ *
+ * @param anotherFloat the Float to be compared.
+ * @return the value 0 if anotherFloat is numerically equal to this Float; a
+ * value less than 0 if this Float is numerically less than anotherFloat;
+ * and a value greater than 0 if this Float is numerically greater than
+ * anotherFloat.
+ */
 int32_t compareToF(Float *ptr, Float *anotherFloat) {
     return Float_compare(ptr->v, anotherFloat->v);
 }
 
+/**
+ * Compares the two specified float values.
+ *
+ * @param f1 the first float to compare.
+ * @param f2 the second float to compare.
+ * @return the value 0 if f1 is numerically equal to f2; a value less than 0
+ * if f1 is numerically less than f2; and a value greater than 0 if f1 is
+ * numerically greater than f2.
+ */
 int32_t Float_compare(float f1, float f2) {
     if (isnan(f1)) {
         if (isnan(f2)) {
@@ -60,6 +89,12 @@ int32_t Float_compare(float f1, float f2) {
     return (f1 > f2 ? 1 : f1 < f2 ? -1 : 0);
 }
 
+/**
+ * Compares this object against the specified object.
+ *
+ * @param obj the object to be compared
+ * @return true if the objects are the same; false otherwise.
+ */
 bool equalsF(Float *ptr, Float *obj) {
     if (ptr == obj) {
         return true;
@@ -96,10 +131,21 @@ bool equalsF(Float *ptr, Float *obj) {
     return (v == v2);
 }
 
+/**
+ * Returns a string representation of this Float object.
+ *
+ * @return a String representation of this object.
+ */
 String *toStringF(Float *ptr) {
     return Float_toString(ptr->v);
 }
 
+/**
+ * Returns a string representation of the float argument.
+ *
+ * @param f the float to be converted.
+ * @return a string representation of the argument.
+ */
 String *Float_toString(float f) {
     char *str = malloc(_MAX_FLOAT_STRLEN + 1);
     char buf[_MAX_FLOAT_STRLEN];
@@ -111,6 +157,13 @@ String *Float_toString(float f) {
     return new_String(str);
 }
 
+/**
+ * Returns a new float initialized to the value represented by the specified
+ * String, as performed by the valueOf method of class Float.
+ *
+ * @param s the string to be parsed.
+ * @return the float value represented by the string argument.
+ */
 float Float_parseFloat(String *s) {
     return strtof(s->s, NULL);
 }

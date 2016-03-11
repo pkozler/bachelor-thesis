@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * Constructs an empty list.
+ */
 LinkedList *new_LinkedList() {
     LinkedList *list = malloc(sizeof(LinkedList));
     list->count = 0;
@@ -13,6 +16,12 @@ LinkedList *new_LinkedList() {
     return list;
 }
 
+/**
+ * Constructs a list containing the elements of the specified collection, in
+ * the order they are returned by the collection's iterator.
+ *
+ * @param c the collection whose elements are to be placed into this list
+ */
 LinkedList *new_LinkedListAddAll(LinkedList *c) {
     LinkedList *list = new_LinkedList();
     LinkedListNode *node = c->first;
@@ -95,6 +104,12 @@ void _removeNode(LinkedList *ptr, LinkedListNode *node) {
     }
 }
 
+/**
+ * Appends the specified element to the end of this list.
+ *
+ * @param e element to be appended to this list
+ * @return true (as specified by Collection.add(E))
+ */
 bool addL(LinkedList *ptr, void *e) {
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = e;
@@ -104,6 +119,12 @@ bool addL(LinkedList *ptr, void *e) {
     return true;
 }
 
+/**
+ * Inserts the specified element at the specified position in this list.
+ *
+ * @param index index at which the specified element is to be inserted
+ * @param element element to be inserted
+ */
 void addAtL(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = element;
@@ -125,6 +146,12 @@ void addAtL(LinkedList *ptr, int32_t index, void *element) {
     ptr->count++;
 }
 
+/**
+ * Returns the element at the specified position in this list.
+ *
+ * @param index index of the element to return
+ * @return the element at the specified position in this list
+ */
 void *getL(LinkedList *ptr, int32_t index) {
     LinkedListNode *node = ptr->first;
 
@@ -136,6 +163,14 @@ void *getL(LinkedList *ptr, int32_t index) {
     return node->value;
 }
 
+/**
+ * Replaces the element at the specified position in this list with the
+ * specified element.
+ *
+ * @param index index of the element to replace
+ * @param element element to be stored at the specified position
+ * @return the element previously at the specified position
+ */
 void *setL(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *original;
 
@@ -158,6 +193,12 @@ void *setL(LinkedList *ptr, int32_t index, void *element) {
     return original;
 }
 
+/**
+ * Removes the element at the specified position in this list.
+ *
+ * @param index the index of the element to be removed
+ * @return the element previously at the specified position
+ */
 void *removeAtL(LinkedList *ptr, int32_t index) {
     LinkedListNode *removed;
     LinkedListNode *node;
@@ -186,20 +227,38 @@ void *removeAtL(LinkedList *ptr, int32_t index) {
     return removed;
 }
 
+/**
+ * Returns the number of elements in this list.
+ *
+ * @return the number of elements in this list
+ */
 int32_t sizeL(LinkedList *ptr) {
     return ptr->count;
 }
 
+/**
+ * Returns true if this list contains no elements.
+ *
+ * @return true if this list contains no elements
+ */
 bool isEmptyL(LinkedList *ptr) {
     return (ptr->count == 0);
 }
 
+/**
+ * Removes all of the elements from this list.
+ */
 void clearL(LinkedList *ptr) {
     while (ptr->first != NULL) {
         removeAtL(ptr, 0);
     }
 }
 
+/**
+ * Returns a string representation of the object.
+ *
+ * @return a string representation of the object.
+ */
 String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
     StringBuilder *sb = new_StringBuilder();
     String *str = new_String("[");

@@ -7,6 +7,9 @@
 #define _DEFAULT_CAPACITY 10
 #define _RESIZE_COEF 2
 
+/**
+ * Constructs an empty list with an initial capacity of ten.
+ */
 ArrayList *new_ArrayList() {
     ArrayList *list = malloc(sizeof (ArrayList));
     list->count = 0;
@@ -16,6 +19,12 @@ ArrayList *new_ArrayList() {
     return list;
 }
 
+/**
+ * Constructs a list containing the elements of the specified collection, in
+ * the order they are returned by the collection's iterator.
+ *
+ * @param c the collection whose elements are to be placed into this list
+ */
 ArrayList *new_ArrayListAddAll(ArrayList *c) {
     ArrayList *list = malloc(sizeof (ArrayList));
     list->count = c->count;
@@ -54,6 +63,12 @@ void _shrinkList(ArrayList *ptr) {
     }
 }
 
+/**
+ * Appends the specified element to the end of this list.
+ *
+ * @param e element to be appended to this list
+ * @return true (as specified by Collection.add(E))
+ */
 bool add(ArrayList *ptr, void *e) {
     ptr->dynamicArray[ptr->count] = e;
     _expandList(ptr);
@@ -61,6 +76,12 @@ bool add(ArrayList *ptr, void *e) {
     return true;
 }
 
+/**
+ * Inserts the specified element at the specified position in this list.
+ *
+ * @param index index at which the specified element is to be inserted
+ * @param element element to be inserted
+ */
 void addAt(ArrayList *ptr, int32_t index, void *element) {
     int32_t i;
 
@@ -72,10 +93,24 @@ void addAt(ArrayList *ptr, int32_t index, void *element) {
     _expandList(ptr);
 }
 
+/**
+ * Returns the element at the specified position in this list.
+ *
+ * @param index index of the element to return
+ * @return the element at the specified position in this list
+ */
 void *get(ArrayList *ptr, int32_t index) {
     return ptr->dynamicArray[index];
 }
 
+/**
+ * Replaces the element at the specified position in this list with the
+ * specified element.
+ *
+ * @param index index of the element to replace
+ * @param element element to be stored at the specified position
+ * @return the element previously at the specified position
+ */
 void *set(ArrayList *ptr, int32_t index, void *element) {
     void *original = ptr->dynamicArray[index];
     ptr->dynamicArray[index] = element;
@@ -83,6 +118,12 @@ void *set(ArrayList *ptr, int32_t index, void *element) {
     return original;
 }
 
+/**
+ * Removes the element at the specified position in this list.
+ *
+ * @param index the index of the element to be removed
+ * @return the element that was removed from the list
+ */
 void *removeAt(ArrayList *ptr, int32_t index) {
     void *removed = ptr->dynamicArray[index];
     int32_t i;
@@ -95,14 +136,27 @@ void *removeAt(ArrayList *ptr, int32_t index) {
     return removed;
 }
 
+/**
+ * Returns the number of elements in this list.
+ *
+ * @return the number of elements in this list
+ */
 int32_t size(ArrayList *ptr) {
     return ptr->count;
 }
 
+/**
+ * Returns true if this list contains no elements.
+ *
+ * @return true if this list contains no elements
+ */
 bool isEmpty(ArrayList *ptr) {
     return (ptr->count == 0);
 }
 
+/**
+ * Removes all of the elements from this list.
+ */
 void clear(ArrayList *ptr) {
     free(ptr->dynamicArray);
 
@@ -111,6 +165,11 @@ void clear(ArrayList *ptr) {
     ptr->dynamicArray = malloc(ptr->capacity * sizeof (void *));
 }
 
+/**
+ * Returns a string representation of the object.
+ *
+ * @return a string representation of the object.
+ */
 String *toStringAl(ArrayList *ptr, String *(*toString)(void *)) {
     int32_t length = ptr->count;
     StringBuilder *sb = new_StringBuilder();

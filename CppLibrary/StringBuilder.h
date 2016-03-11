@@ -4,6 +4,11 @@
 #include "String.h"
 #include <sstream>
 
+/**
+ * A mutable sequence of characters.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class StringBuilder {
     std::ostringstream oss;
 public:

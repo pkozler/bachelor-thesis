@@ -8,6 +8,12 @@ uses
   StringUnit, Classes;
 
 type
+  (**
+   * A PrintStream adds functionality to another output stream,
+   * namely the ability to print representations of various data values conveniently.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   PrintStream = class
     private
       class function charArrayToString(s: array of ansiChar): ansiString;
@@ -35,10 +41,21 @@ type
       procedure println(x: String_);
   end;
 
+  (**
+   * The System class contains several useful class fields and methods.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   System_ = class
     public
       class var
+        (**
+         * The "standard" input stream.
+         *)
         in_: TObject;
+        (**
+         * The "standard" output stream.
+         *)
         out_: PrintStream;
   end;
 
@@ -177,96 +194,189 @@ begin
   inherited;
 end;
 
+(**
+ * Prints a boolean value.
+ *
+ * @param b The boolean to be printed
+ *)
 procedure PrintStream.print(b: boolean);
 begin
   write(b);
 end;
 
+(**
+ * Prints a character.
+ *
+ * @param c The char to be printed
+ *)
 procedure PrintStream.print(c: ansiChar);
 begin
   write(c);
 end;
 
+(**
+ * Prints an array of characters.
+ *
+ * @param s The array of chars to be printed
+ *)
 procedure PrintStream.print(s: array of ansiChar);
 begin
   write(charArrayToString(s));
 end;
 
+(**
+ * Prints a double-precision floating-point number.
+ *
+ * @param d The double to be printed
+ *)
 procedure PrintStream.print(d: double);
 begin
   write(d);
 end;
 
+(**
+ * Prints a floating-point number.
+ *
+ * @param f The float to be printed
+ *)
 procedure PrintStream.print(f: single);
 begin
   write(f);
 end;
 
+(**
+ * Prints an integer.
+ *
+ * @param i The int to be printed
+ *)
 procedure PrintStream.print(i: longInt);
 begin
   write(i);
 end;
 
+(**
+ * Prints a long integer.
+ *
+ * @param l The long to be printed
+ *)
 procedure PrintStream.print(l: int64);
 begin
   write(l);
 end;
 
+(**
+ * Prints an object.
+ *
+ * @param obj The Object to be printed
+ *)
 procedure PrintStream.print(obj: TObject);
 begin
   write(obj.toString);
 end;
 
+(**
+ * Prints a string.
+ *
+ * @param s The String to be printed
+ *)
 procedure PrintStream.print(s: String_);
 begin
   write(s.toString);
 end;
 
+(**
+ * Terminates the current line by writing the line separator string.
+ *)
 procedure PrintStream.println();
 begin
   writeLn;
 end;
 
+(**
+ * Prints a boolean and then terminate the line.
+ *
+ * @param x The boolean to be printed
+ *)
 procedure PrintStream.println(x: boolean);
 begin
   writeLn(x);
 end;
 
+(**
+ * Prints a character and then terminate the line.
+ *
+ * @param x The char to be printed.
+ *)
 procedure PrintStream.println(x: ansiChar);
 begin
   writeLn(x);
 end;
 
+(**
+ * Prints an array of characters and then terminate the line.
+ *
+ * @param x an array of chars to print.
+ *)
 procedure PrintStream.println(x: array of ansiChar);
 begin
   writeLn(charArrayToString(x));
 end;
 
+(**
+ * Prints a double and then terminate the line.
+ *
+ * @param x The double to be printed.
+ *)
 procedure PrintStream.println(x: double);
 begin
   writeLn(x);
 end;
 
+(**
+ * Prints a float and then terminate the line.
+ *
+ * @param x The float to be printed.
+ *)
 procedure PrintStream.println(x: single);
 begin
   writeLn(x);
 end;
 
+(**
+ * Prints an integer and then terminate the line.
+ *
+ * @param x The int to be printed.
+ *)
 procedure PrintStream.println(x: longInt);
 begin
   writeLn(x);
 end;
 
+(**
+ * Prints a long and then terminate the line.
+ *
+ * @param x The long to be printed.
+ *)
 procedure PrintStream.println(x: int64);
 begin
   writeLn(x);
 end;
 
+(**
+ * Prints an Object and then terminate the line.
+ *
+ * @param x The Object to be printed.
+ *)
 procedure PrintStream.println(x: TObject);
 begin
   writeLn(x.toString);
 end;
 
+(**
+ * Prints a String and then terminate the line.
+ *
+ * @param x The String to be printed.
+ *)
 procedure PrintStream.println(x: String_);
 begin
   writeLn(x.toString);

@@ -5,6 +5,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * This class contains various methods for manipulating arrays (such as sorting and searching).
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 int32_t Arrays_binarySearchB(int8_t *a, int32_t length, int8_t key);
 int32_t Arrays_binarySearchRangeB(int8_t *a, int32_t fromIndex, int32_t toIndex, int8_t key);
 int32_t Arrays_binarySearchC(char *a, int32_t length, char key);
@@ -17,10 +23,10 @@ int32_t Arrays_binarySearchI(int32_t *a, int32_t length, int32_t key);
 int32_t Arrays_binarySearchRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex, int32_t key);
 int32_t Arrays_binarySearchL(int64_t *a, int32_t length, int64_t key);
 int32_t Arrays_binarySearchRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t key);
+int32_t Arrays_binarySearchObj(void **a, int32_t length, void *key, int32_t(*c)(const void *, const void *));
+int32_t Arrays_binarySearchRangeObj(void **a, int32_t fromIndex, int32_t toIndex, void *key, int32_t(*c)(const void *, const void *));
 int32_t Arrays_binarySearchS(int16_t *a, int32_t length, int16_t key);
 int32_t Arrays_binarySearchRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t key);
-int32_t Arrays_binarySearchObj(void **a, int32_t length, void *key, int32_t (*c)(const void *, const void *));
-int32_t Arrays_binarySearchRangeObj(void **a, int32_t fromIndex, int32_t toIndex, void *key, int32_t (*c)(const void *, const void *));
 bool *Arrays_copyOfBool(bool *original, int32_t length, int32_t newLength);
 int8_t *Arrays_copyOfB(int8_t *original, int32_t length, int32_t newLength);
 char *Arrays_copyOfC(char *original, int32_t length, int32_t newLength);
@@ -78,10 +84,10 @@ void Arrays_sortI(int32_t *a, int32_t length);
 void Arrays_sortRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex);
 void Arrays_sortL(int64_t *a, int32_t length);
 void Arrays_sortRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex);
+void Arrays_sortObj(void **a, int32_t length, int32_t(*c)(const void *, const void *));
+void Arrays_sortRangeObj(void **a, int32_t fromIndex, int32_t toIndex, int32_t(*c)(const void *, const void *));
 void Arrays_sortS(int16_t *a, int32_t length);
 void Arrays_sortRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex);
-void Arrays_sortObj(void **a, int32_t length, int32_t (*c)(const void *, const void *));
-void Arrays_sortRangeObj(void **a, int32_t fromIndex, int32_t toIndex, int32_t (*c)(const void *, const void *));
 String *Arrays_toStringBool(bool *a, int32_t length);
 String *Arrays_toStringB(int8_t *a, int32_t length);
 String *Arrays_toStringC(char *a, int32_t length);

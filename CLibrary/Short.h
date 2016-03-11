@@ -5,7 +5,19 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Short class wraps a value of primitive type short in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+/**
+ * A constant holding the maximum value a short can have, 2^15-1.
+ */
 #define Short_MAX_VALUE 32767
+/**
+ * A constant holding the minimum value a short can have, -2^15.
+ */
 #define Short_MIN_VALUE -32768
 
 typedef struct {

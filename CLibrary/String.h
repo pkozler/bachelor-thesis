@@ -4,6 +4,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The String class represents character strings.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 typedef struct {
     char *s;
     int32_t len;

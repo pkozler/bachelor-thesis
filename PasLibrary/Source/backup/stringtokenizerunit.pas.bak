@@ -8,6 +8,11 @@ uses
   Classes, StrUtils, StringUnit;
 
 type
+  /**
+   * The string tokenizer class allows an application to break a string into tokens.
+   *
+   * @author Petr Kozler (A13B0359P)
+   */
   StringTokenizer = class
     private
       var
@@ -27,11 +32,22 @@ implementation
 uses
   SysUtils;
 
+/**
+ * Constructs a string tokenizer for the specified string.
+ *
+ * @param str a string to be parsed.
+ */
 constructor StringTokenizer.create(str: String_);
 begin
   self.create(str, ' \t\n\r\f');
 end;
 
+/**
+ * Constructs a string tokenizer for the specified string.
+ *
+ * @param str a string to be parsed.
+ * @param delim the delimiters.
+ */
 constructor StringTokenizer.create(str: String_; delim: String_);
 var
   strStr, delimStr: ansiString;
@@ -61,7 +77,7 @@ begin
     end;
   end;
 
-  tokens[index] := copy(tmp, i - tmp);
+  tokens[index] := copy(strStr, tmp, i - tmp);
 end;
 
 destructor StringTokenizer.destroy();
@@ -69,16 +85,34 @@ begin
   inherited;
 end;
 
+/**
+ * Calculates the number of times that this tokenizer's nextToken method can
+ * be called before it generates an exception.
+ *
+ * @return the number of tokens remaining in the string using the current
+ * delimiter set.
+ */
 function StringTokenizer.countTokens() : longInt;
 begin
   countTokens := length(tokens);
 end;
 
+/**
+ * Tests if there are more tokens available from this tokenizer's string.
+ *
+ * @return true if and only if there is at least one token in the string
+ * after the current position; false otherwise.
+ */
 function StringTokenizer.hasMoreTokens() : boolean;
 begin
   hasMoreTokens := (countTokens() <> 0);
 end;
 
+/**
+ * Returns the next token from this string tokenizer.
+ *
+ * @return the next token from this string tokenizer.
+ */
 function StringTokenizer.nextToken() : String_;
 var
   i: longInt;

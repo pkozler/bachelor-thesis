@@ -7,6 +7,10 @@
 #define _STR_DEFAULT_CAPACITY 16
 #define _STR_RESIZE_COEF 2
 
+/**
+ * Constructs a string builder with no characters in it and an initial
+ * capacity of 16 characters.
+ */
 StringBuilder *new_StringBuilder() {
     StringBuilder *sb = (StringBuilder *) malloc(sizeof (StringBuilder));
     sb->count = 1;
@@ -22,6 +26,12 @@ void delete_StringBuilder(StringBuilder *ptr) {
     free(ptr);
 }
 
+/**
+ * Appends the specified string to this character sequence.
+ *
+ * @param str a string.
+ * @return a reference to this object.
+ */
 StringBuilder *append(StringBuilder *ptr, String *str) {
     if (ptr->count + str->len >= ptr->capacity) {
         ptr->capacity += str->len * _STR_RESIZE_COEF;
@@ -34,6 +44,11 @@ StringBuilder *append(StringBuilder *ptr, String *str) {
     return ptr;
 }
 
+/**
+ * Returns a string representing the data in this sequence.
+ *
+ * @return a string representation of this sequence of characters.
+ */
 String *toStringSb(StringBuilder *ptr) {
     return new_String(ptr->buffer);
 }

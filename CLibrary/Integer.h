@@ -5,7 +5,19 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Integer class wraps a value of the primitive type int in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+/**
+ * A constant holding the maximum value an int can have, 2^31-1.
+ */
 #define Integer_MAX_VALUE 2147483647
+/**
+ * A constant holding the minimum value an int can have, -2^31.
+ */
 #define Integer_MIN_VALUE -2147483648
 
 typedef struct {

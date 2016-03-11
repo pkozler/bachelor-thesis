@@ -5,6 +5,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Character class wraps a value of the primitive type char in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 typedef struct {
     char v;
 } Character;

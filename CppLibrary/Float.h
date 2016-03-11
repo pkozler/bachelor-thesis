@@ -9,6 +9,11 @@ typedef union {
     int32_t bits;
 } FloatInt32;
 
+/**
+ * The Float class wraps a value of primitive type float in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Float {
     float v;
     static int32_t getNegativeZeroBits();

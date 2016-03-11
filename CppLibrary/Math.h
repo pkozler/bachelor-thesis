@@ -3,6 +3,12 @@
 
 #include <cstdint>
 
+/**
+ * The class Math contains methods for performing basic numeric operations such as the elementary exponential,
+ * logarithm, square root, and trigonometric functions.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Math {
     Math();
     ~Math();

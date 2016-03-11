@@ -3,7 +3,8 @@
 namespace JavaClasses {
 
     /**
-     * The System class contains several useful class fields and methods.
+     * A PrintStream adds functionality to another output stream,
+     * namely the ability to print representations of various data values conveniently.
      *
      * @author Petr Kozler (A13B0359P)
      */
@@ -179,10 +180,9 @@ namespace JavaClasses {
         }
 
     }
-
+    
     /**
-     * A PrintStream adds functionality to another output stream,
-     * namely the ability to print representations of various data values conveniently.
+     * The System class contains several useful class fields and methods.
      *
      * @author Petr Kozler (A13B0359P)
      */

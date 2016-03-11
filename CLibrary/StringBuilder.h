@@ -4,6 +4,12 @@
 #include "String.h"
 #include <stdint.h>
 
+/**
+ * A mutable sequence of characters.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 typedef struct {
     char *buffer;
     int32_t count;

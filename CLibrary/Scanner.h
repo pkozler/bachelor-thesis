@@ -4,6 +4,12 @@
 #include "String.h"
 #include <stdint.h>
 
+/**
+ * A simple text scanner which can parse primitive types and strings using regular expressions.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 String *next();
 bool nextBoolean();
 int8_t nextByte();

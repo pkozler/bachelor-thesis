@@ -5,13 +5,43 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+/**
+ * The Double class wraps a value of the primitive type double in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+/**
+ * A constant holding the positive infinity of type double.
+ */
 #define Double_POSITIVE_INFINITY 1.0 / 0.0
+/**
+ * A constant holding the negative infinity of type double.
+ */
 #define Double_NEGATIVE_INFINITY -1.0 / 0.0
+/**
+ * A constant holding a Not-a-Number (NaN) value of type double.
+ */
 #define Double_NaN 0.0 / 0.0
+/**
+ * A constant holding the largest positive finite value of type double, (2-2^-52)·2^1023.
+ */
 #define Double_MAX_VALUE 1.7976931348623157e+308
+/**
+ * A constant holding the smallest positive nonzero value of type double, 2^-1074.
+ */
 #define Double_MIN_VALUE 4.9e-324
+/**
+ * Maximum exponent a finite double variable may have.
+ */
 #define Double_MAX_EXPONENT 1023
+/**
+ * Minimum exponent a normalized double variable may have.
+ */
 #define Double_MIN_EXPONENT -1022
+/**
+ * A constant holding the smallest positive normal value of type double, 2^-1022.
+ */
 #define Double_MIN_NORMAL 2.2250738585072014e-308
 
 typedef union {

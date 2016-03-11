@@ -4,6 +4,11 @@
 #include "String.h"
 #include <cstdint>
 
+/**
+ * The Boolean class wraps a value of the primitive type boolean in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class Boolean {
     bool v;
 public:

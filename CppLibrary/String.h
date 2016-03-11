@@ -4,6 +4,11 @@
 #include <iostream>
 #include <cstdint>
 
+/**
+ * The String class represents character strings.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
 class String {
     std::string s;
 public:

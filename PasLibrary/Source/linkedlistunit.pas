@@ -16,6 +16,11 @@ type
         value: TObject;
   end;
 
+  (**
+   * Doubly-linked list implementation of the List and Deque interfaces.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   LinkedList = class
     private
       var
@@ -39,14 +44,49 @@ type
       function size() : longInt;
       function isEmpty() : boolean;
       procedure clear();
-      function toString() : ansiString; override;
       function toString() : String_;
+      function toString() : ansiString; override;
   end;
 
 implementation
 
 uses
   StringBuilderUint, Classes, SysUtils;
+
+(**
+ * Constructs an empty list.
+ *)
+constructor LinkedList.create();
+begin
+  count := 0;
+  first := nil;
+  last := nil;
+end;
+
+(**
+ * Constructs a list containing the elements of the specified collection, in
+ * the order they are returned by the collection's iterator.
+ *
+ * @param c the collection whose elements are to be placed into this list
+ *)
+constructor LinkedList.create(c: LinkedList);
+var
+  node: LinkedListNode;
+begin
+  create();
+  node := c.first;
+
+  while node <> nil do begin
+    add(node.value);
+    node := node.next;
+  end;
+end;
+
+destructor LinkedList.destroy();
+begin
+  clear();
+  inherited;
+end;
 
 procedure LinkedList.addAfter(node, newNode: LinkedListNode);
 begin
@@ -118,32 +158,12 @@ begin
   end;
 end;
 
-constructor LinkedList.create();
-begin
-  count := 0;
-  first := nil;
-  last := nil;
-end;
-
-constructor LinkedList.create(c: LinkedList);
-var
-  node: LinkedListNode;
-begin
-  create();
-  node := c.first;
-
-  while node <> nil do begin
-    add(node.value);
-    node := node.next;
-  end;
-end;
-
-destructor LinkedList.destroy();
-begin
-  clear();
-  inherited;
-end;
-
+(**
+ * Appends the specified element to the end of this list.
+ *
+ * @param e element to be appended to this list
+ * @return true (as specified by Collection.add(E))
+ *)
 function LinkedList.add(e: TObject) : boolean;
 var
   newNode: LinkedListNode;
@@ -155,6 +175,12 @@ begin
   add := true;
 end;
 
+(**
+ * Inserts the specified element at the specified position in this list.
+ *
+ * @param index index at which the specified element is to be inserted
+ * @param element element to be inserted
+ *)
 procedure LinkedList.add(index: longInt; element: TObject);
 var
   node, newNode: LinkedListNode;
@@ -179,6 +205,12 @@ begin
   inc(count);
 end;
 
+(**
+ * Returns the element at the specified position in this list.
+ *
+ * @param index index of the element to return
+ * @return the element at the specified position in this list
+ *)
 function LinkedList.get(index: longInt) : TObject;
 var
   node: LinkedListNode;
@@ -193,6 +225,14 @@ begin
   get := node.value;
 end;
 
+(**
+ * Replaces the element at the specified position in this list with the
+ * specified element.
+ *
+ * @param index index of the element to replace
+ * @param element element to be stored at the specified position
+ * @return the element previously at the specified position
+ *)
 function LinkedList.set_(index: longInt; element: TObject) : TObject;
 var
   node: LinkedListNode;
@@ -217,6 +257,12 @@ begin
   set_ := original;
 end;
 
+(**
+ * Removes the element at the specified position in this list.
+ *
+ * @param index the index of the element to be removed
+ * @return the element previously at the specified position
+ *)
 function LinkedList.remove(index: longInt) : TObject;
 var
   node: LinkedListNode;
@@ -245,21 +291,44 @@ begin
   remove := removed;
 end;
 
+(**
+ * Returns the number of elements in this list.
+ *
+ * @return the number of elements in this list
+ *)
 function LinkedList.size() : longInt;
 begin
   size := count;
 end;
 
+(**
+ * Returns true if this list contains no elements.
+ *
+ * @return true if this list contains no elements
+ *)
 function LinkedList.isEmpty() : boolean;
 begin
   isEmpty := (count = 0);
 end;
 
+(**
+ * Removes all of the elements from this list.
+ *)
 procedure LinkedList.clear();
 begin
   while first <> nil do begin
     remove(0);
   end;
+end;
+
+(**
+ * Returns a string representation of the object.
+ *
+ * @return a string representation of the object.
+ *)
+function LinkedList.toString() : String_;
+begin
+  toString := String_.create(ToString());
 end;
 
 function LinkedList.toString() : ansiString;
@@ -297,11 +366,6 @@ begin
   str := sb.toString();
   freeAndNil(sb);
   toString := str.toString();
-end;
-
-function LinkedList.toString() : String_;
-begin
-  toString := String_.create(ToString());
 end;
 
 end.
