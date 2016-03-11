@@ -2,68 +2,67 @@
 
 namespace JavaClasses {
 
-    /**
-     * The Boolean class wraps a value of the primitive type boolean in an object.
-     *
-     * @author Petr Kozler (A13B0359P)
-     */
+    /// <summary>
+    /// The Boolean class wraps a value of the primitive type boolean in an object.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class Boolean {
 
         private bool v;
 
-        /**
-         * Allocates a Boolean object representing the value argument.
-         *
-         * @param value the value of the Boolean.
-         */
+        /// <summary>
+        /// Allocates a Boolean object representing the value argument.
+        /// </summary>
+        /// <param name="value">the value of the Boolean.
+        /// </param>
         public Boolean(bool value) {
             v = value;
         }
 
-        /**
-         * Returns the value of this Boolean object as a boolean primitive.
-         *
-         * @return the primitive boolean value of this object.
-         */
+        /// <summary>
+        /// Returns the value of this Boolean object as a boolean primitive.
+        /// </summary>
+        /// <returns>the primitive boolean value of this object.
+        /// </returns>
         public bool booleanValue() {
             return v;
         }
 
-        /**
-         * Compares this Boolean instance with another.
-         *
-         * @param b the Boolean instance to be compared
-         * @return zero if this object represents the same boolean value as the
-         * argument; a positive value if this object represents true and the
-         * argument represents false; and a negative value if this object represents
-         * false and the argument represents true
-         */
+        /// <summary>
+        /// Compares this Boolean instance with another.
+        /// </summary>
+        /// <param name="b">the Boolean instance to be compared
+        /// </param><returns>zero if this object represents the same boolean value as the
+        /// argument; a positive value if this object represents true and the
+        /// argument represents false; and a negative value if this object represents
+        /// false and the argument represents true
+        /// </returns>
         public int compareTo(Boolean b) {
             return compare(v, b.v);
         }
 
-        /**
-         * Compares two boolean values.
-         *
-         * @param x the first boolean to compare
-         * @param y the second boolean to compare
-         * @return the value 0 if x == y; a value less than 0 if !x && y; and a
-         * value greater than 0 if x && !y
-         */
+        /// <summary>
+        /// Compares two boolean values.
+        /// </summary>
+        /// <param name="x">the first boolean to compare
+        /// </param><param name="y">the second boolean to compare
+        /// </param><returns>the value 0 if x == y; a value less than 0 if !x && y; and a
+        /// value greater than 0 if x && !y
+        /// </returns>
         public static int compare(bool x, bool y) {
             /* 0 if x equals y, 1 if x is TRUE and y is FALSE, -1 otherwise 
              (analogical for integer values) */
             return (x == y) ? 0 : (x ? 1 : -1);
         }
 
-        /**
-         * Returns true if and only if the argument is not null and is a Boolean
-         * object that represents the same boolean value as this object.
-         *
-         * @param obj the object to compare with.
-         * @return true if the Boolean objects represent the same value; false
-         * otherwise.
-         */
+        /// <summary>
+        /// Returns true if and only if the argument is not null and is a Boolean
+        /// object that represents the same boolean value as this object.
+        /// </summary>
+        /// <param name="obj">the object to compare with.
+        /// </param><returns>true if the Boolean objects represent the same value; false
+        /// otherwise.
+        /// </returns>
         public bool equals(Object obj) {
             // testing another object reference for a NULL value
             if (obj == null) {
@@ -79,31 +78,31 @@ namespace JavaClasses {
             return v.Equals((obj as  Boolean).v);
         }
 
-        /**
-         * Returns a String object representing this Boolean's value.
-         * 
-         * @return a string representation of this object.
-         */
+        /// <summary>
+        /// Returns a String object representing this Boolean's value.
+        /// </summary>
+        /// <returns>a string representation of this object.
+        /// </returns>
         public String toString() {
             return Boolean.toString(v);
         }
 
-        /**
-         * Returns a String object representing the specified boolean.
-         *
-         * @param b the boolean to be converted
-         * @return the string representation of the specified boolean
-         */
+        /// <summary>
+        /// Returns a String object representing the specified boolean.
+        /// </summary>
+        /// <param name="b">the boolean to be converted
+        /// </param><returns>the string representation of the specified boolean
+        /// </returns>
         public static String toString(bool b) {
             return b.ToString();
         }
 
-        /**
-         * Parses the string argument as a boolean.
-         *
-         * @param s the String containing the boolean representation to be parsed
-         * @return the boolean represented by the string argument
-         */
+        /// <summary>
+        /// Parses the string argument as a boolean.
+        /// </summary>
+        /// <param name="s">the String containing the boolean representation to be parsed
+        /// </param><returns>the boolean represented by the string argument
+        /// </returns>
         public static bool parseBoolean(String s) {
             return bool.Parse(s.ToString());
         }

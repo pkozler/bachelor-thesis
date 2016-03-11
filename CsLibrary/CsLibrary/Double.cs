@@ -2,98 +2,97 @@
 
 namespace JavaClasses {
 
-    /**
-     * The Double class wraps a value of the primitive type double in an object.
-     *
-     * @author Petr Kozler (A13B0359P)
-     */
+    /// <summary>
+    /// The Double class wraps a value of the primitive type double in an object.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class Double {
-        
-        /**
-         * A constant holding the positive infinity of type double.
-         */
+
+        /// <summary>
+        /// A constant holding the positive infinity of type double.
+        /// </summary>
         public const double POSITIVE_INFINITY = 1.0 / 0.0;
 
-        /**
-         * A constant holding the negative infinity of type double.
-         */
+        /// <summary>
+        /// A constant holding the negative infinity of type double.
+        /// </summary>
         public const double NEGATIVE_INFINITY = -1.0 / 0.0;
 
-        /**
-         * A constant holding a Not-a-Number (NaN) value of type double.
-         */
+        /// <summary>
+        /// A constant holding a Not-a-Number (NaN) value of type double.
+        /// </summary>
         public const double NaN = 0.0 / 0.0;
 
-        /**
-         * A constant holding the largest positive finite value of type double, (2-2^-52)·2^1023.
-         */
+        /// <summary>
+        /// A constant holding the largest positive finite value of type double, (2-2^-52)·2^1023.
+        /// </summary>
         public const double MAX_VALUE = 1.7976931348623157e+308;
 
-        /**
-         * A constant holding the smallest positive nonzero value of type double, 2^-1074.
-         */
+        /// <summary>
+        /// A constant holding the smallest positive nonzero value of type double, 2^-1074.
+        /// </summary>
         public const double MIN_VALUE = 4.9e-324;
 
-        /**
-         * Maximum exponent a finite double variable may have.
-         */
+        /// <summary>
+        /// Maximum exponent a finite double variable may have.
+        /// </summary>
         public const int MAX_EXPONENT = 1023;
 
-        /**
-         * Minimum exponent a normalized double variable may have.
-         */
+        /// <summary>
+        /// Minimum exponent a normalized double variable may have.
+        /// </summary>
         public const int MIN_EXPONENT = -1022;
 
-        /**
-         * A constant holding the smallest positive normal value of type double, 2^-1022.
-         */
+        /// <summary>
+        /// A constant holding the smallest positive normal value of type double, 2^-1022.
+        /// </summary>
         public const double MIN_NORMAL = 2.2250738585072014E-308;
         
         // binary representation of negative zero value for comparison purposes
         private static readonly long negativeZeroBits = BitConverter.DoubleToInt64Bits(-0.0);
         private double v;
 
-        /**
-         * Constructs a newly allocated Double object that represents the primitive
-         * double argument.
-         *
-         * @param value the value to be represented by the Double.
-         */
+        /// <summary>
+        /// Constructs a newly allocated Double object that represents the primitive
+        /// double argument.
+        /// </summary>
+        /// <param name="value">the value to be represented by the Double.
+        /// </param>
         public Double(double value) {
             v = value;
         }
 
-        /**
-         * Returns the double value of this Double object.
-         *
-         * @return the double value represented by this object
-         */
+        /// <summary>
+        /// Returns the double value of this Double object.
+        /// </summary>
+        /// <returns>the double value represented by this object
+        /// </returns>
         public double doubleValue() {
             return v;
         }
 
-        /**
-         * Compares two Double objects numerically.
-         *
-         * @param anotherDouble the Double to be compared.
-         * @return the value 0 if anotherDouble is numerically equal to this Double;
-         * a value less than 0 if this Double is numerically less than
-         * anotherDouble; and a value greater than 0 if this Double is numerically
-         * greater than anotherDouble.
-         */
+        /// <summary>
+        /// Compares two Double objects numerically.
+        /// </summary>
+        /// <param name="anotherDouble">the Double to be compared.
+        /// </param><returns>the value 0 if anotherDouble is numerically equal to this Double;
+        /// a value less than 0 if this Double is numerically less than
+        /// anotherDouble; and a value greater than 0 if this Double is numerically
+        /// greater than anotherDouble.
+        /// </returns>
         public int compareTo(Double anotherDouble) {
             return compare(v, anotherDouble.v);
         }
 
-        /**
-         * Compares the two specified double values.
-         *
-         * @param d1 the first double to compare
-         * @param d2 the second double to compare
-         * @return the value 0 if d1 is numerically equal to d2; a value less than 0
-         * if d1 is numerically less than d2; and a value greater than 0 if d1 is
-         * numerically greater than d2.
-         */
+        /// <summary>
+        /// Compares the two specified double values.
+        /// </summary>
+        /// <param name="d1">the first double to compare
+        /// </param><param name="d2">the second double to compare
+        /// </param><returns>the value 0 if d1 is numerically equal to d2; a value less than 0
+        /// if d1 is numerically less than d2; and a value greater than 0 if d1 is
+        /// numerically greater than d2.
+        /// </returns>
         public static int compare(double d1, double d2) {
             /* testing for NaN values (a NaN value is considered greated
                than any other, including positive infinity,
@@ -128,12 +127,12 @@ namespace JavaClasses {
             return (d1 > d2 ? 1 : d1 < d2 ? -1 : 0);
         }
 
-        /**
-         * Compares this object against the specified object.
-         *
-         * @param obj the object to compare with.
-         * @return true if the objects are the same; false otherwise.
-         */
+        /// <summary>
+        /// Compares this object against the specified object.
+        /// </summary>
+        /// <param name="obj">the object to compare with.
+        /// </param><returns>true if the objects are the same; false otherwise.
+        /// </returns>
         public bool equals(Object obj) {
             if (obj == null) {
                 return false;
@@ -163,32 +162,32 @@ namespace JavaClasses {
             return (v == v2);
         }
 
-        /**
-         * Returns a string representation of this Double object.
-         *
-         * @return a String representation of this object.
-         */
+        /// <summary>
+        /// Returns a string representation of this Double object.
+        /// </summary>
+        /// <returns>a String representation of this object.
+        /// </returns>
         public String toString() {
             return Double.toString(v);
         }
 
-        /**
-         * Returns a string representation of the double argument.
-         *
-         * @param d the double to be converted.
-         * @return a string representation of the argument.
-         */
+        /// <summary>
+        /// Returns a string representation of the double argument.
+        /// </summary>
+        /// <param name="d">the double to be converted.
+        /// </param><returns>a string representation of the argument.
+        /// </returns>
         public static String toString(double d) {
             return d.ToString();
         }
 
-        /**
-         * Returns a new double initialized to the value represented by the
-         * specified String, as performed by the valueOf method of class Double.
-         *
-         * @param s the string to be parsed.
-         * @return the double value represented by the string argument.
-         */
+        /// <summary>
+        /// Returns a new double initialized to the value represented by the
+        /// specified String, as performed by the valueOf method of class Double.
+        /// </summary>
+        /// <param name="s">the string to be parsed.
+        /// </param><returns>the double value represented by the string argument.
+        /// </returns>
         public static double parseDouble(String s) {
             return double.Parse(s.ToString());
         }

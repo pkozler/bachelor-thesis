@@ -2,49 +2,48 @@
 
 namespace JavaClasses {
 
-    /**
-     * Doubly-linked list implementation of the List and Deque interfaces.
-     *
-     * @author Petr Kozler (A13B0359P)
-     */
+    /// <summary>
+    /// Doubly-linked list implementation of the List and Deque interfaces.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class LinkedList<E> {
 
         public System.Collections.Generic.LinkedList<E> l { get; private set; }
 
-        /**
-         * Constructs an empty list.
-         */
+        /// <summary>
+        /// Constructs an empty list.
+        /// </summary>
         public LinkedList() {
             l = new System.Collections.Generic.LinkedList<E>();
         }
 
-        /**
-         * Constructs a list containing the elements of the specified collection, in
-         * the order they are returned by the collection's iterator.
-         *
-         * @param c the collection whose elements are to be placed into this list
-         */
+        /// <summary>
+        /// Constructs a list containing the elements of the specified collection, in
+        /// the order they are returned by the collection's iterator.
+        /// </summary>
+        /// <param name="c">the collection whose elements are to be placed into this list
+        /// </param>
         public LinkedList(LinkedList<E> c) {
             l = new System.Collections.Generic.LinkedList<E>(c.l);
         }
 
-        /**
-         * Appends the specified element to the end of this list.
-         *
-         * @param e element to be appended to this list
-         * @return true (as specified by Collection.add(E))
-         */
+        /// <summary>
+        /// Appends the specified element to the end of this list.
+        /// </summary>
+        /// <param name="e">element to be appended to this list
+        /// </param><returns>true (as specified by Collection.add(E))
+        /// </returns>
         public bool add(E e) {
             l.AddLast(e);
             return true;
         }
 
-        /**
-         * Inserts the specified element at the specified position in this list.
-         *
-         * @param index index at which the specified element is to be inserted
-         * @param element element to be inserted
-         */
+        /// <summary>
+        /// Inserts the specified element at the specified position in this list.
+        /// </summary>
+        /// <param name="index">index at which the specified element is to be inserted
+        /// </param><param name="element">element to be inserted
+        /// </param>
         public void add(int index, E element) {
             // creating the first node, if the list is empty
             if (index < 1) {
@@ -63,12 +62,12 @@ namespace JavaClasses {
             l.AddBefore(node, element);
         }
 
-        /**
-         * Returns the element at the specified position in this list.
-         *
-         * @param index index of the element to return
-         * @return the element at the specified position in this list
-         */
+        /// <summary>
+        /// Returns the element at the specified position in this list.
+        /// </summary>
+        /// <param name="index">index of the element to return
+        /// </param><returns>the element at the specified position in this list
+        /// </returns>
         public E get(int index) {
             LinkedListNode<E> node = l.First;
 
@@ -81,14 +80,14 @@ namespace JavaClasses {
             return node.Value;
         }
 
-        /**
-         * Replaces the element at the specified position in this list with the
-         * specified element.
-         *
-         * @param index index of the element to replace
-         * @param element element to be stored at the specified position
-         * @return the element previously at the specified position
-         */
+        /// <summary>
+        /// Replaces the element at the specified position in this list with the
+        /// specified element.
+        /// </summary>
+        /// <param name="index">index of the element to replace
+        /// </param><param name="element">element to be stored at the specified position
+        /// </param><returns>the element previously at the specified position
+        /// </returns>
         public E set(int index, E element) {
             E original;
 
@@ -112,12 +111,12 @@ namespace JavaClasses {
             return original;
         }
 
-        /**
-         * Removes the element at the specified position in this list.
-         *
-         * @param index the index of the element to be removed
-         * @return the element previously at the specified position
-         */
+        /// <summary>
+        /// Removes the element at the specified position in this list.
+        /// </summary>
+        /// <param name="index">the index of the element to be removed
+        /// </param><returns>the element previously at the specified position
+        /// </returns>
         public E remove(int index) {
             E removed;
 
@@ -141,36 +140,36 @@ namespace JavaClasses {
             return removed;
         }
 
-        /**
-         * Returns the number of elements in this list.
-         *
-         * @return the number of elements in this list
-         */
+        /// <summary>
+        /// Returns the number of elements in this list.
+        /// </summary>
+        /// <returns>the number of elements in this list
+        /// </returns>
         public int size() {
             return l.Count;
         }
 
-        /**
-         * Returns true if this list contains no elements.
-         *
-         * @return true if this list contains no elements
-         */
+        /// <summary>
+        /// Returns true if this list contains no elements.
+        /// </summary>
+        /// <returns>true if this list contains no elements
+        /// </returns>
         public bool isEmpty() {
             return l.Count == 0;
         }
 
-        /**
-         * Removes all of the elements from this list.
-         */
+        /// <summary>
+        /// Removes all of the elements from this list.
+        /// </summary>
         public void clear() {
             l.Clear();
         }
 
-        /**
-         * Returns a string representation of the object.
-         *
-         * @return a string representation of the object.
-         */
+        /// <summary>
+        /// Returns a string representation of the object.
+        /// </summary>
+        /// <returns>a string representation of the object.
+        /// </returns>
         public String toString() {
             return new String(ToString());
         }

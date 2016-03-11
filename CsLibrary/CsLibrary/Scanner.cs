@@ -3,22 +3,21 @@ using System.Text.RegularExpressions;
 
 namespace JavaClasses {
 
-    /**
-     * A simple text scanner which can parse primitive types and strings using regular expressions.
-     *
-     * @author Petr Kozler (A13B0359P)
-     */
+    /// <summary>
+    /// A simple text scanner which can parse primitive types and strings using regular expressions.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class Scanner {
 
         // current line
         private string line = "";
         
-        /**
-         * Constructs a new Scanner that produces values scanned from the specified
-         * input stream.
-         *
-         * @param source An input stream to be scanned
-         */
+        /// <summary>
+        /// Constructs a new Scanner that produces values scanned from the specified
+        /// input stream.
+        /// </summary>
+        /// <param name="source">An input stream to be scanned
+        /// </param>
         public Scanner(Object source) {
             // really no code
         }
@@ -48,84 +47,84 @@ namespace JavaClasses {
             return token;
         }
 
-        /**
-         * Finds and returns the next complete token from this scanner.
-         *
-         * @return the next token
-         */
+        /// <summary>
+        /// Finds and returns the next complete token from this scanner.
+        /// </summary>
+        /// <returns>the next token
+        /// </returns>
         public String next() {
             return nextElement();
         }
 
-        /**
-         * Scans the next token of the input into a boolean value and returns that
-         * value.
-         *
-         * @return the boolean scanned from the input
-         */
+        /// <summary>
+        /// Scans the next token of the input into a boolean value and returns that
+        /// value.
+        /// </summary>
+        /// <returns>the boolean scanned from the input
+        /// </returns>
         public bool nextBoolean() {
             return bool.Parse(nextElement());
         }
 
-        /**
-         * Scans the next token of the input as a byte.
-         *
-         * @return the byte scanned from the input
-         */
+        /// <summary>
+        /// Scans the next token of the input as a byte.
+        /// </summary>
+        /// <returns>the byte scanned from the input
+        /// </returns>
         public sbyte nextByte() {
             return sbyte.Parse(nextElement());
         }
 
-        /**
-         * Scans the next token of the input as a short.
-         *
-         * @return the short scanned from the input
-         */
+        /// <summary>
+        /// Scans the next token of the input as a short.
+        /// </summary>
+        /// <returns>the short scanned from the input
+        /// </returns>
         public short nextShort() {
             return short.Parse(nextElement());
         }
 
-        /**
-         * Scans the next token of the input as an int.
-         *
-         * @return the int scanned from the input
-         */
+        /// <summary>
+        /// Scans the next token of the input as an int.
+        /// </summary>
+        /// <returns>the int scanned from the input
+        /// </returns>
         public int nextInt() {
             return int.Parse(nextElement());
         }
 
-        /**
-         * Scans the next token of the input as a long.
-         * 
-         * @return the long scanned from the input
-         */
+        /// <summary>
+        /// Scans the next token of the input as a long.
+        /// </summary>
+        /// <returns>the long scanned from the input
+        /// </returns>
         public long nextLong() {
             return long.Parse(nextElement());
         }
 
-        /**
-         * Scans the next token of the input as a float.
-         * 
-         * @return the float scanned from the input
-         */
+        /// <summary>
+        /// Scans the next token of the input as a float.
+        /// </summary>
+        /// <returns>the float scanned from the input
+        /// </returns>
         public float nextFloat() {
             return float.Parse(nextElement());
         }
 
-        /**
-         * Scans the next token of the input as a double.
-         * 
-         * @return the double scanned from the input
-         */
+        /// <summary>
+        /// Scans the next token of the input as a double.
+        /// </summary>
+        /// <returns>the double scanned from the input
+        /// </returns>
         public double nextDouble() {
             return double.Parse(nextElement());
         }
 
-        /**
-         * Advances this scanner past the current line and returns the input that was skipped.
-         * 
-         * @return the line that was skipped
-         */
+        /// <summary>
+        /// Advances this scanner past the current line and returns the input that was skipped.
+        /// </summary>
+        /// <returns>the line that was skipped
+        /// </returns>
         public String nextLine() {
             // reading the next line if the current is empty and returning it
             if (string.IsNullOrEmpty(line)) {

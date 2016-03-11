@@ -1,30 +1,27 @@
-﻿namespace JavaClasses
-{
+﻿namespace JavaClasses {
 
-    /**
-     * A mutable sequence of characters.
-     *
-     * @author Petr Kozler (A13B0359P)
-     */
-    public class StringBuilder
-    {
+    /// <summary>
+    /// A mutable sequence of characters.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
+    public class StringBuilder {
 
         private System.Text.StringBuilder sb;
 
-        /**
-         * Constructs a string builder with no characters in it and an initial
-         * capacity of 16 characters.
-         */
+        /// <summary>
+        /// Constructs a string builder with no characters in it and an initial
+        /// capacity of 16 characters.
+        /// </summary>
         public StringBuilder() {
             sb = new System.Text.StringBuilder();
         }
 
-        /**
-         * Appends the specified string to this character sequence.
-         *
-         * @param str a string.
-         * @return a reference to this object.
-         */
+        /// <summary>
+        /// Appends the specified string to this character sequence.
+        /// </summary>
+        /// <param name="str">a string.
+        /// </param><returns>a reference to this object.
+        /// </returns>
         StringBuilder append(String str) {
             sb.Append(str.ToString());
 
@@ -35,11 +32,11 @@
             return toString().ToString();
         }
 
-        /**
-         * Returns a string representing the data in this sequence.
-         *
-         * @return a string representation of this sequence of characters.
-         */
+        /// <summary>
+        /// Returns a string representing the data in this sequence.
+        /// </summary>
+        /// <returns>a string representation of this sequence of characters.
+        /// </returns>
         public String toString() {
             return sb.ToString();
         }

@@ -2,11 +2,10 @@
 
 namespace JavaClasses {
 
-    /**
-     * The string tokenizer class allows an application to break a string into tokens.
-     *
-     * @author Petr Kozler (A13B0359P)
-     */
+    /// <summary>
+    /// The string tokenizer class allows an application to break a string into tokens.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class StringTokenizer {
 
         // current string array containing tokens
@@ -22,51 +21,51 @@ namespace JavaClasses {
             tokens = str.Split(delim.ToCharArray(), StringSplitOptions.None);
         }
 
-        /**
-         * Constructs a string tokenizer for the specified string.
-         *
-         * @param str a string to be parsed.
-         */
+        /// <summary>
+        /// Constructs a string tokenizer for the specified string.
+        /// </summary>
+        /// <param name="str">a string to be parsed.
+        /// </param>
         public StringTokenizer(String str) {
             initialize(str.ToString());
         }
 
-        /**
-         * Constructs a string tokenizer for the specified string.
-         *
-         * @param str a string to be parsed.
-         * @param delim the delimiters.
-         */
+        /// <summary>
+        /// Constructs a string tokenizer for the specified string.
+        /// </summary>
+        /// <param name="str">a string to be parsed.
+        /// </param><param name="delim">the delimiters.
+        /// </param>
         public StringTokenizer(String str, String delim) {
             initialize(str.ToString(), delim.ToString());
         }
 
-        /**
-         * Calculates the number of times that this tokenizer's nextToken method can
-         * be called before it generates an exception.
-         *
-         * @return the number of tokens remaining in the string using the current
-         * delimiter set.
-         */
+        /// <summary>
+        /// Calculates the number of times that this tokenizer's nextToken method can
+        /// be called before it generates an exception.
+        /// </summary>
+        /// <returns>the number of tokens remaining in the string using the current
+        /// delimiter set.
+        /// </returns>
         public int countTokens() {
             return tokens.Length - tokenCounter;
         }
 
-        /**
-         * Tests if there are more tokens available from this tokenizer's string.
-         *
-         * @return true if and only if there is at least one token in the string
-         * after the current position; false otherwise.
-         */
+        /// <summary>
+        /// Tests if there are more tokens available from this tokenizer's string.
+        /// </summary>
+        /// <returns>true if and only if there is at least one token in the string
+        /// after the current position; false otherwise.
+        /// </returns>
         public bool hasMoreTokens() {
             return countTokens() > 0;
         }
 
-        /**
-         * Returns the next token from this string tokenizer.
-         *
-         * @return the next token from this string tokenizer.
-         */
+        /// <summary>
+        /// Returns the next token from this string tokenizer.
+        /// </summary>
+        /// <returns>the next token from this string tokenizer.
+        /// </returns>
         public String nextToken() {
             return tokens[tokenCounter++];
         }
