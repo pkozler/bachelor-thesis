@@ -8,11 +8,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.apache.commons.lang3.StringEscapeUtils;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,46 +28,82 @@ import org.xml.sax.SAXException;
  * @author Petr Kozler
  */
 public class XmlManager implements ICodeManager {
-    
-    // path to the main XML data file with the lists of available Java classes and programming languages
-    private static final String MAIN_DATA_FILE_DEST = "data/classes.xml";
-    // path to the folder with XML data files with translations of each class to each language
-    private static final String DATA_FILES_FOLDER_DEST = "data/classes/";
+
     // object for XML documents parsing
     private DocumentBuilder documentBuilder;
-    // main XML document
-    private Document mainDocument;
+    // container with main XML document
+    private XmlContainer mainContainer;
     // folder with another documents
     private String directoryPath;
+    // object for transforming DOM to XML code
+    private Transformer transformer;
+
+    /**
+     * The class {@code XmlContainer} serves as a container that binds XML
+     * document object with the corresponding XML data file.
+     *
+     * @author Petr Kozler
+     */
+    private class XmlContainer {
+
+        /**
+         * XML file
+         */
+        public final File FILE;
+        /**
+         * Document object
+         */
+        public final Document DOCUMENT;
+
+        /**
+         * Creates a new container.
+         *
+         * @param file XML file
+         * @param document Document object
+         */
+        public XmlContainer(File file, Document document) {
+            FILE = file;
+            DOCUMENT = document;
+        }
+
+    }
 
     /**
      * Loads the main document and tests if the directory exists.
      *
+     * @param mainDataFileDest main XML data file
+     * @param dataFilesFolderDest folder with XML data files
      * @throws application.CodeManagementException error
      */
-    public void setPaths() throws CodeManagementException {
+    public void setPaths(String mainDataFileDest, String dataFilesFolderDest) throws CodeManagementException {
         try {
             // testing the main file
-            File mainFile = new File(MAIN_DATA_FILE_DEST);
+            File mainFile = new File(mainDataFileDest);
 
             if (!mainFile.exists()) {
                 // TODO vyhodit výjimku
             }
 
             // testing the directory
-            File directory = new File(DATA_FILES_FOLDER_DEST);
+            File directory = new File(dataFilesFolderDest);
 
             if (!directory.isDirectory()) {
                 // TODO vyhodit výjimku
             }
 
-            // parsing the main XML file
+            directoryPath = dataFilesFolderDest;
+
+            // initializing document builder and transformer
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             documentBuilder = dbf.newDocumentBuilder();
-            mainDocument = documentBuilder.parse(mainFile);
+            TransformerFactory tf = TransformerFactory.newInstance();
+            transformer = tf.newTransformer();
+
+            // parsing the main XML file
+            Document mainDocument = documentBuilder.parse(mainFile);
             mainDocument.getDocumentElement().normalize();
-            directoryPath = DATA_FILES_FOLDER_DEST;
-        } catch (SAXException | IOException | ParserConfigurationException ex) {
+            mainContainer = new XmlContainer(mainFile, mainDocument);
+        } catch (SAXException | IOException | ParserConfigurationException | TransformerConfigurationException ex) {
             throw new CodeManagementException(ex.getLocalizedMessage());
         }
     }
@@ -79,7 +115,7 @@ public class XmlManager implements ICodeManager {
     @Override
     public ArrayList<String> loadClassList() throws CodeManagementException {
         ArrayList<String> list = new ArrayList<>();
-        NodeList nodes = mainDocument.getElementsByTagName("class");
+        NodeList nodes = mainContainer.DOCUMENT.getElementsByTagName("class");
 
         // iterating through the class elements in the main XML file
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -102,7 +138,7 @@ public class XmlManager implements ICodeManager {
     @Override
     public ArrayList<String> loadLangList() throws CodeManagementException {
         ArrayList<String> list = new ArrayList<>();
-        NodeList nodes = mainDocument.getElementsByTagName("language");
+        NodeList nodes = mainContainer.DOCUMENT.getElementsByTagName("language");
 
         // iterating through the language elements in the main XML file
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -141,11 +177,15 @@ public class XmlManager implements ICodeManager {
      */
     @Override
     public void editClass(String oldClass, String newClass) throws CodeManagementException {
-        // renaming the XML class file
-        renameDocument(oldClass, newClass);
-        Element classList = getClassList();
-        // editing the class item in the main XML file list
-        editClassItem(classList, oldClass, newClass);
+        try {
+            // renaming the XML class file
+            renameDocument(oldClass, newClass);
+            Element classList = getClassList();
+            // editing the class item in the main XML file list
+            editClassItem(classList, oldClass, newClass);
+        } catch (TransformerException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
     }
 
     /*
@@ -154,11 +194,15 @@ public class XmlManager implements ICodeManager {
      */
     @Override
     public void removeClass(String clazz) throws CodeManagementException {
-        // deleting the XML class file
-        deleteDocument(clazz);
-        Element classList = getClassList();
-        // removing the class item from the main XML file list
-        removeClassItem(classList, clazz);
+        try {
+            // deleting the XML class file
+            deleteDocument(clazz);
+            Element classList = getClassList();
+            // removing the class item from the main XML file list
+            removeClassItem(classList, clazz);
+        } catch (TransformerException ex) {
+            throw new CodeManagementException(ex.getLocalizedMessage());
+        }
     }
 
     /*
@@ -178,15 +222,14 @@ public class XmlManager implements ICodeManager {
                 // adding a new code element to the XML class file
                 if (classNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element classElement = (Element) classNode;
-                    Document document = openDocument(directoryPath
-                            + classElement.getTextContent().toLowerCase() + ".xml");
-                    addCodeItem(document, lang);
+                    Document document = openDocument(classElement.getTextContent());
+                    addCodeItem(new XmlContainer(getFileFromClass(classElement.getTextContent()), document), lang);
                 }
             }
 
             Element langList = getLangList();
             addLangItem(langList, lang);
-        } catch (SAXException | IOException ex) {
+        } catch (SAXException | IOException | TransformerException ex) {
             throw new CodeManagementException(ex.getLocalizedMessage());
         }
     }
@@ -205,18 +248,17 @@ public class XmlManager implements ICodeManager {
             for (int i = 0; i < classes.getLength(); i++) {
                 Node classNode = classes.item(i);
 
-                // editig the code element to the XML class file
+                // editing the code element to the XML class file
                 if (classNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element classElement = (Element) classNode;
-                    Document document = openDocument(directoryPath
-                            + classElement.getTextContent().toLowerCase() + ".xml");
-                    editCodeItem(document, oldLang, newLang);
+                    Document document = openDocument(classElement.getTextContent());
+                    editCodeItem(new XmlContainer(getFileFromClass(classElement.getTextContent()), document), oldLang, newLang);
                 }
             }
 
             Element langList = getLangList();
             editLangItem(langList, oldLang, newLang);
-        } catch (SAXException | IOException ex) {
+        } catch (SAXException | IOException | TransformerException ex) {
             throw new CodeManagementException(ex.getLocalizedMessage());
         }
     }
@@ -238,15 +280,14 @@ public class XmlManager implements ICodeManager {
                 // removing the code element to the XML class file
                 if (classNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element classElement = (Element) classNode;
-                    Document document = openDocument(directoryPath
-                            + classElement.getTextContent().toLowerCase() + ".xml");
-                    removeCodeItem(document, lang);
+                    Document document = openDocument(classElement.getTextContent());
+                    removeCodeItem(new XmlContainer(getFileFromClass(classElement.getTextContent()), document), lang);
                 }
             }
 
             Element langList = getLangList();
             removeLangItem(langList, lang);
-        } catch (SAXException | IOException ex) {
+        } catch (SAXException | IOException | TransformerException ex) {
             throw new CodeManagementException(ex.getLocalizedMessage());
         }
     }
@@ -261,7 +302,7 @@ public class XmlManager implements ICodeManager {
             // opening the XML class file
             Document document = openDocument(clazz);
             // retrieving the code element
-            Element codeElement = getCodeItem(document, lang);
+            Element codeElement = getCodeItem(new XmlContainer(getFileFromClass(clazz), document), lang);
 
             if (codeElement != null) {
                 // reading the code element content
@@ -281,21 +322,54 @@ public class XmlManager implements ICodeManager {
     @Override
     public void saveCode(String clazz, String lang, String code) throws CodeManagementException {
         try {
-            String escapedCode = StringEscapeUtils.escapeXml10(code);
             // opening the XML class file
             Document document = openDocument(clazz);
             // retrieving the code element
-            Element codeElement = getCodeItem(document, lang);
+            Element codeElement = getCodeItem(new XmlContainer(getFileFromClass(clazz), document), lang);
 
-            if (codeElement != null) {
-                // rewriting the code element content
-                codeElement.setTextContent(escapedCode);
-            } else {
+            if (codeElement == null) {
                 // TODO výjimka
             }
-        } catch (SAXException | IOException ex) {
+
+            // rewriting the code element content
+            codeElement.setTextContent(code);
+            updateFileCode(new XmlContainer(getFileFromClass(clazz), document));
+        } catch (SAXException | IOException | TransformerException ex) {
             throw new CodeManagementException(ex.getLocalizedMessage());
         }
+    }
+
+    /*
+     Returns the XML data file object corresponding to the specified class name.
+     */
+    private File getFileFromClass(String clazz) {
+        return new File(directoryPath + clazz.toLowerCase() + ".xml");
+    }
+
+    /*
+     Writes changes to the main XML file.
+     */
+    private void updateMainFile() throws TransformerException {
+        transformer.reset();
+        // creating the stream for a new file
+        StreamResult result = new StreamResult(mainContainer.FILE);
+        // creating a new DOM source
+        DOMSource source = new DOMSource(mainContainer.DOCUMENT);
+        // writing the DOM to the stream
+        transformer.transform(source, result);
+    }
+
+    /*
+     Writes the specified XML document object to the corresponding XML file of the specified class.
+     */
+    private void updateFileCode(XmlContainer container) throws TransformerConfigurationException, TransformerException {
+        transformer.reset();
+        // creating the stream for a new file
+        StreamResult result = new StreamResult(container.FILE);
+        // creating a new DOM source
+        DOMSource source = new DOMSource(container.DOCUMENT);
+        // writing the DOM to the stream
+        transformer.transform(source, result);
     }
 
     /*
@@ -304,9 +378,9 @@ public class XmlManager implements ICodeManager {
      */
     private Document openDocument(String clazz)
             throws SAXException, IOException {
+        documentBuilder.reset();
         // parsing and normalizing the specified document
-        Document document = documentBuilder.parse(new File(directoryPath
-                + clazz.toLowerCase() + ".xml"));
+        Document document = documentBuilder.parse(getFileFromClass(clazz));
         document.getDocumentElement().normalize();
 
         return document;
@@ -317,23 +391,17 @@ public class XmlManager implements ICodeManager {
      specified name from a document object.
      */
     private void createDocument(String newClass) throws TransformerException {
-        File file = new File(directoryPath + newClass.toLowerCase() + ".xml");
+        File file = getFileFromClass(newClass);
 
         if (file.exists()) {
             // TODO výjimka
         }
 
-        // creating the stream for a new file
-        StreamResult result = new StreamResult(file);
+        // creating a new XML document with root element
         Document document = documentBuilder.newDocument();
         Element root = document.createElement("codes");
         document.appendChild(root);
-        // creating a new DOM source
-        DOMSource source = new DOMSource(document);
-        TransformerFactory factory = TransformerFactory.newInstance();
-        Transformer transformer = factory.newTransformer();
-        // writing the DOM to the stream
-        transformer.transform(source, result);
+        updateFileCode(new XmlContainer(getFileFromClass(newClass), document));
     }
 
     /*
@@ -341,13 +409,13 @@ public class XmlManager implements ICodeManager {
      with a specified new name.
      */
     private void renameDocument(String oldClass, String newClass) {
-        File oldFile = new File(directoryPath + oldClass.toLowerCase() + ".xml");
+        File oldFile = getFileFromClass(oldClass);
 
         if (!oldFile.exists()) {
             // TODO výjimka
         }
 
-        File newFile = new File(directoryPath + newClass.toLowerCase() + ".xml");
+        File newFile = getFileFromClass(newClass);
 
         if (newFile.exists()) {
             // TODO výjimka
@@ -364,7 +432,7 @@ public class XmlManager implements ICodeManager {
      Deletes an XML data file represented by the specified name.
      */
     private void deleteDocument(String oldClass) {
-        File file = new File(directoryPath + oldClass.toLowerCase() + ".xml");
+        File file = getFileFromClass(oldClass);
 
         if (!file.exists()) {
             // TODO výjimka
@@ -377,7 +445,7 @@ public class XmlManager implements ICodeManager {
      Returns an XML element representing the list of all created classes.
      */
     private Element getClassList() {
-        NodeList items = mainDocument.getElementsByTagName("classes");
+        NodeList items = mainContainer.DOCUMENT.getElementsByTagName("classes");
 
         if (items.getLength() != 1) {
             // TODO výjimka
@@ -396,7 +464,7 @@ public class XmlManager implements ICodeManager {
      Returns an XML element representing the list of all created languages.
      */
     private Element getLangList() {
-        NodeList items = mainDocument.getElementsByTagName("languages");
+        NodeList items = mainContainer.DOCUMENT.getElementsByTagName("languages");
 
         if (items.getLength() != 1) {
             // TODO výjimka
@@ -481,8 +549,8 @@ public class XmlManager implements ICodeManager {
      Returns an XML element containing the source code in the specified
      XML document.
      */
-    private Element getCodeItem(Document clazz, String lang) {
-        NodeList codeNodes = clazz.getElementsByTagName("code");
+    private Element getCodeItem(XmlContainer container, String lang) {
+        NodeList codeNodes = container.DOCUMENT.getElementsByTagName("code");
 
         for (int i = 0; i < codeNodes.getLength(); i++) {
             Node codeNode = codeNodes.item(i);
@@ -504,55 +572,58 @@ public class XmlManager implements ICodeManager {
      Creates an XML element representing the item in the list
      of classes in the main XML document.
      */
-    private void addClassItem(Element classList, String newClass) {
+    private void addClassItem(Element classList, String newClass) throws TransformerException {
         Element newClassElement = getClassItem(classList, newClass);
 
         if (newClassElement != null) {
             // TODO výjimka
         }
 
-        newClassElement = mainDocument.createElement("class");
+        newClassElement = mainContainer.DOCUMENT.createElement("class");
         newClassElement.setTextContent(newClass);
         classList.appendChild(newClassElement);
+        updateMainFile();
     }
 
     /*
      Creates an XML element representing the item in the list
      of languages in the main XML document.
      */
-    private void addLangItem(Element langList, String newLang) {
+    private void addLangItem(Element langList, String newLang) throws TransformerException {
         Element newLangElement = getLangItem(langList, newLang);
 
         if (newLangElement != null) {
             // TODO výjimka
         }
 
-        newLangElement = mainDocument.createElement("language");
+        newLangElement = mainContainer.DOCUMENT.createElement("language");
         newLangElement.setTextContent(newLang);
         langList.appendChild(newLangElement);
+        updateMainFile();
     }
 
     /*
      Creates an XML element containing the source code in the specified
      XML document.
      */
-    private void addCodeItem(Document clazz, String newLang) {
-        Element newCodeElement = getCodeItem(clazz, newLang);
+    private void addCodeItem(XmlContainer container, String newLang) throws TransformerException {
+        Element newCodeElement = getCodeItem(container, newLang);
 
         if (newCodeElement != null) {
             // TODO výjimka
         }
 
-        newCodeElement = clazz.createElement("code");
+        newCodeElement = container.DOCUMENT.createElement("code");
         newCodeElement.setAttribute("lang", newLang);
-        getCodeList(clazz).appendChild(newCodeElement);
+        getCodeList(container.DOCUMENT).appendChild(newCodeElement);
+        updateFileCode(container);
     }
 
     /*
      Updates an XML element representing the item in the list
      of classes in the main XML document.
      */
-    private void editClassItem(Element classList, String oldClass, String newClass) {
+    private void editClassItem(Element classList, String oldClass, String newClass) throws TransformerException {
         Element oldClassElement = getClassItem(classList, oldClass);
 
         if (oldClassElement == null) {
@@ -566,53 +637,56 @@ public class XmlManager implements ICodeManager {
         }
 
         oldClassElement.setTextContent(newClass);
+        updateMainFile();
     }
 
     /*
      Updates an XML element representing the item in the list
      of languages in the main XML document.
      */
-    private void editLangItem(Element langList, String oldLang, String newLang) {
-        Element oldLangElement = getClassItem(langList, oldLang);
+    private void editLangItem(Element langList, String oldLang, String newLang) throws TransformerException {
+        Element oldLangElement = getLangItem(langList, oldLang);
 
         if (oldLangElement == null) {
             // TODO výjimka
         }
 
-        Element newLangElement = getClassItem(langList, newLang);
+        Element newLangElement = getLangItem(langList, newLang);
 
         if (newLangElement != null) {
             // TODO výjimka
         }
 
         oldLangElement.setTextContent(newLang);
+        updateMainFile();
     }
 
     /*
      Updates an XML element containing the source code in the specified
      XML document.
      */
-    private void editCodeItem(Document clazz, String oldLang, String newLang) {
-        Element oldCodeElement = getCodeItem(clazz, oldLang);
+    private void editCodeItem(XmlContainer container, String oldLang, String newLang) throws TransformerException {
+        Element oldCodeElement = getCodeItem(container, oldLang);
 
         if (oldCodeElement == null) {
             // TODO výjimka
         }
 
-        Element newCodeElement = getCodeItem(clazz, newLang);
+        Element newCodeElement = getCodeItem(container, newLang);
 
         if (newCodeElement != null) {
             // TODO výjimka
         }
 
         oldCodeElement.setAttribute("lang", newLang);
+        updateFileCode(container);
     }
 
     /*
      Deletes an XML element representing the item in the list
      of classes in the main XML document.
      */
-    private void removeClassItem(Element classList, String oldClass) {
+    private void removeClassItem(Element classList, String oldClass) throws TransformerException {
         Element oldClassElement = getClassItem(classList, oldClass);
 
         if (oldClassElement == null) {
@@ -620,44 +694,37 @@ public class XmlManager implements ICodeManager {
         }
 
         classList.removeChild(oldClassElement);
+        updateMainFile();
     }
 
     /*
      Deletes an XML element representing the item in the list
      of languages in the main XML document.
      */
-    private void removeLangItem(Element langList, String oldLang) {
-        Element oldLangElement = getClassItem(langList, oldLang);
+    private void removeLangItem(Element langList, String oldLang) throws TransformerException {
+        Element oldLangElement = getLangItem(langList, oldLang);
 
         if (oldLangElement == null) {
             // TODO výjimka
         }
 
         langList.removeChild(oldLangElement);
+        updateMainFile();
     }
 
     /*
      Deletes an XML element containing the source code in the specified
      XML document.
      */
-    private void removeCodeItem(Document clazz, String oldLang) {
-        Element oldCodeElement = getCodeItem(clazz, oldLang);
+    private void removeCodeItem(XmlContainer container, String oldLang) throws TransformerException {
+        Element oldCodeElement = getCodeItem(container, oldLang);
 
         if (oldCodeElement == null) {
             // TODO výjimka
         }
 
-        getCodeList(clazz).removeChild(oldCodeElement);
-    }
-
-    /*
-     (non-Javadoc)
-     @see java.lang.Object#finalize()
-     */
-    @Override
-    protected void finalize() throws Throwable {
-        // TODO zavřít soubory
-        super.finalize();
+        getCodeList(container.DOCUMENT).removeChild(oldCodeElement);
+        updateFileCode(container);
     }
 
 }

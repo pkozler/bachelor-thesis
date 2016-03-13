@@ -39,7 +39,7 @@ public class Main extends Application {
         
         try {
             // initializing the XML files manager
-            xmlManager.setPaths();
+            xmlManager.setPaths(Config.MAIN_DATA_FILE_DEST, Config.DATA_FILES_FOLDER_DEST);
         } catch (CodeManagementException ex) {
             df.showExceptionInDialog(ex, "dataInit", "error", "dataInitError");
             return;
