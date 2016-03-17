@@ -1,7 +1,7 @@
-/*
-    Author: Petr Kozler
+/* 
+    Author     : Petr Kozler
 */
 
-.button {
-    -fx-font-weight: bold;
+.textArea {
+    -fx-font-family: monospace
 }

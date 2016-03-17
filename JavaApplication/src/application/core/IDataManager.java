@@ -1,81 +1,81 @@
-package application;
+package application.core;
 
 import java.util.ArrayList;
 
 /**
- * The interface {@code ICodeManager} provides general methods for managing the
+ * The interface {@code IDataManager} provides general methods for managing the
  * application data stored in any way (text files, database etc.) from the
  * application user interface.
  *
  * @author Petr Kozler
  */
-public interface ICodeManager {
+public interface IDataManager {
 
     /**
      * Loads the list of available Java classes.
      *
      * @return Java class list
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public ArrayList<String> loadClassList() throws CodeManagementException;
+    public ArrayList<String> loadClassList() throws ADataManagementException;
 
     /**
      * Loads the list of available programming languages.
      *
      * @return programming language list
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public ArrayList<String> loadLangList() throws CodeManagementException;
+    public ArrayList<String> loadLangList() throws ADataManagementException;
 
     /**
      * Creates a new class.
      *
      * @param clazz class name
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public void addClass(String clazz) throws CodeManagementException;
+    public void addClass(String clazz) throws ADataManagementException;
 
     /**
      * Renames a class.
      *
      * @param oldClass old class name
      * @param newClass new class name
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public void editClass(String oldClass, String newClass) throws CodeManagementException;
+    public void editClass(String oldClass, String newClass) throws ADataManagementException;
 
     /**
      * Deletes a class.
      *
      * @param clazz class name
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public void removeClass(String clazz) throws CodeManagementException;
+    public void removeClass(String clazz) throws ADataManagementException;
 
     /**
      * Creates a new language.
      *
      * @param lang language name
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public void addLang(String lang) throws CodeManagementException;
+    public void addLang(String lang) throws ADataManagementException;
 
     /**
      * Renames a language.
      *
      * @param oldLang old language name
      * @param newLang new language name
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public void editLang(String oldLang, String newLang) throws CodeManagementException;
+    public void editLang(String oldLang, String newLang) throws ADataManagementException;
 
     /**
      * Deletes a language.
      *
      * @param lang language name
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public void removeLang(String lang) throws CodeManagementException;
+    public void removeLang(String lang) throws ADataManagementException;
 
     /**
      * Loads the source code in a specified language for a specified class.
@@ -83,9 +83,9 @@ public interface ICodeManager {
      * @param clazz class name
      * @param lang language name
      * @return source code
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public String loadCode(String clazz, String lang) throws CodeManagementException;
+    public String loadCode(String clazz, String lang) throws ADataManagementException;
 
     /**
      * Saves the source code in a specified language for a specified class.
@@ -93,8 +93,8 @@ public interface ICodeManager {
      * @param clazz class name
      * @param lang language name
      * @param code source code
-     * @throws application.CodeManagementException error
+     * @throws application.core.ADataManagementException error
      */
-    public void saveCode(String clazz, String lang, String code) throws CodeManagementException;
+    public void saveCode(String clazz, String lang, String code) throws ADataManagementException;
 
 }

@@ -1,6 +1,13 @@
 package application;
 
+import application.config.Config;
+import application.controller.WindowController;
+import application.dialogs.DialogFactory;
+import application.core.ADataManagementException;
+import application.core.xml.XmlManager;
+import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,12 +29,14 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) {
-        // loading the resource bundle for GUI
-        ResourceBundle rb = ResourceBundle.getBundle(Config.STRINGS_BUNDLE, Config.DEFAULT_LOCALE);
+        // loading the string resources
+        ResourceBundle rb = ResourceBundle.getBundle(Config.STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
+        // initializing the factory for showing dialogs
         DialogFactory df = new DialogFactory(rb);
-        XmlManager xmlManager = null;
+        
         ClassLoader classLoader = Main.class.getClassLoader();
-
+        XmlManager xmlManager;
+        
         try {
             // loading the class for managing the XML data files with source codes
             Class xmlManagerClass = classLoader.loadClass(Config.CODE_MANAGER_CLASS);
@@ -37,16 +46,18 @@ public class Main extends Application {
             return;
         }
         
+        ResourceBundle xmlRb = ResourceBundle.getBundle(Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
+        
         try {
             // initializing the XML files manager
-            xmlManager.setPaths(Config.MAIN_DATA_FILE_DEST, Config.DATA_FILES_FOLDER_DEST);
-        } catch (CodeManagementException ex) {
+            xmlManager.setPaths(new File(Config.MAIN_DATA_FILE_DEST), new File(Config.DATA_FILES_FOLDER_DEST), xmlRb);
+        } catch (ADataManagementException ex) {
             df.showExceptionInDialog(ex, "dataInit", "error", "dataInitError");
             return;
         }
         
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Config.WINDOW_FXML_DOCUMENT), rb);
-        Parent root = null;
+        Parent root;
 
         try {
             // loading the FXML document
@@ -61,11 +72,13 @@ public class Main extends Application {
         controller.setDialogFactory(df);
         controller.setCodeManager(xmlManager);
 
-        // showing the main window
+        // creating the scene
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle(rb.getString("windowTitle"));
         controller.setOnCloseHandler();
+
+        // showing the main window
         stage.show();
     }
 

@@ -11,7 +11,7 @@
 
 <!-- Author: Petr Kozler -->
 
-<AnchorPane id="AnchorPane" fx:id="mainWindow" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
+<AnchorPane id="AnchorPane" fx:id="mainWindow" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.WindowController">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -125,7 +125,7 @@
                      </GridPane.margin></Label>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <TextArea fx:id="codeTextArea" editable="false" prefHeight="500.0" prefWidth="766.0" VBox.vgrow="ALWAYS">
+                        <TextArea fx:id="codeTextArea" editable="false" prefHeight="500.0" prefWidth="766.0" styleClass="textArea" stylesheets="@../styles/Styles.css" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
