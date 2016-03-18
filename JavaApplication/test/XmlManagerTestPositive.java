@@ -1,14 +1,12 @@
 
 import application.core.ADataManagementException;
+import application.core.xml.XmlKeyword;
 import application.core.xml.XmlManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 import java.util.Scanner;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.junit.Before;
@@ -30,8 +28,8 @@ public class XmlManagerTestPositive {
 
     // tested XML manager
     private XmlManager xmlManager;
-    // testData for tested XML manager
-    private XmlManagerTestData testData;
+    // testUtils for tested XML manager
+    private XmlManagerTestUtils testUtils;
 
     /**
      * Creates a clean test test data directory structure and creates the XML
@@ -42,9 +40,10 @@ public class XmlManagerTestPositive {
      * @throws IOException IO error
      */
     @Before
-    public void setUp() throws ParserConfigurationException, TransformerException, IOException {
+    public void setUp()
+            throws ParserConfigurationException, TransformerException, IOException {
         xmlManager = new XmlManager();
-        testData = new XmlManagerTestData();
+        testUtils = new XmlManagerTestUtils();
     }
 
     /**
@@ -54,16 +53,17 @@ public class XmlManagerTestPositive {
      * @throws java.io.IOException IO error
      */
     @Test
-    public void setPathsTest() throws ADataManagementException, IOException {
+    public void setPathsTest()
+            throws ADataManagementException, IOException {
         // reading the content before XML manager initialization
-        String mainFileContentBefore = new Scanner(testData.getMainDataFile()).useDelimiter("\\Z").next();
-        String filesFolderContentBefore = Arrays.toString(testData.getDataFilesFolder().listFiles());
+        String mainFileContentBefore = new Scanner(testUtils.getMainDataFile()).useDelimiter("\\Z").next();
+        String filesFolderContentBefore = Arrays.toString(testUtils.getDataFilesFolder().listFiles());
 
-        testData.initXmlManager(xmlManager);
+        testUtils.initXmlManager(xmlManager);
 
         // reading the content after XML manager initialization
-        String mainFileContentAfter = new Scanner(testData.getMainDataFile()).useDelimiter("\\Z").next();
-        String filesFolderContentAfter = Arrays.toString(testData.getDataFilesFolder().listFiles());
+        String mainFileContentAfter = new Scanner(testUtils.getMainDataFile()).useDelimiter("\\Z").next();
+        String filesFolderContentAfter = Arrays.toString(testUtils.getDataFilesFolder().listFiles());
 
         // comparing the contents before and after the initialization
         assertEquals(mainFileContentBefore, mainFileContentAfter);
@@ -76,8 +76,9 @@ public class XmlManagerTestPositive {
      * @throws application.core.ADataManagementException an error
      */
     @Test
-    public void loadClassListTest() throws ADataManagementException {
-        testData.initXmlManager(xmlManager);
+    public void loadClassListTest()
+            throws ADataManagementException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> classList = xmlManager.loadClassList();
         assertEquals(0, classList.size());
     }
@@ -88,8 +89,9 @@ public class XmlManagerTestPositive {
      * @throws application.core.ADataManagementException an error
      */
     @Test
-    public void loadLangListTest() throws ADataManagementException {
-        testData.initXmlManager(xmlManager);
+    public void loadLangListTest()
+            throws ADataManagementException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> langList = xmlManager.loadLangList();
         assertEquals(0, langList.size());
     }
@@ -103,18 +105,19 @@ public class XmlManagerTestPositive {
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      */
     @Test
-    public void addClassTest() throws ADataManagementException, SAXException, IOException, ParserConfigurationException {
-        testData.initXmlManager(xmlManager);
+    public void addClassTest()
+            throws ADataManagementException, SAXException, IOException, ParserConfigurationException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> classList;
-        String className1 = "ClassA";
-        String className2 = "ClassB";
-        String className3 = "ClassC";
+        String className1 = "System";
+        String className2 = "Scanner";
+        String className3 = "String";
         xmlManager.addClass(className1);
         classList = xmlManager.loadClassList();
         assertEquals(className1, classList.get(0));
         assertTrue(validClassFileExists(className1));
         assertTrue(directoryHasFileCount(1));
-        
+
         xmlManager.addClass(className2);
         classList = xmlManager.loadClassList();
         assertEquals(className1, classList.get(0));
@@ -143,15 +146,16 @@ public class XmlManagerTestPositive {
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      */
     @Test
-    public void editClassTest() throws ADataManagementException, SAXException, IOException, ParserConfigurationException {
-        testData.initXmlManager(xmlManager);
+    public void editClassTest()
+            throws ADataManagementException, SAXException, IOException, ParserConfigurationException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> classList;
-        String className1 = "ClassA";
-        String className2 = "ClassB";
-        String className3 = "ClassC";
-        String className4 = "ClassD";
-        String className5 = "ClassE";
-        String className6 = "ClassF";
+        String className1 = "System";
+        String className2 = "Scanner";
+        String className3 = "String";
+        String className4 = "ArrayList";
+        String className5 = "Arrays";
+        String className6 = "Math";
         xmlManager.addClass(className1);
         xmlManager.addClass(className2);
         xmlManager.addClass(className3);
@@ -196,12 +200,13 @@ public class XmlManagerTestPositive {
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      */
     @Test
-    public void removeClassTest() throws ADataManagementException, SAXException, IOException, ParserConfigurationException {
-        testData.initXmlManager(xmlManager);
+    public void removeClassTest()
+            throws ADataManagementException, SAXException, IOException, ParserConfigurationException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> classList;
-        String className1 = "ClassA";
-        String className2 = "ClassB";
-        String className3 = "ClassC";
+        String className1 = "System";
+        String className2 = "Scanner";
+        String className3 = "String";
         xmlManager.addClass(className1);
         xmlManager.addClass(className2);
         xmlManager.addClass(className3);
@@ -235,19 +240,20 @@ public class XmlManagerTestPositive {
      * @throws java.io.IOException IO error
      */
     @Test
-    public void addLangTest() throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
-        testData.initXmlManager(xmlManager);
+    public void addLangTest()
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> langList;
-        String className1 = "ClassA";
-        String className2 = "ClassB";
-        String className3 = "ClassC";
+        String className1 = "System";
+        String className2 = "Scanner";
+        String className3 = "String";
         xmlManager.addClass(className1);
         xmlManager.addClass(className2);
         xmlManager.addClass(className3);
 
-        String langName1 = "LangA";
-        String langName2 = "LangB";
-        String langName3 = "LangC";
+        String langName1 = "Pascal";
+        String langName2 = "C#";
+        String langName3 = "C++";
 
         xmlManager.addLang(langName1);
         langList = xmlManager.loadLangList();
@@ -283,22 +289,23 @@ public class XmlManagerTestPositive {
      * @throws java.io.IOException IO error
      */
     @Test
-    public void editLangTest() throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
-        testData.initXmlManager(xmlManager);
+    public void editLangTest()
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> langList;
-        String className1 = "ClassA";
-        String className2 = "ClassB";
-        String className3 = "ClassC";
+        String className1 = "System";
+        String className2 = "Scanner";
+        String className3 = "String";
         xmlManager.addClass(className1);
         xmlManager.addClass(className2);
         xmlManager.addClass(className3);
 
-        String langName1 = "LangA";
-        String langName2 = "LangB";
-        String langName3 = "LangC";
-        String langName4 = "LangD";
-        String langName5 = "LangE";
-        String langName6 = "LangF";
+        String langName1 = "Pascal";
+        String langName2 = "C#";
+        String langName3 = "C++";
+        String langName4 = "Python";
+        String langName5 = "JavaScript";
+        String langName6 = "PHP";
         xmlManager.addLang(langName1);
         xmlManager.addLang(langName2);
         xmlManager.addLang(langName3);
@@ -343,19 +350,20 @@ public class XmlManagerTestPositive {
      * @throws java.io.IOException IO error
      */
     @Test
-    public void removeLangTest() throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
-        testData.initXmlManager(xmlManager);
+    public void removeLangTest()
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
+        testUtils.initXmlManager(xmlManager);
         ArrayList<String> langList;
-        String className1 = "ClassA";
-        String className2 = "ClassB";
-        String className3 = "ClassC";
+        String className1 = "System";
+        String className2 = "Scanner";
+        String className3 = "String";
         xmlManager.addClass(className1);
         xmlManager.addClass(className2);
         xmlManager.addClass(className3);
 
-        String langName1 = "LangA";
-        String langName2 = "LangB";
-        String langName3 = "LangC";
+        String langName1 = "Pascal";
+        String langName2 = "C#";
+        String langName3 = "C++";
         xmlManager.addLang(langName1);
         xmlManager.addLang(langName2);
         xmlManager.addLang(langName3);
@@ -389,14 +397,15 @@ public class XmlManagerTestPositive {
      * @throws java.io.IOException IO error
      */
     @Test
-    public void saveCodeTest() throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
-        testData.initXmlManager(xmlManager);
-        String className1 = "ClassA";
-        String className2 = "ClassB";
+    public void saveCodeTest()
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException {
+        testUtils.initXmlManager(xmlManager);
+        String className1 = "System";
+        String className2 = "Scanner";
         xmlManager.addClass(className1);
         xmlManager.addClass(className2);
-        String langName1 = "LangA";
-        String langName2 = "LangB";
+        String langName1 = "Pascal";
+        String langName2 = "C#";
         xmlManager.addLang(langName1);
         xmlManager.addLang(langName2);
 
@@ -435,14 +444,15 @@ public class XmlManagerTestPositive {
      * @throws application.core.ADataManagementException an error
      */
     @Test
-    public void loadCodeTest() throws ADataManagementException {
-        testData.initXmlManager(xmlManager);
-        String className1 = "ClassA";
-        String className2 = "ClassB";
+    public void loadCodeTest()
+            throws ADataManagementException {
+        testUtils.initXmlManager(xmlManager);
+        String className1 = "System";
+        String className2 = "Scanner";
         xmlManager.addClass(className1);
         xmlManager.addClass(className2);
-        String langName1 = "LangA";
-        String langName2 = "LangB";
+        String langName1 = "Pascal";
+        String langName2 = "C#";
         xmlManager.addLang(langName1);
         xmlManager.addLang(langName2);
 
@@ -476,44 +486,38 @@ public class XmlManagerTestPositive {
     }
 
     /*
-     Checks if a valid XML file for the specified class exists in the current test testData directory
+     Checks if a valid XML file for the specified class exists in the current test testUtils directory
      */
-    private boolean validClassFileExists(String className) throws SAXException, IOException, ParserConfigurationException {
-        // building a path from the class name
-        File file = testData.getFileFromClass(className);
-
+    private boolean validClassFileExists(String className)
+            throws SAXException, IOException, ParserConfigurationException {
         // creating a document and searching for a required element representing the code list
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document document = db.parse(file);
-        NodeList codeNodes = document.getElementsByTagName("codes");
+        Document document = testUtils.readDocumentFromFile(testUtils.getFileFromClass(className));
+        NodeList codeNodes = document.getElementsByTagName(XmlKeyword.CODE_ROOT_ELEMENT.getName());
 
         // checking if there is a valid number of required elements
         return codeNodes.getLength() == 1;
     }
 
     /*
-     Checks if the current test testData directory has the specified number of files.
+     Checks if the current test testUtils directory has the specified number of files.
      */
     private boolean directoryHasFileCount(int count) {
-        return testData.getDataFilesFolder().listFiles().length == count;
+        return testUtils.getDataFilesFolder().listFiles().length == count;
     }
 
     /*
-     Checks if all of the XML class files in the current test testData directory
+     Checks if all of the XML class files in the current test testUtils directory
      have the code element with the specified lang attribute.
      */
-    private boolean allFilesHaveCodeInLang(String lang) throws ParserConfigurationException, SAXException, IOException {
-        File[] files = testData.getDataFilesFolder().listFiles();
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
+    private boolean allFilesHaveCodeInLang(String lang)
+            throws ParserConfigurationException, SAXException, IOException {
+        File[] files = testUtils.getDataFilesFolder().listFiles();
 
         // iterating through the files
         for (File file : files) {
             // parsing XML and searching for elements with source code
-            db.reset();
-            Document document = db.parse(file);
-            NodeList codeNodes = document.getElementsByTagName("code");
+            Document document = testUtils.readDocumentFromFile(file);
+            NodeList codeNodes = document.getElementsByTagName(XmlKeyword.CODE_ELEMENT.getName());
 
             // assumption of missing required code element
             boolean containsLang = false;
@@ -523,7 +527,7 @@ public class XmlManagerTestPositive {
                 Node codeNode = codeNodes.item(i);
 
                 if (codeNode.getNodeType() == Node.ELEMENT_NODE
-                        && ((Element) codeNode).getAttribute("lang").equals(lang)) {
+                        && ((Element) codeNode).getAttribute(XmlKeyword.LANGUAGE_ATTRIBUTE.getName()).equals(lang)) {
                     // jumping to another file if the element was found
                     containsLang = true;
                     break;
@@ -541,20 +545,18 @@ public class XmlManagerTestPositive {
     }
 
     /*
-     Checks if all of the XML class files in the current test testData directory
+     Checks if all of the XML class files in the current test testUtils directory
      have the specified number of the code elements.
      */
-    private boolean allFilesHaveCodeCount(int count) throws SAXException, IOException, ParserConfigurationException {
-        File[] files = testData.getDataFilesFolder().listFiles();
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
+    private boolean allFilesHaveCodeCount(int count)
+            throws SAXException, IOException, ParserConfigurationException {
+        File[] files = testUtils.getDataFilesFolder().listFiles();
 
         // iterating through the files
         for (File file : files) {
             // parsing XML and searching for elements with source code
-            db.reset();
-            Document document = db.parse(file);
-            NodeList codeNodes = document.getElementsByTagName("code");
+            Document document = testUtils.readDocumentFromFile(file);
+            NodeList codeNodes = document.getElementsByTagName(XmlKeyword.CODE_ELEMENT.getName());
 
             // returning FALSE if the file with wrong number of elements was found
             if (codeNodes.getLength() != count) {
@@ -568,17 +570,13 @@ public class XmlManagerTestPositive {
 
     /*
      Reads the source code representing a specified class written in a specified language,
-     saved as the text content of the corresponding XML element in the corresponding XML testData file.
+     saved as the text content of the corresponding XML element in the corresponding XML testUtils file.
      */
-    private String readCodeFromFile(String clazz, String lang) throws ParserConfigurationException, SAXException, IOException {
-        // building a path from the class name
-        File file = testData.getFileFromClass(clazz);
-
+    private String readCodeFromFile(String clazz, String lang)
+            throws ParserConfigurationException, SAXException, IOException {
         // creating a document and searching for the element containing the requested source code
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document document = db.parse(file);
-        NodeList codeNodes = document.getElementsByTagName("code");
+        Document document = testUtils.readDocumentFromFile(testUtils.getFileFromClass(clazz));
+        NodeList codeNodes = document.getElementsByTagName(XmlKeyword.CODE_ELEMENT.getName());
 
         // iterating through the code elements
         for (int i = 0; i < codeNodes.getLength(); i++) {
@@ -588,7 +586,7 @@ public class XmlManagerTestPositive {
                 Element codeElement = (Element) codeNode;
 
                 // returning the escaped text content of the corresponding element
-                if (codeElement.getAttribute("lang").equals(lang)) {
+                if (codeElement.getAttribute(XmlKeyword.LANGUAGE_ATTRIBUTE.getName()).equals(lang)) {
                     return codeElement.getTextContent();
                 }
             }

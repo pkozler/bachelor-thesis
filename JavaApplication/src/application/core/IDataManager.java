@@ -97,4 +97,22 @@ public interface IDataManager {
      */
     public void saveCode(String clazz, String lang, String code) throws ADataManagementException;
 
+    /**
+     * Validates a class name.
+     * 
+     * @param clazz class name
+     * @return TRUE if the class name is valid, FALSE otherwise
+     * @throws application.core.ADataManagementException error
+     */
+    public boolean validateClass(String clazz) throws ADataManagementException;
+    
+    /**
+     * Validates a language name.
+     * 
+     * @param lang language name
+     * @return TRUE if the class name is valid, FALSE otherwise
+     * @throws application.core.ADataManagementException error
+     */
+    public boolean validateLanguage(String lang) throws ADataManagementException;
+    
 }

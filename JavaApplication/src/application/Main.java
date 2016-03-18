@@ -5,6 +5,7 @@ import application.controller.WindowController;
 import application.dialogs.DialogFactory;
 import application.core.ADataManagementException;
 import application.core.xml.XmlManager;
+import application.dialogs.DialogKeyContainer;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
@@ -30,7 +31,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         // loading the string resources
-        ResourceBundle rb = ResourceBundle.getBundle(Config.STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
+        ResourceBundle rb = ResourceBundle.getBundle(
+                Config.STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
         // initializing the factory for showing dialogs
         DialogFactory df = new DialogFactory(rb);
         
@@ -42,28 +44,34 @@ public class Main extends Application {
             Class xmlManagerClass = classLoader.loadClass(Config.CODE_MANAGER_CLASS);
             xmlManager = (XmlManager) xmlManagerClass.newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            df.showExceptionInDialog(ex, "classLoad", "error", "classLoadError");
+            df.showExceptionInDialog(ex, new DialogKeyContainer(
+                    "classLoad", "error", "classLoadError"));
             return;
         }
         
-        ResourceBundle xmlRb = ResourceBundle.getBundle(Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
+        ResourceBundle xmlRb = ResourceBundle.getBundle(
+                Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
         
         try {
             // initializing the XML files manager
-            xmlManager.setPaths(new File(Config.MAIN_DATA_FILE_DEST), new File(Config.DATA_FILES_FOLDER_DEST), xmlRb);
+            xmlManager.setPaths(new File(
+                    Config.MAIN_DATA_FILE_DEST), new File(Config.DATA_FILES_FOLDER_DEST), xmlRb);
         } catch (ADataManagementException ex) {
-            df.showExceptionInDialog(ex, "dataInit", "error", "dataInitError");
+            df.showExceptionInDialog(ex, new DialogKeyContainer(
+                    "dataInit", "error", "dataInitError"));
             return;
         }
         
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Config.WINDOW_FXML_DOCUMENT), rb);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
+                Config.WINDOW_FXML_DOCUMENT), rb);
         Parent root;
 
         try {
             // loading the FXML document
             root = (Parent) fxmlLoader.load();
         } catch (IOException ex) {
-            df.showExceptionInDialog(ex, "fxmlLoad", "error", "fxmlLoadError");
+            df.showExceptionInDialog(ex, new DialogKeyContainer(
+                    "fxmlLoad", "error", "fxmlLoadError"));
             return;
         }
 

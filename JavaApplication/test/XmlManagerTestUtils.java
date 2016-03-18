@@ -16,22 +16,28 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 /**
- * The {@code XmlManagerTestData} class contains fields and methods that are
+ * The {@code XmlManagerTestUtils} class contains fields and methods that are
  * used for preparing the test data for automatic testing of the
  * {@code XmlManager} class.
  *
  * @author Petr Kozler
  */
-final class XmlManagerTestData {
+final class XmlManagerTestUtils {
 
     // resource bundle for XML-specific strings
-    private static final ResourceBundle XML_BUNDLE = ResourceBundle.getBundle(Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
+    private static final ResourceBundle XML_BUNDLE
+            = ResourceBundle.getBundle(Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
     // path to the folder with test data directories (relative to the project root folder)
     private static final String TEST_DATA_FOLDER = "temp/";
     // a counter of test runs for building the real path to the current test data directory
     private static int testCounter = 0;
+    // the builder for reading XML files
+    private final DocumentBuilder DOCUMENT_BUILDER;
+    // the TRANSFORMER for writing XML files
+    private final Transformer TRANSFORMER;
     // the real path to the main test XML data file for current test
     private File mainDataFile;
     // the real path to the folder with test XML data files for current test
@@ -42,12 +48,21 @@ final class XmlManagerTestData {
      *
      * @throws IOException IO error
      * @throws ParserConfigurationException parser error
-     * @throws TransformerException transformer error
+     * @throws TransformerException TRANSFORMER error
      */
-    public XmlManagerTestData() throws IOException, ParserConfigurationException, TransformerException {
+    public XmlManagerTestUtils()
+            throws IOException, ParserConfigurationException, TransformerException {
         testCounter++;
         // building the real path to the temporary test root data folder for current testing
         String tempFolderDest = TEST_DATA_FOLDER + testCounter + "/";
+
+        // creating the builder for reading XML files
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DOCUMENT_BUILDER = dbf.newDocumentBuilder();
+        // creating the TRANSFORMER for writing XML files
+        TransformerFactory tf = TransformerFactory.newInstance();
+        TRANSFORMER = tf.newTransformer();
+
         // deleting temporary test root data folder from previous testing
         deleteFolderRecursively(new File(tempFolderDest));
         // creating the file folder for the current test
@@ -73,36 +88,75 @@ final class XmlManagerTestData {
     public File getDataFilesFolder() {
         return dataFilesFolder;
     }
-    
+
     /**
      * Returns the formatted message with specifed arguments.
-     * 
+     *
      * @param formatKey format string resource bundle key
      * @param args message arguments
      * @return formatted message
      */
     public String getFormattedMessage(String formatKey, Object... args) {
-        System.err.println(String.format(XML_BUNDLE.getString(formatKey), args));
         return String.format(XML_BUNDLE.getString(formatKey), args);
     }
-    
+
     /**
-     * Returns the XML data file object corresponding to the specified class name.
-     * 
+     * Returns the XML data file object corresponding to the specified class
+     * name.
+     *
      * @param className class name
      * @return data file
      */
     public File getFileFromClass(String className) {
         return new File(dataFilesFolder.getPath() + "/" + className.toLowerCase() + ".xml");
     }
-    
+
     /**
-     * Performs the XML manager initialization (setting the paths to data files). 
-     * 
+     * Parses a XML document from existing file.
+     *
+     * @param file path to the existing XML file
+     * @return parsed XML document
+     * @throws SAXException SAX error
+     * @throws IOException IO error
+     */
+    public Document readDocumentFromFile(File file)
+            throws SAXException, IOException {
+        DOCUMENT_BUILDER.reset();
+        // creating a document
+        Document document = DOCUMENT_BUILDER.parse(file);
+        // normalizing a document
+        document.getDocumentElement().normalize();
+        // returning document
+        return document;
+    }
+
+    /**
+     * Saves the XML document to the specified file.
+     *
+     * @param file path to the changed XML file
+     * @param document XML document
+     * @throws TransformerException TRANSFORMER error
+     */
+    public void writeDocumentToFile(File file, Document document)
+            throws TransformerException {
+        TRANSFORMER.reset();
+        // creating the stream for a file
+        StreamResult result = new StreamResult(file);
+        // creating a new DOM source
+        DOMSource source = new DOMSource(document);
+        // writing the DOM to the stream
+        TRANSFORMER.transform(source, result);
+    }
+
+    /**
+     * Performs the XML manager initialization (setting the paths to data
+     * files).
+     *
      * @param xmlManager XML manager
      * @throws ADataManagementException an error
      */
-    public void initXmlManager(XmlManager xmlManager) throws ADataManagementException {
+    public void initXmlManager(XmlManager xmlManager)
+            throws ADataManagementException {
         xmlManager.setPaths(mainDataFile, dataFilesFolder, XML_BUNDLE);
     }
 
@@ -112,19 +166,20 @@ final class XmlManagerTestData {
     private void deleteFolderRecursively(File file) {
         if (file.isDirectory()) {
             File[] files = file.listFiles();
-            
+
             for (File f : files) {
                 deleteFolderRecursively(f);
             }
         }
-        
+
         file.delete();
     }
 
     /*
      Creates a new folder for test XML data files associated with current test.
      */
-    private void createTestDataDirectory(String dataFilesFolderDest) throws IOException {
+    private void createTestDataDirectory(String dataFilesFolderDest)
+            throws IOException {
         dataFilesFolder = new File(dataFilesFolderDest);
 
         // creating the directory for current test
@@ -136,16 +191,12 @@ final class XmlManagerTestData {
     /*
      Creates a new main test XML data file associated with current test.
      */
-    private void createTestDataMainFile(String mainDataFileDest) throws ParserConfigurationException, TransformerException {
+    private void createTestDataMainFile(String mainDataFileDest)
+            throws ParserConfigurationException, TransformerException {
         mainDataFile = new File(mainDataFileDest);
 
-        // creating the stream for a new main file
-        StreamResult result = new StreamResult(mainDataFile);
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
-
         // creating basic document elements
-        Document document = documentBuilder.newDocument();
+        Document document = DOCUMENT_BUILDER.newDocument();
         Element root = document.createElement("lists");
         Element langList = document.createElement("languages");
         Element classList = document.createElement("classes");
@@ -154,13 +205,8 @@ final class XmlManagerTestData {
         document.appendChild(root);
         document.normalize();
 
-        // creating a new DOM source
-        DOMSource source = new DOMSource(document);
-        TransformerFactory factory = TransformerFactory.newInstance();
-        Transformer transformer = factory.newTransformer();
-
-        // writing the DOM to the stream
-        transformer.transform(source, result);
+        // creating the main file
+        writeDocumentToFile(mainDataFile, document);
     }
 
 }

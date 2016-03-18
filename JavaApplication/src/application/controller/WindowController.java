@@ -1,8 +1,9 @@
 package application.controller;
 
 import application.dialogs.DialogFactory;
-import application.config.Config;
+import application.core.ADataManagementException;
 import application.core.IDataManager;
+import application.dialogs.DialogKeyContainer;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -123,6 +124,58 @@ public class WindowController implements Initializable {
         classNamesListView.getSelectionModel().select(index);
     }
 
+    /*
+     Gets the valid Java class name from user input in text dialog.
+     */
+    private String getValidClassName(DialogKeyContainer textDialogKeyContainer,
+            DialogKeyContainer exceptionDialogKeyContainer, String classNameDetailKey) {
+        // showing the dialog until the valid name is entered, the dialog is canceled or an error occures
+        while (true) {
+            String name = dialogFactory.getNameFromDialog(textDialogKeyContainer, classNameDetailKey);
+
+            // dialog was canceled
+            if (name == null) {
+                return null;
+            }
+
+            try {
+                // valid name was entered
+                if (dataManager.validateClass(name)) {
+                    return name;
+                }
+            } catch (ADataManagementException ex) {
+                dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
+                return null;
+            }
+        }
+    }
+
+    /*
+     Gets the valid programming language name from user input in text dialog.
+     */
+    private String getValidLangName(DialogKeyContainer textDialogKeyContainer,
+            DialogKeyContainer exceptionDialogKeyContainer, String langNameDetailKey) {
+        // showing the dialog until the valid name is entered, the dialog is canceled or an error occures
+        while (true) {
+            String name = dialogFactory.getNameFromDialog(textDialogKeyContainer, langNameDetailKey);
+
+            // dialog was canceled
+            if (name == null) {
+                return null;
+            }
+
+            try {
+                // valid name was entered
+                if (dataManager.validateClass(name)) {
+                    return name;
+                }
+            } catch (ADataManagementException ex) {
+                dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
+                return null;
+            }
+        }
+    }
+
     /**
      * Starts adding a new class after clicking the corresponding button or menu
      * item.
@@ -131,8 +184,12 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleAddClassAction(ActionEvent event) {
-        String name = dialogFactory.getNameFromDialog("addClass",
-                "enterName", "addClassText", "classNameDetail", Config.CLASS_NAME_PATTERN);
+        DialogKeyContainer textDialogKeyContainer = new DialogKeyContainer(
+                "addClass", "enterName", "addClassText");
+        DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
+                "addingClass", "error", "addingClassError");
+        String name = getValidClassName(
+                textDialogKeyContainer, exceptionDialogKeyContainer, "classNameDetail");
 
         if (name == null) {
             return;
@@ -159,7 +216,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "addingClass", "error", "addingClassError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
             }
 
         };
@@ -175,13 +232,18 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleEditClassAction(ActionEvent event) {
-        String oldName = classNamesListView.getSelectionModel().getSelectedItem();
-        String name = dialogFactory.getNameFromDialog("editClass",
-                "enterName", "editClassText", "classNameDetail", Config.CLASS_NAME_PATTERN);
+        DialogKeyContainer textDialogKeyContainer = new DialogKeyContainer(
+                "editClass", "enterName", "editClassText");
+        DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
+                "editingClass", "error", "editingClassError");
+        String name = getValidClassName(
+                textDialogKeyContainer, exceptionDialogKeyContainer, "classNameDetail");
 
         if (name == null) {
             return;
         }
+
+        String oldName = classNamesListView.getSelectionModel().getSelectedItem();
 
         /* 
          creating the task for calling the editClass method on background
@@ -204,7 +266,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "editingClass", "error", "editingClassError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
             }
 
         };
@@ -220,11 +282,16 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleRemoveClassAction(ActionEvent event) {
-        String name = classNamesListView.getSelectionModel().getSelectedItem();
+        DialogKeyContainer confirmDialogKeyContainer = new DialogKeyContainer(
+                "removeClass", "confirmation", "removeClassText");
+        DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
+                "removingClass", "error", "removingClassError");
 
-        if (!dialogFactory.isConfirmedInDialog("removeClass", "confirmation", "removeClassText")) {
+        if (!dialogFactory.isConfirmedInDialog(confirmDialogKeyContainer)) {
             return;
         }
+
+        String name = classNamesListView.getSelectionModel().getSelectedItem();
 
         /* 
          creating the task for calling the removeClass method on background
@@ -247,7 +314,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "removingClass", "error", "removingClassError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
             }
 
         };
@@ -263,7 +330,12 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleAddLangAction(ActionEvent event) {
-        String name = dialogFactory.getNameFromDialog("addLang", "enterName", "addLangText", "langNameDetail", Config.LANG_NAME_PATTERN);
+        DialogKeyContainer textDialogKeyContainer = new DialogKeyContainer(
+                "addLang", "enterName", "addLangText");
+        DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
+                "addingLang", "error", "addingLangError");
+        String name = getValidLangName(
+                textDialogKeyContainer, exceptionDialogKeyContainer, "langNameDetail");
 
         if (name == null) {
             return;
@@ -290,7 +362,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "addingLang", "error", "addingLangError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
             }
 
         };
@@ -306,12 +378,18 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleEditLangAction(ActionEvent event) {
-        String oldName = classNamesListView.getSelectionModel().getSelectedItem();
-        String name = dialogFactory.getNameFromDialog("editLang", "enterName", "editLangText", "langNameDetail", Config.LANG_NAME_PATTERN);
+        DialogKeyContainer textDialogKeyContainer = new DialogKeyContainer(
+                "editLang", "enterName", "editLangText");
+        DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
+                "editingLang", "error", "editingLangError");
+        String name = getValidClassName(
+                textDialogKeyContainer, exceptionDialogKeyContainer, "langNameDetail");
 
         if (name == null) {
             return;
         }
+
+        String oldName = classNamesListView.getSelectionModel().getSelectedItem();
 
         /* 
          creating the task for calling the editLang method on background
@@ -334,7 +412,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "editingLang", "error", "editingLangError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
             }
 
         };
@@ -350,11 +428,16 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleRemoveLangAction(ActionEvent event) {
-        String name = classNamesListView.getSelectionModel().getSelectedItem();
+        DialogKeyContainer confirmDialogKeyContainer = new DialogKeyContainer(
+                "removeLang", "confirmation", "removeLangText");
+        DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
+                "removingLang", "error", "removingLangError");
 
-        if (dialogFactory.isConfirmedInDialog("removeLang", "confirmation", "removeLangText")) {
+        if (!dialogFactory.isConfirmedInDialog(confirmDialogKeyContainer)) {
             return;
         }
+
+        String name = classNamesListView.getSelectionModel().getSelectedItem();
 
         /* 
          creating the task for calling the removeLang method on background
@@ -377,7 +460,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "removingLang", "error", "removingLangError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
             }
 
         };
@@ -392,8 +475,11 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleExitAction(ActionEvent event) {
+        DialogKeyContainer confirmDialogKeyContainer
+                = new DialogKeyContainer("cancelCode", "confirmation", "cancelCodeText");
+
         if (codeTextArea.isEditable()) {
-            if (!dialogFactory.isConfirmedInDialog("cancelCode", "confirmation", "cancelCodeText")) {
+            if (!dialogFactory.isConfirmedInDialog(confirmDialogKeyContainer)) {
                 return;
             }
         }
@@ -451,6 +537,9 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleSaveCodeAction(ActionEvent event) {
+        DialogKeyContainer exceptionDialogKeyContainer
+                = new DialogKeyContainer("savingCode", "error", "savingCodeError");
+
         /* 
          creating the task for calling the saveCode method on background
          and showing the results to the GUI
@@ -476,7 +565,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "savingCode", "error", "savingCodeError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
             }
 
         };
@@ -491,7 +580,9 @@ public class WindowController implements Initializable {
      */
     @FXML
     public void handleAboutAction(ActionEvent event) {
-        dialogFactory.showInfoInDialog("about", "windowTitle", "aboutText");
+        DialogKeyContainer dialogKeyContainer
+                = new DialogKeyContainer("about", "windowTitle", "aboutText");
+        dialogFactory.showInfoInDialog(dialogKeyContainer);
     }
 
     /**
@@ -532,7 +623,10 @@ public class WindowController implements Initializable {
      the edit mode.
      */
     private void handleCancelCodeAction(ActionEvent event) {
-        if (dialogFactory.isConfirmedInDialog("cancelCode", "confirmation", "cancelCodeText")) {
+        DialogKeyContainer confirmDialogKeyContainer
+                = new DialogKeyContainer("cancelCode", "confirmation", "cancelCodeText");
+
+        if (dialogFactory.isConfirmedInDialog(confirmDialogKeyContainer)) {
             refreshCodeTextArea();
         }
     }
@@ -543,6 +637,11 @@ public class WindowController implements Initializable {
      representing the list of available programming languages.
      */
     private void setListItems() {
+        DialogKeyContainer classExceptionDialogKeyContainer
+                = new DialogKeyContainer("loadingClassList", "error", "loadingClassListError");
+        DialogKeyContainer langExceptionDialogKeyContainer
+                = new DialogKeyContainer("loadingLangList", "error", "loadingLangListError");
+
         /* 
          creating the task for calling the loadLangList method on background
          and showing the results to the GUI
@@ -564,7 +663,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "loadingLangList", "error", "loadingLangListError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), langExceptionDialogKeyContainer);
             }
 
         };
@@ -592,7 +691,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "loadingClassList", "error", "loadingClassListError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), classExceptionDialogKeyContainer);
             }
 
         };
@@ -739,6 +838,9 @@ public class WindowController implements Initializable {
             return;
         }
 
+        DialogKeyContainer exceptionDialogKeyContainer
+                = new DialogKeyContainer("loadingCode", "error", "loadingCodeError");
+
         /* 
          creating the task for calling the loadCode method on background
          and showing the results to the GUI
@@ -761,7 +863,7 @@ public class WindowController implements Initializable {
             @Override
             protected void failed() {
                 super.failed();
-                dialogFactory.showExceptionInDialog((Exception) getException(), "loadingCode", "error", "loadingCodeError");
+                dialogFactory.showExceptionInDialog((Exception) getException(), exceptionDialogKeyContainer);
                 classNamesListView.getSelectionModel().select(lastValidClass);
                 langSelectComboBox.getSelectionModel().select(lastValidLang);
             }

@@ -6,11 +6,12 @@ package application.core.xml;
  *
  * @author Petr Kozler
  */
-enum XmlKeyword {
+public enum XmlKeyword {
 
-    CLASSES_ELEMENT("classes"),
-    LANGUAGES_ELEMENT("languages"),
-    CODES_ELEMENT("codes"),
+    LIST_ROOT_ELEMENT("lists"),
+    CLASS_LIST_ELEMENT("classes"),
+    LANGUAG_LIST_ELEMENT("languages"),
+    CODE_ROOT_ELEMENT("codes"),
     CLASS_ELEMENT("class"),
     LANGUAGE_ELEMENT("language"),
     CODE_ELEMENT("code"),

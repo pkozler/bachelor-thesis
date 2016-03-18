@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
@@ -15,7 +16,7 @@ import javafx.scene.layout.Priority;
 /**
  * The class {@code DialogFactory} provides methods for creating dialog windows
  * of various types and returning user input to controllers.
- * 
+ *
  * @author Petr Kozler
  */
 public class DialogFactory {
@@ -32,90 +33,70 @@ public class DialogFactory {
         this.BUNDLE = bundle;
     }
 
+    /*
+     Sets the dialog title, header and content text to strings from resource bundle
+     with keys specified in given key keyContainer.
+     */
+    private void setDialogText(Dialog dialog, DialogKeyContainer keyContainer) {
+        dialog.setTitle(BUNDLE.getString(keyContainer.TITLE_KEY));
+        dialog.setHeaderText(BUNDLE.getString(keyContainer.HEADER_TEXT_KEY));
+        dialog.setContentText(BUNDLE.getString(keyContainer.CONTENT_TEXT_KEY));
+    }
+
     /**
      * Shows an information dialog.
      *
-     * @param titleKey resource bundle key for a dialog title
-     * @param headerKey resource bundle key for a dialog header
-     * @param contentKey resource bundle key for a dialog content
+     * @param keyContainer string resource bundle dialog text key container
      */
-    public void showInfoInDialog(String titleKey, String headerKey, String contentKey) {
+    public void showInfoInDialog(DialogKeyContainer keyContainer) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(BUNDLE.getString(titleKey));
-        alert.setHeaderText(BUNDLE.getString(headerKey));
-        alert.setContentText(BUNDLE.getString(contentKey));
+        setDialogText(alert, keyContainer);
         alert.showAndWait();
     }
 
     /**
      * Shows a confirmation dialog.
      *
-     * @param titleKey resource bundle key for a dialog title
-     * @param headerKey resource bundle key for a dialog header
-     * @param contentKey resource bundle key for a dialog content
+     * @param keyContainer string resource bundle dialog text key container
      * @return TRUE, if user confirmed the dialog, FALSE otherwise
      */
-    public boolean isConfirmedInDialog(String titleKey, String headerKey, String contentKey) {
+    public boolean isConfirmedInDialog(DialogKeyContainer keyContainer) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(BUNDLE.getString(titleKey));
-        alert.setHeaderText(BUNDLE.getString(headerKey));
-        alert.setContentText(BUNDLE.getString(contentKey));
+        setDialogText(alert, keyContainer);
         Optional<ButtonType> result = alert.showAndWait();
 
         return result.get() == ButtonType.OK;
     }
-    
+
     /**
      * Shows a text input dialog.
      *
-     * @param titleKey resource bundle key for a dialog title
-     * @param headerKey resource bundle key for a dialog header
-     * @param contentKey resource bundle key for a dialog content
+     * @param keyContainer string resource bundle dialog text key container
      * @param detailKey resource bundle key for a text format hint
-     * @param namePattern text format regex
      * @return user input text or NULL, if user canceled the dialog
      */
-    public String getNameFromDialog(String titleKey, String headerKey, String contentKey, String detailKey, String namePattern) {
+    public String getNameFromDialog(DialogKeyContainer keyContainer, String detailKey) {
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle(BUNDLE.getString(titleKey));
-        dialog.setHeaderText(BUNDLE.getString(headerKey));
-        dialog.setContentText(BUNDLE.getString(contentKey));
-        
+        setDialogText(dialog, keyContainer);
+
         Label label = new Label(BUNDLE.getString(detailKey));
         label.setWrapText(true);
         dialog.getDialogPane().setExpandableContent(label);
-        
-        while (true) {
-            Optional<String> result = dialog.showAndWait();
-        
-            if (!result.isPresent()) {
-                return null;
-            }
-            
-            String name = result.get();
-            
-            if (!name.matches(namePattern)) {
-                continue;
-            }
-            
-            return name;
-        }
+        Optional<String> result = dialog.showAndWait();
+
+        return !result.isPresent() ? null : result.get();
     }
-    
+
     /**
      * Shows an error dialog.
-     * 
+     *
      * @param ex výjimka
-     * @param titleKey resource bundle key for a dialog title
-     * @param headerKey resource bundle key for a dialog header
-     * @param contentKey resource bundle key for a dialog content
+     * @param keyContainer string resource bundle dialog text key container
      */
-    public void showExceptionInDialog(Exception ex, String titleKey, String headerKey, String contentKey) {
+    public void showExceptionInDialog(Exception ex, DialogKeyContainer keyContainer) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(BUNDLE.getString(titleKey));
-        alert.setHeaderText(BUNDLE.getString(headerKey));
-        alert.setContentText(BUNDLE.getString(contentKey));
-        
+        setDialogText(alert, keyContainer);
+
         // write a stack trace to string
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);

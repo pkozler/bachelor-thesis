@@ -20,10 +20,6 @@ public final class Config {
     public static final String XML_STRINGS_BUNDLE = "resources.strings.XmlStrings";
     /** path to the strings resource bundle */
     public static final String STRINGS_BUNDLE = "resources.strings.Strings";
-    /** regular expression representing the set of allowed Java class names */
-    public static final String CLASS_NAME_PATTERN = "[a-zA-Z_][0-9a-zA-Z_]*";
-    /** regular expression representing the set of allowed programming language names */
-    public static final String LANG_NAME_PATTERN = " +( +| )* *";
     /** default locale of the application */
     public static final String DEFAULT_LOCALE = "cs";
     
