@@ -25,7 +25,7 @@ public interface IDataManager {
      * @return programming language list
      * @throws application.core.ADataManagementException error
      */
-    public ArrayList<String> loadLangList() throws ADataManagementException;
+    public ArrayList<String> loadLanguageList() throws ADataManagementException;
 
     /**
      * Creates a new class.
@@ -58,7 +58,7 @@ public interface IDataManager {
      * @param lang language name
      * @throws application.core.ADataManagementException error
      */
-    public void addLang(String lang) throws ADataManagementException;
+    public void addLanguage(String lang) throws ADataManagementException;
 
     /**
      * Renames a language.
@@ -67,7 +67,7 @@ public interface IDataManager {
      * @param newLang new language name
      * @throws application.core.ADataManagementException error
      */
-    public void editLang(String oldLang, String newLang) throws ADataManagementException;
+    public void editLanguage(String oldLang, String newLang) throws ADataManagementException;
 
     /**
      * Deletes a language.
@@ -75,7 +75,7 @@ public interface IDataManager {
      * @param lang language name
      * @throws application.core.ADataManagementException error
      */
-    public void removeLang(String lang) throws ADataManagementException;
+    public void removeLanguage(String lang) throws ADataManagementException;
 
     /**
      * Loads the source code in a specified language for a specified class.

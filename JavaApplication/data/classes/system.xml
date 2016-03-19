@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<codes>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><codes>
 
     <code lang="C">#include "System.h"
 
@@ -33,7 +31,7 @@ void System_out_printL(long l) {
 }
 
 void System_out_printStr(String *s) {
-    printf("%s", s->s);
+    printf("%s", s-&gt;s);
 }
 
 void System_out_println() {
@@ -69,7 +67,7 @@ void System_out_printlnL(long l) {
 }
 
 void System_out_printlnStr(String *s) {
-    printf("%s\n", s->s);
+    printf("%s\n", s-&gt;s);
 }
 </code>
     
@@ -118,7 +116,7 @@ void PrintStream::print(long l)
 
 void PrintStream::print(String *s)
 {
-    std::cout &lt;&lt; s->toString();
+    std::cout &lt;&lt; s-&gt;toString();
 }
 
 void PrintStream::println(bool b)
@@ -158,7 +156,7 @@ void PrintStream::println(long l)
 
 void PrintStream::println(String *s)
 {
-    std::cout &lt;&lt; s->toString() &lt;&lt; std::endl;
+    std::cout &lt;&lt; s-&gt;toString() &lt;&lt; std::endl;
 }
 
 void *System::in = nullptr;
@@ -443,4 +441,4 @@ end;
 end.
 </code>
     
-</codes>
+<code lang="PHP"/></codes>

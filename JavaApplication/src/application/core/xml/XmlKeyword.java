@@ -10,7 +10,7 @@ public enum XmlKeyword {
 
     LIST_ROOT_ELEMENT("lists"),
     CLASS_LIST_ELEMENT("classes"),
-    LANGUAG_LIST_ELEMENT("languages"),
+    LANGUAGE_LIST_ELEMENT("languages"),
     CODE_ROOT_ELEMENT("codes"),
     CLASS_ELEMENT("class"),
     LANGUAGE_ELEMENT("language"),

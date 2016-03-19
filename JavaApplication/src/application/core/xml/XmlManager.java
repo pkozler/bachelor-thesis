@@ -34,14 +34,17 @@ import org.xml.sax.SAXException;
 public class XmlManager implements IDataManager {
 
     /**
+     * XML file extension
+     */
+    public static final String XML_FILE_EXTENSION = ".xml";
+    /**
      * regular expression representing the set of allowed Java class names
      */
-    private static final String CLASS_NAME_PATTERN = "[a-zA-Z_][0-9a-zA-Z_]*";
+    private static final String CLASS_NAME_PATTERN = "\\s*[a-zA-Z_][0-9a-zA-Z_]*\\s*";
     /**
-     * regular expression representing the set of allowed programming language
-     * names
+     * regular expression representing the set of allowed programming item names
      */
-    private static final String LANGUAGE_NAME_PATTERN = " +( +| )* *";
+    private static final String LANGUAGE_NAME_PATTERN = ".*[^\\s]+.*";
     // resource bundle for XML-specific strings
     private ResourceBundle xmlBundle;
     // object for XML documents parsing
@@ -50,34 +53,34 @@ public class XmlManager implements IDataManager {
     private Transformer transformer;
     // main XML data file
     private File mainFile;
-    // folder with XML data files
-    private File directory;
+    // subfolder with XML data files
+    private File subfolder;
 
     /**
-     * Loads the main document and tests if the directory exists.
+     * Sets the path to the main file and the source code files subfolder.
      *
-     * @param mainDataFile main XML data file
-     * @param dataFilesFolder folder with XML data files
+     * @param mainFilePath path to the main XML data file
+     * @param subfolderPath path to the subfolder with XML data files
      * @param xmlBundle resource bundle for XML-specific strings
      * @throws application.core.ADataManagementException error
      */
-    public synchronized void setPaths(File mainDataFile, File dataFilesFolder, ResourceBundle xmlBundle)
+    public synchronized void initialize(String mainFilePath, String subfolderPath, ResourceBundle xmlBundle)
             throws ADataManagementException {
         try {
             this.xmlBundle = xmlBundle;
-            mainFile = mainDataFile;
-            directory = dataFilesFolder;
+            mainFile = new File(mainFilePath.replace('/', File.separatorChar));
+            subfolder = new File(subfolderPath.replace('/', File.separatorChar));
 
             // testing the main file
-            if (!mainDataFile.isFile()) {
+            if (!mainFile.isFile()) {
                 throw new XmlManagementException(xmlBundle.getString(
-                        "notAMainFile"), mainDataFile.getName());
+                        "notAMainFile"), mainFile.getName());
             }
 
-            // testing the directory
-            if (!dataFilesFolder.isDirectory()) {
+            // testing the subfolder
+            if (!subfolder.isDirectory()) {
                 throw new XmlManagementException(xmlBundle.getString(
-                        "notADirectory"), dataFilesFolder.getName());
+                        "notADirectory"), subfolder.getName());
             }
 
             // initializing document builder and transformer
@@ -98,24 +101,7 @@ public class XmlManager implements IDataManager {
     public synchronized ArrayList<String> loadClassList()
             throws ADataManagementException {
         try {
-            Document mainDocument = readDocumentFromFile(mainFile);
-
-            ArrayList<String> list = new ArrayList<>();
-            Element classList = getClassList(mainDocument);
-            NodeList nodes = classList.getElementsByTagName(XmlKeyword.CLASS_ELEMENT.getName());
-
-            // iterating through the class elements in the main XML file
-            for (int i = 0; i < nodes.getLength(); i++) {
-                Node language = nodes.item(i);
-
-                // adding the class elements contents to array list
-                if (language.getNodeType() == Node.ELEMENT_NODE) {
-                    Element languageElement = (Element) language;
-                    list.add(languageElement.getTextContent());
-                }
-            }
-
-            return list;
+            return loadList(XmlKeyword.CLASS_LIST_ELEMENT.getName(), XmlKeyword.CLASS_ELEMENT.getName());
         } catch (XmlManagementException | SAXException | IOException ex) {
             throw new XmlManagementException(ex.getLocalizedMessage());
         }
@@ -123,30 +109,13 @@ public class XmlManager implements IDataManager {
 
     /*
      (non-Javadoc)
-     @see application.core.xml.XmlManager#loadLangList()
+     @see application.core.xml.XmlManager#loadLanguageList()
      */
     @Override
-    public synchronized ArrayList<String> loadLangList()
+    public synchronized ArrayList<String> loadLanguageList()
             throws ADataManagementException {
         try {
-            Document mainDocument = readDocumentFromFile(mainFile);
-
-            ArrayList<String> list = new ArrayList<>();
-            Element langList = getLangList(mainDocument);
-            NodeList nodes = langList.getElementsByTagName(XmlKeyword.LANGUAGE_ELEMENT.getName());
-
-            // iterating through the language elements in the main XML file
-            for (int i = 0; i < nodes.getLength(); i++) {
-                Node language = nodes.item(i);
-
-                // adding the language element content to array list
-                if (language.getNodeType() == Node.ELEMENT_NODE) {
-                    Element languageElement = (Element) language;
-                    list.add(languageElement.getTextContent());
-                }
-            }
-
-            return list;
+            return loadList(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName());
         } catch (XmlManagementException | SAXException | IOException ex) {
             throw new XmlManagementException(ex.getLocalizedMessage());
         }
@@ -159,15 +128,20 @@ public class XmlManager implements IDataManager {
     @Override
     public synchronized void addClass(String clazz)
             throws ADataManagementException {
+        String purifiedClass = purifyClassName(clazz);
+
         try {
             Document mainDocument = readDocumentFromFile(mainFile);
 
             // creating a new XML class file
-            createDocument(mainDocument, clazz);
+            File file = createFile(purifiedClass);
+            Element langList = getItemList(mainDocument, XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+            Document document = createDocument(langList);
+            writeDocumentToFile(file, document);
 
             // adding a class item to the main XML file list
-            Element classList = getClassList(mainDocument);
-            addClassItem(mainDocument, classList, clazz);
+            Element classList = getItemList(mainDocument, XmlKeyword.CLASS_LIST_ELEMENT.getName());
+            addItem(mainDocument, classList, purifiedClass, XmlKeyword.CLASS_ELEMENT.getName());
 
             writeDocumentToFile(mainFile, mainDocument);
         } catch (TransformerException | XmlManagementException | SAXException | IOException ex) {
@@ -182,15 +156,17 @@ public class XmlManager implements IDataManager {
     @Override
     public synchronized void editClass(String oldClass, String newClass)
             throws ADataManagementException {
+        String purifiedClass = purifyClassName(newClass);
+
         try {
             Document mainDocument = readDocumentFromFile(mainFile);
 
             // renaming the XML class file
-            renameDocument(oldClass, newClass);
+            renameFile(oldClass, purifiedClass);
 
             // editing the class item in the main XML file list
-            Element classList = getClassList(mainDocument);
-            editClassItem(classList, oldClass, newClass);
+            Element classList = getItemList(mainDocument, XmlKeyword.CLASS_LIST_ELEMENT.getName());
+            editItem(classList, oldClass, purifiedClass, XmlKeyword.CLASS_ELEMENT.getName());
 
             writeDocumentToFile(mainFile, mainDocument);
         } catch (TransformerException | XmlManagementException | SAXException | IOException ex) {
@@ -209,11 +185,11 @@ public class XmlManager implements IDataManager {
             Document mainDocument = readDocumentFromFile(mainFile);
 
             // deleting the XML class file
-            deleteDocument(clazz);
+            deleteFile(clazz);
 
             // removing the class item from the main XML file list
-            Element classList = getClassList(mainDocument);
-            removeClassItem(classList, clazz);
+            Element classList = getItemList(mainDocument, XmlKeyword.CLASS_LIST_ELEMENT.getName());
+            removeItem(classList, clazz, XmlKeyword.CLASS_ELEMENT.getName());
 
             writeDocumentToFile(mainFile, mainDocument);
         } catch (TransformerException | XmlManagementException | SAXException | IOException ex) {
@@ -223,15 +199,17 @@ public class XmlManager implements IDataManager {
 
     /*
      (non-Javadoc)
-     @see application.core.xml.XmlManager#addLang(java.lang.String)
+     @see application.core.xml.XmlManager#addLanguage(java.lang.String)
      */
     @Override
-    public synchronized void addLang(String lang)
+    public synchronized void addLanguage(String lang)
             throws ADataManagementException {
+        String purifiedLang = purifyLanguageName(lang);
+
         try {
             Document mainDocument = readDocumentFromFile(mainFile);
 
-            Element classList = getClassList(mainDocument);
+            Element classList = getItemList(mainDocument, XmlKeyword.CLASS_LIST_ELEMENT.getName());
             NodeList classes = classList.getChildNodes();
 
             // iterating through the XML class files
@@ -244,14 +222,14 @@ public class XmlManager implements IDataManager {
 
                     File file = getFileFromClass(classElement.getTextContent());
                     Document document = readDocumentFromFile(file);
-                    addCodeItem(document, lang);
+                    addCode(document, purifiedLang);
                     writeDocumentToFile(file, document);
                 }
             }
 
-            // adding a language item to the main XML file list
-            Element langList = getLangList(mainDocument);
-            addLangItem(mainDocument, langList, lang);
+            // adding a item item to the main XML file list
+            Element langList = getItemList(mainDocument, XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+            addItem(mainDocument, langList, purifiedLang, XmlKeyword.LANGUAGE_ELEMENT.getName());
 
             writeDocumentToFile(mainFile, mainDocument);
         } catch (TransformerException | SAXException | IOException ex) {
@@ -261,15 +239,17 @@ public class XmlManager implements IDataManager {
 
     /*
      (non-Javadoc)
-     @see application.core.xml.XmlManager#editLang(java.lang.String, java.lang.String)
+     @see application.core.xml.XmlManager#editLanguage(java.lang.String, java.lang.String)
      */
     @Override
-    public synchronized void editLang(String oldLang, String newLang)
+    public synchronized void editLanguage(String oldLang, String newLang)
             throws ADataManagementException {
+        String purifiedLang = purifyLanguageName(newLang);
+
         try {
             Document mainDocument = readDocumentFromFile(mainFile);
 
-            Element classList = getClassList(mainDocument);
+            Element classList = getItemList(mainDocument, XmlKeyword.CLASS_LIST_ELEMENT.getName());
             NodeList classes = classList.getChildNodes();
 
             // iterating through the XML class files
@@ -282,14 +262,14 @@ public class XmlManager implements IDataManager {
 
                     File file = getFileFromClass(classElement.getTextContent());
                     Document document = readDocumentFromFile(file);
-                    editCodeItem(document, oldLang, newLang);
+                    editCode(document, oldLang, purifiedLang);
                     writeDocumentToFile(file, document);
                 }
             }
 
-            // editing a language item in the main XML file list
-            Element langList = getLangList(mainDocument);
-            editLangItem(langList, oldLang, newLang);
+            // editing a item item in the main XML file list
+            Element langList = getItemList(mainDocument, XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+            editItem(langList, oldLang, purifiedLang, XmlKeyword.LANGUAGE_ELEMENT.getName());
 
             writeDocumentToFile(mainFile, mainDocument);
         } catch (TransformerException | SAXException | IOException ex) {
@@ -299,15 +279,15 @@ public class XmlManager implements IDataManager {
 
     /*
      (non-Javadoc)
-     @see application.core.xml.XmlManager#removeLang(java.lang.String)
+     @see application.core.xml.XmlManager#removeLanguage(java.lang.String)
      */
     @Override
-    public synchronized void removeLang(String lang)
+    public synchronized void removeLanguage(String lang)
             throws ADataManagementException {
         try {
             Document mainDocument = readDocumentFromFile(mainFile);
 
-            Element classList = getClassList(mainDocument);
+            Element classList = getItemList(mainDocument, XmlKeyword.CLASS_LIST_ELEMENT.getName());
             NodeList classes = classList.getChildNodes();
 
             // iterating through the XML class files
@@ -320,14 +300,14 @@ public class XmlManager implements IDataManager {
 
                     File file = getFileFromClass(classElement.getTextContent());
                     Document document = readDocumentFromFile(file);
-                    removeCodeItem(document, lang);
+                    removeCode(document, lang);
                     writeDocumentToFile(file, document);
                 }
             }
 
-            // removing a language item from the main XML file list
-            Element langList = getLangList(mainDocument);
-            removeLangItem(langList, lang);
+            // removing a item item from the main XML file list
+            Element langList = getItemList(mainDocument, XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+            removeItem(langList, lang, XmlKeyword.LANGUAGE_ELEMENT.getName());
 
             writeDocumentToFile(mainFile, mainDocument);
         } catch (TransformerException | SAXException | IOException ex) {
@@ -349,7 +329,7 @@ public class XmlManager implements IDataManager {
             // opening the XML class file
             Document document = readDocumentFromFile(getFileFromClass(clazz));
             // retrieving the code element
-            Element codeElement = getCodeItem(document, lang);
+            Element codeElement = getCode(document, lang);
 
             if (codeElement == null) {
                 throw new XmlManagementException(xmlBundle.getString(
@@ -378,7 +358,7 @@ public class XmlManager implements IDataManager {
             // opening the XML class file
             Document document = readDocumentFromFile(file);
             // retrieving the code element
-            Element codeElement = getCodeItem(document, lang);
+            Element codeElement = getCode(document, lang);
 
             if (codeElement == null) {
                 throw new XmlManagementException(xmlBundle.getString(
@@ -407,8 +387,7 @@ public class XmlManager implements IDataManager {
 
         ArrayList classList = loadClassList();
         return Collections.binarySearch(classList, clazz,
-                (String o1, String o2) -> getFileFromClass(o1).getName()
-                .compareToIgnoreCase(getFileFromClass(o2).getName())) < 0;
+                (String o1, String o2) -> purifyClassName(o1).compareToIgnoreCase(purifyClassName(o2))) < 0;
     }
 
     /*
@@ -422,111 +401,42 @@ public class XmlManager implements IDataManager {
             return false;
         }
 
-        ArrayList langList = loadLangList();
+        ArrayList langList = loadLanguageList();
         return Collections.binarySearch(langList, lang,
-                (String o1, String o2) -> o1.compareToIgnoreCase(o2)) < 0;
+                (String o1, String o2) -> purifyLanguageName(o1).compareToIgnoreCase(purifyLanguageName(o2))) < 0;
     }
 
     /*
-     Creates a new XML data file with the 
-     specified name from a document object.
+     Loads the class or language list from main XML file into array list of strings.
      */
-    private void createDocument(Document mainDocument, String newClass)
-            throws XmlManagementException, TransformerException, IOException, SAXException {
-        File file = getFileFromClass(newClass);
+    private ArrayList<String> loadList(String listElementName, String elementName)
+            throws XmlManagementException, SAXException, IOException {
+        Document mainDocument = readDocumentFromFile(mainFile);
 
-        if (file.exists()) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "fileExists"), file.getName());
-        }
+        ArrayList<String> list = new ArrayList<>();
+        Element itemList = getItemList(mainDocument, listElementName);
+        NodeList nodes = itemList.getElementsByTagName(elementName);
 
-        boolean created = file.createNewFile();
+        // iterating through the class elements in the main XML file
+        for (int i = 0; i < nodes.getLength(); i++) {
+            Node item = nodes.item(i);
 
-        if (!created) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "notCreated"), file.getName());
-        }
-
-        // creating a new XML document with root element
-        Document document = documentBuilder.newDocument();
-        Element root = document.createElement(XmlKeyword.CODE_ROOT_ELEMENT.getName());
-
-        Element langList = getLangList(mainDocument);
-        NodeList languages = langList.getChildNodes();
-
-        // iterating through the languages
-        for (int i = 0; i < languages.getLength(); i++) {
-            Node langNode = languages.item(i);
-
-            // adding a new code element with lang attribute to the new XML class file
-            if (langNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element langElement = (Element) langNode;
-
-                Element codeElement = document.createElement(XmlKeyword.CODE_ELEMENT.getName());
-                codeElement.setAttribute(XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langElement.getTextContent());
-                root.appendChild(codeElement);
+            // adding the class elements contents to array list
+            if (item.getNodeType() == Node.ELEMENT_NODE) {
+                Element itemElement = (Element) item;
+                list.add(itemElement.getTextContent());
             }
         }
 
-        document.appendChild(root);
-        writeDocumentToFile(file, document);
+        return list;
     }
 
     /*
-     Renames an XML data file represented by the specified name
-     with a specified new name.
+     Returns an XML element representing the list of all created classes or languages.
      */
-    private void renameDocument(String oldClass, String newClass)
-            throws XmlManagementException {
-        File oldFile = getFileFromClass(oldClass);
-
-        if (!oldFile.isFile()) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "notAFile"), oldFile.getName());
-        }
-
-        File newFile = getFileFromClass(newClass);
-
-        if (newFile.exists()) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "fileExists"), newFile.getName());
-        }
-
-        boolean renamed = oldFile.renameTo(newFile);
-
-        if (!renamed) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "notRenamed"), oldFile.getName());
-        }
-    }
-
-    /*
-     Deletes an XML data file represented by the specified name.
-     */
-    private void deleteDocument(String oldClass)
-            throws XmlManagementException {
-        File file = getFileFromClass(oldClass);
-
-        if (!file.exists()) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "notAFile"), file.getName());
-        }
-
-        boolean deleted = file.delete();
-
-        if (!deleted) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "notDeleted"), file.getName());
-        }
-    }
-
-    /*
-     Returns an XML element representing the list of all created classes.
-     */
-    private Element getClassList(Document mainDocument)
+    private Element getItemList(Document mainDocument, String elementName)
             throws XmlManagementException, SAXException, IOException {
-        String elementName = XmlKeyword.CLASS_LIST_ELEMENT.getName();
-        NodeList items = mainDocument.getElementsByTagName(elementName);
+        NodeList items = mainDocument.getElementsByTagName(elementName); // TODO list
 
         if (items.getLength() > 1) {
             throw new XmlManagementException(xmlBundle.getString(
@@ -543,21 +453,20 @@ public class XmlManager implements IDataManager {
 
     /*
      Returns an XML element representing the item in the list
-     of classes in the main XML document.
+     of classe or languagess in the main XML document.
      */
-    private Element getClassItem(Element classList, String clazz) {
-        String elementName = XmlKeyword.CLASS_ELEMENT.getName();
-        NodeList classes = classList.getElementsByTagName(elementName);
+    private Element getItem(Element itemList, String clazz, String elementName) {
+        NodeList items = itemList.getElementsByTagName(elementName);
 
-        for (int i = 0; i < classes.getLength(); i++) {
-            Node classNode = classes.item(i);
+        for (int i = 0; i < items.getLength(); i++) {
+            Node itemNode = items.item(i);
 
-            if (classNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element classElement = (Element) classNode;
+            if (itemNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element itemElement = (Element) itemNode;
 
-                // finding the specified class element
-                if (classElement.getTextContent().equals(clazz)) {
-                    return classElement;
+                // finding the specified item element
+                if (itemElement.getTextContent().equals(clazz)) {
+                    return itemElement;
                 }
             }
         }
@@ -567,167 +476,59 @@ public class XmlManager implements IDataManager {
 
     /*
      Creates an XML element representing the item in the list
-     of classes in the main XML document.
+     of classes or languages in the main XML document.
      */
-    private void addClassItem(Document mainDocument, Element classList, String newClass)
+    private void addItem(Document mainDocument, Element itemList, String newItem, String elementName)
             throws XmlManagementException, TransformerException, SAXException, IOException {
-        String elementName = XmlKeyword.CLASS_ELEMENT.getName();
-        Element newClassElement = getClassItem(classList, newClass);
+        Element newItemElement = getItem(itemList, newItem, elementName);
 
-        if (newClassElement != null) {
+        if (newItemElement != null) {
             throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueExists"), elementName, newClass);
+                    "elementWithValueExists"), elementName, newItem);
         }
 
-        newClassElement = mainDocument.createElement(elementName);
-        newClassElement.setTextContent(newClass);
-        classList.appendChild(newClassElement);
+        newItemElement = mainDocument.createElement(elementName);
+        newItemElement.setTextContent(newItem);
+        itemList.appendChild(newItemElement);
     }
 
     /*
      Updates an XML element representing the item in the list
-     of classes in the main XML document.
+     of classes or languages in the main XML document.
      */
-    private void editClassItem(Element classList, String oldClass, String newClass)
+    private void editItem(Element itemList, String oldItem, String newItem, String elementName)
             throws XmlManagementException, TransformerException, SAXException, IOException {
-        String elementName = XmlKeyword.CLASS_ELEMENT.getName();
-        Element oldClassElement = getClassItem(classList, oldClass);
+        Element oldItemElement = getItem(itemList, oldItem, elementName);
 
-        if (oldClassElement == null) {
+        if (oldItemElement == null) {
             throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueNotFound"), elementName, oldClass);
+                    "elementWithValueNotFound"), elementName, oldItem);
         }
 
-        Element newClassElement = getClassItem(classList, newClass);
+        Element newItemElement = getItem(itemList, newItem, elementName);
 
-        if (newClassElement != null) {
+        if (newItemElement != null) {
             throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueExists"), elementName, newClass);
+                    "elementWithValueExists"), elementName, newItem);
         }
 
-        oldClassElement.setTextContent(newClass);
+        oldItemElement.setTextContent(newItem);
     }
 
     /*
      Deletes an XML element representing the item in the list
-     of classes in the main XML document.
+     of classes or languages in the main XML document.
      */
-    private void removeClassItem(Element classList, String oldClass)
+    private void removeItem(Element itemList, String oldItem, String elementName)
             throws XmlManagementException, TransformerException, SAXException, IOException {
-        String elementName = XmlKeyword.CLASS_ELEMENT.getName();
-        Element oldClassElement = getClassItem(classList, oldClass);
+        Element oldItemElement = getItem(itemList, oldItem, elementName);
 
-        if (oldClassElement == null) {
+        if (oldItemElement == null) {
             throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueNotFound"), elementName, oldClass);
+                    "elementWithValueNotFound"), elementName, oldItem);
         }
 
-        classList.removeChild(oldClassElement);
-    }
-
-    /*
-     Returns an XML element representing the list of all created languages.
-     */
-    private Element getLangList(Document mainDocument)
-            throws XmlManagementException, SAXException, IOException {
-        String elementName = XmlKeyword.LANGUAG_LIST_ELEMENT.getName();
-        NodeList items = mainDocument.getElementsByTagName(elementName);
-
-        if (items.getLength() > 1) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "duplicateElements"), elementName);
-        }
-
-        if (items.getLength() < 1 || items.item(0).getNodeType() != Node.ELEMENT_NODE) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "elementNotFound"), elementName);
-        }
-
-        return (Element) items.item(0);
-    }
-
-    /*
-     Returns an XML element representing the item in the list
-     of languages in the main XML document.
-     */
-    private Element getLangItem(Element langList, String lang) {
-        String elementName = XmlKeyword.LANGUAGE_ELEMENT.getName();
-        NodeList languages = langList.getElementsByTagName(elementName);
-
-        for (int i = 0; i < languages.getLength(); i++) {
-            Node langNode = languages.item(i);
-
-            if (langNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element langElement = (Element) langNode;
-
-                // finding the specified language element
-                if (langElement.getTextContent().equals(lang)) {
-                    return langElement;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /*
-     Creates an XML element representing the item in the list
-     of languages in the main XML document.
-     */
-    private void addLangItem(Document mainDocument, Element langList, String newLang)
-            throws XmlManagementException, TransformerException, SAXException, IOException {
-        String elementName = XmlKeyword.LANGUAGE_ELEMENT.getName();
-        Element newLangElement = getLangItem(langList, newLang);
-
-        if (newLangElement != null) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueExists"), elementName, newLang);
-        }
-
-        newLangElement = mainDocument.createElement(elementName);
-        newLangElement.setTextContent(newLang);
-        langList.appendChild(newLangElement);
-    }
-
-    /*
-     Updates an XML element representing the item in the list
-     of languages in the main XML document.
-     */
-    private void editLangItem(Element langList, String oldLang, String newLang)
-            throws XmlManagementException, TransformerException, SAXException, IOException {
-        String elementName = XmlKeyword.LANGUAGE_ELEMENT.getName();
-        Element oldLangElement = getLangItem(langList, oldLang);
-
-        if (oldLangElement == null) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueNotFound"), elementName, oldLang);
-        }
-
-        Element newLangElement = getLangItem(langList, newLang);
-
-        if (newLangElement != null) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueExists"), elementName, newLang);
-        }
-
-        oldLangElement.setTextContent(newLang);
-    }
-
-    /*
-     Deletes an XML element representing the item in the list
-     of languages in the main XML document.
-     */
-    private void removeLangItem(Element langList, String oldLang)
-            throws XmlManagementException, TransformerException, SAXException, IOException {
-        String elementName = XmlKeyword.LANGUAGE_ELEMENT.getName();
-        Element oldLangElement = getLangItem(langList, oldLang);
-
-        if (oldLangElement == null) {
-            throw new XmlManagementException(xmlBundle.getString(
-                    "elementWithValueNotFound"), elementName, oldLang);
-        }
-
-        langList.removeChild(oldLangElement);
+        itemList.removeChild(oldItemElement);
     }
 
     /*
@@ -756,7 +557,7 @@ public class XmlManager implements IDataManager {
      Returns an XML element containing the source code in the specified
      XML document.
      */
-    private Element getCodeItem(Document document, String lang) {
+    private Element getCode(Document document, String lang) {
         String elementName = XmlKeyword.CODE_ELEMENT.getName();
         String attributeName = XmlKeyword.LANGUAGE_ATTRIBUTE.getName();
         NodeList codeNodes = document.getElementsByTagName(elementName);
@@ -781,11 +582,11 @@ public class XmlManager implements IDataManager {
      Creates an XML element containing the source code in the specified
      XML document.
      */
-    private void addCodeItem(Document document, String newLang)
+    private void addCode(Document document, String newLang)
             throws XmlManagementException, TransformerException {
         String elementName = XmlKeyword.CODE_ELEMENT.getName();
         String attributeName = XmlKeyword.LANGUAGE_ATTRIBUTE.getName();
-        Element newCodeElement = getCodeItem(document, newLang);
+        Element newCodeElement = getCode(document, newLang);
 
         if (newCodeElement != null) {
             throw new XmlManagementException(xmlBundle.getString(
@@ -801,18 +602,18 @@ public class XmlManager implements IDataManager {
      Updates an XML element containing the source code in the specified
      XML document.
      */
-    private void editCodeItem(Document document, String oldLang, String newLang)
+    private void editCode(Document document, String oldLang, String newLang)
             throws XmlManagementException, TransformerException {
         String elementName = XmlKeyword.CODE_ELEMENT.getName();
         String attributeName = XmlKeyword.LANGUAGE_ATTRIBUTE.getName();
-        Element oldCodeElement = getCodeItem(document, oldLang);
+        Element oldCodeElement = getCode(document, oldLang);
 
         if (oldCodeElement == null) {
             throw new XmlManagementException(xmlBundle.getString(
                     "elementWithAttributeNotFound"), elementName, attributeName, oldLang);
         }
 
-        Element newCodeElement = getCodeItem(document, newLang);
+        Element newCodeElement = getCode(document, newLang);
 
         if (newCodeElement != null) {
             throw new XmlManagementException(xmlBundle.getString(
@@ -826,11 +627,11 @@ public class XmlManager implements IDataManager {
      Deletes an XML element containing the source code in the specified
      XML document.
      */
-    private void removeCodeItem(Document document, String oldLang)
+    private void removeCode(Document document, String oldLang)
             throws XmlManagementException, TransformerException {
         String elementName = XmlKeyword.CODE_ELEMENT.getName();
         String attributeName = XmlKeyword.LANGUAGE_ATTRIBUTE.getName();
-        Element oldCodeElement = getCodeItem(document, oldLang);
+        Element oldCodeElement = getCode(document, oldLang);
 
         if (oldCodeElement == null) {
             throw new XmlManagementException(xmlBundle.getString(
@@ -838,6 +639,104 @@ public class XmlManager implements IDataManager {
         }
 
         getCodeList(document).removeChild(oldCodeElement);
+    }
+    
+    /*
+    Creates a new XML document and adds code elements with all available languages into it.
+    */
+    private Document createDocument(Element langList) throws XmlManagementException, SAXException, IOException {
+        // creating a new XML document with root element
+        Document document = documentBuilder.newDocument();
+        Element root = document.createElement(XmlKeyword.CODE_ROOT_ELEMENT.getName());
+        NodeList languages = langList.getChildNodes();
+
+        // iterating through the languages
+        for (int i = 0; i < languages.getLength(); i++) {
+            Node langNode = languages.item(i);
+
+            // adding a new code element with lang attribute to the new XML class file
+            if (langNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element langElement = (Element) langNode;
+                Element codeElement = document.createElement(XmlKeyword.CODE_ELEMENT.getName());
+                codeElement.setAttribute(XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langElement.getTextContent());
+                root.appendChild(codeElement);
+            }
+        }
+
+        document.appendChild(root);
+        
+        return document;
+    }
+    
+    /*
+     Creates a new XML data file with the 
+     specified name from a document object.
+     */
+    private File createFile(String newClass)
+            throws XmlManagementException, TransformerException, IOException, SAXException {
+        File file = getFileFromClass(newClass);
+
+        if (file.exists()) {
+            throw new XmlManagementException(xmlBundle.getString(
+                    "fileExists"), file.getName());
+        }
+
+        boolean created = file.createNewFile();
+
+        if (!created) {
+            throw new XmlManagementException(xmlBundle.getString(
+                    "notCreated"), file.getName());
+        }
+        
+        return file;
+    }
+
+    /*
+     Renames an XML data file represented by the specified name
+     with a specified new name.
+     */
+    private void renameFile(String oldClass, String newClass)
+            throws XmlManagementException {
+        File oldFile = getFileFromClass(oldClass);
+
+        if (!oldFile.isFile()) {
+            throw new XmlManagementException(xmlBundle.getString(
+                    "notAFile"), oldFile.getName());
+        }
+
+        File newFile = getFileFromClass(newClass);
+
+        if (newFile.exists()) {
+            throw new XmlManagementException(xmlBundle.getString(
+                    "fileExists"), newFile.getName());
+        }
+
+        boolean renamed = oldFile.renameTo(newFile);
+
+        if (!renamed) {
+            throw new XmlManagementException(xmlBundle.getString(
+                    "notRenamed"), oldFile.getName());
+        }
+    }
+
+    /*
+     Deletes an XML data file represented by the specified name.
+     */
+    private void deleteFile(String oldClass)
+            throws XmlManagementException {
+        File file = getFileFromClass(oldClass);
+
+        if (!file.exists()) {
+            throw new XmlManagementException(xmlBundle.getString(
+                    "notAFile"), file.getName());
+        }
+
+        boolean deleted = file.delete();
+
+        if (!deleted) {
+            throw new XmlManagementException(xmlBundle.getString(
+                    "notDeleted"), file.getName());
+        }
     }
 
     /*
@@ -869,10 +768,24 @@ public class XmlManager implements IDataManager {
     }
 
     /*
+     Purifies the class name before adding into list.
+     */
+    private String purifyClassName(String clazz) {
+        return clazz.trim().replaceAll("\\s+", "_");
+    }
+
+    /*
+     Purifies the item name before adding into list.
+     */
+    private String purifyLanguageName(String lang) {
+        return lang.trim().replaceAll("\\s+", " ");
+    }
+
+    /*
      Returns the XML data file object corresponding to the specified class name.
      */
     private File getFileFromClass(String clazz) {
-        return new File(directory.getPath() + "/" + clazz.toLowerCase() + ".xml");
+        return new File(subfolder.getPath() + File.separator + clazz.toLowerCase() + XML_FILE_EXTENSION);
     }
 
 }

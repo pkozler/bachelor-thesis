@@ -1,6 +1,7 @@
 
 import application.config.Config;
 import application.core.ADataManagementException;
+import application.core.xml.XmlKeyword;
 import application.core.xml.XmlManager;
 import java.io.File;
 import java.io.IOException;
@@ -27,66 +28,121 @@ import org.xml.sax.SAXException;
  */
 final class XmlManagerTestUtils {
 
-    // resource bundle for XML-specific strings
-    private static final ResourceBundle XML_BUNDLE
-            = ResourceBundle.getBundle(Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
-    // path to the folder with test data directories (relative to the project root folder)
-    private static final String TEST_DATA_FOLDER = "temp/";
-    // a counter of test runs for building the real path to the current test data directory
-    private static int testCounter = 0;
-    // the builder for reading XML files
+    /**
+     * positive test type
+     */
+    public static final String POSITIVE_TEST = "positive";
+    /**
+     * negative test type
+     */
+    public static final String NEGATIVE_TEST = "negative";
+    /**
+     * path to the root folder with temporary test data directories (relative to
+     * the project root folder)
+     */
+    public static final String ROOT_TEST_TEMP_DATA_FOLDER = "temp-data";
+    // exception message used if directory was not created
+    private static final String NOT_CREATED_MESSAGE = "Failed to create a directory: ";
+    // exception message used if directory was not deleted
+    private static final String NOT_DELETED_MESSAGE = "Failed to delete a directory: ";
+    // type of current test (positive or negative)
+    private final String CURRENT_TEST_TYPE;
+    // builder for reading XML files
     private final DocumentBuilder DOCUMENT_BUILDER;
-    // the TRANSFORMER for writing XML files
+    // transformer for writing XML files
     private final Transformer TRANSFORMER;
-    // the real path to the main test XML data file for current test
-    private File mainDataFile;
-    // the real path to the folder with test XML data files for current test
-    private File dataFilesFolder;
+    // resource bundle for XML-specific strings
+    private final ResourceBundle XML_BUNDLE
+            = ResourceBundle.getBundle(Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
+    // real path to the root folder for current test
+    private String currentTestFolderPath;
+    // real path to the current test main file
+    private String testMainFilePath;
+    // real path to the current test subfolder
+    private String testSubfolderPath;
 
     /**
-     * Prepares the test data for XML manager.
+     * Initializes the reusable objects and sets the type of current test.
      *
-     * @throws IOException IO error
-     * @throws ParserConfigurationException parser error
-     * @throws TransformerException TRANSFORMER error
+     * @param testType string representing the type of current tests
+     * @throws IOException
+     * @throws ParserConfigurationException
+     * @throws TransformerException
      */
-    public XmlManagerTestUtils()
+    public XmlManagerTestUtils(String testType)
             throws IOException, ParserConfigurationException, TransformerException {
-        testCounter++;
-        // building the real path to the temporary test root data folder for current testing
-        String tempFolderDest = TEST_DATA_FOLDER + testCounter + "/";
-
+        this.CURRENT_TEST_TYPE = testType;
         // creating the builder for reading XML files
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DOCUMENT_BUILDER = dbf.newDocumentBuilder();
         // creating the TRANSFORMER for writing XML files
         TransformerFactory tf = TransformerFactory.newInstance();
         TRANSFORMER = tf.newTransformer();
+    }
 
+    /**
+     * Prepares the temporary fake data directory for current test and performs
+     * the XML manager initialization.
+     *
+     * @param xmlManager XML manager to initialize
+     * @param testName name of the current test
+     * @throws ADataManagementException
+     * @throws IOException
+     * @throws ParserConfigurationException
+     * @throws TransformerException
+     */
+    public void initializeTestDirectory(XmlManager xmlManager, String testName)
+            throws ADataManagementException, IOException, ParserConfigurationException, TransformerException {
+        initializeTestDirectory(xmlManager, testName, true);
+    }
+
+    /**
+     * Prepares the temporary fake data directory for current test and
+     * optionally performs the XML manager initialization (setting the paths to
+     * the data files).
+     *
+     * @param xmlManager XML manager
+     * @param testName name of the current test (will be used in lowercase for
+     * building the current test data subfolder path)
+     * @throws ADataManagementException
+     * @throws IOException
+     * @throws ParserConfigurationException
+     * @throws TransformerException
+     */
+    public void initializeTestDirectory(XmlManager xmlManager, String testName, boolean initializeXmlManager)
+            throws ADataManagementException, IOException, ParserConfigurationException, TransformerException {
+        // building the real path to the temporary test root data folder for current testing
+        currentTestFolderPath = ROOT_TEST_TEMP_DATA_FOLDER + File.separator + testName.toLowerCase() + "-" + CURRENT_TEST_TYPE;
         // deleting temporary test root data folder from previous testing
-        deleteFolderRecursively(new File(tempFolderDest));
+        File file = new File(currentTestFolderPath);
+
+        if (file.exists()) {
+            deleteDirectoryRecursively(file);
+        }
+
+        testSubfolderPath = currentTestFolderPath + File.separator + Config.DATA_FILES_SUBFOLDER_NAME;
+        testMainFilePath = currentTestFolderPath + File.separator + Config.MAIN_DATA_FILE_NAME;
+
         // creating the file folder for the current test
-        createTestDataDirectory(tempFolderDest + Config.DATA_FILES_FOLDER_DEST);
+        createTestSubfolder(new File(testSubfolderPath));
         // creating the main file for the current test
-        createTestDataMainFile(tempFolderDest + Config.MAIN_DATA_FILE_DEST);
+        createTestMainFile(new File(testMainFilePath));
+
+        if (initializeXmlManager) {
+            initializeXmlManager(xmlManager);
+        }
     }
 
     /**
-     * Returns the test main data file.
+     * Performs the XML manager initialization.
      *
-     * @return the test main data file
+     * @param xmlManager XML manager
      */
-    public File getMainDataFile() {
-        return mainDataFile;
-    }
-
-    /**
-     * Returns the test data files folder.
-     *
-     * @return the test data files folder
-     */
-    public File getDataFilesFolder() {
-        return dataFilesFolder;
+    public void initializeXmlManager(XmlManager xmlManager) throws ADataManagementException {
+        xmlManager.initialize(
+                testMainFilePath,
+                testSubfolderPath,
+                XML_BUNDLE);
     }
 
     /**
@@ -101,20 +157,37 @@ final class XmlManagerTestUtils {
     }
 
     /**
-     * Returns the XML data file object corresponding to the specified class
-     * name.
+     * Returns the main XML file.
+     *
+     * @return main file
+     */
+    public File getMainFile() {
+        return new File(testMainFilePath);
+    }
+
+    /**
+     * Returns the XML subfolder.
+     *
+     * @return subfolder
+     */
+    public File getSubfolder() {
+        return new File(testSubfolderPath);
+    }
+
+    /**
+     * Returns the XML data file corresponding to the specified class name.
      *
      * @param className class name
-     * @return data file
+     * @return class file
      */
     public File getFileFromClass(String className) {
-        return new File(dataFilesFolder.getPath() + "/" + className.toLowerCase() + ".xml");
+        return new File(testSubfolderPath + File.separator + className.toLowerCase() + XmlManager.XML_FILE_EXTENSION);
     }
 
     /**
      * Parses a XML document from existing file.
      *
-     * @param file path to the existing XML file
+     * @param file XML file
      * @return parsed XML document
      * @throws SAXException SAX error
      * @throws IOException IO error
@@ -133,7 +206,7 @@ final class XmlManagerTestUtils {
     /**
      * Saves the XML document to the specified file.
      *
-     * @param file path to the changed XML file
+     * @param className XML file
      * @param document XML document
      * @throws TransformerException TRANSFORMER error
      */
@@ -148,65 +221,51 @@ final class XmlManagerTestUtils {
         TRANSFORMER.transform(source, result);
     }
 
-    /**
-     * Performs the XML manager initialization (setting the paths to data
-     * files).
-     *
-     * @param xmlManager XML manager
-     * @throws ADataManagementException an error
-     */
-    public void initXmlManager(XmlManager xmlManager)
-            throws ADataManagementException {
-        xmlManager.setPaths(mainDataFile, dataFilesFolder, XML_BUNDLE);
-    }
-
-    /*
-     Deletes the existing temporary directory.
-     */
-    private void deleteFolderRecursively(File file) {
-        if (file.isDirectory()) {
-            File[] files = file.listFiles();
-
-            for (File f : files) {
-                deleteFolderRecursively(f);
-            }
-        }
-
-        file.delete();
-    }
-
     /*
      Creates a new folder for test XML data files associated with current test.
      */
-    private void createTestDataDirectory(String dataFilesFolderDest)
+    private void createTestSubfolder(File subfolder)
             throws IOException {
-        dataFilesFolder = new File(dataFilesFolderDest);
-
         // creating the directory for current test
-        if (!dataFilesFolder.mkdirs()) {
-            throw new IOException("Failed to create directory: " + dataFilesFolder);
+        if (!subfolder.mkdirs()) {
+            throw new IOException(NOT_CREATED_MESSAGE + subfolder.getAbsolutePath());
         }
     }
 
     /*
      Creates a new main test XML data file associated with current test.
      */
-    private void createTestDataMainFile(String mainDataFileDest)
-            throws ParserConfigurationException, TransformerException {
-        mainDataFile = new File(mainDataFileDest);
+    private void createTestMainFile(File mainFile)
+            throws ParserConfigurationException, TransformerException, IOException {
+        mainFile.createNewFile();
 
         // creating basic document elements
         Document document = DOCUMENT_BUILDER.newDocument();
-        Element root = document.createElement("lists");
-        Element langList = document.createElement("languages");
-        Element classList = document.createElement("classes");
+        Element root = document.createElement(XmlKeyword.LIST_ROOT_ELEMENT.getName());
+        Element langList = document.createElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        Element classList = document.createElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         root.appendChild(langList);
         root.appendChild(classList);
         document.appendChild(root);
         document.normalize();
 
         // creating the main file
-        writeDocumentToFile(mainDataFile, document);
+        writeDocumentToFile(mainFile, document);
+    }
+
+    /*
+     Performs the recursive deleting operation upon the existing temporary directory.
+     */
+    private void deleteDirectoryRecursively(File file) throws IOException {
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+
+            for (File f : files) {
+                deleteDirectoryRecursively(f);
+            }
+        }
+
+        file.delete();
     }
 
 }

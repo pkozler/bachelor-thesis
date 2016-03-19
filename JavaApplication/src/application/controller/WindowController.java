@@ -103,6 +103,37 @@ public class WindowController implements Initializable {
     // last loaded lang
     private String lastValidLang = null;
 
+    // interface for validating names from dialogs using lambda expressions
+    private interface IValidator {
+        
+        /*
+            Validates the entered name.
+        */
+        public boolean validate(String name) throws ADataManagementException;
+        
+    }
+    
+    /*
+     Gets the valid class or language name from user input in text dialog.
+     */
+    private String getValidName(DialogKeyContainer textDialogKeyContainer, String nameDetailKey,
+            IValidator validator) throws ADataManagementException {
+        // showing the dialog until the valid name is entered, the dialog is canceled or an error occures
+        while (true) {
+            String name = dialogFactory.getNameFromDialog(textDialogKeyContainer, nameDetailKey);
+
+            // dialog was canceled
+            if (name == null) {
+                return null;
+            }
+
+            // valid name was entered
+            if (validator.validate(name)) {
+                return name;
+            }
+        }
+    }
+    
     /**
      * Starts the class search after clicking the search button and shows the
      * result in a class list.
@@ -124,58 +155,6 @@ public class WindowController implements Initializable {
         classNamesListView.getSelectionModel().select(index);
     }
 
-    /*
-     Gets the valid Java class name from user input in text dialog.
-     */
-    private String getValidClassName(DialogKeyContainer textDialogKeyContainer,
-            DialogKeyContainer exceptionDialogKeyContainer, String classNameDetailKey) {
-        // showing the dialog until the valid name is entered, the dialog is canceled or an error occures
-        while (true) {
-            String name = dialogFactory.getNameFromDialog(textDialogKeyContainer, classNameDetailKey);
-
-            // dialog was canceled
-            if (name == null) {
-                return null;
-            }
-
-            try {
-                // valid name was entered
-                if (dataManager.validateClass(name)) {
-                    return name;
-                }
-            } catch (ADataManagementException ex) {
-                dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
-                return null;
-            }
-        }
-    }
-
-    /*
-     Gets the valid programming language name from user input in text dialog.
-     */
-    private String getValidLangName(DialogKeyContainer textDialogKeyContainer,
-            DialogKeyContainer exceptionDialogKeyContainer, String langNameDetailKey) {
-        // showing the dialog until the valid name is entered, the dialog is canceled or an error occures
-        while (true) {
-            String name = dialogFactory.getNameFromDialog(textDialogKeyContainer, langNameDetailKey);
-
-            // dialog was canceled
-            if (name == null) {
-                return null;
-            }
-
-            try {
-                // valid name was entered
-                if (dataManager.validateClass(name)) {
-                    return name;
-                }
-            } catch (ADataManagementException ex) {
-                dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
-                return null;
-            }
-        }
-    }
-
     /**
      * Starts adding a new class after clicking the corresponding button or menu
      * item.
@@ -188,8 +167,15 @@ public class WindowController implements Initializable {
                 "addClass", "enterName", "addClassText");
         DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
                 "addingClass", "error", "addingClassError");
-        String name = getValidClassName(
-                textDialogKeyContainer, exceptionDialogKeyContainer, "classNameDetail");
+        String name;
+        
+        try {
+            name = getValidName(textDialogKeyContainer, "classNameDetail",
+                    (enteredName) -> dataManager.validateClass(enteredName));
+        } catch (ADataManagementException ex) {
+            dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
+            return;
+        }
 
         if (name == null) {
             return;
@@ -236,8 +222,15 @@ public class WindowController implements Initializable {
                 "editClass", "enterName", "editClassText");
         DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
                 "editingClass", "error", "editingClassError");
-        String name = getValidClassName(
-                textDialogKeyContainer, exceptionDialogKeyContainer, "classNameDetail");
+        String name;
+        
+        try {
+            name = getValidName(textDialogKeyContainer, "classNameDetail",
+                    (enteredName) -> dataManager.validateClass(enteredName));
+        } catch (ADataManagementException ex) {
+            dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
+            return;
+        }
 
         if (name == null) {
             return;
@@ -334,22 +327,29 @@ public class WindowController implements Initializable {
                 "addLang", "enterName", "addLangText");
         DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
                 "addingLang", "error", "addingLangError");
-        String name = getValidLangName(
-                textDialogKeyContainer, exceptionDialogKeyContainer, "langNameDetail");
+        String name;
+        
+        try {
+            name = getValidName(textDialogKeyContainer, "langNameDetail",
+                    (enteredName) -> dataManager.validateLanguage(enteredName));
+        } catch (ADataManagementException ex) {
+            dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
+            return;
+        }
 
         if (name == null) {
             return;
         }
 
         /* 
-         creating the task for calling the addLang method on background
+         creating the task for calling the addLanguage method on background
          and showing the results to the GUI
          */
         Task<Void> addLangTask = new Task<Void>() {
 
             @Override
             protected Void call() throws Exception {
-                dataManager.addLang(name);
+                dataManager.addLanguage(name);
                 return null;
             }
 
@@ -382,8 +382,15 @@ public class WindowController implements Initializable {
                 "editLang", "enterName", "editLangText");
         DialogKeyContainer exceptionDialogKeyContainer = new DialogKeyContainer(
                 "editingLang", "error", "editingLangError");
-        String name = getValidClassName(
-                textDialogKeyContainer, exceptionDialogKeyContainer, "langNameDetail");
+        String name;
+        
+        try {
+            name = getValidName(textDialogKeyContainer, "langNameDetail",
+                    (enteredName) -> dataManager.validateLanguage(enteredName));
+        } catch (ADataManagementException ex) {
+            dialogFactory.showExceptionInDialog(ex, exceptionDialogKeyContainer);
+            return;
+        }
 
         if (name == null) {
             return;
@@ -392,14 +399,14 @@ public class WindowController implements Initializable {
         String oldName = classNamesListView.getSelectionModel().getSelectedItem();
 
         /* 
-         creating the task for calling the editLang method on background
+         creating the task for calling the editLanguage method on background
          and showing the results to the GUI
          */
         Task<Void> editLangTask = new Task<Void>() {
 
             @Override
             protected Void call() throws Exception {
-                dataManager.editLang(oldName, name);
+                dataManager.editLanguage(oldName, name);
                 return null;
             }
 
@@ -440,14 +447,14 @@ public class WindowController implements Initializable {
         String name = classNamesListView.getSelectionModel().getSelectedItem();
 
         /* 
-         creating the task for calling the removeLang method on background
+         creating the task for calling the removeLanguage method on background
          and showing the results to the GUI
          */
         Task<Void> removeLangTask = new Task<Void>() {
 
             @Override
             protected Void call() throws Exception {
-                dataManager.removeLang(name);
+                dataManager.removeLanguage(name);
                 return null;
             }
 
@@ -643,14 +650,14 @@ public class WindowController implements Initializable {
                 = new DialogKeyContainer("loadingLangList", "error", "loadingLangListError");
 
         /* 
-         creating the task for calling the loadLangList method on background
+         creating the task for calling the loadLanguageList method on background
          and showing the results to the GUI
          */
         Task<ArrayList<String>> loadLangListTask = new Task<ArrayList<String>>() {
 
             @Override
             protected ArrayList<String> call() throws Exception {
-                return dataManager.loadLangList();
+                return dataManager.loadLanguageList();
             }
 
             @Override

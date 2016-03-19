@@ -1,16 +1,17 @@
 
+import application.config.Config;
 import application.core.ADataManagementException;
 import application.core.xml.XmlKeyword;
 import application.core.xml.XmlManager;
 import java.io.File;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
+import org.junit.rules.TestName;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -24,548 +25,868 @@ import org.xml.sax.SAXException;
  */
 public class XmlManagerTestNegative {
 
+    /**
+     * rule for accessing the test method names
+     */
+    @Rule
+    public TestName testName = new TestName();
+
+    /**
+     * rule for specification of expected exception
+     */
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     // tested XML manager
     private XmlManager xmlManager;
     // data for tested XML manager
     private XmlManagerTestUtils testUtils;
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
-
     /**
      * Creates a clean test test data directory structure and creates the XML
      * manager before each test is run.
      *
-     * @throws ParserConfigurationException parser error
-     * @throws TransformerException transformer error
-     * @throws IOException IO error
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws java.io.IOException IO error
      */
     @Before
     public void setUp()
-            throws IOException, ParserConfigurationException, TransformerException {
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         xmlManager = new XmlManager();
-        testUtils = new XmlManagerTestUtils();
+        testUtils = new XmlManagerTestUtils(XmlManagerTestUtils.NEGATIVE_TEST);
     }
 
     /**
-     * Tests the setPaths method.
+     * Tests the initialize method without the main file.
      *
      * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
      * @throws java.io.IOException IO error
      */
     @Test
-    public void setPathsTest()
-            throws ADataManagementException, IOException {
-        expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage("notAMainFile", testUtils.getMainDataFile().getName()));
+    public void initializeTest()
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // initializing test directory
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName(), false);
 
-        testUtils.getMainDataFile().delete();
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expect(ADataManagementException.class);
+        expectedException.expectMessage(testUtils.getFormattedMessage("notAMainFile",
+                Config.MAIN_DATA_FILE_NAME));
+
+        // deleting the main file
+        testUtils.getMainFile().delete();
+
+        // setting paths to XML manager
+        testUtils.initializeXmlManager(xmlManager);
     }
 
     /**
-     * Tests the setPaths method.
+     * Tests the initialize method without the data subfolder.
      *
      * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
      * @throws java.io.IOException IO error
      */
     @Test
-    public void setPathsTest2()
-            throws ADataManagementException, IOException {
-        expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage("notADirectory", testUtils.getDataFilesFolder().getName()));
+    public void initializeTest2()
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // initializing test directory
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName(), false);
 
-        testUtils.getDataFilesFolder().delete();
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expect(ADataManagementException.class);
+        expectedException.expectMessage(testUtils.getFormattedMessage("notADirectory",
+                Config.DATA_FILES_SUBFOLDER_NAME));
+
+        // deleting the data folder
+        testUtils.getSubfolder().delete();
+
+        // setting paths to XML manager
+        testUtils.initializeXmlManager(xmlManager);
     }
 
+    /**
+     * Tests the loadClassList method with duplicate class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void loadClassListTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
         addListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.loadClassList();
-        // getClassList - duplicateElements
     }
 
+    /**
+     * Tests the loadClassList method with no class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void loadClassListTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
         removeListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.loadClassList();
-        // getClassList - elementNotFound
     }
 
+    /**
+     * Tests the loadLanguageList method with duplicate language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void loadLangListTest()
+    public void loadLanguageListTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        addListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.loadLangList();
-        // getLangList - duplicateElements
+        addListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.loadLanguageList();
     }
 
+    /**
+     * Tests the loadLanguageList method with no language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void loadLangListTest2()
+    public void loadLanguageListTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        removeListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.loadLangList();
-        // getLangList - elementNotFound
+        removeListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.loadLanguageList();
     }
 
+    /**
+     * Tests the addClass method with duplicate class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void addClassTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
         addListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.addClass(classA);
-        // getClassList - duplicateElements
     }
 
+    /**
+     * Tests the addClass method with no class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void addClassTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
         removeListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.addClass(classA);
-        // getClassList - elementNotFound
     }
 
+    /**
+     * Tests the addClass method with already existing class file for the new class.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void addClassTest3()
-            throws ADataManagementException, IOException {
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName(), false);
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage("fileExists", testUtils.getFileFromClass(classA).getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("fileExists",
+                testUtils.getFileFromClass(classA).getName()));
+        testUtils.initializeXmlManager(xmlManager);
 
-        createClassFile(classA);
+        testUtils.getFileFromClass(classA).createNewFile();
         xmlManager.addClass(classA);
-        // createDocument - fileExists
     }
 
+    /**
+     * Tests the addClass method with already existing item in the main file for the new class.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void addClassTest4()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueExists", XmlKeyword.CLASS_ELEMENT.getName(), classA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueExists",
+                XmlKeyword.CLASS_ELEMENT.getName(), classA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
         addItemElement(XmlKeyword.CLASS_LIST_ELEMENT.getName(), XmlKeyword.CLASS_ELEMENT.getName(), classA);
         xmlManager.addClass(classA);
-        // addClassItem - elementWithValueExists
     }
 
+    /**
+     * Tests the editClass method with duplicate class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void editClassTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String classB = "Scanner";
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName(), false);
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeXmlManager(xmlManager);
+        xmlManager.addClass(classA);
 
         addListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.editClass(classA, classB);
-        // getClassList - duplicateElements
     }
 
+    /**
+     * Tests the editClass method with no class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void editClassTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String classB = "Scanner";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        xmlManager.addClass(classA);
 
         removeListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.editClass(classA, classB);
-        // getClassList - elementNotFound
     }
 
+    /**
+     * Tests the editClass method with missing class file for the old class.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void editClassTest3()
-            throws ADataManagementException {
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String classB = "Scanner";
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName(), false);
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage("notAFile", testUtils.getFileFromClass(classA).getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("notAFile",
+                testUtils.getFileFromClass(classA).getName()));
+        testUtils.initializeXmlManager(xmlManager);
         xmlManager.addClass(classA);
 
-        deleteClassFile(classA);
+        testUtils.getFileFromClass(classA).delete();
         xmlManager.editClass(classA, classB);
-        // renameDocument - notAFile
     }
 
+    /**
+     * Tests the editClass method with already existing class file for the new class.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void editClassTest4()
-            throws ADataManagementException, IOException {
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String classB = "Scanner";
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName(), false);
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage("fileExists", testUtils.getFileFromClass(classB).getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("fileExists",
+                testUtils.getFileFromClass(classB).getName()));
+        testUtils.initializeXmlManager(xmlManager);
         xmlManager.addClass(classA);
 
-        createClassFile(classB);
+        testUtils.getFileFromClass(classB).createNewFile();
         xmlManager.editClass(classA, classB);
-        // renameDocument - fileExists
     }
 
+    /**
+     * Tests the editClass method with missing item in the main file for the old class.
+     * 
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void editClassTest5()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String classB = "Scanner";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueNotFound", XmlKeyword.CLASS_ELEMENT.getName(), classA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueNotFound",
+                XmlKeyword.CLASS_ELEMENT.getName(), classA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
 
         removeItemElement(XmlKeyword.CLASS_LIST_ELEMENT.getName(), XmlKeyword.CLASS_ELEMENT.getName(), classA);
         xmlManager.editClass(classA, classB);
-        // editClassItem - elementWithValueNotFound
     }
 
+    /**
+     * Tests the editClass method with already existing item in the main file for the new class.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void editClassTest6()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String classB = "Scanner";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueExists", XmlKeyword.CLASS_ELEMENT.getName(), classB));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueExists",
+                XmlKeyword.CLASS_ELEMENT.getName(), classB));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
 
         addItemElement(XmlKeyword.CLASS_LIST_ELEMENT.getName(), XmlKeyword.CLASS_ELEMENT.getName(), classB);
         xmlManager.editClass(classA, classB);
-        // editClassItem - elementWithValueExists
     }
 
+    /**
+     * Tests the removeClass method with duplicate class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void removeClassTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
 
         addListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.removeClass(classA);
-        // getClassList - duplicateElements
     }
 
+    /**
+     * Tests the removeClass method with no class list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void removeClassTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.CLASS_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.CLASS_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
 
         removeListElement(XmlKeyword.CLASS_LIST_ELEMENT.getName());
         xmlManager.removeClass(classA);
-        // getClassList - elementNotFound
     }
 
+    /**
+     * Tests the removeClass method with missing class file for the old class.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void removeClassTest3()
-            throws ADataManagementException {
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName(), false);
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage("notAFile", testUtils.getFileFromClass(classA).getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("notAFile",
+                testUtils.getFileFromClass(classA).getName()));
+        testUtils.initializeXmlManager(xmlManager);
         xmlManager.addClass(classA);
 
-        deleteClassFile(classA);
+        testUtils.getFileFromClass(classA).delete();
         xmlManager.removeClass(classA);
-        // deleteDocument - notAFile
     }
 
+    /**
+     * Tests the removeClass method with missing item in the main file for the old class.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void removeClassTest4()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueNotFound", XmlKeyword.CLASS_ELEMENT.getName(), classA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueNotFound",
+                XmlKeyword.CLASS_ELEMENT.getName(), classA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
 
         removeItemElement(XmlKeyword.CLASS_LIST_ELEMENT.getName(), XmlKeyword.CLASS_ELEMENT.getName(), classA);
         xmlManager.removeClass(classA);
-        // removeClassItem - elementWithValueNotFound
     }
 
+    /**
+     * Tests the addLanguage method with duplicate language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void addLangTest()
+    public void addLanguageTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        addListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.addLang(langA);
-        // getClassList - duplicateElements
+        addListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.addLanguage(langA);
     }
 
+    /**
+     * Tests the addLanguage method with no language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void addLangTest2()
+    public void addLanguageTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        removeListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.addLang(langA);
-        // getClassList - elementNotFound
+        removeListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.addLanguage(langA);
     }
 
+    /**
+     * Tests the addLanguage method with already existing code in a class file for the new language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void addLangTest3()
+    public void addLanguageTest3()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithAttributeExists", XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE, langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithAttributeExists",
+                XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        xmlManager.addClass(classA);
+        xmlManager.addLanguage(langA);
 
         addCodeElement(classA, XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA);
-        xmlManager.addLang(langA);
-        // addCodeItem - elementWithAttributeExists
+        xmlManager.addLanguage(langA);
     }
 
+    /**
+     * Tests the addLanguage method with already existing item in the main file for the new language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void addLangTest4()
+    public void addLanguageTest4()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueExists", XmlKeyword.LANGUAGE_ELEMENT.getName(), langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueExists",
+                XmlKeyword.LANGUAGE_ELEMENT.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        addItemElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langA);
-        xmlManager.addLang(langA);
-        // addLangItem - elementWithValueExists
+        addItemElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langA);
+        xmlManager.addLanguage(langA);
     }
 
+    /**
+     * Tests the editLanguage method with duplicate language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void editLangTest()
+    public void editLanguageTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         String langB = "C#";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
-        xmlManager.addLang(langA);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        xmlManager.addLanguage(langA);
 
-        addListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.editLang(langA, langB);
-        // getClassList - duplicateElements
+        addListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.editLanguage(langA, langB);
     }
 
+    /**
+     * Tests the editLanguage method with no language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void editLangTest2()
+    public void editLanguageTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         String langB = "C#";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
-        xmlManager.addLang(langA);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        xmlManager.addLanguage(langA);
 
-        removeListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.editLang(langA, langB);
-        // getClassList - elementNotFound
+        removeListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.editLanguage(langA, langB);
     }
 
+    /**
+     * Tests the editLanguage method with missing code in a class file for the old language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void editLangTest3()
+    public void editLanguageTest3()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String langA = "Pascal";
         String langB = "C#";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithAttributeExists", XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE, langA));
-        testUtils.initXmlManager(xmlManager);
-        xmlManager.addLang(langA);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithAttributeNotFound",
+                XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        xmlManager.addClass(classA);
+        xmlManager.addLanguage(langA);
 
         removeCodeElement(classA, XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA);
-        xmlManager.editLang(langA, langB);
-        // editCodeItem - elementWithAttributeNotFound
+        xmlManager.editLanguage(langA, langB);
     }
 
+    /**
+     * Tests the editLanguage method with already existing code in a class file for the new language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void editLangTest4()
+    public void editLanguageTest4()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String langA = "Pascal";
         String langB = "C#";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithAttributeExists", XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE, langB));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithAttributeExists",
+                XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langB));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
-        xmlManager.addLang(langA);
+        xmlManager.addLanguage(langA);
 
         addCodeElement(classA, XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langB);
-        xmlManager.editLang(langA, langB);
-        // editCodeItem - elementWithAttributeExists
+        xmlManager.editLanguage(langA, langB);
     }
 
+    /**
+     * Tests the editLanguage method with missing item in the main file for the old language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void editLangTest5()
+    public void editLanguageTest5()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         String langB = "C#";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueNotFound", XmlKeyword.LANGUAGE_ELEMENT.getName(), langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueNotFound",
+                XmlKeyword.LANGUAGE_ELEMENT.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        removeItemElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langA);
-        xmlManager.editLang(langA, langB);
-        // editLangItem - elementWithValueNotFound
+        removeItemElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langA);
+        xmlManager.editLanguage(langA, langB);
     }
 
+    /**
+     * Tests the editLanguage method with already existing item in the main file for the new language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void editLangTest6()
+    public void editLanguageTest6()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         String langB = "C#";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueExists", XmlKeyword.LANGUAGE_ELEMENT.getName(), langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueExists",
+                XmlKeyword.LANGUAGE_ELEMENT.getName(), langB));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        xmlManager.addLanguage(langA);
 
-        addItemElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langA);
-        xmlManager.editLang(langA, langB);
-        // editLangItem - elementWithValueExists
+        addItemElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langB);
+        xmlManager.editLanguage(langA, langB);
     }
 
+    /**
+     * Tests the removeLanguage method with duplicate language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void removeLangTest()
+    public void removeLanguageTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "duplicateElements", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("duplicateElements",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        addListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.removeLang(langA);
-        // getClassList - duplicateElements
+        addListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.removeLanguage(langA);
     }
 
+    /**
+     * Tests the removeLanguage method with no language list element.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void removeLangTest2()
+    public void removeLanguageTest2()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementNotFound", XmlKeyword.LANGUAG_LIST_ELEMENT.getName()));
-        testUtils.initXmlManager(xmlManager);
-        removeListElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName());
-        xmlManager.removeLang(langA);
-        // getClassList - elementNotFound
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementNotFound",
+                XmlKeyword.LANGUAGE_LIST_ELEMENT.getName()));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        removeListElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName());
+        xmlManager.removeLanguage(langA);
     }
 
+    /**
+     * Tests the removeLanguage method with missing code in a class file for the old language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void removeLangTest3()
+    public void removeLanguageTest3()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithAttributeNotFound", XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE, langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithAttributeNotFound",
+                XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
+        xmlManager.addClass(classA);
 
         removeCodeElement(classA, XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA);
-        xmlManager.removeLang(langA);
-        // removeCodeItem - elementWithAttributeNotFound
+        xmlManager.removeLanguage(langA);
     }
 
+    /**
+     * Tests the removeLanguage method with missing item in the main file for the old language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
-    public void removeLangTest4()
+    public void removeLanguageTest4()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String langA = "Pascal";
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithValueNotFound", XmlKeyword.LANGUAGE_ELEMENT.getName(), langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithValueNotFound",
+                XmlKeyword.LANGUAGE_ELEMENT.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
 
-        removeItemElement(XmlKeyword.LANGUAG_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langA);
-        xmlManager.removeLang(langA);
-        // removeLangItem - elementWithValueNotFound
+        removeItemElement(XmlKeyword.LANGUAGE_LIST_ELEMENT.getName(), XmlKeyword.LANGUAGE_ELEMENT.getName(), langA);
+        xmlManager.removeLanguage(langA);
     }
 
+    /**
+     * Tests the saveCode method with missing the code element for the specified language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void saveCodeTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
         String classA = "System";
         String langA = "Pascal";
-        String codeA = "print(\"Hello world!\");";
+        String codeA = "WriteLn('Hello world!');";
 
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithAttributeNotFound", XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE, langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithAttributeNotFound",
+                XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
-        xmlManager.addLang(langA);
+        xmlManager.addLanguage(langA);
 
         removeCodeElement(classA, XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA);
         xmlManager.saveCode(classA, langA, codeA);
-        // saveCode - elementWithAttributeNotFound
     }
 
+    /**
+     * Tests the loadCode method with missing the code element for the specified language.
+     *
+     * @throws application.core.ADataManagementException an error
+     * @throws javax.xml.parsers.ParserConfigurationException parser error
+     * @throws javax.xml.transform.TransformerException transformer error
+     * @throws org.xml.sax.SAXException SAX error
+     * @throws java.io.IOException IO error
+     */
     @Test
     public void loadCodeTest()
             throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
@@ -573,34 +894,14 @@ public class XmlManagerTestNegative {
         String langA = "Pascal";
 
         expectedException.expect(ADataManagementException.class);
-        expectedException.expectMessage(testUtils.getFormattedMessage(
-                "elementWithAttributeNotFound", XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE, langA));
-        testUtils.initXmlManager(xmlManager);
+        expectedException.expectMessage(testUtils.getFormattedMessage("elementWithAttributeNotFound",
+                XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA));
+        testUtils.initializeTestDirectory(xmlManager, testName.getMethodName());
         xmlManager.addClass(classA);
-        xmlManager.addLang(langA);
+        xmlManager.addLanguage(langA);
 
         removeCodeElement(classA, XmlKeyword.CODE_ELEMENT.getName(), XmlKeyword.LANGUAGE_ATTRIBUTE.getName(), langA);
         xmlManager.loadCode(classA, langA);
-        // loadCode - elementWithAttributeNotFound
-    }
-
-    /*
-     Creates a file representing the source codes for a class with the specified name
-     without adding the corresponding classes list item to the main XMl file.
-     */
-    private void createClassFile(String className)
-            throws IOException {
-        File classFile = testUtils.getFileFromClass(className);
-        classFile.createNewFile();
-    }
-
-    /*
-     Deletes a file representing the source codes for a class with the specified name
-     without removing the corresponding classes list item from the main XMl file.
-     */
-    private void deleteClassFile(String className) {
-        File classFile = testUtils.getFileFromClass(className);
-        classFile.delete();
     }
 
     /*
@@ -608,12 +909,15 @@ public class XmlManagerTestNegative {
      in the main XML file.
      */
     private void addListElement(String elementName)
-            throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
-        Document document = testUtils.readDocumentFromFile(testUtils.getMainDataFile());
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // creating a document from the main file
+        Document document = testUtils.readDocumentFromFile(testUtils.getMainFile());
         Element root = document.getDocumentElement();
+        // adding a list element
         Element newList = document.createElement(elementName);
         root.appendChild(newList);
-        testUtils.writeDocumentToFile(testUtils.getMainDataFile(), document);
+        // writing changes
+        testUtils.writeDocumentToFile(testUtils.getMainFile(), document);
     }
 
     /*
@@ -621,12 +925,15 @@ public class XmlManagerTestNegative {
      from the main XML file.
      */
     private void removeListElement(String elementName)
-            throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
-        Document document = testUtils.readDocumentFromFile(testUtils.getMainDataFile());
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // creating a document from the main file
+        Document document = testUtils.readDocumentFromFile(testUtils.getMainFile());
         Element root = document.getDocumentElement();
+        // removing a list element
         Element oldList = (Element) document.getElementsByTagName(elementName).item(0);
         root.removeChild(oldList);
-        testUtils.writeDocumentToFile(testUtils.getMainDataFile(), document);
+        // writing changes
+        testUtils.writeDocumentToFile(testUtils.getMainFile(), document);
     }
 
     /*
@@ -634,13 +941,16 @@ public class XmlManagerTestNegative {
      the corresponding source code file.
      */
     private void addItemElement(String parentElementName, String elementName, String elementValue)
-            throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
-        Document document = testUtils.readDocumentFromFile(testUtils.getMainDataFile());
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // creating a document from the main file
+        Document document = testUtils.readDocumentFromFile(testUtils.getMainFile());
         Element list = (Element) document.getElementsByTagName(parentElementName).item(0);
+        // adding an item element
         Element newItem = document.createElement(elementName);
         newItem.setTextContent(elementValue);
         list.appendChild(newItem);
-        testUtils.writeDocumentToFile(testUtils.getMainDataFile(), document);
+        // writing changes
+        testUtils.writeDocumentToFile(testUtils.getMainFile(), document);
     }
 
     /*
@@ -648,21 +958,26 @@ public class XmlManagerTestNegative {
      the corresponding source code file.
      */
     private void removeItemElement(String parentElementName, String elementName, String elementValue)
-            throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
-        Document document = testUtils.readDocumentFromFile(testUtils.getMainDataFile());
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // creating a document from the main file
+        Document document = testUtils.readDocumentFromFile(testUtils.getMainFile());
         Element list = (Element) document.getElementsByTagName(parentElementName).item(0);
+        // getting all item elements
         NodeList nodeList = list.getElementsByTagName(elementName);
 
+        // searching for an item element
         for (int i = 0; i < nodeList.getLength(); i++) {
             Element oldItem = (Element) nodeList.item(i);
 
+            // removing the element
             if (oldItem.getTextContent().equals(elementValue)) {
                 list.removeChild(oldItem);
                 break;
             }
         }
 
-        testUtils.writeDocumentToFile(testUtils.getMainDataFile(), document);
+        // writing changes
+        testUtils.writeDocumentToFile(testUtils.getMainFile(), document);
     }
 
     /*
@@ -670,13 +985,16 @@ public class XmlManagerTestNegative {
      the corresponding languages list item to the main XMl file.
      */
     private void addCodeElement(String className, String elementName, String elementAttributeName, String elementAttributeValue)
-            throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
-        Document document = testUtils.readDocumentFromFile(testUtils.getFileFromClass(className));
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // creating a document from the specified source code file
+        File file = testUtils.getFileFromClass(className);
+        Document document = testUtils.readDocumentFromFile(file);
         Element root = document.getDocumentElement();
         Element newItem = document.createElement(elementName);
         newItem.setAttribute(elementAttributeName, elementAttributeValue);
         root.appendChild(newItem);
-        testUtils.writeDocumentToFile(testUtils.getMainDataFile(), document);
+        // writing changes
+        testUtils.writeDocumentToFile(file, document);
     }
 
     /*
@@ -684,8 +1002,10 @@ public class XmlManagerTestNegative {
      the corresponding languages list item from the main XMl file.
      */
     private void removeCodeElement(String className, String elementName, String elementAttributeName, String elementAttributeValue)
-            throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
-        Document document = testUtils.readDocumentFromFile(testUtils.getFileFromClass(className));
+            throws ADataManagementException, ParserConfigurationException, SAXException, IOException, TransformerException {
+        // creating a document from the specified source code file
+        File file = testUtils.getFileFromClass(className);
+        Document document = testUtils.readDocumentFromFile(file);
         Element root = document.getDocumentElement();
         NodeList nodeList = root.getElementsByTagName(elementName);
 
@@ -698,7 +1018,8 @@ public class XmlManagerTestNegative {
             }
         }
 
-        testUtils.writeDocumentToFile(testUtils.getMainDataFile(), document);
+        // writing changes
+        testUtils.writeDocumentToFile(file, document);
     }
 
 }

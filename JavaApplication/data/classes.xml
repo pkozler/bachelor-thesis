@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<lists>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><lists>
     <languages>
         <language>C</language>
         <language>C++</language>
@@ -21,5 +19,5 @@
         <class>ArrayList</class>
         <class>Comparable</class>
         <class>Comparator</class>
-    </classes>
+    <class>AAA</class><class>BBB</class><class>CCC</class><class>DDD</class></classes>
 </lists>

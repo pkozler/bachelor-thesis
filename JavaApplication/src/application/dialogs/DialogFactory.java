@@ -42,6 +42,30 @@ public class DialogFactory {
         dialog.setHeaderText(BUNDLE.getString(keyContainer.HEADER_TEXT_KEY));
         dialog.setContentText(BUNDLE.getString(keyContainer.CONTENT_TEXT_KEY));
     }
+    
+    /*
+    Adds an expendable text area with detailed information to the given dialog.
+    */
+    private void addExpendableContent(Dialog dialog, String labelContentKey, String textAreaContent) {
+        Label label = new Label(BUNDLE.getString(labelContentKey));
+
+        // creating a text area with a stack trace 
+        TextArea textArea = new TextArea(textAreaContent);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+        dialog.getDialogPane().setExpandableContent(expContent);
+    }
 
     /**
      * Shows an information dialog.
@@ -79,9 +103,7 @@ public class DialogFactory {
         TextInputDialog dialog = new TextInputDialog();
         setDialogText(dialog, keyContainer);
 
-        Label label = new Label(BUNDLE.getString(detailKey));
-        label.setWrapText(true);
-        dialog.getDialogPane().setExpandableContent(label);
+        addExpendableContent(dialog, "nameFormatLabel", BUNDLE.getString(detailKey));
         Optional<String> result = dialog.showAndWait();
 
         return !result.isPresent() ? null : result.get();
@@ -97,30 +119,13 @@ public class DialogFactory {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         setDialogText(alert, keyContainer);
 
-        // write a stack trace to string
+        // writing the stack trace to the string
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         ex.printStackTrace(pw);
         String exceptionText = sw.toString();
 
-        Label label = new Label(BUNDLE.getString("exceptionLabel"));
-
-        // creating a text area with a stack trace 
-        TextArea textArea = new TextArea(exceptionText);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
-
-        textArea.setMaxWidth(Double.MAX_VALUE);
-        textArea.setMaxHeight(Double.MAX_VALUE);
-        GridPane.setVgrow(textArea, Priority.ALWAYS);
-        GridPane.setHgrow(textArea, Priority.ALWAYS);
-
-        GridPane expContent = new GridPane();
-        expContent.setMaxWidth(Double.MAX_VALUE);
-        expContent.add(label, 0, 0);
-        expContent.add(textArea, 0, 1);
-
-        alert.getDialogPane().setExpandableContent(expContent);
+        addExpendableContent(alert, "exceptionLabel", exceptionText);
         alert.showAndWait();
     }
 

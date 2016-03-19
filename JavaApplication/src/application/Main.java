@@ -49,13 +49,13 @@ public class Main extends Application {
             return;
         }
         
-        ResourceBundle xmlRb = ResourceBundle.getBundle(
-                Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE));
-        
         try {
             // initializing the XML files manager
-            xmlManager.setPaths(new File(
-                    Config.MAIN_DATA_FILE_DEST), new File(Config.DATA_FILES_FOLDER_DEST), xmlRb);
+            xmlManager.initialize(
+                    Config.DATA_FOLDER_PATH + File.separator + Config.MAIN_DATA_FILE_NAME, 
+                    Config.DATA_FOLDER_PATH + File.separator + Config.DATA_FILES_SUBFOLDER_NAME, 
+                    ResourceBundle.getBundle(
+                Config.XML_STRINGS_BUNDLE, new Locale(Config.DEFAULT_LOCALE)));
         } catch (ADataManagementException ex) {
             df.showExceptionInDialog(ex, new DialogKeyContainer(
                     "dataInit", "error", "dataInitError"));
