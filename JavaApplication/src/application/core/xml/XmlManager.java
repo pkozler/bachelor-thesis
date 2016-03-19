@@ -17,6 +17,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.OutputKeys;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -759,6 +760,7 @@ public class XmlManager implements IDataManager {
     private void writeDocumentToFile(File file, Document document)
             throws TransformerConfigurationException, TransformerException {
         transformer.reset();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         // creating the stream for a new file
         StreamResult result = new StreamResult(file);
         // creating a new DOM source

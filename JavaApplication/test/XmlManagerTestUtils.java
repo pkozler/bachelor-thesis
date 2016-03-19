@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -213,6 +214,7 @@ final class XmlManagerTestUtils {
     public void writeDocumentToFile(File file, Document document)
             throws TransformerException {
         TRANSFORMER.reset();
+        TRANSFORMER.setOutputProperty(OutputKeys.INDENT, "yes");
         // creating the stream for a file
         StreamResult result = new StreamResult(file);
         // creating a new DOM source

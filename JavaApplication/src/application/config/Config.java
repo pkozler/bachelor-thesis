@@ -15,7 +15,7 @@ public final class Config {
     /** path to the XML data root folder */
     public static final String DATA_FOLDER_PATH = "data";
     /** name of the main XML data file with the lists of available Java classes and programming languages */
-    public static final String MAIN_DATA_FILE_NAME = "classes.xml";
+    public static final String MAIN_DATA_FILE_NAME = "main.xml";
     /** name of the subfolder with XML data files with translations of each class to each language */
     public static final String DATA_FILES_SUBFOLDER_NAME = "classes";
     /** path to the XML-specific strings resource bundle */

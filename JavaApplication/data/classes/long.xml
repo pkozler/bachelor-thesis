@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef LONG_INCLUDED&#13;
+#define LONG_INCLUDED&#13;
+&#13;
+#include "String.h"&#13;
+#include &lt;stdbool.h&gt;&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * The Long class wraps a value of the primitive type long in an object.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+/**&#13;
+ * A constant holding the maximum value a long can have, 2^63-1.&#13;
+ */&#13;
+#define Long_MAX_VALUE 9223372036854775807&#13;
+/**&#13;
+ * A constant holding the minimum value a long can have, -2^63.&#13;
+ */&#13;
+#define Long_MIN_VALUE -9223372036854775808&#13;
+&#13;
+typedef struct {&#13;
+    int64_t v;&#13;
+} Long;&#13;
+&#13;
+Long *new_Long(int64_t value);&#13;
+int64_t longValue(Long *ptr);&#13;
+int32_t compareToL(Long *ptr, Long *anotherLong);&#13;
+int32_t Long_compare(int64_t x, int64_t y);&#13;
+bool equalsL(Long *ptr, Long *obj);&#13;
+String *toStringL(Long *ptr);&#13;
+String *Long_toString(int64_t l);&#13;
+int64_t Long_parseLong(String *s);&#13;
+&#13;
+#endif /* LONG_INCLUDED */&#13;
+&#13;
+#include "Long.h"&#13;
+&#13;
+#include &lt;stdio.h&gt;&#13;
+#include &lt;stdlib.h&gt;&#13;
+#include &lt;string.h&gt;&#13;
+&#13;
+#define _MAX_LONG_STRLEN 20&#13;
+&#13;
+/**&#13;
+ * Constructs a newly allocated Long object that represents the specified&#13;
+ * long argument.&#13;
+ *&#13;
+ * @param value the value to be represented by the Long object.&#13;
+ */&#13;
+Long *new_Long(int64_t value) {&#13;
+    Long *l = malloc(sizeof(Long));&#13;
+    l-&gt;v = value;&#13;
+&#13;
+    return l;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the value of this Long as a long value.&#13;
+ *&#13;
+ * @return the numeric value represented by this object after conversion to&#13;
+ * type long.&#13;
+ */&#13;
+int64_t longValue(Long *ptr) {&#13;
+    return ptr-&gt;v;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares two Long objects numerically.&#13;
+ *&#13;
+ * @param anotherLong the Long to be compared.&#13;
+ * @return the value 0 if this Long is equal to the argument Long; a value&#13;
+ * less than 0 if this Long is numerically less than the argument Long; and&#13;
+ * a value greater than 0 if this Long is numerically greater than the&#13;
+ * argument Long (signed comparison).&#13;
+ */&#13;
+int32_t compareToL(Long *ptr, Long *anotherLong) {&#13;
+    return Long_compare(ptr-&gt;v, anotherLong-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares two long values numerically.&#13;
+ *&#13;
+ * @param x the first long to compare&#13;
+ * @param y the second long to compare&#13;
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x&#13;
+ * &gt; y&#13;
+ */&#13;
+int32_t Long_compare(int64_t x, int64_t y) {&#13;
+    return (x &lt; y) ? -1 : ((x == y) ? 0 : 1);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares this object to the specified object.&#13;
+ *&#13;
+ * @param obj the object to compare with.&#13;
+ * @return true if the objects are the same; false otherwise.&#13;
+ */&#13;
+bool equalsL(Long *ptr, Long *obj) {&#13;
+    if (ptr == obj) {&#13;
+        return true;&#13;
+    }&#13;
+&#13;
+    if (ptr == NULL || obj == NULL) {&#13;
+        return false;&#13;
+    }&#13;
+&#13;
+    if (sizeof(*ptr) != sizeof(*obj)) {&#13;
+        return false;&#13;
+    }&#13;
+&#13;
+    return (ptr-&gt;v == obj-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a String object representing this Long's value.&#13;
+ *&#13;
+ * @return a string representation of the value of this object in base 10.&#13;
+ */&#13;
+String *toStringL(Long *ptr) {&#13;
+    return Long_toString(ptr-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a String object representing the specified long.&#13;
+ *&#13;
+ * @param l a long to be converted.&#13;
+ * @return a string representation of the argument in base 10.&#13;
+ */&#13;
+String *Long_toString(int64_t l) {&#13;
+    char *str = malloc(_MAX_LONG_STRLEN + 1);&#13;
+    char buf[_MAX_LONG_STRLEN];&#13;
+&#13;
+    str[0] = '\0';&#13;
+    sprintf(buf, "%lld", l);&#13;
+    strcat(str, buf);&#13;
+&#13;
+    return new_String(str);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Parses the string argument as a signed long in the radix specified by the&#13;
+ * second argument.&#13;
+ *&#13;
+ * @param s a String containing the long representation to be parsed&#13;
+ * @return the long represented by the argument in decimal.&#13;
+ */&#13;
+int64_t Long_parseLong(String *s) {&#13;
+    return strtol(s-&gt;s, NULL, 10);&#13;
+}&#13;
+</code>
+<code lang="C++">#ifndef LONG_INCLUDED
+#define LONG_INCLUDED
+
+#include "String.h"
+#include &lt;cstdint&gt;
+
+/**
+ * The Long class wraps a value of the primitive type long in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+class Long {
+    int64_t v;
+public:
+    static const int64_t MIN_VALUE;
+    static const int64_t MAX_VALUE;
+    Long(int64_t value);
+    int64_t longValue();
+    int32_t compareTo(Long *anotherLong);
+    static int32_t compare(int64_t x, int64_t y);
+    bool equals(Long *obj);
+    String *toString();
+    static String *toString(int64_t l);
+    static int64_t parseLong(String *s);
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;s, Long &amp;obj);
+};
+
+#endif // LONG_INCLUDED
+&#13;
+#include "Long.h"
+
+#include &lt;string&gt;
+
+/**
+ * A constant holding the maximum value a long can have, 2^63-1.
+ */
+const int64_t Long::MAX_VALUE = 9223372036854775807L;
+/**
+ * A constant holding the minimum value a long can have, -2^63.
+ */
+const int64_t Long::MIN_VALUE = 9223372036854775808L;
+
+/**
+ * Constructs a newly allocated Long object that represents the specified
+ * long argument.
+ *
+ * @param value the value to be represented by the Long object.
+ */
+Long::Long(int64_t value) {
+    v = value;
+}
+
+/**
+ * Returns the value of this Long as a long value.
+ *
+ * @return the numeric value represented by this object after conversion to
+ * type long.
+ */
+int64_t Long::longValue() {
+    return v;
+}
+
+/**
+ * Compares two Long objects numerically.
+ *
+ * @param anotherLong the Long to be compared.
+ * @return the value 0 if this Long is equal to the argument Long; a value
+ * less than 0 if this Long is numerically less than the argument Long; and
+ * a value greater than 0 if this Long is numerically greater than the
+ * argument Long (signed comparison).
+ */
+int32_t Long::compareTo(Long *anotherLong) {
+    return Long::compare(v, anotherLong-&gt;v);
+}
+
+/**
+ * Compares two long values numerically.
+ *
+ * @param x the first long to compare
+ * @param y the second long to compare
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x
+ * &gt; y
+ */
+int32_t Long::compare(int64_t x, int64_t y) {
+    return (x &lt; y) ? -1 : ((x == y) ? 0 : 1);
+}
+
+/**
+ * Compares this object to the specified object.
+ *
+ * @param obj the object to compare with.
+ * @return true if the objects are the same; false otherwise.
+ */
+bool Long::equals(Long *obj) {
+    if (obj == nullptr) {
+        return false;
+    }
+
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
+    return (v == obj-&gt;v);
+}
+
+/**
+ * Returns a String object representing this Long's value.
+ *
+ * @return a string representation of the value of this object in base 10.
+ */
+String *Long::toString() {
+    return toString(v);
+}
+
+/**
+ * Returns a String object representing the specified long.
+ *
+ * @param l a long to be converted.
+ * @return a string representation of the argument in base 10.
+ */
+String *Long::toString(int64_t l) {
+    return new String(std::to_string(l));
+}
+
+/**
+ * Parses the string argument as a signed long in the radix specified by the
+ * second argument.
+ *
+ * @param s a String containing the long representation to be parsed
+ * @return the long represented by the argument in decimal.
+ */
+int64_t Long::parseLong(String *s) {
+    return std::stol(s-&gt;toString(), nullptr, 10);
+}
+
+std::ostream &amp;operator&lt;&lt;(std::ostream &amp;s, Long &amp;obj) {
+    return s &lt;&lt; obj.toString()-&gt;toString().c_str();
+}
+</code>
+<code lang="C#">﻿using System;&#13;
+&#13;
+namespace JavaClasses {&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// The Long class wraps a value of the primitive type long in an object.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class Long {&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// A constant holding the maximum value a long can have, 2^63-1.&#13;
+        /// &lt;/summary&gt;&#13;
+        public const long MAX_VALUE = 9223372036854775807;&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// A constant holding the minimum value a long can have, -2^63.&#13;
+        /// &lt;/summary&gt;&#13;
+        public const long MIN_VALUE = -9223372036854775808;&#13;
+&#13;
+        private long v;&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Constructs a newly allocated Long object that represents the specified&#13;
+        /// long argument.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="value"&gt;the value to be represented by the Long object.&#13;
+        /// &lt;/param&gt;&#13;
+        public Long(long value) {&#13;
+            v = value;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns the value of this Long as a long value.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;the numeric value represented by this object after conversion to&#13;
+        /// type long.&#13;
+        /// &lt;/returns&gt;&#13;
+        public long longValue() {&#13;
+            return v;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares two Long objects numerically.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="anotherLong"&gt;the Long to be compared.&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the value 0 if this Long is equal to the argument Long; a value&#13;
+        /// less than 0 if this Long is numerically less than the argument Long; and&#13;
+        /// a value greater than 0 if this Long is numerically greater than the&#13;
+        /// argument Long (signed comparison).&#13;
+        /// &lt;/returns&gt;&#13;
+        public int compareTo(Long anotherLong) {&#13;
+            return compare(v, anotherLong.v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares two long values numerically.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;the first long to compare&#13;
+        /// &lt;/param&gt;&lt;param name="y"&gt;the second long to compare&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x&#13;
+        /// &gt; y&#13;
+        /// &lt;/returns&gt;&#13;
+        public static int compare(long x, long y) {&#13;
+            return (x &lt; y) ? -1 : ((x == y) ? 0 : 1);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares this object to the specified object.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="obj"&gt;the object to compare with.&#13;
+        /// &lt;/param&gt;&lt;returns&gt;true if the objects are the same; false otherwise.&#13;
+        /// &lt;/returns&gt;&#13;
+        public bool equals(Object obj) {&#13;
+            if (obj == null) {&#13;
+                return false;&#13;
+            }&#13;
+&#13;
+            if (GetType() != obj.GetType()) {&#13;
+                return false;&#13;
+            }&#13;
+&#13;
+            return v.Equals((obj as  Long).v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns a String object representing this Long's value.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;a string representation of the value of this object in base 10.&#13;
+        /// &lt;/returns&gt;&#13;
+        public String toString() {&#13;
+            return Long.toString(v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns a String object representing the specified long.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="l"&gt;a long to be converted.&#13;
+        /// &lt;/param&gt;&lt;returns&gt;a string representation of the argument in base 10.&#13;
+        /// &lt;/returns&gt;&#13;
+        public static String toString(long l) {&#13;
+            return l.ToString();&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Parses the string argument as a signed long in the radix specified by the&#13;
+        /// second argument.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="s"&gt;a String containing the long representation to be parsed&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the long represented by the argument in decimal.&#13;
+        /// &lt;/returns&gt;&#13;
+        public static long parseLong(String s) {&#13;
+            return long.Parse(s.ToString());&#13;
+        }&#13;
+        &#13;
+        public override string ToString() {&#13;
+            return toString().ToString();&#13;
+        }&#13;
+&#13;
+    }&#13;
+&#13;
+}&#13;
+</code>
+<code lang="Free Pascal">unit LongUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  SysUtils, StringUnit;
+
+type
+  (**
+   * The Long class wraps a value of the primitive type long in an object.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  Long = class
+    private
+      var
+        v: int64;
+    public
+      const
+          (**
+           * A constant holding the maximum value a long can have, 2^63-1.
+           *)
+           MAX_VALUE = 9223372036854775807;
+          (**
+           * A constant holding the minimum value a long can have, -2^63.
+           *)
+           MIN_VALUE = -9223372036854775808;
+      constructor create(value: int64);
+      function longValue() : int64;
+      function compareTo(anotherLong: Long) : longInt;
+      class function compare(x, y: int64) : longInt;
+      function equals(obj: TObject) : boolean; override;
+      function toString_() : String_;
+      class function toString_(l: int64) : String_;
+      class function parseLong(s: String_) : int64;
+      function toString() : ansiString; override;
+  end;
+
+implementation
+
+(**
+ * Constructs a newly allocated Long object that represents the specified
+ * long argument.
+ *
+ * @param value the value to be represented by the Long object.
+ *)
+constructor Long.create(value: int64);
+begin
+  v := value;
+end;
+
+(**
+ * Returns the value of this Long as a long value.
+ *
+ * @return the numeric value represented by this object after conversion to
+ * type long.
+ *)
+function Long.longValue() : int64;
+begin
+  longValue := v;
+end;
+
+(**
+ * Compares two Long objects numerically.
+ *
+ * @param anotherLong the Long to be compared.
+ * @return the value 0 if this Long is equal to the argument Long; a value
+ * less than 0 if this Long is numerically less than the argument Long; and
+ * a value greater than 0 if this Long is numerically greater than the
+ * argument Long (signed comparison).
+ *)
+function Long.compareTo(anotherLong: Long) : longInt;
+begin
+  compareTo := compare(v, anotherLong.v);
+end;
+
+(**
+ * Compares two long values numerically.
+ *
+ * @param x the first long to compare
+ * @param y the second long to compare
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x
+ * &gt; y
+ *)
+class function Long.compare(x, y: int64) : longInt;
+begin
+  if x &lt; y then begin
+     compare := -1;
+  end
+  else if x = y then begin
+     compare := 0;
+  end
+  else begin
+    compare := 1;
+  end;
+end;
+
+(**
+ * Compares this object to the specified object.
+ *
+ * @param obj the object to compare with.
+ * @return true if the objects are the same; false otherwise.
+ *)
+function Long.equals(obj: TObject) : boolean;
+begin
+  if obj = nil then begin
+    exit(false);
+  end;
+
+  if typeOf(self) &lt;&gt; typeOf(obj) then begin
+    exit(false);
+  end;
+
+  equals := (v = (Long(obj)).v);
+end;
+
+(**
+ * Returns a String object representing this Long's value.
+ *
+ * @return a string representation of the value of this object in base 10.
+ *)
+function Long.toString_() : String_;
+begin
+  toString_ := Long.toString_(v);
+end;
+
+(**
+ * Returns a String object representing the specified long.
+ *
+ * @param l a long to be converted.
+ * @return a string representation of the argument in base 10.
+ *)
+class function Long.toString_(l: int64) : String_;
+begin
+  toString_ := String_.create(IntToStr(l));
+end;
+
+(**
+ * Parses the string argument as a signed long in the radix specified by the
+ * second argument.
+ *
+ * @param s a String containing the long representation to be parsed
+ * @return the long represented by the argument in decimal.
+ *)
+class function Long.parseLong(s: String_) : int64;
+begin
+  parseLong := strToInt64(s.toString());
+end;
+
+function Long.toString() : ansiString;
+var
+  s: String_;
+begin
+  s := toString();
+  toString := s.ToString();
+end;
+
+end.
+
+</code>
+</codes>

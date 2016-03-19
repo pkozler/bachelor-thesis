@@ -197,6 +197,7 @@ public class WindowController implements Initializable {
             protected void succeeded() {
                 super.succeeded();
                 setListItems();
+                classNamesListView.getSelectionModel().select(name);
             }
 
             @Override
@@ -254,6 +255,7 @@ public class WindowController implements Initializable {
             protected void succeeded() {
                 super.succeeded();
                 setListItems();
+                classNamesListView.getSelectionModel().select(name);
             }
 
             @Override
@@ -302,6 +304,7 @@ public class WindowController implements Initializable {
             protected void succeeded() {
                 super.succeeded();
                 setListItems();
+                classNamesListView.getSelectionModel().select(null);
             }
 
             @Override
@@ -357,6 +360,7 @@ public class WindowController implements Initializable {
             protected void succeeded() {
                 super.succeeded();
                 setListItems();
+                langSelectComboBox.getSelectionModel().select(name);
             }
 
             @Override
@@ -396,7 +400,7 @@ public class WindowController implements Initializable {
             return;
         }
 
-        String oldName = classNamesListView.getSelectionModel().getSelectedItem();
+        String oldName = langSelectComboBox.getSelectionModel().getSelectedItem();
 
         /* 
          creating the task for calling the editLanguage method on background
@@ -414,6 +418,7 @@ public class WindowController implements Initializable {
             protected void succeeded() {
                 super.succeeded();
                 setListItems();
+                langSelectComboBox.getSelectionModel().select(name);
             }
 
             @Override
@@ -444,7 +449,7 @@ public class WindowController implements Initializable {
             return;
         }
 
-        String name = classNamesListView.getSelectionModel().getSelectedItem();
+        String name = langSelectComboBox.getSelectionModel().getSelectedItem();
 
         /* 
          creating the task for calling the removeLanguage method on background
@@ -462,6 +467,7 @@ public class WindowController implements Initializable {
             protected void succeeded() {
                 super.succeeded();
                 setListItems();
+                langSelectComboBox.getSelectionModel().select(null);
             }
 
             @Override

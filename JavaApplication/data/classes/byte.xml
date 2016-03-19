@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef BYTE_INCLUDED&#13;
+#define BYTE_INCLUDED&#13;
+&#13;
+#include "String.h"&#13;
+#include &lt;stdbool.h&gt;&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * The Byte class wraps a value of primitive type byte in an object.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+/**&#13;
+ * A constant holding the maximum value a byte can have, 2^7-1.&#13;
+ */&#13;
+#define Byte_MAX_VALUE 127&#13;
+/**&#13;
+ * A constant holding the minimum value a byte can have, -2^7.&#13;
+ */&#13;
+#define Byte_MIN_VALUE -128&#13;
+&#13;
+typedef struct {&#13;
+    int8_t v;&#13;
+} Byte;&#13;
+&#13;
+Byte *new_Byte(int8_t value);&#13;
+int8_t byteValue(Byte *ptr);&#13;
+int32_t compareToB(Byte *ptr, Byte *anotherByte);&#13;
+int32_t Byte_compare(int8_t x, int8_t y);&#13;
+bool equalsB(Byte *ptr, Byte *obj);&#13;
+String *toStringB(Byte *ptr);&#13;
+String *Byte_toString(int8_t b);&#13;
+int8_t Byte_parseByte(String *s);&#13;
+&#13;
+#endif /* BYTE_INCLUDED */&#13;
+&#13;
+#include "Byte.h"&#13;
+&#13;
+#include &lt;stdio.h&gt;&#13;
+#include &lt;stdlib.h&gt;&#13;
+#include &lt;string.h&gt;&#13;
+&#13;
+#define _MAX_BYTE_STRLEN 4&#13;
+&#13;
+/**&#13;
+ * Constructs a newly allocated Byte object that represents the specified&#13;
+ * byte value.&#13;
+ *&#13;
+ * @param value the value to be represented by the Byte.&#13;
+ */&#13;
+Byte *new_Byte(int8_t value) {&#13;
+    Byte *b = malloc(sizeof(Byte));&#13;
+    b-&gt;v = value;&#13;
+&#13;
+    return b;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the value of this Byte as a byte.&#13;
+ *&#13;
+ * @return the numeric value represented by this object after conversion to&#13;
+ * type byte.&#13;
+ */&#13;
+int8_t byteValue(Byte *ptr) {&#13;
+    return ptr-&gt;v;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares two Byte objects numerically.&#13;
+ *&#13;
+ * @param anotherByte the Byte to be compared.&#13;
+ * @return the value 0 if this Byte is equal to the argument Byte; a value&#13;
+ * less than 0 if this Byte is numerically less than the argument Byte; and&#13;
+ * a value greater than 0 if this Byte is numerically greater than the&#13;
+ * argument Byte (signed comparison).&#13;
+ */&#13;
+int32_t compareToB(Byte *ptr, Byte *anotherByte) {&#13;
+    return Byte_compare(ptr-&gt;v, anotherByte-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares two byte values numerically.&#13;
+ *&#13;
+ * @param x the first byte to compare&#13;
+ * @param y the second byte to compare&#13;
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x&#13;
+ * &gt; y&#13;
+ */&#13;
+int32_t Byte_compare(int8_t x, int8_t y) {&#13;
+    return x - y;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares this object to the specified object.&#13;
+ *&#13;
+ * @param obj the object to compare with&#13;
+ * @return true if the objects are the same; false otherwise.&#13;
+ */&#13;
+bool equalsB(Byte *ptr, Byte *obj) {&#13;
+    if (ptr == obj) {&#13;
+        return true;&#13;
+    }&#13;
+&#13;
+    if (ptr == NULL || obj == NULL) {&#13;
+        return false;&#13;
+    }&#13;
+&#13;
+    if (sizeof(*ptr) != sizeof(*obj)) {&#13;
+        return false;&#13;
+    }&#13;
+&#13;
+    return (ptr-&gt;v == obj-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a String object representing this Byte's value.&#13;
+ * &#13;
+ * @return a string representation of the value of this object in base 10.&#13;
+ */&#13;
+String *toStringB(Byte *ptr) {&#13;
+    return Byte_toString(ptr-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a new String object representing the specified byte.&#13;
+ *&#13;
+ * @param b the byte to be converted&#13;
+ * @return the string representation of the specified byte&#13;
+ */&#13;
+String *Byte_toString(int8_t b) {&#13;
+    char *str = malloc(_MAX_BYTE_STRLEN + 1);&#13;
+    char buf[_MAX_BYTE_STRLEN];&#13;
+&#13;
+    str[0] = '\0';&#13;
+    sprintf(buf, "%hd", b);&#13;
+    strcat(str, buf);&#13;
+&#13;
+    return new_String(str);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Parses the string argument as a signed decimal byte.&#13;
+ *&#13;
+ * @param s a String containing the byte representation to be parsed&#13;
+ * @return the byte value represented by the argument in decimal&#13;
+ */&#13;
+int8_t Byte_parseByte(String *s) {&#13;
+    return strtol(s-&gt;s, NULL, 10);&#13;
+}&#13;
+</code>
+<code lang="C++">#ifndef BYTE_INCLUDED
+#define BYTE_INCLUDED
+
+#include "String.h"
+#include &lt;cstdint&gt;
+
+/**
+ * The Byte class wraps a value of primitive type byte in an object.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+class Byte {
+    int8_t v;
+public:
+    static const int8_t MIN_VALUE;
+    static const int8_t MAX_VALUE;
+    Byte(int8_t value);
+    int8_t byteValue();
+    int32_t compareTo(Byte *anotherByte);
+    static int32_t compare(int8_t x, int8_t y);
+    bool equals(Byte *obj);
+    String *toString();
+    static String *toString(int8_t b);
+    static int8_t parseByte(String *s);
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;s, Byte &amp;obj);
+};
+
+#endif // BYTE_INCLUDED
+&#13;
+#include "Byte.h"
+
+#include &lt;string&gt;
+
+/**
+ * A constant holding the maximum value a byte can have, 2^7-1.
+ */
+const int8_t Byte::MAX_VALUE = 127;
+/**
+ * A constant holding the minimum value a byte can have, -2^7.
+ */
+const int8_t Byte::MIN_VALUE = -128;
+
+/**
+ * Constructs a newly allocated Byte object that represents the specified
+ * byte value.
+ *
+ * @param value the value to be represented by the Byte.
+ */
+Byte::Byte(int8_t value) {
+    v = value;
+}
+
+/**
+ * Returns the value of this Byte as a byte.
+ *
+ * @return the numeric value represented by this object after conversion to
+ * type byte.
+ */
+int8_t Byte::byteValue() {
+    return v;
+}
+
+/**
+ * Compares two Byte objects numerically.
+ *
+ * @param anotherByte the Byte to be compared.
+ * @return the value 0 if this Byte is equal to the argument Byte; a value
+ * less than 0 if this Byte is numerically less than the argument Byte; and
+ * a value greater than 0 if this Byte is numerically greater than the
+ * argument Byte (signed comparison).
+ */
+int32_t Byte::compareTo(Byte *anotherByte) {
+    return compare(v, anotherByte-&gt;v);
+}
+
+/**
+ * Compares two byte values numerically.
+ *
+ * @param x the first byte to compare
+ * @param y the second byte to compare
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x
+ * &gt; y
+ */
+int32_t Byte::compare(int8_t x, int8_t y) {
+    return x - y;
+}
+
+/**
+ * Compares this object to the specified object.
+ *
+ * @param obj the object to compare with
+ * @return true if the objects are the same; false otherwise.
+ */
+bool Byte::equals(Byte *obj) {
+    if (obj == nullptr) {
+        return false;
+    }
+
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
+    return (v == obj-&gt;v);
+}
+
+/**
+ * Returns a String object representing this Byte's value.
+ * 
+ * @return a string representation of the value of this object in base 10.
+ */
+String *Byte::toString() {
+    return toString(v);
+}
+
+/**
+ * Returns a new String object representing the specified byte.
+ *
+ * @param b the byte to be converted
+ * @return the string representation of the specified byte
+ */
+String *Byte::toString(int8_t b) {
+    return new String(std::to_string(b));
+}
+
+/**
+ * Parses the string argument as a signed decimal byte.
+ *
+ * @param s a String containing the byte representation to be parsed
+ * @return the byte value represented by the argument in decimal
+ */
+int8_t Byte::parseByte(String *s) {
+    return (int8_t) std::stoi(s-&gt;toString(), nullptr, 10);
+}
+
+std::ostream &amp;operator&lt;&lt;(std::ostream &amp;s, Byte &amp;obj) {
+    return s &lt;&lt; obj.toString()-&gt;toString().c_str();
+}
+</code>
+<code lang="C#">﻿using System;&#13;
+&#13;
+namespace JavaClasses {&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// The Byte class wraps a value of primitive type byte in an object.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class Byte {&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// A constant holding the maximum value a byte can have, 2^7-1.&#13;
+        public const sbyte MAX_VALUE = 127;&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// A constant holding the minimum value a byte can have, -2^7.&#13;
+        public const sbyte MIN_VALUE = -128;&#13;
+&#13;
+        private sbyte v;&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Constructs a newly allocated Byte object that represents the specified&#13;
+        /// byte value.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="value"&gt;the value to be represented by the Byte.&#13;
+        /// &lt;/param&gt;&#13;
+        public Byte(sbyte value) {&#13;
+            v = value;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns the value of this Byte as a byte.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;the numeric value represented by this object after conversion to&#13;
+        /// type byte.&#13;
+        /// &lt;/returns&gt;&#13;
+        public sbyte byteValue() {&#13;
+            return v;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares two Byte objects numerically.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="anotherByte"&gt;the Byte to be compared.&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the value 0 if this Byte is equal to the argument Byte; a value&#13;
+        /// less than 0 if this Byte is numerically less than the argument Byte; and&#13;
+        /// a value greater than 0 if this Byte is numerically greater than the&#13;
+        /// argument Byte (signed comparison).&#13;
+        /// &lt;/returns&gt;&#13;
+        public int compareTo(Byte anotherByte) {&#13;
+            return compare(v, anotherByte.v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares two byte values numerically.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;the first byte to compare&#13;
+        /// &lt;/param&gt;&lt;param name="y"&gt;the second byte to compare&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x&#13;
+        /// &gt; y&#13;
+        /// &lt;/returns&gt;&#13;
+        public static int compare(sbyte x, sbyte y) {&#13;
+            /* positive number if x is greater, 0 if x equals y, negative number otherwise&#13;
+             (same as for char and short types) */&#13;
+            return x - y;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares this object to the specified object.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="obj"&gt;the object to compare with&#13;
+        /// &lt;/param&gt;&lt;returns&gt;true if the objects are the same; false otherwise.&#13;
+        /// &lt;/returns&gt;&#13;
+        public bool equals(Object obj) {&#13;
+            if (obj == null) {&#13;
+                return false;&#13;
+            }&#13;
+&#13;
+            if (GetType() != obj.GetType()) {&#13;
+                return false;&#13;
+            }&#13;
+&#13;
+            return v.Equals((obj as  Byte).v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns a String object representing this Byte's value.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;a string representation of the value of this object in base 10.&#13;
+        /// &lt;/returns&gt;&#13;
+        public String toString() {&#13;
+            return Byte.toString(v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns a new String object representing the specified byte.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="b"&gt;the byte to be converted&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the string representation of the specified byte&#13;
+        /// &lt;/returns&gt;&#13;
+        public static String toString(sbyte b) {&#13;
+            return b.ToString();&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Parses the string argument as a signed decimal byte.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="s"&gt;a String containing the byte representation to be parsed&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the byte value represented by the argument in decimal&#13;
+        /// &lt;/returns&gt;&#13;
+        public static sbyte parseByte(String s) {&#13;
+            return sbyte.Parse(s.ToString());&#13;
+        }&#13;
+        &#13;
+        public override string ToString() {&#13;
+            return toString().ToString();&#13;
+        }&#13;
+&#13;
+    }&#13;
+&#13;
+}&#13;
+</code>
+<code lang="Free Pascal">unit ByteUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  SysUtils, StringUnit;
+
+type
+  (**
+   * The Byte class wraps a value of primitive type byte in an object.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  Byte_ = class
+    private
+      var
+        v: shortInt;
+    public
+      const
+          (**
+           * A constant holding the maximum value a byte can have, 2^7-1.
+           *)
+           MAX_VALUE = 127;
+          (**
+           * A constant holding the minimum value a byte can have, -2^7.
+           *)
+           MIN_VALUE = -128;
+      constructor create(value: shortInt);
+      function byteValue() : shortInt;
+      function compareTo(anotherByte: Byte_) : longInt;
+      class function compare(x, y: shortInt) : longInt;
+      function equals(obj: TObject) : boolean; override;
+      function toString_() : String_;
+      class function toString_(b: shortInt) : String_;
+      class function parseByte(s: String_) : shortInt;
+      function toString() : ansiString; override;
+  end;
+
+implementation
+
+(**
+ * Constructs a newly allocated Byte object that represents the specified
+ * byte value.
+ *
+ * @param value the value to be represented by the Byte.
+ *)
+constructor Byte_.create(value: shortInt);
+begin
+  v := value;
+end;
+
+(**
+ * Returns the value of this Byte as a byte.
+ *
+ * @return the numeric value represented by this object after conversion to
+ * type byte.
+ *)
+function Byte_.byteValue() : shortInt;
+begin
+  byteValue := v;
+end;
+
+(**
+ * Compares two Byte objects numerically.
+ *
+ * @param anotherByte the Byte to be compared.
+ * @return the value 0 if this Byte is equal to the argument Byte; a value
+ * less than 0 if this Byte is numerically less than the argument Byte; and
+ * a value greater than 0 if this Byte is numerically greater than the
+ * argument Byte (signed comparison).
+ *)
+function Byte_.compareTo(anotherByte: Byte_) : longInt;
+begin
+  compareTo := compare(v, anotherByte.v);
+end;
+
+(**
+ * Compares two byte values numerically.
+ *
+ * @param x the first byte to compare
+ * @param y the second byte to compare
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x
+ * &gt; y
+ *)
+class function Byte_.compare(x, y: shortInt) : longInt;
+begin
+  compare := x - y;
+end;
+
+(**
+ * Compares this object to the specified object.
+ *
+ * @param obj the object to compare with
+ * @return true if the objects are the same; false otherwise.
+ *)
+function Byte_.equals(obj: TObject) : boolean;
+begin
+  if obj = nil then begin
+    exit(false);
+  end;
+
+  if typeOf(self) &lt;&gt; typeOf(obj) then begin
+    exit(false);
+  end;
+
+  equals := (v = (Byte_(obj)).v);
+end;
+
+(**
+ * Returns a String object representing this Byte's value.
+ *
+ * @return a string representation of the value of this object in base 10.
+ *)
+function Byte_.toString_() : String_;
+begin
+  toString_ := Byte_.toString_(v);
+end;
+
+(**
+ * Returns a new String object representing the specified byte.
+ *
+ * @param b the byte to be converted
+ * @return the string representation of the specified byte
+ *)
+class function Byte_.toString_(b: shortInt) : String_;
+begin
+  toString_ := String_.create(IntToStr(b));
+end;
+
+(**
+ * Parses the string argument as a signed decimal byte.
+ *
+ * @param s a String containing the byte representation to be parsed
+ * @return the byte value represented by the argument in decimal
+ *)
+class function Byte_.parseByte(s: String_) : shortInt;
+begin
+  parseByte := strToInt(s.toString());
+end;
+
+function Byte_.toString() : ansiString;
+var
+  s: String_;
+begin
+  s := toString();
+  toString := s.ToString();
+end;
+
+end.
+
+</code>
+</codes>

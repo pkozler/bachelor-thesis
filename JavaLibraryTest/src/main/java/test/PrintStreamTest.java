@@ -43,10 +43,8 @@ public class PrintStreamTest {
         // print of boolean values
         a = true;
         System.out.print(a);
-        System.out.println();
         a = false;
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -57,24 +55,16 @@ public class PrintStreamTest {
         // print of lowercase letters
         a = 'a';
         System.out.print(a);
-        System.out.println();
         a = 'z';
-        System.out.print(a);
-        System.out.println();
-        // print of uppercase letters
+        System.out.print(a);        // print of uppercase letters
         a = 'A';
         System.out.print(a);
-        System.out.println();
         a = 'Z';
-        System.out.print(a);
-        System.out.println();
-        // print of digits
+        System.out.print(a);        // print of digits
         a = '0';
         System.out.print(a);
-        System.out.println();
         a = '9';
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -84,16 +74,11 @@ public class PrintStreamTest {
         char[] a;
         // empty char array
         a = new char[]{};
-        System.out.print(a);
-        System.out.println();
-        // char array with one char
+        System.out.print(a);        // char array with one char
         a = new char[]{'a'};
-        System.out.print(a);
-        System.out.println();
-        // char array with some chars
+        System.out.print(a);        // char array with some chars
         a = new char[]{'a', 'z', 'A', 'Z', '0', '9'};
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -104,31 +89,20 @@ public class PrintStreamTest {
         // zeros with and without sign
         a = 0;
         System.out.print(a);
-        System.out.println();
         a = -0;
-        System.out.print(a);
-        System.out.println();
-        // ones with and without sign
+        System.out.print(a);        // ones with and without sign
         a = 1;
         System.out.print(a);
-        System.out.println();
         a = -1;
-        System.out.print(a);
-        System.out.println();
-        // maximal absolute value with and without sign
+        System.out.print(a);        // maximal absolute value with and without sign
         a = Double.MAX_VALUE;
         System.out.print(a);
-        System.out.println();
         a = -Double.MAX_VALUE;
-        System.out.print(a);
-        System.out.println();
-        // minimal absolute value with and without sign
+        System.out.print(a);        // minimal absolute value with and without sign
         a = Double.MIN_VALUE;
         System.out.print(a);
-        System.out.println();
         a = -Double.MIN_VALUE;
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -138,28 +112,20 @@ public class PrintStreamTest {
         float a;
         a = 0;
         System.out.print(a);
-        System.out.println();
         a = -0;
         System.out.print(a);
-        System.out.println();
         a = 1;
         System.out.print(a);
-        System.out.println();
         a = -1;
         System.out.print(a);
-        System.out.println();
         a = Float.MAX_VALUE;
         System.out.print(a);
-        System.out.println();
         a = -Float.MAX_VALUE;
         System.out.print(a);
-        System.out.println();
         a = Float.MIN_VALUE;
         System.out.print(a);
-        System.out.println();
         a = -Float.MIN_VALUE;
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -169,22 +135,15 @@ public class PrintStreamTest {
         int a;
         // zero
         a = 0;
-        System.out.print(a);
-        System.out.println();
-        // ones with and without sign
+        System.out.print(a);        // ones with and without sign
         a = 1;
         System.out.print(a);
-        System.out.println();
         a = -1;
-        System.out.print(a);
-        System.out.println();
-        // maximal and minimal value
+        System.out.print(a);        // maximal and minimal value
         a = Integer.MAX_VALUE;
         System.out.print(a);
-        System.out.println();
         a = Integer.MIN_VALUE;
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -194,19 +153,14 @@ public class PrintStreamTest {
         long a;
         a = 0;
         System.out.print(a);
-        System.out.println();
         a = 1;
         System.out.print(a);
-        System.out.println();
         a = -1;
         System.out.print(a);
-        System.out.println();
         a = Long.MAX_VALUE;
         System.out.print(a);
-        System.out.println();
         a = Long.MIN_VALUE;
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -216,22 +170,15 @@ public class PrintStreamTest {
         DummyObject a;
         // object with an empty string
         a = new DummyObject("", 0);
-        System.out.print(a);
-        System.out.println();
-        // object with digits
+        System.out.print(a);        // object with digits
         a = new DummyObject("0", 1);
         System.out.print(a);
-        System.out.println();
         a = new DummyObject("9", -1);
-        System.out.print(a);
-        System.out.println();
-        // object with letters
+        System.out.print(a);        // object with letters
         a = new DummyObject("Aa", Integer.MAX_VALUE);
         System.out.print(a);
-        System.out.println();
         a = new DummyObject("Zz", Integer.MIN_VALUE);
         System.out.print(a);
-        System.out.println();
     }
 
     /**
@@ -241,24 +188,18 @@ public class PrintStreamTest {
         String a;
         // empty string
         a = "";
-        System.out.print(a);
-        System.out.println();
-        // string with one char
+        System.out.print(a);        // string with one char
         a = "a";
-        System.out.print(a);
-        System.out.println();
-        // string with some chars
+        System.out.print(a);        // string with some chars
         a = "azAZ09";
         System.out.print(a);
-        System.out.println();
     }
 
     /**
      * Tests the println method.
      */
     public static void printlnTest() {
-        // print of an empty line
-        System.out.println();
+        // print of an empty line        System.out.println();
     }
 
     /**
@@ -267,11 +208,9 @@ public class PrintStreamTest {
     public static void printlnTest2() {
         boolean a;
         a = true;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = false;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -280,23 +219,17 @@ public class PrintStreamTest {
     public static void printlnTest3() {
         char a;
         a = 'a';
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = 'z';
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = 'A';
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = 'Z';
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = '0';
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = '9';
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -305,14 +238,11 @@ public class PrintStreamTest {
     public static void printlnTest4() {
         char[] a;
         a = new char[]{};
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = new char[]{'a'};
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = new char[]{'a', 'z', 'A', 'Z', '0', '9'};
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -321,29 +251,21 @@ public class PrintStreamTest {
     public static void printlnTest5() {
         double a;
         a = 0;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -0;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = 1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Double.MAX_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -Double.MAX_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Double.MIN_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -Double.MIN_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -352,29 +274,21 @@ public class PrintStreamTest {
     public static void printlnTest6() {
         float a;
         a = 0;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -0;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = 1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Float.MAX_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -Float.MAX_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Float.MIN_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -Float.MIN_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -383,20 +297,15 @@ public class PrintStreamTest {
     public static void printlnTest7() {
         int a;
         a = 0;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = 1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Integer.MAX_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Integer.MIN_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -405,20 +314,15 @@ public class PrintStreamTest {
     public static void printlnTest8() {
         long a;
         a = 0;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = 1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = -1;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Long.MAX_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = Long.MIN_VALUE;
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -427,20 +331,15 @@ public class PrintStreamTest {
     public static void printlnTest9() {
         DummyObject a;
         a = new DummyObject("", 0);
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = new DummyObject("0", 1);
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = new DummyObject("9", -1);
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = new DummyObject("Aa", Integer.MAX_VALUE);
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = new DummyObject("Zz", Integer.MIN_VALUE);
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
 
     /**
@@ -449,14 +348,10 @@ public class PrintStreamTest {
     public static void printlnTest10() {
         String a;
         a = "";
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = "a";
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
         a = "azAZ09";
-        System.out.print(a);
-        System.out.println();
+        System.out.println(a);
     }
-
 }
