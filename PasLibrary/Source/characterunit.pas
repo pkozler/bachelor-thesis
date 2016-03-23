@@ -149,8 +149,18 @@ function Character.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: ansiChar) s: Character;
+begin
+  s.create(original);
+end;
+
+operator := (original: Character) s: ansiChar;
+begin
+  s := original.charValue();
 end;
 
 end.

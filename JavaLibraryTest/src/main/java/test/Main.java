@@ -1,5 +1,9 @@
 package test;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  *
  * @author Petr Kozler
@@ -10,24 +14,25 @@ public class Main {
         System.setProperty("log4j.configurationFile", "log4j-config.xml");
     }
 
-    public static void main(String[] args) {
-        PrintStreamTest.runTestSuite();
-        StringTest.runTestSuite();
-        ByteTest.runTestSuite();
-        ShortTest.runTestSuite();
-        IntegerTest.runTestSuite();
-        LongTest.runTestSuite();
-        FloatTest.runTestSuite();
-        DoubleTest.runTestSuite();
-        BooleanTest.runTestSuite();
-        CharacterTest.runTestSuite();
-        MathTest.runTestSuite();
-        ArraysTest.runTestSuite();
-        ArrayListTest.runTestSuite();
-        LinkedListTest.runTestSuite();
-        CollectionsTest.runTestSuite();
-        StringTokenizerTest.runTestSuite();
-        ScannerTest.runTestSuite();
+    public static void main(String[] args) throws FileNotFoundException {
+//        PrintStreamTest.runTestSuite();
+//        StringTest.runTestSuite();
+//        StringBuilderTest.runTestSuite();
+//        ByteTest.runTestSuite();
+//        ShortTest.runTestSuite();
+//        IntegerTest.runTestSuite();
+//        LongTest.runTestSuite();
+//        FloatTest.runTestSuite();
+//        DoubleTest.runTestSuite();
+//        BooleanTest.runTestSuite();
+//        CharacterTest.runTestSuite();
+//        MathTest.runTestSuite();
+//        ArraysTest.runTestSuite();
+//        ArrayListTest.runTestSuite();
+//        LinkedListTest.runTestSuite();
+//        CollectionsTest.runTestSuite();
+//        StringTokenizerTest.runTestSuite();
+//        ScannerTest.runTestSuite();
     }
 
 }

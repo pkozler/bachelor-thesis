@@ -32,7 +32,7 @@ public class ArrayListTest {
      * Tests the constructor.
      */
     public static void arrayListTest() {
-        ArrayList<DummyObject> a;
+        ArrayList<TestObject> a;
         String b;
         // empty list
         a = new ArrayList<>();
@@ -44,8 +44,8 @@ public class ArrayListTest {
      * Tests the constructor with ArrayList as a parameter.
      */
     public static void arrayListTest2() {
-        ArrayList<DummyObject> a, b;
-        DummyObject c;
+        ArrayList<TestObject> a, b;
+        TestObject c;
         String d;
         // creating the list from an empty list
         a = new ArrayList<>();
@@ -54,18 +54,18 @@ public class ArrayListTest {
         logger.info(d);
         // creating the list from a list with one element
         a = new ArrayList<>();
-        c = new DummyObject("first", 1);
+        c = new TestObject("first", 1);
         a.add(c);
         b = new ArrayList<>(a);
         d = b.toString();
         logger.info(d);
         // creating the list from a list with some elements
         a = new ArrayList<>();
-        c = new DummyObject("first", 1);
+        c = new TestObject("first", 1);
         a.add(c);
-        c = new DummyObject("second", 2);
+        c = new TestObject("second", 2);
         a.add(c);
-        c = new DummyObject("third", 3);
+        c = new TestObject("third", 3);
         a.add(c);
         b = new ArrayList<>(a);
         d = b.toString();
@@ -76,28 +76,28 @@ public class ArrayListTest {
      * Tests the add method.
      */
     public static void addTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         String c;
         // adding some elements at the end of the list
         a = new ArrayList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("first", 2);
+        b = new TestObject("first", 2);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("second", 1);
+        b = new TestObject("second", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
@@ -107,32 +107,32 @@ public class ArrayListTest {
      * Tests the add method with index as a parameter.
      */
     public static void addTest2() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         String c;
         a = new ArrayList<>();
         // adding an element at the beginning
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(0, b);
         c = a.toString();
         logger.info(c);
         // adding an element at the end
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(1, b);
         c = a.toString();
         logger.info(c);
         // adding an element at the beginning
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(0, b);
         c = a.toString();
         logger.info(c);
         // adding an element in the middle
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(1, b);
         c = a.toString();
         logger.info(c);
         // adding an element in the middle
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         a.add(2, b);
         c = a.toString();
         logger.info(c);
@@ -142,18 +142,18 @@ public class ArrayListTest {
      * Tests the get method.
      */
     public static void getTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         String c;
         a = new ArrayList<>();
         // getting an element from the beginning
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         b = a.get(0);
         c = b.toString();
         logger.info(c);
         // getting an element from the beginning (more elements in the list)
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
         b = a.get(0);
         c = b.toString();
@@ -162,11 +162,11 @@ public class ArrayListTest {
         b = a.get(1);
         c = b.toString();
         logger.info(c);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(b);
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         a.add(b);
         // getting an element from the beginning
         b = a.get(0);
@@ -182,32 +182,32 @@ public class ArrayListTest {
      * Tests the set method.
      */
     public static void setTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         String c;
         a = new ArrayList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(b);
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         a.add(b);
-        b = new DummyObject("sixth", 6);
+        b = new TestObject("sixth", 6);
         // replacing an element at the beginning
         a.set(0, b);
         c = a.toString();
         logger.info(c);
         // replacing an element in the middle
-        b = new DummyObject("seventh", 7);
+        b = new TestObject("seventh", 7);
         a.set(2, b);
         c = a.toString();
         logger.info(c);
         // replacing an element at the end
-        b = new DummyObject("eighth", 8);
+        b = new TestObject("eighth", 8);
         a.set(4, b);
         c = a.toString();
         logger.info(c);
@@ -217,19 +217,19 @@ public class ArrayListTest {
      * Tests the remove method.
      */
     public static void removeTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         String c;
         a = new ArrayList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(b);
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         // removing an element from the beginning
         a.add(b);
         a.remove(0);
@@ -249,22 +249,22 @@ public class ArrayListTest {
      * Tests the size method.
      */
     public static void sizeTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         int c;
         a = new ArrayList<>();
         // size in the beginning
         c = a.size();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         // size after adding one element
         a.add(b);
         c = a.size();
         logger.info(c);
         // size after adding more elements
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         c = a.size();
         logger.info(c);
@@ -283,19 +283,19 @@ public class ArrayListTest {
      * Tests the isEmpty method.
      */
     public static void isEmptyTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         boolean c;
         a = new ArrayList<>();
         c = a.isEmpty();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.isEmpty();
         logger.info(c);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         c = a.isEmpty();
         logger.info(c);
@@ -312,8 +312,8 @@ public class ArrayListTest {
      * Tests the clear method.
      */
     public static void clearTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         String c;
         a = new ArrayList<>();
         // clear in the beginning
@@ -321,17 +321,17 @@ public class ArrayListTest {
         c = a.toString();
         logger.info(c);
         // clear after adding one element
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         a.clear();
         c = a.toString();
         logger.info(c);
         // clear after adding more elements
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         a.clear();
         c = a.toString();
@@ -342,22 +342,22 @@ public class ArrayListTest {
      * Tests the toString method.
      */
     public static void toStringTest() {
-        ArrayList<DummyObject> a;
-        DummyObject b;
+        ArrayList<TestObject> a;
+        TestObject b;
         String c;
         // the text representation of an empty list
         a = new ArrayList<>();
         c = a.toString();
         logger.info(c);
         // the text representation of a list with one element
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
         // the text representation of a list with some elements
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         c = a.toString();
         logger.info(c);

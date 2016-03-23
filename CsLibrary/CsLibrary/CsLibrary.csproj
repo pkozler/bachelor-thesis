@@ -49,12 +49,15 @@
     <Compile Include="Byte.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Collections.cs" />
+    <Compile Include="Comparable.cs" />
+    <Compile Include="Comparator.cs" />
     <Compile Include="Double.cs" />
     <Compile Include="Float.cs" />
     <Compile Include="Integer.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="Long.cs" />
     <Compile Include="Math.cs" />
+    <Compile Include="Object.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />

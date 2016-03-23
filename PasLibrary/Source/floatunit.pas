@@ -244,8 +244,18 @@ function Float.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: single) s: Float;
+begin
+  s.create(original);
+end;
+
+operator := (original: Float) s: single;
+begin
+  s := original.floatValue;
 end;
 
 end.

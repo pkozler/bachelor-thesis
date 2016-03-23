@@ -24,6 +24,13 @@ uses
   StringUnit,
   SystemUnit;
 
+var
+  str, str2, str3 : String_;
 begin
-
+  str := 'aaa';
+  str2 := 'bbb';
+  WriteLn(str.toString);
+  WriteLn(str2.toString);
+  //str3 := str + str2;
+  WriteLn(str3.toString());
 end.

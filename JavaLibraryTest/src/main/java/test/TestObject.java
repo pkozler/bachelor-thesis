@@ -1,12 +1,12 @@
 package test;
 
 /**
- * The {@code DummyObject} class represents a simple object that serves
+ * The {@code TestObject} class represents a simple object that serves
  * for demonstration the functionality of libraries working with objects.
  *
  * @author Petr Kozler
  */
-public class DummyObject implements Comparable<DummyObject> {
+public class TestObject implements Comparable<TestObject> {
 
     private String str;
     private int i;
@@ -17,7 +17,7 @@ public class DummyObject implements Comparable<DummyObject> {
      * @param str string value
      * @param i integer value
      */
-    public DummyObject(String str, int i) {
+    public TestObject(String str, int i) {
         this.str = str;
         this.i = i;
     }
@@ -52,7 +52,7 @@ public class DummyObject implements Comparable<DummyObject> {
     /**
      * Changes a value of the integer field.
      *
-     * @param str integer value
+     * @param i integer value
      */
     public void setI(int i) {
         this.i = i;
@@ -87,13 +87,9 @@ public class DummyObject implements Comparable<DummyObject> {
             return false;
         }
 
-        final DummyObject other = (DummyObject) obj;
+        final TestObject other = (TestObject) obj;
 
-        if (this.i != other.i) {
-            return false;
-        }
-
-        return true;
+        return this.i == other.i;
     }
 
     /**
@@ -103,7 +99,7 @@ public class DummyObject implements Comparable<DummyObject> {
      */
     @Override
     public String toString() {
-        return "DummyObject [str=" + str + ", i=" + i + "]";
+        return "TestObject [str=" + str + ", i=" + i + "]";
     }
 
     /**
@@ -113,7 +109,7 @@ public class DummyObject implements Comparable<DummyObject> {
      * @return comparison result
      */
     @Override
-    public int compareTo(DummyObject o) {
+    public int compareTo(TestObject o) {
         return this.i - o.i;
     }
 

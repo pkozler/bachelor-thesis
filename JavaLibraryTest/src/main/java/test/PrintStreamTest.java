@@ -1,5 +1,11 @@
 package test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,8 +18,12 @@ import org.apache.logging.log4j.Logger;
 public class PrintStreamTest {
 
     public static Logger logger = LogManager.getLogger(PrintStreamTest.class.getName());
+    private static File stdoutFile = new File("logs/PrintStream_STDOUT.txt");
+    private static PrintStream System_out;
 
-    public static void runTestSuite() {
+    public static void runTestSuite() throws FileNotFoundException {
+        System_out = new PrintStream(stdoutFile);
+
         PrintStreamTest.printTest();
         PrintStreamTest.printTest2();
         PrintStreamTest.printTest3();
@@ -33,6 +43,47 @@ public class PrintStreamTest {
         PrintStreamTest.printlnTest8();
         PrintStreamTest.printlnTest9();
         PrintStreamTest.printlnTest10();
+
+        System_out.close();
+
+        concatFiles();
+    }
+
+    private static void concatFiles() {
+        try {
+            File logFile = new File("logs/PrintStreamTest.txt");
+
+            Scanner sc = new Scanner(logFile);
+            ArrayList logLines = new ArrayList();
+
+            while (sc.hasNextLine()) {
+                logLines.add(sc.nextLine());
+                sc.nextLine();
+            }
+
+            sc.close();
+
+            sc = new Scanner(stdoutFile);
+            ArrayList stdoutLines = new ArrayList();
+
+            while (sc.hasNextLine()) {
+                stdoutLines.add(sc.nextLine());
+            }
+
+            sc.close();
+
+            File resultFile = new File("logs/SystemTest.txt");
+            System_out = new PrintStream(resultFile);
+
+            for (int i = 0; i < stdoutLines.size(); i++) {
+                System_out.println(logLines.get(i));
+                System_out.println(stdoutLines.get(i));
+            }
+
+            System_out.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -42,9 +93,13 @@ public class PrintStreamTest {
         boolean a;
         // print of boolean values
         a = true;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = false;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
@@ -54,17 +109,31 @@ public class PrintStreamTest {
         char a;
         // print of lowercase letters
         a = 'a';
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = 'z';
-        System.out.print(a);        // print of uppercase letters
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // print of uppercase letters
         a = 'A';
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = 'Z';
-        System.out.print(a);        // print of digits
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // print of digits
         a = '0';
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = '9';
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
@@ -74,11 +143,19 @@ public class PrintStreamTest {
         char[] a;
         // empty char array
         a = new char[]{};
-        System.out.print(a);        // char array with one char
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // char array with one char
         a = new char[]{'a'};
-        System.out.print(a);        // char array with some chars
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // char array with some chars
         a = new char[]{'a', 'z', 'A', 'Z', '0', '9'};
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
@@ -88,21 +165,40 @@ public class PrintStreamTest {
         double a;
         // zeros with and without sign
         a = 0;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -0;
-        System.out.print(a);        // ones with and without sign
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // ones with and without sign
         a = 1;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -1;
-        System.out.print(a);        // maximal absolute value with and without sign
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // maximal absolute value with and without sign
         a = Double.MAX_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -Double.MAX_VALUE;
-        System.out.print(a);        // minimal absolute value with and without sign
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // minimal absolute value with and without sign
         a = Double.MIN_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -Double.MIN_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
@@ -111,21 +207,37 @@ public class PrintStreamTest {
     public static void printTest5() {
         float a;
         a = 0;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -0;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = 1;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -1;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = Float.MAX_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -Float.MAX_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = Float.MIN_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -Float.MIN_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
@@ -135,15 +247,27 @@ public class PrintStreamTest {
         int a;
         // zero
         a = 0;
-        System.out.print(a);        // ones with and without sign
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // ones with and without sign
         a = 1;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -1;
-        System.out.print(a);        // maximal and minimal value
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // maximal and minimal value
         a = Integer.MAX_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = Integer.MIN_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
@@ -152,33 +276,55 @@ public class PrintStreamTest {
     public static void printTest7() {
         long a;
         a = 0;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = 1;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = -1;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = Long.MAX_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
         a = Long.MIN_VALUE;
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
      * Tests the print method with an object.
      */
     public static void printTest8() {
-        DummyObject a;
+        TestObject a;
         // object with an empty string
-        a = new DummyObject("", 0);
-        System.out.print(a);        // object with digits
-        a = new DummyObject("0", 1);
-        System.out.print(a);
-        a = new DummyObject("9", -1);
-        System.out.print(a);        // object with letters
-        a = new DummyObject("Aa", Integer.MAX_VALUE);
-        System.out.print(a);
-        a = new DummyObject("Zz", Integer.MIN_VALUE);
-        System.out.print(a);
+        a = new TestObject("", 0);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // object with digits
+        a = new TestObject("0", 1);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        a = new TestObject("9", -1);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // object with letters
+        a = new TestObject("Aa", Integer.MAX_VALUE);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        a = new TestObject("Zz", Integer.MIN_VALUE);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
@@ -188,18 +334,28 @@ public class PrintStreamTest {
         String a;
         // empty string
         a = "";
-        System.out.print(a);        // string with one char
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // string with one char
         a = "a";
-        System.out.print(a);        // string with some chars
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
+        // string with some chars
         a = "azAZ09";
-        System.out.print(a);
+        logger.info("");
+        System_out.print(a);
+        System_out.print("\n");
     }
 
     /**
      * Tests the println method.
      */
     public static void printlnTest() {
-        // print of an empty line        System.out.println();
+        // print of an empty line 
+        logger.info("");
+        System_out.println();
     }
 
     /**
@@ -208,9 +364,11 @@ public class PrintStreamTest {
     public static void printlnTest2() {
         boolean a;
         a = true;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = false;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
@@ -219,17 +377,23 @@ public class PrintStreamTest {
     public static void printlnTest3() {
         char a;
         a = 'a';
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = 'z';
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = 'A';
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = 'Z';
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = '0';
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = '9';
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
@@ -238,11 +402,14 @@ public class PrintStreamTest {
     public static void printlnTest4() {
         char[] a;
         a = new char[]{};
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = new char[]{'a'};
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = new char[]{'a', 'z', 'A', 'Z', '0', '9'};
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
@@ -251,21 +418,29 @@ public class PrintStreamTest {
     public static void printlnTest5() {
         double a;
         a = 0;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -0;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = 1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Double.MAX_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -Double.MAX_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Double.MIN_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -Double.MIN_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
@@ -274,21 +449,29 @@ public class PrintStreamTest {
     public static void printlnTest6() {
         float a;
         a = 0;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -0;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = 1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Float.MAX_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -Float.MAX_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Float.MIN_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -Float.MIN_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
@@ -297,15 +480,20 @@ public class PrintStreamTest {
     public static void printlnTest7() {
         int a;
         a = 0;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = 1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Integer.MAX_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Integer.MIN_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
@@ -314,32 +502,42 @@ public class PrintStreamTest {
     public static void printlnTest8() {
         long a;
         a = 0;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = 1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = -1;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Long.MAX_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = Long.MIN_VALUE;
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
      * Tests the println method with an object.
      */
     public static void printlnTest9() {
-        DummyObject a;
-        a = new DummyObject("", 0);
-        System.out.println(a);
-        a = new DummyObject("0", 1);
-        System.out.println(a);
-        a = new DummyObject("9", -1);
-        System.out.println(a);
-        a = new DummyObject("Aa", Integer.MAX_VALUE);
-        System.out.println(a);
-        a = new DummyObject("Zz", Integer.MIN_VALUE);
-        System.out.println(a);
+        TestObject a;
+        a = new TestObject("", 0);
+        logger.info("");
+        System_out.println(a);
+        a = new TestObject("0", 1);
+        logger.info("");
+        System_out.println(a);
+        a = new TestObject("9", -1);
+        logger.info("");
+        System_out.println(a);
+        a = new TestObject("Aa", Integer.MAX_VALUE);
+        logger.info("");
+        System_out.println(a);
+        a = new TestObject("Zz", Integer.MIN_VALUE);
+        logger.info("");
+        System_out.println(a);
     }
 
     /**
@@ -348,10 +546,13 @@ public class PrintStreamTest {
     public static void printlnTest10() {
         String a;
         a = "";
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = "a";
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
         a = "azAZ09";
-        System.out.println(a);
+        logger.info("");
+        System_out.println(a);
     }
 }

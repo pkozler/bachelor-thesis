@@ -289,24 +289,24 @@ public class ArraysTest {
      * Tests the binarySearch method with array of objects.
      */
     public static void binarySearchTest13() {
-        DummyObject[] a;
+        TestObject[] a;
         int b;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
         Arrays.sort(a);
-        b = Arrays.binarySearch(a, new DummyObject("sixth", 6));
+        b = Arrays.binarySearch(a, new TestObject("sixth", 6));
         logger.info(b);
-        b = Arrays.binarySearch(a, new DummyObject("sixth", 4));
+        b = Arrays.binarySearch(a, new TestObject("sixth", 4));
         logger.info(b);
     }
 
@@ -315,24 +315,24 @@ public class ArraysTest {
      * parameters.
      */
     public static void binarySearchTest14() {
-        DummyObject[] a;
+        TestObject[] a;
         int b;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
         Arrays.sort(a);
-        b = Arrays.binarySearch(a, 1, 4, new DummyObject("sixth", 6));
+        b = Arrays.binarySearch(a, 1, 4, new TestObject("sixth", 6));
         logger.info(b);
-        b = Arrays.binarySearch(a, 1, 4, new DummyObject("sixth", 4));
+        b = Arrays.binarySearch(a, 1, 4, new TestObject("sixth", 4));
         logger.info(b);
     }
 
@@ -370,26 +370,26 @@ public class ArraysTest {
      * parameter.
      */
     public static void binarySearchTest17() {
-        DummyObject[] a;
+        TestObject[] a;
         int b;
-        DummyObjectComparer c;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        TestObjectComparer c;
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
-        c = new DummyObjectComparer();
+        c = new TestObjectComparer();
         Arrays.sort(a, c);
-        b = Arrays.binarySearch(a, new DummyObject("sixth", 6), c);
+        b = Arrays.binarySearch(a, new TestObject("sixth", 6), c);
         logger.info(b);
-        b = Arrays.binarySearch(a, new DummyObject("sixth", 4), c);
+        b = Arrays.binarySearch(a, new TestObject("sixth", 4), c);
         logger.info(b);
     }
 
@@ -398,26 +398,26 @@ public class ArraysTest {
      * comparator as parameters.
      */
     public static void binarySearchTest18() {
-        DummyObject[] a;
+        TestObject[] a;
         int b;
-        DummyObjectComparer c;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        TestObjectComparer c;
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
-        c = new DummyObjectComparer();
+        c = new TestObjectComparer();
         Arrays.sort(a, c);
-        b = Arrays.binarySearch(a, 1, 4, new DummyObject("sixth", 6), c);
+        b = Arrays.binarySearch(a, 1, 4, new TestObject("sixth", 6), c);
         logger.info(b);
-        b = Arrays.binarySearch(a, 1, 4, new DummyObject("sixth", 4), c);
+        b = Arrays.binarySearch(a, 1, 4, new TestObject("sixth", 4), c);
         logger.info(b);
     }
 
@@ -572,14 +572,14 @@ public class ArraysTest {
      * Tests the copyOf method with array of objects.
      */
     public static void copyOfTest9() {
-        DummyObject[] a, b;
+        TestObject[] a, b;
         String c;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),};
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),};
         b = Arrays.copyOf(a, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -742,14 +742,14 @@ public class ArraysTest {
      * Tests the copyOfRange method with array of objects.
      */
     public static void copyOfRangeTest9() {
-        DummyObject[] a, b;
+        TestObject[] a, b;
         String c;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),};
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),};
         b = Arrays.copyOfRange(a, 0, 3);
         c = Arrays.toString(b);
         logger.info(c);
@@ -938,36 +938,36 @@ public class ArraysTest {
      * Tests the equals method with array of objects.
      */
     public static void equalsTest8() {
-        DummyObject[] a, b;
+        TestObject[] a, b;
         boolean c;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),};
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),};
         b = null;
         c = Arrays.equals(a, b);
         logger.info(c);
-        a = new DummyObject[]{
-            new DummyObject("first", 3)
+        a = new TestObject[]{
+            new TestObject("first", 3)
         };
         c = Arrays.equals(a, b);
         logger.info(c);
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 3),};
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 3),};
         c = Arrays.equals(a, b);
         logger.info(c);
-        b = new DummyObject[]{
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        b = new TestObject[]{
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
         c = Arrays.equals(a, b);
         logger.info(c);
@@ -1174,10 +1174,10 @@ public class ArraysTest {
      * Tests the fill method with array of objects.
      */
     public static void fillTest15() {
-        DummyObject[] a;
+        TestObject[] a;
         String b;
-        a = new DummyObject[5];
-        Arrays.fill(a, new DummyObject("sixth", 6));
+        a = new TestObject[5];
+        Arrays.fill(a, new TestObject("sixth", 6));
         b = Arrays.toString(a);
         logger.info(b);
     }
@@ -1186,10 +1186,10 @@ public class ArraysTest {
      * Tests the fill method with array of objects and indexes as parameters.
      */
     public static void fillTest16() {
-        DummyObject[] a;
+        TestObject[] a;
         String b;
-        a = new DummyObject[5];
-        Arrays.fill(a, 1, 4, new DummyObject("sixth", 6));
+        a = new TestObject[5];
+        Arrays.fill(a, 1, 4, new TestObject("sixth", 6));
         b = Arrays.toString(a);
         logger.info(b);
     }
@@ -1368,19 +1368,19 @@ public class ArraysTest {
      * Tests the sort method with array of objects.
      */
     public static void sortTest13() {
-        DummyObject[] a;
+        TestObject[] a;
         String b;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
         Arrays.sort(a);
         b = Arrays.toString(a);
@@ -1391,19 +1391,19 @@ public class ArraysTest {
      * Tests the sort method with array of objects and indexes as parameters.
      */
     public static void sortTest14() {
-        DummyObject[] a;
+        TestObject[] a;
         String b;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
         Arrays.sort(a, 1, 4);
         b = Arrays.toString(a);
@@ -1439,22 +1439,22 @@ public class ArraysTest {
      * parameter.
      */
     public static void sortTest17() {
-        DummyObject[] a;
+        TestObject[] a;
         String b;
-        DummyObjectComparer c;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        TestObjectComparer c;
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
-        c = new DummyObjectComparer();
+        c = new TestObjectComparer();
         Arrays.sort(a, c);
         b = Arrays.toString(a);
         logger.info(b);
@@ -1465,22 +1465,22 @@ public class ArraysTest {
      * parameters.
      */
     public static void sortTest18() {
-        DummyObject[] a;
+        TestObject[] a;
         String b;
-        DummyObjectComparer c;
-        a = new DummyObject[]{
-            new DummyObject("first", 3),
-            new DummyObject("second", 2),
-            new DummyObject("third", 8),
-            new DummyObject("fourth", 7),
-            new DummyObject("fifth", 6),
-            new DummyObject("sixth", 3),
-            new DummyObject("seventh", 2),
-            new DummyObject("eighth", 8),
-            new DummyObject("nineth", 7),
-            new DummyObject("tenth", 6)
+        TestObjectComparer c;
+        a = new TestObject[]{
+            new TestObject("first", 3),
+            new TestObject("second", 2),
+            new TestObject("third", 8),
+            new TestObject("fourth", 7),
+            new TestObject("fifth", 6),
+            new TestObject("sixth", 3),
+            new TestObject("seventh", 2),
+            new TestObject("eighth", 8),
+            new TestObject("nineth", 7),
+            new TestObject("tenth", 6)
         };
-        c = new DummyObjectComparer();
+        c = new TestObjectComparer();
         Arrays.sort(a, 1, 4, c);
         b = Arrays.toString(a);
         logger.info(b);
@@ -1612,24 +1612,24 @@ public class ArraysTest {
      * Tests the toString method with array of objects.
      */
     public static void toStringTest8() {
-        DummyObject[] a;
+        TestObject[] a;
         String b;
-        a = new DummyObject[]{};
+        a = new TestObject[]{};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new DummyObject[]{new DummyObject("first", 1)};
+        a = new TestObject[]{new TestObject("first", 1)};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new DummyObject[]{null};
+        a = new TestObject[]{null};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new DummyObject[]{new DummyObject("first", 1), new DummyObject("second", 2), new DummyObject("third", 3)};
+        a = new TestObject[]{new TestObject("first", 1), new TestObject("second", 2), new TestObject("third", 3)};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new DummyObject[]{new DummyObject("first", 1), null, new DummyObject("third", 3)};
+        a = new TestObject[]{new TestObject("first", 1), null, new TestObject("third", 3)};
         b = Arrays.toString(a);
         logger.info(b);
-        a = new DummyObject[]{null, null, null};
+        a = new TestObject[]{null, null, null};
         b = Arrays.toString(a);
         logger.info(b);
     }

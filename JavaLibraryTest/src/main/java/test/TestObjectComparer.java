@@ -3,12 +3,12 @@ package test;
 import java.util.Comparator;
 
 /**
- * The {@code DummyObjectComparer} class represents a comparator
- * for the {@code DummyObject} class instances.
+ * The {@code TestObjectComparer} class represents a comparator
+ * for the {@code TestObject} class instances.
  *
  * @author Petr Kozler
  */
-public class DummyObjectComparer implements Comparator<DummyObject> {
+public class TestObjectComparer implements Comparator<TestObject> {
 
     /**
      * Compares its two arguments for order.
@@ -18,7 +18,7 @@ public class DummyObjectComparer implements Comparator<DummyObject> {
      * @return comparison result
      */
     @Override
-    public int compare(DummyObject o1, DummyObject o2) {
+    public int compare(TestObject o1, TestObject o2) {
         return o1.getI() - o2.getI();
     }
 

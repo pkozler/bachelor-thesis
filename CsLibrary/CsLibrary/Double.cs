@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// The Double class wraps a value of the primitive type double in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Double {
+    public class Double : IComparable<Double>
+    {
 
         /// <summary>
         /// A constant holding the positive infinity of type double.
@@ -47,7 +49,7 @@ namespace JavaClasses {
         /// A constant holding the smallest positive normal value of type double, 2^-1022.
         /// </summary>
         public const double MIN_NORMAL = 2.2250738585072014E-308;
-        
+
         // binary representation of negative zero value for comparison purposes
         private static readonly long negativeZeroBits = BitConverter.DoubleToInt64Bits(-0.0);
         private double v;
@@ -58,7 +60,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="value">the value to be represented by the Double.
         /// </param>
-        public Double(double value) {
+        public Double(double value)
+        {
             v = value;
         }
 
@@ -67,7 +70,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the double value represented by this object
         /// </returns>
-        public double doubleValue() {
+        public double doubleValue()
+        {
             return v;
         }
 
@@ -80,7 +84,8 @@ namespace JavaClasses {
         /// anotherDouble; and a value greater than 0 if this Double is numerically
         /// greater than anotherDouble.
         /// </returns>
-        public int compareTo(Double anotherDouble) {
+        public int compareTo(Double anotherDouble)
+        {
             return compare(v, anotherDouble.v);
         }
 
@@ -93,31 +98,37 @@ namespace JavaClasses {
         /// if d1 is numerically less than d2; and a value greater than 0 if d1 is
         /// numerically greater than d2.
         /// </returns>
-        public static int compare(double d1, double d2) {
+        public static int compare(double d1, double d2)
+        {
             /* testing for NaN values (a NaN value is considered greated
                than any other, including positive infinity,
                and two NaN values are considered equal) */
-            if (double.IsNaN(d1)) {
-                if (double.IsNaN(d2)) {
+            if (double.IsNaN(d1))
+            {
+                if (double.IsNaN(d2))
+                {
                     return 0;
                 }
 
                 return 1;
             }
 
-            if (double.IsNaN(d2)) {
+            if (double.IsNaN(d2))
+            {
                 return -1;
             }
 
             /* testing for +0.0 and -0.0 value (a positive zero
                is considered greater than a negative zero) */
             if (BitConverter.DoubleToInt64Bits(d1) == 0
-                && BitConverter.DoubleToInt64Bits(d2) == negativeZeroBits) {
+                && BitConverter.DoubleToInt64Bits(d2) == negativeZeroBits)
+            {
                 return 1;
             }
 
             if (BitConverter.DoubleToInt64Bits(d1) == negativeZeroBits
-                && BitConverter.DoubleToInt64Bits(d2) == 0) {
+                && BitConverter.DoubleToInt64Bits(d2) == 0)
+            {
                 return -1;
             }
 
@@ -133,28 +144,34 @@ namespace JavaClasses {
         /// <param name="obj">the object to compare with.
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj) {
-            if (obj == null) {
+        public bool equals(Object obj)
+        {
+            if (obj == null)
+            {
                 return false;
             }
 
-            if (GetType() != obj.GetType()) {
+            if (GetType() != obj.GetType())
+            {
                 return false;
             }
 
             double v2 = (obj as Double).v;
 
             // testing for NaN values (two NaN values are considered equal)
-            if (double.IsNaN(v) && double.IsNaN(v2)) {
+            if (double.IsNaN(v) && double.IsNaN(v2))
+            {
                 return true;
             }
 
             // testing for zero values (+0.0 is considered greater than -0.0)
-            if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits) {
+            if (BitConverter.DoubleToInt64Bits(v) == negativeZeroBits)
+            {
                 return BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits;
             }
 
-            if (BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits) {
+            if (BitConverter.DoubleToInt64Bits(v2) == negativeZeroBits)
+            {
                 return BitConverter.DoubleToInt64Bits(v) == negativeZeroBits;
             }
 
@@ -167,7 +184,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>a String representation of this object.
         /// </returns>
-        public String toString() {
+        public String toString()
+        {
             return Double.toString(v);
         }
 
@@ -177,7 +195,8 @@ namespace JavaClasses {
         /// <param name="d">the double to be converted.
         /// </param><returns>a string representation of the argument.
         /// </returns>
-        public static String toString(double d) {
+        public static String toString(double d)
+        {
             return d.ToString();
         }
 
@@ -188,12 +207,29 @@ namespace JavaClasses {
         /// <param name="s">the string to be parsed.
         /// </param><returns>the double value represented by the string argument.
         /// </returns>
-        public static double parseDouble(String s) {
+        public static double parseDouble(String s)
+        {
             return double.Parse(s.ToString());
         }
-        
-        public override string ToString() {
-            return toString().ToString();
+
+        public override string ToString()
+        {
+            return toString();
+        }
+
+        public int CompareTo(Double other)
+        {
+            return compareTo(other);
+        }
+
+        public static implicit operator Double(double original)
+        {
+            return new Double(original);
+        }
+
+        public static implicit operator double (Double original)
+        {
+            return original.doubleValue();
         }
 
     }

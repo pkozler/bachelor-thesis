@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// This class consists exclusively of static methods that operate on or return collections.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public static class Collections {
+    public static class Collections
+    {
 
         /// <summary>
         /// Searches the specified list for the specified object using the binary
@@ -21,7 +23,8 @@ namespace JavaClasses {
         /// the list are less than the specified key. Note that this guarantees that
         /// the return value will be >= 0 if and only if the key is found.
         /// </returns>
-        public static int binarySearch<T>(ArrayList<T> list, T key) {
+        public static int binarySearch<T>(ArrayList<T> list, T key)
+        {
             return list.l.BinarySearch(key);
         }
 
@@ -40,7 +43,8 @@ namespace JavaClasses {
         /// the list are less than the specified key. Note that this guarantees that
         /// the return value will be >= 0 if and only if the key is found.
         /// </returns>
-        public static int binarySearch<T>(ArrayList<T> list, T key, Comparer<T> c) {
+        public static int binarySearch<T>(ArrayList<T> list, T key, IComparer<T> c)
+        {
             return list.l.BinarySearch(key, c);
         }
 
@@ -50,12 +54,14 @@ namespace JavaClasses {
         /// <param name="dest">The destination list.
         /// </param><param name="src">The source list.
         /// </param>
-        public static void copy<T>(ArrayList<T> dest, ArrayList<T> src) {
+        public static void copy<T>(ArrayList<T> dest, ArrayList<T> src)
+        {
             List<T> destList = dest.l;
             List<T> srcList = src.l;
 
             // replacing the elements of the destination list with the elements of the source list
-            for (int i = 0; i < srcList.Count; i++) {
+            for (int i = 0; i < srcList.Count; i++)
+            {
                 destList[i] = srcList[i];
             }
         }
@@ -67,11 +73,13 @@ namespace JavaClasses {
         /// <param name="list">the list to be filled with the specified element.
         /// </param><param name="obj">The element with which to fill the specified list.
         /// </param>
-        public static void fill<T>(ArrayList<T> list, T obj) {
+        public static void fill<T>(ArrayList<T> list, T obj)
+        {
             List<T> l = list.l;
 
             // replacing the elements of the list with the specified value
-            for (int i = 0; i < l.Count; i++) {
+            for (int i = 0; i < l.Count; i++)
+            {
                 l[i] = obj;
             }
         }
@@ -82,7 +90,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="list">the list to be sorted.
         /// </param>
-        public static void sort<T>(ArrayList<T> list) {
+        public static void sort<T>(ArrayList<T> list)
+        {
             list.l.Sort();
         }
 
@@ -94,7 +103,8 @@ namespace JavaClasses {
         /// </param><param name="c">the comparator to determine the order of the list. A null value
         /// indicates that the elements' natural ordering should be used.
         /// </param>
-        public static void sort<T>(ArrayList<T> list, Comparer<T> c) {
+        public static void sort<T>(ArrayList<T> list, IComparer<T> c)
+        {
             list.l.Sort(c);
         }
 

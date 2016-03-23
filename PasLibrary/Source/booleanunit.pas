@@ -62,7 +62,7 @@ end;
  *)
 function Boolean_.compareTo(b: Boolean_) : longInt;
 begin
-  compareTo := compare(v, anotherBoolean.v);
+  compareTo := compare(v, b.v);
 end;
 
 (**
@@ -143,8 +143,18 @@ function Boolean_.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: boolean) s: Boolean_;
+begin
+  s.create(original);
+end;
+
+operator := (original: Boolean_) s: boolean;
+begin
+  s := original.booleanValue();
 end;
 
 end.

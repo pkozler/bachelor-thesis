@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Text;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// The String class represents character strings.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class String {
+    public class String : IComparable<String>
+    {
 
         private string s;
-        
+
         /// <summary>
         /// Constructs a new String by decoding the specified array of bytes using
         /// the platform's default charset.
         /// </summary>
         /// <param name="bytes">The bytes to be decoded into characters
         /// </param>
-        public String(sbyte[] bytes) {
+        public String(sbyte[] bytes)
+        {
             // parsing to the unsigned byte array
-            byte[] unsigned = (byte[]) (Array) bytes;
+            byte[] unsigned = (byte[])(Array)bytes;
             s = Encoding.Default.GetString(unsigned);
         }
 
@@ -31,8 +34,9 @@ namespace JavaClasses {
         /// </param><param name="offset">The index of the first byte to decode
         /// </param><param name="length">The number of bytes to decode
         /// </param>
-        public String(sbyte[] bytes, int offset, int length) {
-            byte[] unsigned = (byte[]) (Array) bytes;
+        public String(sbyte[] bytes, int offset, int length)
+        {
+            byte[] unsigned = (byte[])(Array)bytes;
             s = Encoding.Default.GetString(unsigned, offset, length);
         }
 
@@ -45,7 +49,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="original">A String
         /// </param>
-        public String(string original) {
+        public String(string original)
+        {
             s = original;
         }
 
@@ -58,7 +63,8 @@ namespace JavaClasses {
         /// string argument; and a value greater than 0 if this string is
         /// lexicographically greater than the string argument.
         /// </returns>
-        public int compareTo(String anotherString) {
+        public int compareTo(String anotherString)
+        {
             return s.CompareTo(anotherString.s);
         }
 
@@ -69,16 +75,19 @@ namespace JavaClasses {
         /// </param><returns>true if the given object represents a String equivalent to this
         /// string, false otherwise
         /// </returns>
-        public bool equals(Object anObject) {
-            if (anObject == null) {
+        public bool equals(Object anObject)
+        {
+            if (anObject == null)
+            {
                 return false;
             }
 
-            if (GetType() != anObject.GetType()) {
+            if (GetType() != anObject.GetType())
+            {
                 return false;
             }
 
-            return s.Equals((anObject as  String).s);
+            return s.Equals((anObject as String).s);
         }
 
         /// <summary>
@@ -87,7 +96,8 @@ namespace JavaClasses {
         /// <param name="beginIndex">the beginning index, inclusive.
         /// </param><returns>the specified substring.
         /// </returns>
-        public String substring(int beginIndex) {
+        public String substring(int beginIndex)
+        {
             return s.Substring(beginIndex);
         }
 
@@ -98,7 +108,8 @@ namespace JavaClasses {
         /// </param><param name="endIndex">the ending index, exclusive.
         /// </param><returns>the specified substring.
         /// </returns>
-        public String substring(int beginIndex, int endIndex) {
+        public String substring(int beginIndex, int endIndex)
+        {
             // calculating the length from the specified end index
             return s.Substring(beginIndex, endIndex - beginIndex);
         }
@@ -112,8 +123,9 @@ namespace JavaClasses {
         /// character sequence represented by this object, or -1 if the character
         /// does not occur.
         /// </returns>
-        public int indexOf(int ch) {
-            return s.IndexOf((char) ch);
+        public int indexOf(int ch)
+        {
+            return s.IndexOf((char)ch);
         }
 
         /// <summary>
@@ -126,8 +138,9 @@ namespace JavaClasses {
         /// character sequence represented by this object that is greater than or
         /// equal to fromIndex, or -1 if the character does not occur.
         /// </returns>
-        public int indexOf(int ch, int fromIndex) {
-            return s.IndexOf((char) ch, fromIndex);
+        public int indexOf(int ch, int fromIndex)
+        {
+            return s.IndexOf((char)ch, fromIndex);
         }
 
         /// <summary>
@@ -138,7 +151,8 @@ namespace JavaClasses {
         /// </param><returns>the index of the first occurrence of the specified substring, or
         /// -1 if there is no such occurrence.
         /// </returns>
-        public int indexOf(String str) {
+        public int indexOf(String str)
+        {
             return s.IndexOf(str.s);
         }
 
@@ -151,7 +165,8 @@ namespace JavaClasses {
         /// </param><returns>the index of the first occurrence of the specified substring,
         /// starting at the specified index, or -1 if there is no such occurrence.
         /// </returns>
-        public int indexOf(String str, int fromIndex) {
+        public int indexOf(String str, int fromIndex)
+        {
             return s.IndexOf(str.s, fromIndex);
         }
 
@@ -161,7 +176,8 @@ namespace JavaClasses {
         /// <returns>the length of the sequence of characters represented by this
         /// object.
         /// </returns>
-        public int length() {
+        public int length()
+        {
             return s.Length;
         }
 
@@ -172,7 +188,8 @@ namespace JavaClasses {
         /// <returns>A copy of this string with leading and trailing white space
         /// removed, or this string if it has no leading or trailing white space.
         /// </returns>
-        public String trim() {
+        public String trim()
+        {
             return s.Trim();
         }
 
@@ -182,7 +199,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the String, converted to lowercase.
         /// </returns>
-        public String toLowerCase() {
+        public String toLowerCase()
+        {
             return s.ToLower();
         }
 
@@ -192,7 +210,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the String, converted to uppercase.
         /// </returns>
-        public String toUpperCase() {
+        public String toUpperCase()
+        {
             return s.ToUpper();
         }
 
@@ -203,7 +222,8 @@ namespace JavaClasses {
         /// </param><returns>the char value at the specified index of this string. The first
         /// char value is at index 0.
         /// </returns>
-        public char charAt(int index) {
+        public char charAt(int index)
+        {
             return s[index];
         }
 
@@ -216,7 +236,8 @@ namespace JavaClasses {
         /// </param><returns>a string derived from this string by replacing every occurrence
         /// of oldChar with newChar.
         /// </returns>
-        public String replace(char oldChar, char newChar) {
+        public String replace(char oldChar, char newChar)
+        {
             return s.Replace(oldChar, newChar);
         }
 
@@ -230,7 +251,8 @@ namespace JavaClasses {
         /// empty string or is equal to this String object as determined by the
         /// equals(Object) method.
         /// </returns>
-        public bool startsWith(String prefix) {
+        public bool startsWith(String prefix)
+        {
             return s.StartsWith(prefix.s);
         }
 
@@ -244,7 +266,8 @@ namespace JavaClasses {
         /// string or is equal to this String object as determined by the
         /// equals(Object) method.
         /// </returns>
-        public bool endsWith(String suffix) {
+        public bool endsWith(String suffix)
+        {
             return s.EndsWith(suffix.s);
         }
 
@@ -253,31 +276,52 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>true if length() is 0, otherwise false
         /// </returns>
-        public bool isEmpty() {
+        public bool isEmpty()
+        {
             return s.Length == 0;
+        }
+
+        /*
+            Tests if the inner string values of two String objects are equal.
+        */
+        public override bool Equals(object obj)
+        {
+            return equals(obj);
         }
 
         /*
             Returns the inner string value for processing by standard library classes.
         */
-        public override string ToString() {
+        public override string ToString()
+        {
             return s;
+        }
+
+        /*
+            Compares two string values for ordering.
+        */
+        public int CompareTo(String other)
+        {
+            return compareTo(other);
         }
 
         /*
             Defines the implicit operator so it is possible to instantiate
             this class by standard string value assignment.
         */
-        public static implicit operator String(string original) {
+        public static implicit operator String(string original)
+        {
             return new String(original);
         }
 
         /*
-            Defines the operator of concatenation so it is posible
-            to use the plus operator the same way as for the standard strings.
+            Defines the opposite implicit operator so it is possible to get
+            the standard string value by this class instance assignment
+            and perform concatenation in the same way as with the standard string.
         */
-        public static String operator +(String s1, String s2) {
-            return s1.s + s2.s;
+        public static implicit operator string (String original)
+        {
+            return original.ToString();
         }
 
     }

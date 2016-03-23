@@ -38,6 +38,7 @@ type
   end;
 
 operator := (original: ansiString) s: String_;
+operator := (original: String_) s: ansiString;
 operator + (s1: String_; s2: String_) s: String_;
 
 implementation
@@ -333,6 +334,11 @@ end;
 operator := (original: ansiString) s: String_;
 begin
   s.create(original);
+end;
+
+operator := (original: String_) s: ansiString;
+begin
+  s := original.toString();
 end;
 
 operator + (s1: String_; s2: String_) s: String_;

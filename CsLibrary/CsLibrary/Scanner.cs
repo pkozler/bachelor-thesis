@@ -1,40 +1,49 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// A simple text scanner which can parse primitive types and strings using regular expressions.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Scanner {
+    public class Scanner
+    {
 
         // current line
         private string line = "";
-        
+
         /// <summary>
         /// Constructs a new Scanner that produces values scanned from the specified
         /// input stream.
         /// </summary>
         /// <param name="source">An input stream to be scanned
         /// </param>
-        public Scanner(Object source) {
-            // really no code
+        public Scanner(Object source)
+        {
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
         }
-        
+
         /*
              Returns the next token of the current line or reads the new line
              from the standard input if the current line was completely scanned.
          */
-        private string nextElement() {
+        private string nextElement()
+        {
+            // removing leading whitespaces from the current token
+            line.TrimStart();
+
             // reading the next line if the current is empty
-            if (string.IsNullOrEmpty(line)) {
-                line = Console.ReadLine().TrimStart();
+            if (string.IsNullOrEmpty(line))
+            {
+                line = Console.ReadLine();
             }
 
-            // removes the next token (delimited by whitespaces) from the current line
+            // removing the next token (delimited by whitespaces) from the current line
             Match match = Regex.Match(line, @"(?<=\s)");
-            string token = line.Remove(0, match.Index + match.Length).TrimEnd();
+            string token = line.Remove(0, match.Index + match.Length);
 
             return token;
         }
@@ -44,7 +53,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the next token
         /// </returns>
-        public String next() {
+        public String next()
+        {
             return nextElement();
         }
 
@@ -54,7 +64,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the boolean scanned from the input
         /// </returns>
-        public bool nextBoolean() {
+        public bool nextBoolean()
+        {
             return bool.Parse(nextElement());
         }
 
@@ -63,7 +74,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the byte scanned from the input
         /// </returns>
-        public sbyte nextByte() {
+        public sbyte nextByte()
+        {
             return sbyte.Parse(nextElement());
         }
 
@@ -72,7 +84,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the short scanned from the input
         /// </returns>
-        public short nextShort() {
+        public short nextShort()
+        {
             return short.Parse(nextElement());
         }
 
@@ -81,7 +94,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the int scanned from the input
         /// </returns>
-        public int nextInt() {
+        public int nextInt()
+        {
             return int.Parse(nextElement());
         }
 
@@ -90,7 +104,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the long scanned from the input
         /// </returns>
-        public long nextLong() {
+        public long nextLong()
+        {
             return long.Parse(nextElement());
         }
 
@@ -99,7 +114,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the float scanned from the input
         /// </returns>
-        public float nextFloat() {
+        public float nextFloat()
+        {
             return float.Parse(nextElement());
         }
 
@@ -108,7 +124,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the double scanned from the input
         /// </returns>
-        public double nextDouble() {
+        public double nextDouble()
+        {
             return double.Parse(nextElement());
         }
 
@@ -117,12 +134,15 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the line that was skipped
         /// </returns>
-        public String nextLine() {
+        public String nextLine()
+        {
             // reading the next line if the current is empty and returning it
-            if (string.IsNullOrEmpty(line)) {
+            if (string.IsNullOrEmpty(line))
+            {
                 return Console.ReadLine();
             } // reading the rest of the current line if it is not empty
-            else {
+            else
+            {
                 String str = line;
                 line = "";
 

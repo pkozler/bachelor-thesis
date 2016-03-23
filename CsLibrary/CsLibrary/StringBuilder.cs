@@ -1,10 +1,12 @@
-﻿namespace JavaClasses {
+﻿namespace JavaClasses
+{
 
     /// <summary>
     /// A mutable sequence of characters.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class StringBuilder {
+    public class StringBuilder
+    {
 
         private System.Text.StringBuilder sb;
 
@@ -12,7 +14,8 @@
         /// Constructs a string builder with no characters in it and an initial
         /// capacity of 16 characters.
         /// </summary>
-        public StringBuilder() {
+        public StringBuilder()
+        {
             sb = new System.Text.StringBuilder();
         }
 
@@ -22,14 +25,11 @@
         /// <param name="str">a string.
         /// </param><returns>a reference to this object.
         /// </returns>
-        StringBuilder append(String str) {
+        public StringBuilder append(String str)
+        {
             sb.Append(str.ToString());
 
             return this;
-        }
-
-        public override string ToString() {
-            return toString().ToString();
         }
 
         /// <summary>
@@ -37,8 +37,14 @@
         /// </summary>
         /// <returns>a string representation of this sequence of characters.
         /// </returns>
-        public String toString() {
+        public String toString()
+        {
             return sb.ToString();
+        }
+
+        public override string ToString()
+        {
+            return toString();
         }
 
     }

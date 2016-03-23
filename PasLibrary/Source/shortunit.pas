@@ -144,8 +144,18 @@ function Short.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: smallInt) s: Short;
+begin
+  s.create(original);
+end;
+
+operator := (original: Short) s: smallInt;
+begin
+  s := original.shortValue();
 end;
 
 end.

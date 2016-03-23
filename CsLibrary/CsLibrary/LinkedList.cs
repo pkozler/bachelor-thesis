@@ -1,19 +1,22 @@
 ﻿using System.Collections.Generic;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// Doubly-linked list implementation of the List and Deque interfaces.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class LinkedList<E> {
+    public class LinkedList<E>
+    {
 
         public System.Collections.Generic.LinkedList<E> l { get; private set; }
 
         /// <summary>
         /// Constructs an empty list.
         /// </summary>
-        public LinkedList() {
+        public LinkedList()
+        {
             l = new System.Collections.Generic.LinkedList<E>();
         }
 
@@ -23,7 +26,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="c">the collection whose elements are to be placed into this list
         /// </param>
-        public LinkedList(LinkedList<E> c) {
+        public LinkedList(LinkedList<E> c)
+        {
             l = new System.Collections.Generic.LinkedList<E>(c.l);
         }
 
@@ -33,7 +37,8 @@ namespace JavaClasses {
         /// <param name="e">element to be appended to this list
         /// </param><returns>true (as specified by Collection.add(E))
         /// </returns>
-        public bool add(E e) {
+        public bool add(E e)
+        {
             l.AddLast(e);
             return true;
         }
@@ -44,9 +49,11 @@ namespace JavaClasses {
         /// <param name="index">index at which the specified element is to be inserted
         /// </param><param name="element">element to be inserted
         /// </param>
-        public void add(int index, E element) {
+        public void add(int index, E element)
+        {
             // creating the first node, if the list is empty
-            if (index < 1) {
+            if (index < 1)
+            {
                 l.AddFirst(element);
                 return;
             }
@@ -54,7 +61,8 @@ namespace JavaClasses {
             LinkedListNode<E> node = l.First;
 
             // iterating to the node at the specified position in the list
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++)
+            {
                 node = node.Next;
             }
 
@@ -63,16 +71,58 @@ namespace JavaClasses {
         }
 
         /// <summary>
+        /// Compares the specified object with this list for equality.
+        /// </summary>
+        /// 
+        /// <param name="o">the object to be compared for equality with this list</param>
+        /// <returns>true if the specified object is equal to this list</returns>
+        public bool equals(LinkedList<E> o)
+        {
+            if (this == o)
+            {
+                return true;
+            }
+            
+            if (o == null)
+            {
+                return false;
+            }
+
+            int length = size();
+            
+            if (o.size() != length)
+            {
+                return false;
+            }
+            
+            for (int i = 0; i < length; i++)
+            {
+                E o1 = get(i);
+                E o2 = o.get(i);
+                bool equals = o1 == null ? o2 == null : o1.Equals(o2);
+
+                if (!equals)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Returns the element at the specified position in this list.
         /// </summary>
         /// <param name="index">index of the element to return
         /// </param><returns>the element at the specified position in this list
         /// </returns>
-        public E get(int index) {
+        public E get(int index)
+        {
             LinkedListNode<E> node = l.First;
 
             // iterating to the node at the specified position in the list
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++)
+            {
                 node = node.Next;
             }
 
@@ -88,11 +138,13 @@ namespace JavaClasses {
         /// </param><param name="element">element to be stored at the specified position
         /// </param><returns>the element previously at the specified position
         /// </returns>
-        public E set(int index, E element) {
+        public E set(int index, E element)
+        {
             E original;
 
             // replacing the value of node at the beginning if the index is zero
-            if (index < 1) {
+            if (index < 1)
+            {
                 original = l.First.Value;
                 l.First.Value = element;
                 return original;
@@ -101,7 +153,8 @@ namespace JavaClasses {
             LinkedListNode<E> node = l.First;
 
             // iterating to the node at the specified position in the list
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++)
+            {
                 node = node.Next;
             }
 
@@ -117,11 +170,13 @@ namespace JavaClasses {
         /// <param name="index">the index of the element to be removed
         /// </param><returns>the element previously at the specified position
         /// </returns>
-        public E remove(int index) {
+        public E remove(int index)
+        {
             E removed;
 
             // removing the node at the beginning if the index is zero
-            if (index < 1) {
+            if (index < 1)
+            {
                 removed = l.First.Value;
                 l.RemoveFirst();
                 return removed;
@@ -130,7 +185,8 @@ namespace JavaClasses {
             LinkedListNode<E> node = l.First;
 
             // iterating to the node at the specified position in the list
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++)
+            {
                 node = node.Next;
             }
 
@@ -145,7 +201,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the number of elements in this list
         /// </returns>
-        public int size() {
+        public int size()
+        {
             return l.Count;
         }
 
@@ -154,14 +211,16 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>true if this list contains no elements
         /// </returns>
-        public bool isEmpty() {
+        public bool isEmpty()
+        {
             return l.Count == 0;
         }
 
         /// <summary>
         /// Removes all of the elements from this list.
         /// </summary>
-        public void clear() {
+        public void clear()
+        {
             l.Clear();
         }
 
@@ -170,8 +229,36 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>a string representation of the object.
         /// </returns>
-        public String toString() {
-            return new String(ToString());
+        public String toString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+
+            LinkedListNode<E> node = l.First;
+
+            if (node != null)
+            {
+                sb.append(node.Value.ToString());
+                node = node.Next;
+            }
+
+            while (node != null)
+            {
+                sb.append(", ").append(node.Value.ToString());
+                node = node.Next;
+            }
+
+            return sb.append("]").toString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return equals(obj as LinkedList<E>);
+        }
+
+        public override string ToString()
+        {
+            return toString();
         }
 
     }

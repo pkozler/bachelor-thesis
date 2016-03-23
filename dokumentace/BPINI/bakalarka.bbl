@@ -1,0 +1,680 @@
+\begin{thebibliography}{133}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem{c-guide}
+\emph{The GNU C Reference Manual} [online]. [cit.~1.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html}.
+
+\bibitem{cpp-guide-abs}
+\emph{abs - C++ Reference} [online]. [cit.~10.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/cmath/abs/}.
+
+\bibitem{cpp-guide-array}
+\emph{Arrays - C++ Tutorials} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/doc/tutorial/arrays/}.
+
+\bibitem{cpp-guide-bsearch}
+\emph{bsearch - C++ Reference} [online]. [cit.~8.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/cstdlib/bsearch/}.
+
+\bibitem{cpp-guide-calloc}
+\emph{calloc - C++ Reference} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/cstdlib/calloc/}.
+
+\bibitem{cpp-guide-chararray}
+\emph{Character sequences - C++ Tutorials} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/doc/tutorial/ntcs/}.
+
+\bibitem{cpp-guide-classes}
+\emph{Classes (I) - C++ Tutorials} [online]. [cit.~1.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/doc/tutorial/classes/}.
+
+\bibitem{cpp-guide-cmath}
+\emph{<cmath> (math.h) - C++ Reference} [online]. [cit.~10.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/cmath/}.
+
+\bibitem{cpp-guide-cstdio}
+\emph{<cstdio> (stdio.h) - C++ Reference} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/cstdio/}.
+
+\bibitem{cpp-guide-cstdlib}
+\emph{<cstdlib> (stdlib.h) - C++ Reference} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/cstdlib/}.
+
+\bibitem{cpp-guide-cstring}
+\emph{<cstring> (string.h) - C++ Reference} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/cstring/}.
+
+\bibitem{cpp-guide-iostream}
+\emph{<iostream> - C++ Reference} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/iostream/}.
+
+\bibitem{cpp-guide-list}
+\emph{list - C++ Reference} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/list/list/}.
+
+\bibitem{cpp-guide-malloc}
+\emph{malloc - C++ Reference} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/cstdlib/malloc/}.
+
+\bibitem{cpp-guide-map}
+\emph{map - C++ Reference} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/map/map/}.
+
+\bibitem{cpp-guide-pointer}
+\emph{Pointers - C++ Tutorials} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/doc/tutorial/pointers/}.
+
+\bibitem{cpp-guide-printf}
+\emph{printf - C++ Reference} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/cstdio/printf/}.
+
+\bibitem{cpp-guide-qsort}
+\emph{qsort - C++ Reference} [online]. [cit.~8.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/cstdlib/qsort/}.
+
+\bibitem{cpp-guide-scanf}
+\emph{scanf - C++ Reference} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/cstdio/scanf/}.
+
+\bibitem{cpp-guide-set}
+\emph{set - C++ Reference} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/set/set/}.
+
+\bibitem{cpp-guide-stdbinarysearch}
+\emph{binary\_search - C++ Reference} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/algorithm/\-binary\_search/}.
+
+\bibitem{cpp-guide-stdcin}
+\emph{cin - C++ Reference} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/iostream/cin/}.
+
+\bibitem{cpp-guide-stdcout}
+\emph{cout - C++ Reference} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/iostream/cout/}.
+
+\bibitem{cpp-guide-stdint}
+\emph{<cstdint> (stdint.h) - C++ Reference} [online]. [cit.~21.03.2016].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/cstdint/}.
+
+\bibitem{cpp-guide-stdsort}
+\emph{sort - C++ Reference} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/algorithm/sort/}.
+
+\bibitem{cpp-guide-stdstablesort}
+\emph{stable\_sort - C++ Reference} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/algorithm/\-stable\_sort/}.
+
+\bibitem{cpp-guide-stdstring}
+\emph{string - C++ Reference} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/string/\-string/?kw=string}.
+
+\bibitem{cpp-guide-string}
+\emph{<string> - C++ Reference} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z: \url{http://www.cplusplus.com/reference/string/}.
+
+\bibitem{cpp-guide-types}
+\emph{Variables and types - C++ Tutorials} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/doc/tutorial/variables/}.
+
+\bibitem{cpp-guide-vector}
+\emph{vector - C++ Reference} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.cplusplus.com/reference/vector/vector/}.
+
+\bibitem{cs-guide-array}
+\emph{Array – třída (System)} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/system.array(v=vs.110).aspx}.
+
+\bibitem{cs-guide-array-tutorial}
+\emph{Arrays Tutorial (C\#)} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/aa288453(v=vs.71).aspx}.
+
+\bibitem{cs-guide-basic}
+\emph{Visual C\# Language (C\#)} [online]. [cit.~2.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/aa287558(v=vs.71).aspx}.
+
+\bibitem{cs-guide-bool}
+\emph{bool (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/c8f5xwh7.aspx}.
+
+\bibitem{cs-guide-byte}
+\emph{byte (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/5bdb6693.aspx}.
+
+\bibitem{cs-guide-char}
+\emph{char (C\# Reference)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/x9h8tsay.aspx}.
+
+\bibitem{cs-guide-clr}
+\emph{Common Language Runtime (CLR)} [online]. [cit.~2.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/8bs2ecf4(v=vs.110).aspx}.
+
+\bibitem{cs-guide-comparison}
+\emph{Comparison(T) – delegát (System)} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/tfakywbh(v=vs.110).aspx}.
+
+\bibitem{cs-guide-console}
+\emph{Console – třída (System)} [online]. [cit.~12.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/system.console(v=vs.110).aspx}.
+
+\bibitem{cs-guide-convert}
+\emph{Convert – třída (System)} [online]. [cit.~12.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/system.convert(v=vs.110).aspx}.
+
+\bibitem{cs-guide-decimal}
+\emph{decimal (Referenční dokumentace jazyka C\#)} [online].
+  [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/364x0z75.aspx}.
+
+\bibitem{cs-guide-double}
+\emph{double (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/678hzkk9.aspx}.
+
+\bibitem{cs-guide-float}
+\emph{float (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/b1e65aza.aspx}.
+
+\bibitem{cs-guide-icomparable}
+\emph{IComparable(T) – rozhraní (System)} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/4d7sx9hd(v=vs.110).aspx}.
+
+\bibitem{cs-guide-icomparer}
+\emph{IComparer(T) – rozhraní (System.Collections.Generic)} [online].
+  [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/8ehhxeaf(v=vs.110).aspx}.
+
+\bibitem{cs-guide-int}
+\emph{int (C\# Reference)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/5kzh1b5w.aspx}.
+
+\bibitem{cs-guide-jit}
+\emph{Compiling MSIL to Native Code} [online]. [cit.~2.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/ht8ecch6(v=vs.100).aspx}.
+
+\bibitem{cs-guide-linkedlist}
+\emph{LinkedList(T) – třída (System.Collections.Generic)} [online].
+  [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/he2s3bh7(v=vs.110).aspx}.
+
+\bibitem{cs-guide-list}
+\emph{List(T) – třída (System.Collections.Generic)} [online].
+  [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/6sh2ey19(v=vs.110).aspx}.
+
+\bibitem{cs-guide-long}
+\emph{long (C\# Reference)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/ctetwysk.aspx}.
+
+\bibitem{cs-guide-math}
+\emph{Math – třída (System)} [online]. [cit.~10.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/system.math(v=vs.110).aspx}.
+
+\bibitem{cs-guide-msil}
+\emph{Compiling to MSIL} [online]. [cit.~2.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/c5tkafs1(v=vs.100).aspx}.
+
+\bibitem{cs-guide-object}
+\emph{object (C\# Reference)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/9kkx3h3c.aspx}.
+
+\bibitem{cs-guide-sbyte}
+\emph{sbyte (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/d86he86x.aspx}.
+
+\bibitem{cs-guide-short}
+\emph{short (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/ybs77ex4.aspx}.
+
+\bibitem{cs-guide-string}
+\emph{string (C\# Reference)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/362314fe.aspx}.
+
+\bibitem{cs-guide-stringclass}
+\emph{String Class (System)} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx}.
+
+\bibitem{cs-guide-stringsplit}
+\emph{String.Split Method (String[], StringSplitOptions) (System)} [online].
+  [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/tabh47cf(v=vs.110).aspx}.
+
+\bibitem{cs-guide-types}
+\emph{Built-in Data Types} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/en-us/library/cs7y5x0x(v=vs.90).aspx}.
+
+\bibitem{cs-guide-uint}
+\emph{uint (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/x0sksh43.aspx}.
+
+\bibitem{cs-guide-ulong}
+\emph{ulong (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/t98873t4.aspx}.
+
+\bibitem{cs-guide-ushort}
+\emph{ushort (Referenční dokumentace jazyka C\#)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://msdn.microsoft.com/cs-cz/library/cbf1574z.aspx}.
+
+\bibitem{java-guide-array}
+\emph{Arrays (The Java™ Tutorials > Learning the Java Language > Language
+  Basics)} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/tutorial/\-java/nutsandbolts/arrays.html}.
+
+\bibitem{java-guide-arraylist}
+\emph{ArrayList (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/util/ArrayList.html}.
+
+\bibitem{java-guide-arrays}
+\emph{Arrays (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/util/Arrays.html}.
+
+\bibitem{java-guide-boolean}
+\emph{Boolean (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Boolean.html}.
+
+\bibitem{java-guide-byte}
+\emph{Byte (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Byte.html}.
+
+\bibitem{java-guide-character}
+\emph{Character (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Character.html}.
+
+\bibitem{java-guide-collection}
+\emph{Collection (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/util/Collection.html}.
+
+\bibitem{java-guide-collections}
+\emph{Collections (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/util/Collections.html}.
+
+\bibitem{java-guide-comparable}
+\emph{Comparable (Java Platform SE 7 )} [online]. [cit.~8.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/lang/Comparable.html}.
+
+\bibitem{java-guide-comparator}
+\emph{Comparator (Java Platform SE 7 )} [online]. [cit.~8.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/util/Comparator.html}.
+
+\bibitem{java-guide-double}
+\emph{Double (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Double.html}.
+
+\bibitem{java-guide-float}
+\emph{Float (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Float.html}.
+
+\bibitem{java-guide-hashmap}
+\emph{HashMap (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/util/HashMap.html}.
+
+\bibitem{java-guide-hashset}
+\emph{HashSet (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/util/HashSet.html}.
+
+\bibitem{java-guide-inputstream}
+\emph{InputStream (Java Platform SE 7 )} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/io/InputStream.html}.
+
+\bibitem{java-guide-integer}
+\emph{Integer (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Integer.html}.
+
+\bibitem{java-guide-java}
+\emph{java} [online]. [cit.~1.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/\-technotes/tools/windows/java.html}.
+
+\bibitem{java-guide-javac}
+\emph{Java SE 7 Java Compiler (javac)-related APIs and Developer Guides}
+  [online]. [cit.~1.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/\-technotes/guides/javac/index.html}.
+
+\bibitem{java-guide-linkedlist}
+\emph{LinkedList (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/util/LinkedList.html}.
+
+\bibitem{java-guide-list}
+\emph{List (Java Platform SE 7 )} [online]. [cit.~5.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/util/List.html}.
+
+\bibitem{java-guide-long}
+\emph{Long (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Long.html}.
+
+\bibitem{java-guide-math}
+\emph{Math (Java Platform SE 7 )} [online]. [cit.~10.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Math.html}.
+
+\bibitem{java-guide-object}
+\emph{Object (Java Platform SE 7 )} [online]. [cit.~1.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/lang/Object.html}.
+
+\bibitem{java-guide-outputstream}
+\emph{OutputStream (Java Platform SE 7 )} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/io/OutputStream.html}.
+
+\bibitem{java-guide-printstream}
+\emph{PrintStream (Java Platform SE 7 )} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/io/PrintStream.html}.
+
+\bibitem{java-guide-scanner}
+\emph{Scanner (Java Platform SE 7 )} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/util/Scanner.html}.
+
+\bibitem{java-guide-short}
+\emph{Short (Java Platform SE 7 )} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/7/docs/api/\-java/lang/Short.html}.
+
+\bibitem{java-guide-string}
+\emph{String (Java Platform SE 7 )} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/lang/String.html}.
+
+\bibitem{java-guide-stringbuffer}
+\emph{StringBuffer (Java Platform SE 7 )} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/lang/StringBuffer.html}.
+
+\bibitem{java-guide-stringbuilder}
+\emph{StringBuilder (Java Platform SE 7 )} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/lang/StringBuilder.html}.
+
+\bibitem{java-guide-strings}
+\emph{Strings (The Java™ Tutorials > Learning the Java Language > Numbers and
+  Strings)} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/tutorial/\-java/data/strings.html}.
+
+\bibitem{java-guide-stringtokenizer}
+\emph{StringTokenizer (Java Platform SE 7 )} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/util/StringTokenizer.html}.
+
+\bibitem{java-guide-system}
+\emph{System (Java Platform SE 7 )} [online]. [cit.~11.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/api/\-java/lang/System.html}.
+
+\bibitem{java-guide-types}
+\emph{Primitive Data Types (The Java™ Tutorials > Learning the Java Language
+  > Language Basics)} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{https://docs.oracle.com/javase/tutorial/\-java/nutsandbolts/datatypes.html}.
+
+\bibitem{java-guide-vm}
+\emph{Java SE 7 Virtual Machine (VM)-related APIs \& Developer Guides}
+  [online]. [cit.~1.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://docs.oracle.com/javase/7/docs/\-technotes/guides/vm/index.html}.
+
+\bibitem{pas-guide-about}
+\emph{About the Pascal language} [online]. [cit.~2.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refli6.html\#x7-6000}.
+
+\bibitem{pas-guide-ansichar}
+\emph{Char or AnsiChar} [online]. [cit.~4.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu7.html\#x30-330003.2.1}.
+
+\bibitem{pas-guide-ansistring}
+\emph{Single-byte String types} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu10.html\#x33-380003.2.4}.
+
+\bibitem{pas-guide-base-types}
+\emph{Base types} [online]. [cit.~4.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refse12.html\#x26-250003.1}.
+
+\bibitem{pas-guide-boolean}
+\emph{Ordinal types} [online]. [cit.~4.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu5.html\#x27-280003.1.1}.
+
+\bibitem{pas-guide-character-types}
+\emph{Character types} [online]. [cit.~4.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refse13.html\#x29-320003.2}.
+
+\bibitem{pas-guide-dynamic-array}
+\emph{Arrays} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu15.html\#x39-520003.3.1}.
+
+\bibitem{pas-guide-integer}
+\emph{Ordinal types} [online]. [cit.~4.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu5.html\#x27-260003.1.1}.
+
+\bibitem{pas-guide-math}
+\emph{Reference for unit 'math': Procedures and functions} [online].
+  [cit.~10.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html-3.0.0/rtl/math/index-5.html}.
+
+\bibitem{pas-guide-pointer}
+\emph{Pointers} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refse15.html\#x43-610003.4}.
+
+\bibitem{pas-guide-read}
+\emph{Read} [online]. [cit.~12.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/system/read.html}.
+
+\bibitem{pas-guide-readln}
+\emph{ReadLn} [online]. [cit.~12.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/system/readln.html}.
+
+\bibitem{pas-guide-real}
+\emph{Real types} [online]. [cit.~4.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu6.html\#x28-310003.1.2}.
+
+\bibitem{pas-guide-shortstring}
+\emph{Single-byte String types} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu10.html\#x33-370003.2.4}.
+
+\bibitem{pas-guide-static-array}
+\emph{Arrays} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu15.html\#x39-510003.3.1}.
+
+\bibitem{pas-guide-strings}
+\emph{Single-byte String types} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu10.html\#x33-360003.2.4}.
+
+\bibitem{pas-guide-structured-types}
+\emph{Structured Types} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refse14.html\#x38-480003.3}.
+
+\bibitem{pas-guide-system}
+\emph{Reference for unit 'System': Procedures and functions} [online].
+  [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/system/index-5.html}.
+
+\bibitem{pas-guide-tfpglist}
+\emph{TFPGList} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html-3.0.0/rtl/fgl/tfpglist.html}.
+
+\bibitem{pas-guide-tfpgobjectlist}
+\emph{TFPGObjectList} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html-3.0.0/rtl/fgl/tfpgobjectlist.html}.
+
+\bibitem{pas-guide-tfplist}
+\emph{TFPList} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html-3.0.0/rtl/classes/tfplist.html}.
+
+\bibitem{pas-guide-tfplistsort}
+\emph{TFPList.Sort} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html-3.0.0/rtl/classes/tfplist.sort.html}.
+
+\bibitem{pas-guide-tlist}
+\emph{TList} [online]. [cit.~6.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/classes/tlist.html}.
+
+\bibitem{pas-guide-tlistsort}
+\emph{TList.Sort} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/classes/tlist.sort.html}.
+
+\bibitem{pas-guide-tlistsortcompare}
+\emph{TListSortCompare} [online]. [cit.~9.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html-3.0.0/rtl/classes/tlistsortcompare.html}.
+
+\bibitem{pas-guide-tstringlist}
+\emph{TStringList} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/classes/tstringlist.html}.
+
+\bibitem{pas-guide-tstrings}
+\emph{TStrings} [online]. [cit.~7.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/classes/tstrings.html}.
+
+\bibitem{pas-guide-types}
+\emph{3 Types} [online]. [cit.~3.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refch3.html\#x25-240003}.
+
+\bibitem{pas-guide-widechar}
+\emph{WideChar} [online]. [cit.~4.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/ref/refsu8.html\#x31-340003.2.2}.
+
+\bibitem{pas-guide-write}
+\emph{Write} [online]. [cit.~12.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/system/write.html}.
+
+\bibitem{pas-guide-writeln}
+\emph{WriteLn} [online]. [cit.~12.12.2015].
+\newblock Dostupn{\'{e}} z:
+  \url{http://www.freepascal.org/docs-html/rtl/system/writeln.html}.
+
+\bibitem{c-book}
+HEROUT, P.
+\newblock \emph{Učebnice jazyka C}.
+\newblock KOPP, 1994.
+\newblock ISBN 80-85828-21-9.
+
+\bibitem{cpp-book}
+PRATA, S.
+\newblock \emph{Mistrovsví v C++}.
+\newblock Computer Press, 2001.
+\newblock ISBN 80-7226–339-0.
+
+\bibitem{pas-book}
+SATRAPA, P.
+\newblock \emph{Pascal pro zelenáče}.
+\newblock Neocortex, 2000.
+\newblock ISBN 80-86330-03-6.
+
+\bibitem{java-book}
+SHARON~ZAKHOUR, J. R. I. R. T. R. M.~H.~S.~H.
+\newblock \emph{Java 6 Výukový kurz}.
+\newblock Computer Press, 2007.
+\newblock ISBN 978-80-251-1575-6.
+
+\bibitem{cs-book}
+SHARP, J.
+\newblock \emph{Microsoft Visual C\# 2010 Krok za krokem}.
+\newblock Computer Press, 2010.
+\newblock ISBN 978-80-251-3147-3.
+
+\end{thebibliography}

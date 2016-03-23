@@ -71,6 +71,8 @@
     <Compile Include="StringTokenizerTest.cs" />
     <Compile Include="SystemTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestObject.cs" />
+    <Compile Include="TestObjectComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CsLibrary\CsLibrary.csproj">
@@ -78,6 +80,7 @@
       <Name>CsLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

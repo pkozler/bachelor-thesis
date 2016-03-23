@@ -1,9 +1,9 @@
-﻿namespace JavaClasses {
-
-    class Program {
-        
-        private static void Main(string[] args) {
-
+﻿namespace JavaClasses
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
         }
     }
 }

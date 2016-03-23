@@ -1,11 +1,13 @@
-﻿namespace JavaClasses {
+﻿namespace JavaClasses
+{
 
     /// <summary>
     /// The class Math contains methods for performing basic numeric operations such as the elementary exponential,
     /// logarithm, square root, and trigonometric functions.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public static class Math {
+    public static class Math
+    {
 
         /// <summary>
         /// The double value that is closer than any other to e, the base of the natural logarithms.
@@ -23,7 +25,8 @@
         /// <param name="a">the argument whose absolute value is to be determined
         /// </param><returns>the absolute value of the argument.
         /// </returns>
-        public static double abs(double a) {
+        public static double abs(double a)
+        {
             return System.Math.Abs(a);
         }
 
@@ -33,7 +36,8 @@
         /// <param name="a">the argument whose absolute value is to be determined
         /// </param><returns>the absolute value of the argument.
         /// </returns>
-        public static float abs(float a) {
+        public static float abs(float a)
+        {
             return System.Math.Abs(a);
         }
 
@@ -43,7 +47,8 @@
         /// <param name="a">the argument whose absolute value is to be determined
         /// </param><returns>the absolute value of the argument.
         /// </returns>
-        public static int abs(int a) {
+        public static int abs(int a)
+        {
             return System.Math.Abs(a);
         }
 
@@ -53,7 +58,8 @@
         /// <param name="a">the argument whose absolute value is to be determined
         /// </param><returns>the absolute value of the argument.
         /// </returns>
-        public static long abs(long a) {
+        public static long abs(long a)
+        {
             return System.Math.Abs(a);
         }
 
@@ -64,7 +70,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the larger of a and b.
         /// </returns>
-        public static double max(double a, double b) {
+        public static double max(double a, double b)
+        {
             return System.Math.Max(a, b);
         }
 
@@ -75,7 +82,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the larger of a and b.
         /// </returns>
-        public static float max(float a, float b) {
+        public static float max(float a, float b)
+        {
             return System.Math.Max(a, b);
         }
 
@@ -86,7 +94,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the larger of a and b.
         /// </returns>
-        public static int max(int a, int b) {
+        public static int max(int a, int b)
+        {
             return System.Math.Max(a, b);
         }
 
@@ -97,7 +106,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the larger of a and b.
         /// </returns>
-        public static long max(long a, long b) {
+        public static long max(long a, long b)
+        {
             return System.Math.Max(a, b);
         }
 
@@ -108,7 +118,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the smaller of a and b.
         /// </returns>
-        public static double min(double a, double b) {
+        public static double min(double a, double b)
+        {
             return System.Math.Min(a, b);
         }
 
@@ -119,7 +130,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the smaller of a and b.
         /// </returns>
-        public static float min(float a, float b) {
+        public static float min(float a, float b)
+        {
             return System.Math.Min(a, b);
         }
 
@@ -130,7 +142,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the smaller of a and b.
         /// </returns>
-        public static int min(int a, int b) {
+        public static int min(int a, int b)
+        {
             return System.Math.Min(a, b);
         }
 
@@ -141,7 +154,8 @@
         /// </param><param name="b">another argument.
         /// </param><returns>the smaller of a and b.
         /// </returns>
-        public static long min(long a, long b) {
+        public static long min(long a, long b)
+        {
             return System.Math.Min(a, b);
         }
 
@@ -153,7 +167,8 @@
         /// </param><param name="b">the exponent.
         /// </param><returns>the value a^b.
         /// </returns>
-        public static double pow(double a, double b) {
+        public static double pow(double a, double b)
+        {
             return System.Math.Pow(a, b);
         }
 
@@ -164,7 +179,8 @@
         /// </param><returns>the positive square root of a. If the argument is NaN or less
         /// than zero, the result is NaN.
         /// </returns>
-        public static double sqrt(double a) {
+        public static double sqrt(double a)
+        {
             return System.Math.Sqrt(a);
         }
 
@@ -174,7 +190,8 @@
         /// <param name="a">a value
         /// </param><returns>the value ln a, the natural logarithm of a.
         /// </returns>
-        public static double log(double a) {
+        public static double log(double a)
+        {
             return System.Math.Log(a);
         }
 
@@ -184,7 +201,8 @@
         /// <param name="a">a value
         /// </param><returns>the base 10 logarithm of a.
         /// </returns>
-        public static double log10(double a) {
+        public static double log10(double a)
+        {
             return System.Math.Log10(a);
         }
 
@@ -194,7 +212,8 @@
         /// <param name="a">an angle, in radians.
         /// </param><returns>the sine of the argument.
         /// </returns>
-        public static double sin(double a) {
+        public static double sin(double a)
+        {
             return System.Math.Sin(a);
         }
 
@@ -204,7 +223,8 @@
         /// <param name="a">an angle, in radians.
         /// </param><returns>the cosine of the argument.
         /// </returns>
-        public static double cos(double a) {
+        public static double cos(double a)
+        {
             return System.Math.Cos(a);
         }
 
@@ -214,7 +234,8 @@
         /// <param name="a">an angle, in radians.
         /// </param><returns>the tangent of the argument.
         /// </returns>
-        public static double tan(double a) {
+        public static double tan(double a)
+        {
             return System.Math.Tan(a);
         }
 
@@ -225,7 +246,8 @@
         /// <param name="a">the value whose arc sine is to be returned.
         /// </param><returns>the arc sine of the argument.
         /// </returns>
-        public static double asin(double a) {
+        public static double asin(double a)
+        {
             return System.Math.Asin(a);
         }
 
@@ -236,7 +258,8 @@
         /// <param name="a">the value whose arc cosine is to be returned.
         /// </param><returns>the arc cosine of the argument.
         /// </returns>
-        public static double acos(double a) {
+        public static double acos(double a)
+        {
             return System.Math.Acos(a);
         }
 
@@ -247,7 +270,8 @@
         /// <param name="a">the value whose arc tangent is to be returned.
         /// </param><returns>the arc tangent of the argument.
         /// </returns>
-        public static double atan(double a) {
+        public static double atan(double a)
+        {
             return System.Math.Atan(a);
         }
 
@@ -257,8 +281,9 @@
         /// <param name="a">a floating-point value to be rounded to a long.
         /// </param><returns>the value of the argument rounded to the nearest long value.
         /// </returns>
-        public static long round(double a) {
-            return (long) System.Math.Round(a);
+        public static long round(double a)
+        {
+            return (long)System.Math.Round(a);
         }
 
         /// <summary>
@@ -267,8 +292,9 @@
         /// <param name="a">a floating-point value to be rounded to an integer.
         /// </param><returns>the value of the argument rounded to the nearest int value.
         /// </returns>
-        public static int round(float a) {
-            return (int) System.Math.Round(a);
+        public static int round(float a)
+        {
+            return (int)System.Math.Round(a);
         }
 
     }

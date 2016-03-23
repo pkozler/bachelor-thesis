@@ -214,7 +214,7 @@ end;
  *)
 function Float.toString_() : String_;
 begin
-  toString_ := Float.toString(v);
+  toString_ := Float.toString_(v);
 end;
 
 (**
@@ -244,7 +244,7 @@ function Float.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
 end;
 

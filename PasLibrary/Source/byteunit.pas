@@ -144,8 +144,18 @@ function Byte_.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: shortint) s: Byte_;
+begin
+  s.create(original);
+end;
+
+operator := (original: Byte_) s: shortint;
+begin
+  s := original.byteValue();
 end;
 
 end.

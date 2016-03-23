@@ -123,7 +123,7 @@ end;
  *)
 function Integer_.toString_() : String_;
 begin
-  toString_ := Integer_.toString(v);
+  toString_ := Integer_.toString_(v);
 end;
 
 (**
@@ -152,7 +152,7 @@ function Integer_.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
 end;
 

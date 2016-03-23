@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// The Float class wraps a value of primitive type float in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Float {
+    public class Float : IComparable<Float>
+    {
 
         /// <summary>
         /// A constant holding the positive infinity of type float.
@@ -47,17 +49,18 @@ namespace JavaClasses {
         /// A constant holding the smallest positive normal value of type float, 2^-126.
         /// </summary>
         public const double MIN_NORMAL = 1.17549435E-38f;
-        
+
         private static readonly int negativeZeroBits = floatToInt32Bits(-0.0f);
         private float v;
-        
+
         /*
             Converts a single-precision decimal value to the 32-bit integer value
             with exactly the same binary representation.
          */
-        private static int floatToInt32Bits(float f) {
+        private static int floatToInt32Bits(float f)
+        {
             // copying the array with one float value to the byte array with corresponding length
-            float[] floats = new []{f};
+            float[] floats = new[] { f };
             byte[] bytes = new byte[4];
             Buffer.BlockCopy(floats, 0, bytes, 0, 4);
 
@@ -71,7 +74,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="value">the value to be represented by the Float.
         /// </param>
-        public Float(float value) {
+        public Float(float value)
+        {
             v = value;
         }
 
@@ -80,7 +84,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the float value represented by this object
         /// </returns>
-        public float floatValue() {
+        public float floatValue()
+        {
             return v;
         }
 
@@ -93,7 +98,8 @@ namespace JavaClasses {
         /// and a value greater than 0 if this Float is numerically greater than
         /// anotherFloat.
         /// </returns>
-        public int compareTo(Float anotherFloat) {
+        public int compareTo(Float anotherFloat)
+        {
             return compare(v, anotherFloat.v);
         }
 
@@ -106,26 +112,32 @@ namespace JavaClasses {
         /// if f1 is numerically less than f2; and a value greater than 0 if f1 is
         /// numerically greater than f2.
         /// </returns>
-        public static int compare(float f1, float f2) {
-            if (float.IsNaN(f1)) {
-                if (float.IsNaN(f2)) {
+        public static int compare(float f1, float f2)
+        {
+            if (float.IsNaN(f1))
+            {
+                if (float.IsNaN(f2))
+                {
                     return 0;
                 }
 
                 return 1;
             }
 
-            if (float.IsNaN(f2)) {
+            if (float.IsNaN(f2))
+            {
                 return -1;
             }
 
             if (floatToInt32Bits(f1) == 0
-                && floatToInt32Bits(f2) == negativeZeroBits) {
+                && floatToInt32Bits(f2) == negativeZeroBits)
+            {
                 return 1;
             }
 
             if (floatToInt32Bits(f1) == negativeZeroBits
-                && floatToInt32Bits(f2) == 0) {
+                && floatToInt32Bits(f2) == 0)
+            {
                 return -1;
             }
 
@@ -138,26 +150,32 @@ namespace JavaClasses {
         /// <param name="obj">the object to be compared
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj) {
-            if (obj == null) {
+        public bool equals(Object obj)
+        {
+            if (obj == null)
+            {
                 return false;
             }
 
-            if (GetType() != obj.GetType()) {
+            if (GetType() != obj.GetType())
+            {
                 return false;
             }
 
             float v2 = (obj as Float).v;
 
-            if (float.IsNaN(v) && float.IsNaN(v2)) {
+            if (float.IsNaN(v) && float.IsNaN(v2))
+            {
                 return true;
             }
 
-            if (floatToInt32Bits(v) == negativeZeroBits) {
+            if (floatToInt32Bits(v) == negativeZeroBits)
+            {
                 return floatToInt32Bits(v2) == negativeZeroBits;
             }
 
-            if (floatToInt32Bits(v2) == negativeZeroBits) {
+            if (floatToInt32Bits(v2) == negativeZeroBits)
+            {
                 return floatToInt32Bits(v) == negativeZeroBits;
             }
 
@@ -169,7 +187,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>a String representation of this object.
         /// </returns>
-        public String toString() {
+        public String toString()
+        {
             return Float.toString(v);
         }
 
@@ -179,7 +198,8 @@ namespace JavaClasses {
         /// <param name="f">the float to be converted.
         /// </param><returns>a string representation of the argument.
         /// </returns>
-        public static String toString(float f) {
+        public static String toString(float f)
+        {
             return f.ToString();
         }
 
@@ -190,12 +210,29 @@ namespace JavaClasses {
         /// <param name="s">the string to be parsed.
         /// </param><returns>the float value represented by the string argument.
         /// </returns>
-        public static float parseFloat(String s) {
+        public static float parseFloat(String s)
+        {
             return float.Parse(s.ToString());
         }
-        
-        public override string ToString() {
-            return toString().ToString();
+
+        public override string ToString()
+        {
+            return toString();
+        }
+
+        public int CompareTo(Float other)
+        {
+            return compareTo(other);
+        }
+
+        public static implicit operator Float(float original)
+        {
+            return new Float(original);
+        }
+
+        public static implicit operator float (Float original)
+        {
+            return original.floatValue();
         }
 
     }

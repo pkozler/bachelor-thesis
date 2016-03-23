@@ -44,7 +44,7 @@ type
 implementation
 
 uses
-  StringBuilderUint, Classes, SysUtils;
+  StringBuilderUnit, Classes, SysUtils;
 
 (**
  * Constructs an empty list with an initial capacity of ten.
@@ -218,11 +218,6 @@ end;
  * @return a string representation of the object.
  *)
 function ArrayList.toString_() : String_;
-begin
-  toString_ := String_.create(ToString());
-end;
-
-function ArrayList.toString() : ansiString;
 var
   sb: StringBuilder;
   str: String_;
@@ -253,7 +248,12 @@ begin
   freeAndNil(str);
   str := sb.toString();
   freeAndNil(sb);
-  toString := str.toString();
+  toString_ := str;
+end;
+
+function ArrayList.toString() : ansiString;
+begin
+  toString := toString_().toString();
 end;
 
 end.

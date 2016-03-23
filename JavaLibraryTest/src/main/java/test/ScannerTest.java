@@ -247,7 +247,10 @@ public class ScannerTest {
         for (int i = 0; i < NEXTLINE_TOKEN_COUNT; i++) {
             b = a.nextLine();
             logger.info(b);
+            System.err.println(i);
         }
+        
+        
     }
 
 }

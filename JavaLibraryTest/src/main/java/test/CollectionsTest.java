@@ -28,23 +28,23 @@ public class CollectionsTest {
      * Tests the binarySearch method.
      */
     public static void binarySearchTest() {
-        ArrayList<DummyObject> a;
+        ArrayList<TestObject> a;
         int b;
         a = new ArrayList<>();
-        a.add(new DummyObject("first", 3));
-        a.add(new DummyObject("second", 2));
-        a.add(new DummyObject("third", 8));
-        a.add(new DummyObject("fourth", 7));
-        a.add(new DummyObject("fifth", 6));
-        a.add(new DummyObject("sixth", 3));
-        a.add(new DummyObject("seventh", 2));
-        a.add(new DummyObject("eighth", 8));
-        a.add(new DummyObject("nineth", 7));
-        a.add(new DummyObject("tenth", 6));
+        a.add(new TestObject("first", 3));
+        a.add(new TestObject("second", 2));
+        a.add(new TestObject("third", 8));
+        a.add(new TestObject("fourth", 7));
+        a.add(new TestObject("fifth", 6));
+        a.add(new TestObject("sixth", 3));
+        a.add(new TestObject("seventh", 2));
+        a.add(new TestObject("eighth", 8));
+        a.add(new TestObject("nineth", 7));
+        a.add(new TestObject("tenth", 6));
         Collections.sort(a);
-        b = Collections.binarySearch(a, new DummyObject("sixth", 6));
+        b = Collections.binarySearch(a, new TestObject("sixth", 6));
         logger.info(b);
-        b = Collections.binarySearch(a, new DummyObject("sixth", 4));
+        b = Collections.binarySearch(a, new TestObject("sixth", 4));
         logger.info(b);
     }
 
@@ -52,25 +52,25 @@ public class CollectionsTest {
      * Tests the binarySearch method with comparator as a parameter.
      */
     public static void binarySearchTest2() {
-        ArrayList<DummyObject> a;
+        ArrayList<TestObject> a;
         int b;
-        DummyObjectComparer c;
+        TestObjectComparer c;
         a = new ArrayList<>();
-        a.add(new DummyObject("first", 3));
-        a.add(new DummyObject("second", 2));
-        a.add(new DummyObject("third", 8));
-        a.add(new DummyObject("fourth", 7));
-        a.add(new DummyObject("fifth", 6));
-        a.add(new DummyObject("sixth", 3));
-        a.add(new DummyObject("seventh", 2));
-        a.add(new DummyObject("eighth", 8));
-        a.add(new DummyObject("nineth", 7));
-        a.add(new DummyObject("tenth", 6));
-        c = new DummyObjectComparer();
+        a.add(new TestObject("first", 3));
+        a.add(new TestObject("second", 2));
+        a.add(new TestObject("third", 8));
+        a.add(new TestObject("fourth", 7));
+        a.add(new TestObject("fifth", 6));
+        a.add(new TestObject("sixth", 3));
+        a.add(new TestObject("seventh", 2));
+        a.add(new TestObject("eighth", 8));
+        a.add(new TestObject("nineth", 7));
+        a.add(new TestObject("tenth", 6));
+        c = new TestObjectComparer();
         Collections.sort(a);
-        b = Collections.binarySearch(a, new DummyObject("sixth", 6), c);
+        b = Collections.binarySearch(a, new TestObject("sixth", 6), c);
         logger.info(b);
-        b = Collections.binarySearch(a, new DummyObject("sixth", 4), c);
+        b = Collections.binarySearch(a, new TestObject("sixth", 4), c);
         logger.info(b);
     }
 
@@ -78,23 +78,23 @@ public class CollectionsTest {
      * Tests the copy method.
      */
     public static void copyTest() {
-        ArrayList<DummyObject> a, b;
+        ArrayList<TestObject> a, b;
         String c;
         // source list
         a = new ArrayList<>();
-        a.add(new DummyObject("first", 3));
-        a.add(new DummyObject("second", 2));
-        a.add(new DummyObject("third", 8));
-        a.add(new DummyObject("fourth", 7));
-        a.add(new DummyObject("fifth", 6));
+        a.add(new TestObject("first", 3));
+        a.add(new TestObject("second", 2));
+        a.add(new TestObject("third", 8));
+        a.add(new TestObject("fourth", 7));
+        a.add(new TestObject("fifth", 6));
         // destination list
         b = new ArrayList<>();
-        b.add(new DummyObject("zeroth", 0));
-        b.add(new DummyObject("zeroth", 0));
-        b.add(new DummyObject("zeroth", 0));
-        b.add(new DummyObject("zeroth", 0));
-        b.add(new DummyObject("zeroth", 0));
-        b.add(new DummyObject("zeroth", 0));
+        b.add(new TestObject("zeroth", 0));
+        b.add(new TestObject("zeroth", 0));
+        b.add(new TestObject("zeroth", 0));
+        b.add(new TestObject("zeroth", 0));
+        b.add(new TestObject("zeroth", 0));
+        b.add(new TestObject("zeroth", 0));
         Collections.copy(b, a);
         c = b.toString();
         logger.info(c);
@@ -104,15 +104,15 @@ public class CollectionsTest {
      * Tests the fill method.
      */
     public static void fillTest() {
-        ArrayList<DummyObject> a;
+        ArrayList<TestObject> a;
         String b;
         a = new ArrayList<>();
-        a.add(new DummyObject("first", 3));
-        a.add(new DummyObject("second", 2));
-        a.add(new DummyObject("third", 8));
-        a.add(new DummyObject("fourth", 7));
-        a.add(new DummyObject("fifth", 6));
-        Collections.fill(a, new DummyObject("sixth", 6));
+        a.add(new TestObject("first", 3));
+        a.add(new TestObject("second", 2));
+        a.add(new TestObject("third", 8));
+        a.add(new TestObject("fourth", 7));
+        a.add(new TestObject("fifth", 6));
+        Collections.fill(a, new TestObject("sixth", 6));
         b = a.toString();
         logger.info(b);
     }
@@ -121,19 +121,19 @@ public class CollectionsTest {
      * Tests the sort method.
      */
     public static void sortTest() {
-        ArrayList<DummyObject> a;
+        ArrayList<TestObject> a;
         String b;
         a = new ArrayList<>();
-        a.add(new DummyObject("first", 3));
-        a.add(new DummyObject("second", 2));
-        a.add(new DummyObject("third", 8));
-        a.add(new DummyObject("fourth", 7));
-        a.add(new DummyObject("fifth", 6));
-        a.add(new DummyObject("sixth", 3));
-        a.add(new DummyObject("seventh", 2));
-        a.add(new DummyObject("eighth", 8));
-        a.add(new DummyObject("nineth", 7));
-        a.add(new DummyObject("tenth", 6));
+        a.add(new TestObject("first", 3));
+        a.add(new TestObject("second", 2));
+        a.add(new TestObject("third", 8));
+        a.add(new TestObject("fourth", 7));
+        a.add(new TestObject("fifth", 6));
+        a.add(new TestObject("sixth", 3));
+        a.add(new TestObject("seventh", 2));
+        a.add(new TestObject("eighth", 8));
+        a.add(new TestObject("nineth", 7));
+        a.add(new TestObject("tenth", 6));
         Collections.sort(a);
         b = a.toString();
         logger.info(b);
@@ -143,21 +143,21 @@ public class CollectionsTest {
      * Tests the sort method with comparator as a parameter.
      */
     public static void sortTest2() {
-        ArrayList<DummyObject> a;
+        ArrayList<TestObject> a;
         String b;
-        DummyObjectComparer c;
+        TestObjectComparer c;
         a = new ArrayList<>();
-        a.add(new DummyObject("first", 3));
-        a.add(new DummyObject("second", 2));
-        a.add(new DummyObject("third", 8));
-        a.add(new DummyObject("fourth", 7));
-        a.add(new DummyObject("fifth", 6));
-        a.add(new DummyObject("sixth", 3));
-        a.add(new DummyObject("seventh", 2));
-        a.add(new DummyObject("eighth", 8));
-        a.add(new DummyObject("nineth", 7));
-        a.add(new DummyObject("tenth", 6));
-        c = new DummyObjectComparer();
+        a.add(new TestObject("first", 3));
+        a.add(new TestObject("second", 2));
+        a.add(new TestObject("third", 8));
+        a.add(new TestObject("fourth", 7));
+        a.add(new TestObject("fifth", 6));
+        a.add(new TestObject("sixth", 3));
+        a.add(new TestObject("seventh", 2));
+        a.add(new TestObject("eighth", 8));
+        a.add(new TestObject("nineth", 7));
+        a.add(new TestObject("tenth", 6));
+        c = new TestObjectComparer();
         Collections.sort(a, c);
         b = a.toString();
         logger.info(b);

@@ -32,7 +32,7 @@ public class LinkedListTest {
      * Tests the constructor.
      */
     public static void linkedListTest() {
-        LinkedList<DummyObject> a;
+        LinkedList<TestObject> a;
         String b;
         a = new LinkedList<>();
         b = a.toString();
@@ -43,25 +43,25 @@ public class LinkedListTest {
      * Tests the constructor with LinkedList as a parameter.
      */
     public static void linkedListTest2() {
-        LinkedList<DummyObject> a, b;
-        DummyObject c;
+        LinkedList<TestObject> a, b;
+        TestObject c;
         String d;
         a = new LinkedList<>();
         b = new LinkedList<>(a);
         d = b.toString();
         logger.info(d);
         a = new LinkedList<>();
-        c = new DummyObject("first", 1);
+        c = new TestObject("first", 1);
         a.add(c);
         b = new LinkedList<>(a);
         d = b.toString();
         logger.info(d);
         a = new LinkedList<>();
-        c = new DummyObject("first", 1);
+        c = new TestObject("first", 1);
         a.add(c);
-        c = new DummyObject("second", 2);
+        c = new TestObject("second", 2);
         a.add(c);
-        c = new DummyObject("third", 3);
+        c = new TestObject("third", 3);
         a.add(c);
         b = new LinkedList<>(a);
         d = b.toString();
@@ -72,27 +72,27 @@ public class LinkedListTest {
      * Tests the add method.
      */
     public static void addTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         String c;
         a = new LinkedList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("first", 2);
+        b = new TestObject("first", 2);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("second", 1);
+        b = new TestObject("second", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
@@ -102,27 +102,27 @@ public class LinkedListTest {
      * Tests the add method with index as a parameter.
      */
     public static void addTest2() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         String c;
         a = new LinkedList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(0, b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(1, b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(0, b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(1, b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         a.add(2, b);
         c = a.toString();
         logger.info(c);
@@ -132,16 +132,16 @@ public class LinkedListTest {
      * Tests the get method.
      */
     public static void getTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         String c;
         a = new LinkedList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         b = a.get(0);
         c = b.toString();
         logger.info(c);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
         b = a.get(0);
         c = b.toString();
@@ -149,11 +149,11 @@ public class LinkedListTest {
         b = a.get(1);
         c = b.toString();
         logger.info(c);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(b);
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         a.add(b);
         b = a.get(0);
         c = b.toString();
@@ -167,29 +167,29 @@ public class LinkedListTest {
      * Tests the set method.
      */
     public static void setTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         String c;
         a = new LinkedList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(b);
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         a.add(b);
-        b = new DummyObject("sixth", 6);
+        b = new TestObject("sixth", 6);
         a.set(0, b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("seventh", 7);
+        b = new TestObject("seventh", 7);
         a.set(2, b);
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("eighth", 8);
+        b = new TestObject("eighth", 8);
         a.set(4, b);
         c = a.toString();
         logger.info(c);
@@ -199,19 +199,19 @@ public class LinkedListTest {
      * Tests the remove method.
      */
     public static void removeTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         String c;
         a = new LinkedList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
-        b = new DummyObject("fourth", 4);
+        b = new TestObject("fourth", 4);
         a.add(b);
-        b = new DummyObject("fifth", 5);
+        b = new TestObject("fifth", 5);
         a.add(b);
         a.remove(0);
         c = a.toString();
@@ -228,19 +228,19 @@ public class LinkedListTest {
      * Tests the size method.
      */
     public static void sizeTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         int c;
         a = new LinkedList<>();
         c = a.size();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.size();
         logger.info(c);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         c = a.size();
         logger.info(c);
@@ -257,19 +257,19 @@ public class LinkedListTest {
      * Tests the isEmpty method.
      */
     public static void isEmptyTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         boolean c;
         a = new LinkedList<>();
         c = a.isEmpty();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.isEmpty();
         logger.info(c);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         c = a.isEmpty();
         logger.info(c);
@@ -286,23 +286,23 @@ public class LinkedListTest {
      * Tests the clear method.
      */
     public static void clearTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         String c;
         a = new LinkedList<>();
         a.clear();
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         a.clear();
         c = a.toString();
         logger.info(c);
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         a.clear();
         c = a.toString();
@@ -313,23 +313,23 @@ public class LinkedListTest {
      * Tests the toString method.
      */
     public static void toStringTest() {
-        LinkedList<DummyObject> a;
-        DummyObject b;
+        LinkedList<TestObject> a;
+        TestObject b;
         String c;
         a = new LinkedList<>();
         c = a.toString();
         logger.info(c);
         a = new LinkedList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
         c = a.toString();
         logger.info(c);
         a = new LinkedList<>();
-        b = new DummyObject("first", 1);
+        b = new TestObject("first", 1);
         a.add(b);
-        b = new DummyObject("second", 2);
+        b = new TestObject("second", 2);
         a.add(b);
-        b = new DummyObject("third", 3);
+        b = new TestObject("third", 3);
         a.add(b);
         c = a.toString();
         logger.info(c);

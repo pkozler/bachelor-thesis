@@ -51,7 +51,7 @@ type
 implementation
 
 uses
-  StringBuilderUint, Classes, SysUtils;
+  StringBuilderUnit, Classes, SysUtils;
 
 (**
  * Constructs an empty list.
@@ -327,11 +327,6 @@ end;
  * @return a string representation of the object.
  *)
 function LinkedList.toString_() : String_;
-begin
-  toString := String_.create(ToString());
-end;
-
-function LinkedList.toString() : ansiString;
 var
   sb: StringBuilder;
   str: String_;
@@ -365,7 +360,12 @@ begin
   freeAndNil(str);
   str := sb.toString();
   freeAndNil(sb);
-  toString := str.toString();
+  toString_ := str;
+end;
+
+function LinkedList.toString() : ansiString;
+begin
+  to
 end;
 
 end.

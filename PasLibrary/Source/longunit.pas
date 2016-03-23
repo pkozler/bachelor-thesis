@@ -153,8 +153,18 @@ function Long.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: int64) s: Long;
+begin
+  s.create(original);
+end;
+
+operator := (original: Long) s: int64;
+begin
+  s := original.longValue();
 end;
 
 end.

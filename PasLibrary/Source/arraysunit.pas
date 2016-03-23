@@ -166,7 +166,7 @@ type
 implementation
 
 uses
-  BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, StringBuilderUint, SysUtils, Classes;
+  BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, StringBuilderUnit, SysUtils, Classes;
 
 function _compareB(a, b: pointer) : longInt;
 begin
@@ -303,42 +303,42 @@ end;
 
 function _toStringBool(a: pointer) : String_;
 begin
-  _toStringBool := Boolean_.toString(PBoolean(a)^);
+  _toStringBool := Boolean_.toString_(PBoolean(a)^);
 end;
 
 function _toStringB(a: pointer) : String_;
 begin
-  _toStringB := Byte_.toString(PShortInt(a)^);
+  _toStringB := Byte_.toString_(PShortInt(a)^);
 end;
 
 function _toStringC(a: pointer) : String_;
 begin
-  _toStringC := Character.toString(PAnsiChar(a)^);
+  _toStringC := Character.toString_(PAnsiChar(a)^);
 end;
 
 function _toStringD(a: pointer) : String_;
 begin
-  _toStringD := Double_.toString(PDouble(a)^);
+  _toStringD := Double_.toString_(PDouble(a)^);
 end;
 
 function _toStringF(a: pointer) : String_;
 begin
-  _toStringF := Float.toString(PSingle(a)^);
+  _toStringF := Float.toString_(PSingle(a)^);
 end;
 
 function _toStringI(a: pointer) : String_;
 begin
-  _toStringI := Integer_.toString(PLongInt(a)^);
+  _toStringI := Integer_.toString_(PLongInt(a)^);
 end;
 
 function _toStringL(a: pointer) : String_;
 begin
-  _toStringL := Long.toString(PInt64(a)^);
+  _toStringL := Long.toString_(PInt64(a)^);
 end;
 
 function _toStringS(a: pointer) : String_;
 begin
-  _toStringS := Short.toString(PSmallInt(a)^);
+  _toStringS := Short.toString_(PSmallInt(a)^);
 end;
 
 class function Arrays.binarySearchPointer(a: pointer; fromIndex, toIndex, size: longInt; key: pointer; c: CompareFunction) : longInt;

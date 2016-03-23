@@ -1,20 +1,28 @@
 ﻿using System;
+using System.Threading;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// A PrintStream adds functionality to another output stream,
     /// namely the ability to print representations of various data values conveniently.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class PrintStream {
+    public class PrintStream
+    {
+        public PrintStream()
+        {
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+        }
 
         /// <summary>
         /// Prints a boolean value.
         /// </summary>
         /// <param name="b">The boolean to be printed
         /// </param>
-        public void print(bool b) {
+        public void print(bool b)
+        {
             Console.Write(b);
         }
 
@@ -23,7 +31,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="c">The char to be printed
         /// </param>
-        public void print(char c) {
+        public void print(char c)
+        {
             Console.Write(c);
         }
 
@@ -32,7 +41,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="s">The array of chars to be printed
         /// </param>
-        public void print(char[] s) {
+        public void print(char[] s)
+        {
             Console.Write(s);
         }
 
@@ -41,7 +51,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="d">The double to be printed
         /// </param>
-        public void print(double d) {
+        public void print(double d)
+        {
             Console.Write(d);
         }
 
@@ -50,7 +61,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="f">The float to be printed
         /// </param>
-        public void print(float f) {
+        public void print(float f)
+        {
             Console.Write(f);
         }
 
@@ -59,7 +71,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="i">The int to be printed
         /// </param>
-        public void print(int i) {
+        public void print(int i)
+        {
             Console.Write(i);
         }
 
@@ -68,7 +81,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="l">The long to be printed
         /// </param>
-        public void print(long l) {
+        public void print(long l)
+        {
             Console.Write(l);
         }
 
@@ -77,7 +91,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="obj">The Object to be printed
         /// </param>
-        public void print(Object obj) {
+        public void print(Object obj)
+        {
             Console.Write(obj);
         }
 
@@ -86,13 +101,15 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="s">The String to be printed
         /// </param>
-        public void print(String s) {
+        public void print(String s)
+        {
             Console.Write(s);
         }
 
         /// <summary>
         /// Terminates the current line by writing the line separator string.
-        public void println() {
+        public void println()
+        {
             Console.WriteLine();
         }
 
@@ -101,7 +118,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The boolean to be printed
         /// </param>
-        public void println(bool x) {
+        public void println(bool x)
+        {
             Console.WriteLine(x);
         }
 
@@ -110,7 +128,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The char to be printed.
         /// </param>
-        public void println(char x) {
+        public void println(char x)
+        {
             Console.WriteLine(x);
         }
 
@@ -119,7 +138,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">an array of chars to print.
         /// </param>
-        public void println(char[] x) {
+        public void println(char[] x)
+        {
             Console.WriteLine(x);
         }
 
@@ -128,7 +148,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The double to be printed.
         /// </param>
-        public void println(double x) {
+        public void println(double x)
+        {
             Console.WriteLine(x);
         }
 
@@ -137,7 +158,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The float to be printed.
         /// </param>
-        public void println(float x) {
+        public void println(float x)
+        {
             Console.WriteLine(x);
         }
 
@@ -146,7 +168,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The int to be printed.
         /// </param>
-        public void println(int x) {
+        public void println(int x)
+        {
             Console.WriteLine(x);
         }
 
@@ -155,7 +178,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The long to be printed.
         /// </param>
-        public void println(long x) {
+        public void println(long x)
+        {
             Console.WriteLine(x);
         }
 
@@ -164,7 +188,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The Object to be printed.
         /// </param>
-        public void println(Object x) {
+        public void println(Object x)
+        {
             Console.WriteLine(x);
         }
 
@@ -173,17 +198,19 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="x">The String to be printed.
         /// </param>
-        public void println(String x) {
+        public void println(String x)
+        {
             Console.WriteLine(x);
         }
 
     }
-    
+
     /// <summary>
     /// The System class contains several useful class fields and methods.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    class System_ {
+    public class System_
+    {
 
         /// <summary>
         /// The "standard" input stream.

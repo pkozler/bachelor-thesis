@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// The Boolean class wraps a value of the primitive type boolean in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Boolean {
+    public class Boolean : IComparable<Boolean>
+    {
 
         private bool v;
 
@@ -15,7 +17,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="value">the value of the Boolean.
         /// </param>
-        public Boolean(bool value) {
+        public Boolean(bool value)
+        {
             v = value;
         }
 
@@ -24,7 +27,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the primitive boolean value of this object.
         /// </returns>
-        public bool booleanValue() {
+        public bool booleanValue()
+        {
             return v;
         }
 
@@ -37,7 +41,8 @@ namespace JavaClasses {
         /// argument represents false; and a negative value if this object represents
         /// false and the argument represents true
         /// </returns>
-        public int compareTo(Boolean b) {
+        public int compareTo(Boolean b)
+        {
             return compare(v, b.v);
         }
 
@@ -49,7 +54,8 @@ namespace JavaClasses {
         /// </param><returns>the value 0 if x == y; a value less than 0 if !x && y; and a
         /// value greater than 0 if x && !y
         /// </returns>
-        public static int compare(bool x, bool y) {
+        public static int compare(bool x, bool y)
+        {
             /* 0 if x equals y, 1 if x is TRUE and y is FALSE, -1 otherwise 
              (analogical for integer values) */
             return (x == y) ? 0 : (x ? 1 : -1);
@@ -63,19 +69,22 @@ namespace JavaClasses {
         /// </param><returns>true if the Boolean objects represent the same value; false
         /// otherwise.
         /// </returns>
-        public bool equals(Object obj) {
+        public bool equals(Object obj)
+        {
             // testing another object reference for a NULL value
-            if (obj == null) {
+            if (obj == null)
+            {
                 return false;
             }
 
             // testing object class equality
-            if (GetType() != obj.GetType()) {
+            if (GetType() != obj.GetType())
+            {
                 return false;
             }
 
             // testing object fields equality
-            return v.Equals((obj as  Boolean).v);
+            return v.Equals((obj as Boolean).v);
         }
 
         /// <summary>
@@ -83,7 +92,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>a string representation of this object.
         /// </returns>
-        public String toString() {
+        public String toString()
+        {
             return Boolean.toString(v);
         }
 
@@ -93,7 +103,8 @@ namespace JavaClasses {
         /// <param name="b">the boolean to be converted
         /// </param><returns>the string representation of the specified boolean
         /// </returns>
-        public static String toString(bool b) {
+        public static String toString(bool b)
+        {
             return b.ToString();
         }
 
@@ -103,8 +114,29 @@ namespace JavaClasses {
         /// <param name="s">the String containing the boolean representation to be parsed
         /// </param><returns>the boolean represented by the string argument
         /// </returns>
-        public static bool parseBoolean(String s) {
+        public static bool parseBoolean(String s)
+        {
             return bool.Parse(s.ToString());
+        }
+
+        public override string ToString()
+        {
+            return toString();
+        }
+
+        public int CompareTo(Boolean other)
+        {
+            return compareTo(other);
+        }
+
+        public static implicit operator Boolean(bool original)
+        {
+            return new Boolean(original);
+        }
+
+        public static implicit operator bool (Boolean original)
+        {
+            return original.booleanValue();
         }
 
     }

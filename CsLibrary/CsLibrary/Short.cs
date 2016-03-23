@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// The Short class wraps a value of primitive type short in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Short {
+    public class Short : IComparable<Short>
+    {
 
         /// <summary>
         /// A constant holding the maximum value a short can have, 2^15-1.
@@ -26,7 +28,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="value">the value to be represented by the Short.
         /// </param>
-        public Short(short value) {
+        public Short(short value)
+        {
             v = value;
         }
 
@@ -36,7 +39,8 @@ namespace JavaClasses {
         /// <returns>the numeric value represented by this object after conversion to
         /// type short.
         /// </returns>
-        public short shortValue() {
+        public short shortValue()
+        {
             return v;
         }
 
@@ -49,7 +53,8 @@ namespace JavaClasses {
         /// and a value greater than 0 if this Short is numerically greater than the
         /// argument Short (signed comparison).
         /// </returns>
-        public int compareTo(Short anotherShort) {
+        public int compareTo(Short anotherShort)
+        {
             return compare(v, anotherShort.v);
         }
 
@@ -61,7 +66,8 @@ namespace JavaClasses {
         /// </param><returns>the value 0 if x == y; a value less than 0 if x < y; and a value greater than 0 if x
         /// > y
         /// </returns>
-        public static int compare(short x, short y) {
+        public static int compare(short x, short y)
+        {
             return x - y;
         }
 
@@ -71,16 +77,19 @@ namespace JavaClasses {
         /// <param name="obj">the object to compare with
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj) {
-            if (obj == null) {
+        public bool equals(Object obj)
+        {
+            if (obj == null)
+            {
                 return false;
             }
 
-            if (GetType() != obj.GetType()) {
+            if (GetType() != obj.GetType())
+            {
                 return false;
             }
 
-            return v.Equals((obj as  Short).v);
+            return v.Equals((obj as Short).v);
         }
 
         /// <summary>
@@ -88,7 +97,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>a string representation of the value of this object in base 10.
         /// </returns>
-        public String toString() {
+        public String toString()
+        {
             return Short.toString(v);
         }
 
@@ -98,7 +108,8 @@ namespace JavaClasses {
         /// <param name="s">the short to be converted
         /// </param><returns>the string representation of the specified short
         /// </returns>
-        public static String toString(short s) {
+        public static String toString(short s)
+        {
             return s.ToString();
         }
 
@@ -108,12 +119,29 @@ namespace JavaClasses {
         /// <param name="s">a String containing the short representation to be parsed
         /// </param><returns>the short value represented by the argument in decimal.
         /// </returns>
-        public static short parseShort(String s) {
+        public static short parseShort(String s)
+        {
             return short.Parse(s.ToString());
         }
-        
-        public override string ToString() {
-            return toString().ToString();
+
+        public override string ToString()
+        {
+            return toString();
+        }
+
+        public int CompareTo(Short other)
+        {
+            return compareTo(other);
+        }
+
+        public static implicit operator Short(short original)
+        {
+            return new Short(original);
+        }
+
+        public static implicit operator short (Short original)
+        {
+            return original.shortValue();
         }
 
     }

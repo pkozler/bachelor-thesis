@@ -115,7 +115,7 @@ end;
  *)
 function Byte_.toString_() : String_;
 begin
-  toString_ := Byte_.toString(v);
+  toString_ := Byte_.toString_(v);
 end;
 
 (**
@@ -144,7 +144,7 @@ function Byte_.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
 end;
 

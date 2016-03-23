@@ -152,8 +152,18 @@ function Integer_.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: longInt) s: Integer_;
+begin
+  s.create(original);
+end;
+
+operator := (original: Integer_) s: longInt;
+begin
+  s := original.intValue();
 end;
 
 end.

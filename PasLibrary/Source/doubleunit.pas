@@ -244,8 +244,18 @@ function Double_.toString() : ansiString;
 var
   s: String_;
 begin
-  s := toString();
+  s := toString_();
   toString := s.ToString();
+end;
+
+operator := (original: double) s: Double_;
+begin
+  s.create(original);
+end;
+
+operator := (original: Double_) s: double;
+begin
+  s := original.doubleValue();
 end;
 
 end.

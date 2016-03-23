@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// The string tokenizer class allows an application to break a string into tokens.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class StringTokenizer {
+    public class StringTokenizer
+    {
 
         // current string array containing tokens
         private string[] tokens;
@@ -16,7 +18,8 @@ namespace JavaClasses {
         /*
             Performs the string splitting.
          */
-        private void initialize(string str, string delim = " \t\n\r\f") {
+        private void initialize(string str, string delim = " \t\n\r\f")
+        {
             // splitting the string to the array by the specified set of delimiters
             tokens = str.Split(delim.ToCharArray(), StringSplitOptions.None);
         }
@@ -26,7 +29,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="str">a string to be parsed.
         /// </param>
-        public StringTokenizer(String str) {
+        public StringTokenizer(String str)
+        {
             initialize(str.ToString());
         }
 
@@ -36,7 +40,8 @@ namespace JavaClasses {
         /// <param name="str">a string to be parsed.
         /// </param><param name="delim">the delimiters.
         /// </param>
-        public StringTokenizer(String str, String delim) {
+        public StringTokenizer(String str, String delim)
+        {
             initialize(str.ToString(), delim.ToString());
         }
 
@@ -47,7 +52,8 @@ namespace JavaClasses {
         /// <returns>the number of tokens remaining in the string using the current
         /// delimiter set.
         /// </returns>
-        public int countTokens() {
+        public int countTokens()
+        {
             return tokens.Length - tokenCounter;
         }
 
@@ -57,7 +63,8 @@ namespace JavaClasses {
         /// <returns>true if and only if there is at least one token in the string
         /// after the current position; false otherwise.
         /// </returns>
-        public bool hasMoreTokens() {
+        public bool hasMoreTokens()
+        {
             return countTokens() > 0;
         }
 
@@ -66,7 +73,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the next token from this string tokenizer.
         /// </returns>
-        public String nextToken() {
+        public String nextToken()
+        {
             return tokens[tokenCounter++];
         }
 

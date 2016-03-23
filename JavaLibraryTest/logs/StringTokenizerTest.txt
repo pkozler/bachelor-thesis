@@ -1,0 +1,50 @@
+stringTokenizerTest
+[This, is, a, test.]
+stringTokenizerTest
+[This, is, a, test.]
+stringTokenizerTest
+[This_is_a_test.]
+stringTokenizerTest
+[_]
+stringTokenizerTest
+[]
+stringTokenizerTest2
+[This is a test.]
+stringTokenizerTest2
+[This, is, a, test.]
+stringTokenizerTest2
+[This, is,  a , test.]
+stringTokenizerTest2
+[This, is, a, test.]
+stringTokenizerTest2
+[This, is, a, test.]
+stringTokenizerTest2
+[Thisisatest.]
+countTokensTest
+4
+countTokensTest
+4
+countTokensTest
+1
+countTokensTest
+4
+countTokensTest
+0
+hasMoreTokensTest
+true
+hasMoreTokensTest
+true
+hasMoreTokensTest
+true
+hasMoreTokensTest
+true
+hasMoreTokensTest
+false
+nextTokenTest
+This
+nextTokenTest
+is
+nextTokenTest
+a
+nextTokenTest
+test.

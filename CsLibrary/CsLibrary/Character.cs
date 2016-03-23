@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace JavaClasses {
+namespace JavaClasses
+{
 
     /// <summary>
     /// The Character class wraps a value of the primitive type char in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Character {
+    public class Character : IComparable<Character>
+    {
 
         private char v;
 
@@ -16,7 +18,8 @@ namespace JavaClasses {
         /// </summary>
         /// <param name="value">the value to be represented by the Character object.
         /// </param>
-        public Character(char value) {
+        public Character(char value)
+        {
             v = value;
         }
 
@@ -25,7 +28,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>the primitive char value represented by this object.
         /// </returns>
-        public char charValue() {
+        public char charValue()
+        {
             return v;
         }
 
@@ -40,7 +44,8 @@ namespace JavaClasses {
         /// Note that this is strictly a numerical comparison; it is not
         /// locale-dependent.
         /// </returns>
-        public int compareTo(Character anotherCharacter) {
+        public int compareTo(Character anotherCharacter)
+        {
             return compare(v, anotherCharacter.v);
         }
 
@@ -52,7 +57,8 @@ namespace JavaClasses {
         /// </param><returns>the value 0 if x == y; a value less than 0 if x < y; and a value greater than 0 if x
         /// > y
         /// </returns>
-        public static int compare(char x, char y) {
+        public static int compare(char x, char y)
+        {
             return x - y;
         }
 
@@ -62,16 +68,19 @@ namespace JavaClasses {
         /// <param name="obj">the object to compare with.
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj) {
-            if (obj == null) {
+        public bool equals(Object obj)
+        {
+            if (obj == null)
+            {
                 return false;
             }
 
-            if (GetType() != obj.GetType()) {
+            if (GetType() != obj.GetType())
+            {
                 return false;
             }
 
-            return v.Equals((obj as  Character).v);
+            return v.Equals((obj as Character).v);
         }
 
         /// <summary>
@@ -79,7 +88,8 @@ namespace JavaClasses {
         /// </summary>
         /// <returns>a string representation of this object.
         /// </returns>
-        public String toString() {
+        public String toString()
+        {
             return Character.toString(v);
         }
 
@@ -89,7 +99,8 @@ namespace JavaClasses {
         /// <param name="c">the char to be converted
         /// </param><returns>the string representation of the specified char
         /// </returns>
-        public static String toString(char c) {
+        public static String toString(char c)
+        {
             return c.ToString();
         }
 
@@ -99,7 +110,8 @@ namespace JavaClasses {
         /// <param name="ch">the character to be tested.
         /// </param><returns>true if the character is a digit; false otherwise.
         /// </returns>
-        public static bool isDigit(char ch) {
+        public static bool isDigit(char ch)
+        {
             return char.IsDigit(ch);
         }
 
@@ -109,8 +121,29 @@ namespace JavaClasses {
         /// <param name="ch">the character to be tested.
         /// </param><returns>true if the character is a letter; false otherwise.
         /// </returns>
-        public static bool isLetter(char ch) {
+        public static bool isLetter(char ch)
+        {
             return char.IsLetter(ch);
+        }
+
+        public override string ToString()
+        {
+            return toString();
+        }
+
+        public int CompareTo(Character other)
+        {
+            return compareTo(other);
+        }
+
+        public static implicit operator Character(char original)
+        {
+            return new Character(original);
+        }
+
+        public static implicit operator char (Character original)
+        {
+            return original.charValue();
         }
 
     }
