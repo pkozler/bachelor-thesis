@@ -5,7 +5,7 @@ unit CollectionsUnit;
 interface
 
 uses
-  SystemUnit, ArrayListUnit;
+  SystemUnit, StringUnit, ArrayListUnit, ListUnit;
 
   (**
    * This class consists exclusively of static methods that operate on or return collections.
@@ -15,10 +15,12 @@ uses
   type
   Collections = class
     public
-      class function binarySearch(list: ArrayList; key: TObject; c: TObjectCompareFunction) : longInt;
-      class procedure copy(dest: ArrayList; src: ArrayList);
-      class procedure fill(list: ArrayList; obj: TObject);
-      class procedure sort(list: ArrayList; c: TObjectCompareFunction);
+      class function binarySearch(list: ArrayList; key: Object_) : longInt;
+      class function binarySearch(list: ArrayList; key: Object_; c: Comparator) : longInt;
+      class procedure copy(dest: List; src: List);
+      class procedure fill(list: List; obj: Object_);
+      class procedure sort(list: ArrayList);
+      class procedure sort(list: ArrayList; c: Comparator);
   end;
 
 implementation
@@ -39,12 +41,30 @@ uses
  * the list are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Collections.binarySearch(list: ArrayList; key: TObject; c: TObjectCompareFunction) : longInt;
+class function Collections.binarySearch(list: ArrayList; key: Object_) : longInt;
+begin
+  binarySearch := binarySearch(list, key, ObjectComparator.create());
+end;
+
+(**
+ * Searches the specified list for the specified object using the binary
+ * search algorithm.
+ *
+ * @param list the list to be searched.
+ * @param key the key to be searched for.
+ * @return the index of the search key, if it is contained in the list;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the list: the index of
+ * the first element greater than the key, or list.size() if all elements in
+ * the list are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ *)
+class function Collections.binarySearch(list: ArrayList; key: Object_; c: Comparator) : longInt;
 var
-  objectArray: array of TObject;
+  objectArray: array of Object_;
   l, m, h: longInt;
 begin
-  objectArray := list.getArray();
+  objectArray := list.arrProperty;
 
   l := 0;
   h := list.size() - 1;
@@ -53,10 +73,10 @@ begin
   while l <= h do begin
     m := (l + h) div 2;
 
-    if c(objectArray[m], key) > 0 then begin
+    if c.compare(objectArray[m], key) > 0 then begin
       h := m - 1;
     end
-    else if c(objectArray[m], key) < 0 then begin
+    else if c.compare(objectArray[m], key) < 0 then begin
       l := m + 1;
     end
     else begin
@@ -72,16 +92,14 @@ end;
  * @param dest The destination list.
  * @param src The source list.
  *)
-class procedure Collections.copy(dest: ArrayList; src: ArrayList);
+class procedure Collections.copy(dest: List; src: List);
 var
-  destArray, srcArray: array of TObject;
-  i: longInt;
+  length, i: longInt;
 begin
-  destArray := dest.getArray();
-  srcArray := src.getArray();
+  length := src.size();
 
-  for i := 0 to src.size() - 1 do begin
-    destArray[i] := srcArray[i];
+  for i := 0 to length - 1 do begin
+    dest.set_(i, src.get(i));
   end;
 end;
 
@@ -92,15 +110,14 @@ end;
  * @param list the list to be filled with the specified element.
  * @param obj The element with which to fill the specified list.
  *)
-class procedure Collections.fill(list: ArrayList; obj: TObject);
+class procedure Collections.fill(list: List; obj: Object_);
 var
-  objectArray: array of TObject;
-  i: longInt;
+  length, i: longInt;
 begin
-  objectArray := list.getArray();
+  length := list.size();
 
-  for i := 0 to list.size() - 1 do begin
-    objectArray[i] := obj;
+  for i := 0 to length - 1 do begin
+    list.set_(i, obj);
   end;
 end;
 
@@ -110,12 +127,23 @@ end;
  *
  * @param list the list to be sorted.
  *)
-class procedure Collections.sort(list: ArrayList; c: TObjectCompareFunction);
-var
-  a: array of TObject;
-  aux: array of TObject;
+class procedure Collections.sort(list: ArrayList);
 begin
-  a := list.getArray();
+  sort(list, ObjectComparator.create());
+end;
+
+(**
+ * Sorts the specified list into ascending order, according to the natural
+ * ordering of its elements.
+ *
+ * @param list the list to be sorted.
+ *)
+class procedure Collections.sort(list: ArrayList; c: Comparator);
+var
+  a: array of Object_;
+  aux: array of Object_;
+begin
+  a := list.arrProperty;
   setLength(aux, list.size());
   _java.mergeSort(a, aux, 0, list.size() - 1, c);
 end;

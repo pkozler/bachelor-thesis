@@ -334,6 +334,11 @@ bool isEmptyStr(String *ptr) {
     return ptr->len == 0;
 }
 
-char *toString(String *ptr) {
-    return ptr->s;
+/**
+ * This object (which is already a string!) is itself returned.
+ *
+ * @return the string itself.
+ */
+String *toString(String *ptr) {
+    return new_String(ptr->s);
 }

@@ -5,7 +5,7 @@ unit ScannerUnit;
 interface
 
 uses
-  StringUnit;
+  StringUnit, SystemUnit;
 
 type
   (**
@@ -13,9 +13,9 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Scanner = class
+  Scanner = class(Object_)
     public
-      constructor create(source: TObject);
+      constructor create(source: InputStream);
       function next() : String_;
       function nextBoolean() : boolean;
       function nextByte() : shortInt;
@@ -38,7 +38,7 @@ uses
  *
  * @param source An input stream to be scanned
  *)
-constructor Scanner.create(source: TObject);
+constructor Scanner.create(source: InputStream);
 begin
 end;
 

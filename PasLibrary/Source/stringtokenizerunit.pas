@@ -13,7 +13,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  StringTokenizer = class
+  StringTokenizer = class(Object_)
     private
       var
         tokens: array of ansiString;

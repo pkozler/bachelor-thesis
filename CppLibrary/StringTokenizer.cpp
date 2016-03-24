@@ -9,7 +9,7 @@
  * @param str a string to be parsed.
  */
 StringTokenizer::StringTokenizer(String *str) {
-    this->str = str->toString();
+    this->str = str->_s();
     this->delim = " \t\n\r\f";
 }
 
@@ -20,8 +20,8 @@ StringTokenizer::StringTokenizer(String *str) {
  * @param delim the delimiters.
  */
 StringTokenizer::StringTokenizer(String *str, String *delim) {
-    this->str = str->toString();
-    this->delim = delim->toString();
+    this->str = str->_s();
+    this->delim = delim->_s();
 }
 
 StringTokenizer::~StringTokenizer() {

@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <wchar.h>
 
 #include "System.h"
 
@@ -53,6 +54,7 @@ void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (
  */
 void printB(PrintStream *ptr, bool b) {
     printf("%s", b ? "true" : "false");
+    fflush(stdout);
 }
 
 /**
@@ -62,6 +64,7 @@ void printB(PrintStream *ptr, bool b) {
  */
 void printC(PrintStream *ptr, char c) {
     printf("%c", c);
+    fflush(stdout);
 }
 
 /**
@@ -71,6 +74,7 @@ void printC(PrintStream *ptr, char c) {
  */
 void printS(PrintStream *ptr, char *s) {
     printf("%s", s);
+    fflush(stdout);
 }
 
 /**
@@ -80,6 +84,7 @@ void printS(PrintStream *ptr, char *s) {
  */
 void printD(PrintStream *ptr, double d) {
     printf("%lf", d);
+    fflush(stdout);
 }
 
 /**
@@ -89,6 +94,7 @@ void printD(PrintStream *ptr, double d) {
  */
 void printF(PrintStream *ptr, float f) {
     printf("%f", f);
+    fflush(stdout);
 }
 
 /**
@@ -98,6 +104,7 @@ void printF(PrintStream *ptr, float f) {
  */
 void printI(PrintStream *ptr, int32_t i) {
     printf("%d", i);
+    fflush(stdout);
 }
 
 /**
@@ -107,6 +114,7 @@ void printI(PrintStream *ptr, int32_t i) {
  */
 void printL(PrintStream *ptr, int64_t l) {
     printf("%lld", l);
+    fflush(stdout);
 }
 
 /**
@@ -118,6 +126,7 @@ void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);
     printf("%s", s->s);
     delete_String(s);
+    fflush(stdout);
 }
 
 /**
@@ -127,6 +136,7 @@ void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
  */
 void printStr(PrintStream *ptr, String *s) {
     printf("%s", s->s);
+    fflush(stdout);
 }
 
 /**
@@ -134,6 +144,7 @@ void printStr(PrintStream *ptr, String *s) {
  */
 void println(PrintStream *ptr) {
     printf("\n");
+    fflush(stdout);
 }
 
 /**
@@ -143,6 +154,7 @@ void println(PrintStream *ptr) {
  */
 void printlnB(PrintStream *ptr, bool x) {
     printf("%s\n", x ? "true" : "false");
+    fflush(stdout);
 }
 
 /**
@@ -152,6 +164,7 @@ void printlnB(PrintStream *ptr, bool x) {
  */
 void printlnC(PrintStream *ptr, char x) {
     printf("%c\n", x);
+    fflush(stdout);
 }
 
 /**
@@ -161,6 +174,7 @@ void printlnC(PrintStream *ptr, char x) {
  */
 void printlnS(PrintStream *ptr, char *x) {
     printf("%s\n", x);
+    fflush(stdout);
 }
 
 /**
@@ -170,6 +184,7 @@ void printlnS(PrintStream *ptr, char *x) {
  */
 void printlnD(PrintStream *ptr, double x) {
     printf("%lf\n", x);
+    fflush(stdout);
 }
 
 /**
@@ -179,6 +194,7 @@ void printlnD(PrintStream *ptr, double x) {
  */
 void printlnF(PrintStream *ptr, float x) {
     printf("%f\n", x);
+    fflush(stdout);
 }
 
 /**
@@ -188,6 +204,7 @@ void printlnF(PrintStream *ptr, float x) {
  */
 void printlnI(PrintStream *ptr, int32_t x) {
     printf("%d\n", x);
+    fflush(stdout);
 }
 
 /**
@@ -197,6 +214,7 @@ void printlnI(PrintStream *ptr, int32_t x) {
  */
 void printlnL(PrintStream *ptr, int64_t x) {
     printf("%lld\n", x);
+    fflush(stdout);
 }
 
 /**
@@ -208,6 +226,7 @@ void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);
     printf("%s\n", s->s);
     delete_String(s);
+    fflush(stdout);
 }
 
 /**
@@ -217,15 +236,10 @@ void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
  */
 void printlnStr(PrintStream *ptr, String *x) {
     printf("%s\n", x->s);
+    fflush(stdout);
 }
 
-PrintStream sysout;
-
-/**
- * The "standard" input stream.
- */
-void *System_in = NULL;
-/**
- * The "standard" output stream.
- */
-PrintStream *System_out = &sysout;
+InputStream sysIn;
+InputStream *System_in = &sysIn;
+PrintStream sysOut;
+PrintStream *System_out = &sysOut;

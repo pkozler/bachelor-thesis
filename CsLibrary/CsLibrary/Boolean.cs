@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Boolean class wraps a value of the primitive type boolean in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Boolean : IComparable<Boolean>
+    public class Boolean : Comparable<Boolean>
     {
 
         private bool v;
@@ -41,7 +41,7 @@ namespace JavaClasses
         /// argument represents false; and a negative value if this object represents
         /// false and the argument represents true
         /// </returns>
-        public int compareTo(Boolean b)
+        public override int compareTo(Boolean b)
         {
             return compare(v, b.v);
         }
@@ -69,7 +69,7 @@ namespace JavaClasses
         /// </param><returns>true if the Boolean objects represent the same value; false
         /// otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             // testing another object reference for a NULL value
             if (obj == null)
@@ -92,7 +92,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a string representation of this object.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Boolean.toString(v);
         }
@@ -105,7 +105,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(bool b)
         {
-            return b.ToString();
+            return new String(b.ToString());
         }
 
         /// <summary>
@@ -118,27 +118,12 @@ namespace JavaClasses
         {
             return bool.Parse(s.ToString());
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Boolean other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Boolean(bool original)
         {
             return new Boolean(original);
         }
-
-        public static implicit operator bool (Boolean original)
-        {
-            return original.booleanValue();
-        }
-
+        
     }
 
 }

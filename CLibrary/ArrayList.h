@@ -20,14 +20,14 @@ typedef struct {
 ArrayList *new_ArrayList();
 ArrayList *new_ArrayListAddAll(ArrayList *c);
 void delete_ArrayList(ArrayList *ptr);
-bool add(ArrayList *ptr, void *e);
-void addAt(ArrayList *ptr, int32_t index, void *element);
-void *get(ArrayList *ptr, int32_t index);
-void *set(ArrayList *ptr, int32_t index, void *element);
-void *removeAt(ArrayList *ptr, int32_t index);
-int32_t size(ArrayList *ptr);
-bool isEmpty(ArrayList *ptr);
-void clear(ArrayList *ptr);
+bool addAl(ArrayList *ptr, void *e);
+void addAtAl(ArrayList *ptr, int32_t index, void *element);
+void *getAl(ArrayList *ptr, int32_t index);
+void *setAl(ArrayList *ptr, int32_t index, void *element);
+void *removeAl(ArrayList *ptr, int32_t index);
+int32_t sizeAl(ArrayList *ptr);
+bool isEmptyAl(ArrayList *ptr);
+void clearAl(ArrayList *ptr);
 String *toStringAl(ArrayList *ptr, String *(*toString)(void *));
 
 #endif	/* ARRAYLIST_INCLUDED */

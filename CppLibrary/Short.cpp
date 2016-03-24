@@ -2,13 +2,7 @@
 
 #include <string>
 
-/**
- * A constant holding the maximum value a short can have, 2^15-1.
- */
 const int16_t Short::MAX_VALUE = 32767;
-/**
- * A constant holding the minimum value a short can have, -2^15.
- */
 const int16_t Short::MIN_VALUE = -32768;
 
 /**
@@ -100,9 +94,5 @@ String *Short::toString(int16_t s) {
  * @return the short value represented by the argument in decimal.
  */
 int16_t Short::parseShort(String *s) {
-    return (int16_t) std::stoi(s->toString(), nullptr, 10);
-}
-
-std::ostream &operator<<(std::ostream &s, Short &obj) {
-    return s << obj.toString()->toString().c_str();
+    return (int16_t) std::stoi(s->_s(), nullptr, 10);
 }

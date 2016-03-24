@@ -27,7 +27,7 @@ LinkedList *new_LinkedListAddAll(LinkedList *c) {
     LinkedListNode *node = c->first;
 
     while (node != NULL) {
-        addL(list, node->value);
+        addLl(list, node->value);
         node = node->next;
     }
 
@@ -35,7 +35,7 @@ LinkedList *new_LinkedListAddAll(LinkedList *c) {
 }
 
 void delete_LinkedList(LinkedList *ptr) {
-    clearL(ptr);
+    clearLl(ptr);
     free(ptr);
 }
 
@@ -110,7 +110,7 @@ void _removeNode(LinkedList *ptr, LinkedListNode *node) {
  * @param e element to be appended to this list
  * @return true (as specified by Collection.add(E))
  */
-bool addL(LinkedList *ptr, void *e) {
+bool addLl(LinkedList *ptr, void *e) {
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = e;
     _addLast(ptr, newNode);
@@ -125,7 +125,7 @@ bool addL(LinkedList *ptr, void *e) {
  * @param index index at which the specified element is to be inserted
  * @param element element to be inserted
  */
-void addAtL(LinkedList *ptr, int32_t index, void *element) {
+void addAtLl(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = element;
 
@@ -152,7 +152,7 @@ void addAtL(LinkedList *ptr, int32_t index, void *element) {
  * @param index index of the element to return
  * @return the element at the specified position in this list
  */
-void *getL(LinkedList *ptr, int32_t index) {
+void *getLl(LinkedList *ptr, int32_t index) {
     LinkedListNode *node = ptr->first;
 
     int32_t i;
@@ -171,7 +171,7 @@ void *getL(LinkedList *ptr, int32_t index) {
  * @param element element to be stored at the specified position
  * @return the element previously at the specified position
  */
-void *setL(LinkedList *ptr, int32_t index, void *element) {
+void *setLl(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *original;
 
     if (index < 1) {
@@ -199,7 +199,7 @@ void *setL(LinkedList *ptr, int32_t index, void *element) {
  * @param index the index of the element to be removed
  * @return the element previously at the specified position
  */
-void *removeAtL(LinkedList *ptr, int32_t index) {
+void *removeLl(LinkedList *ptr, int32_t index) {
     LinkedListNode *removed;
     LinkedListNode *node;
 
@@ -232,7 +232,7 @@ void *removeAtL(LinkedList *ptr, int32_t index) {
  *
  * @return the number of elements in this list
  */
-int32_t sizeL(LinkedList *ptr) {
+int32_t sizeLl(LinkedList *ptr) {
     return ptr->count;
 }
 
@@ -241,16 +241,20 @@ int32_t sizeL(LinkedList *ptr) {
  *
  * @return true if this list contains no elements
  */
-bool isEmptyL(LinkedList *ptr) {
+bool isEmptyLl(LinkedList *ptr) {
     return (ptr->count == 0);
 }
 
 /**
  * Removes all of the elements from this list.
  */
-void clearL(LinkedList *ptr) {
+void clearLl(LinkedList *ptr) {
+    LinkedListNode *node;
+    
     while (ptr->first != NULL) {
-        removeAtL(ptr, 0);
+        node = ptr->first;
+        _removeNode(ptr, node);
+        free(node);
     }
 }
 

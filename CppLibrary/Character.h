@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Character {
+class Character : public Comparable<Character> {
     char v;
 public:
     Character(char value);
@@ -21,7 +21,6 @@ public:
     static String *toString(char c);
     static bool isDigit(char ch);
     static bool isLetter(char ch);
-    friend std::ostream &operator<<(std::ostream &s, Character &obj);
 };
 
 #endif	// CHARACTER_INCLUDED

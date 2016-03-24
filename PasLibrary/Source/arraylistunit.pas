@@ -5,40 +5,39 @@ unit ArrayListUnit;
 interface
 
 uses
-  StringUnit;
+  StringUnit, ListUnit;
 
 type
-  TObjectArray = array of TObject;
+  ObjectArray = array of Object_;
 
   (**
    * Resizable-array implementation of the List interface.
    *
+   * @param E the type of elements in this list
    * @author Petr Kozler (A13B0359P)
    *)
-  ArrayList = class
+  ArrayList = class(List)
     private
       const
         DEFAULT_CAPACITY = 10;
         RESIZE_COEF = 2;
       var
-        dynamicArray: array of TObject;
+        dynamicArray: array of Object_;
         count: longInt;
       procedure expand();
       procedure shrink();
     public
+      property arrProperty: ObjectArray read dynamicArray;
       constructor create();
       constructor create(c: ArrayList);
-      function getArray() : TObjectArray;
-      function add(e: TObject) : boolean;
-      procedure add(index: longInt; element: TObject);
-      function get(index: longInt) : TObject;
-      function set_(index: longInt; element: TObject) : TObject;
-      function remove(index: longInt) : TObject;
-      function size() : longInt;
-      function isEmpty() : boolean;
-      procedure clear();
-      function toString_() : String_;
-      function toString() : ansiString; override;
+      function add(e: Object_) : boolean; override;
+      procedure add(index: longInt; element: Object_); override;
+      function get(index: longInt) : Object_; override;
+      function set_(index: longInt; element: Object_) : Object_; override;
+      function remove(index: longInt) : Object_; override;
+      function size() : longInt; override;
+      procedure clear(); override;
+      function toString_() : String_; override;
   end;
 
 implementation
@@ -97,18 +96,13 @@ begin
   end;
 end;
 
-function ArrayList.getArray() : TObjectArray;
-begin
-  getArray := dynamicArray;
-end;
-
 (**
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
  * @return true (as specified by Collection.add(E))
  *)
-function ArrayList.add(e: TObject) : boolean;
+function ArrayList.add(e: Object_) : boolean;
 begin
   dynamicArray[count] := e;
   expand();
@@ -121,7 +115,7 @@ end;
  * @param index index at which the specified element is to be inserted
  * @param element element to be inserted
  *)
-procedure ArrayList.add(index: longInt; element: TObject);
+procedure ArrayList.add(index: longInt; element: Object_);
 var
   i: longInt;
 begin
@@ -139,7 +133,7 @@ end;
  * @param index index of the element to return
  * @return the element at the specified position in this list
  *)
-function ArrayList.get(index: longInt) : TObject;
+function ArrayList.get(index: longInt) : Object_;
 begin
   get := dynamicArray[index];
 end;
@@ -152,9 +146,9 @@ end;
  * @param element element to be stored at the specified position
  * @return the element previously at the specified position
  *)
-function ArrayList.set_(index: longInt; element: TObject) : TObject;
+function ArrayList.set_(index: longInt; element: Object_) : Object_;
 var
-  original: TObject;
+  original: Object_;
 begin
   original := dynamicArray[index];
   dynamicArray[index] := element;
@@ -167,9 +161,9 @@ end;
  * @param index the index of the element to be removed
  * @return the element that was removed from the list
  *)
-function ArrayList.remove(index: longInt) : TObject;
+function ArrayList.remove(index: longInt) : Object_;
 var
-  removed: TObject;
+  removed: Object_;
   i: longInt;
 begin
   removed := dynamicArray[index];
@@ -190,16 +184,6 @@ end;
 function ArrayList.size() : longInt;
 begin
   size := count;
-end;
-
-(**
- * Returns true if this list contains no elements.
- *
- * @return true if this list contains no elements
- *)
-function ArrayList.isEmpty() : boolean;
-begin
-  isEmpty := (count = 0);
 end;
 
 (**
@@ -249,11 +233,6 @@ begin
   str := sb.toString();
   freeAndNil(sb);
   toString_ := str;
-end;
-
-function ArrayList.toString() : ansiString;
-begin
-  toString := toString_().toString();
 end;
 
 end.

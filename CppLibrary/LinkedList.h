@@ -1,6 +1,7 @@
 #ifndef LINKEDLIST_INCLUDED
 #define LINKEDLIST_INCLUDED
 
+#include "List.h"
 #include "String.h"
 #include <list>
 #include <cstdint>
@@ -11,26 +12,21 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-template <class E>
-class LinkedList {
-    std::list<E> l;
+template <class E> class LinkedList : public List<E> {
+    std::list<E *> l;
 public:
     LinkedList();
     LinkedList(LinkedList<E> *c);
     ~LinkedList();
-    std::list<E> getList();
-    bool add(E e);
-    void add(int32_t index, E element);
-    E get(int32_t index);
-    E set(int32_t index, E element);
-    E remove(int32_t index);
+    bool add(E *e);
+    void add(int32_t index, E *element);
+    E *get(int32_t index);
+    E *set(int32_t index, E *element);
+    E *remove(int32_t index);
     int32_t size();
-    bool isEmpty();
     void clear();
-    String *toString(String *(*toString)(E));
+    String *toString();
 };
-
-template <class E> std::ostream &operator<<(std::ostream &s, LinkedList<E> &obj);
 
 /**
  * Constructs an empty list.
@@ -53,17 +49,13 @@ template <class E> LinkedList<E>::~LinkedList() {
     l.clear();
 }
 
-template <class E> std::list<E> LinkedList<E>::getList() {
-    return l;
-}
-
 /**
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
  * @return true (as specified by Collection.add(E))
  */
-template <class E> bool LinkedList<E>::add(E e) {
+template <class E> bool LinkedList<E>::add(E *e) {
     l.push_back(e);
 
     return true;
@@ -75,7 +67,7 @@ template <class E> bool LinkedList<E>::add(E e) {
  * @param index index at which the specified element is to be inserted
  * @param element element to be inserted
  */
-template <class E> void LinkedList<E>::add(int32_t index, E element) {
+template <class E> void LinkedList<E>::add(int32_t index, E *element) {
     l.insert(index, element);
 }
 
@@ -85,7 +77,7 @@ template <class E> void LinkedList<E>::add(int32_t index, E element) {
  * @param index index of the element to return
  * @return the element at the specified position in this list
  */
-template <class E> E LinkedList<E>::get(int32_t index) {
+template <class E> E *LinkedList<E>::get(int32_t index) {
     auto it = l.begin();
     std::advance(it, index);
 
@@ -100,7 +92,7 @@ template <class E> E LinkedList<E>::get(int32_t index) {
  * @param element element to be stored at the specified position
  * @return the element previously at the specified position
  */
-template <class E> E LinkedList<E>::set(int32_t index, E element) {
+template <class E> E *LinkedList<E>::set(int32_t index, E *element) {
     E original;
     auto it = l.begin();
     std::advance(it, index);
@@ -116,7 +108,7 @@ template <class E> E LinkedList<E>::set(int32_t index, E element) {
  * @param index the index of the element to be removed
  * @return the element previously at the specified position
  */
-template <class E> E LinkedList<E>::remove(int32_t index) {
+template <class E> E *LinkedList<E>::remove(int32_t index) {
     E removed;
     auto it = l.begin();
     std::advance(it, index);
@@ -136,15 +128,6 @@ template <class E> int32_t LinkedList<E>::size() {
 }
 
 /**
- * Returns true if this list contains no elements.
- *
- * @return true if this list contains no elements
- */
-template <class E> bool LinkedList<E>::isEmpty() {
-    return l.empty();
-}
-
-/**
  * Removes all of the elements from this list.
  */
 template <class E> void LinkedList<E>::clear() {
@@ -156,13 +139,13 @@ template <class E> void LinkedList<E>::clear() {
  *
  * @return a string representation of the object.
  */
-template <class E> String *LinkedList<E>::toString(String *(*toString)(E)) {
+template <class E> String *LinkedList<E>::toString() {
     int32_t length = l.size();
     std::ostringstream oss("[");
 
     if (length > 0) {
         String *str = toString(l.begin());
-        oss << str->toString();
+        oss << str;
         delete str;
     }
 
@@ -170,17 +153,13 @@ template <class E> String *LinkedList<E>::toString(String *(*toString)(E)) {
         auto it = l.begin();
         std::advance(it, i);
         String *str = toString(it);
-        oss << ", " << str->toString();
+        oss << ", " << str;
         delete str;
     }
 
     oss << "]";
 
     return new String(oss.str());
-}
-
-template <class E> std::ostream &operator<<(std::ostream &s, LinkedList<E> &obj) {
-    return s << obj.toString()->toString().c_str();
 }
 
 #endif // LINKEDLIST_INCLUDED

@@ -4,14 +4,58 @@
 #include <iostream>
 #include <cstdint>
 
+class String;
+
+/**
+ * Class Object is the root of the class hierarchy.
+ */
+class Object {
+public:
+    virtual bool equals(Object *obj);
+    virtual String *toString();
+    friend std::ostream &operator<<(std::ostream &s, Object &o);
+};
+
+/**
+ * This interface imposes a total ordering on the objects of each class that implements it.
+ */
+template <class T> class Comparable : public Object {
+public:
+    /**
+     * Compares this object with the specified object for order.
+     *
+     * @param o the object to be compared.
+     * @return a negative integer, zero, or a positive integer as this object
+     * is less than, equal to, or greater than the specified object.
+     */
+    virtual int compareTo(T *o) = 0;
+};
+
+/**
+ * A comparison function, which imposes a total ordering on some collection of objects.
+ */
+template <class T> class Comparator : public Object {
+public:
+    /**
+     * Compares its two arguments for order.
+     *
+     * @param o1 the first object to be compared.
+     * @param o2 the second object to be compared.
+     * @return a negative integer, zero, or a positive integer as the
+     * first argument is less than, equal to, or greater than the second.
+     */
+    virtual int compare(T *o1, T *o2) = 0;
+};
+
 /**
  * The String class represents character strings.
  *
  * @author Petr Kozler (A13B0359P)
  */
-class String {
+class String : public Comparable<String> {
     std::string s;
 public:
+    const std::string _s() const { return s; }
     String(int8_t *value, int32_t length);
     String(int8_t *value, int32_t offset, int32_t length);
     String(std::string original);
@@ -32,10 +76,8 @@ public:
     bool startsWith(String *prefix);
     bool endsWith(String *suffix);
     bool isEmpty();
-    std::string toString();
-    friend std::ostream &operator<<(std::ostream &s, String &str);
-    friend String *operator+(String &s1, String &s2);
-    String *operator=(String &s);
+    String *toString();
+    String *operator=(std::string &s);
 };
 
 #endif	// STRING_INCLUDED

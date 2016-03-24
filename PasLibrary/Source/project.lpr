@@ -22,15 +22,19 @@ uses
   StringBuilderUnit,
   StringTokenizerUnit,
   StringUnit,
-  SystemUnit;
+  SystemUnit, unit1;
 
 var
-  str, str2, str3 : String_;
+  s1 : String_;
+  o1 : Object_;
+  sc : Scanner;
 begin
-  str := 'aaa';
-  str2 := 'bbb';
-  WriteLn(str.toString());
-  WriteLn(str2.toString());
-  //str3 := str + str2;
-  WriteLn(str3.toString());
+  s1 := 'zeroth';
+  o1 := Object_.create();
+
+  System_.out_.println(s1);
+  System_.out_.println(o1);
+
+  sc := Scanner.create(System_.in_);
+  sc.nextLine();
 end.

@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Float class wraps a value of primitive type float in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Float : IComparable<Float>
+    public class Float : Comparable<Float>
     {
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace JavaClasses
         /// and a value greater than 0 if this Float is numerically greater than
         /// anotherFloat.
         /// </returns>
-        public int compareTo(Float anotherFloat)
+        public override int compareTo(Float anotherFloat)
         {
             return compare(v, anotherFloat.v);
         }
@@ -150,7 +150,7 @@ namespace JavaClasses
         /// <param name="obj">the object to be compared
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             if (obj == null)
             {
@@ -187,7 +187,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a String representation of this object.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Float.toString(v);
         }
@@ -200,7 +200,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(float f)
         {
-            return f.ToString();
+            return new String(f.ToString());
         }
 
         /// <summary>
@@ -214,27 +214,12 @@ namespace JavaClasses
         {
             return float.Parse(s.ToString());
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Float other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Float(float original)
         {
             return new Float(original);
         }
-
-        public static implicit operator float (Float original)
-        {
-            return original.floatValue();
-        }
-
+        
     }
 
 }

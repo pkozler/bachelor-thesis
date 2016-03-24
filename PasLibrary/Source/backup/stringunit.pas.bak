@@ -5,20 +5,65 @@ unit StringUnit;
 interface
 
 type
+  String_ = class;
+
+  (**
+   * Class Object is the root of the class hierarchy.
+   *)
+  Object_ = class
+    public
+      function equals_(obj: Object_) : boolean; virtual;
+      function toString_() : String_; virtual;
+      function equals(obj: TObject) : boolean; override;
+      function toString() : ansiString; override;
+  end;
+
+  (**
+   * This interface imposes a total ordering on the objects of each class that implements it.
+   *)
+  Comparable = class(Object_)
+    public
+      (**
+       * Compares this object with the specified object for order.
+       *
+       * @param o the object to be compared.
+       * @return a negative integer, zero, or a positive integer as this object
+       * is less than, equal to, or greater than the specified object.
+       *)
+      function compareTo(o: Object_) : longInt; virtual; abstract;
+  end;
+
+  (**
+   * A comparison function, which imposes a total ordering on some collection of objects.
+   *)
+  Comparator = class(Object_)
+    public
+      (**
+       * Compares its two arguments for order.
+       *
+       * @param o1 the first object to be compared.
+       * @param o2 the second object to be compared.
+       * @return a negative integer, zero, or a positive integer as the
+       * first argument is less than, equal to, or greater than the second.
+       *)
+      function compare(o1, o2: Object_) : longInt; virtual; abstract;
+  end;
+
   (**
    * The String class represents character strings.
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  String_ = class
+  String_ = class(Comparable)
     private
       var str: ansiString;
     public
+      property strProperty: ansiString read str;
       constructor create(bytes: array of shortInt);
       constructor create(bytes: array of shortInt; offset: longInt; length: longInt);
       constructor create(original: ansiString);
-      function compareTo(anotherString: String_) : longInt;
-      function equals(anObject: TObject) : boolean; override;
+      function compareTo(anotherString: Object_) : longInt; override;
+      function equals_(anObject: Object_) : boolean; override;
       function substring(beginIndex: longInt) : String_;
       function substring(beginIndex: longInt; endIndex: longInt) : String_;
       function indexOf(ch: longInt) : longInt;
@@ -34,17 +79,46 @@ type
       function startsWith(prefix: String_) : boolean;
       function endsWith(suffix: String_) : boolean;
       function isEmpty() : boolean;
-      function toString() : ansiString; override;
+      function toString_() : String_; override;
   end;
 
 operator := (original: ansiString) s: String_;
-operator := (original: String_) s: ansiString;
-{operator + (s1: String_; s2: String_) s: String_;}
 
 implementation
 
 uses
   SysUtils, StrUtils;
+
+(**
+ * Indicates whether some other object is "equal to" this one.
+ *
+ * @param obj the reference object with which to compare.
+ * @return true if this object is the same as the obj argument; false otherwise.
+ *)
+function Object_.equals_(obj: Object_) : boolean;
+begin
+  equals_ := self = obj;
+end;
+
+(**
+ * Returns a string representation of the object.
+ *
+ * @return a string representation of the object.
+ *)
+function Object_.toString_() : String_;
+begin
+  toString_ := String_.create(inherited toString());
+end;
+
+function Object_.equals(obj: TObject) : boolean;
+begin
+  equals := self.equals_(Object_(obj));
+end;
+
+function Object_.toString() : ansiString;
+begin
+  toString := toString_().str;
+end;
 
 (**
  * Constructs a new String by decoding the specified array of bytes using
@@ -93,9 +167,9 @@ end;
  * string argument; and a value greater than 0 if this string is
  * lexicographically greater than the string argument.
  *)
-function String_.compareTo(anotherString: String_) : longInt;
+function String_.compareTo(anotherString: Object_) : longInt;
 begin
-  compareTo := ansiCompareStr(str, anotherString.str);
+  compareTo := ansiCompareStr(str, (anotherString as String_).str);
 end;
 
 (**
@@ -105,7 +179,7 @@ end;
  * @return true if the given object represents a String equivalent to this
  * string, false otherwise
  *)
-function String_.equals(anObject: TObject) : boolean;
+function String_.equals_(anObject: Object_) : boolean;
 begin
   if anObject = nil then begin
     exit(false);
@@ -115,7 +189,7 @@ begin
     exit(false);
   end;
 
-  equals := (ansiCompareStr(self.str, String_(anObject).str) = 0);
+  equals_ := (ansiCompareStr(self.str, String_(anObject).str) = 0);
 end;
 
 (**
@@ -326,25 +400,20 @@ begin
   isEmpty := (self.length() = 0);
 end;
 
-function String_.toString() : ansiString;
+(**
+ * This object (which is already a string!) is itself returned.
+ *
+ * @return the string itself.
+ *)
+function toString_() : String_;
 begin
-  toString := str;
+  toString_ := String_.create(str);
 end;
 
 operator := (original: ansiString) s: String_;
 begin
-  s.create(original);
+  s := String_.create(original);
 end;
-
-operator := (original: String_) s: ansiString;
-begin
-  s := original.toString();
-end;
-
-{operator + (s1: String_; s2: String_) s: String_;
-begin
-  s.create(s1.str + s2.str);
-end;}
 
 end.
 

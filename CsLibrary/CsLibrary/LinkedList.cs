@@ -6,8 +6,9 @@ namespace JavaClasses
     /// <summary>
     /// Doubly-linked list implementation of the List and Deque interfaces.
     /// </summary>
+    /// <typeparam name="E">the type of elements held in this collection</typeparam>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class LinkedList<E>
+    public class LinkedList<E> : List<E> where E : Object
     {
 
         public System.Collections.Generic.LinkedList<E> l { get; private set; }
@@ -37,7 +38,7 @@ namespace JavaClasses
         /// <param name="e">element to be appended to this list
         /// </param><returns>true (as specified by Collection.add(E))
         /// </returns>
-        public bool add(E e)
+        public override bool add(E e)
         {
             l.AddLast(e);
             return true;
@@ -49,7 +50,7 @@ namespace JavaClasses
         /// <param name="index">index at which the specified element is to be inserted
         /// </param><param name="element">element to be inserted
         /// </param>
-        public void add(int index, E element)
+        public override void add(int index, E element)
         {
             // creating the first node, if the list is empty
             if (index < 1)
@@ -69,54 +70,14 @@ namespace JavaClasses
             // inserting the new element before the node
             l.AddBefore(node, element);
         }
-
-        /// <summary>
-        /// Compares the specified object with this list for equality.
-        /// </summary>
-        /// 
-        /// <param name="o">the object to be compared for equality with this list</param>
-        /// <returns>true if the specified object is equal to this list</returns>
-        public bool equals(LinkedList<E> o)
-        {
-            if (this == o)
-            {
-                return true;
-            }
-            
-            if (o == null)
-            {
-                return false;
-            }
-
-            int length = size();
-            
-            if (o.size() != length)
-            {
-                return false;
-            }
-            
-            for (int i = 0; i < length; i++)
-            {
-                E o1 = get(i);
-                E o2 = o.get(i);
-                bool equals = o1 == null ? o2 == null : o1.Equals(o2);
-
-                if (!equals)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
+        
         /// <summary>
         /// Returns the element at the specified position in this list.
         /// </summary>
         /// <param name="index">index of the element to return
         /// </param><returns>the element at the specified position in this list
         /// </returns>
-        public E get(int index)
+        public override E get(int index)
         {
             LinkedListNode<E> node = l.First;
 
@@ -138,7 +99,7 @@ namespace JavaClasses
         /// </param><param name="element">element to be stored at the specified position
         /// </param><returns>the element previously at the specified position
         /// </returns>
-        public E set(int index, E element)
+        public override E set(int index, E element)
         {
             E original;
 
@@ -170,7 +131,7 @@ namespace JavaClasses
         /// <param name="index">the index of the element to be removed
         /// </param><returns>the element previously at the specified position
         /// </returns>
-        public E remove(int index)
+        public override E remove(int index)
         {
             E removed;
 
@@ -201,25 +162,15 @@ namespace JavaClasses
         /// </summary>
         /// <returns>the number of elements in this list
         /// </returns>
-        public int size()
+        public override int size()
         {
             return l.Count;
         }
-
-        /// <summary>
-        /// Returns true if this list contains no elements.
-        /// </summary>
-        /// <returns>true if this list contains no elements
-        /// </returns>
-        public bool isEmpty()
-        {
-            return l.Count == 0;
-        }
-
+        
         /// <summary>
         /// Removes all of the elements from this list.
         /// </summary>
-        public void clear()
+        public override void clear()
         {
             l.Clear();
         }
@@ -229,7 +180,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a string representation of the object.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             StringBuilder sb = new StringBuilder();
             sb.append("[");
@@ -250,17 +201,7 @@ namespace JavaClasses
 
             return sb.append("]").toString();
         }
-
-        public override bool Equals(object obj)
-        {
-            return equals(obj as LinkedList<E>);
-        }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
+        
     }
 
 }

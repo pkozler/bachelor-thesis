@@ -13,7 +13,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Long = class
+  Long = class(Comparable)
     private
       var
         v: int64;
@@ -29,13 +29,12 @@ type
            MIN_VALUE = -9223372036854775808;
       constructor create(value: int64);
       function longValue() : int64;
-      function compareTo(anotherLong: Long) : longInt;
+      function compareTo(anotherLong: Object_) : longInt; override;
       class function compare(x, y: int64) : longInt;
-      function equals(obj: TObject) : boolean; override;
-      function toString_() : String_;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
       class function toString_(l: int64) : String_;
       class function parseLong(s: String_) : int64;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -71,9 +70,9 @@ end;
  * a value greater than 0 if this Long is numerically greater than the
  * argument Long (signed comparison).
  *)
-function Long.compareTo(anotherLong: Long) : longInt;
+function Long.compareTo(anotherLong: Object_) : longInt;
 begin
-  compareTo := compare(v, anotherLong.v);
+  compareTo := compare(v, (anotherLong as Long).v);
 end;
 
 (**
@@ -103,7 +102,7 @@ end;
  * @param obj the object to compare with.
  * @return true if the objects are the same; false otherwise.
  *)
-function Long.equals(obj: TObject) : boolean;
+function Long.equals_(obj: Object_) : boolean;
 begin
   if obj = nil then begin
     exit(false);
@@ -113,7 +112,7 @@ begin
     exit(false);
   end;
 
-  equals := (v = (Long(obj)).v);
+  equals_ := (v = (Long(obj)).v);
 end;
 
 (**
@@ -149,22 +148,9 @@ begin
   parseLong := strToInt64(s.toString());
 end;
 
-function Long.toString() : ansiString;
-var
-  s: String_;
-begin
-  s := toString_();
-  toString := s.ToString();
-end;
-
 operator := (original: int64) s: Long;
 begin
   s.create(original);
-end;
-
-operator := (original: Long) s: int64;
-begin
-  s := original.longValue();
 end;
 
 end.

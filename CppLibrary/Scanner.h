@@ -1,6 +1,7 @@
 #ifndef SCANNER_INCLUDED
 #define	SCANNER_INCLUDED
 
+#include "System.h"
 #include "String.h"
 #include <cstdint>
 
@@ -9,9 +10,9 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Scanner {
+class Scanner : public Object {
 public:
-    Scanner(void *source);
+    Scanner(InputStream *source);
     String *next();
     bool nextBoolean();
     int8_t nextByte();

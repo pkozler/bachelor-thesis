@@ -25,10 +25,9 @@ type
   LongIntArray = array of longInt;
   Int64Array = array of int64;
   SmallIntArray = array of smallInt;
-  TObjectArray = array of TObject;
+  ObjectArray = array of Object_;
 
   EqualsFunction = function(a, b: pointer): boolean;
-  TObjectEqualsFunction = function(o1, o2: TObject): boolean;
   ToStringFunction = function(a: pointer): String_;
 
   (**
@@ -39,17 +38,17 @@ type
   Arrays = class
     private
       class function binarySearchPointer(a: pointer; fromIndex, toIndex, size: longInt; key: pointer; c: CompareFunction) : longInt;
-      class function binarySearchTObject(a: array of TObject; fromIndex, toIndex: longInt; key: TObject; c: TObjectCompareFunction) : longInt;
+      class function binarySearchObject(a: array of Object_; fromIndex, toIndex: longInt; key: Object_; c: Comparator) : longInt;
       class function copyOfRangePointer(original: pointer; length, size, from, to_: longInt) : pointer;
-      class function copyOfRangeTObject(original: array of TObject; from, to_: longInt) : TObjectArray;
+      class function copyOfRangeObject(original: array of Object_; from, to_: longInt) : ObjectArray;
       class function equalsPointer(a: pointer; length: longInt; a2: pointer; length2, size: longInt; e: EqualsFunction) : boolean;
-      class function equalsTObject(a: array of TObject; a2: array of TObject; e: TObjectEqualsFunction) : boolean;
+      class function equalsObject(a: array of Object_; a2: array of Object_) : boolean;
       class procedure fillPointer(a: pointer; fromIndex, toIndex, size: longInt; val: pointer);
-      class procedure fillTObject(a: array of TObject; fromIndex, toIndex: longInt; val: TObject);
+      class procedure fillObject(a: array of Object_; fromIndex, toIndex: longInt; val: Object_);
       class procedure sortPointer(a: pointer; fromIndex, toIndex, size: longInt; c: CompareFunction);
-      class procedure sortTObject(a: array of TObject; fromIndex, toIndex: longInt; c: TObjectCompareFunction);
+      class procedure sortObject(a: array of Object_; fromIndex, toIndex: longInt; c: Comparator);
       class function toStringPointer(a: pointer; length, size: longInt; ts: ToStringFunction) : String_;
-      class function toStringTObject(a: array of TObject) : String_;
+      class function toStringObject(a: array of Object_) : String_;
     public
       class function binarySearch(a: array of shortInt; key: shortInt) : longInt;
       class function binarySearch(a: array of shortInt; fromIndex: longInt; toIndex: longInt; key: shortInt) : longInt;
@@ -63,10 +62,12 @@ type
       class function binarySearch(a: array of longInt; fromIndex: longInt; toIndex: longInt; key: longInt) : longInt;
       class function binarySearch(a: array of int64; key: int64) : longInt;
       class function binarySearch(a: array of int64; fromIndex: longInt; toIndex: longInt; key: int64) : longInt;
-      class function binarySearch(a: array of TObject; key: TObject; c: TObjectCompareFunction) : longInt;
-      class function binarySearch(a: array of TObject; fromIndex: longInt; toIndex: longInt; key: TObject; c: TObjectCompareFunction) : longInt;
+      class function binarySearch(a: array of Object_; key: Object_) : longInt;
+      class function binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_) : longInt;
       class function binarySearch(a: array of smallInt; key: smallInt) : longInt;
       class function binarySearch(a: array of smallInt; fromIndex: longInt; toIndex: longInt; key: smallInt) : longInt;
+      class function binarySearch(a: array of Object_; key: Object_; c: Comparator) : longInt;
+      class function binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_; c: Comparator) : longInt;
       class function copyOf(original: array of boolean; newLength: longInt) : BooleanArray;
       class function copyOf(original: array of shortInt; newLength: longInt) : ShortIntArray;
       class function copyOf(original: array of ansiChar; newLength: longInt) : AnsiCharArray;
@@ -75,7 +76,7 @@ type
       class function copyOf(original: array of longInt; newLength: longInt) : LongIntArray;
       class function copyOf(original: array of int64; newLength: longInt) : Int64Array;
       class function copyOf(original: array of smallInt; newLength: longInt) : SmallIntArray;
-      class function copyOf(original: array of TObject; newLength: longInt) : TObjectArray;
+      class function copyOf(original: array of Object_; newLength: longInt) : ObjectArray;
       class function copyOfRange(original: array of boolean; from: longInt; to_: longInt) : BooleanArray;
       class function copyOfRange(original: array of shortInt; from: longInt; to_: longInt) : ShortIntArray;
       class function copyOfRange(original: array of ansiChar; from: longInt; to_: longInt) : AnsiCharArray;
@@ -84,7 +85,7 @@ type
       class function copyOfRange(original: array of longInt; from: longInt; to_: longInt) : LongIntArray;
       class function copyOfRange(original: array of int64; from: longInt; to_: longInt) : Int64Array;
       class function copyOfRange(original: array of smallInt; from: longInt; to_: longInt) : SmallIntArray;
-      class function copyOfRange(original: array of TObject; from: longInt; to_: longInt) : TObjectArray;
+      class function copyOfRange(original: array of Object_; from: longInt; to_: longInt) : ObjectArray;
       class function equals(a: array of boolean; a2: array of boolean) : boolean;
       class function equals(a: array of shortInt; a2: array of shortInt) : boolean;
       class function equals(a: array of ansiChar; a2: array of ansiChar) : boolean;
@@ -92,7 +93,7 @@ type
       class function equals(a: array of single; a2: array of single) : boolean;
       class function equals(a: array of longInt; a2: array of longInt) : boolean;
       class function equals(a: array of int64; a2: array of int64) : boolean;
-      class function equals(a: array of TObject; a2: array of TObject) : boolean;
+      class function equals(a: array of Object_; a2: array of Object_) : boolean;
       class function equals(a: array of smallInt; a2: array of smallInt) : boolean;
       class procedure fill(a: array of boolean; val: boolean);
       class procedure fill(a: array of boolean; fromIndex: longInt; toIndex: longInt; val: boolean);
@@ -108,8 +109,8 @@ type
       class procedure fill(a: array of longInt; fromIndex: longInt; toIndex: longInt; val: longInt);
       class procedure fill(a: array of int64; val: int64);
       class procedure fill(a: array of int64; fromIndex: longInt; toIndex: longInt; val: int64);
-      class procedure fill(a: array of TObject; val: TObject);
-      class procedure fill(a: array of TObject; fromIndex: longInt; toIndex: longInt; val: TObject);
+      class procedure fill(a: array of Object_; val: Object_);
+      class procedure fill(a: array of Object_; fromIndex: longInt; toIndex: longInt; val: Object_);
       class procedure fill(a: array of smallInt; val: smallInt);
       class procedure fill(a: array of smallInt; fromIndex: longInt; toIndex: longInt; val: smallInt);
       class procedure sort(a: array of shortInt);
@@ -124,10 +125,12 @@ type
       class procedure sort(a: array of longInt; fromIndex: longInt; toIndex: longInt);
       class procedure sort(a: array of int64);
       class procedure sort(a: array of int64; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of TObject; c: TObjectCompareFunction);
-      class procedure sort(a: array of TObject; fromIndex: longInt; toIndex: longInt; c: TObjectCompareFunction);
+      class procedure sort(a: array of Object_);
+      class procedure sort(a: array of Object_; fromIndex: longInt; toIndex: longInt);
       class procedure sort(a: array of smallInt);
       class procedure sort(a: array of smallInt; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(a: array of Object_; c: Comparator);
+      class procedure sort(a: array of Object_; fromIndex: longInt; toIndex: longInt; c: Comparator);
       class function toString(a: array of boolean) : String_;
       class function toString(a: array of shortInt) : String_;
       class function toString(a: array of ansiChar) : String_;
@@ -135,7 +138,7 @@ type
       class function toString(a: array of single) : String_;
       class function toString(a: array of longInt) : String_;
       class function toString(a: array of int64) : String_;
-      class function toString(a: array of TObject) : String_;
+      class function toString(a: array of Object_) : String_;
       class function toString(a: array of smallInt) : String_;
   end;
 
@@ -291,7 +294,7 @@ begin
   freeAndNil(y);
 end;
 
-function _equalsObj(o1, o2: TObject) : boolean;
+function _equalsObj(o1, o2: Object_) : boolean;
 begin
   if o1 = nil then begin
     _equalsObj := (o2 = nil);
@@ -308,37 +311,37 @@ end;
 
 function _toStringB(a: pointer) : String_;
 begin
-  _toStringB := Byte_.toString(PShortInt(a)^);
+  _toStringB := Byte_.toString_(PShortInt(a)^);
 end;
 
 function _toStringC(a: pointer) : String_;
 begin
-  _toStringC := Character.toString(PAnsiChar(a)^);
+  _toStringC := Character.toString_(PAnsiChar(a)^);
 end;
 
 function _toStringD(a: pointer) : String_;
 begin
-  _toStringD := Double_.toString(PDouble(a)^);
+  _toStringD := Double_.toString_(PDouble(a)^);
 end;
 
 function _toStringF(a: pointer) : String_;
 begin
-  _toStringF := Float.toString(PSingle(a)^);
+  _toStringF := Float.toString_(PSingle(a)^);
 end;
 
 function _toStringI(a: pointer) : String_;
 begin
-  _toStringI := Integer_.toString(PLongInt(a)^);
+  _toStringI := Integer_.toString_(PLongInt(a)^);
 end;
 
 function _toStringL(a: pointer) : String_;
 begin
-  _toStringL := Long.toString(PInt64(a)^);
+  _toStringL := Long.toString_(PInt64(a)^);
 end;
 
 function _toStringS(a: pointer) : String_;
 begin
-  _toStringS := Short.toString(PSmallInt(a)^);
+  _toStringS := Short.toString_(PSmallInt(a)^);
 end;
 
 class function Arrays.binarySearchPointer(a: pointer; fromIndex, toIndex, size: longInt; key: pointer; c: CompareFunction) : longInt;
@@ -368,10 +371,10 @@ begin
   binarySearchPointer := -(lower + 1);
 end;
 
-class function Arrays.binarySearchTObject(a: array of TObject; fromIndex, toIndex: longInt; key: TObject; c: TObjectCompareFunction) : longInt;
+class function Arrays.binarySearchObject(a: array of Object_; fromIndex, toIndex: longInt; key: Object_; c: Comparator) : longInt;
 var
   lower, upper, middle : longInt;
-  middleValue : TObject;
+  middleValue : Object_;
 begin
   lower := fromIndex;
   upper := toIndex - 1;
@@ -380,19 +383,19 @@ begin
     middle := lower + ((upper - lower) div 2);
     middleValue := a[middle];
 
-    if c(middleValue, key) < 0 then begin
+    if c.compare(middleValue, key) < 0 then begin
       lower := middle + 1;
     end
-    else if c(middleValue, key) > 0 then begin
+    else if c.compare(middleValue, key) > 0 then begin
       upper := middle - 1;
     end
     else begin
-      binarySearchTObject := middle;
+      binarySearchObject := middle;
       exit;
     end;
   end;
 
-  binarySearchTObject := -(lower + 1);
+  binarySearchObject := -(lower + 1);
 end;
 
 class function Arrays.copyOfRangePointer(original: pointer; length, size, from, to_: longInt) : pointer;
@@ -428,9 +431,9 @@ begin
   copyOfRangePointer := a;
 end;
 
-class function Arrays.copyOfRangeTObject(original: array of TObject; from, to_: longInt) : TObjectArray;
+class function Arrays.copyOfRangeObject(original: array of Object_; from, to_: longInt) : ObjectArray;
 var
-  a: array of TObject;
+  a: array of Object_;
   len, i: longInt;
 begin
   setLength(a, to_ - from);
@@ -451,7 +454,7 @@ begin
     end;
   end;
 
-  copyOfRangeTObject := a;
+  copyOfRangeObject := a;
 end;
 
 class function Arrays.equalsPointer(a: pointer; length: longInt; a2: pointer; length2, size: longInt; e: EqualsFunction) : boolean;
@@ -475,7 +478,7 @@ begin
   equalsPointer := true;
 end;
 
-class function Arrays.equalsTObject(a: array of TObject; a2: array of TObject; e: TObjectEqualsFunction) : boolean;
+class function Arrays.equalsObject(a: array of Object_; a2: array of Object_) : boolean;
 var
   len, i: longInt;
 begin
@@ -490,12 +493,12 @@ begin
   end;
 
   for i := 0 to len - 1 do begin
-    if not e(a[i], a2[i]) then begin
+    if not a[i].equals_(a2[i]) then begin
       exit(false);
     end;
   end;
 
-  equalsTObject := true;
+  equalsObject := true;
 end;
 
 class procedure Arrays.fillPointer(a: pointer; fromIndex, toIndex, size: longInt; val: pointer);
@@ -509,7 +512,7 @@ begin
   end;
 end;
 
-class procedure Arrays.fillTObject(a: array of TObject; fromIndex, toIndex: longInt; val: TObject);
+class procedure Arrays.fillObject(a: array of Object_; fromIndex, toIndex: longInt; val: Object_);
 var
   i: longInt;
 begin
@@ -523,9 +526,9 @@ begin
   _java.quickSort(a, fromIndex, toIndex, size, c);
 end;
 
-class procedure Arrays.sortTObject(a: array of TObject; fromIndex, toIndex: longInt; c: TObjectCompareFunction);
+class procedure Arrays.sortObject(a: array of Object_; fromIndex, toIndex: longInt; c: Comparator);
 var
-  aux: array of TObject;
+  aux: array of Object_;
 begin
   setLength(aux, toIndex - fromIndex);
   _java.mergeSort(a, aux, fromIndex, toIndex, c);
@@ -565,7 +568,7 @@ begin
   toStringPointer := str;
 end;
 
-class function Arrays.toStringTObject(a: array of TObject) : String_;
+class function Arrays.toStringObject(a: array of Object_) : String_;
 var
   sb: StringBuilder;
   str: String_;
@@ -578,7 +581,7 @@ begin
   freeAndNil(str);
 
   if len > 0 then begin
-    str := a[0].toString();
+    str := a[0].toString_();
     sb.append(str);
     freeAndNil(str);
   end;
@@ -587,7 +590,7 @@ begin
     str := ', ';
     sb.append(str);
     freeAndNil(str);
-    str := a[i].toString();
+    str := a[i].toString_();
     sb.append(str);
     freeAndNil(str);
   end;
@@ -595,9 +598,9 @@ begin
   str := ']';
   sb.append(str);
   freeAndNil(str);
-  str := sb.toString();
+  str := sb.toString_();
   freeAndNil(sb);
-  toStringTObject := str;
+  toStringObject := str;
 end;
 
 (**
@@ -853,9 +856,9 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of TObject; key: TObject; c: TObjectCompareFunction) : longInt;
+class function Arrays.binarySearch(a: array of Object_; key: Object_) : longInt;
 begin
-  binarySearch := binarySearchTObject(a, 0, length(a), key, c);
+  binarySearch := binarySearchObject(a, 0, length(a), key, ObjectComparator.create());
 end;
 
 (**
@@ -875,9 +878,9 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of TObject; fromIndex: longInt; toIndex: longInt; key: TObject; c: TObjectCompareFunction) : longInt;
+class function Arrays.binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_) : longInt;
 begin
-  binarySearch := binarySearchTObject(a, fromIndex, toIndex, key, c);
+  binarySearch := binarySearchObject(a, fromIndex, toIndex, key, ObjectComparator.create());
 end;
 
 (**
@@ -918,6 +921,50 @@ end;
 class function Arrays.binarySearch(a: array of smallInt; fromIndex: longInt; toIndex: longInt; key: smallInt) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(smallInt), @key, @_compareS);
+end;
+
+(**
+ * Searches the specified array for the specified object using the binary
+ * search algorithm.
+ *
+ * @param a the array to be searched
+ * @param key the value to be searched for
+ * @param c the comparator by which the array is ordered. A null value
+ * indicates that the elements' natural ordering should be used.
+ * @return index of the search key, if it is contained in the array;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the array: the index of
+ * the first element greater than the key, or a.length if all elements in
+ * the array are less than the specified key. Note that this guarantees that
+ * the return value will be >= 0 if and only if the key is found.
+ *)
+class function Arrays.binarySearch(a: array of Object_; key: Object_; c: Comparator) : longInt;
+begin
+  binarySearch := binarySearchObject(a, 0, length(a), key, c);
+end;
+
+(**
+ * Searches a range of the specified array for the specified object using
+ * the binary search algorithm.
+ *
+ * @param a the array to be searched
+ * @param fromIndex the index of the first element (inclusive) to be
+ * searched
+ * @param toIndex the index of the last element (exclusive) to be searched
+ * @param key the value to be searched for
+ * @param c the comparator by which the array is ordered. A null value
+ * indicates that the elements' natural ordering should be used.
+ * @return index of the search key, if it is contained in the array within
+ * the specified range; otherwise, (-(insertion point) - 1). The insertion
+ * point is defined as the point at which the key would be inserted into the
+ * array: the index of the first element in the range greater than the key,
+ * or toIndex if all elements in the range are less than the specified key.
+ * Note that this guarantees that the return value will be >= 0 if and only
+ * if the key is found.
+ *)
+class function Arrays.binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_; c: Comparator) : longInt;
+begin
+  binarySearch := binarySearchObject(a, fromIndex, toIndex, key, c);
 end;
 
 (**
@@ -1041,9 +1088,9 @@ end;
  * @return a copy of the original array, truncated or padded with nulls to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of TObject; newLength: longInt) : TObjectArray;
+class function Arrays.copyOf(original: array of Object_; newLength: longInt) : ObjectArray;
 begin
-  copyOf := copyOfRangeTObject(original, 0, newLength);
+  copyOf := copyOfRangeObject(original, 0, newLength);
 end;
 
 (**
@@ -1178,9 +1225,9 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with nulls to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of TObject; from: longInt; to_: longInt) : TObjectArray;
+class function Arrays.copyOfRange(original: array of Object_; from: longInt; to_: longInt) : ObjectArray;
 begin
-  copyOfRange := copyOfRangeTObject(original, from, to_);
+  copyOfRange := copyOfRangeObject(original, from, to_);
 end;
 
 (**
@@ -1282,9 +1329,9 @@ end;
  * @param a2 the other array to be tested for equality
  * @return true if the two arrays are equal
  *)
-class function Arrays.equals(a: array of TObject; a2: array of TObject) : boolean;
+class function Arrays.equals(a: array of Object_; a2: array of Object_) : boolean;
 begin
-  equals := equalsTObject(a, a2, @_equalsObj);
+  equals := equalsObject(a, a2);
 end;
 
 (**
@@ -1503,9 +1550,9 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of TObject; val: TObject);
+class procedure Arrays.fill(a: array of Object_; val: Object_);
 begin
-  fillTObject(a, 0, length(a), val);
+  fillObject(a, 0, length(a), val);
 end;
 
 (**
@@ -1519,9 +1566,9 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of TObject; fromIndex: longInt; toIndex: longInt; val: TObject);
+class procedure Arrays.fill(a: array of Object_; fromIndex: longInt; toIndex: longInt; val: Object_);
 begin
-  fillTObject(a, fromIndex, toIndex, val);
+  fillObject(a, fromIndex, toIndex, val);
 end;
 
 (**
@@ -1690,9 +1737,9 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of TObject; c: TObjectCompareFunction);
+class procedure Arrays.sort(a: array of Object_);
 begin
-  sortTObject(a, 0, length(a), c);
+  sortObject(a, 0, length(a), ObjectComparator.create());
 end;
 
 (**
@@ -1703,9 +1750,9 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of TObject; fromIndex: longInt; toIndex: longInt; c: TObjectCompareFunction);
+class procedure Arrays.sort(a: array of Object_; fromIndex: longInt; toIndex: longInt);
 begin
-  sortTObject(a, fromIndex, toIndex, c);
+  sortObject(a, fromIndex, toIndex, ObjectComparator.create());
 end;
 
 (**
@@ -1728,6 +1775,34 @@ end;
 class procedure Arrays.sort(a: array of smallInt; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(smallInt), @_compareS);
+end;
+
+(**
+ * Sorts the specified array of objects according to the order induced by
+ * the specified comparator.
+ *
+ * @param a the array to be sorted
+ * @param c the comparator to determine the order of the array. A null value
+ * indicates that the elements' natural ordering should be used.
+ *)
+class procedure Arrays.sort(a: array of Object_; c: Comparator);
+begin
+
+end;
+
+(**
+ * Sorts the specified range of the specified array of objects according to
+ * the order induced by the specified comparator.
+ *
+ * @param a the array to be sorted
+ * @param fromIndex the index of the first element (inclusive) to be sorted
+ * @param toIndex the index of the last element (exclusive) to be sorted
+ * @param c the comparator to determine the order of the array. A null value
+ * indicates that the elements' natural ordering should be used.
+ *)
+class procedure Arrays.sort(a: array of Object_; fromIndex: longInt; toIndex: longInt; c: Comparator);
+begin
+
 end;
 
 (**
@@ -1813,9 +1888,9 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of TObject) : String_;
+class function Arrays.toString(a: array of Object_) : String_;
 begin
-  toString := toStringTObject(a);
+  toString := toStringObject(a);
 end;
 
 (**

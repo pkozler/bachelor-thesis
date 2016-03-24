@@ -5,7 +5,7 @@
     /// A mutable sequence of characters.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class StringBuilder
+    public class StringBuilder : Object
     {
 
         private System.Text.StringBuilder sb;
@@ -37,14 +37,9 @@
         /// </summary>
         /// <returns>a string representation of this sequence of characters.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return sb.ToString();
-        }
-
-        public override string ToString()
-        {
-            return toString();
         }
 
     }

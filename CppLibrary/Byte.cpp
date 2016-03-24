@@ -2,13 +2,7 @@
 
 #include <string>
 
-/**
- * A constant holding the maximum value a byte can have, 2^7-1.
- */
 const int8_t Byte::MAX_VALUE = 127;
-/**
- * A constant holding the minimum value a byte can have, -2^7.
- */
 const int8_t Byte::MIN_VALUE = -128;
 
 /**
@@ -100,9 +94,5 @@ String *Byte::toString(int8_t b) {
  * @return the byte value represented by the argument in decimal
  */
 int8_t Byte::parseByte(String *s) {
-    return (int8_t) std::stoi(s->toString(), nullptr, 10);
-}
-
-std::ostream &operator<<(std::ostream &s, Byte &obj) {
-    return s << obj.toString()->toString().c_str();
+    return (int8_t) std::stoi(s->_s(), nullptr, 10);
 }

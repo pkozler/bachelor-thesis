@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Boolean {
+class Boolean : public Comparable<Boolean> {
     bool v;
 public:
     Boolean(bool value);
@@ -20,7 +20,6 @@ public:
     String *toString();
     static String *toString(bool b);
     static bool parseBoolean(String *s);
-    friend std::ostream &operator<<(std::ostream &s, Boolean &obj);
 };
 
 #endif // BOOLEAN_INCLUDED

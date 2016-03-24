@@ -49,15 +49,13 @@
     <Compile Include="Byte.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Collections.cs" />
-    <Compile Include="Comparable.cs" />
-    <Compile Include="Comparator.cs" />
     <Compile Include="Double.cs" />
     <Compile Include="Float.cs" />
     <Compile Include="Integer.cs" />
     <Compile Include="LinkedList.cs" />
+    <Compile Include="List.cs" />
     <Compile Include="Long.cs" />
     <Compile Include="Math.cs" />
-    <Compile Include="Object.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />
@@ -66,6 +64,8 @@
     <Compile Include="StringBuilder.cs" />
     <Compile Include="StringTokenizer.cs" />
     <Compile Include="System_.cs" />
+    <Compile Include="TestObject.cs" />
+    <Compile Include="TestObjectComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

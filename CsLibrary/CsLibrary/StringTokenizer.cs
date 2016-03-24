@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The string tokenizer class allows an application to break a string into tokens.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class StringTokenizer
+    public class StringTokenizer : Object
     {
 
         // current string array containing tokens

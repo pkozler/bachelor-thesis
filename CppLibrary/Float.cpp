@@ -3,37 +3,13 @@
 #include <string>
 #include <cmath>
 
-/**
- * A constant holding the positive infinity of type float.
- */
 const float Float::POSITIVE_INFINITY = 1.0f / 0.0f;
-/**
- * A constant holding the negative infinity of type float.
- */
 const float Float::NEGATIVE_INFINITY = -1.0f / 0.0f;
-/**
- * A constant holding a Not-a-Number (NaN) value of type float.
- */
 const float Float::NaN = 0.0f / 0.0f;
-/**
- * A constant holding the largest positive finite value of type float, (2-2^-23)·2^127.
- */
 const float Float::MAX_VALUE = 3.4028235e+38f;
-/**
- * A constant holding the smallest positive nonzero value of type float, 2-^149.
- */
 const float Float::MIN_VALUE = 1.4e-45f;
-/**
- * Maximum exponent a finite float variable may hav
- */
 const int32_t Float::MAX_EXPONENT = 127;
-/**
- * Minimum exponent a normalized float variable may have.
- */
 const int32_t Float::MIN_EXPONENT = -126;
-/**
- * A constant holding the smallest positive normal value of type float, 2^-126.
- */
 const float Float::MIN_NORMAL = 1.17549435e-38f;
 
 /**
@@ -179,9 +155,5 @@ String *Float::toString(float f) {
  * @return the float value represented by the string argument.
  */
 float Float::parseFloat(String *s) {
-    return std::stof(s->toString(), nullptr);
-}
-
-std::ostream &operator<<(std::ostream &s, Float &obj) {
-    return s << obj.toString()->toString().c_str();
+    return std::stof(s->_s(), nullptr);
 }

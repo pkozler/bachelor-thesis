@@ -19,7 +19,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Float = class
+  Float = class(Object_)
     private
       var
         v: single;
@@ -60,13 +60,12 @@ type
            MIN_NORMAL = 1.17549435e-38;
       constructor create(value: single);
       function floatValue() : single;
-      function compareTo(anotherFloat: Float) : longInt;
+      function compareTo(anotherFloat: Object_) : longInt; override;
       class function compare(f1, f2: single) : longInt;
-      function equals(obj: TObject) : boolean; override;
-      function toString_() : String_;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
       class function toString_(f: single) : String_;
       class function parseFloat(s: String_) : single;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -112,9 +111,9 @@ end;
  * and a value greater than 0 if this Float is numerically greater than
  * anotherFloat.
  *)
-function Float.compareTo(anotherFloat: Float) : longInt;
+function Float.compareTo(anotherFloat: Object_) : longInt;
 begin
-  compareTo := compare(v, anotherFloat.v);
+  compareTo := compare(v, (anotherFloat as Float).v);
 end;
 
 (**
@@ -172,7 +171,7 @@ end;
  * @param obj the object to be compared
  * @return true if the objects are the same; false otherwise.
  *)
-function Float.equals(obj: TObject) : boolean;
+function Float.equals_(obj: Object_) : boolean;
 var
   vBits, v2Bits : FloatToInt32;
   v2 : single;
@@ -204,7 +203,7 @@ begin
     exit(vBits.bits = negativeZeroBits);
   end;
 
-  equals := (v = v2);
+  equals_ := (v = v2);
 end;
 
 (**
@@ -240,12 +239,9 @@ begin
   parseFloat := strToFloat(s.toString());
 end;
 
-function Float.toString() : ansiString;
-var
-  s: String_;
+operator := (original: single) s: Float;
 begin
-  s := toString_();
-  toString := s.ToString();
+  s.create(original);
 end;
 
 end.

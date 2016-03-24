@@ -2,13 +2,7 @@
 
 #include <string>
 
-/**
- * A constant holding the maximum value a long can have, 2^63-1.
- */
 const int64_t Long::MAX_VALUE = 9223372036854775807L;
-/**
- * A constant holding the minimum value a long can have, -2^63.
- */
 const int64_t Long::MIN_VALUE = 9223372036854775808L;
 
 /**
@@ -101,9 +95,5 @@ String *Long::toString(int64_t l) {
  * @return the long represented by the argument in decimal.
  */
 int64_t Long::parseLong(String *s) {
-    return std::stol(s->toString(), nullptr, 10);
-}
-
-std::ostream &operator<<(std::ostream &s, Long &obj) {
-    return s << obj.toString()->toString().c_str();
+    return std::stol(s->_s(), nullptr, 10);
 }

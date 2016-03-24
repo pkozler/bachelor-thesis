@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Byte class wraps a value of primitive type byte in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Byte : IComparable<Byte>
+    public class Byte : Comparable<Byte>
     {
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace JavaClasses
         /// a value greater than 0 if this Byte is numerically greater than the
         /// argument Byte (signed comparison).
         /// </returns>
-        public int compareTo(Byte anotherByte)
+        public override int compareTo(Byte anotherByte)
         {
             return compare(v, anotherByte.v);
         }
@@ -77,7 +77,7 @@ namespace JavaClasses
         /// <param name="obj">the object to compare with
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             if (obj == null)
             {
@@ -97,7 +97,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a string representation of the value of this object in base 10.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Byte.toString(v);
         }
@@ -110,7 +110,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(sbyte b)
         {
-            return b.ToString();
+            return new String(b.ToString());
         }
 
         /// <summary>
@@ -123,27 +123,12 @@ namespace JavaClasses
         {
             return sbyte.Parse(s.ToString());
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Byte other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Byte(sbyte original)
         {
             return new Byte(original);
         }
-
-        public static implicit operator sbyte (Byte original)
-        {
-            return original.byteValue();
-        }
-
+        
     }
 
 }

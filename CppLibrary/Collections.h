@@ -1,6 +1,7 @@
 #ifndef COLLECTIONS_INCLUDED
 #define	COLLECTIONS_INCLUDED
 
+#include "List.h"
 #include "ArrayList.h"
 #include <algorithm>
 #include <vector>
@@ -14,8 +15,8 @@
 class Collections {
 public:
     template <class T, class Comparator> static int32_t binarySearch (ArrayList<T> *list, T key, Comparator c);
-    template <class T> static void copy (ArrayList<T> *dest, ArrayList<T> *src);
-    template <class T> static void fill (ArrayList<T> *list, T obj);
+    template <class T> static void copy (List<T> *dest, List<T> *src);
+    template <class T> static void fill (List<T> *list, T obj);
     template <class T, class Comparator> static void sort(ArrayList<T> *list, Comparator c);
 };
 
@@ -36,10 +37,10 @@ public:
  */
 template <class T, class Comparator> int32_t binarySearch (ArrayList<T> *list, T key, Comparator c) {
     T *i = std::lower_bound(
-        list->getVector().begin(), list->getVector().end(), key, c);
+        list->_v().begin(), list->_v().end(), key, c);
 
-    if (i != list->getVector().end() && !(key < *i)) {
-        return (int32_t) (i - list->getVector().begin());
+    if (i != list->_v().end() && !(key < *i)) {
+        return (int32_t) (i - list->_v().begin());
     }
     else {
         return -1;
@@ -52,12 +53,11 @@ template <class T, class Comparator> int32_t binarySearch (ArrayList<T> *list, T
  * @param dest The destination list.
  * @param src The source list.
  */
-template <class T> void copy (ArrayList<T> *dest, ArrayList<T> *src) {
-    std::vector<T> destList = dest->getVector();
-    std::vector<T> srcList = src->getVector();
-
-    for (int32_t i = 0; i < srcList.size(); i++) {
-        destList[i] = srcList[i];
+template <class T> void copy (List<T> *dest, List<T> *src) {
+    int32_t length = src->size();
+    
+    for (int32_t i = 0; i < length; i++) {
+        dest->set(i, src->get(i));
     }
 }
 
@@ -68,11 +68,11 @@ template <class T> void copy (ArrayList<T> *dest, ArrayList<T> *src) {
  * @param list the list to be filled with the specified element.
  * @param obj The element with which to fill the specified list.
  */
-template <class T> void fill (ArrayList<T> *list, T obj) {
-    std::vector<T> v = list->getVector();
-
-    for (int32_t i = 0; i < v.size(); i++) {
-        v[i] = obj;
+template <class T> void fill (List<T> *list, T obj) {
+    int32_t length = list->size();
+    
+    for (int32_t i = 0; i < length; i++) {
+        list->set(i, obj);
     }
 }
 
@@ -85,7 +85,7 @@ template <class T> void fill (ArrayList<T> *list, T obj) {
  * indicates that the elements' natural ordering should be used.
  */
 template <class T, class Comparator> void Collections::sort(ArrayList<T> *list, Comparator c) {
-    std::vector<T> v = list->getVector();
+    std::vector<T> v = list->_v();
     std::stable_sort(v.begin(), v.end(), c);
 }
 

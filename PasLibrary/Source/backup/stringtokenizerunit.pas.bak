@@ -21,7 +21,6 @@ type
     public
       constructor create(str: String_);
       constructor create(str: String_; delim: String_);
-      destructor destroy(); override;
       function countTokens() : longInt;
       function hasMoreTokens() : boolean;
       function nextToken() : String_;
@@ -78,11 +77,6 @@ begin
   end;
 
   tokens[index] := copy(strStr, tmp, i - tmp);
-end;
-
-destructor StringTokenizer.destroy();
-begin
-  inherited;
 end;
 
 (**

@@ -105,7 +105,3 @@ bool Boolean::parseBoolean(String *s) {
 
     return value;
 }
-
-std::ostream &operator<<(std::ostream &s, Boolean &obj) {
-    return s << obj.toString()->toString().c_str();
-}

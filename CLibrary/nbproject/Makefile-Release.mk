@@ -45,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Float.o \
 	${OBJECTDIR}/Integer.o \
 	${OBJECTDIR}/LinkedList.o \
+	${OBJECTDIR}/List.o \
 	${OBJECTDIR}/Long.o \
 	${OBJECTDIR}/Math.o \
 	${OBJECTDIR}/Scanner.o \
@@ -129,6 +130,11 @@ ${OBJECTDIR}/LinkedList.o: LinkedList.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LinkedList.o LinkedList.c
+
+${OBJECTDIR}/List.o: List.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/List.o List.c
 
 ${OBJECTDIR}/Long.o: Long.c 
 	${MKDIR} -p ${OBJECTDIR}

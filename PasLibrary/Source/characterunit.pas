@@ -13,21 +13,20 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Character = class
+  Character = class(Comparable)
     private
       var
         v: ansiChar;
     public
       constructor create(value: ansiChar);
       function charValue() : ansiChar;
-      function compareTo(anotherCharacter: Character) : longInt;
+      function compareTo(anotherCharacter: Object_) : longInt; override;
       class function compare(x, y: ansiChar) : longInt;
-      function equals(obj: TObject) : boolean; override;
-      function toString_() : String_;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
       class function toString_(c: ansiChar) : String_;
       class function isDigit(ch: ansiChar) : boolean;
       class function isLetter(ch: ansiChar) : boolean;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -64,9 +63,9 @@ end;
  * Note that this is strictly a numerical comparison; it is not
  * locale-dependent.
  *)
-function Character.compareTo(anotherCharacter: Character) : longInt;
+function Character.compareTo(anotherCharacter: Object_) : longInt;
 begin
-  compareTo := compare(v, anotherCharacter.v);
+  compareTo := compare(v, (anotherCharacter as Character).v);
 end;
 
 (**
@@ -88,7 +87,7 @@ end;
  * @param obj the object to compare with.
  * @return true if the objects are the same; false otherwise.
  *)
-function Character.equals(obj: TObject) : boolean;
+function Character.equals_(obj: Object_) : boolean;
 begin
   if obj = nil then begin
     exit(false);
@@ -98,7 +97,7 @@ begin
     exit(false);
   end;
 
-  equals := (v = (Character(obj)).v);
+  equals_ := (v = (Character(obj)).v);
 end;
 
 (**
@@ -145,22 +144,9 @@ begin
                or ((ch >= 'a') and (ch <= 'z')));
 end;
 
-function Character.toString() : ansiString;
-var
-  s: String_;
-begin
-  s := toString_();
-  toString := s.ToString();
-end;
-
 operator := (original: ansiChar) s: Character;
 begin
   s.create(original);
-end;
-
-operator := (original: Character) s: ansiChar;
-begin
-  s := original.charValue();
 end;
 
 end.

@@ -15,8 +15,19 @@
  */
 
 typedef struct {
-    void *dummy;
+    // really no code
 } PrintStream;
+
+/**
+ * This abstract class is the superclass of all classes
+ * representing an input stream of bytes.
+ * 
+ * @author Petr Kozler (A13B0359P)
+ */
+
+typedef struct {
+    // really no code
+} InputStream;
 
 void printB(PrintStream *ptr, bool b);
 void printC(PrintStream *ptr, char c);
@@ -44,7 +55,14 @@ void printlnStr(PrintStream *ptr, String *x);
  * @author Petr Kozler (A13B0359P)
  */
 
-void *System_in;
+/**
+ * The "standard" input stream.
+ */
+InputStream *System_in;
+
+/**
+ * The "standard" output stream.
+ */
 PrintStream *System_out;
 
 void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *));

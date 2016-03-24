@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Long class wraps a value of the primitive type long in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Long : IComparable<Long>
+    public class Long : Comparable<Long>
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace JavaClasses
         /// a value greater than 0 if this Long is numerically greater than the
         /// argument Long (signed comparison).
         /// </returns>
-        public int compareTo(Long anotherLong)
+        public override int compareTo(Long anotherLong)
         {
             return compare(v, anotherLong.v);
         }
@@ -77,7 +77,7 @@ namespace JavaClasses
         /// <param name="obj">the object to compare with.
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             if (obj == null)
             {
@@ -97,7 +97,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a string representation of the value of this object in base 10.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Long.toString(v);
         }
@@ -110,7 +110,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(long l)
         {
-            return l.ToString();
+            return new String(l.ToString());
         }
 
         /// <summary>
@@ -124,27 +124,12 @@ namespace JavaClasses
         {
             return long.Parse(s.ToString());
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Long other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Long(long original)
         {
             return new Long(original);
         }
-
-        public static implicit operator long (Long original)
-        {
-            return original.longValue();
-        }
-
+        
     }
 
 }

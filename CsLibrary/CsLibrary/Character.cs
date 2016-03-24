@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Character class wraps a value of the primitive type char in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Character : IComparable<Character>
+    public class Character : Comparable<Character>
     {
 
         private char v;
@@ -44,7 +44,7 @@ namespace JavaClasses
         /// Note that this is strictly a numerical comparison; it is not
         /// locale-dependent.
         /// </returns>
-        public int compareTo(Character anotherCharacter)
+        public override int compareTo(Character anotherCharacter)
         {
             return compare(v, anotherCharacter.v);
         }
@@ -68,7 +68,7 @@ namespace JavaClasses
         /// <param name="obj">the object to compare with.
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             if (obj == null)
             {
@@ -88,7 +88,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a string representation of this object.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Character.toString(v);
         }
@@ -101,7 +101,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(char c)
         {
-            return c.ToString();
+            return new String(c.ToString());
         }
 
         /// <summary>
@@ -125,27 +125,12 @@ namespace JavaClasses
         {
             return char.IsLetter(ch);
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Character other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Character(char original)
         {
             return new Character(original);
         }
-
-        public static implicit operator char (Character original)
-        {
-            return original.charValue();
-        }
-
+        
     }
 
 }

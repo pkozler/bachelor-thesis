@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Short class wraps a value of primitive type short in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Short : IComparable<Short>
+    public class Short : Comparable<Short>
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace JavaClasses
         /// and a value greater than 0 if this Short is numerically greater than the
         /// argument Short (signed comparison).
         /// </returns>
-        public int compareTo(Short anotherShort)
+        public override int compareTo(Short anotherShort)
         {
             return compare(v, anotherShort.v);
         }
@@ -77,7 +77,7 @@ namespace JavaClasses
         /// <param name="obj">the object to compare with
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             if (obj == null)
             {
@@ -97,7 +97,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a string representation of the value of this object in base 10.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Short.toString(v);
         }
@@ -110,7 +110,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(short s)
         {
-            return s.ToString();
+            return new String(s.ToString());
         }
 
         /// <summary>
@@ -123,27 +123,12 @@ namespace JavaClasses
         {
             return short.Parse(s.ToString());
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Short other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Short(short original)
         {
             return new Short(original);
         }
-
-        public static implicit operator short (Short original)
-        {
-            return original.shortValue();
-        }
-
+        
     }
 
 }

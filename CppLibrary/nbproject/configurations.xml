@@ -14,6 +14,7 @@
       <itemPath>Float.h</itemPath>
       <itemPath>Integer.h</itemPath>
       <itemPath>LinkedList.h</itemPath>
+      <itemPath>List.h</itemPath>
       <itemPath>Long.h</itemPath>
       <itemPath>Math.h</itemPath>
       <itemPath>Scanner.h</itemPath>
@@ -40,6 +41,7 @@
       <itemPath>Float.cpp</itemPath>
       <itemPath>Integer.cpp</itemPath>
       <itemPath>LinkedList.cpp</itemPath>
+      <itemPath>List.cpp</itemPath>
       <itemPath>Long.cpp</itemPath>
       <itemPath>Math.cpp</itemPath>
       <itemPath>Scanner.cpp</itemPath>
@@ -117,6 +119,10 @@
       <item path="LinkedList.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="List.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="List.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Long.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -212,6 +218,10 @@
       <item path="LinkedList.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="List.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="List.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Long.cpp" ex="false" tool="1" flavor2="0">
       </item>

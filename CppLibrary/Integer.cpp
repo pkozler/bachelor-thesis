@@ -2,13 +2,7 @@
 
 #include <string>
 
-/**
- * A constant holding the maximum value an int can have, 2^31-1.
- */
 const int32_t Integer::MAX_VALUE = 2147483647;
-/**
- * A constant holding the minimum value an int can have, -2^31.
- */
 const int32_t Integer::MIN_VALUE = -2147483648;
 
 /**
@@ -100,9 +94,5 @@ String *Integer::toString(int32_t i) {
  * @return the integer value represented by the argument in decimal.
  */
 int32_t Integer::parseInt(String *s) {
-    return std::stoi(s->toString(), nullptr, 10);
-}
-
-std::ostream &operator<<(std::ostream &s, Integer &obj) {
-    return s << obj.toString()->toString().c_str();
+    return std::stoi(s->_s(), nullptr, 10);
 }

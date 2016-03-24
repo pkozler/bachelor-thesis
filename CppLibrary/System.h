@@ -10,7 +10,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class PrintStream {
+class PrintStream : public Object {
 public:
     void print(bool b);
     void print(char c);
@@ -19,7 +19,7 @@ public:
     void print(float f);
     void print(int32_t i);
     void print(int64_t l);
-    void print(void *obj, String *(*toString)(void *));
+    void print(Object *obj);
     void print(String *s);
     void println();
     void println(bool x);
@@ -29,8 +29,18 @@ public:
     void println(float x);
     void println(int32_t x);
     void println(int64_t x);
-    void println(void *obj, String *(*toString)(void *));
+    void println(Object *obj);
     void println(String *x);
+};
+
+/**
+ * This abstract class is the superclass of all classes
+ * representing an input stream of bytes.
+ * 
+ * @author Petr Kozler (A13B0359P)
+ */
+class InputStream : public Object {
+    // really no code
 };
 
 /**
@@ -40,7 +50,14 @@ public:
  */
 class System {
 public:
-    static void *in;
+    /**
+     * The "standard" input stream.
+     */
+    static InputStream *in;
+    
+    /**
+     * The "standard" output stream.
+     */
     static PrintStream *out;
 };
 

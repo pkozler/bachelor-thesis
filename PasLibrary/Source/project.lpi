@@ -31,7 +31,7 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <Units Count="2">
+    <Units Count="7">
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -41,6 +41,31 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="StringBuilderUint"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="objectunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ObjectUnit"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="comparableunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ComparableUnit"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="comparatorunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ComparatorUnit"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="listunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ListUnit"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="comparatorunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ComparatorUnit"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

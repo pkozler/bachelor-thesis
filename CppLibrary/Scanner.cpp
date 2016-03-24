@@ -9,7 +9,7 @@
  *
  * @param source An input stream to be scanned
  */
-Scanner::Scanner(void *source) {
+Scanner::Scanner(InputStream *source) {
     // really no code
 }
 

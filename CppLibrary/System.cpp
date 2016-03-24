@@ -70,9 +70,9 @@ void PrintStream::print(int64_t l) {
  *
  * @param obj The Object to be printed
  */
-void PrintStream::print(void *obj, String *(*toString)(void *)) {
-    String *s = toString(obj);
-    std::cout << s->toString();
+void PrintStream::print(Object *obj) {
+    String *s = obj->toString();
+    std::cout << s->_s();
     delete s;
 }
 
@@ -82,7 +82,7 @@ void PrintStream::print(void *obj, String *(*toString)(void *)) {
  * @param s The String to be printed
  */
 void PrintStream::print(String *s) {
-    std::cout << s->toString();
+    std::cout << s->_s();
 }
 
 /**
@@ -160,9 +160,9 @@ void PrintStream::println(int64_t x) {
  *
  * @param x The Object to be printed.
  */
-void PrintStream::println(void *obj, String *(*toString)(void *)) {
-    String *s = toString(obj);
-    std::cout << s->toString() << std::endl;
+void PrintStream::println(Object *obj) {
+    String *s = obj->toString();
+    std::cout << s->_s() << std::endl;
     delete s;
 }
 
@@ -172,14 +172,8 @@ void PrintStream::println(void *obj, String *(*toString)(void *)) {
  * @param x The String to be printed.
  */
 void PrintStream::println(String *x) {
-    std::cout << x->toString() << std::endl;
+    std::cout << x->_s() << std::endl;
 }
 
-/**
- * The "standard" input stream.
- */
-void *System::in = nullptr;
-/**
- * The "standard" output stream.
- */
+InputStream *System::in = new InputStream();
 PrintStream *System::out = new PrintStream();

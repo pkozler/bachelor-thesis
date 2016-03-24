@@ -1,0 +1,131 @@
+unit ListUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  StringUnit;
+
+type
+  (**
+   * An ordered collection (also known as a sequence).
+   *
+   * @param E the type of elements in this list
+   * @author Petr Kozler (A13B0359P)
+   *)
+  List = class(Object_)
+    public
+      (**
+       * Appends the specified element to the end of this list.
+       *
+       * @param e element to be appended to this list
+       * @return true (as specified by Collection.add(E))
+       *)
+      function add(e: Object_) : boolean; virtual; abstract;
+      (**
+       * Inserts the specified element at the specified position in this list.
+       *
+       * @param index index at which the specified element is to be inserted
+       * @param element element to be inserted
+       *)
+      procedure add(index: longInt; element: Object_); virtual; abstract;
+      function equals_(o: Object_) : boolean; override;
+      (**
+       * Returns the element at the specified position in this list.
+       *
+       * @param index index of the element to return
+       * @return the element at the specified position in this list
+       *)
+      function get(index: longInt) : Object_; virtual; abstract;
+      (**
+       * Replaces the element at the specified position in this list with the
+       * specified element.
+       *
+       * @param index index of the element to replace
+       * @param element element to be stored at the specified position
+       * @return the element previously at the specified position
+       *)
+      function set_(index: longInt; element: Object_) : Object_; virtual; abstract;
+      (**
+       * Removes the element at the specified position in this list.
+       *
+       * @param index the index of the element to be removed
+       * @return the element that was removed from the list
+       *)
+      function remove(index: longInt) : Object_; virtual; abstract;
+      (**
+       * Returns the number of elements in this list.
+       *
+       * @return the number of elements in this list
+       *)
+      function size() : longInt; virtual; abstract;
+      function isEmpty() : boolean; virtual;
+      (**
+       * Removes all of the elements from this list.
+       *)
+      procedure clear(); virtual; abstract;
+      (**
+       * Returns a string representation of the object.
+       *
+       * @return a string representation of the object.
+       *)
+      function toString_() : String_; virtual; abstract;
+  end;
+
+implementation
+
+(**
+ * Compares the specified object with this list for equality.
+ *
+ * @param o the object to be compared for equality with this list
+ * @return true if the specified object is equal to this list
+ *)
+function List.equals_(o: Object_) : boolean;
+var
+  other: List;
+  o1, o2: Object_;
+  length, i: longInt;
+  e: boolean;
+begin
+  if self = o then begin
+    exit(true);
+  end;
+
+  if o = nil then begin
+    exit(false);
+  end;
+
+  other := List(o);
+  length := size();
+
+  if other.size() <> length then begin
+    exit(false);
+  end;
+
+  for i := 0 to length - 1 do begin
+    o1 := get(i);
+    o2 := other.get(i);
+
+    if o1 = nil then begin
+      e := o2 = nil;
+    end
+    else begin
+      e := o1.equals_(o2);
+    end;
+  end;
+
+end;
+
+(**
+ * Returns true if this list contains no elements.
+ *
+ * @return true if this list contains no elements
+ *)
+function List.isEmpty() : boolean;
+begin
+  isEmpty := size() = 0;
+end;
+
+end.
+

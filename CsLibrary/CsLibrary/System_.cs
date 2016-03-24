@@ -9,8 +9,9 @@ namespace JavaClasses
     /// namely the ability to print representations of various data values conveniently.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class PrintStream
+    public class PrintStream : Object
     {
+
         public PrintStream()
         {
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
@@ -206,16 +207,26 @@ namespace JavaClasses
     }
 
     /// <summary>
+    /// This abstract class is the superclass of all classes 
+    /// representing an input stream of bytes.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
+    public class InputStream : Object
+    {
+        // really no code
+    }
+
+    /// <summary>
     /// The System class contains several useful class fields and methods.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class System_
+    public class System_ : Object
     {
 
         /// <summary>
         /// The "standard" input stream.
         /// </summary>
-        public readonly static Object in_ = null;
+        public readonly static InputStream in_ = new InputStream();
 
         /// <summary>
         /// The "standard" output stream.

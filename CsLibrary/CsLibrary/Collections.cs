@@ -23,7 +23,7 @@ namespace JavaClasses
         /// the list are less than the specified key. Note that this guarantees that
         /// the return value will be >= 0 if and only if the key is found.
         /// </returns>
-        public static int binarySearch<T>(ArrayList<T> list, T key)
+        public static int binarySearch<T>(ArrayList<T> list, T key) where T : Object
         {
             return list.l.BinarySearch(key);
         }
@@ -43,7 +43,7 @@ namespace JavaClasses
         /// the list are less than the specified key. Note that this guarantees that
         /// the return value will be >= 0 if and only if the key is found.
         /// </returns>
-        public static int binarySearch<T>(ArrayList<T> list, T key, IComparer<T> c)
+        public static int binarySearch<T>(ArrayList<T> list, T key, IComparer<T> c) where T : Object
         {
             return list.l.BinarySearch(key, c);
         }
@@ -54,15 +54,14 @@ namespace JavaClasses
         /// <param name="dest">The destination list.
         /// </param><param name="src">The source list.
         /// </param>
-        public static void copy<T>(ArrayList<T> dest, ArrayList<T> src)
+        public static void copy<T>(List<T> dest, List<T> src) where T : Object
         {
-            List<T> destList = dest.l;
-            List<T> srcList = src.l;
+            int length = src.size();
 
             // replacing the elements of the destination list with the elements of the source list
-            for (int i = 0; i < srcList.Count; i++)
+            for (int i = 0; i < length; i++)
             {
-                destList[i] = srcList[i];
+                dest.set(i, src.get(i));
             }
         }
 
@@ -73,14 +72,14 @@ namespace JavaClasses
         /// <param name="list">the list to be filled with the specified element.
         /// </param><param name="obj">The element with which to fill the specified list.
         /// </param>
-        public static void fill<T>(ArrayList<T> list, T obj)
+        public static void fill<T>(List<T> list, T obj) where T : Object
         {
-            List<T> l = list.l;
+            int length = list.size();
 
             // replacing the elements of the list with the specified value
-            for (int i = 0; i < l.Count; i++)
+            for (int i = 0; i < length; i++)
             {
-                l[i] = obj;
+                list.set(i, obj);
             }
         }
 
@@ -90,7 +89,7 @@ namespace JavaClasses
         /// </summary>
         /// <param name="list">the list to be sorted.
         /// </param>
-        public static void sort<T>(ArrayList<T> list)
+        public static void sort<T>(ArrayList<T> list) where T : Object
         {
             list.l.Sort();
         }
@@ -103,7 +102,7 @@ namespace JavaClasses
         /// </param><param name="c">the comparator to determine the order of the list. A null value
         /// indicates that the elements' natural ordering should be used.
         /// </param>
-        public static void sort<T>(ArrayList<T> list, IComparer<T> c)
+        public static void sort<T>(ArrayList<T> list, IComparer<T> c) where T : Object
         {
             list.l.Sort(c);
         }

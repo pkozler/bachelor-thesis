@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class StringTokenizer {
+class StringTokenizer : public Object {
     std::string str;
     std::string delim;
 public:

@@ -1,6 +1,8 @@
 build/Debug/Cygwin-Windows/LinkedList.o: LinkedList.cpp LinkedList.h \
- String.h
+ List.h String.h
 
 LinkedList.h:
+
+List.h:
 
 String.h:

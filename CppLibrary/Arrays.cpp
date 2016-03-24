@@ -65,6 +65,21 @@ bool Arrays::equalsS(int16_t a, int16_t b) {
     return (&x)->equals(&y);
 }
 
+int32_t Arrays::compareObj(Object *a, Object *b) {
+    Comparable<Object> *x = (Comparable<Object> *) a;
+    Comparable<Object> *y = (Comparable<Object> *) b;
+    
+    return x->compareTo(y);
+}
+
+bool Arrays::equalsObj(Object *a, Object *b) {
+    return a->equals(b);
+}
+
+String *Arrays::toStringObj(Object *a) {
+    return a->toString();
+}
+
 /**
  * Searches the specified array of bytes for the specified value using the
  * binary search algorithm
@@ -306,8 +321,8 @@ int32_t Arrays::binarySearch(int64_t *a, int32_t fromIndex, int32_t toIndex, int
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  */
-int32_t Arrays::binarySearch(void **a, int32_t length, void *key, int32_t (*c)(void *, void *)) {
-    return binarySearchGeneric(a, 0, length, key, c);
+int32_t Arrays::binarySearch(Object **a, int32_t length, Object *key) {
+    return binarySearchGeneric(a, 0, length, key, compareObj);
 }
 
 /**
@@ -327,8 +342,8 @@ int32_t Arrays::binarySearch(void **a, int32_t length, void *key, int32_t (*c)(v
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  */
-int32_t Arrays::binarySearch(void **a, int32_t fromIndex, int32_t toIndex, void *key, int32_t (*c)(void *, void *)) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, c);
+int32_t Arrays::binarySearch(Object **a, int32_t fromIndex, int32_t toIndex, Object *key) {
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareObj);
 }
 
 /**
@@ -679,8 +694,8 @@ bool Arrays::equals(int64_t *a, int32_t length, int64_t *a2, int32_t length2) {
  * @param a2 the other array to be tested for equality
  * @return true if the two arrays are equal
  */
-bool Arrays::equals(void **a, int32_t length, void **a2, int32_t length2, bool (*equals)(void *, void *)) {
-    return equalsGeneric(a, length, a2, length2, equals);
+bool Arrays::equals(Object **a, int32_t length, Object **a2, int32_t length2) {
+    return equalsGeneric(a, length, a2, length2, equalsObj);
 }
 
 /**
@@ -884,7 +899,7 @@ void Arrays::fill(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t val) {
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  */
-void Arrays::fill(void **a, int32_t length, void *val) {
+void Arrays::fill(Object **a, int32_t length, Object *val) {
     fillGeneric(a, 0, length, val);
 }
 
@@ -899,7 +914,7 @@ void Arrays::fill(void **a, int32_t length, void *val) {
  * with the specified value
  * @param val the value to be stored in all elements of the array
  */
-void Arrays::fill(void **a, int32_t fromIndex, int32_t toIndex, void *val) {
+void Arrays::fill(Object **a, int32_t fromIndex, int32_t toIndex, Object *val) {
     fillGeneric(a, fromIndex, toIndex, val);
 }
 
@@ -1055,8 +1070,8 @@ void Arrays::sort(int64_t *a, int32_t fromIndex, int32_t toIndex) {
  *
  * @param a the array to be sorted
  */
-void Arrays::sort(void **a, int32_t length, int32_t (*c)(void *, void *)) {
-    sortGeneric(a, 0, length, c);
+void Arrays::sort(Object **a, int32_t length) {
+    sortGeneric(a, 0, length, compareObj);
 }
 
 /**
@@ -1067,8 +1082,8 @@ void Arrays::sort(void **a, int32_t length, int32_t (*c)(void *, void *)) {
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
-void Arrays::sort(void **a, int32_t fromIndex, int32_t toIndex, int32_t (*c)(void *, void *)) {
-    sortGeneric(a, fromIndex, toIndex, c);
+void Arrays::sort(Object **a, int32_t fromIndex, int32_t toIndex) {
+    sortGeneric(a, fromIndex, toIndex, compareObj);
 }
 
 /**
@@ -1167,8 +1182,8 @@ String *Arrays::toString(int64_t *a, int32_t length) {
  * @param a the array whose string representation to return
  * @return a string representation of a
  */
-String *Arrays::toString(void **a, int32_t length, String *(*toString)(void *)) {
-    return toStringGeneric(a, length, toString);
+String *Arrays::toString(Object **a, int32_t length) {
+    return toStringGeneric(a, length, toStringObj);
 }
 
 /**

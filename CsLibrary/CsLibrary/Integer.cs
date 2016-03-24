@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Integer class wraps a value of the primitive type int in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Integer : IComparable<Integer>
+    public class Integer : Comparable<Integer>
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace JavaClasses
         /// Integer; and a value greater than 0 if this Integer is numerically
         /// greater than the argument Integer (signed comparison).
         /// </returns>
-        public int compareTo(Integer anotherInteger)
+        public override int compareTo(Integer anotherInteger)
         {
             return compare(v, anotherInteger.v);
         }
@@ -79,7 +79,7 @@ namespace JavaClasses
         /// <param name="obj">the object to compare with.
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             if (obj == null)
             {
@@ -99,7 +99,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a string representation of the value of this object in base 10.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Integer.toString(v);
         }
@@ -112,7 +112,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(int i)
         {
-            return i.ToString();
+            return new String(i.ToString());
         }
 
         /// <summary>
@@ -125,27 +125,12 @@ namespace JavaClasses
         {
             return int.Parse(s.ToString());
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Integer other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Integer(int original)
         {
             return new Integer(original);
         }
-
-        public static implicit operator int (Integer original)
-        {
-            return original.intValue();
-        }
-
+        
     }
 
 }

@@ -3,37 +3,13 @@
 #include <string>
 #include <cmath>
 
-/**
- * A constant holding the positive infinity of type double.
- */
 const double Double::POSITIVE_INFINITY = 1.0 / 0.0;
-/**
- * A constant holding the negative infinity of type double.
- */
 const double Double::NEGATIVE_INFINITY = -1.0 / 0.0;
-/**
- * A constant holding a Not-a-Number (NaN) value of type double.
- */
 const double Double::NaN = 0.0 / 0.0;
-/**
- * A constant holding the largest positive finite value of type double, (2-2^-52)·2^1023.
- */
 const double Double::MAX_VALUE = 1.7976931348623157e+308;
-/**
- * A constant holding the smallest positive nonzero value of type double, 2^-1074.
- */
 const double Double::MIN_VALUE = 4.9e-324;
-/**
- * Maximum exponent a finite double variable may have.
- */
 const int32_t Double::MAX_EXPONENT = 1023;
-/**
- * Minimum exponent a normalized double variable may have.
- */
 const int32_t Double::MIN_EXPONENT = -1022;
-/**
- * A constant holding the smallest positive normal value of type double, 2^-1022.
- */
 const double Double::MIN_NORMAL = 2.2250738585072014e-308;
 
 /**
@@ -179,9 +155,5 @@ String *Double::toString(double d) {
  * @return the double value represented by the string argument.
  */
 double Double::parseDouble(String *s) {
-    return std::stod(s->toString(), nullptr);
-}
-
-std::ostream &operator<<(std::ostream &s, Double &obj) {
-    return s << obj.toString()->toString().c_str();
+    return std::stod(s->_s(), nullptr);
 }

@@ -12,7 +12,7 @@
  *
  * @param source An input stream to be scanned
  */
-Scanner *new_Scanner(void *source) {
+Scanner *new_Scanner(InputStream *source) {
     Scanner *sc = malloc(sizeof(Scanner));
     return sc;
 }

@@ -26,14 +26,14 @@ typedef struct {
 LinkedList *new_LinkedList();
 LinkedList *new_LinkedListAddAll(LinkedList *c);
 void delete_LinkedList(LinkedList *ptr);
-bool addL(LinkedList *ptr, void *e);
-void addAtL(LinkedList *ptr, int32_t index, void *element);
-void *getL(LinkedList *ptr, int32_t index);
-void *setL(LinkedList *ptr, int32_t index, void *element);
-void *removeAtL(LinkedList *ptr, int32_t index);
-int32_t sizeL(LinkedList *ptr);
-bool isEmptyL(LinkedList *ptr);
-void clearL(LinkedList *ptr);
+bool addLl(LinkedList *ptr, void *e);
+void addAtLl(LinkedList *ptr, int32_t index, void *element);
+void *getLl(LinkedList *ptr, int32_t index);
+void *setLl(LinkedList *ptr, int32_t index, void *element);
+void *removeLl(LinkedList *ptr, int32_t index);
+int32_t sizeLl(LinkedList *ptr);
+bool isEmptyLl(LinkedList *ptr);
+void clearLl(LinkedList *ptr);
 String *toStringLl(LinkedList *ptr, String *(*toString)(void *));
 
 #endif /* LINKEDLIST_INCLUDED */

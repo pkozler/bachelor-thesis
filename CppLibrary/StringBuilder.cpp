@@ -19,7 +19,7 @@ StringBuilder::~StringBuilder() {
  * @return a reference to this object.
  */
 StringBuilder *StringBuilder::append(String *str) {
-    oss << str->toString();
+    oss << str;
     
     return this;
 }

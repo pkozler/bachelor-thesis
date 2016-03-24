@@ -33,14 +33,13 @@ int32_t Collections_binarySearch(ArrayList *list, void *key, int32_t (*c)(const 
  * @param dest The destination list.
  * @param src The source list.
  */
-void Collections_copy(ArrayList *dest, ArrayList *src) {
-    void **destList = dest->dynamicArray;
-    void **srcList = src->dynamicArray;
-    int32_t count = src->count;
+void Collections_copy(void *dest, void *src, int32_t (*srcSize)(void *), 
+        void *(*destSet)(void *, int32_t, void *), void *(*srcGet)(void *, int32_t)) {
+    int32_t length = srcSize(src);
 
     int32_t i;
-    for (i = 0; i < count; i++) {
-        destList[i] = srcList[i];
+    for (i = 0; i < length; i++) {
+        destSet(dest, i, srcGet(src, i));
     }
 }
 
@@ -51,13 +50,13 @@ void Collections_copy(ArrayList *dest, ArrayList *src) {
  * @param list the list to be filled with the specified element.
  * @param obj The element with which to fill the specified list.
  */
-void Collections_fill(ArrayList *list, void *obj) {
-    void **l = list->dynamicArray;
-    int32_t count = list->count;
+void Collections_fill(void *list, void *obj, int32_t (*listSize)(void *), 
+        void *(*listSet)(void *, int32_t, void *)) {
+    int32_t length = listSize(list);
 
     int32_t i;
-    for (i = 0; i < count; i++) {
-        l[i] = obj;
+    for (i = 0; i < length; i++) {
+        listSet(list, i, obj);
     }
 }
 

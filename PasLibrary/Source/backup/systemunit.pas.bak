@@ -14,11 +14,10 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  PrintStream = class
+  PrintStream = class(Object_)
     private
       class function charArrayToString(s: array of ansiChar): ansiString;
     public
-      constructor create();
       procedure print(b: boolean);
       procedure print(c: ansiChar);
       procedure print(s: array of ansiChar);
@@ -26,7 +25,7 @@ type
       procedure print(f: single);
       procedure print(i: longInt);
       procedure print(l: int64);
-      procedure print(obj: TObject);
+      procedure print(obj: Object_);
       procedure print(s: String_);
       procedure println();
       procedure println(x: boolean);
@@ -36,8 +35,17 @@ type
       procedure println(x: single);
       procedure println(x: longInt);
       procedure println(x: int64);
-      procedure println(x: TObject);
+      procedure println(x: Object_);
       procedure println(x: String_);
+  end;
+
+  (**
+   * This abstract class is the superclass of all classes
+   * representing an input stream of bytes.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  InputStream = class(Object_)
   end;
 
   (**
@@ -51,7 +59,8 @@ type
         (**
          * The "standard" input stream.
          *)
-        in_: TObject;
+        in_: InputStream;
+
         (**
          * The "standard" output stream.
          *)
@@ -59,14 +68,17 @@ type
   end;
 
   CompareFunction = function(a, b: pointer) : longInt;
-  TObjectCompareFunction = function(o1, o2: TObject) : longInt;
+
+  ObjectComparator = class(Comparator)
+    public function compare(o1, o2: Object_) : longInt; override;
+  end;
 
   _java = class
     private
-      class procedure merge(arr, aux: array of TObject; left, right: longInt; compare: TObjectCompareFunction);
+      class procedure merge(arr, aux: array of Object_; left, right: longInt; c: Comparator);
     public
-      class procedure mergeSort(arr, aux: array of TObject; left, right: longInt; compare: TObjectCompareFunction);
-      class procedure quickSort(x: pointer; left, right, size: longInt; compare: CompareFunction);
+      class procedure mergeSort(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+      class procedure quickSort(x: pointer; left, right, size: longInt; c: CompareFunction);
   end;
 
 implementation
@@ -74,7 +86,12 @@ implementation
 uses
   SysUtils;
 
-class procedure _java.merge(arr, aux: array of TObject; left, right: longInt; compare: TObjectCompareFunction);
+function ObjectComparator.compare(o1, o2: Object_) : longInt;
+begin
+  compare := (o1 as Comparable).compareTo(o2 as Comparable);
+end;
+
+class procedure _java.merge(arr, aux: array of Object_; left, right: longInt; c: Comparator);
 var
   middleIndex, leftIndex, rightIndex, auxIndex: longInt;
 begin
@@ -84,7 +101,7 @@ begin
   auxIndex := left;
 
   while (leftIndex <= middleIndex) and (rightIndex <= right) do begin
-    if compare(arr[leftIndex], arr[rightIndex]) <= 0 then begin
+    if c.compare(arr[leftIndex], arr[rightIndex]) <= 0 then begin
       aux[auxIndex] := arr[leftIndex];
       inc(leftIndex);
     end
@@ -109,7 +126,7 @@ begin
   end;
 end;
 
-class procedure _java.mergeSort(arr, aux: array of TObject; left, right: longInt; compare: TObjectCompareFunction);
+class procedure _java.mergeSort(arr, aux: array of Object_; left, right: longInt; c: Comparator);
 var
   i, middleIndex: longInt;
 begin
@@ -119,16 +136,16 @@ begin
 
   middleIndex := (left + right) div 2;
 
-  mergeSort(arr, aux, left, middleIndex, compare);
-  mergeSort(arr, aux, middleIndex + 1, right, compare);
-  merge(arr, aux, left, right, compare);
+  mergeSort(arr, aux, left, middleIndex, c);
+  mergeSort(arr, aux, middleIndex + 1, right, c);
+  merge(arr, aux, left, right, c);
 
   for i := left to right do begin
     arr[i] := aux[i];
   end;
 end;
 
-class procedure _java.quickSort(x: pointer; left, right, size: longInt; compare: CompareFunction);
+class procedure _java.quickSort(x: pointer; left, right, size: longInt; c: CompareFunction);
 var
   i, j: longInt;
   tmpI, tmpJ, pivot: pointer;
@@ -139,11 +156,11 @@ begin
   pivot := x + ((left + right) div 2) * size;
 
   repeat
-    while compare(pivot, x + i * size) > 0 do begin
+    while c(pivot, x + i * size) > 0 do begin
       i := i + 1;
     end;
 
-    while compare(pivot, x + j * size) < 0 do begin
+    while c(pivot, x + j * size) < 0 do begin
       j := j - 1;
     end;
 
@@ -162,11 +179,11 @@ begin
   until i > j;
 
   if left < j then begin
-    quickSort(x, left, j, size, compare);
+    quickSort(x, left, j, size, c);
   end;
 
   if i < right then begin
-    quickSort(x, i, right, size, compare);
+    quickSort(x, i, right, size, c);
   end;
 end;
 
@@ -259,9 +276,9 @@ end;
  *
  * @param obj The Object to be printed
  *)
-procedure PrintStream.print(obj: TObject);
+procedure PrintStream.print(obj: Object_);
 begin
-  write(obj.toString);
+  write(obj.toString());
 end;
 
 (**
@@ -271,7 +288,7 @@ end;
  *)
 procedure PrintStream.print(s: String_);
 begin
-  write(s.toString);
+  write(s.strProperty);
 end;
 
 (**
@@ -357,9 +374,9 @@ end;
  *
  * @param x The Object to be printed.
  *)
-procedure PrintStream.println(x: TObject);
+procedure PrintStream.println(x: Object_);
 begin
-  writeLn(x.toString);
+  writeLn(x.toString());
 end;
 
 (**
@@ -369,8 +386,10 @@ end;
  *)
 procedure PrintStream.println(x: String_);
 begin
-  writeLn(x.toString);
+  writeLn(x.strProperty);
 end;
 
+begin
+  System_.in_ := InputStream.create();
 end.
 

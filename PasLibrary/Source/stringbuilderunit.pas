@@ -13,7 +13,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  StringBuilder = class
+  StringBuilder = class(Object_)
     private
       const
         DEFAULT_CAPACITY = 16;
@@ -25,7 +25,6 @@ type
       constructor create();
       function append(str: String_) : StringBuilder;
       function toString_() : String_;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -77,12 +76,7 @@ end;
  *)
 function StringBuilder.toString_() : String_;
 begin
-  toString_ := String_.create(buffer);
-end;
-
-function StringBuilder.toString() : ansiString;
-begin
-  toString := strPas(buffer);
+  toString_ := String_.create(strPas(buffer));
 end;
 
 end.

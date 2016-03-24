@@ -36,6 +36,6 @@ String *replace(String *ptr, char oldChar, char newChar);
 bool startsWith(String *ptr, String *prefix);
 bool endsWith(String *ptr, String *suffix);
 bool isEmptyStr(String *ptr);
-char *toString(String *ptr);
+String *toString(String *ptr);
 
 #endif	/* STRING_INCLUDED */

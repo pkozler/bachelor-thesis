@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Double class wraps a value of the primitive type double in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Double : IComparable<Double>
+    public class Double : Comparable<Double>
     {
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace JavaClasses
         /// anotherDouble; and a value greater than 0 if this Double is numerically
         /// greater than anotherDouble.
         /// </returns>
-        public int compareTo(Double anotherDouble)
+        public override int compareTo(Double anotherDouble)
         {
             return compare(v, anotherDouble.v);
         }
@@ -144,7 +144,7 @@ namespace JavaClasses
         /// <param name="obj">the object to compare with.
         /// </param><returns>true if the objects are the same; false otherwise.
         /// </returns>
-        public bool equals(Object obj)
+        public override bool equals(Object obj)
         {
             if (obj == null)
             {
@@ -184,7 +184,7 @@ namespace JavaClasses
         /// </summary>
         /// <returns>a String representation of this object.
         /// </returns>
-        public String toString()
+        public override String toString()
         {
             return Double.toString(v);
         }
@@ -197,7 +197,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(double d)
         {
-            return d.ToString();
+            return new String(d.ToString());
         }
 
         /// <summary>
@@ -211,27 +211,12 @@ namespace JavaClasses
         {
             return double.Parse(s.ToString());
         }
-
-        public override string ToString()
-        {
-            return toString();
-        }
-
-        public int CompareTo(Double other)
-        {
-            return compareTo(other);
-        }
-
+        
         public static implicit operator Double(double original)
         {
             return new Double(original);
         }
-
-        public static implicit operator double (Double original)
-        {
-            return original.doubleValue();
-        }
-
+        
     }
 
 }

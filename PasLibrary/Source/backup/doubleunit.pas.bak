@@ -19,7 +19,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Double_ = class
+  Double_ = class(Object_)
     private
       var
         v: double;
@@ -60,13 +60,12 @@ type
            MIN_NORMAL = 2.2250738585072014e-308;
       constructor create(value: double);
       function doubleValue() : double;
-      function compareTo(anotherDouble: Double_) : longInt;
+      function compareTo(anotherDouble: Object_) : longInt; override;
       class function compare(d1, d2: double) : longInt;
-      function equals(obj: TObject) : boolean; override;
-      function toString_() : String_;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
       class function toString_(d: double) : String_;
       class function parseDouble(s: String_) : double;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -112,9 +111,9 @@ end;
  * anotherDouble; and a value greater than 0 if this Double is numerically
  * greater than anotherDouble.
  *)
-function Double_.compareTo(anotherDouble: Double_) : longInt;
+function Double_.compareTo(anotherDouble: Object_) : longInt;
 begin
-  compareTo := compare(v, anotherDouble.v);
+  compareTo := compare(v, (anotherDouble as Double_).v);
 end;
 
 (**
@@ -172,7 +171,7 @@ end;
  * @param obj the object to compare with.
  * @return true if the objects are the same; false otherwise.
  *)
-function Double_.equals(obj: TObject) : boolean;
+function Double_.equals_(obj: Object_) : boolean;
 var
   vBits, v2Bits : DoubleToInt64;
   v2 : double;
@@ -204,7 +203,7 @@ begin
     exit(vBits.bits = negativeZeroBits);
   end;
 
-  equals := (v = v2);
+  equals_ := (v = v2);
 end;
 
 (**
@@ -240,12 +239,9 @@ begin
   parseDouble := strToFloat(s.toString());
 end;
 
-function Double_.toString() : ansiString;
-var
-  s: String_;
+operator := (original: double) s: Double_;
 begin
-  s := toString_();
-  toString := s.ToString();
+  s.create(original);
 end;
 
 end.

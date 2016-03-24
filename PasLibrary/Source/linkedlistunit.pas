@@ -5,7 +5,7 @@ unit LinkedListUnit;
 interface
 
 uses
-  StringUnit;
+  StringUnit, ListUnit;
 
 type
   LinkedListNode = class
@@ -13,15 +13,16 @@ type
       var
         next: LinkedListNode;
         previous: LinkedListNode;
-        value: TObject;
+        value: Object_;
   end;
 
   (**
    * Doubly-linked list implementation of the List and Deque interfaces.
    *
+   * @param E the type of elements held in this collection
    * @author Petr Kozler (A13B0359P)
    *)
-  LinkedList = class
+  LinkedList = class(List)
     private
       var
         count: longInt;
@@ -36,16 +37,14 @@ type
       constructor create();
       constructor create(c: LinkedList);
       destructor destroy(); override;
-      function add(e: TObject) : boolean;
-      procedure add(index: longInt; element: TObject);
-      function get(index: longInt) : TObject;
-      function set_(index: longInt; element: TObject) : TObject;
-      function remove(index: longInt) : TObject;
-      function size() : longInt;
-      function isEmpty() : boolean;
-      procedure clear();
-      function toString_() : String_;
-      function toString() : ansiString; override;
+      function add(e: Object_) : boolean; override;
+      procedure add(index: longInt; element: Object_); override;
+      function get(index: longInt) : Object_; override;
+      function set_(index: longInt; element: Object_) : Object_; override;
+      function remove(index: longInt) : Object_; override;
+      function size() : longInt; override;
+      procedure clear(); override;
+      function toString_() : String_; override;
   end;
 
 implementation
@@ -164,7 +163,7 @@ end;
  * @param e element to be appended to this list
  * @return true (as specified by Collection.add(E))
  *)
-function LinkedList.add(e: TObject) : boolean;
+function LinkedList.add(e: Object_) : boolean;
 var
   newNode: LinkedListNode;
 begin
@@ -181,7 +180,7 @@ end;
  * @param index index at which the specified element is to be inserted
  * @param element element to be inserted
  *)
-procedure LinkedList.add(index: longInt; element: TObject);
+procedure LinkedList.add(index: longInt; element: Object_);
 var
   node, newNode: LinkedListNode;
   i: longInt;
@@ -211,7 +210,7 @@ end;
  * @param index index of the element to return
  * @return the element at the specified position in this list
  *)
-function LinkedList.get(index: longInt) : TObject;
+function LinkedList.get(index: longInt) : Object_;
 var
   node: LinkedListNode;
   i: longInt;
@@ -233,10 +232,10 @@ end;
  * @param element element to be stored at the specified position
  * @return the element previously at the specified position
  *)
-function LinkedList.set_(index: longInt; element: TObject) : TObject;
+function LinkedList.set_(index: longInt; element: Object_) : Object_;
 var
   node: LinkedListNode;
-  original: TObject;
+  original: Object_;
   i: longInt;
 begin
   if index < 1 then begin
@@ -263,10 +262,10 @@ end;
  * @param index the index of the element to be removed
  * @return the element previously at the specified position
  *)
-function LinkedList.remove(index: longInt) : TObject;
+function LinkedList.remove(index: longInt) : Object_;
 var
   node: LinkedListNode;
-  removed: TObject;
+  removed: Object_;
   i: longInt;
 begin
   if index < 1 then begin
@@ -299,16 +298,6 @@ end;
 function LinkedList.size() : longInt;
 begin
   size := count;
-end;
-
-(**
- * Returns true if this list contains no elements.
- *
- * @return true if this list contains no elements
- *)
-function LinkedList.isEmpty() : boolean;
-begin
-  isEmpty := (count = 0);
 end;
 
 (**
@@ -361,11 +350,6 @@ begin
   str := sb.toString();
   freeAndNil(sb);
   toString_ := str;
-end;
-
-function LinkedList.toString() : ansiString;
-begin
-  toString := toString_().toString();
 end;
 
 end.

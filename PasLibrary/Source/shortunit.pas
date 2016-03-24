@@ -13,7 +13,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Short = class
+  Short = class(Comparable)
     private
       var
         v: smallInt;
@@ -29,13 +29,12 @@ type
            MIN_VALUE = -32768;
       constructor create(value: smallInt);
       function shortValue() : smallInt;
-      function compareTo(anotherShort: Short) : longInt;
+      function compareTo(anotherShort: Object_) : longInt; override;
       class function compare(x, y: smallInt) : longInt;
-      function equals(obj: TObject) : boolean; override;
-      function toString_() : String_;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
       class function toString_(s: smallInt) : String_;
       class function parseShort(s: String_) : smallInt;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -71,9 +70,9 @@ end;
  * and a value greater than 0 if this Short is numerically greater than the
  * argument Short (signed comparison).
  *)
-function Short.compareTo(anotherShort: Short) : longInt;
+function Short.compareTo(anotherShort: Object_) : longInt;
 begin
-  compareTo := compare(v, anotherShort.v);
+  compareTo := compare(v, (anotherShort as Short).v);
 end;
 
 (**
@@ -95,7 +94,7 @@ end;
  * @param obj the object to compare with
  * @return true if the objects are the same; false otherwise.
  *)
-function Short.equals(obj: TObject) : boolean;
+function Short.equals_(obj: Object_) : boolean;
 begin
   if obj = nil then begin
     exit(false);
@@ -105,7 +104,7 @@ begin
     exit(false);
   end;
 
-  equals := (v = (Short(obj)).v);
+  equals_ := (v = (Short(obj)).v);
 end;
 
 (**
@@ -140,22 +139,9 @@ begin
   parseShort := strToInt(s.toString());
 end;
 
-function Short.toString() : ansiString;
-var
-  s: String_;
-begin
-  s := toString_();
-  toString := s.ToString();
-end;
-
 operator := (original: smallInt) s: Short;
 begin
   s.create(original);
-end;
-
-operator := (original: Short) s: smallInt;
-begin
-  s := original.shortValue();
 end;
 
 end.

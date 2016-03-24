@@ -13,20 +13,19 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Boolean_ = class
+  Boolean_ = class(Comparable)
     private
       var
         v : boolean;
     public
       constructor create(value: boolean);
       function booleanValue() : boolean;
-      function compareTo(b: Boolean_) : longInt;
+      function compareTo(b: Object_) : longInt; override;
       class function compare(x, y: boolean) : longInt;
-      function equals(obj: TObject) : boolean; override;
-      function toString_() : String_;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
       class function toString_(b: boolean) : String_;
       class function parseBoolean(s: String_) : boolean;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -60,9 +59,9 @@ end;
  * argument represents false; and a negative value if this object represents
  * false and the argument represents true
  *)
-function Boolean_.compareTo(b: Boolean_) : longInt;
+function Boolean_.compareTo(b: Object_) : longInt;
 begin
-  compareTo := compare(v, b.v);
+  compareTo := compare(v, (b as Boolean_).v);
 end;
 
 (**
@@ -94,7 +93,7 @@ end;
  * @return true if the Boolean objects represent the same value; false
  * otherwise.
  *)
-function Boolean_.equals(obj: TObject) : boolean;
+function Boolean_.equals_(obj: Object_) : boolean;
 begin
   if obj = nil then begin
     exit(false);
@@ -104,7 +103,7 @@ begin
     exit(false);
   end;
 
-  equals := (v = (Boolean_(obj)).v);
+  equals_ := (v = (Boolean_(obj)).v);
 end;
 
 (**
@@ -139,22 +138,9 @@ begin
   parseBoolean := strToBool(s.toString());
 end;
 
-function Boolean_.toString() : ansiString;
-var
-  s: String_;
-begin
-  s := toString_();
-  toString := s.ToString();
-end;
-
 operator := (original: boolean) s: Boolean_;
 begin
   s.create(original);
-end;
-
-operator := (original: Boolean_) s: boolean;
-begin
-  s := original.booleanValue();
 end;
 
 end.

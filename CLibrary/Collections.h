@@ -11,8 +11,10 @@
  */
 
 int32_t Collections_binarySearch(ArrayList *list, void *key, int32_t (*c)(const void *, const void *));
-void Collections_copy (ArrayList *dest, ArrayList *src);
-void Collections_fill (ArrayList *list, void *obj);
+void Collections_copy(void *dest, void *src, int32_t (*srcSize)(void *), 
+        void *(*destSet)(void *, int32_t, void *), void *(*srcGet)(void *, int32_t));
+void Collections_fill(void *list, void *obj, int32_t (*listSize)(void *), 
+        void *(*listSet)(void *, int32_t, void *));
 void Collections_sort(ArrayList *list, int32_t (* c)(const void *, const void *));
 
 #endif	/* COLLECTIONS_INCLUDED */

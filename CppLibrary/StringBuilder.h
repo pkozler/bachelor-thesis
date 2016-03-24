@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class StringBuilder {
+class StringBuilder : public Object {
     std::ostringstream oss;
 public:
     StringBuilder();

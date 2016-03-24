@@ -9,11 +9,19 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Long {
+class Long : public Comparable<Long> {
     int64_t v;
 public:
+    /**
+     * A constant holding the maximum value a long can have, 2^63-1.
+     */
     static const int64_t MIN_VALUE;
+    
+    /**
+     * A constant holding the minimum value a long can have, -2^63.
+     */
     static const int64_t MAX_VALUE;
+    
     Long(int64_t value);
     int64_t longValue();
     int32_t compareTo(Long *anotherLong);
@@ -22,7 +30,6 @@ public:
     String *toString();
     static String *toString(int64_t l);
     static int64_t parseLong(String *s);
-    friend std::ostream &operator<<(std::ostream &s, Long &obj);
 };
 
 #endif // LONG_INCLUDED

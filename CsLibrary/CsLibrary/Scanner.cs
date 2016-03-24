@@ -9,7 +9,7 @@ namespace JavaClasses
     /// A simple text scanner which can parse primitive types and strings using regular expressions.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Scanner
+    public class Scanner : Object
     {
 
         // current line
@@ -19,9 +19,8 @@ namespace JavaClasses
         /// Constructs a new Scanner that produces values scanned from the specified
         /// input stream.
         /// </summary>
-        /// <param name="source">An input stream to be scanned
-        /// </param>
-        public Scanner(Object source)
+        /// <param name="source">An input stream to be scanned</param>
+        public Scanner(InputStream source)
         {
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
         }

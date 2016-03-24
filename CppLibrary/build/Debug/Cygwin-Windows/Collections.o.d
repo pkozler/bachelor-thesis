@@ -1,8 +1,10 @@
 build/Debug/Cygwin-Windows/Collections.o: Collections.cpp Collections.h \
- ArrayList.h String.h
+ List.h String.h ArrayList.h
 
 Collections.h:
 
-ArrayList.h:
+List.h:
 
 String.h:
+
+ArrayList.h:

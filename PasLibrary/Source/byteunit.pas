@@ -13,7 +13,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Byte_ = class
+  Byte_ = class(Comparable)
     private
       var
         v: shortInt;
@@ -29,13 +29,12 @@ type
            MIN_VALUE = -128;
       constructor create(value: shortInt);
       function byteValue() : shortInt;
-      function compareTo(anotherByte: Byte_) : longInt;
+      function compareTo(anotherByte: Object_) : longInt; override;
       class function compare(x, y: shortInt) : longInt;
-      function equals(obj: TObject) : boolean; override;
-      function toString_() : String_;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
       class function toString_(b: shortInt) : String_;
       class function parseByte(s: String_) : shortInt;
-      function toString() : ansiString; override;
   end;
 
 implementation
@@ -71,9 +70,9 @@ end;
  * a value greater than 0 if this Byte is numerically greater than the
  * argument Byte (signed comparison).
  *)
-function Byte_.compareTo(anotherByte: Byte_) : longInt;
+function Byte_.compareTo(anotherByte: Object_) : longInt;
 begin
-  compareTo := compare(v, anotherByte.v);
+  compareTo := compare(v, (anotherByte as Byte_).v);
 end;
 
 (**
@@ -95,7 +94,7 @@ end;
  * @param obj the object to compare with
  * @return true if the objects are the same; false otherwise.
  *)
-function Byte_.equals(obj: TObject) : boolean;
+function Byte_.equals_(obj: Object_) : boolean;
 begin
   if obj = nil then begin
     exit(false);
@@ -105,7 +104,7 @@ begin
     exit(false);
   end;
 
-  equals := (v = (Byte_(obj)).v);
+  equals_ := (v = (Byte_(obj)).v);
 end;
 
 (**
@@ -140,22 +139,9 @@ begin
   parseByte := strToInt(s.toString());
 end;
 
-function Byte_.toString() : ansiString;
-var
-  s: String_;
-begin
-  s := toString_();
-  toString := s.ToString();
-end;
-
 operator := (original: shortint) s: Byte_;
 begin
   s.create(original);
-end;
-
-operator := (original: Byte_) s: shortint;
-begin
-  s := original.byteValue();
 end;
 
 end.

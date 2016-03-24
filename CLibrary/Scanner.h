@@ -1,6 +1,7 @@
 #ifndef SCANNER_INCLUDED
 #define	SCANNER_INCLUDED
 
+#include "System.h"
 #include "String.h"
 #include <stdint.h>
 
@@ -11,10 +12,10 @@
  */
 
 typedef struct {
-    void *dummy;
+    // really no code
 } Scanner;
 
-Scanner *new_Scanner(void *source);
+Scanner *new_Scanner(InputStream *source);
 String *next(Scanner *ptr);
 bool nextBoolean(Scanner *ptr);
 int8_t nextByte(Scanner *ptr);

@@ -11,10 +11,13 @@ namespace JavaClasses
     public static class Arrays
     {
 
+        // delegate for testing if two values are equal
+        private delegate bool EqualsMethod<T>(T o1, T o2);
+
         // comparator for 8-bit signed integer values
         private class ByteComparer : IComparer<sbyte>
         {
-            int IComparer<sbyte>.Compare(sbyte x, sbyte y)
+            public int Compare(sbyte x, sbyte y)
             {
                 return Byte.compare(x, y);
             }
@@ -23,7 +26,7 @@ namespace JavaClasses
         // comparator for characters
         private class CharacterComparer : IComparer<char>
         {
-            int IComparer<char>.Compare(char x, char y)
+            public int Compare(char x, char y)
             {
                 return Character.compare(x, y);
             }
@@ -32,7 +35,7 @@ namespace JavaClasses
         // comparator for double-precision decimal values
         private class DoubleComparer : IComparer<double>
         {
-            int IComparer<double>.Compare(double x, double y)
+            public int Compare(double x, double y)
             {
                 return Double.compare(x, y);
             }
@@ -41,7 +44,7 @@ namespace JavaClasses
         // comparator for single-precision decimal values
         private class FloatComparer : IComparer<float>
         {
-            int IComparer<float>.Compare(float x, float y)
+            public int Compare(float x, float y)
             {
                 return Float.compare(x, y);
             }
@@ -50,7 +53,7 @@ namespace JavaClasses
         // comparator for 32-bit signed integer values
         private class IntegerComparer : IComparer<int>
         {
-            int IComparer<int>.Compare(int x, int y)
+            public int Compare(int x, int y)
             {
                 return Integer.compare(x, y);
             }
@@ -59,40 +62,39 @@ namespace JavaClasses
         // comparator for 64-bit signed integer values
         private class LongComparer : IComparer<long>
         {
-            int IComparer<long>.Compare(long x, long y)
+            public int Compare(long x, long y)
             {
                 return Long.compare(x, y);
             }
         }
 
         // comparator for 16-bit signed integer values
+        private class ObjectComparer : IComparer<Object>
+        {
+            public int Compare(Object x, Object y)
+            {
+                return (x as Comparable<Object>).compareTo(y as Comparable<Object>);
+            }
+        }
+
+        // comparator for 16-bit signed integer values
         private class ShortComparer : IComparer<short>
         {
-            int IComparer<short>.Compare(short x, short y)
+            public int Compare(short x, short y)
             {
                 return Short.compare(x, y);
             }
         }
 
-        // delegate for testing if two values are equal
-        private delegate bool EqualsMethod<T>(T o1, T o2);
-
         /*
             Represents the type-agnostic method for binary searching
             in the specified sorted part of any array according to a specified comparator.
          */
-        private static int binarySearchGeneric<T>(T[] a, int? fromIndex, int? toIndex, T key, IComparer<T> c = null)
+        private static int binarySearchGeneric<T>(T[] a, int? fromIndex, int? toIndex, T key, IComparer<T> c)
         {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
-
-            // searching without comparator
-            if (c == null)
-            {
-                return Array.BinarySearch(a, fromIndexValue, toIndexValue - fromIndexValue, key);
-            }
-
-            // searching with comparator
+            
             return Array.BinarySearch(a, fromIndexValue, toIndexValue - fromIndexValue, key, c);
         }
 
@@ -194,21 +196,12 @@ namespace JavaClasses
             Represents the type-agnostic method for sorting
             the specified part of any array according to a specified comparator.
          */
-        private static void sortGeneric<T>(T[] a, int? fromIndex = null, int? toIndex = null, IComparer<T> c = null)
+        private static void sortGeneric<T>(T[] a, int? fromIndex, int? toIndex, IComparer<T> c)
         {
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
 
-            // sorting without comparator
-            if (c == null)
-            {
-                Array.Sort(a, fromIndexValue, toIndexValue - fromIndexValue);
-            }
-            // sorting with comparator
-            else
-            {
-                Array.Sort(a, fromIndexValue, toIndexValue - fromIndexValue, c);
-            }
+            Array.Sort(a, fromIndexValue, toIndexValue - fromIndexValue, c);
         }
 
         /*
@@ -217,7 +210,7 @@ namespace JavaClasses
          */
         private static String toStringGeneric<T>(T[] a)
         {
-            return "[" + string.Join(", ", a) + "]";
+            return new String("[" + string.Join(", ", a) + "]");
         }
 
         /// <summary>
@@ -475,7 +468,7 @@ namespace JavaClasses
         /// </returns>
         public static int binarySearch(Object[] a, Object key)
         {
-            return binarySearchGeneric(a, null, null, key);
+            return binarySearchGeneric(a, null, null, key, new ObjectComparer());
         }
 
         /// <summary>
@@ -497,7 +490,7 @@ namespace JavaClasses
         /// </returns>
         public static int binarySearch(Object[] a, int fromIndex, int toIndex, Object key)
         {
-            return binarySearchGeneric(a, fromIndex, toIndex, key);
+            return binarySearchGeneric(a, fromIndex, toIndex, key, new ObjectComparer());
         }
 
         /// <summary>
@@ -555,7 +548,7 @@ namespace JavaClasses
         /// the array are less than the specified key. Note that this guarantees that
         /// the return value will be >= 0 if and only if the key is found.
         /// </returns>
-        public static int binarySearch<T>(T[] a, T key, IComparer<T> c)
+        public static int binarySearch<T>(T[] a, T key, Comparator<T> c) where T : Object
         {
             return binarySearchGeneric(a, null, null, key, c);
         }
@@ -579,7 +572,7 @@ namespace JavaClasses
         /// Note that this guarantees that the return value will be >= 0 if and only
         /// if the key is found.
         /// </returns>
-        public static int binarySearch<T>(T[] a, int fromIndex, int toIndex, T key, IComparer<T> c)
+        public static int binarySearch<T>(T[] a, int fromIndex, int toIndex, T key, Comparator<T> c) where T : Object
         {
             return binarySearchGeneric(a, fromIndex, toIndex, key, c);
         }
@@ -1383,7 +1376,7 @@ namespace JavaClasses
         /// </param>
         public static void sort(Object[] a)
         {
-            sortGeneric(a);
+            sortGeneric(a, null, null, new ObjectComparer());
         }
 
         /// <summary>
@@ -1396,7 +1389,7 @@ namespace JavaClasses
         /// </param>
         public static void sort(Object[] a, int fromIndex, int toIndex)
         {
-            sortGeneric(a, fromIndex, toIndex);
+            sortGeneric(a, fromIndex, toIndex, new ObjectComparer());
         }
 
         /// <summary>
@@ -1429,7 +1422,7 @@ namespace JavaClasses
         /// </param><param name="c">the comparator to determine the order of the array. A null value
         /// indicates that the elements' natural ordering should be used.
         /// </param>
-        public static void sort<T>(T[] a, IComparer<T> c)
+        public static void sort<T>(T[] a, Comparator<T> c) where T : Object
         {
             sortGeneric(a, null, null, c);
         }
@@ -1444,7 +1437,7 @@ namespace JavaClasses
         /// </param><param name="c">the comparator to determine the order of the array. A null value
         /// indicates that the elements' natural ordering should be used.
         /// </param>
-        public static void sort<T>(T[] a, int fromIndex, int toIndex, IComparer<T> c)
+        public static void sort<T>(T[] a, int fromIndex, int toIndex, Comparator<T> c) where T : Object
         {
             sortGeneric(a, fromIndex, toIndex, c);
         }

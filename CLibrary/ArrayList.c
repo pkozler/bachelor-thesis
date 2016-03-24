@@ -40,7 +40,7 @@ ArrayList *new_ArrayListAddAll(ArrayList *c) {
 }
 
 void delete_ArrayList(ArrayList *ptr) {
-    free(ptr->dynamicArray);
+    clearAl(ptr);
     free(ptr);
 }
 
@@ -69,7 +69,7 @@ void _shrinkList(ArrayList *ptr) {
  * @param e element to be appended to this list
  * @return true (as specified by Collection.add(E))
  */
-bool add(ArrayList *ptr, void *e) {
+bool addAl(ArrayList *ptr, void *e) {
     ptr->dynamicArray[ptr->count] = e;
     _expandList(ptr);
 
@@ -82,7 +82,7 @@ bool add(ArrayList *ptr, void *e) {
  * @param index index at which the specified element is to be inserted
  * @param element element to be inserted
  */
-void addAt(ArrayList *ptr, int32_t index, void *element) {
+void addAtAl(ArrayList *ptr, int32_t index, void *element) {
     int32_t i;
 
     for (i = ptr->count; i > index; i--) {
@@ -99,7 +99,7 @@ void addAt(ArrayList *ptr, int32_t index, void *element) {
  * @param index index of the element to return
  * @return the element at the specified position in this list
  */
-void *get(ArrayList *ptr, int32_t index) {
+void *getAl(ArrayList *ptr, int32_t index) {
     return ptr->dynamicArray[index];
 }
 
@@ -111,7 +111,7 @@ void *get(ArrayList *ptr, int32_t index) {
  * @param element element to be stored at the specified position
  * @return the element previously at the specified position
  */
-void *set(ArrayList *ptr, int32_t index, void *element) {
+void *setAl(ArrayList *ptr, int32_t index, void *element) {
     void *original = ptr->dynamicArray[index];
     ptr->dynamicArray[index] = element;
 
@@ -124,7 +124,7 @@ void *set(ArrayList *ptr, int32_t index, void *element) {
  * @param index the index of the element to be removed
  * @return the element that was removed from the list
  */
-void *removeAt(ArrayList *ptr, int32_t index) {
+void *removeAl(ArrayList *ptr, int32_t index) {
     void *removed = ptr->dynamicArray[index];
     int32_t i;
 
@@ -141,7 +141,7 @@ void *removeAt(ArrayList *ptr, int32_t index) {
  *
  * @return the number of elements in this list
  */
-int32_t size(ArrayList *ptr) {
+int32_t sizeAl(ArrayList *ptr) {
     return ptr->count;
 }
 
@@ -150,14 +150,14 @@ int32_t size(ArrayList *ptr) {
  *
  * @return true if this list contains no elements
  */
-bool isEmpty(ArrayList *ptr) {
+bool isEmptyAl(ArrayList *ptr) {
     return (ptr->count == 0);
 }
 
 /**
  * Removes all of the elements from this list.
  */
-void clear(ArrayList *ptr) {
+void clearAl(ArrayList *ptr) {
     free(ptr->dynamicArray);
 
     ptr->count = 0;

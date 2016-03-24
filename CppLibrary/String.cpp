@@ -3,6 +3,22 @@
 #include <algorithm>
 #include <string>
 #include <iostream>
+#include <sstream>
+#include <iomanip>
+
+bool Object::equals(Object *obj) {
+    return this == obj;
+}
+
+String *Object::toString() {
+    std::stringstream stream;
+    stream << std::hex << this;
+    return new String(stream.str());
+}
+
+std::ostream &operator<<(std::ostream &s, Object &o) {
+    return s << o.toString()->_s();
+}
 
 /**
  * Constructs a new String by decoding the specified array of bytes using
@@ -237,7 +253,7 @@ String *String::replace(char oldChar, char newChar) {
  * equals(Object) method.
  */
 bool String::startsWith(String *prefix) {
-    return (s.size() >= prefix->toString().size() && s.find(prefix->toString()) == 0);
+    return (s.size() >= prefix->_s().size() && s.find(prefix->_s()) == 0);
 }
 
 /**
@@ -251,8 +267,8 @@ bool String::startsWith(String *prefix) {
  * equals(Object) method.
  */
 bool String::endsWith(String *suffix) {
-    return (s.size() >= suffix->toString().size() &&
-            s.compare(s.size() - suffix->toString().size(), suffix->toString().size(), suffix->toString()) == 0);
+    return (s.size() >= suffix->_s().size() &&
+            s.compare(s.size() - suffix->_s().size(), suffix->_s().size(), suffix->_s()) == 0);
 }
 
 /**
@@ -264,18 +280,15 @@ bool String::isEmpty() {
     return (this->s.length() == 0);
 }
 
-std::string String::toString() {
-    return s;
+/**
+ * This object (which is already a string!) is itself returned.
+ *
+ * @return the string itself.
+ */
+String *String::toString() {
+    return new String(s);
 }
 
-std::ostream &operator<<(std::ostream &s, String &str) {
-    return s << str.toString().c_str();
-}
-
-String *operator+(String &s1, String &s2) {
-    return new String(s1.toString() + s2.toString());
-}
-
-String *String::operator=(String &s) {
-    return new String(s.toString());
+String *String::operator=(std::string &s) {
+    return new String(s);
 }

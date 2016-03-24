@@ -104,7 +104,3 @@ bool Character::isDigit(char ch) {
 bool Character::isLetter(char ch) {
     return isalpha(ch);
 }
-
-std::ostream &operator<<(std::ostream &s, Character &obj) {
-    return s << obj.toString()->toString().c_str();
-}

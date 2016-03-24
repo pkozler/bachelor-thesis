@@ -1,17 +1,100 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace JavaClasses
 {
 
     /// <summary>
+    /// Class Object is the root of the class hierarchy.
+    /// </summary>
+    public class Object
+    {
+
+        /// <summary>
+        /// Indicates whether some other object is "equal to" this one.
+        /// </summary>
+        /// <param name="obj">the reference object with which to compare.</param>
+        /// <returns>true if this object is the same as the obj argument; false otherwise.</returns>
+        public virtual bool equals(Object obj)
+        {
+            return this == obj;
+        }
+
+        /// <summary>
+        /// Returns a string representation of the object.
+        /// </summary>
+        /// <returns>a string representation of the object.</returns>
+        public virtual String toString()
+        {
+            return new String(base.ToString());
+        }
+
+        public override bool Equals(object obj)
+        {
+            return equals(obj as Object);
+        }
+
+        public override string ToString()
+        {
+            return toString().s;
+        }
+
+    }
+
+    /// <summary>
+    /// This interface imposes a total ordering on the objects of each class that implements it.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class Comparable<T> : Object, IComparable<T> where T : Object
+    {
+
+        /// <summary>
+        /// Compares this object with the specified object for order.
+        /// </summary>
+        /// <param name="o">the object to be compared.</param>
+        /// <returns>a negative integer, zero, or a positive integer as this object
+        /// is less than, equal to, or greater than the specified object.</returns>
+        public abstract int compareTo(T o);
+
+        public int CompareTo(T o)
+        {
+            return compareTo(o);
+        }
+
+    }
+
+    /// <summary>
+    /// A comparison function, which imposes a total ordering on some collection of objects.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class Comparator<T> : Object, IComparer<T> where T : Object
+    {
+
+        /// <summary>
+        /// Compares its two arguments for order.
+        /// </summary>
+        /// <param name="o1">the first object to be compared.</param>
+        /// <param name="o2">the second object to be compared.</param>
+        /// <returns>negative integer, zero, or a positive integer as the
+        /// first argument is less than, equal to, or greater than the second.</returns>
+        public abstract int compare(T o1, T o2);
+
+        public int Compare(T o1, T o2)
+        {
+            return compare(o1, o2);
+        }
+
+    }
+
+    /// <summary>
     /// The String class represents character strings.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class String : IComparable<String>
+    public class String : Comparable<String>
     {
 
-        private string s;
+        public string s { get; private set; }
 
         /// <summary>
         /// Constructs a new String by decoding the specified array of bytes using
@@ -63,7 +146,7 @@ namespace JavaClasses
         /// string argument; and a value greater than 0 if this string is
         /// lexicographically greater than the string argument.
         /// </returns>
-        public int compareTo(String anotherString)
+        public override int compareTo(String anotherString)
         {
             return s.CompareTo(anotherString.s);
         }
@@ -75,7 +158,7 @@ namespace JavaClasses
         /// </param><returns>true if the given object represents a String equivalent to this
         /// string, false otherwise
         /// </returns>
-        public bool equals(Object anObject)
+        public override bool equals(Object anObject)
         {
             if (anObject == null)
             {
@@ -98,7 +181,7 @@ namespace JavaClasses
         /// </returns>
         public String substring(int beginIndex)
         {
-            return s.Substring(beginIndex);
+            return new String(s.Substring(beginIndex));
         }
 
         /// <summary>
@@ -111,7 +194,7 @@ namespace JavaClasses
         public String substring(int beginIndex, int endIndex)
         {
             // calculating the length from the specified end index
-            return s.Substring(beginIndex, endIndex - beginIndex);
+            return new String(s.Substring(beginIndex, endIndex - beginIndex));
         }
 
         /// <summary>
@@ -190,7 +273,7 @@ namespace JavaClasses
         /// </returns>
         public String trim()
         {
-            return s.Trim();
+            return new String(s.Trim());
         }
 
         /// <summary>
@@ -201,7 +284,7 @@ namespace JavaClasses
         /// </returns>
         public String toLowerCase()
         {
-            return s.ToLower();
+            return new String(s.ToLower());
         }
 
         /// <summary>
@@ -212,7 +295,7 @@ namespace JavaClasses
         /// </returns>
         public String toUpperCase()
         {
-            return s.ToUpper();
+            return new String(s.ToUpper());
         }
 
         /// <summary>
@@ -238,7 +321,7 @@ namespace JavaClasses
         /// </returns>
         public String replace(char oldChar, char newChar)
         {
-            return s.Replace(oldChar, newChar);
+            return new String(s.Replace(oldChar, newChar));
         }
 
         /// <summary>
@@ -281,49 +364,20 @@ namespace JavaClasses
             return s.Length == 0;
         }
 
-        /*
-            Tests if the inner string values of two String objects are equal.
-        */
-        public override bool Equals(object obj)
+        /// <summary>
+        /// This object (which is already a string!) is itself returned.
+        /// </summary>
+        /// <returns>the string itself.</returns>
+        public override String toString()
         {
-            return equals(obj);
+            return new String(s);
         }
-
-        /*
-            Returns the inner string value for processing by standard library classes.
-        */
-        public override string ToString()
-        {
-            return s;
-        }
-
-        /*
-            Compares two string values for ordering.
-        */
-        public int CompareTo(String other)
-        {
-            return compareTo(other);
-        }
-
-        /*
-            Defines the implicit operator so it is possible to instantiate
-            this class by standard string value assignment.
-        */
+        
         public static implicit operator String(string original)
         {
             return new String(original);
         }
-
-        /*
-            Defines the opposite implicit operator so it is possible to get
-            the standard string value by this class instance assignment
-            and perform concatenation in the same way as with the standard string.
-        */
-        public static implicit operator string (String original)
-        {
-            return original.ToString();
-        }
-
+        
     }
 
 }
