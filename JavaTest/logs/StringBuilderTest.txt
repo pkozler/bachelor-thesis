@@ -1,0 +1,20 @@
+stringBuilderTest
+
+appendTest
+
+appendTest
+.
+appendTest
+test
+appendTest
+test.
+appendTest
+.test
+appendTest
+test.
+toStringTest
+This is a test
+toStringTest
+This is a test.
+toStringTest
+This is a test.

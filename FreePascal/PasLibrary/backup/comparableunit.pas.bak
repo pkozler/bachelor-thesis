@@ -1,0 +1,10 @@
+unit ComparableUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+type
+
+
+end.

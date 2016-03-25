@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="5">
+      <Unit0>
+        <Filename Value="fpcunitproject.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <TopLine Value="2"/>
+        <CursorPos X="27" Y="18"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="mathtestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="4"/>
+        <CursorPos Y="24"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\Source\arraylistunit.pas"/>
+        <UnitName Value="ArrayListUnit"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="mathtestunit.ppu"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="fpcunitproject.lpi"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="41"/>
+        <CursorPos X="19" Y="54"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="XML"/>
+      </Unit4>
+    </Units>
+    <JumpHistory Count="5" HistoryIndex="4">
+      <Position1>
+        <Filename Value="mathtestunit.pas"/>
+        <Caret Line="11" TopLine="7"/>
+      </Position1>
+      <Position2>
+        <Filename Value="mathtestunit.pas"/>
+        <Caret Line="19" Column="19"/>
+      </Position2>
+      <Position3>
+        <Filename Value="mathtestunit.pas"/>
+        <Caret Line="8" Column="64" TopLine="8"/>
+      </Position3>
+      <Position4>
+        <Filename Value="mathtestunit.pas"/>
+        <Caret Line="8" Column="56"/>
+      </Position4>
+      <Position5>
+        <Filename Value="mathtestunit.pas"/>
+        <Caret Line="11"/>
+      </Position5>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

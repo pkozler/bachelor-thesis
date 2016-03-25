@@ -1,9 +1,7 @@
 zadání/
-/JavaLibraryTest/target/
-/JavaApplication/target/
-/JavaApplication/nbproject/private/
-/JavaApplication/dist/
-/JavaApplication/build/
-/JavaApplication/temp-data/
+/Application/temp-data/
 /BPINI-Kozler-Petr-2016/
 /BPINI-Kozler-Petr-2016.zip
+/IOTestRunner/nbproject/private/
+/CodeConvertHelper/nbproject/private/
+/SourceConvertHelper/nbproject/private/

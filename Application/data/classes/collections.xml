@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef COLLECTIONS_INCLUDED&#13;
+#define	COLLECTIONS_INCLUDED&#13;
+&#13;
+#include "ArrayList.h"&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * This class consists exclusively of static methods that operate on or return collections.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+int32_t Collections_binarySearch(ArrayList *list, void *key, int32_t (*c)(const void *, const void *));&#13;
+void Collections_copy (ArrayList *dest, ArrayList *src);&#13;
+void Collections_fill (ArrayList *list, void *obj);&#13;
+void Collections_sort(ArrayList *list, int32_t (* c)(const void *, const void *));&#13;
+&#13;
+#endif	/* COLLECTIONS_INCLUDED */&#13;
+&#13;
+&#13;
+#include "Collections.h"&#13;
+&#13;
+#include "System.h"&#13;
+#include &lt;stdlib.h&gt;&#13;
+&#13;
+/**&#13;
+ * Searches the specified list for the specified object using the binary&#13;
+ * search algorithm.&#13;
+ *&#13;
+ * @param list the list to be searched.&#13;
+ * @param key the key to be searched for.&#13;
+ * @return the index of the search key, if it is contained in the list;&#13;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as&#13;
+ * the point at which the key would be inserted into the list: the index of&#13;
+ * the first element greater than the key, or list.size() if all elements in&#13;
+ * the list are less than the specified key. Note that this guarantees that&#13;
+ * the return value will be &gt;= 0 if and only if the key is found.&#13;
+ */&#13;
+int32_t Collections_binarySearch(ArrayList *list, void *key, int32_t (*c)(const void *, const void *)) {&#13;
+    void *i = bsearch(key, list-&gt;dynamicArray, list-&gt;count, sizeof(void **), c);&#13;
+    &#13;
+    if (i == NULL) {&#13;
+        return -1;&#13;
+    }&#13;
+    else {&#13;
+        return (i - (void *) list-&gt;dynamicArray) / sizeof(void **);&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Copies all of the elements from one list into another.&#13;
+ *&#13;
+ * @param dest The destination list.&#13;
+ * @param src The source list.&#13;
+ */&#13;
+void Collections_copy(ArrayList *dest, ArrayList *src) {&#13;
+    void **destList = dest-&gt;dynamicArray;&#13;
+    void **srcList = src-&gt;dynamicArray;&#13;
+    int32_t count = src-&gt;count;&#13;
+&#13;
+    int32_t i;&#13;
+    for (i = 0; i &lt; count; i++) {&#13;
+        destList[i] = srcList[i];&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Replaces all of the elements of the specified list with the specified&#13;
+ * element.&#13;
+ *&#13;
+ * @param list the list to be filled with the specified element.&#13;
+ * @param obj The element with which to fill the specified list.&#13;
+ */&#13;
+void Collections_fill(ArrayList *list, void *obj) {&#13;
+    void **l = list-&gt;dynamicArray;&#13;
+    int32_t count = list-&gt;count;&#13;
+&#13;
+    int32_t i;&#13;
+    for (i = 0; i &lt; count; i++) {&#13;
+        l[i] = obj;&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Sorts the specified list into ascending order, according to the natural&#13;
+ * ordering of its elements.&#13;
+ *&#13;
+ * @param list the list to be sorted.&#13;
+ */&#13;
+void Collections_sort(ArrayList *list, int32_t (* c)(const void *, const void *)) {&#13;
+    void **aux = malloc(sizeof(void *) * list-&gt;count);&#13;
+    _mergeSort(list-&gt;dynamicArray, aux, 0, list-&gt;count - 1, c);&#13;
+    free(aux);&#13;
+}&#13;
+</code>
+<code lang="C++">#ifndef COLLECTIONS_INCLUDED&#13;
+#define	COLLECTIONS_INCLUDED&#13;
+&#13;
+#include "ArrayList.h"&#13;
+#include &lt;algorithm&gt;&#13;
+#include &lt;vector&gt;&#13;
+#include &lt;cstdint&gt;&#13;
+&#13;
+/**&#13;
+ * This class consists exclusively of static methods that operate on or return collections.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+class Collections {&#13;
+public:&#13;
+    template &lt;class T, class Comparator&gt; static int32_t binarySearch (ArrayList&lt;T&gt; *list, T key, Comparator c);&#13;
+    template &lt;class T&gt; static void copy (ArrayList&lt;T&gt; *dest, ArrayList&lt;T&gt; *src);&#13;
+    template &lt;class T&gt; static void fill (ArrayList&lt;T&gt; *list, T obj);&#13;
+    template &lt;class T, class Comparator&gt; static void sort(ArrayList&lt;T&gt; *list, Comparator c);&#13;
+};&#13;
+&#13;
+/**&#13;
+ * Searches the specified list for the specified object using the binary&#13;
+ * search algorithm.&#13;
+ *&#13;
+ * @param list the list to be searched.&#13;
+ * @param key the key to be searched for.&#13;
+ * @param c the comparator by which the list is ordered. A null value&#13;
+ * indicates that the elements' natural ordering should be used.&#13;
+ * @return the index of the search key, if it is contained in the list;&#13;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as&#13;
+ * the point at which the key would be inserted into the list: the index of&#13;
+ * the first element greater than the key, or list.size() if all elements in&#13;
+ * the list are less than the specified key. Note that this guarantees that&#13;
+ * the return value will be &gt;= 0 if and only if the key is found.&#13;
+ */&#13;
+template &lt;class T, class Comparator&gt; int32_t binarySearch (ArrayList&lt;T&gt; *list, T key, Comparator c) {&#13;
+    T *i = std::lower_bound(&#13;
+        list-&gt;getVector().begin(), list-&gt;getVector().end(), key, c);&#13;
+&#13;
+    if (i != list-&gt;getVector().end() &amp;&amp; !(key &lt; *i)) {&#13;
+        return (int32_t) (i - list-&gt;getVector().begin());&#13;
+    }&#13;
+    else {&#13;
+        return -1;&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Copies all of the elements from one list into another.&#13;
+ *&#13;
+ * @param dest The destination list.&#13;
+ * @param src The source list.&#13;
+ */&#13;
+template &lt;class T&gt; void copy (ArrayList&lt;T&gt; *dest, ArrayList&lt;T&gt; *src) {&#13;
+    std::vector&lt;T&gt; destList = dest-&gt;getVector();&#13;
+    std::vector&lt;T&gt; srcList = src-&gt;getVector();&#13;
+&#13;
+    for (int32_t i = 0; i &lt; srcList.size(); i++) {&#13;
+        destList[i] = srcList[i];&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Replaces all of the elements of the specified list with the specified&#13;
+ * element.&#13;
+ *&#13;
+ * @param list the list to be filled with the specified element.&#13;
+ * @param obj The element with which to fill the specified list.&#13;
+ */&#13;
+template &lt;class T&gt; void fill (ArrayList&lt;T&gt; *list, T obj) {&#13;
+    std::vector&lt;T&gt; v = list-&gt;getVector();&#13;
+&#13;
+    for (int32_t i = 0; i &lt; v.size(); i++) {&#13;
+        v[i] = obj;&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Sorts the specified list according to the order induced by the specified&#13;
+ * comparator&#13;
+ *&#13;
+ * @param list the list to be sorted.&#13;
+ * @param c the comparator to determine the order of the list. A null value&#13;
+ * indicates that the elements' natural ordering should be used.&#13;
+ */&#13;
+template &lt;class T, class Comparator&gt; void Collections::sort(ArrayList&lt;T&gt; *list, Comparator c) {&#13;
+    std::vector&lt;T&gt; v = list-&gt;getVector();&#13;
+    std::stable_sort(v.begin(), v.end(), c);&#13;
+}&#13;
+&#13;
+#endif	// COLLECTIONS_INCLUDED&#13;
+&#13;
+&#13;
+#include "Collections.h"&#13;
+</code>
+<code lang="C#">﻿using System.Collections.Generic;
+
+namespace JavaClasses {
+
+    /// &lt;summary&gt;
+    /// This class consists exclusively of static methods that operate on or return collections.
+    /// &lt;/summary&gt;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;
+    public static class Collections {
+
+        /// &lt;summary&gt;
+        /// Searches the specified list for the specified object using the binary
+        /// search algorithm.
+        /// &lt;/summary&gt;
+        /// &lt;param name="list"&gt;the list to be searched.
+        /// &lt;/param&gt;&lt;param name="key"&gt;the key to be searched for.
+        /// &lt;/param&gt;&lt;returns&gt;the index of the search key, if it is contained in the list;
+        /// otherwise, (-(insertion point) - 1). The insertion point is defined as
+        /// the point at which the key would be inserted into the list: the index of
+        /// the first element greater than the key, or list.size() if all elements in
+        /// the list are less than the specified key. Note that this guarantees that
+        /// the return value will be &gt;= 0 if and only if the key is found.
+        /// &lt;/returns&gt;
+        public static int binarySearch&lt;T&gt;(ArrayList&lt;T&gt; list, T key) {
+            return list.l.BinarySearch(key);
+        }
+
+        /// &lt;summary&gt;
+        /// Searches the specified list for the specified object using the binary
+        /// search algorithm.
+        /// &lt;/summary&gt;
+        /// &lt;param name="list"&gt;the list to be searched.
+        /// &lt;/param&gt;&lt;param name="key"&gt;the key to be searched for.
+        /// &lt;/param&gt;&lt;param name="c"&gt;the comparator by which the list is ordered. A null value
+        /// indicates that the elements' natural ordering should be used.
+        /// &lt;/param&gt;&lt;returns&gt;the index of the search key, if it is contained in the list;
+        /// otherwise, (-(insertion point) - 1). The insertion point is defined as
+        /// the point at which the key would be inserted into the list: the index of
+        /// the first element greater than the key, or list.size() if all elements in
+        /// the list are less than the specified key. Note that this guarantees that
+        /// the return value will be &gt;= 0 if and only if the key is found.
+        /// &lt;/returns&gt;
+        public static int binarySearch&lt;T&gt;(ArrayList&lt;T&gt; list, T key, Comparer&lt;T&gt; c) {
+            return list.l.BinarySearch(key, c);
+        }
+
+        /// &lt;summary&gt;
+        /// Copies all of the elements from one list into another.
+        /// &lt;/summary&gt;
+        /// &lt;param name="dest"&gt;The destination list.
+        /// &lt;/param&gt;&lt;param name="src"&gt;The source list.
+        /// &lt;/param&gt;
+        public static void copy&lt;T&gt;(ArrayList&lt;T&gt; dest, ArrayList&lt;T&gt; src) {
+            List&lt;T&gt; destList = dest.l;
+            List&lt;T&gt; srcList = src.l;
+
+            // replacing the elements of the destination list with the elements of the source list
+            for (int i = 0; i &lt; srcList.Count; i++) {
+                destList[i] = srcList[i];
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Replaces all of the elements of the specified list with the specified
+        /// element.
+        /// &lt;/summary&gt;
+        /// &lt;param name="list"&gt;the list to be filled with the specified element.
+        /// &lt;/param&gt;&lt;param name="obj"&gt;The element with which to fill the specified list.
+        /// &lt;/param&gt;
+        public static void fill&lt;T&gt;(ArrayList&lt;T&gt; list, T obj) {
+            List&lt;T&gt; l = list.l;
+
+            // replacing the elements of the list with the specified value
+            for (int i = 0; i &lt; l.Count; i++) {
+                l[i] = obj;
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Sorts the specified list into ascending order, according to the natural
+        /// ordering of its elements.
+        /// &lt;/summary&gt;
+        /// &lt;param name="list"&gt;the list to be sorted.
+        /// &lt;/param&gt;
+        public static void sort&lt;T&gt;(ArrayList&lt;T&gt; list) {
+            list.l.Sort();
+        }
+
+        /// &lt;summary&gt;
+        /// Sorts the specified list according to the order induced by the specified
+        /// comparator
+        /// &lt;/summary&gt;
+        /// &lt;param name="list"&gt;the list to be sorted.
+        /// &lt;/param&gt;&lt;param name="c"&gt;the comparator to determine the order of the list. A null value
+        /// indicates that the elements' natural ordering should be used.
+        /// &lt;/param&gt;
+        public static void sort&lt;T&gt;(ArrayList&lt;T&gt; list, Comparer&lt;T&gt; c) {
+            list.l.Sort(c);
+        }
+
+    }
+
+}
+</code>
+<code lang="Free Pascal">unit CollectionsUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  SystemUnit, ArrayListUnit;
+
+  (**
+   * This class consists exclusively of static methods that operate on or return collections.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  type
+  Collections = class
+    public
+      class function binarySearch(list: ArrayList; key: TObject; c: TObjectCompareFunction) : longInt;
+      class procedure copy(dest: ArrayList; src: ArrayList);
+      class procedure fill(list: ArrayList; obj: TObject);
+      class procedure sort(list: ArrayList; c: TObjectCompareFunction);
+  end;
+
+implementation
+
+uses
+  SysUtils, Classes;
+
+(**
+ * Searches the specified list for the specified object using the binary
+ * search algorithm.
+ *
+ * @param list the list to be searched.
+ * @param key the key to be searched for.
+ * @return the index of the search key, if it is contained in the list;
+ * otherwise, (-(insertion point) - 1). The insertion point is defined as
+ * the point at which the key would be inserted into the list: the index of
+ * the first element greater than the key, or list.size() if all elements in
+ * the list are less than the specified key. Note that this guarantees that
+ * the return value will be &gt;= 0 if and only if the key is found.
+ *)
+class function Collections.binarySearch(list: ArrayList; key: TObject; c: TObjectCompareFunction) : longInt;
+var
+  objectArray: array of TObject;
+  l, m, h: longInt;
+begin
+  objectArray := list.getArray();
+
+  l := 0;
+  h := list.size() - 1;
+  binarySearch := -1;
+
+  while l &lt;= h do begin
+    m := (l + h) div 2;
+
+    if c(objectArray[m], key) &gt; 0 then begin
+      h := m - 1;
+    end
+    else if c(objectArray[m], key) &lt; 0 then begin
+      l := m + 1;
+    end
+    else begin
+      binarySearch := m;
+      break;
+    end;
+  end;
+end;
+
+(**
+ * Copies all of the elements from one list into another.
+ *
+ * @param dest The destination list.
+ * @param src The source list.
+ *)
+class procedure Collections.copy(dest: ArrayList; src: ArrayList);
+var
+  destArray, srcArray: array of TObject;
+  i: longInt;
+begin
+  destArray := dest.getArray();
+  srcArray := src.getArray();
+
+  for i := 0 to src.size() - 1 do begin
+    destArray[i] := srcArray[i];
+  end;
+end;
+
+(**
+ * Replaces all of the elements of the specified list with the specified
+ * element.
+ *
+ * @param list the list to be filled with the specified element.
+ * @param obj The element with which to fill the specified list.
+ *)
+class procedure Collections.fill(list: ArrayList; obj: TObject);
+var
+  objectArray: array of TObject;
+  i: longInt;
+begin
+  objectArray := list.getArray();
+
+  for i := 0 to list.size() - 1 do begin
+    objectArray[i] := obj;
+  end;
+end;
+
+(**
+ * Sorts the specified list into ascending order, according to the natural
+ * ordering of its elements.
+ *
+ * @param list the list to be sorted.
+ *)
+class procedure Collections.sort(list: ArrayList; c: TObjectCompareFunction);
+var
+  a: array of TObject;
+  aux: array of TObject;
+begin
+  a := list.getArray();
+  setLength(aux, list.size());
+  _java.mergeSort(a, aux, 0, list.size() - 1, c);
+end;
+
+end.
+
+</code>
+</codes>
