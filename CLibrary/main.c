@@ -20,6 +20,7 @@
 #include "StringBuilder.h";
 #include "StringTokenizer.h";
 #include "System.h";
+#include "TestObject.h"
 
 int main(int argc, char** argv) {
     String *s1 = new_String("zeroth");

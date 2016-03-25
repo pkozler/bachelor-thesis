@@ -74,10 +74,6 @@ int32_t compareTo(String *ptr, String *anotherString) {
  * string, false otherwise
  */
 bool equals(String *ptr, String *anObject) {
-    if (ptr == anObject) {
-        return true;
-    }
-
     if (anObject == NULL || anObject == NULL) {
         return false;
     }

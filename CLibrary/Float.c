@@ -96,15 +96,11 @@ int32_t Float_compare(float f1, float f2) {
  * @return true if the objects are the same; false otherwise.
  */
 bool equalsF(Float *ptr, Float *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
-    if (sizeof (*ptr) != sizeof (*obj)) {
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

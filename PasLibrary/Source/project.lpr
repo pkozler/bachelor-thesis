@@ -22,7 +22,9 @@ uses
   StringBuilderUnit,
   StringTokenizerUnit,
   StringUnit,
-  SystemUnit, unit1;
+  SystemUnit,
+  TestObjectUnit,
+  TestObjectComparatorUnit;
 
 var
   s1 : String_;

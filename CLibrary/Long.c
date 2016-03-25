@@ -61,10 +61,6 @@ int32_t Long_compare(int64_t x, int64_t y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool equalsL(Long *ptr, Long *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-
     if (ptr == NULL || obj == NULL) {
         return false;
     }

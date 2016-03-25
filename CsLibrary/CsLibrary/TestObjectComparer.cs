@@ -5,12 +5,12 @@ namespace JavaClasses
 {
 
     /**
-     * The {@code TestObjectComparer} class represents a comparator
+     * The {@code TestObjectComparator} class represents a comparator
      * for the {@code TestObject} class instances.
      *
      * @author Petr Kozler
      */
-    public class TestObjectComparer : Comparator<TestObject> {
+    public class TestObjectComparator : Comparator<TestObject> {
         
         /**
          * Compares its two arguments for order.

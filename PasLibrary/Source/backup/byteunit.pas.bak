@@ -13,7 +13,7 @@ type
    *
    * @author Petr Kozler (A13B0359P)
    *)
-  Byte_ = class(Object_)
+  Byte_ = class(Comparable)
     private
       var
         v: shortInt;
@@ -104,7 +104,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Byte_(obj)).v);
+  equals_ := (v = (obj as Byte_).v);
 end;
 
 (**

@@ -104,7 +104,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Byte_(obj)).v);
+  equals_ := v = (obj as Byte_).v;
 end;
 
 (**

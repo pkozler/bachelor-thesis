@@ -103,7 +103,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Boolean_(obj)).v);
+  equals_ := v = (obj as Boolean_).v;
 end;
 
 (**

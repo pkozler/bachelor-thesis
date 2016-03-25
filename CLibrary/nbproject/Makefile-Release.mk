@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/StringBuilder.o \
 	${OBJECTDIR}/StringTokenizer.o \
 	${OBJECTDIR}/System.o \
+	${OBJECTDIR}/TestObject.o \
 	${OBJECTDIR}/main.o
 
 
@@ -175,6 +176,11 @@ ${OBJECTDIR}/System.o: System.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/System.o System.c
+
+${OBJECTDIR}/TestObject.o: TestObject.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TestObject.o TestObject.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

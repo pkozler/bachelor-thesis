@@ -18,6 +18,8 @@
 #include "StringBuilder.h";
 #include "StringTokenizer.h";
 #include "System.h";
+#include "TestObject.h"
+#include "TestObjectComparator.h"
 
 using namespace std;
 

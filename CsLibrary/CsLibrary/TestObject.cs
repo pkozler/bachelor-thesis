@@ -82,7 +82,7 @@
                 return false;
             }
 
-            TestObject other = (TestObject)obj;
+            TestObject other = obj as TestObject;
 
             return i == other.i;
         }

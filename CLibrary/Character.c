@@ -63,10 +63,6 @@ int32_t Character_compare(char x, char y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool equalsC(Character *ptr, Character *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-
     if (ptr == NULL || obj == NULL) {
         return false;
     }

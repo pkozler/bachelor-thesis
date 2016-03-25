@@ -185,7 +185,7 @@ begin
     exit(false);
   end;
 
-  v2 := Float(obj).v;
+  v2 := (obj as Float).v;
 
   if isNan(v) and isNan(v2) then begin
     exit(true);
@@ -203,7 +203,7 @@ begin
     exit(vBits.bits = negativeZeroBits);
   end;
 
-  equals_ := (v = v2);
+  equals_ := v = v2;
 end;
 
 (**

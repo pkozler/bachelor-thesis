@@ -112,7 +112,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Long(obj)).v);
+  equals_ := v = (obj as Long).v;
 end;
 
 (**

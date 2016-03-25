@@ -22,7 +22,8 @@ uses
   StringBuilderUnit,
   StringTokenizerUnit,
   StringUnit,
-  SystemUnit;
+  SystemUnit,
+  TestObjectUnit, unit1;
 
 var
   s1 : String_;

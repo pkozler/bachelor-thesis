@@ -23,6 +23,8 @@
       <itemPath>StringBuilder.h</itemPath>
       <itemPath>StringTokenizer.h</itemPath>
       <itemPath>System.h</itemPath>
+      <itemPath>TestObject.h</itemPath>
+      <itemPath>TestObjectComparator.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -50,6 +52,8 @@
       <itemPath>StringBuilder.cpp</itemPath>
       <itemPath>StringTokenizer.cpp</itemPath>
       <itemPath>System.cpp</itemPath>
+      <itemPath>TestObject.cpp</itemPath>
+      <itemPath>TestObjectComparator.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -156,6 +160,14 @@
       </item>
       <item path="System.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="TestObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestObjectComparator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TestObjectComparator.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -254,6 +266,14 @@
       <item path="System.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestObjectComparator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TestObjectComparator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

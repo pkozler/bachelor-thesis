@@ -23,6 +23,7 @@
       <itemPath>StringBuilder.h</itemPath>
       <itemPath>StringTokenizer.h</itemPath>
       <itemPath>System.h</itemPath>
+      <itemPath>TestObject.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -50,6 +51,7 @@
       <itemPath>StringBuilder.c</itemPath>
       <itemPath>StringTokenizer.c</itemPath>
       <itemPath>System.c</itemPath>
+      <itemPath>TestObject.c</itemPath>
       <itemPath>main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -156,6 +158,10 @@
       </item>
       <item path="System.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="TestObject.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
@@ -254,6 +260,10 @@
       <item path="System.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TestObject.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="TestObject.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>

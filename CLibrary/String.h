@@ -1,5 +1,5 @@
 #ifndef STRING_INCLUDED
-#define	STRING_INCLUDED
+#define STRING_INCLUDED
 
 #include <stdbool.h>
 #include <stdint.h>

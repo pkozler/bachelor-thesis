@@ -39,7 +39,7 @@ namespace JavaClasses
         {
             ArrayList<TestObject> a;
             int b;
-            TestObjectComparer c;
+            TestObjectComparator c;
             a = new ArrayList<TestObject>();
             a.add(new TestObject("first", 3));
             a.add(new TestObject("second", 2));
@@ -51,7 +51,7 @@ namespace JavaClasses
             a.add(new TestObject("eighth", 8));
             a.add(new TestObject("nineth", 7));
             a.add(new TestObject("tenth", 6));
-            c = new TestObjectComparer();
+            c = new TestObjectComparator();
             Collections.sort(a);
             b = Collections.binarySearch(a, new TestObject("sixth", 6), c);
             Assert.AreEqual(4, b);
@@ -138,7 +138,7 @@ namespace JavaClasses
         {
             ArrayList<TestObject> a;
             String b;
-            TestObjectComparer c;
+            TestObjectComparator c;
             a = new ArrayList<TestObject>();
             a.add(new TestObject("first", 3));
             a.add(new TestObject("second", 2));
@@ -150,7 +150,7 @@ namespace JavaClasses
             a.add(new TestObject("eighth", 8));
             a.add(new TestObject("nineth", 7));
             a.add(new TestObject("tenth", 6));
-            c = new TestObjectComparer();
+            c = new TestObjectComparator();
             Collections.sort(a, c);
             b = a.toString();
             Assert.AreEqual("[TestObject [str=second, i=2], TestObject [str=seventh, i=2], TestObject [str=first, i=3], TestObject [str=sixth, i=3], TestObject [str=fifth, i=6], TestObject [str=tenth, i=6], TestObject [str=fourth, i=7], TestObject [str=nineth, i=7], TestObject [str=third, i=8], TestObject [str=eighth, i=8]]", b);

@@ -304,7 +304,7 @@ namespace JavaClasses
         {
             TestObject[] a;
             int b;
-            TestObjectComparer c;
+            TestObjectComparator c;
             a = new TestObject[]{
             new TestObject("first", 3),
             new TestObject("second", 2),
@@ -317,7 +317,7 @@ namespace JavaClasses
             new TestObject("nineth", 7),
             new TestObject("tenth", 6)
         };
-            c = new TestObjectComparer();
+            c = new TestObjectComparator();
             Arrays.sort(a, c);
             b = Arrays.binarySearch(a, new TestObject("sixth", 6), c);
             Assert.AreEqual(4, b);
@@ -334,7 +334,7 @@ namespace JavaClasses
         {
             TestObject[] a;
             int b;
-            TestObjectComparer c;
+            TestObjectComparator c;
             a = new TestObject[]{
             new TestObject("first", 3),
             new TestObject("second", 2),
@@ -347,7 +347,7 @@ namespace JavaClasses
             new TestObject("nineth", 7),
             new TestObject("tenth", 6)
         };
-            c = new TestObjectComparer();
+            c = new TestObjectComparator();
             Arrays.sort(a, c);
             b = Arrays.binarySearch(a, 1, 4, new TestObject("sixth", 6), c);
             Assert.AreEqual(-5, b);
@@ -1499,7 +1499,7 @@ namespace JavaClasses
         {
             TestObject[] a;
             bool b;
-            TestObjectComparer c;
+            TestObjectComparator c;
             a = new TestObject[]{
             new TestObject("first", 3),
             new TestObject("second", 2),
@@ -1512,7 +1512,7 @@ namespace JavaClasses
             new TestObject("nineth", 7),
             new TestObject("tenth", 6)
         };
-            c = new TestObjectComparer();
+            c = new TestObjectComparator();
             Arrays.sort(a, c);
             b = Arrays.equals(a, new TestObject[] {new TestObject("second", 2), new TestObject("seventh", 2), new TestObject("first", 3), new TestObject("sixth", 3), new TestObject("fifth", 6), new TestObject("tenth", 6), new TestObject("fourth", 7), new TestObject("nineth", 7), new TestObject("third", 8), new TestObject("eighth", 8)});
             Assert.AreEqual(true, b);
@@ -1527,7 +1527,7 @@ namespace JavaClasses
         {
             TestObject[] a;
             bool b;
-            TestObjectComparer c;
+            TestObjectComparator c;
             a = new TestObject[]{
             new TestObject("first", 3),
             new TestObject("second", 2),
@@ -1540,7 +1540,7 @@ namespace JavaClasses
             new TestObject("nineth", 7),
             new TestObject("tenth", 6)
         };
-            c = new TestObjectComparer();
+            c = new TestObjectComparator();
             Arrays.sort(a, 1, 4, c);
             b = Arrays.equals(a, new TestObject[] {new TestObject("first", 3), new TestObject("second", 2), new TestObject("fourth", 7), new TestObject("third", 8), new TestObject("fifth", 6), new TestObject("sixth", 3), new TestObject("seventh", 2), new TestObject("eighth", 8), new TestObject("nineth", 7), new TestObject("tenth", 6)});
             Assert.AreEqual(true, b);

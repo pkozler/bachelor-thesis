@@ -61,10 +61,6 @@ int32_t Integer_compare(int32_t x, int32_t y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool equalsI(Integer *ptr, Integer *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-
     if (ptr == NULL || obj == NULL) {
         return false;
     }

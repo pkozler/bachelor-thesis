@@ -405,7 +405,7 @@ end;
  *
  * @return the string itself.
  *)
-function toString_() : String_;
+function String_.toString_() : String_;
 begin
   toString_ := String_.create(str);
 end;

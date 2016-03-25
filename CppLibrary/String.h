@@ -28,7 +28,7 @@ public:
      * @return a negative integer, zero, or a positive integer as this object
      * is less than, equal to, or greater than the specified object.
      */
-    virtual int compareTo(T *o) = 0;
+    virtual int32_t compareTo(T *o) = 0;
 };
 
 /**
@@ -44,7 +44,7 @@ public:
      * @return a negative integer, zero, or a positive integer as the
      * first argument is less than, equal to, or greater than the second.
      */
-    virtual int compare(T *o1, T *o2) = 0;
+    virtual int32_t compare(T *o1, T *o2) = 0;
 };
 
 /**

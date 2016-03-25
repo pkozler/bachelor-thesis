@@ -61,10 +61,6 @@ int32_t Short_compare(int16_t x, int16_t y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool equalsS(Short *ptr, Short *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-
     if (ptr == NULL || obj == NULL) {
         return false;
     }

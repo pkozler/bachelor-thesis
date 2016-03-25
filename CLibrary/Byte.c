@@ -61,10 +61,6 @@ int32_t Byte_compare(int8_t x, int8_t y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool equalsB(Byte *ptr, Byte *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-
     if (ptr == NULL || obj == NULL) {
         return false;
     }

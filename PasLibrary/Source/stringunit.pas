@@ -189,7 +189,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (ansiCompareStr(self.str, String_(anObject).str) = 0);
+  equals_ := (ansiCompareStr(self.str, (anObject as String_).str) = 0);
 end;
 
 (**

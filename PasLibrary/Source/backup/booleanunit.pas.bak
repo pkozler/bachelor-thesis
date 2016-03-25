@@ -20,7 +20,7 @@ type
     public
       constructor create(value: boolean);
       function booleanValue() : boolean;
-      function compareTo(b: Boolean_) : longInt; override;
+      function compareTo(b: Object_) : longInt; override;
       class function compare(x, y: boolean) : longInt;
       function equals_(obj: Object_) : boolean; override;
       function toString_() : String_; override;
@@ -103,7 +103,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Boolean_(obj)).v);
+  equals_ := v = (obj as Boolean_).v);
 end;
 
 (**

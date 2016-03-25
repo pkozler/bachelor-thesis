@@ -96,15 +96,11 @@ int32_t Double_compare(double d1, double d2) {
  * @return true if the objects are the same; false otherwise.
  */
 bool equalsD(Double *ptr, Double *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
-    if (sizeof (*ptr) != sizeof (*obj)) {
+    if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 

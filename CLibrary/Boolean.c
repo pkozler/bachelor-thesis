@@ -61,10 +61,6 @@ int32_t Boolean_compare(bool x, bool y) {
  * otherwise.
  */
 bool equalsBool(Boolean *ptr, Boolean *obj) {
-    if (ptr == obj) {
-        return true;
-    }
-    
     if (ptr == NULL || obj == NULL) {
         return false;
     }

@@ -54,6 +54,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/StringBuilder.o \
 	${OBJECTDIR}/StringTokenizer.o \
 	${OBJECTDIR}/System.o \
+	${OBJECTDIR}/TestObject.o \
+	${OBJECTDIR}/TestObjectComparator.o \
 	${OBJECTDIR}/main.o
 
 
@@ -175,6 +177,16 @@ ${OBJECTDIR}/System.o: System.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/System.o System.cpp
+
+${OBJECTDIR}/TestObject.o: TestObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TestObject.o TestObject.cpp
+
+${OBJECTDIR}/TestObjectComparator.o: TestObjectComparator.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TestObjectComparator.o TestObjectComparator.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

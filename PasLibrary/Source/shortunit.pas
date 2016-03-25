@@ -104,7 +104,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Short(obj)).v);
+  equals_ := v = (obj as Short).v;
 end;
 
 (**
