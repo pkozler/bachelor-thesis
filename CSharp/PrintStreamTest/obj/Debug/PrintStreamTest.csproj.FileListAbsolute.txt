@@ -1,0 +1,11 @@
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\PrintStreamTest.exe.config
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\PrintStreamTest.exe
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\PrintStreamTest.pdb
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\CsLibraryTest.dll
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\CsLibrary.exe
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\CsLibraryTest.pdb
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\bin\Debug\CsLibrary.pdb
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\obj\Debug\PrintStreamTest.csprojResolveAssemblyReference.cache
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\obj\Debug\PrintStreamTest.exe
+C:\Users\pkout\Dropbox\bp\CSharp\PrintStreamTest\obj\Debug\PrintStreamTest.pdb

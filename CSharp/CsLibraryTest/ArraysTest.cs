@@ -5,9 +5,10 @@ namespace JavaClasses
     [TestClass]
     public class ArraysTest
     {
-        /**
-         * Tests the binarySearch method with array of bytes.
-         */
+
+        /// <summary>
+        /// Tests the binarySearch method with array of bytes.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest()
         {
@@ -23,10 +24,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of bytes and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of bytes and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest2()
         {
@@ -42,9 +43,9 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of chars.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of chars.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest3()
         {
@@ -58,10 +59,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of chars and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of chars and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest4()
         {
@@ -75,9 +76,9 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of doubles.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of doubles.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest5()
         {
@@ -91,10 +92,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of doubles and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of doubles and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest6()
         {
@@ -108,9 +109,9 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of floats.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of floats.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest7()
         {
@@ -124,10 +125,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of floats and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of floats and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest8()
         {
@@ -141,9 +142,9 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of ints.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of ints.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest9()
         {
@@ -157,10 +158,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of ints and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of ints and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest10()
         {
@@ -174,9 +175,9 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of longs.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of longs.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest11()
         {
@@ -190,10 +191,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of longs and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of longs and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest12()
         {
@@ -207,9 +208,9 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of objects.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of objects.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest13()
         {
@@ -234,10 +235,10 @@ namespace JavaClasses
             Assert.AreEqual(-5, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of objects and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of objects and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest14()
         {
@@ -262,9 +263,9 @@ namespace JavaClasses
             Assert.AreEqual(-5, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of shorts.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of shorts.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest15()
         {
@@ -278,10 +279,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of shorts and indexes as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of shorts and indexes as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest16()
         {
@@ -295,10 +296,10 @@ namespace JavaClasses
             Assert.AreEqual(-3, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of objects and comparator as a
-         * parameter.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of objects and comparator as a
+        /// parameter.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest17()
         {
@@ -325,10 +326,10 @@ namespace JavaClasses
             Assert.AreEqual(-5, b);
         }
 
-        /**
-         * Tests the binarySearch method with array of shorts and indexes and
-         * comparator as parameters.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with array of shorts and indexes and
+        /// comparator as parameters.
+        /// </summary>
         [TestMethod]
         public void binarySearchTest18()
         {
@@ -355,9 +356,9 @@ namespace JavaClasses
             Assert.AreEqual(-5, b);
         }
 
-        /**
-         * Tests the copyOf method with array of booleans.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of booleans.
+        /// </summary>
         [TestMethod]
         public void copyOfTest()
         {
@@ -378,9 +379,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of bytes.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of bytes.
+        /// </summary>
         [TestMethod]
         public void copyOfTest2()
         {
@@ -398,9 +399,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of chars.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of chars.
+        /// </summary>
         [TestMethod]
         public void copyOfTest3()
         {
@@ -418,9 +419,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of doubles.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of doubles.
+        /// </summary>
         [TestMethod]
         public void copyOfTest4()
         {
@@ -438,9 +439,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of floats.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of floats.
+        /// </summary>
         [TestMethod]
         public void copyOfTest5()
         {
@@ -458,9 +459,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of ints.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of ints.
+        /// </summary>
         [TestMethod]
         public void copyOfTest6()
         {
@@ -478,9 +479,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of longs.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of longs.
+        /// </summary>
         [TestMethod]
         public void copyOfTest7()
         {
@@ -498,9 +499,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of shorts.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of shorts.
+        /// </summary>
         [TestMethod]
         public void copyOfTest8()
         {
@@ -518,9 +519,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOf method with array of objects.
-         */
+        /// <summary>
+        /// Tests the copyOf method with array of objects.
+        /// </summary>
         [TestMethod]
         public void copyOfTest9()
         {
@@ -543,9 +544,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of booleans.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of booleans.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest1()
         {
@@ -566,9 +567,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of bytes.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of bytes.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest2()
         {
@@ -586,9 +587,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of chars.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of chars.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest3()
         {
@@ -606,9 +607,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of doubles.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of doubles.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest4()
         {
@@ -626,9 +627,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of floats.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of floats.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest5()
         {
@@ -646,9 +647,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of ints.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of ints.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest6()
         {
@@ -666,9 +667,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of longs.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of longs.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest7()
         {
@@ -686,9 +687,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of shorts.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of shorts.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest8()
         {
@@ -706,9 +707,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the copyOfRange method with array of objects.
-         */
+        /// <summary>
+        /// Tests the copyOfRange method with array of objects.
+        /// </summary>
         [TestMethod]
         public void copyOfRangeTest9()
         {
@@ -731,9 +732,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of booleans.
-         */
+        /// <summary>
+        /// Tests the equals method with array of booleans.
+        /// </summary>
         [TestMethod]
         public void equalsTest()
         {
@@ -762,9 +763,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of bytes.
-         */
+        /// <summary>
+        /// Tests the equals method with array of bytes.
+        /// </summary>
         [TestMethod]
         public void equalsTest2()
         {
@@ -788,9 +789,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of chars.
-         */
+        /// <summary>
+        /// Tests the equals method with array of chars.
+        /// </summary>
         [TestMethod]
         public void equalsTest3()
         {
@@ -814,9 +815,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of doubles.
-         */
+        /// <summary>
+        /// Tests the equals method with array of doubles.
+        /// </summary>
         [TestMethod]
         public void equalsTest4()
         {
@@ -840,9 +841,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of floats.
-         */
+        /// <summary>
+        /// Tests the equals method with array of floats.
+        /// </summary>
         [TestMethod]
         public void equalsTest5()
         {
@@ -866,9 +867,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of ints.
-         */
+        /// <summary>
+        /// Tests the equals method with array of ints.
+        /// </summary>
         [TestMethod]
         public void equalsTest6()
         {
@@ -892,9 +893,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of longs.
-         */
+        /// <summary>
+        /// Tests the equals method with array of longs.
+        /// </summary>
         [TestMethod]
         public void equalsTest7()
         {
@@ -918,9 +919,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of objects.
-         */
+        /// <summary>
+        /// Tests the equals method with array of objects.
+        /// </summary>
         [TestMethod]
         public void equalsTest8()
         {
@@ -962,9 +963,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method with array of shorts.
-         */
+        /// <summary>
+        /// Tests the equals method with array of shorts.
+        /// </summary>
         [TestMethod]
         public void equalsTest9()
         {
@@ -988,9 +989,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the fill method with array of booleans.
-         */
+        /// <summary>
+        /// Tests the fill method with array of booleans.
+        /// </summary>
         [TestMethod]
         public void fillTest()
         {
@@ -1003,9 +1004,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of booleans and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of booleans and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest2()
         {
@@ -1018,9 +1019,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of bytes.
-         */
+        /// <summary>
+        /// Tests the fill method with array of bytes.
+        /// </summary>
         [TestMethod]
         public void fillTest3()
         {
@@ -1032,9 +1033,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of bytes and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of bytes and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest4()
         {
@@ -1046,9 +1047,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of chars.
-         */
+        /// <summary>
+        /// Tests the fill method with array of chars.
+        /// </summary>
         [TestMethod]
         public void fillTest5()
         {
@@ -1060,9 +1061,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of chars and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of chars and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest6()
         {
@@ -1074,9 +1075,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of doubles.
-         */
+        /// <summary>
+        /// Tests the fill method with array of doubles.
+        /// </summary>
         [TestMethod]
         public void fillTest7()
         {
@@ -1088,9 +1089,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of doubles and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of doubles and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest8()
         {
@@ -1102,9 +1103,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of floats.
-         */
+        /// <summary>
+        /// Tests the fill method with array of floats.
+        /// </summary>
         [TestMethod]
         public void fillTest9()
         {
@@ -1116,9 +1117,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of floats and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of floats and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest10()
         {
@@ -1130,9 +1131,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of ints.
-         */
+        /// <summary>
+        /// Tests the fill method with array of ints.
+        /// </summary>
         [TestMethod]
         public void fillTest11()
         {
@@ -1144,9 +1145,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of ints and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of ints and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest12()
         {
@@ -1158,9 +1159,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of longs.
-         */
+        /// <summary>
+        /// Tests the fill method with array of longs.
+        /// </summary>
         [TestMethod]
         public void fillTest13()
         {
@@ -1172,9 +1173,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of longs and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of longs and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest14()
         {
@@ -1186,9 +1187,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of objects.
-         */
+        /// <summary>
+        /// Tests the fill method with array of objects.
+        /// </summary>
         [TestMethod]
         public void fillTest15()
         {
@@ -1200,9 +1201,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of objects and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of objects and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest16()
         {
@@ -1214,9 +1215,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of shorts.
-         */
+        /// <summary>
+        /// Tests the fill method with array of shorts.
+        /// </summary>
         [TestMethod]
         public void fillTest17()
         {
@@ -1228,9 +1229,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the fill method with array of shorts and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the fill method with array of shorts and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void fillTest18()
         {
@@ -1242,9 +1243,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of bytes.
-         */
+        /// <summary>
+        /// Tests the sort method with array of bytes.
+        /// </summary>
         [TestMethod]
         public void sortTest()
         {
@@ -1257,9 +1258,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of bytes and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of bytes and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest2()
         {
@@ -1272,9 +1273,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of chars.
-         */
+        /// <summary>
+        /// Tests the sort method with array of chars.
+        /// </summary>
         [TestMethod]
         public void sortTest3()
         {
@@ -1286,9 +1287,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of chars and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of chars and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest4()
         {
@@ -1300,9 +1301,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of doubles.
-         */
+        /// <summary>
+        /// Tests the sort method with array of doubles.
+        /// </summary>
         [TestMethod]
         public void sortTest5()
         {
@@ -1314,9 +1315,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of doubles and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of doubles and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest6()
         {
@@ -1328,9 +1329,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of floats.
-         */
+        /// <summary>
+        /// Tests the sort method with array of floats.
+        /// </summary>
         [TestMethod]
         public void sortTest7()
         {
@@ -1342,9 +1343,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of floats and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of floats and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest8()
         {
@@ -1356,9 +1357,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of ints.
-         */
+        /// <summary>
+        /// Tests the sort method with array of ints.
+        /// </summary>
         [TestMethod]
         public void sortTest9()
         {
@@ -1370,9 +1371,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of ints and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of ints and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest10()
         {
@@ -1384,9 +1385,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of longs.
-         */
+        /// <summary>
+        /// Tests the sort method with array of longs.
+        /// </summary>
         [TestMethod]
         public void sortTest11()
         {
@@ -1398,9 +1399,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of longs and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of longs and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest12()
         {
@@ -1412,9 +1413,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of objects.
-         */
+        /// <summary>
+        /// Tests the sort method with array of objects.
+        /// </summary>
         [TestMethod]
         public void sortTest13()
         {
@@ -1437,9 +1438,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of objects and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of objects and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest14()
         {
@@ -1462,9 +1463,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of shorts.
-         */
+        /// <summary>
+        /// Tests the sort method with array of shorts.
+        /// </summary>
         [TestMethod]
         public void sortTest15()
         {
@@ -1476,9 +1477,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of shorts and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of shorts and indexes as parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest16()
         {
@@ -1490,10 +1491,10 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of objects and comparator as a
-         * parameter.
-         */
+        /// <summary>
+        /// Tests the sort method with array of objects and comparator as a
+        /// parameter.
+        /// </summary>
         [TestMethod]
         public void sortTest17()
         {
@@ -1518,10 +1519,10 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the sort method with array of objects and indexes and comparator as
-         * parameters.
-         */
+        /// <summary>
+        /// Tests the sort method with array of objects and indexes and comparator as
+        /// parameters.
+        /// </summary>
         [TestMethod]
         public void sortTest18()
         {
@@ -1546,9 +1547,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the toString method with array of booleans.
-         */
+        /// <summary>
+        /// Tests the toString method with array of booleans.
+        /// </summary>
         [TestMethod]
         public void toStringTest()
         {
@@ -1568,9 +1569,9 @@ namespace JavaClasses
             Assert.AreEqual("[true, false, false, false, true]", b);
         }
 
-        /**
-         * Tests the toString method with array of bytes.
-         */
+        /// <summary>
+        /// Tests the toString method with array of bytes.
+        /// </summary>
         [TestMethod]
         public void toStringTest2()
         {
@@ -1587,9 +1588,9 @@ namespace JavaClasses
             Assert.AreEqual("[3, 2, 8, 7, 6]", b);
         }
 
-        /**
-         * Tests the toString method with array of chars.
-         */
+        /// <summary>
+        /// Tests the toString method with array of chars.
+        /// </summary>
         [TestMethod]
         public void toStringTest3()
         {
@@ -1606,9 +1607,9 @@ namespace JavaClasses
             Assert.AreEqual("[c, b, h, g, f]", b);
         }
 
-        /**
-         * Tests the toString method with array of doubles.
-         */
+        /// <summary>
+        /// Tests the toString method with array of doubles.
+        /// </summary>
         [TestMethod]
         public void toStringTest4()
         {
@@ -1625,9 +1626,9 @@ namespace JavaClasses
             Assert.AreEqual("[3.0, 2.0, 8.0, 7.0, 6.0]", b);
         }
 
-        /**
-         * Tests the toString method with array of floats.
-         */
+        /// <summary>
+        /// Tests the toString method with array of floats.
+        /// </summary>
         [TestMethod]
         public void toStringTest5()
         {
@@ -1644,9 +1645,9 @@ namespace JavaClasses
             Assert.AreEqual("[3.0, 2.0, 8.0, 7.0, 6.0]", b);
         }
 
-        /**
-         * Tests the toString method with array of ints.
-         */
+        /// <summary>
+        /// Tests the toString method with array of ints.
+        /// </summary>
         [TestMethod]
         public void toStringTest6()
         {
@@ -1663,9 +1664,9 @@ namespace JavaClasses
             Assert.AreEqual("[3, 2, 8, 7, 6]", b);
         }
 
-        /**
-         * Tests the toString method with array of longs.
-         */
+        /// <summary>
+        /// Tests the toString method with array of longs.
+        /// </summary>
         [TestMethod]
         public void toStringTest7()
         {
@@ -1682,9 +1683,9 @@ namespace JavaClasses
             Assert.AreEqual("[3, 2, 8, 7, 6]", b);
         }
 
-        /**
-         * Tests the toString method with array of objects.
-         */
+        /// <summary>
+        /// Tests the toString method with array of objects.
+        /// </summary>
         [TestMethod]
         public void toStringTest8()
         {
@@ -1710,9 +1711,9 @@ namespace JavaClasses
             Assert.AreEqual("[null, null, null]", b);
         }
 
-        /**
-         * Tests the toString method with array of shorts.
-         */
+        /// <summary>
+        /// Tests the toString method with array of shorts.
+        /// </summary>
         [TestMethod]
         public void toStringTest9()
         {

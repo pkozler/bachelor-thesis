@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class ByteTest
 	{
-        /**
-         * Tests the byteValue method.
-         */
+
+        /// <summary>
+        /// Tests the byteValue method.
+        /// </summary>
         [TestMethod]
 		public void byteValueTest()
         {
@@ -27,9 +28,9 @@ namespace JavaClasses
             Assert.AreEqual(127, b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -67,9 +68,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the compare method.
-         */
+        /// <summary>
+        /// Tests the compare method.
+        /// </summary>
         [TestMethod]
 		public void compareTest()
         {
@@ -101,9 +102,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -135,9 +136,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -146,56 +147,52 @@ namespace JavaClasses
             // positive value text representation
             a = new Byte((sbyte)100);
             b = a.toString();
-            Assert.AreEqual(100, b);
+            Assert.AreEqual("100", b);
             // zero value text representation
             a = new Byte((sbyte)0);
             b = a.toString();
-            Assert.AreEqual(0, b);
+            Assert.AreEqual("0", b);
             // negative value text representation
             a = new Byte((sbyte)-100);
             b = a.toString();
-            Assert.AreEqual(-100, b);
+            Assert.AreEqual("-100", b);
         }
 
-        /**
-         * Tests the static toString method.
-         */
+        /// <summary>
+        /// Tests the static toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest2()
         {
-            Byte a;
+            sbyte a;
             String b;
-            a = new Byte((sbyte)100);
+            a = (sbyte)100;
             b = Byte.toString(a);
-            Assert.AreEqual(100, b);
-            a = new Byte((sbyte)0);
+            Assert.AreEqual("100", b);
+            a = (sbyte)0;
             b = Byte.toString(a);
-            Assert.AreEqual(0, b);
-            a = new Byte((sbyte)-100);
+            Assert.AreEqual("0", b);
+            a = (sbyte)-100;
             b = Byte.toString(a);
-            Assert.AreEqual(-100, b);
+            Assert.AreEqual("-100", b);
         }
 
-        /**
-         * Tests the parseByte method.
-         */
+        /// <summary>
+        /// Tests the parseByte method.
+        /// </summary>
         [TestMethod]
 		public void parseByteTest()
         {
-            Byte a;
-            sbyte b;
+            sbyte a;
             // positive value parsing
             a = Byte.parseByte("100");
-            b = a.byteValue();
-            Assert.AreEqual(100, b);
+            Assert.AreEqual(100, a);
             // zero value parsing
             a = Byte.parseByte("0");
-            b = a.byteValue();
-            Assert.AreEqual(0, b);
+            Assert.AreEqual(0, a);
             // negative value parsing
             a = Byte.parseByte("-100");
-            b = a.byteValue();
-            Assert.AreEqual(-100, b);
+            Assert.AreEqual(-100, a);
         }
 
     }

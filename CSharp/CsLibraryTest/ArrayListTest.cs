@@ -21,9 +21,9 @@ namespace JavaClasses
             return list;
         }
 
-        /**
-         * Tests the constructor.
-         */
+        /// <summary>
+        /// Tests the constructor.
+        /// </summary>
         [TestMethod]
         public void arrayListTest()
         {
@@ -35,9 +35,9 @@ namespace JavaClasses
             Assert.AreEqual(true, b);
         }
 
-        /**
-         * Tests the constructor with ArrayList as a parameter.
-         */
+        /// <summary>
+        /// Tests the constructor with ArrayList as a parameter.
+        /// </summary>
         [TestMethod]
         public void arrayListTest2()
         {
@@ -69,9 +69,9 @@ namespace JavaClasses
             Assert.AreEqual(true, d);
         }
 
-        /**
-         * Tests the add method.
-         */
+        /// <summary>
+        /// Tests the add method.
+        /// </summary>
         [TestMethod]
         public void addTest()
         {
@@ -102,9 +102,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the add method with index as a parameter.
-         */
+        /// <summary>
+        /// Tests the add method with index as a parameter.
+        /// </summary>
         [TestMethod]
         public void addTest2()
         {
@@ -139,9 +139,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
         public void equalsTest()
         {
@@ -157,12 +157,12 @@ namespace JavaClasses
             b = null;
             c = a.equals(b);
             Assert.AreEqual(false, c);
-            a = toList(new TestObject[]{
+            b = toList(new TestObject[]{
                 new TestObject("first", 3)
             });
             c = a.equals(b);
             Assert.AreEqual(false, c);
-            a = toList(new TestObject[]{
+            b = toList(new TestObject[]{
                 new TestObject("first", 3),
                 new TestObject("second", 2),
                 new TestObject("third", 8),
@@ -179,15 +179,15 @@ namespace JavaClasses
                 new TestObject("tenth", 6)
             });
             c = a.equals(b);
-            Assert.AreEqual(false, c);
+            Assert.AreEqual(true, c);
             b = a;
             c = a.equals(b);
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the get method.
-         */
+        /// <summary>
+        /// Tests the get method.
+        /// </summary>
         [TestMethod]
         public void getTest()
         {
@@ -227,9 +227,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the set method.
-         */
+        /// <summary>
+        /// Tests the set method.
+        /// </summary>
         [TestMethod]
         public void setTest()
         {
@@ -264,9 +264,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the remove method.
-         */
+        /// <summary>
+        /// Tests the remove method.
+        /// </summary>
         [TestMethod]
         public void removeTest()
         {
@@ -298,9 +298,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the size method.
-         */
+        /// <summary>
+        /// Tests the size method.
+        /// </summary>
         [TestMethod]
         public void sizeTest()
         {
@@ -334,9 +334,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the isEmpty method.
-         */
+        /// <summary>
+        /// Tests the isEmpty method.
+        /// </summary>
         [TestMethod]
         public void isEmptyTest()
         {
@@ -365,9 +365,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the clear method.
-         */
+        /// <summary>
+        /// Tests the clear method.
+        /// </summary>
         [TestMethod]
         public void clearTest()
         {
@@ -397,9 +397,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
         public void toStringTest()
         {
@@ -423,5 +423,6 @@ namespace JavaClasses
             c = a.toString();
             Assert.AreEqual("[TestObject [str=first, i=1], TestObject [str=second, i=2], TestObject [str=third, i=3]]", c);
         }
+
     }
 }

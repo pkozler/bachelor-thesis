@@ -3,7 +3,11 @@ program fpcunitproject;
 {$mode objfpc}{$H+}
 
 uses
-  Classes, consoletestrunner, mathtestunit;
+  Classes, consoletestrunner, MathTestUnit, ArraysTestUnit, CollectionsTestUnit,
+  ArrayListTestUnit, LinkedListTestUnit, StringTestUnit, StringTokenizerTestUnit,
+  StringBuilderTestUnit, ScannerTestUnit, PrintStreamTestUnit,
+  BooleanTestUnit, CharacterTestUnit, ByteTestUnit, ShortTestUnit,
+  IntegerTestUnit, LongTestUnit, FloatTestUnit, DoubleTestUnit;
 
 type
 

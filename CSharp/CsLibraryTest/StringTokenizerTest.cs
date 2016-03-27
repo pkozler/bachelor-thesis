@@ -5,11 +5,11 @@ namespace JavaClasses
     [TestClass]
     public class StringTokenizerTest
     {
+        
         /*
-         Creates the string representation of the array of tokens which are created
-         from tokenized string.
-         */
-        private static String[] getStringArray(StringTokenizer a)
+         Creates the array of tokens which are created the from tokenized string.
+        */
+        private static String[] toStringArray(StringTokenizer a)
         {
             String[] b;
             int c;
@@ -24,9 +24,9 @@ namespace JavaClasses
             return b;
         }
 
-        /**
-         * Tests the constructor.
-         */
+        /// <summary>
+        /// Tests the constructor.
+        /// </summary>
         [TestMethod]
         public void stringTokenizerTest()
         {
@@ -34,29 +34,29 @@ namespace JavaClasses
             String[] b;
             // whitespaces inside the string
             a = new StringTokenizer("This is a test.");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
             // whitespaces inside and outside the string
             a = new StringTokenizer(" This is   a test. ");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
             // without whitespaces
             a = new StringTokenizer("This_is_a_test.");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This_is_a_test."}, b);
             // one character
             a = new StringTokenizer("_");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"_"}, b);
             // empty string
             a = new StringTokenizer("");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {}, b);
         }
 
-        /**
-         * Tests the constructor with a set of delimiters as a parameter.
-         */
+        /// <summary>
+        /// Tests the constructor with a set of delimiters as a parameter.
+        /// </summary>
         [TestMethod]
         public void stringTokenizerTest2()
         {
@@ -64,33 +64,33 @@ namespace JavaClasses
             String[] b;
             // non-white delimiter (non-existent in string)
             a = new StringTokenizer("This is a test.", "_");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This is a test."}, b);
             // non-white delimiter (inside the string)
             a = new StringTokenizer("This_is_a_test.", "_");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
             // non-white delimiter (also the whitespaces inside the string)
             a = new StringTokenizer("This_is_ a _test.", "_");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This", "is", " a ", "test."}, b);
             // non-white delimiter (also the whitespaces inside and outside the string)
             a = new StringTokenizer("_This_is___a_test._", "_");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
             // more delimiters (existing in the string)
             a = new StringTokenizer("This is_a test.", " _");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
             // more delimiters (non-existent in the string)
             a = new StringTokenizer("Thisisatest.", " _");
-            b = getStringArray(a);
+            b = toStringArray(a);
             Assert.AreEqual(new String[] {"Thisisatest."}, b);
         }
 
-        /**
-         * Tests the countTokens method.
-         */
+        /// <summary>
+        /// Tests the countTokens method.
+        /// </summary>
         [TestMethod]
         public void countTokensTest()
         {
@@ -118,9 +118,9 @@ namespace JavaClasses
             Assert.AreEqual(0, b);
         }
 
-        /**
-         * Tests the hasMoreTokens method.
-         */
+        /// <summary>
+        /// Tests the hasMoreTokens method.
+        /// </summary>
         [TestMethod]
         public void hasMoreTokensTest()
         {
@@ -143,9 +143,9 @@ namespace JavaClasses
             Assert.AreEqual(false, b);
         }
 
-        /**
-         * Tests the nextToken method.
-         */
+        /// <summary>
+        /// Tests the nextToken method.
+        /// </summary>
         [TestMethod]
         public void nextTokenTest()
         {

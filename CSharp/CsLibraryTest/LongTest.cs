@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class LongTest
 	{
-        /**
-         * Tests the longValue method.
-         */
+
+        /// <summary>
+        /// Tests the longValue method.
+        /// </summary>
         [TestMethod]
 		public void longValueTest()
         {
@@ -24,9 +25,9 @@ namespace JavaClasses
             Assert.AreEqual(9223372036854775807, b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -34,33 +35,33 @@ namespace JavaClasses
             int c;
             a = new Long(Long.MIN_VALUE);
             b = new Long((long)-1);
-            c = Long.compare(a, b);
+            c = a.compareTo(b);
             Assert.AreEqual(-1, c);
             a = new Long(Long.MAX_VALUE);
             b = new Long((long)1);
-            c = Long.compare(a, b);
+            c = a.compareTo(b);
             Assert.AreEqual(1, c);
             a = new Long((long)0);
             b = new Long((long)1);
-            c = Long.compare(a, b);
+            c = a.compareTo(b);
             Assert.AreEqual(-1, c);
             a = new Long((long)0);
             b = new Long((long)-1);
-            c = Long.compare(a, b);
+            c = a.compareTo(b);
             Assert.AreEqual(1, c);
             a = new Long((long)1);
             b = new Long((long)1);
-            c = Long.compare(a, b);
+            c = a.compareTo(b);
             Assert.AreEqual(0, c);
             a = new Long((long)-1);
             b = new Long((long)-1);
-            c = Long.compare(a, b);
+            c = a.compareTo(b);
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the compare method.
-         */
+        /// <summary>
+        /// Tests the compare method.
+        /// </summary>
         [TestMethod]
 		public void compareTest()
         {
@@ -92,9 +93,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -126,9 +127,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -136,52 +137,49 @@ namespace JavaClasses
             String b;
             a = new Long((long)10000000000L);
             b = a.toString();
-            Assert.AreEqual(10000000000, b);
+            Assert.AreEqual("10000000000", b);
             a = new Long((long)0);
             b = a.toString();
-            Assert.AreEqual(0, b);
+            Assert.AreEqual("0", b);
             a = new Long((long)-10000000000L);
             b = a.toString();
-            Assert.AreEqual(-10000000000, b);
+            Assert.AreEqual("-10000000000", b);
         }
 
-        /**
-         * Tests the static toString method.
-         */
+        /// <summary>
+        /// Tests the static toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest2()
         {
-            Long a;
+            long a;
             String b;
-            a = new Long((long)10000000000L);
+            a = (long)10000000000L;
             b = Long.toString(a);
-            Assert.AreEqual(10000000000, b);
-            a = new Long((long)0);
+            Assert.AreEqual("10000000000", b);
+            a = (long)0;
             b = Long.toString(a);
-            Assert.AreEqual(0, b);
-            a = new Long((long)-10000000000L);
+            Assert.AreEqual("0", b);
+            a = (long)-10000000000L;
             b = Long.toString(a);
-            Assert.AreEqual(-10000000000, b);
+            Assert.AreEqual("-10000000000", b);
         }
 
-        /**
-         * Tests the parseLong method.
-         */
+        /// <summary>
+        /// Tests the parseLong method.
+        /// </summary>
         [TestMethod]
 		public void parseLongTest()
         {
-            Long a;
-            long b;
+            long a;
             a = Long.parseLong("10000000000");
-            b = a.longValue();
-            Assert.AreEqual(10000000000, b);
+            Assert.AreEqual(10000000000, a);
             a = Long.parseLong("0");
-            b = a.longValue();
-            Assert.AreEqual(0, b);
+            Assert.AreEqual(0, a);
             a = Long.parseLong("-10000000000");
-            b = a.longValue();
-            Assert.AreEqual(-10000000000, b);
+            Assert.AreEqual(-10000000000, a);
         }
+
     }
 }
 

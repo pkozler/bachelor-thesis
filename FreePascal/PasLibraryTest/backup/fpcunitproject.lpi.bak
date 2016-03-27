@@ -35,7 +35,7 @@
         <PackageName Value="FCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="19">
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -43,7 +43,93 @@
       <Unit1>
         <Filename Value="mathtestunit.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="MathTestUnit"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="systemtestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PrintStreamTestUnit"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="stringtokenizertestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="StringTokenizerTestUnit"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="stringtestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="StringTestUnit"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="stringbuildertestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="StringBuilderTestUnit"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="shorttestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ShortTestUnit"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="scannertestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ScannerTestUnit"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="longtestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="LongTestUnit"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="linkedlisttestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="LinkedListTestUnit"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="integertestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="IntegerTestUnit"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="charactertestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CharacterTestUnit"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="floattestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FloatTestUnit"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="doubletestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DoubleTestUnit"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="collectionstestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CollectionsTestUnit"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="bytetestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ByteTestUnit"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="booleantestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="BooleanTestUnit"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="arraystestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ArraysTestUnit"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="arraylisttestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ArrayListTestUnit"/>
+      </Unit18>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -51,7 +137,7 @@
     <PathDelim Value="\"/>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="..\Source"/>
+      <OtherUnitFiles Value="..\PasLibrary"/>
     </SearchPaths>
   </CompilerOptions>
   <Debugging>

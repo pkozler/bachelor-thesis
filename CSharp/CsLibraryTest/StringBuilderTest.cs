@@ -5,9 +5,10 @@ namespace JavaClasses
     [TestClass]
     public class StringBuilderTest
     {
-        /**
-         * Tests the constructor.
-         */
+
+        /// <summary>
+        /// Tests the constructor.
+        /// </summary>
         [TestMethod]
 		public void stringBuilderTest()
         {
@@ -19,9 +20,9 @@ namespace JavaClasses
             Assert.AreEqual("", b);
         }
 
-        /**
-         * Tests the append method.
-         */
+        /// <summary>
+        /// Tests the append method.
+        /// </summary>
         [TestMethod]
 		public void appendTest()
         {
@@ -65,9 +66,9 @@ namespace JavaClasses
             Assert.AreEqual("test.", b);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -89,5 +90,6 @@ namespace JavaClasses
             b = a.toString();
             Assert.AreEqual("This is a test.", b);
         }
+
     }
 }

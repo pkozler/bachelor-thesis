@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class CollectionsTest
 	{
-        /**
-         * Tests the binarySearch method.
-         */
+
+        /// <summary>
+        /// Tests the binarySearch method.
+        /// </summary>
         [TestMethod]
 		public void binarySearchTest()
         {
@@ -31,9 +32,9 @@ namespace JavaClasses
             Assert.AreEqual(-5, b);
         }
 
-        /**
-         * Tests the binarySearch method with comparator as a parameter.
-         */
+        /// <summary>
+        /// Tests the binarySearch method with comparator as a parameter.
+        /// </summary>
         [TestMethod]
 		public void binarySearchTest2()
         {
@@ -59,14 +60,14 @@ namespace JavaClasses
             Assert.AreEqual(-5, b);
         }
 
-        /**
-         * Tests the copy method.
-         */
+        /// <summary>
+        /// Tests the copy method.
+        /// </summary>
         [TestMethod]
 		public void copyTest()
         {
-            ArrayList<TestObject> a, b;
-            String c;
+            ArrayList<TestObject> a, b, c;
+            bool d;
             // source list
             a = new ArrayList<TestObject>();
             a.add(new TestObject("first", 3));
@@ -83,18 +84,25 @@ namespace JavaClasses
             b.add(new TestObject("zeroth", 0));
             b.add(new TestObject("zeroth", 0));
             Collections.copy(b, a);
-            c = b.toString();
-            Assert.AreEqual("[TestObject [str=first, i=3], TestObject [str=second, i=2], TestObject [str=third, i=8], TestObject [str=fourth, i=7], TestObject [str=fifth, i=6], TestObject [str=zeroth, i=0]]", c);
+            c = new ArrayList<TestObject>();
+            c.add(new TestObject("first", 3));
+            c.add(new TestObject("second", 2));
+            c.add(new TestObject("third", 8));
+            c.add(new TestObject("fourth", 7));
+            c.add(new TestObject("fifth", 6));
+            c.add(new TestObject("zeroth", 0));
+            d = c.equals(b);
+            Assert.AreEqual(true, d);
         }
 
-        /**
-         * Tests the fill method.
-         */
+        /// <summary>
+        /// Tests the fill method.
+        /// </summary>
         [TestMethod]
 		public void fillTest()
         {
-            ArrayList<TestObject> a;
-            String b;
+            ArrayList<TestObject> a, b;
+            bool d;
             a = new ArrayList<TestObject>();
             a.add(new TestObject("first", 3));
             a.add(new TestObject("second", 2));
@@ -102,18 +110,24 @@ namespace JavaClasses
             a.add(new TestObject("fourth", 7));
             a.add(new TestObject("fifth", 6));
             Collections.fill(a, new TestObject("sixth", 6));
-            b = a.toString();
-            Assert.AreEqual("[TestObject [str=sixth, i=6], TestObject [str=sixth, i=6], TestObject [str=sixth, i=6], TestObject [str=sixth, i=6], TestObject [str=sixth, i=6]]", b);
+            b = new ArrayList<TestObject>();
+            b.add(new TestObject("sixth", 6));
+            b.add(new TestObject("sixth", 6));
+            b.add(new TestObject("sixth", 6));
+            b.add(new TestObject("sixth", 6));
+            b.add(new TestObject("sixth", 6));
+            d = b.equals(a);
+            Assert.AreEqual(true, d);
         }
 
-        /**
-         * Tests the sort method.
-         */
+        /// <summary>
+        /// Tests the sort method.
+        /// </summary>
         [TestMethod]
 		public void sortTest()
         {
-            ArrayList<TestObject> a;
-            String b;
+            ArrayList<TestObject> a, b;
+            bool d;
             a = new ArrayList<TestObject>();
             a.add(new TestObject("first", 3));
             a.add(new TestObject("second", 2));
@@ -126,19 +140,30 @@ namespace JavaClasses
             a.add(new TestObject("nineth", 7));
             a.add(new TestObject("tenth", 6));
             Collections.sort(a);
-            b = a.toString();
-            Assert.AreEqual("[TestObject [str=second, i=2], TestObject [str=seventh, i=2], TestObject [str=first, i=3], TestObject [str=sixth, i=3], TestObject [str=fifth, i=6], TestObject [str=tenth, i=6], TestObject [str=fourth, i=7], TestObject [str=nineth, i=7], TestObject [str=third, i=8], TestObject [str=eighth, i=8]]", b);
+            b = new ArrayList<TestObject>();
+            b.add(new TestObject("second", 2));
+            b.add(new TestObject("seventh", 2));
+            b.add(new TestObject("first", 3));
+            b.add(new TestObject("sixth", 3));
+            b.add(new TestObject("fifth", 6));
+            b.add(new TestObject("tenth", 6));
+            b.add(new TestObject("fourth", 7));
+            b.add(new TestObject("nineth", 7));
+            b.add(new TestObject("third", 8));
+            b.add(new TestObject("eighth", 8));
+            d = b.equals(a);
+            Assert.AreEqual(true, d);
         }
 
-        /**
-         * Tests the sort method with comparator as a parameter.
-         */
+        /// <summary>
+        /// Tests the sort method with comparator as a parameter.
+        /// </summary>
         [TestMethod]
 		public void sortTest2()
         {
-            ArrayList<TestObject> a;
-            String b;
+            ArrayList<TestObject> a, b;
             TestObjectComparator c;
+            bool d;
             a = new ArrayList<TestObject>();
             a.add(new TestObject("first", 3));
             a.add(new TestObject("second", 2));
@@ -152,9 +177,21 @@ namespace JavaClasses
             a.add(new TestObject("tenth", 6));
             c = new TestObjectComparator();
             Collections.sort(a, c);
-            b = a.toString();
-            Assert.AreEqual("[TestObject [str=second, i=2], TestObject [str=seventh, i=2], TestObject [str=first, i=3], TestObject [str=sixth, i=3], TestObject [str=fifth, i=6], TestObject [str=tenth, i=6], TestObject [str=fourth, i=7], TestObject [str=nineth, i=7], TestObject [str=third, i=8], TestObject [str=eighth, i=8]]", b);
+            b = new ArrayList<TestObject>();
+            b.add(new TestObject("second", 2));
+            b.add(new TestObject("seventh", 2));
+            b.add(new TestObject("first", 3));
+            b.add(new TestObject("sixth", 3));
+            b.add(new TestObject("fifth", 6));
+            b.add(new TestObject("tenth", 6));
+            b.add(new TestObject("fourth", 7));
+            b.add(new TestObject("nineth", 7));
+            b.add(new TestObject("third", 8));
+            b.add(new TestObject("eighth", 8));
+            d = b.equals(a);
+            Assert.AreEqual(true, d);
         }
+
     }
 }
 

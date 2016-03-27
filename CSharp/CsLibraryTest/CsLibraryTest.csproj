@@ -69,7 +69,7 @@
     <Compile Include="StringBuilderTest.cs" />
     <Compile Include="StringTest.cs" />
     <Compile Include="StringTokenizerTest.cs" />
-    <Compile Include="SystemTest.cs" />
+    <Compile Include="PrintStreamTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

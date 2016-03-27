@@ -74,7 +74,7 @@ type
   end;
 
   _java = class
-    private
+    strict
       class procedure merge(arr, aux: array of Object_; left, right: longInt; c: Comparator);
     public
       class procedure mergeSort(arr, aux: array of Object_; left, right: longInt; c: Comparator);
@@ -391,5 +391,6 @@ end;
 
 begin
   System_.in_ := InputStream.create();
+  System_.out_ := PrintStream.create();
 end.
 

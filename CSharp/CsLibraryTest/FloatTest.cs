@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class FloatTest
 	{
-        /**
-         * Tests the floatValue method.
-         */
+
+        /// <summary>
+        /// Tests the floatValue method.
+        /// </summary>
         [TestMethod]
 		public void floatValueTest()
         {
@@ -24,9 +25,9 @@ namespace JavaClasses
             Assert.AreEqual(3.4028235E38, b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -58,9 +59,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the compare method.
-         */
+        /// <summary>
+        /// Tests the compare method.
+        /// </summary>
         [TestMethod]
 		public void compareTest()
         {
@@ -92,9 +93,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -126,9 +127,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -136,52 +137,49 @@ namespace JavaClasses
             String b;
             a = new Float((float)0.1);
             b = a.toString();
-            Assert.AreEqual(0.1, b);
+            Assert.AreEqual("0.1", b);
             a = new Float((float)0);
             b = a.toString();
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual("0.0", b);
             a = new Float((float)-0.1);
             b = a.toString();
-            Assert.AreEqual(-0.1, b);
+            Assert.AreEqual("-0.1", b);
         }
 
-        /**
-         * Tests the static toString method.
-         */
+        /// <summary>
+        /// Tests the static toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest2()
         {
-            Float a;
+            float a;
             String b;
-            a = new Float((float)0.1);
+            a = (float)0.1;
             b = Float.toString(a);
-            Assert.AreEqual(0.1, b);
-            a = new Float((float)0);
+            Assert.AreEqual("0.1", b);
+            a = (float)0;
             b = Float.toString(a);
-            Assert.AreEqual(0.0, b);
-            a = new Float((float)-0.1);
+            Assert.AreEqual("0.0", b);
+            a = (float)-0.1;
             b = Float.toString(a);
-            Assert.AreEqual(-0.1, b);
+            Assert.AreEqual("-0.1", b);
         }
 
-        /**
-         * Tests the parseFloat method.
-         */
+        /// <summary>
+        /// Tests the parseFloat method.
+        /// </summary>
         [TestMethod]
 		public void parseFloatTest()
         {
-            Float a;
-            float b;
+            float a;
             a = Float.parseFloat("0.1");
-            b = a.floatValue();
-            Assert.AreEqual(0.1, b);
+            Assert.AreEqual(0.1, a);
             a = Float.parseFloat("0");
-            b = a.floatValue();
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, a);
             a = Float.parseFloat("-0.1");
-            b = a.floatValue();
-            Assert.AreEqual(-0.1, b);
+            Assert.AreEqual(-0.1, a);
         }
+
     }
 }
 

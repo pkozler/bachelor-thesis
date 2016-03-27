@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class BooleanTest
 	{
-        /**
-         * Tests the booleanValue method.
-         */
+
+        /// <summary>
+        /// Tests the booleanValue method.
+        /// </summary>
         [TestMethod]
 		public void booleanValueTest()
         {
@@ -23,9 +24,9 @@ namespace JavaClasses
             Assert.AreEqual(false, b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -53,9 +54,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the compare method.
-         */
+        /// <summary>
+        /// Tests the compare method.
+        /// </summary>
         [TestMethod]
 		public void compareTest()
         {
@@ -79,9 +80,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -105,9 +106,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -116,46 +117,44 @@ namespace JavaClasses
             // true value text representation
             a = new Boolean(true);
             b = a.toString();
-            Assert.AreEqual(true, b);
+            Assert.AreEqual("true", b);
             // false value text representation
             a = new Boolean(false);
             b = a.toString();
-            Assert.AreEqual(false, b);
+            Assert.AreEqual("false", b);
         }
 
-        /**
-         * Tests the static toString method.
-         */
+        /// <summary>
+        /// Tests the static toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest2()
         {
-            Boolean a;
+            bool a;
             String b;
-            a = new Boolean(true);
+            a = true;
             b = Boolean.toString(a);
-            Assert.AreEqual(true, b);
-            a = new Boolean(false);
+            Assert.AreEqual("true", b);
+            a = false;
             b = Boolean.toString(a);
-            Assert.AreEqual(false, b);
+            Assert.AreEqual("false", b);
         }
 
-        /**
-         * Tests the parseBoolean method.
-         */
+        /// <summary>
+        /// Tests the parseBoolean method.
+        /// </summary>
         [TestMethod]
 		public void parseBooleanTest()
         {
-            Boolean a;
-            bool b;
+            bool a;
             // true value parsing
             a = Boolean.parseBoolean("true");
-            b = a.booleanValue();
-            Assert.AreEqual(true, b);
+            Assert.AreEqual(true, a);
             // false value parsing
             a = Boolean.parseBoolean("false");
-            b = a.booleanValue();
-            Assert.AreEqual(false, b);
+            Assert.AreEqual(false, a);
         }
+
     }
 }
 

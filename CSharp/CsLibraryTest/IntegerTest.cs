@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class IntegerTest
 	{
-        /**
-         * Tests the intValue method.
-         */
+
+        /// <summary>
+        /// Tests the intValue method.
+        /// </summary>
         [TestMethod]
 		public void intValueTest()
         {
@@ -24,9 +25,9 @@ namespace JavaClasses
             Assert.AreEqual(2147483647, b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -58,9 +59,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the compare method.
-         */
+        /// <summary>
+        /// Tests the compare method.
+        /// </summary>
         [TestMethod]
 		public void compareTest()
         {
@@ -92,9 +93,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -126,9 +127,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -136,52 +137,49 @@ namespace JavaClasses
             String b;
             a = new Integer((int)100000);
             b = a.toString();
-            Assert.AreEqual(100000, b);
+            Assert.AreEqual("100000", b);
             a = new Integer((int)0);
             b = a.toString();
-            Assert.AreEqual(0, b);
+            Assert.AreEqual("0", b);
             a = new Integer((int)-100000);
             b = a.toString();
-            Assert.AreEqual(-100000, b);
+            Assert.AreEqual("-100000", b);
         }
 
-        /**
-         * Tests the static toString method.
-         */
+        /// <summary>
+        /// Tests the static toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest2()
         {
-            Integer a;
+            int a;
             String b;
-            a = new Integer((int)100000);
+            a = (int)100000;
             b = Integer.toString(a);
-            Assert.AreEqual(100000, b);
-            a = new Integer((int)0);
+            Assert.AreEqual("100000", b);
+            a = (int)0;
             b = Integer.toString(a);
-            Assert.AreEqual(0, b);
-            a = new Integer((int)-100000);
+            Assert.AreEqual("0", b);
+            a = (int)-100000;
             b = Integer.toString(a);
-            Assert.AreEqual(-100000, b);
+            Assert.AreEqual("-100000", b);
         }
 
-        /**
-         * Tests the parseInt method.
-         */
+        /// <summary>
+        /// Tests the parseInt method.
+        /// </summary>
         [TestMethod]
 		public void parseIntTest()
         {
-            Integer a;
-            int b;
+            int a;
             a = Integer.parseInt("100000");
-            b = a.intValue();
-            Assert.AreEqual(100000, b);
+            Assert.AreEqual(100000, a);
             a = Integer.parseInt("0");
-            b = a.intValue();
-            Assert.AreEqual(0, b);
+            Assert.AreEqual(0, a);
             a = Integer.parseInt("-100000");
-            b = a.intValue();
-            Assert.AreEqual(-100000, b);
+            Assert.AreEqual(-100000, a);
         }
+
     }
 }
 

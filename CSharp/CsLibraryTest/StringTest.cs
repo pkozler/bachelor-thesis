@@ -5,9 +5,10 @@ namespace JavaClasses
     [TestClass]
 	public class StringTest
 	{
-        /**
-         * Tests the constructor with standard string as a parameter.
-         */
+
+        /// <summary>
+        /// Tests the constructor with standard string as a parameter.
+        /// </summary>
         [TestMethod]
 		public void stringTest()
         {
@@ -29,9 +30,9 @@ namespace JavaClasses
             Assert.AreEqual("", a);
         }
 
-        /**
-         * Tests the constructor with array of bytes as a parameter.
-         */
+        /// <summary>
+        /// Tests the constructor with array of bytes as a parameter.
+        /// </summary>
         [TestMethod]
 		public void stringTest2()
         {
@@ -51,9 +52,9 @@ namespace JavaClasses
             Assert.AreEqual("", b);
         }
 
-        /**
-         * Tests the constructor with array of bytes and indexes as parameters.
-         */
+        /// <summary>
+        /// Tests the constructor with array of bytes and indexes as parameters.
+        /// </summary>
         [TestMethod]
 		public void stringTest3()
         {
@@ -65,9 +66,9 @@ namespace JavaClasses
             Assert.AreEqual("test", b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -100,9 +101,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -130,9 +131,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the substring method.
-         */
+        /// <summary>
+        /// Tests the substring method.
+        /// </summary>
         [TestMethod]
 		public void substringTest()
         {
@@ -146,9 +147,9 @@ namespace JavaClasses
             Assert.AreEqual("test.", b);
         }
 
-        /**
-         * Tests the substring method with end index as a parameter.
-         */
+        /// <summary>
+        /// Tests the substring method with end index as a parameter.
+        /// </summary>
         [TestMethod]
 		public void substringTest2()
         {
@@ -168,9 +169,9 @@ namespace JavaClasses
             Assert.AreEqual("", b);
         }
 
-        /**
-         * Tests the indexOf method with a char value.
-         */
+        /// <summary>
+        /// Tests the indexOf method with a char value.
+        /// </summary>
         [TestMethod]
 		public void indexOfTest()
         {
@@ -194,9 +195,9 @@ namespace JavaClasses
             Assert.AreEqual(-1, b);
         }
 
-        /**
-         * Tests the indexOf method with a char value and end index as a parameter.
-         */
+        /// <summary>
+        /// Tests the indexOf method with a char value and end index as a parameter.
+        /// </summary>
         [TestMethod]
 		public void indexOfTest2()
         {
@@ -215,9 +216,9 @@ namespace JavaClasses
             Assert.AreEqual(-1, b);
         }
 
-        /**
-         * Tests the indexOf method with a string.
-         */
+        /// <summary>
+        /// Tests the indexOf method with a string.
+        /// </summary>
         [TestMethod]
 		public void indexOfTest3()
         {
@@ -235,9 +236,9 @@ namespace JavaClasses
             Assert.AreEqual(-1, b);
         }
 
-        /**
-         * Tests the indexOf method with a string and end index as a parameter.
-         */
+        /// <summary>
+        /// Tests the indexOf method with a string and end index as a parameter.
+        /// </summary>
         [TestMethod]
 		public void indexOfTest4()
         {
@@ -252,9 +253,9 @@ namespace JavaClasses
             Assert.AreEqual(-1, b);
         }
 
-        /**
-         * Tests the length method.
-         */
+        /// <summary>
+        /// Tests the length method.
+        /// </summary>
         [TestMethod]
 		public void lengthTest()
         {
@@ -274,9 +275,9 @@ namespace JavaClasses
             Assert.AreEqual(0, b);
         }
 
-        /**
-         * Tests the trim method.
-         */
+        /// <summary>
+        /// Tests the trim method.
+        /// </summary>
         [TestMethod]
 		public void trimTest()
         {
@@ -303,9 +304,9 @@ namespace JavaClasses
             Assert.AreEqual("t e s t", b);
         }
 
-        /**
-         * Tests the toLower method.
-         */
+        /// <summary>
+        /// Tests the toLower method.
+        /// </summary>
         [TestMethod]
 		public void toLowerCaseTest()
         {
@@ -324,9 +325,9 @@ namespace JavaClasses
             Assert.AreEqual("test", b);
         }
 
-        /**
-         * Tests the toUpper method.
-         */
+        /// <summary>
+        /// Tests the toUpper method.
+        /// </summary>
         [TestMethod]
 		public void toUpperCaseTest()
         {
@@ -342,9 +343,9 @@ namespace JavaClasses
             Assert.AreEqual("TEST", b);
         }
 
-        /**
-         * Tests the charAt method.
-         */
+        /// <summary>
+        /// Tests the charAt method.
+        /// </summary>
         [TestMethod]
 		public void charAtTest()
         {
@@ -362,9 +363,9 @@ namespace JavaClasses
             Assert.AreEqual('.', b);
         }
 
-        /**
-         * Tests the replace method.
-         */
+        /// <summary>
+        /// Tests the replace method.
+        /// </summary>
         [TestMethod]
 		public void replaceTest()
         {
@@ -384,9 +385,9 @@ namespace JavaClasses
             Assert.AreEqual("This is a test.", b);
         }
 
-        /**
-         * Tests the startsWith method.
-         */
+        /// <summary>
+        /// Tests the startsWith method.
+        /// </summary>
         [TestMethod]
 		public void startsWithTest()
         {
@@ -407,9 +408,9 @@ namespace JavaClasses
             Assert.AreEqual(false, c);
         }
 
-        /**
-         * Tests the endsWith method.
-         */
+        /// <summary>
+        /// Tests the endsWith method.
+        /// </summary>
         [TestMethod]
 		public void endsWithTest()
         {
@@ -427,9 +428,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the isEmpty method.
-         */
+        /// <summary>
+        /// Tests the isEmpty method.
+        /// </summary>
         [TestMethod]
 		public void isEmptyTest()
         {

@@ -8,10 +8,12 @@ require_once(ROOT_PATH . "/classes/tested-library.class.php");
 require_once(ROOT_PATH . "/classes/input-test-runner.class.php");
 require_once(ROOT_PATH . "/classes/output-test-runner.class.php");
 
+exec("chcp 65001");
+
 $testedLibraries = array(
     new TestedLibrary("C", "C", "", ""),
     new TestedLibrary("C++", "CPlusPlus", "", ""),
-    new TestedLibrary("C#", "CSharp", "ScannerTest/bin/Debug/ScannerTest.exe", "SystemTest/bin/Debug/SystemTest.exe"),
+    new TestedLibrary("C#", "CSharp", "ScannerTest/bin/Debug/ScannerTest.exe", "PrintStreamTest/bin/Debug/PrintStream.exe"),
     new TestedLibrary("Free Pascal", "FreePascal", "", ""),
 );
 

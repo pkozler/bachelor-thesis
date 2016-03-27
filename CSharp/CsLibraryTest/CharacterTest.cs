@@ -6,9 +6,9 @@ namespace JavaClasses
 	public class CharacterTest
 	{
 
-        /**
-         * Tests the charValue method.
-         */
+        /// <summary>
+        /// Tests the charValue method.
+        /// </summary>
         [TestMethod]
 		public void charValueTest()
         {
@@ -28,9 +28,9 @@ namespace JavaClasses
             Assert.AreEqual('.', b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -60,17 +60,17 @@ namespace JavaClasses
             a = new Character('Z');
             b = new Character('Z');
             c = a.compareTo(b);
-            Assert.AreEqual('.', c);
+            Assert.AreEqual(0, c);
             // both chars are lowercase letters
             a = new Character('a');
             b = new Character('a');
             c = a.compareTo(b);
-            Assert.AreEqual('.', c);
+            Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the compare method.
-         */
+        /// <summary>
+        /// Tests the compare method.
+        /// </summary>
         [TestMethod]
 		public void compareTest()
         {
@@ -95,16 +95,16 @@ namespace JavaClasses
             a = 'Z';
             b = 'Z';
             c = Character.compare(a, b);
-            Assert.AreEqual('.', c);
+            Assert.AreEqual(0, c);
             a = 'a';
             b = 'a';
             c = Character.compare(a, b);
-            Assert.AreEqual('.', c);
+            Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -136,9 +136,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -147,87 +147,87 @@ namespace JavaClasses
             // digit text representation
             a = new Character('0');
             b = a.toString();
-            Assert.AreEqual('.', b);
+            Assert.AreEqual("0", b);
             // uppercase letter text representation
             a = new Character('A');
             b = a.toString();
-            Assert.AreEqual('.', b);
+            Assert.AreEqual("A", b);
             // lowercase letter text representation
             a = new Character('a');
             b = a.toString();
-            Assert.AreEqual('.', b);
+            Assert.AreEqual("a", b);
         }
 
-        /**
-         * Tests the static toString method.
-         */
+        /// <summary>
+        /// Tests the static toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest2()
         {
-            Character a;
+            char a;
             String b;
-            a = new Character('0');
+            a = '0';
             b = Character.toString(a);
-            Assert.AreEqual('.', b);
-            a = new Character('A');
+            Assert.AreEqual("0", b);
+            a = 'A';
             b = Character.toString(a);
-            Assert.AreEqual('.', b);
-            a = new Character('a');
+            Assert.AreEqual("A", b);
+            a = 'a';
             b = Character.toString(a);
-            Assert.AreEqual('.', b);
+            Assert.AreEqual("a", b);
         }
 
-        /**
-         * Tests the isDigit method.
-         */
+        /// <summary>
+        /// Tests the isDigit method.
+        /// </summary>
         [TestMethod]
 		public void isDigitTest()
         {
-            Character a;
+            char a;
             bool b;
             // lowercase letter
-            a = new Character('a');
+            a = 'a';
             b = Character.isDigit(a);
             Assert.AreEqual(false, b);
             // uppercase letter
-            a = new Character('Z');
+            a = 'Z';
             b = Character.isDigit(a);
             Assert.AreEqual(false, b);
             // digit
-            a = new Character('0');
+            a = '0';
             b = Character.isDigit(a);
             Assert.AreEqual(true, b);
             // another digit
-            a = new Character('9');
+            a = '9';
             b = Character.isDigit(a);
             Assert.AreEqual(true, b);
             // whitespace
-            a = new Character(' ');
+            a = ' ';
             b = Character.isDigit(a);
             Assert.AreEqual(false, b);
         }
 
-        /**
-         * Tests the isLetter method.
-         */
+        /// <summary>
+        /// Tests the isLetter method.
+        /// </summary>
         [TestMethod]
 		public void isLetterTest()
         {
-            Character a;
+            char a;
             bool b;
-            a = new Character('a');
+            a = 'a';
             b = Character.isLetter(a);
             Assert.AreEqual(true, b);
-            a = new Character('Z');
+            a = 'Z';
             b = Character.isLetter(a);
             Assert.AreEqual(true, b);
-            a = new Character('0');
+            a = '0';
             b = Character.isLetter(a);
             Assert.AreEqual(false, b);
-            a = new Character('9');
+            a = '9';
             b = Character.isLetter(a);
             Assert.AreEqual(false, b);
-            a = new Character(' ');
+            a = ' ';
             b = Character.isLetter(a);
             Assert.AreEqual(false, b);
         }

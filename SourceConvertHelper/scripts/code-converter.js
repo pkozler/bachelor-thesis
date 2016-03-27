@@ -12,6 +12,23 @@ var csPatterns = [
 ];
 
 var pasPatterns = [
+    {p: /System\.in/g, r: "System_.in_"},
+    {p: /System\.out/g, r: "System_.out_"},
+    {p: /long/g, r: "Int64"},
+    {p: /short/g, r: "smallInt"},
+    {p: /byte/g, r: "shortInt"},
+    {p: /int/g, r: "longInt"},
+    {p: /Int64/g, r: "int64"},
+    {p: /float/g, r: "single"},
+    {p: /char/g, r: "ansiChar"},
+    {p: /Boolean/g, r: "Boolean_"},
+    {p: /Byte/g, r: "Byte_"},
+    {p: /Integer/g, r: "Integer_"},
+    {p: /Double/g, r: "Double_"},
+    {p: /String/g, r: "String_"},
+    {p: /!=/g, r: "<>"},
+    {p: /=[^=]/g, r: ":="},
+    {p: /==/g, r: "="},
 ];
 
 var languages = {

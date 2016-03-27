@@ -8,7 +8,6 @@
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="17"/>
         <CursorPos X="18" Y="26"/>
         <UsageCount Value="200"/>
@@ -20,7 +19,7 @@
         <UnitName Value="StringBuilderUint"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="23"/>
-        <UsageCount Value="141"/>
+        <UsageCount Value="157"/>
       </Unit1>
       <Unit2>
         <Filename Value="objectunit.pas"/>
@@ -28,21 +27,21 @@
         <UnitName Value="ObjectUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="13"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="107"/>
       </Unit2>
       <Unit3>
         <Filename Value="comparableunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ComparableUnit"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="88"/>
+        <UsageCount Value="104"/>
       </Unit3>
       <Unit4>
         <Filename Value="comparatorunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ComparatorUnit"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="98"/>
       </Unit4>
       <Unit5>
         <Filename Value="listunit.pas"/>
@@ -51,25 +50,27 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="34"/>
         <CursorPos Y="59"/>
-        <UsageCount Value="87"/>
+        <UsageCount Value="103"/>
       </Unit5>
       <Unit6>
         <Filename Value="testobjectunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="TestObjectUnit"/>
-        <EditorIndex Value="1"/>
-        <CursorPos Y="25"/>
-        <UsageCount Value="25"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="20"/>
+        <CursorPos Y="22"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="testobjectcomparatorunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="TestObjectComparatorUnit"/>
-        <EditorIndex Value="2"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="12"/>
         <CursorPos X="7" Y="19"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -77,7 +78,7 @@
         <UnitName Value="ArrayListUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="3"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="102"/>
       </Unit8>
       <Unit9>
         <Filename Value="arraysunit.pas"/>
@@ -85,23 +86,25 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1849"/>
         <CursorPos Y="1871"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="101"/>
       </Unit9>
       <Unit10>
         <Filename Value="booleanunit.pas"/>
         <UnitName Value="BooleanUnit"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="1"/>
         <TopLine Value="89"/>
         <CursorPos X="37" Y="106"/>
         <UsageCount Value="109"/>
+        <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="byteunit.pas"/>
         <UnitName Value="ByteUnit"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="86"/>
-        <CursorPos Y="110"/>
+        <CursorPos Y="108"/>
         <UsageCount Value="109"/>
+        <Loaded Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="collectionsunit.pas"/>
@@ -109,39 +112,41 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="100"/>
+        <UsageCount Value="98"/>
       </Unit12>
       <Unit13>
         <Filename Value="doubleunit.pas"/>
         <UnitName Value="DoubleUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="186"/>
-        <CursorPos Y="195"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="51"/>
+        <CursorPos X="14" Y="51"/>
         <UsageCount Value="111"/>
+        <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="floatunit.pas"/>
         <UnitName Value="FloatUnit"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="187"/>
         <CursorPos Y="190"/>
         <UsageCount Value="111"/>
+        <Loaded Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="characterunit.pas"/>
         <UnitName Value="CharacterUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="86"/>
-        <CursorPos X="35" Y="100"/>
+        <EditorIndex Value="7"/>
+        <CursorPos Y="23"/>
         <UsageCount Value="110"/>
+        <Loaded Value="True"/>
       </Unit15>
       <Unit16>
         <Filename Value="integerunit.pas"/>
         <UnitName Value="IntegerUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="100"/>
-        <CursorPos X="34" Y="115"/>
+        <EditorIndex Value="8"/>
+        <CursorPos Y="23"/>
         <UsageCount Value="111"/>
+        <Loaded Value="True"/>
       </Unit16>
       <Unit17>
         <Filename Value="linkedlistunit.pas"/>
@@ -149,23 +154,23 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="52"/>
         <CursorPos X="14" Y="60"/>
-        <UsageCount Value="104"/>
+        <UsageCount Value="102"/>
       </Unit17>
       <Unit18>
         <Filename Value="longunit.pas"/>
         <UnitName Value="LongUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="92"/>
-        <CursorPos Y="111"/>
+        <EditorIndex Value="9"/>
+        <CursorPos Y="23"/>
         <UsageCount Value="112"/>
+        <Loaded Value="True"/>
       </Unit18>
       <Unit19>
         <Filename Value="mathunit.pas"/>
         <UnitName Value="MathUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2"/>
+        <EditorIndex Value="3"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="80"/>
+        <UsageCount Value="87"/>
+        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="scannerunit.pas"/>
@@ -173,15 +178,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="8"/>
         <CursorPos Y="27"/>
-        <UsageCount Value="107"/>
+        <UsageCount Value="105"/>
       </Unit20>
       <Unit21>
         <Filename Value="shortunit.pas"/>
         <UnitName Value="ShortUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="73"/>
-        <CursorPos X="5" Y="83"/>
+        <EditorIndex Value="10"/>
+        <CursorPos X="4" Y="23"/>
         <UsageCount Value="101"/>
+        <Loaded Value="True"/>
       </Unit21>
       <Unit22>
         <Filename Value="stringtokenizerunit.pas"/>
@@ -189,24 +194,25 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="7"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="109"/>
+        <UsageCount Value="107"/>
       </Unit22>
       <Unit23>
         <Filename Value="stringunit.pas"/>
         <UnitName Value="StringUnit"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="86"/>
-        <CursorPos X="27" Y="104"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="102"/>
+        <CursorPos X="24" Y="120"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
       </Unit23>
       <Unit24>
         <Filename Value="systemunit.pas"/>
         <UnitName Value="SystemUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="47"/>
-        <CursorPos Y="63"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="72"/>
+        <CursorPos Y="75"/>
         <UsageCount Value="111"/>
+        <Loaded Value="True"/>
       </Unit24>
       <Unit25>
         <Filename Value="stringbuilderunit.pas"/>
@@ -214,23 +220,23 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="39" Y="12"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="48"/>
       </Unit25>
       <Unit26>
         <Filename Value="project.lpi"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="4"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit26>
       <Unit27>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\inc\objpash.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="230"/>
-        <CursorPos X="20" Y="241"/>
-        <UsageCount Value="5"/>
+        <TopLine Value="247"/>
+        <CursorPos Y="247"/>
+        <UsageCount Value="9"/>
       </Unit27>
     </Units>
-    <JumpHistory Count="5" HistoryIndex="4">
+    <JumpHistory Count="7" HistoryIndex="6">
       <Position1>
         <Filename Value="project.lpr"/>
         <Caret Line="30" Column="16" TopLine="15"/>
@@ -251,6 +257,14 @@
         <Filename Value="testobjectunit.pas"/>
         <Caret Line="121" TopLine="104"/>
       </Position5>
+      <Position6>
+        <Filename Value="stringunit.pas"/>
+        <Caret Line="16" Column="21"/>
+      </Position6>
+      <Position7>
+        <Filename Value="systemunit.pas"/>
+        <Caret Line="77" Column="12" TopLine="67"/>
+      </Position7>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

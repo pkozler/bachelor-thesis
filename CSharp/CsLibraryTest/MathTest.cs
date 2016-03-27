@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class MathTest
 	{
-        /**
-         * Tests the abs method with a double value.
-         */
+
+        /// <summary>
+        /// Tests the abs method with a double value.
+        /// </summary>
         [TestMethod]
 		public void absTest()
         {
@@ -26,9 +27,9 @@ namespace JavaClasses
             Assert.AreEqual(1.7976931348623157E308, b);
         }
 
-        /**
-         * Tests the abs method with a float value.
-         */
+        /// <summary>
+        /// Tests the abs method with a float value.
+        /// </summary>
         [TestMethod]
 		public void absTest2()
         {
@@ -44,9 +45,9 @@ namespace JavaClasses
             Assert.AreEqual(3.4028235E38, b);
         }
 
-        /**
-         * Tests the abs method with an int value.
-         */
+        /// <summary>
+        /// Tests the abs method with an int value.
+        /// </summary>
         [TestMethod]
 		public void absTest3()
         {
@@ -62,9 +63,9 @@ namespace JavaClasses
             Assert.AreEqual(2147483646, b);
         }
 
-        /**
-         * Tests the abs method with a long value.
-         */
+        /// <summary>
+        /// Tests the abs method with a long value.
+        /// </summary>
         [TestMethod]
 		public void absTest4()
         {
@@ -80,9 +81,9 @@ namespace JavaClasses
             Assert.AreEqual(9223372036854775806, b);
         }
 
-        /**
-         * Tests the max method with a double value.
-         */
+        /// <summary>
+        /// Tests the max method with a double value.
+        /// </summary>
         [TestMethod]
 		public void maxTest()
         {
@@ -114,9 +115,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, c);
         }
 
-        /**
-         * Tests the max method with a float value.
-         */
+        /// <summary>
+        /// Tests the max method with a float value.
+        /// </summary>
         [TestMethod]
 		public void maxTest2()
         {
@@ -143,9 +144,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, c);
         }
 
-        /**
-         * Tests the max method with an int value.
-         */
+        /// <summary>
+        /// Tests the max method with an int value.
+        /// </summary>
         [TestMethod]
 		public void maxTest3()
         {
@@ -172,9 +173,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the max method with a long value.
-         */
+        /// <summary>
+        /// Tests the max method with a long value.
+        /// </summary>
         [TestMethod]
 		public void maxTest4()
         {
@@ -201,9 +202,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the min method with a double value.
-         */
+        /// <summary>
+        /// Tests the min method with a double value.
+        /// </summary>
         [TestMethod]
 		public void minTest()
         {
@@ -230,9 +231,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, c);
         }
 
-        /**
-         * Tests the min method with a float value.
-         */
+        /// <summary>
+        /// Tests the min method with a float value.
+        /// </summary>
         [TestMethod]
 		public void minTest2()
         {
@@ -259,9 +260,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, c);
         }
 
-        /**
-         * Tests the min method with an int value.
-         */
+        /// <summary>
+        /// Tests the min method with an int value.
+        /// </summary>
         [TestMethod]
 		public void minTest3()
         {
@@ -288,9 +289,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the min method with a long value.
-         */
+        /// <summary>
+        /// Tests the min method with a long value.
+        /// </summary>
         [TestMethod]
 		public void minTest4()
         {
@@ -317,9 +318,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Test the pow method.
-         */
+        /// <summary>
+        /// Test the pow method.
+        /// </summary>
         [TestMethod]
 		public void powTest()
         {
@@ -351,9 +352,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, c);
         }
 
-        /**
-         * Tests the sqrt method.
-         */
+        /// <summary>
+        /// Tests the sqrt method.
+        /// </summary>
         [TestMethod]
 		public void sqrtTest()
         {
@@ -372,15 +373,15 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the log method.
-         */
+        /// <summary>
+        /// Tests the log method.
+        /// </summary>
         [TestMethod]
 		public void logTest()
         {
             double a, b;
             // logarithm of the square of E
-            a = Math.E * Math.E;
+            a = Math.E;/// Math.E;
             b = Math.log(a);
             Assert.AreEqual(2.0, b);
             // logarithm of E
@@ -393,9 +394,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the log10 method.
-         */
+        /// <summary>
+        /// Tests the log10 method.
+        /// </summary>
         [TestMethod]
 		public void log10Test()
         {
@@ -414,9 +415,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the sin method.
-         */
+        /// <summary>
+        /// Tests the sin method.
+        /// </summary>
         [TestMethod]
 		public void sinTest()
         {
@@ -435,9 +436,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the cos method.
-         */
+        /// <summary>
+        /// Tests the cos method.
+        /// </summary>
         [TestMethod]
 		public void cosTest()
         {
@@ -456,9 +457,9 @@ namespace JavaClasses
             Assert.AreEqual(1.0, b);
         }
 
-        /**
-         * Tests the tan method.
-         */
+        /// <summary>
+        /// Tests the tan method.
+        /// </summary>
         [TestMethod]
 		public void tanTest()
         {
@@ -477,9 +478,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the asin method.
-         */
+        /// <summary>
+        /// Tests the asin method.
+        /// </summary>
         [TestMethod]
 		public void asinTest()
         {
@@ -498,9 +499,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the acos method.
-         */
+        /// <summary>
+        /// Tests the acos method.
+        /// </summary>
         [TestMethod]
 		public void acosTest()
         {
@@ -519,9 +520,9 @@ namespace JavaClasses
             Assert.AreEqual(1.5707963267948966, b);
         }
 
-        /**
-         * Tests the atan method.
-         */
+        /// <summary>
+        /// Tests the atan method.
+        /// </summary>
         [TestMethod]
 		public void atanTest()
         {
@@ -540,9 +541,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the round method with a double value.
-         */
+        /// <summary>
+        /// Tests the round method with a double value.
+        /// </summary>
         [TestMethod]
 		public void roundTest()
         {
@@ -561,9 +562,9 @@ namespace JavaClasses
             Assert.AreEqual(0.0, b);
         }
 
-        /**
-         * Tests the round method with a float value.
-         */
+        /// <summary>
+        /// Tests the round method with a float value.
+        /// </summary>
         [TestMethod]
 		public void roundTest2()
         {
@@ -578,6 +579,7 @@ namespace JavaClasses
             b = Math.round(a);
             Assert.AreEqual(0.0, b);
         }
+
     }
 }
 

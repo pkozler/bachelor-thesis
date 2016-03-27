@@ -15,9 +15,9 @@ namespace JavaClasses
         private void assertEquals<T>(string name, T expected, ScanMethod<T> scan, EqualsMethod<T> equals)
         {
             WriteLine();
-            WriteLine("Tested method: \"{0}\"", name);
+            WriteLine("Testovaná metoda: \"{0}\"", name);
             T actual;
-            WriteLine("Expected value: \"{0}\"", expected);
+            WriteLine("Očekávaná hodnota: \"{0}\"", expected);
 
             try
             {
@@ -25,7 +25,7 @@ namespace JavaClasses
             }
             catch (System.Exception e)
             {
-                WriteLine("EXCEPTION: " + e.Message);
+                WriteLine("CHYBA: " + e.Message);
                 errorsInMethod++;
                 return;
             }
@@ -36,7 +36,7 @@ namespace JavaClasses
             }
             else
             {
-                WriteLine("FAIL - actual value: \"{0}\"", actual);
+                WriteLine("FAIL - skutečná hodnota: \"{0}\"", actual);
                 errorsInMethod++;
             }
         }
@@ -265,7 +265,7 @@ namespace JavaClasses
              scanning of decimal values
              (with and without sign and decimal dot and with omission of digits on different positions,
              scanning of zeroes, ones, minimal and maximal absolute values)
-             */
+            */
             nextFloatAssertEquals(a, (float)0.0F);
             nextFloatAssertEquals(a, (float)0.0F);
             nextFloatAssertEquals(a, (float)-0.0F);

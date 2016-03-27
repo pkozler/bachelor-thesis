@@ -5,9 +5,10 @@ namespace JavaClasses
 	[TestClass]
 	public class DoubleTest
 	{
-        /**
-         * Tests the doubleValue method.
-         */
+
+        /// <summary>
+        /// Tests the doubleValue method.
+        /// </summary>
         [TestMethod]
 		public void doubleValueTest()
         {
@@ -27,9 +28,9 @@ namespace JavaClasses
             Assert.AreEqual(1.7976931348623157E308, b);
         }
 
-        /**
-         * Tests the compareTo method.
-         */
+        /// <summary>
+        /// Tests the compareTo method.
+        /// </summary>
         [TestMethod]
 		public void compareToTest()
         {
@@ -67,9 +68,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the compare method.
-         */
+        /// <summary>
+        /// Tests the compare method.
+        /// </summary>
         [TestMethod]
 		public void compareTest()
         {
@@ -101,9 +102,9 @@ namespace JavaClasses
             Assert.AreEqual(0, c);
         }
 
-        /**
-         * Tests the equals method.
-         */
+        /// <summary>
+        /// Tests the equals method.
+        /// </summary>
         [TestMethod]
 		public void equalsTest()
         {
@@ -135,9 +136,9 @@ namespace JavaClasses
             Assert.AreEqual(true, c);
         }
 
-        /**
-         * Tests the toString method.
-         */
+        /// <summary>
+        /// Tests the toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest()
         {
@@ -146,57 +147,54 @@ namespace JavaClasses
             // positive value text representation
             a = new Double((double)0.0000000000000000000000000000000000000000000001);
             b = a.toString();
-            Assert.AreEqual(1.0E-46, b);
+            Assert.AreEqual("1.0E-46", b);
             // zero value text representation
             a = new Double((double)0);
             b = a.toString();
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual("0.0", b);
             // negative value text representation
             a = new Double((double)-0.0000000000000000000000000000000000000000000001);
             b = a.toString();
-            Assert.AreEqual(-1.0E-46, b);
+            Assert.AreEqual("-1.0E-46", b);
         }
 
-        /**
-         * Tests the static toString method.
-         */
+        /// <summary>
+        /// Tests the static toString method.
+        /// </summary>
         [TestMethod]
 		public void toStringTest2()
         {
-            Double a;
+            double a;
             String b;
-            a = new Double((double)0.0000000000000000000000000000000000000000000001);
+            a = (double)0.0000000000000000000000000000000000000000000001;
             b = Double.toString(a);
-            Assert.AreEqual(1.0E-46, b);
-            a = new Double((double)0);
+            Assert.AreEqual("1.0E-46", b);
+            a = (double)0;
             b = Double.toString(a);
-            Assert.AreEqual(0.0, b);
-            a = new Double((double)-0.0000000000000000000000000000000000000000000001);
+            Assert.AreEqual("0.0", b);
+            a = (double)-0.0000000000000000000000000000000000000000000001;
             b = Double.toString(a);
-            Assert.AreEqual(-1.0E-46, b);
+            Assert.AreEqual("-1.0E-46", b);
         }
 
-        /**
-         * Tests the parseDouble method.
-         */
+        /// <summary>
+        /// Tests the parseDouble method.
+        /// </summary>
         [TestMethod]
 		public void parseDoubleTest()
         {
-            Double a;
-            double b;
+            double a;
             // positive value parsing
             a = Double.parseDouble("0.0000000000000000000000000000000000000000000001");
-            b = a.doubleValue();
-            Assert.AreEqual(1.0E-46, b);
+            Assert.AreEqual(1.0E-46, a);
             // zero value parsing
             a = Double.parseDouble("0");
-            b = a.doubleValue();
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, a);
             // negative value parsing
             a = Double.parseDouble("-0.0000000000000000000000000000000000000000000001");
-            b = a.doubleValue();
-            Assert.AreEqual(-1.0E-46, b);
+            Assert.AreEqual(-1.0E-46, a);
         }
+
     }
 }
 
