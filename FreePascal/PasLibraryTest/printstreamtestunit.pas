@@ -10,7 +10,7 @@ uses
 
 type
 
-  SystemTest = class(TTestCase)
+  PrintStreamTest = class(TTestCase)
   public
     procedure printTest;
     procedure printTest2;
@@ -38,65 +38,65 @@ implementation
 (**
  * Tests the print method with a boolean value.
  *)
-procedure SystemTest.printTest;
+procedure PrintStreamTest.printTest;
 var
   a: boolean;
 begin
     // print of boolean values
     a := true;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := false;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with a ansiChar value.
  *)
-procedure SystemTest.printTest2;
+procedure PrintStreamTest.printTest2;
 var
   a: ansiChar;
 begin
     // print of lowercase letters
     a := 'a';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 'z';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // print of uppercase letters
     a := 'A';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 'Z';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // print of digits
     a := '0';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := '9';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with array of chars.
  *)
-procedure SystemTest.printTest3;
+procedure PrintStreamTest.printTest3;
 var
   a: array of ansiChar;
 begin
     // empty ansiChar array
     setLength(a, 0);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiChar array with one ansiChar
     setLength(a, 1);
     a[0] :=  'a' ;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiChar array with some chars
     setLength(a, 6);
     a[0] :=  'a';
@@ -106,182 +106,182 @@ begin
     a[4] := '0';
     a[5] := '9' ;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with a double value.
  *)
-procedure SystemTest.printTest4;
+procedure PrintStreamTest.printTest4;
 var
   a: double;
 begin
     // zeros with and without sign
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ones with and without sign
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // maximal absolute value with and without sign
     a := Double_.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Double_.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // minimal absolute value with and without sign
     a := Double_.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Double_.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with a single value.
  *)
-procedure SystemTest.printTest5;
+procedure PrintStreamTest.printTest5;
 var
   a: single;
 begin
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Float.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Float.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Float.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Float.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with an longInt value.
  *)
-procedure SystemTest.printTest6;
+procedure PrintStreamTest.printTest6;
 var
   a: longInt;
 begin
     // zero
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ones with and without sign
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // maximal and minimal value
     a := Integer_.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Integer_.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with a int64 value.
  *)
-procedure SystemTest.printTest7;
+procedure PrintStreamTest.printTest7;
 var
   a: int64;
 begin
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Long.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Long.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with an object.
  *)
-procedure SystemTest.printTest8;
+procedure PrintStreamTest.printTest8;
 var
   a: TestObject;
 begin
     // object with an empty ansiString
     a := TestObject.create('', 0);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // object with digits
     a := TestObject.create('0', 1);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := TestObject.create('9', -1);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // object with letters
     a := TestObject.create('Aa', Integer_.MAX_VALUE);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := TestObject.create('Zz', Integer_.MIN_VALUE);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the print method with a ansiString.
  *)
-procedure SystemTest.printTest9;
+procedure PrintStreamTest.printTest9;
 var
   a: String_;
 begin
     // empty ansiString
     a := '';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiString with one ansiChar
     a := 'a';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiString with some chars
     a := 'azAZ09';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
  * Tests the println method.
  *)
-procedure SystemTest.printlnTest;
+procedure PrintStreamTest.printlnTest;
 begin
     // print of an empty line
     System_.out_.println();
@@ -290,7 +290,7 @@ end;
 (**
  * Tests the println method with a boolean value.
  *)
-procedure SystemTest.printlnTest2;
+procedure PrintStreamTest.printlnTest2;
 var
   a: boolean;
 begin
@@ -303,7 +303,7 @@ end;
 (**
  * Tests the println method with a ansiChar value.
  *)
-procedure SystemTest.printlnTest3;
+procedure PrintStreamTest.printlnTest3;
 var
   a: ansiChar;
 begin
@@ -324,7 +324,7 @@ end;
 (**
  * Tests the println method with array of chars.
  *)
-procedure SystemTest.printlnTest4;
+procedure PrintStreamTest.printlnTest4;
 var
   a: array of ansiChar;
 begin
@@ -346,7 +346,7 @@ end;
 (**
  * Tests the println method with a double value.
  *)
-procedure SystemTest.printlnTest5;
+procedure PrintStreamTest.printlnTest5;
 var
   a: double;
 begin
@@ -371,7 +371,7 @@ end;
 (**
  * Tests the println method with a single value.
  *)
-procedure SystemTest.printlnTest6;
+procedure PrintStreamTest.printlnTest6;
 var
   a: single;
 begin
@@ -396,7 +396,7 @@ end;
 (**
  * Tests the println method with an longInt value.
  *)
-procedure SystemTest.printlnTest7;
+procedure PrintStreamTest.printlnTest7;
 var
   a: longInt;
 begin
@@ -415,7 +415,7 @@ end;
 (**
  * Tests the println method with a int64 value.
  *)
-procedure SystemTest.printlnTest8;
+procedure PrintStreamTest.printlnTest8;
 var
   a: int64;
 begin
@@ -434,7 +434,7 @@ end;
 (**
  * Tests the println method with an object.
  *)
-procedure SystemTest.printlnTest9;
+procedure PrintStreamTest.printlnTest9;
 var
   a: TestObject;
 begin
@@ -453,7 +453,7 @@ end;
 (**
  * Tests the println method with a ansiString.
  *)
-procedure SystemTest.printlnTest10;
+procedure PrintStreamTest.printlnTest10;
 var
   a: String_;
 begin
@@ -467,6 +467,6 @@ end;
 
 initialization
 
-  //RegisterTest(SystemTest);
+  //RegisterTest(PrintStreamTest);
 end.
 

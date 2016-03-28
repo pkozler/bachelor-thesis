@@ -2,7 +2,7 @@
 namespace JavaClasses
 {
     
-    public class SystemTest
+    public class PrintStreamTest
     {
         
         /// <summary>

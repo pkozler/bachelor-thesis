@@ -9,15 +9,17 @@ uses
   BooleanUnit, ByteUnit, ShortUnit, IntegerUnit, LongUnit, FloatUnit, DoubleUnit;
 
 type
-  ScanMethod = function(sc: Scanner): pointer;
+  ScanMethod = procedure(sc: Scanner);
   EqualsMethod = function(expected, actual: pointer): boolean;
   ToStringMethod = function(value: pointer): String_;
 
   ScannerTest = class(TTestCase)
   private
     var errorsInMethod: longInt;
-    procedure assertEquals(name: ansiString; expected: pointer; sc: Scanner;
+    procedure assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
       scan: ScanMethod; e: EqualsMethod; ts: ToStringMethod);
+    procedure assertEqualsString(name: ansiString; expected: String_; sc: Scanner;
+      scan: ScanMethod);
     procedure nextAssertEquals(sc: Scanner; expected: String_);
     procedure nextBooleanAssertEquals(sc: Scanner; expected: boolean);
     procedure nextByteAssertEquals(sc: Scanner; expected: shortInt);
@@ -52,7 +54,24 @@ type
   PLongInt = ^longInt;
   PInt64 = ^int64;
   PSmallInt = ^smallInt;
-  PAnsiString = ^ansiString;
+
+  DataType = (BooleanType, ByteType, ShortType, IntType,
+              LongType, FloatType, DoubleType, StringType);
+
+  CurrentValue = record
+    case value: DataType of
+         BooleanType: (currentScannedBoolean: boolean);
+         ByteType: (currentScannedByte: shortInt);
+         ShortType: (currentScannedShort: smallInt);
+         IntType: (currentScannedInt: longInt);
+         LongType: (currentScannedLong: int64);
+         FloatType: (currentScannedFloat: single);
+         DoubleType: (currentScannedDouble: double);
+         StringType: (currentScannedString: String_);
+  end;
+
+var
+   currentScannedValue: CurrentValue;
 
 function _equalsBool(a, b: pointer) : boolean;
 var
@@ -131,17 +150,6 @@ begin
   freeAndNil(y);
 end;
 
-function _equalsStr(a, b: pointer) : boolean;
-var
-  x, y: String_;
-begin
-    x := String_.create(PAnsiString(a)^);
-    y := String_.create(PAnsiString(b)^);
-    _equalsStr := x.equals(y);
-    freeAndNil(x);
-    freeAndNil(y);
-end;
-
 function _toStringBool(a: pointer) : String_;
 begin
   _toStringBool := Boolean_.toString_(PBoolean(a)^);
@@ -177,84 +185,52 @@ begin
   _toStringS := Short.toString_(PSmallInt(a)^);
 end;
 
-function _toStringStr(a: pointer) : String_;
+procedure _scanBool(sc: Scanner);
 begin
-  _toStringStr := String_.create(PAnsiString(a)^);
+  currentScannedValue.currentScannedBoolean := sc.nextBoolean();
 end;
 
-function _scanBool(sc: Scanner) : pointer;
-var
-  value: boolean;
+procedure _scanB(sc: Scanner);
 begin
-  value := sc.nextBoolean();
-  _scanBool := @(value);
+  currentScannedValue.currentScannedByte := sc.nextByte();
 end;
 
-function _scanB(sc: Scanner) : pointer;
-var
-  value: shortInt;
+procedure _scanD(sc: Scanner);
 begin
-  value := sc.nextByte();
-  _scanB := @(value);
+  currentScannedValue.currentScannedDouble := sc.nextDouble();
 end;
 
-function _scanD(sc: Scanner) : pointer;
-var
-  value: double;
+procedure _scanF(sc: Scanner);
 begin
-  value := sc.nextDouble();
-  _scanD := @(value);
+  currentScannedValue.currentScannedFloat := sc.nextFloat();
 end;
 
-function _scanF(sc: Scanner) : pointer;
-var
-  value: single;
+procedure _scanI(sc: Scanner);
 begin
-  value := sc.nextFloat();
-  _scanF := @(value);
+  currentScannedValue.currentScannedInt := sc.nextInt();
 end;
 
-function _scanI(sc: Scanner) : pointer;
-var
-  value: longInt;
+procedure _scanL(sc: Scanner);
 begin
-  value := sc.nextInt();
-  _scanI := @(value);
+  currentScannedValue.currentScannedLong := sc.nextLong();
 end;
 
-function _scanL(sc: Scanner) : pointer;
-var
-  value: int64;
+procedure _scanS(sc: Scanner);
 begin
-  value := sc.nextLong();
-  _scanL := @(value);
+  currentScannedValue.currentScannedShort := sc.nextShort();
 end;
 
-function _scanS(sc: Scanner) : pointer;
-var
-  value: smallInt;
+procedure _scanStr(sc: Scanner);
 begin
-  value := sc.nextShort();
-  _scanS := @(value);
+  currentScannedValue.currentScannedString := sc.next().strProperty;
 end;
 
-function _scanStr(sc: Scanner) : pointer;
-var
-  value: ansiString;
+procedure _scanStrLn(sc: Scanner);
 begin
-  value := sc.next().strProperty;
-  _scanStr := @(value);
+  currentScannedValue.currentScannedString := sc.nextLine().strProperty;
 end;
 
-function _scanStrLn(sc: Scanner) : pointer;
-var
-  value: ansiString;
-begin
-  value := sc.nextLine().strProperty;
-  _scanStrLn := @(value);
-end;
-
-procedure ScannerTest.assertEquals(name: ansiString; expected: pointer; sc: Scanner;
+procedure ScannerTest.assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
   scan: ScanMethod; e: EqualsMethod; ts: ToStringMethod);
 var
   actual: pointer;
@@ -263,7 +239,8 @@ begin
     writeLn('Testovaná metoda: "' + name + '"');
     writeLn('Očekávaná hodnota: "' + ts(expected).strProperty + '"');
 
-    actual := scan(sc);
+    scan(sc);
+    actual := @currentScannedValue;
 
     if e(expected, actual) then begin
         writeLn('OK');
@@ -274,49 +251,69 @@ begin
     end;
 end;
 
+procedure ScannerTest.assertEqualsString(name: ansiString; expected: String_; sc: Scanner; scan: ScanMethod);
+var
+  actual: String_;
+begin
+    writeLn();
+    writeLn('Testovaná metoda: "' + name + '"');
+    writeLn('Očekávaná hodnota: "' + expected.toString_().strProperty + '"');
+
+    scan(sc);
+    actual := currentScannedValue.currentScannedString;
+
+    if expected.equals_(actual) then begin
+        writeLn('OK');
+    end
+    else begin
+        writeLn('FAIL - skutečná hodnota: "' + actual.toString_().strProperty + '"');
+        inc(errorsInMethod);
+    end;
+end;
+
 procedure ScannerTest.nextAssertEquals(sc: Scanner; expected: String_);
 begin
-    assertEquals('next', @(expected.strProperty), sc, @_scanStr, @_equalsStr, @_toStringStr);
+    assertEqualsString('next', expected, sc, @_scanStr);
 end;
 
 procedure ScannerTest.nextBooleanAssertEquals(sc: Scanner; expected: boolean);
 begin
-    assertEquals('nextBoolean', @expected, sc, @_scanBool, @_equalsB, @_toStringB);
+    assertEqualsPointer('nextBoolean', @expected, sc, @_scanBool, @_equalsB, @_toStringB);
 end;
 
 procedure ScannerTest.nextByteAssertEquals(sc: Scanner; expected: shortInt);
 begin
-    assertEquals('nextByte', @expected, sc, @_scanB, @_equalsB, @_toStringB);
+    assertEqualsPointer('nextByte', @expected, sc, @_scanB, @_equalsB, @_toStringB);
 end;
 
 procedure ScannerTest.nextShortAssertEquals(sc: Scanner; expected: smallInt);
 begin
-    assertEquals('nextShort', @expected, sc, @_scanS, @_equalsS, @_toStringS);
+    assertEqualsPointer('nextShort', @expected, sc, @_scanS, @_equalsS, @_toStringS);
 end;
 
 procedure ScannerTest.nextIntAssertEquals(sc: Scanner; expected: longInt);
 begin
-    assertEquals('nextInt', @expected, sc, @_scanI, @_equalsI, @_toStringI);
+    assertEqualsPointer('nextInt', @expected, sc, @_scanI, @_equalsI, @_toStringI);
 end;
 
 procedure ScannerTest.nextLongAssertEquals(sc: Scanner; expected: int64);
 begin
-    assertEquals('nextLong', @expected, sc, @_scanL, @_equalsL, @_toStringL);
+    assertEqualsPointer('nextLong', @expected, sc, @_scanL, @_equalsL, @_toStringL);
 end;
 
 procedure ScannerTest.nextFloatAssertEquals(sc: Scanner; expected: single);
 begin
-    assertEquals('nextFloat', @expected, sc, @_scanF, @_equalsF, @_toStringF);
+    assertEqualsPointer('nextFloat', @expected, sc, @_scanF, @_equalsF, @_toStringF);
 end;
 
 procedure ScannerTest.nextDoubleAssertEquals(sc: Scanner; expected: double);
 begin
-    assertEquals('nextDouble', @expected, sc, @_scanD, @_equalsD, @_toStringD);
+    assertEqualsPointer('nextDouble', @expected, sc, @_scanD, @_equalsD, @_toStringD);
 end;
 
 procedure ScannerTest.nextLineAssertEquals(sc: Scanner; expected: String_);
 begin
-    assertEquals('nextLine', @(expected.strProperty), sc, @_scanStrLn, @_equalsStr, @_toStringStr);
+    assertEqualsString('nextLine', expected, sc, @_scanStrLn);
 end;
 
 constructor ScannerTest.create();

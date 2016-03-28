@@ -6,7 +6,7 @@ namespace JavaClasses
     {
         private delegate void TestMethod();
 
-        private static SystemTest testClass = new SystemTest();
+        private static PrintStreamTest testClass = new PrintStreamTest();
         
         private static TestMethod[] testMethods = new TestMethod[]
         {
@@ -34,7 +34,7 @@ namespace JavaClasses
         private static void usage()
         {
             Console.WriteLine("Zadejte platné číslo testovací metody. ({0} - {1})", 1, testMethods.Length - 1);
-            Environment.Exit(1);
+            Environment.Exit(-1);
         }
 
         static void Main(string[] args)

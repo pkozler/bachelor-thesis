@@ -35,7 +35,7 @@
         <PackageName Value="FCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="19">
+    <Units Count="20">
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -130,6 +130,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ArrayListTestUnit"/>
       </Unit18>
+      <Unit19>
+        <Filename Value="printstreamtestunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PrintStreamTestUnit"/>
+      </Unit19>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
