@@ -8,17 +8,17 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
-CND_ARTIFACT_DIR_Debug=build/Debug/Cygwin-Windows/tests/TestFiles
-CND_ARTIFACT_NAME_Debug=f1
-CND_ARTIFACT_PATH_Debug=build/Debug/Cygwin-Windows/tests/TestFiles/f1
+CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
+CND_ARTIFACT_NAME_Debug=clibrarytest
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/clibrarytest
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
 CND_PACKAGE_NAME_Debug=clibrarytest.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/clibrarytest.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
-CND_ARTIFACT_DIR_Release=build/Release/Cygwin-Windows/tests/TestFiles
-CND_ARTIFACT_NAME_Release=f1
-CND_ARTIFACT_PATH_Release=build/Release/Cygwin-Windows/tests/TestFiles/f1
+CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
+CND_ARTIFACT_NAME_Release=clibrarytest
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/clibrarytest
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
 CND_PACKAGE_NAME_Release=clibrarytest.tar
 CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/clibrarytest.tar
