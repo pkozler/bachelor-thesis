@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Short class wraps a value of primitive type short in an object.
+ * The Short struct wraps a value of the type int16_t, representing a short value.
  *
  * @author Petr Kozler (A13B0359P)
  */

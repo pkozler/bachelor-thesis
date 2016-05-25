@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Boolean class wraps a value of the primitive type boolean in an object.
+ * The Boolean struct wraps a value of the type bool, representing a boolean value.
  *
  * @author Petr Kozler (A13B0359P)
  */

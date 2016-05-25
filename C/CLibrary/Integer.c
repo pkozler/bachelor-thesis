@@ -7,10 +7,10 @@
 #define _MAX_INT_STRLEN 11
 
 /**
- * Constructs a newly allocated Integer object that represents the specified
+ * Constructs a newly allocated Integer structure that represents the specified
  * int value.
  *
- * @param value the value to be represented by the Integer object.
+ * @param value the value to be represented by the Integer structure.
  */
 Integer *new_Integer(int32_t value) {
     Integer *i = malloc(sizeof(Integer));
@@ -22,7 +22,7 @@ Integer *new_Integer(int32_t value) {
 /**
  * Returns the value of this Integer as an int.
  *
- * @return the numeric value represented by this object after conversion to
+ * @return the numeric value represented by this structure after conversion to
  * type int.
  */
 int32_t intValue(Integer *ptr) {
@@ -30,7 +30,7 @@ int32_t intValue(Integer *ptr) {
 }
 
 /**
- * Compares two Integer objects numerically.
+ * Compares two Integer structures numerically.
  *
  * @param anotherInteger the Integer to be compared.
  * @return the value 0 if this Integer is equal to the argument Integer; a
@@ -55,10 +55,10 @@ int32_t Integer_compare(int32_t x, int32_t y) {
 }
 
 /**
- * Compares this object to the specified object.
+ * Compares this structure to the specified structure.
  *
- * @param obj the object to compare with.
- * @return true if the objects are the same; false otherwise.
+ * @param obj the structure to compare with.
+ * @return true if the structures are the same; false otherwise.
  */
 bool equalsI(Integer *ptr, Integer *obj) {
     if (ptr == NULL || obj == NULL) {
@@ -73,16 +73,16 @@ bool equalsI(Integer *ptr, Integer *obj) {
 }
 
 /**
- * Returns a String object representing this Integer's value.
+ * Returns a String structure representing this Integer's value.
  * 
- * @return a string representation of the value of this object in base 10.
+ * @return a string representation of the value of this structure in base 10.
  */
 String *toStringI(Integer *ptr) {
     return Integer_toString(ptr->v);
 }
 
 /**
- * Returns a String object representing the specified integer.
+ * Returns a String structure representing the specified integer.
  *
  * @param i an integer to be converted.
  * @return a string representation of the argument in base 10.

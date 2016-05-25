@@ -15,7 +15,7 @@ var
 procedure usage;
 begin
   writeLn('Zadejte platné číslo testovací metody. ('
-  + intToStr(0) + ' - ' + intToStr(length(testMethods)) + ')');
+  + intToStr(0) + ' - ' + intToStr(length(testMethods) - 1) + ')');
   halt(-1);
 end;
 

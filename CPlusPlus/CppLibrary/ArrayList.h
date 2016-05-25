@@ -16,7 +16,7 @@ template <class E> class ArrayList : public List<E> {
     static const int32_t DEFAULT_CAPACITY;
     std::vector<E *> v;
 public:
-    const std::vector<E> _v() const { return v; }
+    std::vector<E *> _v() { return v; }
     ArrayList();
     ArrayList(ArrayList<E> *c);
     ~ArrayList();
@@ -35,9 +35,7 @@ template <class E> const int32_t ArrayList<E>::DEFAULT_CAPACITY = 10;
 /**
  * Constructs an empty list with an initial capacity of ten.
  */
-template <class E> ArrayList<E>::ArrayList() {
-    v(DEFAULT_CAPACITY);
-}
+template <class E> ArrayList<E>::ArrayList() {}
 
 /**
  * Constructs a list containing the elements of the specified collection, in
@@ -46,7 +44,7 @@ template <class E> ArrayList<E>::ArrayList() {
  * @param c the collection whose elements are to be placed into this list
  */
 template <class E> ArrayList<E>::ArrayList(ArrayList<E> *c) {
-    v(c->v);
+    v = c->v;
 }
 
 template <class E> ArrayList<E>::~ArrayList() {
@@ -94,7 +92,7 @@ template <class E> E *ArrayList<E>::get(int32_t index) {
  * @return the element previously at the specified position
  */
 template <class E> E *ArrayList<E>::set(int32_t index, E *element) {
-    E original = v[index];
+    E *original = v[index];
     v[index] = element;
 
     return original;
@@ -107,8 +105,8 @@ template <class E> E *ArrayList<E>::set(int32_t index, E *element) {
  * @return the element that was removed from the list
  */
 template <class E> E *ArrayList<E>::remove(int32_t index) {
-    E removed = v[index];
-    v.erase(index);
+    E *removed = v[index];
+    v.erase(v.begin() + index);
 
     return removed;
 }
@@ -139,13 +137,13 @@ template <class E> String *ArrayList<E>::toString() {
     std::ostringstream oss("[");
 
     if (length > 0) {
-        String *str = toString(v[0]);
+        String *str = ((Object *)v[0])->toString();
         oss << str;
         delete str;
     }
 
     for (int32_t i = 1; i < length; i++) {
-        String *str = toString(v[i]);
+        String *str = ((Object *)v[i])->toString();
         oss << ", " << str;
         delete str;
     }

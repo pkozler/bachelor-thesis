@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Integer class wraps a value of the primitive type int in an object.
+ * The Integer struct wraps a value of the type int32_t, representing an integer value.
  *
  * @author Petr Kozler (A13B0359P)
  */

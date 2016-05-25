@@ -32,8 +32,8 @@ void delete_StringTokenizer(StringTokenizer *ptr) {
 }
 
 /**
- * Calculates the number of times that this tokenizer's nextToken method can
- * be called before it generates an exception.
+ * Calculates the number of times that this tokenizer's nextToken function can
+ * be called before it results in undefined behavior.
  *
  * @return the number of tokens remaining in the string using the current
  * delimiter set.

@@ -3,7 +3,7 @@
 #include <string>
 
 const int64_t Long::MAX_VALUE = 9223372036854775807L;
-const int64_t Long::MIN_VALUE = 9223372036854775808L;
+const int64_t Long::MIN_VALUE = -9223372036854775808L;
 
 /**
  * Constructs a newly allocated Long object that represents the specified

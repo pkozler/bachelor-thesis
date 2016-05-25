@@ -9,6 +9,8 @@
 #include "Long.h"
 #include "Short.h"
 
+void *Arrays::currentComparator = nullptr;
+
 bool Arrays::equalsBool(bool a, bool b) {
     Boolean x(a);
     Boolean y(b);
@@ -65,19 +67,47 @@ bool Arrays::equalsS(int16_t a, int16_t b) {
     return (&x)->equals(&y);
 }
 
-int32_t Arrays::compareObj(Object *a, Object *b) {
-    Comparable<Object> *x = (Comparable<Object> *) a;
-    Comparable<Object> *y = (Comparable<Object> *) b;
-    
-    return x->compareTo(y);
-}
-
 bool Arrays::equalsObj(Object *a, Object *b) {
     return a->equals(b);
 }
 
 String *Arrays::toStringObj(Object *a) {
     return a->toString();
+}
+
+bool Arrays::compareB(int8_t a, int8_t b) {
+    return Byte::compare(a, b) < 0;
+}
+
+bool Arrays::compareC(char a, char b) {
+    return Character::compare(a, b) < 0;
+}
+
+bool Arrays::compareD(double a, double b) {
+    return Double::compare(a, b) < 0;
+}
+
+bool Arrays::compareF(float a, float b) {
+    return Float::compare(a, b) < 0;
+}
+
+bool Arrays::compareI(int32_t a, int32_t b) {
+    return Integer::compare(a, b) < 0;
+}
+
+bool Arrays::compareL(int64_t a, int64_t b) {
+    return Long::compare(a, b) < 0;
+}
+
+bool Arrays::compareS(int16_t a, int16_t b) {
+    return Short::compare(a, b) < 0;
+}
+
+bool Arrays::compareObj(Object *a, Object *b) {
+    Comparable<Object> *x = (Comparable<Object> *) a;
+    Comparable<Object> *y = (Comparable<Object> *) b;
+    
+    return x->compareTo(y) < 0;
 }
 
 /**
@@ -94,7 +124,7 @@ String *Arrays::toStringObj(Object *a) {
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(int8_t *a, int32_t length, int8_t key) {
-    return binarySearchGeneric(a, 0, length, key, Byte::compare);
+    return binarySearchGeneric(a, 0, length, key, compareB);
 }
 
 /**
@@ -115,7 +145,7 @@ int32_t Arrays::binarySearch(int8_t *a, int32_t length, int8_t key) {
  * if the key is found.
  */
 int32_t Arrays::binarySearch(int8_t *a, int32_t fromIndex, int32_t toIndex, int8_t key) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, Byte::compare);
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareB);
 }
 
 /**
@@ -132,7 +162,7 @@ int32_t Arrays::binarySearch(int8_t *a, int32_t fromIndex, int32_t toIndex, int8
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(char *a, int32_t length, char key) {
-    return binarySearchGeneric(a, 0, length, key, Character::compare);
+    return binarySearchGeneric(a, 0, length, key, compareC);
 }
 
 /**
@@ -153,7 +183,7 @@ int32_t Arrays::binarySearch(char *a, int32_t length, char key) {
  * if the key is found.
  */
 int32_t Arrays::binarySearch(char *a, int32_t fromIndex, int32_t toIndex, char key) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, Character::compare);
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareC);
 }
 
 /**
@@ -170,7 +200,7 @@ int32_t Arrays::binarySearch(char *a, int32_t fromIndex, int32_t toIndex, char k
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(double *a, int32_t length, double key) {
-    return binarySearchGeneric(a, 0, length, key, Double::compare);
+    return binarySearchGeneric(a, 0, length, key, compareD);
 }
 
 /**
@@ -191,7 +221,7 @@ int32_t Arrays::binarySearch(double *a, int32_t length, double key) {
  * if the key is found.
  */
 int32_t Arrays::binarySearch(double *a, int32_t fromIndex, int32_t toIndex, double key) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, Double::compare);
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareD);
 }
 
 /**
@@ -208,7 +238,7 @@ int32_t Arrays::binarySearch(double *a, int32_t fromIndex, int32_t toIndex, doub
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(float *a, int32_t length, float key) {
-    return binarySearchGeneric(a, 0, length, key, Float::compare);
+    return binarySearchGeneric(a, 0, length, key, compareF);
 }
 
 /**
@@ -229,7 +259,7 @@ int32_t Arrays::binarySearch(float *a, int32_t length, float key) {
  * if the key is found.
  */
 int32_t Arrays::binarySearch(float *a, int32_t fromIndex, int32_t toIndex, float key) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, Float::compare);
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareF);
 }
 
 /**
@@ -246,7 +276,7 @@ int32_t Arrays::binarySearch(float *a, int32_t fromIndex, int32_t toIndex, float
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(int32_t *a, int32_t length, int32_t key) {
-    return binarySearchGeneric(a, 0, length, key, Integer::compare);
+    return binarySearchGeneric(a, 0, length, key, compareI);
 }
 
 /**
@@ -267,7 +297,7 @@ int32_t Arrays::binarySearch(int32_t *a, int32_t length, int32_t key) {
  * if the key is found.
  */
 int32_t Arrays::binarySearch(int32_t *a, int32_t fromIndex, int32_t toIndex, int32_t key) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, Integer::compare);
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareI);
 }
 
 /**
@@ -284,7 +314,7 @@ int32_t Arrays::binarySearch(int32_t *a, int32_t fromIndex, int32_t toIndex, int
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(int64_t *a, int32_t length, int64_t key) {
-    return binarySearchGeneric(a, 0, length, key, Long::compare);
+    return binarySearchGeneric(a, 0, length, key, compareL);
 }
 
 /**
@@ -305,7 +335,7 @@ int32_t Arrays::binarySearch(int64_t *a, int32_t length, int64_t key) {
  * if the key is found.
  */
 int32_t Arrays::binarySearch(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t key) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, Long::compare);
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareL);
 }
 
 /**
@@ -360,7 +390,7 @@ int32_t Arrays::binarySearch(Object **a, int32_t fromIndex, int32_t toIndex, Obj
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(int16_t *a, int32_t length, int16_t key) {
-    return binarySearchGeneric(a, 0, length, key, Short::compare);
+    return binarySearchGeneric(a, 0, length, key, compareS);
 }
 
 /**
@@ -381,7 +411,7 @@ int32_t Arrays::binarySearch(int16_t *a, int32_t length, int16_t key) {
  * if the key is found.
  */
 int32_t Arrays::binarySearch(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t key) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, Short::compare);
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareS);
 }
 
 /**
@@ -950,7 +980,7 @@ void Arrays::fill(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t val) {
  * @param a the array to be sorted
  */
 void Arrays::sort(int8_t *a, int32_t length) {
-    sortGeneric(a, 0, length, Byte::compare);
+    sortGeneric(a, 0, length, compareB);
 }
 
 /**
@@ -961,7 +991,7 @@ void Arrays::sort(int8_t *a, int32_t length) {
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
 void Arrays::sort(int8_t *a, int32_t fromIndex, int32_t toIndex) {
-    sortGeneric(a, fromIndex, toIndex, Byte::compare);
+    sortGeneric(a, fromIndex, toIndex, compareB);
 }
 
 /**
@@ -970,7 +1000,7 @@ void Arrays::sort(int8_t *a, int32_t fromIndex, int32_t toIndex) {
  * @param a the array to be sorted
  */
 void Arrays::sort(char *a, int32_t length) {
-    sortGeneric(a, 0, length, Character::compare);
+    sortGeneric(a, 0, length, compareC);
 }
 
 /**
@@ -981,7 +1011,7 @@ void Arrays::sort(char *a, int32_t length) {
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
 void Arrays::sort(char *a, int32_t fromIndex, int32_t toIndex) {
-    sortGeneric(a, fromIndex, toIndex, Character::compare);
+    sortGeneric(a, fromIndex, toIndex, compareC);
 }
 
 /**
@@ -990,7 +1020,7 @@ void Arrays::sort(char *a, int32_t fromIndex, int32_t toIndex) {
  * @param a the array to be sorted
  */
 void Arrays::sort(double *a, int32_t length) {
-    sortGeneric(a, 0, length, Double::compare);
+    sortGeneric(a, 0, length, compareD);
 }
 
 /**
@@ -1001,7 +1031,7 @@ void Arrays::sort(double *a, int32_t length) {
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
 void Arrays::sort(double *a, int32_t fromIndex, int32_t toIndex) {
-    sortGeneric(a, fromIndex, toIndex, Double::compare);
+    sortGeneric(a, fromIndex, toIndex, compareD);
 }
 
 /**
@@ -1010,7 +1040,7 @@ void Arrays::sort(double *a, int32_t fromIndex, int32_t toIndex) {
  * @param a the array to be sorted
  */
 void Arrays::sort(float *a, int32_t length) {
-    sortGeneric(a, 0, length, Float::compare);
+    sortGeneric(a, 0, length, compareF);
 }
 
 /**
@@ -1021,7 +1051,7 @@ void Arrays::sort(float *a, int32_t length) {
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
 void Arrays::sort(float *a, int32_t fromIndex, int32_t toIndex) {
-    sortGeneric(a, fromIndex, toIndex, Float::compare);
+    sortGeneric(a, fromIndex, toIndex, compareF);
 }
 
 /**
@@ -1030,7 +1060,7 @@ void Arrays::sort(float *a, int32_t fromIndex, int32_t toIndex) {
  * @param a the array to be sorted
  */
 void Arrays::sort(int32_t *a, int32_t length) {
-    sortGeneric(a, 0, length, Integer::compare);
+    sortGeneric(a, 0, length, compareI);
 }
 
 /**
@@ -1041,7 +1071,7 @@ void Arrays::sort(int32_t *a, int32_t length) {
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
 void Arrays::sort(int32_t *a, int32_t fromIndex, int32_t toIndex) {
-    sortGeneric(a, fromIndex, toIndex, Integer::compare);
+    sortGeneric(a, fromIndex, toIndex, compareI);
 }
 
 /**
@@ -1050,7 +1080,7 @@ void Arrays::sort(int32_t *a, int32_t fromIndex, int32_t toIndex) {
  * @param a the array to be sorted
  */
 void Arrays::sort(int64_t *a, int32_t length) {
-    sortGeneric(a, 0, length, Long::compare);
+    sortGeneric(a, 0, length, compareL);
 }
 
 /**
@@ -1061,7 +1091,7 @@ void Arrays::sort(int64_t *a, int32_t length) {
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
 void Arrays::sort(int64_t *a, int32_t fromIndex, int32_t toIndex) {
-    sortGeneric(a, fromIndex, toIndex, Long::compare);
+    sortGeneric(a, fromIndex, toIndex, compareL);
 }
 
 /**
@@ -1092,7 +1122,7 @@ void Arrays::sort(Object **a, int32_t fromIndex, int32_t toIndex) {
  * @param a the array to be sorted
  */
 void Arrays::sort(int16_t *a, int32_t length) {
-    sortGeneric(a, 0, length, Short::compare);
+    sortGeneric(a, 0, length, compareS);
 }
 
 /**
@@ -1103,7 +1133,7 @@ void Arrays::sort(int16_t *a, int32_t length) {
  * @param toIndex the index of the last element (exclusive) to be sorted
  */
 void Arrays::sort(int16_t *a, int32_t fromIndex, int32_t toIndex) {
-    sortGeneric(a, fromIndex, toIndex, Short::compare);
+    sortGeneric(a, fromIndex, toIndex, compareS);
 }
 
 /**

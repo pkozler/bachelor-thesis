@@ -4,24 +4,23 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="4">
+    <Units Count="6">
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="35"/>
-        <CursorPos X="7" Y="47"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="11"/>
+        <CursorPos X="30" Y="5"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="..\PasLibraryTest\printstreamtestunit.pas"/>
         <UnitName Value="PrintStreamTestUnit"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="258"/>
         <CursorPos X="24" Y="267"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="11"/>
       </Unit1>
       <Unit2>
         <Filename Value="..\PasLibrary\systemunit.pas"/>
@@ -34,13 +33,28 @@
       <Unit3>
         <Filename Value="..\PasLibraryTest\scannertestunit.pas"/>
         <UnitName Value="ScannerTestUnit"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="10" Y="5"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="11"/>
       </Unit3>
+      <Unit4>
+        <Filename Value="..\PasLibraryTest\mathtestunit.pas"/>
+        <UnitName Value="MathTestUnit"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="608"/>
+        <CursorPos X="15" Y="615"/>
+        <UsageCount Value="11"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\PasLibrary\doubleunit.pas"/>
+        <UnitName Value="DoubleUnit"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="30"/>
+        <CursorPos X="36" Y="58"/>
+        <UsageCount Value="11"/>
+      </Unit5>
     </Units>
-    <JumpHistory Count="17" HistoryIndex="16">
+    <JumpHistory Count="15" HistoryIndex="14">
       <Position1>
         <Filename Value="project.lpr"/>
         <Caret Line="8" Column="12"/>
@@ -50,65 +64,57 @@
         <Caret Line="7" Column="60"/>
       </Position2>
       <Position3>
-        <Filename Value="..\PasLibraryTest\printstreamtestunit.pas"/>
-        <Caret Line="8" Column="56" TopLine="91"/>
+        <Filename Value="project.lpr"/>
+        <Caret Line="6" Column="25"/>
       </Position3>
       <Position4>
         <Filename Value="project.lpr"/>
-        <Caret Line="6" Column="25"/>
+        <Caret Column="17"/>
       </Position4>
       <Position5>
         <Filename Value="project.lpr"/>
-        <Caret Column="17"/>
+        <Caret Line="11" Column="14"/>
       </Position5>
       <Position6>
         <Filename Value="project.lpr"/>
-        <Caret Line="11" Column="14"/>
+        <Caret Line="17" Column="6"/>
       </Position6>
       <Position7>
         <Filename Value="project.lpr"/>
-        <Caret Line="17" Column="6"/>
+        <Caret Line="10" Column="15"/>
       </Position7>
       <Position8>
         <Filename Value="project.lpr"/>
-        <Caret Line="10" Column="15"/>
+        <Caret Line="19" Column="14"/>
       </Position8>
       <Position9>
         <Filename Value="project.lpr"/>
-        <Caret Line="19" Column="14"/>
+        <Caret Line="10" Column="14"/>
       </Position9>
       <Position10>
         <Filename Value="project.lpr"/>
-        <Caret Line="10" Column="14"/>
+        <Caret Line="12" TopLine="3"/>
       </Position10>
       <Position11>
         <Filename Value="project.lpr"/>
-        <Caret Line="12" TopLine="3"/>
+        <Caret Line="14" Column="71" TopLine="2"/>
       </Position11>
       <Position12>
         <Filename Value="project.lpr"/>
-        <Caret Line="14" Column="71" TopLine="2"/>
+        <Caret Line="5" Column="30" TopLine="2"/>
       </Position12>
       <Position13>
         <Filename Value="project.lpr"/>
-        <Caret Line="5" Column="30" TopLine="2"/>
+        <Caret Line="25" Column="41" TopLine="13"/>
       </Position13>
       <Position14>
         <Filename Value="project.lpr"/>
-        <Caret Line="25" Column="41" TopLine="13"/>
+        <Caret Line="56" TopLine="5"/>
       </Position14>
       <Position15>
         <Filename Value="project.lpr"/>
-        <Caret Line="56" TopLine="5"/>
-      </Position15>
-      <Position16>
-        <Filename Value="..\PasLibraryTest\printstreamtestunit.pas"/>
-        <Caret Line="64" Column="24" TopLine="49"/>
-      </Position16>
-      <Position17>
-        <Filename Value="project.lpr"/>
         <Caret Line="58" Column="5" TopLine="35"/>
-      </Position17>
+      </Position15>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

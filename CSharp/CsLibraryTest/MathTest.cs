@@ -5,6 +5,7 @@ namespace JavaClasses
 	[TestClass]
 	public class MathTest
 	{
+        const double DEFAULT_EPSILON = 1E-20;
 
         /// <summary>
         /// Tests the abs method with a double value.
@@ -16,15 +17,15 @@ namespace JavaClasses
             // negative value
             a = Double.MIN_VALUE + 1;
             b = Math.abs(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1.0, b, DEFAULT_EPSILON);
             // zero value
             a = 0;
             b = Math.abs(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
             // positive value
             a = Double.MAX_VALUE - 1;
             b = Math.abs(a);
-            Assert.AreEqual(1.7976931348623157E308, b);
+            Assert.AreEqual(1.7976931348623157E308, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -36,13 +37,13 @@ namespace JavaClasses
             float a, b;
             a = Float.MIN_VALUE + 1;
             b = Math.abs(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1.0, b, DEFAULT_EPSILON);
             a = 0;
             b = Math.abs(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
             a = Float.MAX_VALUE - 1;
             b = Math.abs(a);
-            Assert.AreEqual(3.4028235E38, b);
+            Assert.AreEqual(3.4028235E38f, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -92,27 +93,27 @@ namespace JavaClasses
             a = Double.MIN_VALUE;
             b = Double.MAX_VALUE;
             c = Math.max(a, b);
-            Assert.AreEqual(1.7976931348623157E308, c);
+            Assert.AreEqual(1.7976931348623157E308, c, DEFAULT_EPSILON);
             // positive and negative value
             a = Double.MAX_VALUE;
             b = Double.MIN_VALUE;
             c = Math.max(a, b);
-            Assert.AreEqual(1.7976931348623157E308, c);
+            Assert.AreEqual(1.7976931348623157E308, c, DEFAULT_EPSILON);
             // negative and positive value (smaller difference)
             a = -1;
             b = 1;
             c = Math.max(a, b);
-            Assert.AreEqual(1.0, c);
+            Assert.AreEqual(1.0, c, DEFAULT_EPSILON);
             // positive and negative value (bigger difference)
             a = 1;
             b = -1;
             c = Math.max(a, b);
             // equal values
-            Assert.AreEqual(1.0, c);
+            Assert.AreEqual(1.0, c, DEFAULT_EPSILON);
             a = 0;
             b = 0;
             c = Math.max(a, b);
-            Assert.AreEqual(0.0, c);
+            Assert.AreEqual(0.0, c, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -125,23 +126,23 @@ namespace JavaClasses
             a = Float.MIN_VALUE;
             b = Float.MAX_VALUE;
             c = Math.max(a, b);
-            Assert.AreEqual(3.4028235E38, c);
+            Assert.AreEqual(3.4028235E38, c, DEFAULT_EPSILON);
             a = Float.MAX_VALUE;
             b = Float.MIN_VALUE;
             c = Math.max(a, b);
-            Assert.AreEqual(3.4028235E38, c);
+            Assert.AreEqual(3.4028235E38, c, DEFAULT_EPSILON);
             a = -1;
             b = 1;
             c = Math.max(a, b);
-            Assert.AreEqual(1.0, c);
+            Assert.AreEqual(1.0, c, DEFAULT_EPSILON);
             a = 1;
             b = -1;
             c = Math.max(a, b);
-            Assert.AreEqual(1.0, c);
+            Assert.AreEqual(1.0, c, DEFAULT_EPSILON);
             a = 0;
             b = 0;
             c = Math.max(a, b);
-            Assert.AreEqual(0.0, c);
+            Assert.AreEqual(0.0, c, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -212,23 +213,23 @@ namespace JavaClasses
             a = Double.MIN_VALUE;
             b = Double.MAX_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(4.9E-324, c);
+            Assert.AreEqual(4.9E-324, c, DEFAULT_EPSILON);
             a = Double.MAX_VALUE;
             b = Double.MIN_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(4.9E-324, c);
+            Assert.AreEqual(4.9E-324, c, DEFAULT_EPSILON);
             a = -1;
             b = 1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1.0, c);
+            Assert.AreEqual(-1.0, c, DEFAULT_EPSILON);
             a = 1;
             b = -1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1.0, c);
+            Assert.AreEqual(-1.0, c, DEFAULT_EPSILON);
             a = 0;
             b = 0;
             c = Math.min(a, b);
-            Assert.AreEqual(0.0, c);
+            Assert.AreEqual(0.0, c, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -241,23 +242,23 @@ namespace JavaClasses
             a = Float.MIN_VALUE;
             b = Float.MAX_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(1.4E-45, c);
+            Assert.AreEqual(1.4E-45, c, DEFAULT_EPSILON);
             a = Float.MAX_VALUE;
             b = Float.MIN_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(1.4E-45, c);
+            Assert.AreEqual(1.4E-45, c, DEFAULT_EPSILON);
             a = -1;
             b = 1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1.0, c);
+            Assert.AreEqual(-1.0, c, DEFAULT_EPSILON);
             a = 1;
             b = -1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1.0, c);
+            Assert.AreEqual(-1.0, c, DEFAULT_EPSILON);
             a = 0;
             b = 0;
             c = Math.min(a, b);
-            Assert.AreEqual(0.0, c);
+            Assert.AreEqual(0.0, c, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -270,23 +271,23 @@ namespace JavaClasses
             a = Integer.MIN_VALUE;
             b = Integer.MAX_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(-2147483648, c);
+            Assert.AreEqual(-2147483648, c, DEFAULT_EPSILON);
             a = Integer.MAX_VALUE;
             b = Integer.MIN_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(-2147483648, c);
+            Assert.AreEqual(-2147483648, c, DEFAULT_EPSILON);
             a = -1;
             b = 1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1, c);
+            Assert.AreEqual(-1, c, DEFAULT_EPSILON);
             a = 1;
             b = -1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1, c);
+            Assert.AreEqual(-1, c, DEFAULT_EPSILON);
             a = 0;
             b = 0;
             c = Math.min(a, b);
-            Assert.AreEqual(0, c);
+            Assert.AreEqual(0, c, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -299,23 +300,23 @@ namespace JavaClasses
             a = Long.MIN_VALUE;
             b = Long.MAX_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(-9223372036854775808, c);
+            Assert.AreEqual(-9223372036854775808, c, DEFAULT_EPSILON);
             a = Long.MAX_VALUE;
             b = Long.MIN_VALUE;
             c = Math.min(a, b);
-            Assert.AreEqual(-9223372036854775808, c);
+            Assert.AreEqual(-9223372036854775808, c, DEFAULT_EPSILON);
             a = -1;
             b = 1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1, c);
+            Assert.AreEqual(-1, c, DEFAULT_EPSILON);
             a = 1;
             b = -1;
             c = Math.min(a, b);
-            Assert.AreEqual(-1, c);
+            Assert.AreEqual(-1, c, DEFAULT_EPSILON);
             a = 0;
             b = 0;
             c = Math.min(a, b);
-            Assert.AreEqual(0, c);
+            Assert.AreEqual(0, c, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -329,27 +330,27 @@ namespace JavaClasses
             a = 10;
             b = 2;
             c = Math.pow(a, b);
-            Assert.AreEqual(100.0, c);
+            Assert.AreEqual(100.0, c, DEFAULT_EPSILON);
             // positive power of negative value
             a = -10;
             b = 2;
             c = Math.pow(a, b);
-            Assert.AreEqual(100.0, c);
+            Assert.AreEqual(100.0, c, DEFAULT_EPSILON);
             // negative power of positive value
             a = 10;
             b = -2;
             c = Math.pow(a, b);
             // zore power
-            Assert.AreEqual(0.01, c);
+            Assert.AreEqual(0.01, c, DEFAULT_EPSILON);
             a = 10;
             b = 0;
             c = Math.pow(a, b);
-            Assert.AreEqual(1.0, c);
+            Assert.AreEqual(1.0, c, DEFAULT_EPSILON);
             // power of zero
             a = 0;
             b = 10;
             c = Math.pow(a, b);
-            Assert.AreEqual(0.0, c);
+            Assert.AreEqual(0.0, c, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -362,15 +363,15 @@ namespace JavaClasses
             // square root of bigger value
             a = 100;
             b = Math.sqrt(a);
-            Assert.AreEqual(10.0, b);
+            Assert.AreEqual(10.0, b, DEFAULT_EPSILON);
             // square root of one
             a = 1;
             b = Math.sqrt(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1.0, b, DEFAULT_EPSILON);
             // square root of zero
             a = 0;
             b = Math.sqrt(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -381,17 +382,17 @@ namespace JavaClasses
         {
             double a, b;
             // logarithm of the square of E
-            a = Math.E;/// Math.E;
+            a = Math.E * Math.E;/// Math.E;
             b = Math.log(a);
-            Assert.AreEqual(2.0, b);
+            Assert.AreEqual(2.0, b, DEFAULT_EPSILON);
             // logarithm of E
             a = Math.E;
             b = Math.log(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1.0, b, DEFAULT_EPSILON);
             // logarithm of one
             a = 1;
             b = Math.log(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -404,15 +405,15 @@ namespace JavaClasses
             // logarithm of the square of ten
             a = 100;
             b = Math.log10(a);
-            Assert.AreEqual(2.0, b);
+            Assert.AreEqual(2.0, b, DEFAULT_EPSILON);
             // logarithm of ten
             a = 10;
             b = Math.log10(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1.0, b, DEFAULT_EPSILON);
             // logarithm of one
             a = 1;
             b = Math.log10(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -425,15 +426,15 @@ namespace JavaClasses
             // sine of PI
             a = Math.PI;
             b = Math.sin(a);
-            Assert.AreEqual(1.2246467991473532E-16, b);
+            Assert.AreEqual(1.2246467991473532E-16, b, DEFAULT_EPSILON);
             // sine of minus PI
             a = -Math.PI;
             b = Math.sin(a);
-            Assert.AreEqual(-1.2246467991473532E-16, b);
+            Assert.AreEqual(-1.2246467991473532E-16, b, DEFAULT_EPSILON);
             // sine of zero
             a = 0;
             b = Math.sin(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -446,15 +447,15 @@ namespace JavaClasses
             // cosine of PI
             a = Math.PI;
             b = Math.cos(a);
-            Assert.AreEqual(-1.0, b);
+            Assert.AreEqual(-1.0, b, DEFAULT_EPSILON);
             // cosine of minus PI
             a = -Math.PI;
             b = Math.cos(a);
-            Assert.AreEqual(-1.0, b);
+            Assert.AreEqual(-1.0, b, DEFAULT_EPSILON);
             // cosine of zero
             a = 0;
             b = Math.cos(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -467,15 +468,15 @@ namespace JavaClasses
             // tangent of PI
             a = Math.PI;
             b = Math.tan(a);
-            Assert.AreEqual(-1.2246467991473532E-16, b);
+            Assert.AreEqual(-1.2246467991473532E-16, b, DEFAULT_EPSILON);
             // tangent of minus PI
             a = -Math.PI;
             b = Math.tan(a);
-            Assert.AreEqual(1.2246467991473532E-16, b);
+            Assert.AreEqual(1.2246467991473532E-16, b, DEFAULT_EPSILON);
             // tangent of zero
             a = 0;
             b = Math.tan(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -488,15 +489,15 @@ namespace JavaClasses
             // arcsine of one
             a = 1;
             b = Math.asin(a);
-            Assert.AreEqual(1.5707963267948966, b);
+            Assert.AreEqual(1.5707963267948966, b, DEFAULT_EPSILON);
             // arcsine of minus one
             a = -1;
             b = Math.asin(a);
-            Assert.AreEqual(-1.5707963267948966, b);
+            Assert.AreEqual(-1.5707963267948966, b, DEFAULT_EPSILON);
             // arcsine of zero
             a = 0;
             b = Math.asin(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -509,15 +510,15 @@ namespace JavaClasses
             // arccosine of one
             a = 1;
             b = Math.acos(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
             // arccosine of minus one
             a = -1;
             b = Math.acos(a);
-            Assert.AreEqual(3.141592653589793, b);
+            Assert.AreEqual(3.141592653589793, b, DEFAULT_EPSILON);
             // arccosine of zero
             a = 0;
             b = Math.acos(a);
-            Assert.AreEqual(1.5707963267948966, b);
+            Assert.AreEqual(1.5707963267948966, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -530,15 +531,15 @@ namespace JavaClasses
             // arctangent of one
             a = 1;
             b = Math.atan(a);
-            Assert.AreEqual(0.7853981633974483, b);
+            Assert.AreEqual(0.7853981633974483, b, DEFAULT_EPSILON);
             // arctangent of minus one
             a = -1;
             b = Math.atan(a);
-            Assert.AreEqual(-0.7853981633974483, b);
+            Assert.AreEqual(-0.7853981633974483, b, DEFAULT_EPSILON);
             // arctangent of zero
             a = 0;
             b = Math.atan(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0.0, b, DEFAULT_EPSILON);
         }
 
         /// <summary>
@@ -547,19 +548,20 @@ namespace JavaClasses
         [TestMethod]
 		public void roundTest()
         {
-            double a, b;
+            double a;
+            long b;
             // rounding to even value
             a = 1.5;
             b = Math.round(a);
-            Assert.AreEqual(2.0, b);
+            Assert.AreEqual(2, b);
             // rounding to odd value
             a = 0.5;
             b = Math.round(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1, b);
             // rounding of negative value
             a = -0.5;
             b = Math.round(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0, b);
         }
 
         /// <summary>
@@ -568,16 +570,17 @@ namespace JavaClasses
         [TestMethod]
 		public void roundTest2()
         {
-            float a, b;
+            float a;
+            int b;
             a = 1.5f;
             b = Math.round(a);
-            Assert.AreEqual(2.0, b);
+            Assert.AreEqual(2, b);
             a = 0.5f;
             b = Math.round(a);
-            Assert.AreEqual(1.0, b);
+            Assert.AreEqual(1, b);
             a = -0.5f;
             b = Math.round(a);
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual(0, b);
         }
 
     }

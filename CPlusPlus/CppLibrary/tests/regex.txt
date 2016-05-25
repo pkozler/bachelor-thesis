@@ -1,0 +1,17 @@
+(TestObject|String) (?=[^>])
+$1 *
+
+(StringTokenizer|StringBuilder|Scanner) (?=[^>])
+$1 *
+
+(TestObjectComparator) (?=[^>])
+$1 *
+
+(Boolean|Byte|Short|Integer|Long|Float|Double|Character) (?=[^>])
+$1 *
+
+\[\] ([a-zA-Z])
+ *$1
+
+procedure ([a-zA-Z0-9_]+);
+Test::registerTest($1, "$1");

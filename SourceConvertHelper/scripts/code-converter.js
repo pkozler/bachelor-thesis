@@ -1,34 +1,53 @@
 var cPatterns = [
+    {p: /\bint/g, r: "int32_t"},
+    {p: /\blong/g, r: "int64_t"},
+    {p: /\bshort/g, r: "int16_t"},
+    {p: /\bbyte/g, r: "int8_t"},
+    {p: /\bnull/g, r: "NULL"},
+    {p: /([A-Z][a-zA-z0-9_]*)\.([a-zA-z0-9_]+)/g, r: "$1_$2"},
+    {p: /([a-zA-z0-9_]+)\.([a-zA-z0-9_]+)\(\s*\)/g, r: "$2($1)"},
+    {p: /([a-zA-z0-9_]+)\.([a-zA-z0-9_]+)\(/g, r: "$2($1, "},
+    {p: /([a-zA-z0-9_]+)\.([a-zA-z0-9_]+)/g, r: "$1->$2"},
 ];
 
 var cppPatterns = [
+    {p: /\bint/g, r: "int32_t"},
+    {p: /\blong/g, r: "int64_t"},
+    {p: /\bshort/g, r: "int16_t"},
+    {p: /\bbyte/g, r: "int8_t"},
+    {p: /\bnull/g, r: "nullptr"},
+    {p: /([A-Z][a-zA-z0-9_]*)\.([a-zA-z0-9_]+)/g, r: "$1::$2"},
+    {p: /([a-z_][a-zA-z0-9_]*)\.([a-zA-z0-9_]+)/g, r: "$1->$2"},
 ];
 
 var csPatterns = [
     {p: /System\.in/g, r: "System_.in_"},
     {p: /System\.out/g, r: "System_.out_"},
-    {p: /boolean/g, r: "bool"},
-    {p: /byte/g, r: "sbyte"},
+    {p: /\bboolean/g, r: "bool"},
+    {p: /\bbyte/g, r: "sbyte"},
 ];
 
 var pasPatterns = [
     {p: /System\.in/g, r: "System_.in_"},
     {p: /System\.out/g, r: "System_.out_"},
-    {p: /long/g, r: "Int64"},
-    {p: /short/g, r: "smallInt"},
-    {p: /byte/g, r: "shortInt"},
-    {p: /int/g, r: "longInt"},
-    {p: /Int64/g, r: "int64"},
-    {p: /float/g, r: "single"},
-    {p: /char/g, r: "ansiChar"},
-    {p: /Boolean/g, r: "Boolean_"},
-    {p: /Byte/g, r: "Byte_"},
-    {p: /Integer/g, r: "Integer_"},
-    {p: /Double/g, r: "Double_"},
-    {p: /String/g, r: "String_"},
+    {p: /\blong/g, r: "Int64"},
+    {p: /\bshort/g, r: "smallInt"},
+    {p: /\bbyte/g, r: "shortInt"},
+    {p: /\bint/g, r: "longInt"},
+    {p: /\bfloat/g, r: "single"},
+    {p: /\bchar/g, r: "ansiChar"},
+    {p: /\bBoolean/g, r: "Boolean_"},
+    {p: /\bByte/g, r: "Byte_"},
+    {p: /\bInteger/g, r: "Integer_"},
+    {p: /\bDouble/g, r: "Double_"},
+    {p: /\bString/g, r: "String_"},
     {p: /!=/g, r: "<>"},
-    {p: /=[^=]/g, r: ":="},
+    {p: /=[^=]/g, r: ":= "},
     {p: /==/g, r: "="},
+    {p: /\/\*/g, r: "(*"},
+    {p: /\*\//g, r: "*)"},
+    {p: /{/g, r: "begin"},
+    {p: /}/g, r: "end;"},
 ];
 
 var languages = {
@@ -49,7 +68,7 @@ $(document).ready(function () {
     function showMessage() {
         $converting.text("Převádím do " + languages[lang].name + " ...");
     }
-    
+
     function hideMessage() {
         $converting.text("");
     }

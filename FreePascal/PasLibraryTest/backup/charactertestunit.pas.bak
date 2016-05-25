@@ -164,15 +164,15 @@ begin
     // digit text representation
     a := Character.create('0');
     b := a.toString_();
-    AssertEquals('.', b.strProperty);
+    AssertEquals('0', b.strProperty);
     // uppercase letter text representation
     a := Character.create('A');
     b := a.toString_();
-    AssertEquals('.', b.strProperty);
+    AssertEquals('A', b.strProperty);
     // lowercase letter text representation
     a := Character.create('a');
     b := a.toString_();
-    AssertEquals('.', b.strProperty);
+    AssertEquals('a', b.strProperty);
 end;
 
 (**
@@ -185,13 +185,13 @@ var
 begin
     a := '0';
     b := Character.toString_(a);
-    AssertEquals('.', b.strProperty);
+    AssertEquals('0', b.strProperty);
     a := 'A';
     b := Character.toString_(a);
-    AssertEquals('.', b.strProperty);
+    AssertEquals('A', b.strProperty);
     a := 'a';
     b := Character.toString_(a);
-    AssertEquals('.', b.strProperty);
+    AssertEquals('a', b.strProperty);
 end;
 
 (**

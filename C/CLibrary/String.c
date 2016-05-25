@@ -7,7 +7,7 @@
 
 /**
  * Constructs a new String by decoding the specified array of bytes using
- * the platform's default charset.
+ * the ansi charset.
  *
  * @param bytes The bytes to be decoded into characters
  */
@@ -32,7 +32,7 @@ String *new_StringRangeB(int8_t *value, int32_t offset, int32_t length) {
 }
 
 /**
- * Initializes a newly created String object so that it represents the same
+ * Initializes a newly created String structure so that it represents the same
  * sequence of characters as the argument; in other words, the newly created
  * string is a copy of the argument string. Unless an explicit copy of
  * original is needed, use of this constructor is unnecessary since Strings
@@ -62,18 +62,18 @@ void delete_String(String *ptr) {
  * string argument; and a value greater than 0 if this string is
  * lexicographically greater than the string argument.
  */
-int32_t compareTo(String *ptr, String *anotherString) {
+int32_t compareToStr(String *ptr, String *anotherString) {
     return strcmp(ptr->s, anotherString->s);
 }
 
 /**
- * Compares this string to the specified object.
+ * Compares this string to the specified structure.
  *
- * @param anObject The object to compare this String against
- * @return true if the given object represents a String equivalent to this
+ * @param anObject The structure to compare this String against
+ * @return true if the given structure represents a String equivalent to this
  * string, false otherwise
  */
-bool equals(String *ptr, String *anObject) {
+bool equalsStr(String *ptr, String *anObject) {
     if (anObject == NULL || anObject == NULL) {
         return false;
     }
@@ -119,7 +119,7 @@ String *substringTo(String *ptr, int32_t beginIndex, int32_t endIndex) {
  *
  * @param ch a character (Unicode code point).
  * @return the index of the first occurrence of the character in the
- * character sequence represented by this object, or -1 if the character
+ * character sequence represented by this structure, or -1 if the character
  * does not occur.
  */
 int32_t indexOfC(String *ptr, int32_t ch) {
@@ -133,7 +133,7 @@ int32_t indexOfC(String *ptr, int32_t ch) {
  * @param ch a character (Unicode code point).
  * @param fromIndex the index to start the search from.
  * @return the index of the first occurrence of the character in the
- * character sequence represented by this object that is greater than or
+ * character sequence represented by this structure that is greater than or
  * equal to fromIndex, or -1 if the character does not occur.
  */
 int32_t indexOfFromC(String *ptr, int32_t ch, int32_t fromIndex) {
@@ -177,7 +177,7 @@ int32_t indexOfFromStr(String *ptr, String *str, int32_t fromIndex) {
  * Returns the length of this string.
  *
  * @return the length of the sequence of characters represented by this
- * object.
+ * structure.
  */
 int32_t length(String *ptr) {
     return ptr->len;
@@ -298,8 +298,8 @@ String *replace(String *ptr, char oldChar, char newChar) {
  * @return true if the character sequence represented by the argument is a
  * prefix of the character sequence represented by this string; false
  * otherwise. Note also that true will be returned if the argument is an
- * empty string or is equal to this String object as determined by the
- * equals(Object) method.
+ * empty string or is equal to this String structure as determined by the
+ * equalsStr(String *, String *) function.
  */
 bool startsWith(String *ptr, String *prefix) {
     return ptr->len < prefix->len ? false
@@ -311,10 +311,10 @@ bool startsWith(String *ptr, String *prefix) {
  *
  * @param suffix the suffix.
  * @return true if the character sequence represented by the argument is a
- * suffix of the character sequence represented by this object; false
+ * suffix of the character sequence represented by this structure; false
  * otherwise. Note that the result will be true if the argument is the empty
- * string or is equal to this String object as determined by the
- * equals(Object) method.
+ * string or is equal to this String structure as determined by the
+ * equalsStr(String *, String *) function.
  */
 bool endsWith(String *ptr, String *suffix) {
     return ptr->len < suffix->len ? false
@@ -331,10 +331,10 @@ bool isEmptyStr(String *ptr) {
 }
 
 /**
- * This object (which is already a string!) is itself returned.
+ * This structure (which is already a string!) is itself returned.
  *
  * @return the string itself.
  */
-String *toString(String *ptr) {
+String *toStringStr(String *ptr) {
     return new_String(ptr->s);
 }

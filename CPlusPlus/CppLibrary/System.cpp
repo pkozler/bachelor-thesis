@@ -25,8 +25,10 @@ void PrintStream::print(char c) {
  *
  * @param s The array of chars to be printed
  */
-void PrintStream::print(char* s) {
-    std::cout << s;
+void PrintStream::print(char* s, int32_t length) {
+    for (int i = 0; i < length; i++) {
+        std::cout << s[i];
+    }
 }
 
 /**
@@ -115,8 +117,12 @@ void PrintStream::println(char x) {
  *
  * @param x an array of chars to print.
  */
-void PrintStream::println(char* x) {
-    std::cout << x << std::endl;
+void PrintStream::println(char* x, int32_t length) {
+    for (int i = 0; i < length; i++) {
+        std::cout << x[i];
+    }
+    
+    std::cout << "" << std::endl;
 }
 
 /**

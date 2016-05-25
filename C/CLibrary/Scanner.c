@@ -43,10 +43,10 @@ bool nextBoolean(Scanner *ptr) {
     String *falseStr = new_String("false");
     bool value = false;
 
-    if (equals(toLowerCase(str), trueStr)) {
+    if (equalsStr(toLowerCase(str), trueStr)) {
         value = true;
     }
-    else if (equals(toLowerCase(str), falseStr)) {
+    else if (equalsStr(toLowerCase(str), falseStr)) {
         value = false;
     }
 

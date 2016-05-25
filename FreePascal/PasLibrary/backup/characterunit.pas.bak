@@ -97,7 +97,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Character(obj)).v);
+  equals_ := v = (obj as Character).v;
 end;
 
 (**

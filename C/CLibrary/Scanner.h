@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * A simple text scanner which can parse primitive types and strings using regular expressions.
+ * A simple text scanner which can parse basic types and strings.
  *
  * @author Petr Kozler (A13B0359P)
  */

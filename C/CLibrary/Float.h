@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Float class wraps a value of primitive type float in an object.
+ * The Float struct wraps a value of type float.
  *
  * @author Petr Kozler (A13B0359P)
  */

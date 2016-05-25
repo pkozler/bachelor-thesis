@@ -419,7 +419,7 @@ int32_t Arrays_binarySearchF(float *a, int32_t length, float key) {
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  */
-int32_t Arrays_binarySearchFloatF(float *a, int32_t fromIndex, int32_t toIndex, float key) {
+int32_t Arrays_binarySearchRangeF(float *a, int32_t fromIndex, int32_t toIndex, float key) {
     return _binarySearchPointer(a, fromIndex, toIndex, sizeof(float), &key, _compareF);
 }
 
@@ -500,7 +500,7 @@ int32_t Arrays_binarySearchRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex
 }
 
 /**
- * Searches the specified array for the specified object using the binary
+ * Searches the specified array for the specified structure using the binary
  * search algorithm.
  *
  * @param a the array to be searched
@@ -517,7 +517,7 @@ int32_t Arrays_binarySearchObj(void **a, int32_t length, void *key, int32_t (*c)
 }
 
 /**
- * Searches a range of the specified array for the specified object using
+ * Searches a range of the specified array for the specified structure using
  * the binary search algorithm.
  *
  * @param a the array to be searched
@@ -905,7 +905,7 @@ bool Arrays_equalsL(int64_t *a, int32_t length, int64_t *a2, int32_t length2) {
 }
 
 /**
- * Returns true if the two specified arrays of Objects are equal to one
+ * Returns true if the two specified arrays of structures are equal to one
  * another.
  *
  * @param a one array to be tested for equality
@@ -1111,8 +1111,8 @@ void Arrays_fillRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t v
 }
 
 /**
- * Assigns the specified Object reference to each element of the specified
- * array of Objects.
+ * Assigns the specified structure pointer to each element of the specified
+ * array of structures.
  *
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
@@ -1122,8 +1122,8 @@ void Arrays_fillObj(void **a, int32_t length, void *val) {
 }
 
 /**
- * Assigns the specified Object reference to each element of the specified
- * range of the specified array of Objects.
+ * Assigns the specified structure reference to each element of the specified
+ * range of the specified array of structures.
  *
  * @param a the array to be filled
  * @param fromIndex the index of the first element (inclusive) to be filled
@@ -1283,7 +1283,7 @@ void Arrays_sortRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex) {
 }
 
 /**
- * Sorts the specified array of objects into ascending order, according to
+ * Sorts the specified array of structures into ascending order, according to
  * the natural ordering of its elements.
  *
  * @param a the array to be sorted
@@ -1293,7 +1293,7 @@ void Arrays_sortObj(void **a, int32_t length, int32_t (*c)(const void *, const v
 }
 
 /**
- * Sorts the specified range of the specified array of objects into
+ * Sorts the specified range of the specified array of structures into
  * ascending order, according to the natural ordering of its elements.
  *
  * @param a the array to be sorted

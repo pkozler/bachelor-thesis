@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.28)  22 MAR 2016 00:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.28)  23 MAY 2016 23:12
 entering extended mode
 **C:/Users/pkout/Dropbox/bp/dokumentace/BPINI/bakalarka.tex
 (C:/Users/pkout/Dropbox/bp/dokumentace/BPINI/bakalarka.tex
@@ -300,10 +300,214 @@ LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
 Package: cite 2010/09/10  v 5.3
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\svg\svg.sty"
+Package: svg 2012/09/05 v1.0 SVG inclusion and extraction
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+\XKV@toks=\toks16
+\XKV@tempa@toks=\toks17
+\XKV@depth=\count90
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex")))
+("C:\Program Files\MiKTeX 2.9\tex\latex\subfig\subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen104
+\captionmargin@=\dimen105
+\captionwidth=\dimen106
+\caption@tempdima=\dimen107
+\caption@indent=\dimen108
+\caption@parindent=\dimen109
+\caption@hangindent=\dimen110
+)
+\c@ContinuedFloat=\count91
+)
+\c@KVtest=\count92
+\sf@farskip=\skip52
+\sf@captopadj=\dimen111
+\sf@capskip=\skip53
+\sf@nearskip=\skip54
+\c@subfigure=\count93
+\c@subfigure@save=\count94
+\c@lofdepth=\count95
+\c@subtable=\count96
+\c@subtable@save=\count97
+\c@lotdepth=\count98
+\sf@top=\skip55
+\sf@bottom=\skip56
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\import\import.sty"
+Package: import 2009/03/23  v 5.1
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count99
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\transparent.sty"
+Package: transparent 2007/01/08 v1.0 Transparency via pdfTeX's color stack (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+\SVG@out@width=\skip57
+\SVG@out@height=\skip58
+\c@svgfigure=\count100
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip59
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen114
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen115
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count101
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count102
+\leftroot@=\count103
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count104
+\DOTSCASE@=\count105
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen116
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count106
+\c@MaxMatrixCols=\count107
+\dotsspace@=\muskip11
+\c@parentequation=\count108
+\dspbrk@lvl=\count109
+\tag@help=\toks19
+\row@=\count110
+\column@=\count111
+\maxfields@=\count112
+\andhelp@=\toks20
+\eqnshift@=\dimen117
+\alignsep@=\dimen118
+\tagshift@=\dimen119
+\tagwidth@=\dimen120
+\totwidth@=\dimen121
+\lineht@=\dimen122
+\@envbody=\toks21
+\multlinegap=\skip60
+\multlinetaggap=\skip61
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.sty"
+Package: pdfpages 2013/08/25 v0.4v Insert pages of external PDF documents (AM)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count113
+\calc@Bcount=\count114
+\calc@Adimen=\dimen123
+\calc@Bdimen=\dimen124
+\calc@Askip=\skip62
+\calc@Bskip=\skip63
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count115
+\calc@Cskip=\skip64
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty"
+Package: eso-pic 2010/10/06 v2.0c eso-pic (RN)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\atbegshi.sty"
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.def"
+File: pppdftex.def 2013/08/25 v0.4v Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box28
+\AM@toc@title=\toks23
+\c@AM@survey=\count116
+\AM@templatesizebox=\box29
+)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks16
-\verbatim@line=\toks17
+\every@verbatim=\toks24
+\verbatim@line=\toks25
 \verbatim@in@stream=\read1
 )
 
@@ -311,38 +515,55 @@ LaTeX Warning: Unused global option(s):
     [onepage].
 
 (C:\Users\pkout\Dropbox\bp\dokumentace\BPINI\bakalarka.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Calculating math sizes for size <16> on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count117
+\scratchdimen=\dimen125
+\scratchbox=\box30
+\nofMPsegments=\count118
+\nofMParguments=\count119
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen126
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
+\everyMPtoPDFconversion=\toks27
+)
+\AtBeginShipoutBox=\box31
+LaTeX Font Info:    Calculating math sizes for size <16> on input line 44.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 38.
+(Font)              size <17.28> substituted on input line 44.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <16> not available
-(Font)              size <17.28> substituted on input line 38.
+(Font)              size <17.28> substituted on input line 44.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 38.
+(Font)              size <17.28> substituted on input line 44.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <16> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <11.19995> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 38.
+
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <16> not available
+(Font)              size <17.28> substituted on input line 44.
+
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
@@ -350,14 +571,16 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ] [2
 
 ]
-(C:\Users\pkout\Dropbox\bp\dokumentace\BPINI\bakalarka.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 4.
- [3
+(C:\Users\pkout\Dropbox\bp\dokumentace\BPINI\bakalarka.toc [3
 
-])
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[4])
 \tf@toc=\write3
 
 
@@ -366,1220 +589,987 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4]
+[5]
 Kapitola 1.
 [1
 
 ]
 Kapitola 2.
-LaTeX Font Info:    Try loading font information for T1+aett on input line 84.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 90.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 ) [2
 
-] [3] [4] [5] [6]
-[7] [8] [9] [10] [11] [12] [13] [14]
+]
 
-Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[4]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[7]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[13]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[14]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.89197pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[15] [16] [17] [18] [19] [20]
-(C:\Users\pkout\Dropbox\bp\dokumentace\BPINI\bakalarka.bbl [21]
-Underfull \hbox (badness 1881) in paragraph at lines 9--12
-[]\T1/aer/m/it/12 The GNU C Re-fe-rence Ma-nual \T1/aer/m/n/12 [on-line]. [cit.
- 1.12.2015].  Do-
+[15]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.89197pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[16]
+Overfull \hbox (1.61572pt too wide) in paragraph at lines 314--315
+\T1/aer/m/n/12 N¥které ma-te-ma-tické funkce (ve-dle celé °ady ji-ných), jako n
+ap°. \T1/aett/m/n/12 Abs()\T1/aer/m/n/12 , \T1/aett/m/n/12 Sin()\T1/aer/m/n/12 
+,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--12
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.gnu.org/software/gnu-c-manu
-al/gnu-c-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
+[17]
 
-Underfull \hbox (badness 2126) in paragraph at lines 14--17
-[]\T1/aer/m/it/12 abs - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 10.12.2
-015].  Do-stupné z:
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
+[18]
 
-Underfull \hbox (badness 1184) in paragraph at lines 19--22
-[]\T1/aer/m/it/12 Arrays - C++ Tu-to-ri-als \T1/aer/m/n/12 [on-line]. [cit. 5.1
-2.2015].  Do-stupné z:
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
+[19]
 
-Underfull \hbox (badness 1472) in paragraph at lines 29--32
-[]\T1/aer/m/it/12 calloc - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 5.12
-.2015].  Do-stupné z:
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-[22
+[20]
+Kapitola 3.
+[21
 
 ]
-Underfull \hbox (badness 3058) in paragraph at lines 63--66
-[]\T1/aer/m/it/12 list - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 5.12.2
-015].  Do-stupné z:
- []
 
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-Underfull \hbox (badness 1062) in paragraph at lines 68--71
-[]\T1/aer/m/it/12 malloc - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 5.12
-.2015].  Do-stupné z:
- []
+[22]
 
-
-Underfull \hbox (badness 2181) in paragraph at lines 73--75
-[]\T1/aer/m/it/12 map - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 5.12.20
-15].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 1789) in paragraph at lines 87--90
-[]\T1/aer/m/it/12 qsort - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 8.12.
-2015].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 1168) in paragraph at lines 92--95
-[]\T1/aer/m/it/12 scanf - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 11.12
-.2015].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 3240) in paragraph at lines 97--99
-[]\T1/aer/m/it/12 set - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 5.12.20
-15].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 2343) in paragraph at lines 101--104
-[]\T1/aer/m/it/12 binary_search - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [ci
-t. 9.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 101--104
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.cplusplus.com/reference/alg
-orithm/-
- []
-
-
-Underfull \hbox (badness 2205) in paragraph at lines 106--109
-[]\T1/aer/m/it/12 cin - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 11.12.2
-015].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 1596) in paragraph at lines 111--114
-[]\T1/aer/m/it/12 cout - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 11.12.
-2015].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 2435) in paragraph at lines 120--123
-[]\T1/aer/m/it/12 sort - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 9.12.2
-015].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--133
-[]\T1/aer/m/it/12 string - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 7.12
-.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 130--133
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.cplusplus.com/reference/str
-ing/-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 [23]
-Underfull \hbox (badness 1270) in paragraph at lines 144--147
-[]\T1/aer/m/it/12 vector - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [cit. 5.12
-.2015].  Do-stupné z:
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--152
-[]\T1/aer/m/it/12 Array  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 6.12.
-2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--152
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--157
-[]\T1/aer/m/it/12 Arrays Tu-to-rial (C#) \T1/aer/m/n/12 [on-line]. [cit. 6.12.2
-015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 154--157
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--162
-[]\T1/aer/m/it/12 Visual C# Lan-gu-age (C#) \T1/aer/m/n/12 [on-line]. [cit. 2.1
-2.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--162
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/en-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
-[]\T1/aer/m/it/12 bool (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/12 
-[on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 164--167
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--172
-[]\T1/aer/m/it/12 byte (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/12 
-[on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 169--172
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 4242) in paragraph at lines 174--177
-[]\T1/aer/m/it/12 char (C# Re-fe-rence) \T1/aer/m/n/12 [on-line]. [cit. 3.12.20
-15].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--182
-[]\T1/aer/m/it/12 Common Lan-gu-age Run-time (CLR) \T1/aer/m/n/12 [on-line]. [c
-it. 2.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--182
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--187
-[]\T1/aer/m/it/12 Comparison(T)  de-le-gát (Sys-tem) \T1/aer/m/n/12 [on-line].
- [cit. 9.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--187
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--192
-[]\T1/aer/m/it/12 Console  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 12.
-12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--192
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 194--197
-[]\T1/aer/m/it/12 Convert  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 12.
-12.2015].
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 194--197
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 199--203
-[]\T1/aer/m/it/12 decimal (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/
-12 [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 199--203
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--208
-[]\T1/aer/m/it/12 double (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/1
-2 [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 205--208
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 210--213
-[]\T1/aer/m/it/12 float (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/12
- [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 210--213
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 6741) in paragraph at lines 215--218
-[]\T1/aer/m/it/12 IComparable(T)  roz-hraní (Sys-tem) \T1/aer/m/n/12 [on-line]
-. [cit. 9.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 215--218
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 220--224
-[]\T1/aer/m/it/12 IComparer(T)  roz-hraní (Sys-tem.Collections.Generic) \T1/ae
-r/m/n/12 [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 220--224
-\T1/aer/m/n/12 [cit. 9.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 6236) in paragraph at lines 226--229
-[]\T1/aer/m/it/12 int (C# Re-fe-rence) \T1/aer/m/n/12 [on-line]. [cit. 3.12.201
-5].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--234
-[]\T1/aer/m/it/12 Compiling MSIL to Na-tive Code \T1/aer/m/n/12 [on-line]. [cit
-. 2.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--234
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/en-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--240
-[]\T1/aer/m/it/12 LinkedList(T)  t°ída (Sys-tem.Collections.Generic) \T1/aer/m
-/n/12 [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 236--240
-\T1/aer/m/n/12 [cit. 6.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--246
-[]\T1/aer/m/it/12 List(T)  t°ída (Sys-tem.Collections.Generic) \T1/aer/m/n/12 
-[on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 242--246
-\T1/aer/m/n/12 [cit. 6.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 4531) in paragraph at lines 248--251
-[]\T1/aer/m/it/12 long (C# Re-fe-rence) \T1/aer/m/n/12 [on-line]. [cit. 3.12.20
-15].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--256
-[]\T1/aer/m/it/12 Math  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 10.12.
-2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--256
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/cs-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 258--261
-[]\T1/aer/m/it/12 Compiling to MSIL \T1/aer/m/n/12 [on-line]. [cit. 2.12.2015].
-  Do-
- []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--261
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/en-
- []
-
-
-Underfull \hbox (badness 2970) in paragraph at lines 263--266
-[]\T1/aer/m/it/12 object (C# Re-fe-rence) \T1/aer/m/n/12 [on-line]. [cit. 3.12.
-2015].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 268--271
-[]\T1/aer/m/it/12 sbyte (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/12
- [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 268--271
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--276
-[]\T1/aer/m/it/12 short (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/12
- [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 273--276
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 2941) in paragraph at lines 278--281
-[]\T1/aer/m/it/12 string (C# Re-fe-rence) \T1/aer/m/n/12 [on-line]. [cit. 3.12.
-2015].  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--286
-[]\T1/aer/m/it/12 String Class (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 7.12.2
-015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--286
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/en-
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 288--292
-\T1/aer/m/n/12 [cit. 7.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/en-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--297
-[]\T1/aer/m/it/12 Built-in Data Ty-pes \T1/aer/m/n/12 [on-line]. [cit. 3.12.201
-5].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--297
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://msdn.microsoft.com/en-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 299--302
-[]\T1/aer/m/it/12 uint (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/12 
-[on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 299--302
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--307
-[]\T1/aer/m/it/12 ulong (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/12
- [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 304--307
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 309--312
-[]\T1/aer/m/it/12 ushort (Re-fe-ren£ní do-ku-men-tace ja-zyka C#) \T1/aer/m/n/1
-2 [on-line].
- []
-
-
-Underfull \hbox (badness 1248) in paragraph at lines 309--312
-\T1/aer/m/n/12 [cit. 3.12.2015].  Do-stupné z: \T1/aett/m/n/12 https://msdn.mic
-rosoft.com/cs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--318
-[]\T1/aer/m/it/12 Arrays (The Java$[]$ Tu-to-ri-als > Lear-ning the Java Lan-
- []
-
-
-Underfull \hbox (badness 8132) in paragraph at lines 315--318
-\T1/aer/m/it/12 gu-age > Lan-gu-age Ba-sics) \T1/aer/m/n/12 [on-line]. [cit. 5.
-12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--318
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/tutoria
-l/-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 320--323
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
+Overfull \hbox (18.46077pt too wide) in paragraph at lines 404--405
+\T1/aer/m/n/12 ja-zyka pro na-po-do-bení me-tod t°ídy \T1/aett/m/n/12 String\T1
+/aer/m/n/12 . T°ídu \T1/aett/m/n/12 Sys-tem.Text.StringBuilder
  []
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 325--328
-[]\T1/aer/m/it/12 Arrays (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
- 5.12.2015].  Do-
+Overfull \hbox (5.31345pt too wide) in paragraph at lines 406--408
+\T1/aett/m/n/12 min()\T1/aer/m/n/12 , \T1/aett/m/n/12 pow()\T1/aer/m/n/12 , \T1
+/aett/m/n/12 sqrt()\T1/aer/m/n/12 , \T1/aett/m/n/12 log()\T1/aer/m/n/12 , \T1/a
+ett/m/n/12 log10()\T1/aer/m/n/12 , \T1/aett/m/n/12 sin()\T1/aer/m/n/12 , \T1/ae
+tt/m/n/12 cos()\T1/aer/m/n/12 , \T1/aett/m/n/12 tan()\T1/aer/m/n/12 , \T1/aett/
+m/n/12 asin()\T1/aer/m/n/12 , \T1/aett/m/n/12 acos()\T1/aer/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--328
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/docs/a
-pi/-
- []
-
-
-Underfull \hbox (badness 1418) in paragraph at lines 330--333
-[]\T1/aer/m/it/12 Boolean (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit
-. 3.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 330--333
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 3375) in paragraph at lines 335--338
-[]\T1/aer/m/it/12 Byte (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 3
-.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 335--338
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 340--343
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 345--348
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 5939) in paragraph at lines 350--353
-[]\T1/aer/m/it/12 Collections (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. 
-[cit. 5.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 350--353
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
- []
-
-
-Underfull \hbox (badness 4940) in paragraph at lines 355--358
-[]\T1/aer/m/it/12 Comparable (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [
-cit. 8.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 355--358
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
- []
-
-
-Underfull \hbox (badness 4660) in paragraph at lines 360--363
-[]\T1/aer/m/it/12 Comparator (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [
-cit. 8.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 360--363
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
- []
-
-
-Underfull \hbox (badness 1895) in paragraph at lines 365--368
-[]\T1/aer/m/it/12 Double (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
- 3.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 365--368
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 2980) in paragraph at lines 370--373
-[]\T1/aer/m/it/12 Float (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 
-3.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 370--373
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 375--378
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[28]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[29]
+Kapitola 4.
+[30
+
+]
+Overfull \hbox (4.70901pt too wide) in paragraph at lines 444--445
+\T1/aer/m/n/12 de-fi-nuje vý£tový typ \T1/aett/m/n/12 ap-pli-cation.core.xml.Xm
+lKeyword\T1/aer/m/n/12 . T°ída \T1/aett/m/n/12 Xml-Ma-nager
  []
 
 
-Underfull \hbox (badness 1303) in paragraph at lines 380--383
-[]\T1/aer/m/it/12 HashSet (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit
-. 5.12.2015].  Do-
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[31]
+Overfull \hbox (61.4845pt too wide) in paragraph at lines 452--452
+\T1/aer/m/n/12 Základ apli-ka£ní lo-giky p°ed-sta-vuje t°ída \T1/aett/m/n/12 ap
+-pli-cation.controller.WindowController\T1/aer/m/n/12 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--383
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
+[32]
+Kapitola 5.
+[33
 
-Underfull \hbox (badness 2903) in paragraph at lines 385--388
-[]\T1/aer/m/it/12 InputStream (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. 
-[cit. 11.12.2015].
- []
+]
 
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--388
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
- []
+[34]
 
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-Underfull \hbox (badness 1831) in paragraph at lines 390--393
-[]\T1/aer/m/it/12 Integer (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit
-. 3.12.2015].  Do-
- []
+[35]
 
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--393
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
+[36]
 
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--398
-[]\T1/aer/m/it/12 java \T1/aer/m/n/12 [on-line]. [cit. 1.12.2015].  Do-stupné
- []
+[37]
 
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--398
-\T1/aer/m/n/12 z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/docs/-
- []
+[38]
+Kapitola 6.
+(C:\Users\pkout\Dropbox\bp\dokumentace\BPINI\bakalarka.bbl [39
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 400--404
-[]\T1/aer/m/it/12 Java SE 7 Java Com-pi-ler (javac)-related APIs and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 400--404
-\T1/aer/m/it/12 De-ve-lo-per Gu-i-des \T1/aer/m/n/12 [on-line]. [cit. 1.12.2015
-].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 400--404
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/docs/-
-
- []
-
-
-Underfull \hbox (badness 6808) in paragraph at lines 406--409
-[]\T1/aer/m/it/12 LinkedList (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [
-cit. 5.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 406--409
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/do
-cs/api/-
- []
-
-
-Underfull \hbox (badness 3942) in paragraph at lines 411--414
-[]\T1/aer/m/it/12 List (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 5
-.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 411--414
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 3148) in paragraph at lines 416--419
-[]\T1/aer/m/it/12 Long (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 3
-.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 416--419
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 2181) in paragraph at lines 421--424
-[]\T1/aer/m/it/12 Math (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 1
-0.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 421--424
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
- []
-
-
-Underfull \hbox (badness 2205) in paragraph at lines 426--429
+]
+Underfull \hbox (badness 2205) in paragraph at lines 32--35
 []\T1/aer/m/it/12 Object (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
  1.12.2015].  Do-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--429
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/docs/a
-pi/-
- []
-
-[28]
-Underfull \hbox (badness 1616) in paragraph at lines 431--434
-[]\T1/aer/m/it/12 OutputStream (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line].
- [cit. 11.12.2015].
+Underfull \hbox (badness 1810) in paragraph at lines 32--35
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--434
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
+Underfull \hbox (badness 1412) in paragraph at lines 65--68
+[]\T1/aer/m/it/12 Visual C# Lan-gu-age (C#) \T1/aer/m/n/12 [on-line]. [cit. 2.1
+2.2015].  Do-stupné
  []
 
 
-Underfull \hbox (badness 2961) in paragraph at lines 436--439
-[]\T1/aer/m/it/12 PrintStream (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. 
-[cit. 11.12.2015].
+Underfull \hbox (badness 6542) in paragraph at lines 65--68
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / en-
+[]us / library / aa287558(v =$
+ []
+
+[40
+
+]
+Underfull \hbox (badness 6542) in paragraph at lines 70--73
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / cs-
+[]cz / library / 8bs2ecf4(v =$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 436--439
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/do
-cs/api/-
+Underfull \hbox (badness 6542) in paragraph at lines 80--83
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / en-
+[]us / library / ht8ecch6(v =$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 441--444
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
+Underfull \hbox (badness 3281) in paragraph at lines 102--105
+\T1/aer/m/it/12 Lan-gu-age > Lan-gu-age Ba-sics) \T1/aer/m/n/12 [on-line]. [cit
+. 3.12.2015].  Do-
  []
 
 
-Underfull \hbox (badness 2781) in paragraph at lines 446--449
+Underfull \hbox (badness 4967) in paragraph at lines 102--105
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]https : / / docs . oracle . com /
+ javase / tutorial / java /$
+ []
+
+
+Underfull \hbox (badness 3375) in paragraph at lines 107--110
+[]\T1/aer/m/it/12 Byte (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 3
+.12.2015].  Do-
+ []
+
+
+Underfull \hbox (badness 2781) in paragraph at lines 112--115
 []\T1/aer/m/it/12 Short (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 
 3.12.2015].  Do-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--449
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/7/docs/
-api/-
+Underfull \hbox (badness 1831) in paragraph at lines 117--120
+[]\T1/aer/m/it/12 Integer (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit
+. 3.12.2015].  Do-
  []
 
 
-Underfull \hbox (badness 2326) in paragraph at lines 451--454
+Underfull \hbox (badness 3148) in paragraph at lines 122--125
+[]\T1/aer/m/it/12 Long (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 3
+.12.2015].  Do-
+ []
+
+
+Underfull \hbox (badness 2980) in paragraph at lines 127--130
+[]\T1/aer/m/it/12 Float (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 
+3.12.2015].  Do-
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[41]
+Underfull \hbox (badness 1895) in paragraph at lines 132--135
+[]\T1/aer/m/it/12 Double (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
+ 3.12.2015].  Do-
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 137--140
+[]\T1/aer/m/it/12 Boolean (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit
+. 3.12.2015].  Do-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--159
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--164
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--179
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--184
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--189
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--209
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--214
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--220
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 232--235
+[]\T1/aer/m/it/12 3 Ty-pes \T1/aer/m/n/12 [on-line]. [cit. 3.12.2015].  Do-stup
+né z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[43]
+Underfull \hbox (badness 1975) in paragraph at lines 278--281
+[]\T1/aer/m/it/12 Arrays (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
+ 5.12.2015].  Do-
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 278--281
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 298--301
+[]\T1/aer/m/it/12 HashSet (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit
+. 5.12.2015].  Do-
+ []
+
+
+Underfull \hbox (badness 3942) in paragraph at lines 308--311
+[]\T1/aer/m/it/12 List (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 5
+.12.2015].  Do-
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 313--316
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[44]
+Underfull \hbox (badness 1742) in paragraph at lines 361--364
+[]\T1/aer/m/it/12 Array  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 6.12.
+2015].  Do-stupné z:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--364
+$\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / cs-[]cz / library / sy
+stem . array(v =$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--370
+\T1/aer/m/n/12 Do-stupné z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft .
+ com / cs-[]cz / library /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--376
+[]\T1/aer/m/it/12 LinkedList(T)  t°ída (Sys-tem.Collections.Generic) \T1/aer/m
+/n/12 [on-line].
+ []
+
+
+Underfull \hbox (badness 1688) in paragraph at lines 372--376
+\T1/aer/m/n/12 [cit. 6.12.2015].  Do-stupné z:  $\T1/aett/m/n/12 <[]https : / /
+ msdn . microsoft . com /$
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 383--386
+[]\T1/aer/m/it/12 Arrays \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stupné
+ z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 383--386
+$\T1/aett/m/n/12 freepascal . org / docs-[]html / ref / refsu15 . html \ #x39-[
+]510003 . 3 .$
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[45]
+Underfull \hbox (badness 2351) in paragraph at lines 388--391
+[]\T1/aer/m/it/12 Arrays \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stupné
+ z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--391
+$\T1/aett/m/n/12 freepascal . org / docs-[]html / ref / refsu15 . html \ #x39-[
+]520003 . 3 .$
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 393--396
+[]\T1/aer/m/it/12 Pointers \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stup
+né z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+
+Underfull \hbox (badness 3291) in paragraph at lines 398--401
+[]\T1/aer/m/it/12 TList \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stupné 
+z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+
+Underfull \hbox (badness 1242) in paragraph at lines 403--406
+[]\T1/aer/m/it/12 TFPList \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stupn
+é z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--416
+[]\T1/aer/m/it/12 TFPGObjectList \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  D
+o-stupné z:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--416
+$\T1/aett/m/n/12 <[]http : / / www . freepascal . org / docs-[]html-[]3 . 0 . 0
+ / rtl / fgl /$
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 424--427
 []\T1/aer/m/it/12 String (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
  7.12.2015].  Do-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--454
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/docs/a
-pi/-
+Underfull \hbox (badness 1810) in paragraph at lines 424--427
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
  []
 
 
-Underfull \hbox (badness 4024) in paragraph at lines 456--459
-[]\T1/aer/m/it/12 StringBuffer (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line].
- [cit. 7.12.2015].
+Underfull \hbox (badness 1810) in paragraph at lines 429--432
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 456--459
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
+Underfull \hbox (badness 1810) in paragraph at lines 434--437
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
  []
 
 
-Underfull \hbox (badness 2875) in paragraph at lines 461--464
-[]\T1/aer/m/it/12 StringBuilder (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]
-. [cit. 7.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 461--464
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
- []
-
-
-Underfull \hbox (badness 5288) in paragraph at lines 467--470
-[]\T1/aer/m/it/12 Strings (The Java$[]$ Tu-to-ri-als > Lear-ning the Java Lan-g
-u-
- []
-
-
-Underfull \hbox (badness 3758) in paragraph at lines 467--470
-\T1/aer/m/it/12 age > Num-bers and Strings) \T1/aer/m/n/12 [on-line]. [cit. 6.1
-2.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 467--470
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/tutoria
-l/-
- []
-
-
-Underfull \hbox (badness 1137) in paragraph at lines 472--475
+Underfull \hbox (badness 1137) in paragraph at lines 439--442
 []\T1/aer/m/it/12 StringTokenizer (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-lin
 e]. [cit. 7.12.2015].
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--475
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/doc
-s/api/-
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[46]
+Underfull \hbox (badness 3302) in paragraph at lines 465--468
+[]\T1/aer/m/it/12 String Class (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 7.12.2
+015].  Do-stupné z:
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 477--480
-[]\T1/aer/m/it/12 System (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
- 11.12.2015].  Do-
+Underfull \hbox (badness 10000) in paragraph at lines 465--468
+$\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / en-[]us / library / sy
+stem . string(v =$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 477--480
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/docs/a
-pi/-
- []
-
-
-Underfull \hbox (badness 3514) in paragraph at lines 483--486
-[]\T1/aer/m/it/12 Primitive Data Ty-pes (The Java$[]$ Tu-to-ri-als > Lear-ning 
-the
- []
-
-
-Underfull \hbox (badness 5924) in paragraph at lines 483--486
-\T1/aer/m/it/12 Java Lan-gu-age > Lan-gu-age Ba-sics) \T1/aer/m/n/12 [on-line].
- [cit. 3.12.2015].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 483--486
-\T1/aer/m/n/12 Do-stupné z: \T1/aett/m/n/12 https://docs.oracle.com/javase/tuto
-rial/-
- []
-
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 488--492
-[]\T1/aer/m/it/12 Java SE 7 Vir-tual Ma-chine (VM)-related APIs &
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 488--492
-\T1/aer/m/it/12 De-ve-lo-per Gu-i-des \T1/aer/m/n/12 [on-line]. [cit. 1.12.2015
-].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 488--492
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://docs.oracle.com/javase/7/docs/-
-
- []
-
-
-Underfull \hbox (badness 1874) in paragraph at lines 494--497
-[]\T1/aer/m/it/12 About the Pas-cal lan-gu-age \T1/aer/m/n/12 [on-line]. [cit. 
-2.12.2015].  Do-stupné
- []
-
-
-Underfull \hbox (badness 7888) in paragraph at lines 494--497
-\T1/aer/m/n/12 z: \T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refli
-6.html#x7-
- []
-
-
-Underfull \hbox (badness 7613) in paragraph at lines 499--502
-[]\T1/aer/m/it/12 Char or An-si-Char \T1/aer/m/n/12 [on-line]. [cit. 4.12.2015]
-.  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 499--502
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu7.html#x30-
- []
-
-
-Underfull \hbox (badness 2027) in paragraph at lines 504--507
+Underfull \hbox (badness 5862) in paragraph at lines 476--479
 []\T1/aer/m/it/12 Single-byte String ty-pes \T1/aer/m/n/12 [on-line]. [cit. 7.1
-2.2015].  Do-stupné z:
+2.2015].  Do-stupné
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 504--507
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu10.html#x33-
+Underfull \hbox (badness 1484) in paragraph at lines 476--479
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]http : / / www . freepascal . org / docs
+-[]html / ref / refsu10 . html \$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 509--512
-[]\T1/aer/m/it/12 Base ty-pes \T1/aer/m/n/12 [on-line]. [cit. 4.12.2015].  Do-s
-tupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 509--512
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refse12.html#x26-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 514--517
-[]\T1/aer/m/it/12 Ordinal ty-pes \T1/aer/m/n/12 [on-line]. [cit. 4.12.2015].  D
-o-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 514--517
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu5.html#x27-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 519--522
-[]\T1/aer/m/it/12 Character ty-pes \T1/aer/m/n/12 [on-line]. [cit. 4.12.2015]. 
- Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 519--522
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refse13.html#x29-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 524--527
-[]\T1/aer/m/it/12 Arrays \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stupné
- z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 524--527
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu15.html#x39-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
-[]\T1/aer/m/it/12 Ordinal ty-pes \T1/aer/m/n/12 [on-line]. [cit. 4.12.2015].  D
-o-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 529--532
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu5.html#x27-
- []
-
-
-Underfull \hbox (badness 5954) in paragraph at lines 534--538
-[]\T1/aer/m/it/12 Reference for unit 'math': Pro-cedu-res and functi-ons \T1/ae
-r/m/n/12 [on-line].
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 540--543
-[]\T1/aer/m/it/12 Pointers \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stup
-né z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 540--543
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refse15.html#x43-
- []
-
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 545--548
-[]\T1/aer/m/it/12 Read \T1/aer/m/n/12 [on-line]. [cit. 12.12.2015].  Do-stupné 
-z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 550--553
-[]\T1/aer/m/it/12 ReadLn \T1/aer/m/n/12 [on-line]. [cit. 12.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 550--553
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 555--558
-[]\T1/aer/m/it/12 Real ty-pes \T1/aer/m/n/12 [on-line]. [cit. 4.12.2015].  Do-s
-tupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 555--558
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu6.html#x28-
- []
-
-
-Underfull \hbox (badness 2027) in paragraph at lines 560--563
+Underfull \hbox (badness 5862) in paragraph at lines 481--484
 []\T1/aer/m/it/12 Single-byte String ty-pes \T1/aer/m/n/12 [on-line]. [cit. 7.1
-2.2015].  Do-stupné z:
+2.2015].  Do-stupné
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 560--563
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu10.html#x33-
+Underfull \hbox (badness 1484) in paragraph at lines 481--484
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]http : / / www . freepascal . org / docs
+-[]html / ref / refsu10 . html \$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 565--568
-[]\T1/aer/m/it/12 Arrays \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-stupné
- z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 565--568
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu15.html#x39-
- []
-
-
-Underfull \hbox (badness 2027) in paragraph at lines 570--573
+Underfull \hbox (badness 5862) in paragraph at lines 486--489
 []\T1/aer/m/it/12 Single-byte String ty-pes \T1/aer/m/n/12 [on-line]. [cit. 7.1
-2.2015].  Do-stupné z:
+2.2015].  Do-stupné
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--573
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu10.html#x33-
+Underfull \hbox (badness 1484) in paragraph at lines 486--489
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]http : / / www . freepascal . org / docs
+-[]html / ref / refsu10 . html \$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 575--578
-[]\T1/aer/m/it/12 Structured Ty-pes \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].
-  Do-stupné z:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 575--578
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refse14.html#x38-
- []
-
-
-Underfull \hbox (badness 2932) in paragraph at lines 580--584
+Underfull \hbox (badness 2922) in paragraph at lines 491--495
 []\T1/aer/m/it/12 Reference for unit 'Sys-tem': Pro-cedu-res and functi-ons \T1
 /aer/m/n/12 [on-line].
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 586--589
-[]\T1/aer/m/it/12 TFPGList \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-
+Underfull \hbox (badness 2744) in paragraph at lines 491--495
+\T1/aer/m/n/12 [cit. 7.12.2015].  Do-stupné z:  $\T1/aett/m/n/12 <[]http : / / 
+www . freepascal . org /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 586--589
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-html-
+Underfull \hbox (badness 1205) in paragraph at lines 502--505
+[]\T1/aer/m/it/12 TStrings \T1/aer/m/n/12 [on-line]. [cit. 7.12.2015].  Do-stup
+né z:  $\T1/aett/m/n/12 <[]http : / / www .$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 591--594
-[]\T1/aer/m/it/12 TFPGObjectList \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  D
-o-
+Underfull \hbox (badness 1810) in paragraph at lines 507--510
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 591--594
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-html-
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[47]
+Underfull \hbox (badness 1810) in paragraph at lines 512--515
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--599
-[]\T1/aer/m/it/12 TFPList \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-
+Underfull \hbox (badness 7186) in paragraph at lines 532--535
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]http : / / www . cplusplus . com / refer
+ence / algorithm / stable _$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--599
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-html-
+Underfull \hbox (badness 2343) in paragraph at lines 537--540
+[]\T1/aer/m/it/12 binary_search - C++ Re-fe-rence \T1/aer/m/n/12 [on-line]. [ci
+t. 9.12.2015].  Do-
  []
 
-[31]
-Underfull \hbox (badness 10000) in paragraph at lines 601--604
+
+Underfull \hbox (badness 4967) in paragraph at lines 537--540
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / www . cplusplus . com 
+/ reference / algorithm /$
+ []
+
+
+Underfull \hbox (badness 6542) in paragraph at lines 542--545
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / cs-
+[]cz / library / 4d7sx9hd(v =$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 547--551
+[]\T1/aer/m/it/12 IComparer(T)  roz-hraní (Sys-tem.Collections.Generic) \T1/ae
+r/m/n/12 [on-line].
+ []
+
+
+Underfull \hbox (badness 6542) in paragraph at lines 553--556
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / cs-
+[]cz / library / tfakywbh(v =$
+ []
+
+
+Underfull \hbox (badness 2689) in paragraph at lines 563--566
 []\T1/aer/m/it/12 TFPList.Sort \T1/aer/m/n/12 [on-line]. [cit. 9.12.2015].  Do-
-
+stupné z:  $\T1/aett/m/n/12 <[]http :$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 601--604
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-html-
+Underfull \hbox (badness 10000) in paragraph at lines 563--566
+$\T1/aett/m/n/12 / / www . freepascal . org / docs-[]html-[]3 . 0 . 0 / rtl / c
+lasses / tfplist .$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--609
-[]\T1/aer/m/it/12 TList \T1/aer/m/n/12 [on-line]. [cit. 6.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 606--609
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 611--614
-[]\T1/aer/m/it/12 TList.Sort \T1/aer/m/n/12 [on-line]. [cit. 9.12.2015].  Do-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 611--614
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 616--619
+Underfull \hbox (badness 10000) in paragraph at lines 568--571
 []\T1/aer/m/it/12 TListSortCompare \T1/aer/m/n/12 [on-line]. [cit. 9.12.2015]. 
- Do-
+ Do-stupné z:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 616--619
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-html-
+Underfull \hbox (badness 10000) in paragraph at lines 568--571
+$\T1/aett/m/n/12 <[]http : / / www . freepascal . org / docs-[]html-[]3 . 0 . 0
+ / rtl / classes /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--624
-[]\T1/aer/m/it/12 TStringList \T1/aer/m/n/12 [on-line]. [cit. 7.12.2015].  Do-
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[48]
+Underfull \hbox (badness 2181) in paragraph at lines 573--576
+[]\T1/aer/m/it/12 Math (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit. 1
+0.12.2015].  Do-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--624
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-
+Underfull \hbox (badness 1454) in paragraph at lines 587--590
+[]\T1/aer/m/it/12 Math  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 10.12.
+2015].  Do-stupné z:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 626--629
-[]\T1/aer/m/it/12 TStrings \T1/aer/m/n/12 [on-line]. [cit. 7.12.2015].  Do-
+Underfull \hbox (badness 10000) in paragraph at lines 587--590
+$\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / cs-[]cz / library / sy
+stem . math(v =$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 626--629
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-
+Underfull \hbox (badness 5954) in paragraph at lines 592--596
+[]\T1/aer/m/it/12 Reference for unit 'math': Pro-cedu-res and functi-ons \T1/ae
+r/m/n/12 [on-line].
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--634
-[]\T1/aer/m/it/12 3 Ty-pes \T1/aer/m/n/12 [on-line]. [cit. 3.12.2015].  Do-stup
-né z:
+Underfull \hbox (badness 1728) in paragraph at lines 592--596
+\T1/aer/m/n/12 [cit. 10.12.2015].  Do-stupné z:  $\T1/aett/m/n/12 <[]http : / /
+ www . freepascal . org /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--634
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refch3.html#x25-
+Underfull \hbox (badness 1270) in paragraph at lines 608--611
+[]\T1/aer/m/it/12 System (Java Plat-form SE 7 ) \T1/aer/m/n/12 [on-line]. [cit.
+ 11.12.2015].  Do-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 636--639
-[]\T1/aer/m/it/12 WideChar \T1/aer/m/n/12 [on-line]. [cit. 4.12.2015].  Do-stup
-né z:
+Underfull \hbox (badness 1810) in paragraph at lines 608--611
+\T1/aer/m/n/12 stupné z:  $\T1/aett/m/n/12 <[]http : / / docs . oracle . com / 
+javase / 7 / docs / api / java /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 636--639
-\T1/aett/m/n/12 http://www.freepascal.org/docs-html/ref/refsu8.html#x31-
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[49]
+Underfull \hbox (badness 1831) in paragraph at lines 651--654
+[]\T1/aer/m/it/12 Console  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 12.
+12.2015].  Do-stupné
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 641--644
+Underfull \hbox (badness 10000) in paragraph at lines 651--654
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / cs-
+[]cz / library / system .$
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 656--659
+[]\T1/aer/m/it/12 Convert  t°ída (Sys-tem) \T1/aer/m/n/12 [on-line]. [cit. 12.
+12.2015].  Do-stupné
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 656--659
+\T1/aer/m/n/12 z:  $\T1/aett/m/n/12 <[]https : / / msdn . microsoft . com / cs-
+[]cz / library / system .$
+ []
+
+
+Underfull \hbox (badness 2846) in paragraph at lines 661--664
+[]\T1/aer/m/it/12 Read \T1/aer/m/n/12 [on-line]. [cit. 12.12.2015].  Do-stupné 
+z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 666--669
 []\T1/aer/m/it/12 Write \T1/aer/m/n/12 [on-line]. [cit. 12.12.2015].  Do-stupné
- z:
+ z:  $\T1/aett/m/n/12 <[]http : / / www .$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 646--649
-[]\T1/aer/m/it/12 WriteLn \T1/aer/m/n/12 [on-line]. [cit. 12.12.2015].  Do-
+Underfull \hbox (badness 1184) in paragraph at lines 671--674
+[]\T1/aer/m/it/12 ReadLn \T1/aer/m/n/12 [on-line]. [cit. 12.12.2015].  Do-stupn
+é z:  $\T1/aett/m/n/12 <[]http : / / www .$
+ []
+
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[50] [51
+
+] [52
+
+]
+P\v {r}\'{\i }loha A.
+<uml.pdf, id=194, page=1, 493.845pt x 599.23875pt>
+File: uml.pdf Graphic file (type pdf)
+ <use uml.pdf, page 1>
+Package pdftex.def Info: uml.pdf, page1 used on input line 540.
+(pdftex.def)             Requested size: 389.99762pt x 473.22884pt.
+
+[53
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[54 <C:/Users/pkout/Dropbox/bp/dokumentace/BPINI/uml.pdf>]
+P\v {r}\'{\i }loha B.
+[55
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[56] <view-code.png, id=211, 772.38562pt x 505.89pt>
+File: view-code.png Graphic file (type png)
+ <use view-code.png>
+Package pdftex.def Info: view-code.png used on input line 569.
+(pdftex.def)             Requested size: 389.99861pt x 255.43768pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--571
+[][]
+ []
+
+<edit-code.png, id=212, 772.38562pt x 505.89pt>
+File: edit-code.png Graphic file (type png)
+ <use edit-code.png>
+Package pdftex.def Info: edit-code.png used on input line 579.
+(pdftex.def)             Requested size: 389.99861pt x 255.43768pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 579--581
+[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 646--649
-\T1/aer/m/n/12 stupné z: \T1/aett/m/n/12 http://www.freepascal.org/docs-
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 15.77997pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[57]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 15.77997pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[58 <C:/Users/pkout/Dropbox/bp/dokumentace/BPINI/view-code.png>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 15.77997pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[59 <C:/Users/pkout/Dropbox/bp/dokumentace/BPINI/edit-code.png>]
+P\v {r}\'{\i }loha C.
+[60
+
+] <convert-helper.png, id=225, 927.465pt x 782.925pt>
+File: convert-helper.png Graphic file (type png)
+
+<use convert-helper.png>
+Package pdftex.def Info: convert-helper.png used on input line 601.
+(pdftex.def)             Requested size: 389.99966pt x 329.22049pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 601--603
+[][]
  []
 
-[32]) [33] (C:\Users\pkout\Dropbox\bp\dokumentace\BPINI\bakalarka.aux)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[61 <C:/Users/pkout/Dropbox/bp/dokumentace/BPINI/convert-helper.png>]
+(C:\Users\pkout\Dropbox\bp\dokumentace\BPINI\bakalarka.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 1633 strings out of 493921
- 19186 string characters out of 3147282
- 74385 words of memory out of 3000000
- 4889 multiletter control sequences out of 15000+200000
- 47480 words of font info for 94 fonts, out of 3000000 for 9000
+ 6003 strings out of 493921
+ 83737 string characters out of 3147282
+ 156378 words of memory out of 3000000
+ 9140 multiletter control sequences out of 15000+200000
+ 48602 words of font info for 99 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 30i,11n,43p,1188b,376s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 68i,12n,98p,1326b,400s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTe
@@ -1589,9 +1579,9 @@ ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.
 pfb>
-Output written on bakalarka.pdf (38 pages, 214221 bytes).
+Output written on bakalarka.pdf (67 pages, 453527 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
+ 261 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

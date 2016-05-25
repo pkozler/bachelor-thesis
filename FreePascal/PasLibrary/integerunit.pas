@@ -9,7 +9,7 @@ uses
 
 type
   (**
-   * The Integer class wraps a value of the primitive type int in an object.
+   * The Integer class wraps a value of the primitive type longInt (representing an int value) in an object.
    *
    * @author Petr Kozler (A13B0359P)
    *)

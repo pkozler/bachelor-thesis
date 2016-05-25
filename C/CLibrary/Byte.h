@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Byte class wraps a value of primitive type byte in an object.
+ * The Byte struct wraps a value of the type int8_t, representing a byte value.
  *
  * @author Petr Kozler (A13B0359P)
  */

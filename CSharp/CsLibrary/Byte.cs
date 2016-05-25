@@ -4,7 +4,7 @@ namespace JavaClasses
 {
 
     /// <summary>
-    /// The Byte class wraps a value of primitive type byte in an object.
+    /// The Byte class wraps a value of primitive type sbyte (representing a byte value) in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
     public class Byte : Comparable<Byte>

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 /**
- * Searches the specified list for the specified object using the binary
+ * Searches the specified list for the specified structure using the binary
  * search algorithm.
  *
  * @param list the list to be searched.

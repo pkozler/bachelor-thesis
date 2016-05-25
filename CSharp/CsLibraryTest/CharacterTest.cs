@@ -17,15 +17,15 @@ namespace JavaClasses
             // uppercase letter
             a = new Character('A');
             b = a.charValue();
-            Assert.AreEqual('.', b);
+            Assert.AreEqual('A', b);
             // lowercase letter
             a = new Character('a');
             b = a.charValue();
-            Assert.AreEqual('.', b);
+            Assert.AreEqual('a', b);
             // digit
             a = new Character('0');
             b = a.charValue();
-            Assert.AreEqual('.', b);
+            Assert.AreEqual('0', b);
         }
 
         /// <summary>

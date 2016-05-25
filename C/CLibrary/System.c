@@ -52,7 +52,7 @@ void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (
  *
  * @param b The boolean to be printed
  */
-void printB(PrintStream *ptr, bool b) {
+void printBool(PrintStream *ptr, bool b) {
     printf("%s", b ? "true" : "false");
     fflush(stdout);
 }
@@ -72,8 +72,12 @@ void printC(PrintStream *ptr, char c) {
  *
  * @param s The array of chars to be printed
  */
-void printS(PrintStream *ptr, char *s) {
-    printf("%s", s);
+void printS(PrintStream *ptr, char *s, int32_t length) {
+    int i;
+    for (i = 0; i < length; i++) {
+        printf("%c", s[i]);
+    }
+    
     fflush(stdout);
 }
 
@@ -83,7 +87,7 @@ void printS(PrintStream *ptr, char *s) {
  * @param d The double to be printed
  */
 void printD(PrintStream *ptr, double d) {
-    printf("%lf", d);
+    printf("%lG", d);
     fflush(stdout);
 }
 
@@ -93,7 +97,7 @@ void printD(PrintStream *ptr, double d) {
  * @param f The float to be printed
  */
 void printF(PrintStream *ptr, float f) {
-    printf("%f", f);
+    printf("%G", f);
     fflush(stdout);
 }
 
@@ -118,9 +122,9 @@ void printL(PrintStream *ptr, int64_t l) {
 }
 
 /**
- * Prints an object.
+ * Prints a structure.
  *
- * @param obj The Object to be printed
+ * @param obj The structure to be printed
  */
 void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);
@@ -152,7 +156,7 @@ void println(PrintStream *ptr) {
  *
  * @param x The boolean to be printed
  */
-void printlnB(PrintStream *ptr, bool x) {
+void printlnBool(PrintStream *ptr, bool x) {
     printf("%s\n", x ? "true" : "false");
     fflush(stdout);
 }
@@ -172,8 +176,13 @@ void printlnC(PrintStream *ptr, char x) {
  *
  * @param x an array of chars to print.
  */
-void printlnS(PrintStream *ptr, char *x) {
-    printf("%s\n", x);
+void printlnS(PrintStream *ptr, char *x, int32_t length) {
+    int i;
+    for (i = 0; i < length; i++) {
+        printf("%c", x[i]);
+    }
+    
+    printf("\n");
     fflush(stdout);
 }
 
@@ -183,7 +192,7 @@ void printlnS(PrintStream *ptr, char *x) {
  * @param x The double to be printed.
  */
 void printlnD(PrintStream *ptr, double x) {
-    printf("%lf\n", x);
+    printf("%lG\n", x);
     fflush(stdout);
 }
 
@@ -193,7 +202,7 @@ void printlnD(PrintStream *ptr, double x) {
  * @param x The float to be printed.
  */
 void printlnF(PrintStream *ptr, float x) {
-    printf("%f\n", x);
+    printf("%G\n", x);
     fflush(stdout);
 }
 
@@ -218,9 +227,9 @@ void printlnL(PrintStream *ptr, int64_t x) {
 }
 
 /**
- * Prints an Object and then terminate the line.
+ * Prints a structure and then terminate the line.
  *
- * @param x The Object to be printed.
+ * @param x The structure to be printed.
  */
 void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);

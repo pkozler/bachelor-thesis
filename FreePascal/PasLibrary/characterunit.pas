@@ -9,7 +9,7 @@ uses
 
 type
   (**
-   * The Character class wraps a value of the primitive type char in an object.
+   * The Character class wraps a value of the primitive type ansiChar (representing a char value) in an object.
    *
    * @author Petr Kozler (A13B0359P)
    *)

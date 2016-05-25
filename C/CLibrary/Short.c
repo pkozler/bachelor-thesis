@@ -7,7 +7,7 @@
 #define _MAX_SHORT_STRLEN 6
 
 /**
- * Constructs a newly allocated Short object that represents the specified
+ * Constructs a newly allocated Short structure that represents the specified
  * short value.
  *
  * @param value the value to be represented by the Short.
@@ -22,7 +22,7 @@ Short *new_Short(int16_t value) {
 /**
  * Returns the value of this Short as a short.
  *
- * @return the numeric value represented by this object after conversion to
+ * @return the numeric value represented by this structure after conversion to
  * type short.
  */
 int16_t shortValue(Short *ptr) {
@@ -30,7 +30,7 @@ int16_t shortValue(Short *ptr) {
 }
 
 /**
- * Compares two Short objects numerically.
+ * Compares two Short structures numerically.
  *
  * @param anotherShort the Short to be compared.
  * @return the value 0 if this Short is equal to the argument Short; a value
@@ -55,10 +55,10 @@ int32_t Short_compare(int16_t x, int16_t y) {
 }
 
 /**
- * Compares this object to the specified object.
+ * Compares this structure to the specified structure.
  *
- * @param obj the object to compare with
- * @return true if the objects are the same; false otherwise.
+ * @param obj the structure to compare with
+ * @return true if the structures are the same; false otherwise.
  */
 bool equalsS(Short *ptr, Short *obj) {
     if (ptr == NULL || obj == NULL) {
@@ -73,16 +73,16 @@ bool equalsS(Short *ptr, Short *obj) {
 }
 
 /**
- * Returns a String object representing this Short's value.
+ * Returns a String structure representing this Short's value.
  *
- * @return a string representation of the value of this object in base 10.
+ * @return a string representation of the value of this structure in base 10.
  */
 String *toStringS(Short *ptr) {
     return Short_toString(ptr->v);
 }
 
 /**
- * Returns a new String object representing the specified short.
+ * Returns a new String structure representing the specified short.
  *
  * @param s the short to be converted
  * @return the string representation of the specified short

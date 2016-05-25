@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * Doubly-linked list implementation of the List and Deque interfaces.
+ * Struct definition for the doubly-linked list implementation of the list data structure.
  *
  * @author Petr Kozler (A13B0359P)
  */

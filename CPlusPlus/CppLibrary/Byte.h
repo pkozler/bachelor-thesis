@@ -5,7 +5,7 @@
 #include <cstdint>
 
 /**
- * The Byte class wraps a value of primitive type byte in an object.
+ * The Byte class wraps a value of primitive type int8_t (representing a byte value) in an object.
  *
  * @author Petr Kozler (A13B0359P)
  */

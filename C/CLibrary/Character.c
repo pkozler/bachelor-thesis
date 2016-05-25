@@ -8,10 +8,10 @@
 #define _MAX_CHAR_STRLEN 1
 
 /**
- * Constructs a newly allocated Character object that represents the
+ * Constructs a newly allocated Character structure that represents the
  * specified char value.
  *
- * @param value the value to be represented by the Character object.
+ * @param value the value to be represented by the Character structure.
  */
 Character *new_Character(char value) {
     Character *c = malloc(sizeof(Character));
@@ -21,16 +21,16 @@ Character *new_Character(char value) {
 }
 
 /**
- * Returns the value of this Character object.
+ * Returns the value of this Character structure.
  *
- * @return the primitive char value represented by this object.
+ * @return the primitive char value represented by this structure.
  */
 char charValue(Character *ptr) {
     return ptr->v;
 }
 
 /**
- * Compares two Character objects numerically.
+ * Compares two Character structures numerically.
  *
  * @param anotherCharacter the Character to be compared.
  * @return the value 0 if the argument Character is equal to this Character;
@@ -57,10 +57,10 @@ int32_t Character_compare(char x, char y) {
 }
 
 /**
- * Compares this object against the specified object.
+ * Compares this structure against the specified structure.
  *
- * @param obj the object to compare with.
- * @return true if the objects are the same; false otherwise.
+ * @param obj the structure to compare with.
+ * @return true if the structures are the same; false otherwise.
  */
 bool equalsC(Character *ptr, Character *obj) {
     if (ptr == NULL || obj == NULL) {
@@ -75,16 +75,16 @@ bool equalsC(Character *ptr, Character *obj) {
 }
 
 /**
- * Returns a String object representing this Character's value.
+ * Returns a String structure representing this Character's value.
  * 
- * @return a string representation of this object.
+ * @return a string representation of this structure.
  */
 String *toStringC(Character *ptr) {
     return Character_toString(ptr->v);
 }
 
 /**
- * Returns a String object representing the specified char.
+ * Returns a String structure representing the specified char.
  *
  * @param c the char to be converted
  * @return the string representation of the specified char

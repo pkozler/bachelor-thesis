@@ -7,7 +7,7 @@
 #include <cstdint>
 
 /**
- * The Integer class wraps a value of the primitive type int in an object.
+ * The Integer class wraps a value of the primitive type int32_t (representing an int value) in an object.
  *
  * @author Petr Kozler (A13B0359P)
  */

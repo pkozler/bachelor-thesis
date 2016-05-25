@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Character class wraps a value of the primitive type char in an object.
+ * The Character struct wraps a value of the type char.
  *
  * @author Petr Kozler (A13B0359P)
  */

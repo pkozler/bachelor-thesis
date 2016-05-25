@@ -6,8 +6,8 @@
 #include <stdint.h>
 
 /**
- * The {@code TestObject} class represents a simple object that serves
- * for demonstration the functionality of libraries working with objects.
+ * The {@code TestObject} struct represents a simple structure that serves
+ * for demonstration the functionality of libraries working with structures.
  *
  * @author Petr Kozler
  */

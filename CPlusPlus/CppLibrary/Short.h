@@ -5,7 +5,7 @@
 #include <cstdint>
 
 /**
- * The Short class wraps a value of primitive type short in an object.
+ * The Short class wraps a value of primitive type int16_t (representing a short value) in an object.
  *
  * @author Petr Kozler (A13B0359P)
  */

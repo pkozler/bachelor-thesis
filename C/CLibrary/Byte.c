@@ -7,7 +7,7 @@
 #define _MAX_BYTE_STRLEN 4
 
 /**
- * Constructs a newly allocated Byte object that represents the specified
+ * Constructs a newly allocated Byte structure that represents the specified
  * byte value.
  *
  * @param value the value to be represented by the Byte.
@@ -22,7 +22,7 @@ Byte *new_Byte(int8_t value) {
 /**
  * Returns the value of this Byte as a byte.
  *
- * @return the numeric value represented by this object after conversion to
+ * @return the numeric value represented by this structure after conversion to
  * type byte.
  */
 int8_t byteValue(Byte *ptr) {
@@ -30,7 +30,7 @@ int8_t byteValue(Byte *ptr) {
 }
 
 /**
- * Compares two Byte objects numerically.
+ * Compares two Byte structures numerically.
  *
  * @param anotherByte the Byte to be compared.
  * @return the value 0 if this Byte is equal to the argument Byte; a value
@@ -55,10 +55,10 @@ int32_t Byte_compare(int8_t x, int8_t y) {
 }
 
 /**
- * Compares this object to the specified object.
+ * Compares this structure to the specified structure.
  *
- * @param obj the object to compare with
- * @return true if the objects are the same; false otherwise.
+ * @param obj the structure to compare with
+ * @return true if the structures are the same; false otherwise.
  */
 bool equalsB(Byte *ptr, Byte *obj) {
     if (ptr == NULL || obj == NULL) {
@@ -73,16 +73,16 @@ bool equalsB(Byte *ptr, Byte *obj) {
 }
 
 /**
- * Returns a String object representing this Byte's value.
+ * Returns a String structure representing this Byte's value.
  * 
- * @return a string representation of the value of this object in base 10.
+ * @return a string representation of the value of this structure in base 10.
  */
 String *toStringB(Byte *ptr) {
     return Byte_toString(ptr->v);
 }
 
 /**
- * Returns a new String object representing the specified byte.
+ * Returns a new String structure representing the specified byte.
  *
  * @param b the byte to be converted
  * @return the string representation of the specified byte

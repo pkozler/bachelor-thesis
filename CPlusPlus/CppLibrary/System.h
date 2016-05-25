@@ -14,7 +14,7 @@ class PrintStream : public Object {
 public:
     void print(bool b);
     void print(char c);
-    void print(char* s);
+    void print(char* s, int32_t length);
     void print(double d);
     void print(float f);
     void print(int32_t i);
@@ -24,7 +24,7 @@ public:
     void println();
     void println(bool x);
     void println(char x);
-    void println(char* x);
+    void println(char* x, int32_t length);
     void println(double x);
     void println(float x);
     void println(int32_t x);

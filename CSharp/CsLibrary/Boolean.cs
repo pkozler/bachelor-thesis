@@ -4,7 +4,7 @@ namespace JavaClasses
 {
 
     /// <summary>
-    /// The Boolean class wraps a value of the primitive type boolean in an object.
+    /// The Boolean class wraps a value of the primitive type bool (representing a boolean value) in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
     public class Boolean : Comparable<Boolean>

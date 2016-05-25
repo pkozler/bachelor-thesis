@@ -2,8 +2,8 @@
 #define	ARRAYS_INCLUDED
 
 #include "String.h"
-#include <sstream>
 #include <algorithm>
+#include <sstream>
 #include <cstdint>
 
 /**
@@ -12,6 +12,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Arrays {
+    static void *currentComparator; // hack to make the Comparator compare function call work
     static bool equalsBool(bool a, bool b);
     static bool equalsB(int8_t a, int8_t b);
     static bool equalsC(char a, char b);
@@ -20,15 +21,23 @@ class Arrays {
     static bool equalsI(int32_t a, int32_t b);
     static bool equalsL(int64_t a, int64_t b);
     static bool equalsS(int16_t a, int16_t b);
-    static int32_t compareObj(Object *a, Object *b);
     static bool equalsObj(Object *a, Object *b);
     static String *toStringObj(Object *a);
-    template <class T> static int32_t binarySearchGeneric(T *a, int32_t fromIndex, int32_t toIndex, T key, int32_t (*c)(T, T));
-    template <class T> static T *copyOfRangeGeneric(T *original, int32_t length, int32_t from, int32_t to);
-    template <class T> static bool equalsGeneric(T *a, int32_t length, T *a2, int32_t length2, bool (*equals)(T, T));
-    template <class T> static void fillGeneric(T *a, int32_t fromIndex, int32_t toIndex, T val);
-    template <class T> static void sortGeneric(T *a, int32_t fromIndex, int32_t toIndex, int32_t (*c)(T, T), bool stable = false);
-    template <class T> static String *toStringGeneric(T *a, int32_t length, String *(*toString)(T));
+    static bool compareB(int8_t a, int8_t b);
+    static bool compareC(char a, char b);
+    static bool compareD(double a, double b);
+    static bool compareF(float a, float b);
+    static bool compareI(int32_t a, int32_t b);
+    static bool compareL(int64_t a, int64_t b);
+    static bool compareS(int16_t a, int16_t b);
+    static bool compareObj(Object *a, Object *b);
+    template <class T> static bool compareObjComp(T *a, T *b);
+    template <typename T> static int32_t binarySearchGeneric(T *a, int32_t fromIndex, int32_t toIndex, T key, bool (*c)(T, T));
+    template <typename T> static T *copyOfRangeGeneric(T *original, int32_t length, int32_t from, int32_t to);
+    template <typename T> static bool equalsGeneric(T *a, int32_t length, T *a2, int32_t length2, bool (*equals)(T, T));
+    template <typename T> static void fillGeneric(T *a, int32_t fromIndex, int32_t toIndex, T val);
+    template <typename T> static void sortGeneric(T *a, int32_t fromIndex, int32_t toIndex, bool (*c)(T, T), bool stable = false);
+    template <typename T> static String *toStringGeneric(T *a, int32_t length, String *(*toString)(T));
 public:
     static int32_t binarySearch(int8_t *a, int32_t length, int8_t key);
     static int32_t binarySearch(int8_t *a, int32_t fromIndex, int32_t toIndex, int8_t key);
@@ -46,8 +55,8 @@ public:
     static int32_t binarySearch(Object **a, int32_t fromIndex, int32_t toIndex, Object *key);
     static int32_t binarySearch(int16_t *a, int32_t length, int16_t key);
     static int32_t binarySearch(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t key);
-    template <class T> static int32_t binarySearch(T **a, int32_t length, T *key, Comparator<T> c);
-    template <class T> static int32_t binarySearch(T **a, int32_t fromIndex, int32_t toIndex, T *key, Comparator<T> c);
+    template <class T> static int32_t binarySearch(T **a, int32_t length, T *key, Comparator<T> *c);
+    template <class T> static int32_t binarySearch(T **a, int32_t fromIndex, int32_t toIndex, T *key, Comparator<T> *c);
     static bool *copyOf(bool *original, int32_t length, int32_t newLength);
     static int8_t *copyOf(int8_t *original, int32_t length, int32_t newLength);
     static char *copyOf(char *original, int32_t length, int32_t newLength);
@@ -109,8 +118,8 @@ public:
     static void sort(Object **a, int32_t fromIndex, int32_t toIndex);
     static void sort(int16_t *a, int32_t length);
     static void sort(int16_t *a, int32_t fromIndex, int32_t toIndex);
-    template <class T> static void sort(T **a, int32_t length, Comparator<T> c);
-    template <class T> static void sort(T **a, int32_t fromIndex, int32_t toIndex, Comparator<T> c);
+    template <class T> static void sort(T **a, int32_t length, Comparator<T> *c);
+    template <class T> static void sort(T **a, int32_t fromIndex, int32_t toIndex, Comparator<T> *c);
     static String *toString(bool *a, int32_t length);
     static String *toString(int8_t *a, int32_t length);
     static String *toString(char *a, int32_t length);
@@ -122,7 +131,11 @@ public:
     static String *toString(int16_t *a, int32_t length);
 };
 
-template <class T> int32_t Arrays::binarySearchGeneric(T *a, int32_t fromIndex, int32_t toIndex, T key, int32_t (*c)(T, T)) {
+template <class T> bool Arrays::compareObjComp(T *a, T *b) {
+    return ((Comparator<Object> *) currentComparator)->compare(a, b) < 0;
+}
+
+template <typename T> int32_t Arrays::binarySearchGeneric(T *a, int32_t fromIndex, int32_t toIndex, T key, bool (*c)(T, T)) {
     int32_t lower = fromIndex;
     int32_t upper = toIndex - 1;
 
@@ -144,7 +157,7 @@ template <class T> int32_t Arrays::binarySearchGeneric(T *a, int32_t fromIndex, 
     return -(lower + 1);
 }
 
-template <class T> T *Arrays::copyOfRangeGeneric(T *original, int32_t length, int32_t from, int32_t to) {
+template <typename T> T *Arrays::copyOfRangeGeneric(T *original, int32_t length, int32_t from, int32_t to) {
     T *a = new T[to - from];
 
     if (to > length) {
@@ -165,7 +178,7 @@ template <class T> T *Arrays::copyOfRangeGeneric(T *original, int32_t length, in
     return a;
 }
 
-template <class T> bool Arrays::equalsGeneric(T *a, int32_t length, T *a2, int32_t length2, bool (*equals)(T, T)) {
+template <typename T> bool Arrays::equalsGeneric(T *a, int32_t length, T *a2, int32_t length2, bool (*equals)(T, T)) {
     if (a == a2) {
         return true;
     }
@@ -187,13 +200,13 @@ template <class T> bool Arrays::equalsGeneric(T *a, int32_t length, T *a2, int32
     return true;
 }
 
-template <class T> void Arrays::fillGeneric(T *a, int32_t fromIndex, int32_t toIndex, T val) {
+template <typename T> void Arrays::fillGeneric(T *a, int32_t fromIndex, int32_t toIndex, T val) {
     for (int32_t i = fromIndex; i < toIndex; i++) {
         a[i] = val;
     }
 }
 
-template <class T> void Arrays::sortGeneric(T *a, int32_t fromIndex, int32_t toIndex, int32_t (*c)(T, T), bool stable) {
+template <typename T> void Arrays::sortGeneric(T *a, int32_t fromIndex, int32_t toIndex, bool (*c)(T, T), bool stable) {
     if (c == nullptr) {
         std::sort(a + fromIndex, a + toIndex, c);
     }
@@ -207,7 +220,7 @@ template <class T> void Arrays::sortGeneric(T *a, int32_t fromIndex, int32_t toI
     }
 }
 
-template <class T> String *Arrays::toStringGeneric(T *a, int32_t length, String *(*toString)(T)) {
+template <typename T> String *Arrays::toStringGeneric(T *a, int32_t length, String *(*toString)(T)) {
     std::ostringstream oss("[");
 
     if (length > 0) {
@@ -242,8 +255,9 @@ template <class T> String *Arrays::toStringGeneric(T *a, int32_t length, String 
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  */
-template <class T> int32_t Arrays::binarySearch(T **a, int32_t length, T *key, Comparator<T> c) {
-    return binarySearchGeneric(a, 0, length, key, c);
+template <class T> int32_t Arrays::binarySearch(T **a, int32_t length, T *key, Comparator<T> *c) {
+    currentComparator = c;
+    return binarySearchGeneric(a, 0, length, key, compareObjComp);
 }
 
 /**
@@ -265,8 +279,9 @@ template <class T> int32_t Arrays::binarySearch(T **a, int32_t length, T *key, C
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  */
-template <class T> int32_t Arrays::binarySearch(T **a, int32_t fromIndex, int32_t toIndex, T *key, Comparator<T> c) {
-    return binarySearchGeneric(a, fromIndex, toIndex, key, c);
+template <class T> int32_t Arrays::binarySearch(T **a, int32_t fromIndex, int32_t toIndex, T *key, Comparator<T> *c) {
+    currentComparator = c;
+    return binarySearchGeneric(a, fromIndex, toIndex, key, compareObjComp);
 }
 
 /**
@@ -304,8 +319,9 @@ template <class T> T **Arrays::copyOfRange(T **original, int32_t length, int32_t
  * @param c the comparator to determine the order of the array. A null value
  * indicates that the elements' natural ordering should be used.
  */
-template <class T> void Arrays::sort(T **a, int32_t length, Comparator<T> c) {
-    sortGeneric(a, 0, length, c, true);
+template <class T> void Arrays::sort(T **a, int32_t length, Comparator<T> *c) {
+    currentComparator = c;
+    sortGeneric(a, 0, length, compareObjComp, true);
 }
 
 /**
@@ -318,8 +334,9 @@ template <class T> void Arrays::sort(T **a, int32_t length, Comparator<T> c) {
  * @param c the comparator to determine the order of the array. A null value
  * indicates that the elements' natural ordering should be used.
  */
-template <class T> void Arrays::sort(T **a, int32_t fromIndex, int32_t toIndex, Comparator<T> c) {
-    sortGeneric(a, fromIndex, toIndex, c, true);
+template <class T> void Arrays::sort(T **a, int32_t fromIndex, int32_t toIndex, Comparator<T> *c) {
+    currentComparator = c;
+    sortGeneric(a, fromIndex, toIndex, compareObjComp, true);
 }
 
 #endif	// ARRAYS_INCLUDED

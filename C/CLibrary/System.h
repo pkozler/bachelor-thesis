@@ -8,30 +8,39 @@
 #include <stdint.h>
 
 /**
- * A PrintStream adds functionality to another output stream,
- * namely the ability to print representations of various data values conveniently.
+ * The System module contains several useful global variables and functions.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+/**
+ * A struct representing PrintStream which provides ability to print
+ * representations of various data values conveniently.
+ * Currently serves only as a fake structure for the purpose
+ * of the Java code imitation.
  *
  * @author Petr Kozler (A13B0359P)
  */
 
 typedef struct {
-    // really no code
+    void *dummy; // dummy variable for the struct to have at least one member
 } PrintStream;
 
 /**
- * This abstract class is the superclass of all classes
- * representing an input stream of bytes.
+ * This struct represents an input stream of bytes.
+ * Currently serves only as a fake structure for the purpose
+ * of the Java code imitation.
  * 
  * @author Petr Kozler (A13B0359P)
  */
 
 typedef struct {
-    // really no code
+    void *dummy; // dummy variable for the struct to have at least one member
 } InputStream;
 
-void printB(PrintStream *ptr, bool b);
+void printBool(PrintStream *ptr, bool b);
 void printC(PrintStream *ptr, char c);
-void printS(PrintStream *ptr, char *s);
+void printS(PrintStream *ptr, char *s, int32_t length);
 void printD(PrintStream *ptr, double d);
 void printF(PrintStream *ptr, float f);
 void printI(PrintStream *ptr, int32_t i);
@@ -39,9 +48,9 @@ void printL(PrintStream *ptr, int64_t l);
 void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *));
 void printStr(PrintStream *ptr, String *s);
 void println(PrintStream *ptr);
-void printlnB(PrintStream *ptr, bool x);
+void printlnBool(PrintStream *ptr, bool x);
 void printlnC(PrintStream *ptr, char x);
-void printlnS(PrintStream *ptr, char *x);
+void printlnS(PrintStream *ptr, char *x, int32_t length);
 void printlnD(PrintStream *ptr, double x);
 void printlnF(PrintStream *ptr, float x);
 void printlnI(PrintStream *ptr, int32_t x);
@@ -50,18 +59,14 @@ void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *));
 void printlnStr(PrintStream *ptr, String *x);
 
 /**
- * The System class contains several useful class fields and methods.
- *
- * @author Petr Kozler (A13B0359P)
- */
-
-/**
- * The "standard" input stream.
+ * The struct instance representing the fake "standard" input stream
+ * (for purpose of the imitation of Java code).
  */
 InputStream *System_in;
 
 /**
- * The "standard" output stream.
+ * The struct instance representing the fake "standard" output stream
+ * (for purpose of the imitation of Java code).
  */
 PrintStream *System_out;
 

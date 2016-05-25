@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Long class wraps a value of the primitive type long in an object.
+ * The Long struct wraps a value of the type int64_t, representing a long value.
  *
  * @author Petr Kozler (A13B0359P)
  */

@@ -8,7 +8,7 @@
 #define _MAX_FLOAT_STRLEN 12
 
 /**
- * Constructs a newly allocated Float object that represents the primitive
+ * Constructs a newly allocated Float structure that represents the
  * float argument.
  *
  * @param value the value to be represented by the Float.
@@ -28,16 +28,16 @@ long _getNegativeZeroFloatBits() {
 }
 
 /**
- * Returns the float value of this Float object.
+ * Returns the float value of this Float structure.
  *
- * @return the float value represented by this object
+ * @return the float value represented by this structure
  */
 float floatValue(Float *ptr) {
     return ptr->v;
 }
 
 /**
- * Compares two Float objects numerically.
+ * Compares two Float structures numerically.
  *
  * @param anotherFloat the Float to be compared.
  * @return the value 0 if anotherFloat is numerically equal to this Float; a
@@ -90,10 +90,10 @@ int32_t Float_compare(float f1, float f2) {
 }
 
 /**
- * Compares this object against the specified object.
+ * Compares this structure against the specified structure.
  *
- * @param obj the object to be compared
- * @return true if the objects are the same; false otherwise.
+ * @param obj the structure to be compared
+ * @return true if the structures are the same; false otherwise.
  */
 bool equalsF(Float *ptr, Float *obj) {
     if (ptr == NULL || obj == NULL) {
@@ -128,9 +128,9 @@ bool equalsF(Float *ptr, Float *obj) {
 }
 
 /**
- * Returns a string representation of this Float object.
+ * Returns a string representation of this Float structure.
  *
- * @return a String representation of this object.
+ * @return a String representation of this structure.
  */
 String *toStringF(Float *ptr) {
     return Float_toString(ptr->v);
@@ -155,7 +155,7 @@ String *Float_toString(float f) {
 
 /**
  * Returns a new float initialized to the value represented by the specified
- * String, as performed by the valueOf method of class Float.
+ * String, as performed by the "valueOf" function for struct Float.
  *
  * @param s the string to be parsed.
  * @return the float value represented by the string argument.

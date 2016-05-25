@@ -20,10 +20,10 @@ ArrayList *new_ArrayList() {
 }
 
 /**
- * Constructs a list containing the elements of the specified collection, in
- * the order they are returned by the collection's iterator.
+ * Constructs a list containing the elements of the specified array list, in
+ * the order they are returned by the iteration over the list.
  *
- * @param c the collection whose elements are to be placed into this list
+ * @param c the array list whose elements are to be placed into this list
  */
 ArrayList *new_ArrayListAddAll(ArrayList *c) {
     ArrayList *list = malloc(sizeof (ArrayList));
@@ -67,7 +67,7 @@ void _shrinkList(ArrayList *ptr) {
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
- * @return true (as specified by Collection.add(E))
+ * @return true
  */
 bool addAl(ArrayList *ptr, void *e) {
     ptr->dynamicArray[ptr->count] = e;
@@ -166,9 +166,9 @@ void clearAl(ArrayList *ptr) {
 }
 
 /**
- * Returns a string representation of the object.
+ * Returns a string representation of the structure.
  *
- * @return a string representation of the object.
+ * @return a string representation of the structure.
  */
 String *toStringAl(ArrayList *ptr, String *(*toString)(void *)) {
     int32_t length = ptr->count;

@@ -23,7 +23,7 @@ namespace JavaClasses
 
         private static void usage()
         {
-            Console.WriteLine("Zadejte platné číslo testovací metody. ({0} - {1})", 1, testMethods.Length - 1);
+            Console.WriteLine("Zadejte platné číslo testovací metody. ({0} - {1})", 0, testMethods.Length - 1);
             Environment.Exit(-1);
         }
 

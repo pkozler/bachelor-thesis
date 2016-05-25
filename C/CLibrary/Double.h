@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * The Double class wraps a value of the primitive type double in an object.
+ * The Double struct wraps a value of the type double.
  *
  * @author Petr Kozler (A13B0359P)
  */

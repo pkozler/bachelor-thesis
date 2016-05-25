@@ -3,13 +3,14 @@
 #include <stddef.h>
 
 /**
- * Compares the specified object with this list for equality.
+ * Compares the specified structure with this list for equality.
  *
- * @param o the object to be compared for equality with this list
- * @return true if the specified object is equal to this list
+ * @param o the structure to be compared for equality with this list
+ * @return true if the specified structure is equal to this list
  */
-bool equalsList(void *ptr, void *o, int32_t (*sizePtr)(void *), int32_t (*sizeO)(void *),
-        void *(*getPtr)(void *, int32_t), void *(*getO)(void *, int32_t), bool (*equals)(const void *, const void *)) {
+bool equalsList(void *ptr, int32_t (*sizePtr)(void *), void *(*getPtr)(void *, int32_t), 
+        void *o, int32_t (*sizeO)(void *), void *(*getO)(void *, int32_t), 
+        bool (*equals)(const void *, const void *)) {
     if (ptr == o) {
         return true;
     }

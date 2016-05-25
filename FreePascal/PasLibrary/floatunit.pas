@@ -15,7 +15,7 @@ type
   end;
 
   (**
-   * The Float class wraps a value of primitive type float in an object.
+   * The Float class wraps a value of primitive type single (representing a float value) in an object.
    *
    * @author Petr Kozler (A13B0359P)
    *)

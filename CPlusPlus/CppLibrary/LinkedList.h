@@ -31,9 +31,7 @@ public:
 /**
  * Constructs an empty list.
  */
-template <class E> LinkedList<E>::LinkedList() {
-    l;
-}
+template <class E> LinkedList<E>::LinkedList() {}
 
 /**
  * Constructs a list containing the elements of the specified collection, in
@@ -42,7 +40,7 @@ template <class E> LinkedList<E>::LinkedList() {
  * @param c the collection whose elements are to be placed into this list
  */
 template <class E> LinkedList<E>::LinkedList(LinkedList<E> *c) {
-    l(c->l);
+    l = c->l;
 }
 
 template <class E> LinkedList<E>::~LinkedList() {
@@ -68,7 +66,9 @@ template <class E> bool LinkedList<E>::add(E *e) {
  * @param element element to be inserted
  */
 template <class E> void LinkedList<E>::add(int32_t index, E *element) {
-    l.insert(index, element);
+    auto it = l.begin();
+    std::advance(it, index);
+    l.insert(it, element);
 }
 
 /**
@@ -93,7 +93,7 @@ template <class E> E *LinkedList<E>::get(int32_t index) {
  * @return the element previously at the specified position
  */
 template <class E> E *LinkedList<E>::set(int32_t index, E *element) {
-    E original;
+    E *original;
     auto it = l.begin();
     std::advance(it, index);
     original = *it;
@@ -109,11 +109,11 @@ template <class E> E *LinkedList<E>::set(int32_t index, E *element) {
  * @return the element previously at the specified position
  */
 template <class E> E *LinkedList<E>::remove(int32_t index) {
-    E removed;
+    E *removed;
     auto it = l.begin();
     std::advance(it, index);
     removed = *it;
-    l.erase(index);
+    l.erase(it);
 
     return removed;
 }
@@ -144,7 +144,7 @@ template <class E> String *LinkedList<E>::toString() {
     std::ostringstream oss("[");
 
     if (length > 0) {
-        String *str = toString(l.begin());
+        String *str = ((Object *) *l.begin())->toString();
         oss << str;
         delete str;
     }
@@ -152,7 +152,7 @@ template <class E> String *LinkedList<E>::toString() {
     for (int32_t i = 1; i < length; i++) {
         auto it = l.begin();
         std::advance(it, i);
-        String *str = toString(it);
+        String *str = ((Object *) *it)->toString();
         oss << ", " << str;
         delete str;
     }

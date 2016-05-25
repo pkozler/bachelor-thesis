@@ -1361,31 +1361,24 @@ FUNCTION {editor.organization.sort}
   if$
 }
 
+INTEGERS { seq.num }
+
+FUNCTION {init.seq}
+{ #0 'seq.num :=}
+
+EXECUTE {init.seq}
+FUNCTION {int.to.fix}
+{ "000000000" swap$ int.to.str$ *
+  #-1 #10 substring$
+}
 
 FUNCTION {presort}
 { calc.label
   label sortify
   "    "
   *
-  type$ "book" =
-  type$ "inbook" =
-  or
-    'author.editor.sort
-    { type$ "proceedings" =
-        'editor.organization.sort
-        { type$ "manual" =
-            'author.organization.sort
-            'author.sort
-          if$
-        }
-      if$
-    }
-  if$
-  "    "
-  *
-  cite$
-  *
-  #1 entry.max$ substring$
+  seq.num #1 + 'seq.num :=
+  seq.num int.to.fix
   'sort.label :=
   sort.label *
   #1 entry.max$ substring$

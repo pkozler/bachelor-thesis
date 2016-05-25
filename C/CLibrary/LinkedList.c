@@ -17,10 +17,10 @@ LinkedList *new_LinkedList() {
 }
 
 /**
- * Constructs a list containing the elements of the specified collection, in
- * the order they are returned by the collection's iterator.
+ * Constructs a list containing the elements of the specified linked list, in
+ * the order they are returned by the iteration over the list.
  *
- * @param c the collection whose elements are to be placed into this list
+ * @param c the linked list whose elements are to be placed into this list
  */
 LinkedList *new_LinkedListAddAll(LinkedList *c) {
     LinkedList *list = new_LinkedList();
@@ -108,7 +108,7 @@ void _removeNode(LinkedList *ptr, LinkedListNode *node) {
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
- * @return true (as specified by Collection.add(E))
+ * @return true
  */
 bool addLl(LinkedList *ptr, void *e) {
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
@@ -250,6 +250,7 @@ bool isEmptyLl(LinkedList *ptr) {
  */
 void clearLl(LinkedList *ptr) {
     LinkedListNode *node;
+    ptr->count = 0;
     
     while (ptr->first != NULL) {
         node = ptr->first;
@@ -259,9 +260,9 @@ void clearLl(LinkedList *ptr) {
 }
 
 /**
- * Returns a string representation of the object.
+ * Returns a string representation of the structure.
  *
- * @return a string representation of the object.
+ * @return a string representation of the structure.
  */
 String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
     StringBuilder *sb = new_StringBuilder();

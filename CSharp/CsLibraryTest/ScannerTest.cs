@@ -45,7 +45,7 @@ namespace JavaClasses
         {
             assertEquals("next", expected, sc.next, (e, a) =>
             {
-                return expected.equals(a);
+                return e.equals(a);
             });
         }
 
@@ -53,7 +53,10 @@ namespace JavaClasses
         {
             assertEquals("nextBoolean", expected, sc.nextBoolean, (e, a) =>
             {
-                return expected == a;
+                Boolean x = new Boolean(e);
+                Boolean y = new Boolean(a);
+
+                return x.equals(y);
             });
         }
 
@@ -61,7 +64,10 @@ namespace JavaClasses
         {
             assertEquals("nextByte", expected, sc.nextByte, (e, a) =>
             {
-                return expected == a;
+                Byte x = new Byte(e);
+                Byte y = new Byte(a);
+
+                return x.equals(y);
             });
         }
 
@@ -69,7 +75,10 @@ namespace JavaClasses
         {
             assertEquals("nextShort", expected, sc.nextShort, (e, a) =>
             {
-                return expected == a;
+                Short x = new Short(e);
+                Short y = new Short(a);
+
+                return x.equals(y);
             });
         }
 
@@ -77,7 +86,10 @@ namespace JavaClasses
         {
             assertEquals("nextInt", expected, sc.nextInt, (e, a) =>
             {
-                return expected == a;
+                Integer x = new Integer(e);
+                Integer y = new Integer(a);
+
+                return x.equals(y);
             });
         }
 
@@ -85,7 +97,10 @@ namespace JavaClasses
         {
             assertEquals("nextLong", expected, sc.nextLong, (e, a) =>
             {
-                return expected == a;
+                Long x = new Long(e);
+                Long y = new Long(a);
+
+                return x.equals(y);
             });
         }
 
@@ -93,7 +108,10 @@ namespace JavaClasses
         {
             assertEquals("nextFloat", expected, sc.nextFloat, (e, a) =>
             {
-                return expected == a;
+                Float x = new Float(e);
+                Float y = new Float(a);
+
+                return x.equals(y);
             });
         }
 
@@ -101,7 +119,10 @@ namespace JavaClasses
         {
             assertEquals("nextDouble", expected, sc.nextDouble, (e, a) =>
             {
-                return expected == a;
+                Double x = new Double(e);
+                Double y = new Double(a);
+
+                return x.equals(y);
             });
         }
 
@@ -109,7 +130,7 @@ namespace JavaClasses
         {
             assertEquals("nextLine", expected, sc.nextLine, (e, a) =>
             {
-                return expected == a;
+                return e.equals(a);
             });
         }
 

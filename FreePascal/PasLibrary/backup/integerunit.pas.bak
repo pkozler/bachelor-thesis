@@ -112,7 +112,7 @@ begin
     exit(false);
   end;
 
-  equals_ := (v = (Integer_(obj)).v);
+  equals_ := v = (obj as Integer_).v;
 end;
 
 (**

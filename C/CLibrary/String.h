@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 /**
- * The String class represents character strings.
+ * The String struct represents character strings.
  *
  * @author Petr Kozler (A13B0359P)
  */
@@ -19,8 +19,8 @@ String *new_StringB(int8_t *value, int32_t length);
 String *new_StringRangeB(int8_t *value, int32_t offset, int32_t length);
 String *new_String(char *original);
 void delete_String(String *ptr);
-int32_t compareTo(String *ptr, String *anotherString);
-bool equals(String *ptr, String *anObject);
+int32_t compareToStr(String *ptr, String *anotherString);
+bool equalsStr(String *ptr, String *anObject);
 String *substring(String *ptr, int32_t beginIndex);
 String *substringTo(String *ptr, int32_t beginIndex, int32_t endIndex);
 int32_t indexOfC(String *ptr, int32_t ch);
@@ -36,6 +36,6 @@ String *replace(String *ptr, char oldChar, char newChar);
 bool startsWith(String *ptr, String *prefix);
 bool endsWith(String *ptr, String *suffix);
 bool isEmptyStr(String *ptr);
-String *toString(String *ptr);
+String *toStringStr(String *ptr);
 
 #endif	/* STRING_INCLUDED */

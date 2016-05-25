@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * Resizable-array implementation of the List interface.
+ * Struct definition for the resizable-array implementation of the list data structure.
  *
  * @author Petr Kozler (A13B0359P)
  */

@@ -34,15 +34,15 @@ begin
     // uppercase letter
     a := Character.create('A');
     b := a.charValue();
-    AssertEquals('.', b);
+    AssertEquals('A', b);
     // lowercase letter
     a := Character.create('a');
     b := a.charValue();
-    AssertEquals('.', b);
+    AssertEquals('a', b);
     // digit
     a := Character.create('0');
     b := a.charValue();
-    AssertEquals('.', b);
+    AssertEquals('0', b);
 end;
 
 (**

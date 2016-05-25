@@ -5,7 +5,8 @@
 #include <stdint.h>
 
 /**
- * This class consists exclusively of static methods that operate on or return collections.
+ * This module consists exclusively of functions that operate on or return lists
+ * or any other type of a non-built-in data structure.
  *
  * @author Petr Kozler (A13B0359P)
  */

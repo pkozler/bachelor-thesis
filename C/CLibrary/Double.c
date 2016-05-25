@@ -8,7 +8,7 @@
 #define _MAX_DOUBLE_STRLEN 13
 
 /**
- * Constructs a newly allocated Double object that represents the primitive
+ * Constructs a newly allocated Double structure that represents the
  * double argument.
  *
  * @param value the value to be represented by the Double.
@@ -28,16 +28,16 @@ long _getNegativeZeroDoubleBits() {
 }
 
 /**
- * Returns the double value of this Double object.
+ * Returns the double value of this Double structure.
  *
- * @return the double value represented by this object
+ * @return the double value represented by this structure
  */
 double doubleValue(Double *ptr) {
     return ptr->v;
 }
 
 /**
- * Compares two Double objects numerically.
+ * Compares two Double structures numerically.
  *
  * @param anotherDouble the Double to be compared.
  * @return the value 0 if anotherDouble is numerically equal to this Double;
@@ -90,10 +90,10 @@ int32_t Double_compare(double d1, double d2) {
 }
 
 /**
- * Compares this object against the specified object.
+ * Compares this structure against the specified structure.
  *
- * @param obj the object to compare with.
- * @return true if the objects are the same; false otherwise.
+ * @param obj the structure to compare with.
+ * @return true if the structures are the same; false otherwise.
  */
 bool equalsD(Double *ptr, Double *obj) {
     if (ptr == NULL || obj == NULL) {
@@ -128,9 +128,9 @@ bool equalsD(Double *ptr, Double *obj) {
 }
 
 /**
- * Returns a string representation of this Double object.
+ * Returns a string representation of this Double structure.
  *
- * @return a String representation of this object.
+ * @return a String representation of this structure.
  */
 String *toStringD(Double *ptr) {
     return Double_toString(ptr->v);
@@ -155,7 +155,7 @@ String *Double_toString(double d) {
 
 /**
  * Returns a new double initialized to the value represented by the
- * specified String, as performed by the valueOf method of class Double.
+ * specified String, as performed by the "valueOf" function for struct Double.
  *
  * @param s the string to be parsed.
  * @return the double value represented by the string argument.

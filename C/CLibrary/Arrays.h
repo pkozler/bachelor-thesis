@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 /**
- * This class contains various methods for manipulating arrays (such as sorting and searching).
+ * This module contains various functions for manipulating arrays (such as sorting and searching).
  *
  * @author Petr Kozler (A13B0359P)
  */
@@ -18,7 +18,7 @@ int32_t Arrays_binarySearchRangeC(char *a, int32_t fromIndex, int32_t toIndex, c
 int32_t Arrays_binarySearchD(double *a, int32_t length, double key);
 int32_t Arrays_binarySearchRangeD(double *a, int32_t fromIndex, int32_t toIndex, double key);
 int32_t Arrays_binarySearchF(float *a, int32_t length, float key);
-int32_t Arrays_binarySearchFloatF(float *a, int32_t fromIndex, int32_t toIndex, float key);
+int32_t Arrays_binarySearchRangeF(float *a, int32_t fromIndex, int32_t toIndex, float key);
 int32_t Arrays_binarySearchI(int32_t *a, int32_t length, int32_t key);
 int32_t Arrays_binarySearchRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex, int32_t key);
 int32_t Arrays_binarySearchL(int64_t *a, int32_t length, int64_t key);

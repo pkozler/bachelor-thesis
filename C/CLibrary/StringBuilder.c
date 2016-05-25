@@ -30,7 +30,7 @@ void delete_StringBuilder(StringBuilder *ptr) {
  * Appends the specified string to this character sequence.
  *
  * @param str a string.
- * @return a reference to this object.
+ * @return a reference to this structure.
  */
 StringBuilder *append(StringBuilder *ptr, String *str) {
     if (ptr->count + str->len >= ptr->capacity) {

@@ -7,10 +7,10 @@
 #define _MAX_LONG_STRLEN 20
 
 /**
- * Constructs a newly allocated Long object that represents the specified
+ * Constructs a newly allocated Long structure that represents the specified
  * long argument.
  *
- * @param value the value to be represented by the Long object.
+ * @param value the value to be represented by the Long structure.
  */
 Long *new_Long(int64_t value) {
     Long *l = malloc(sizeof(Long));
@@ -22,7 +22,7 @@ Long *new_Long(int64_t value) {
 /**
  * Returns the value of this Long as a long value.
  *
- * @return the numeric value represented by this object after conversion to
+ * @return the numeric value represented by this structure after conversion to
  * type long.
  */
 int64_t longValue(Long *ptr) {
@@ -30,7 +30,7 @@ int64_t longValue(Long *ptr) {
 }
 
 /**
- * Compares two Long objects numerically.
+ * Compares two Long structures numerically.
  *
  * @param anotherLong the Long to be compared.
  * @return the value 0 if this Long is equal to the argument Long; a value
@@ -55,10 +55,10 @@ int32_t Long_compare(int64_t x, int64_t y) {
 }
 
 /**
- * Compares this object to the specified object.
+ * Compares this structure to the specified structure.
  *
- * @param obj the object to compare with.
- * @return true if the objects are the same; false otherwise.
+ * @param obj the structure to compare with.
+ * @return true if the structures are the same; false otherwise.
  */
 bool equalsL(Long *ptr, Long *obj) {
     if (ptr == NULL || obj == NULL) {
@@ -73,16 +73,16 @@ bool equalsL(Long *ptr, Long *obj) {
 }
 
 /**
- * Returns a String object representing this Long's value.
+ * Returns a String structure representing this Long's value.
  *
- * @return a string representation of the value of this object in base 10.
+ * @return a string representation of the value of this structure in base 10.
  */
 String *toStringL(Long *ptr) {
     return Long_toString(ptr->v);
 }
 
 /**
- * Returns a String object representing the specified long.
+ * Returns a String structure representing the specified long.
  *
  * @param l a long to be converted.
  * @return a string representation of the argument in base 10.
