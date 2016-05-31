@@ -45,8 +45,7 @@ namespace JavaClasses
     /// <summary>
     /// This abstract class imposes a total ordering on the objects of each class that implements it.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public abstract class Comparable<T> : Object, IComparable<T> where T : Object
+    public abstract class Comparable : Object, IComparable<Object>
     {
 
         /// <summary>
@@ -55,9 +54,9 @@ namespace JavaClasses
         /// <param name="o">the object to be compared.</param>
         /// <returns>a negative integer, zero, or a positive integer as this object
         /// is less than, equal to, or greater than the specified object.</returns>
-        public abstract int compareTo(T o);
+        public abstract int compareTo(Object o);
 
-        public int CompareTo(T o)
+        public int CompareTo(Object o)
         {
             return compareTo(o);
         }
@@ -68,7 +67,7 @@ namespace JavaClasses
     /// A comparison function, which imposes a total ordering on some collection of objects.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Comparator<T> : Object, IComparer<T> where T : Object
+    public abstract class Comparator : Object, IComparer<Object>
     {
 
         /// <summary>
@@ -78,9 +77,9 @@ namespace JavaClasses
         /// <param name="o2">the second object to be compared.</param>
         /// <returns>negative integer, zero, or a positive integer as the
         /// first argument is less than, equal to, or greater than the second.</returns>
-        public abstract int compare(T o1, T o2);
+        public abstract int compare(Object o1, Object o2);
 
-        public int Compare(T o1, T o2)
+        public int Compare(Object o1, Object o2)
         {
             return compare(o1, o2);
         }
@@ -91,7 +90,7 @@ namespace JavaClasses
     /// The String class represents character strings.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class String : Comparable<String>
+    public class String : Comparable
     {
 
         // an inner string
@@ -145,9 +144,9 @@ namespace JavaClasses
         /// string argument; and a value greater than 0 if this string is
         /// lexicographically greater than the string argument.
         /// </returns>
-        public override int compareTo(String anotherString)
+        public override int compareTo(Object anotherString)
         {
-            return s.CompareTo(anotherString.s);
+            return s.CompareTo((anotherString as String).s);
         }
 
         /// <summary>

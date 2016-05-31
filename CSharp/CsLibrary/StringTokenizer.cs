@@ -21,7 +21,7 @@ namespace JavaClasses
         private void initialize(string str, string delim = " \t\n\r\f")
         {
             // splitting the string to the array by the specified set of delimiters
-            tokens = str.Split(delim.ToCharArray(), StringSplitOptions.None);
+            tokens = str.Split(delim.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
         }
 
         /// <summary>

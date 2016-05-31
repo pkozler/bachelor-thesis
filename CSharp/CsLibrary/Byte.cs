@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Byte class wraps a value of primitive type sbyte (representing a byte value) in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Byte : Comparable<Byte>
+    public class Byte : Comparable
     {
 
         /// <summary>
@@ -52,9 +52,9 @@ namespace JavaClasses
         /// a value greater than 0 if this Byte is numerically greater than the
         /// argument Byte (signed comparison).
         /// </returns>
-        public override int compareTo(Byte anotherByte)
+        public override int compareTo(Object anotherByte)
         {
-            return compare(v, anotherByte.v);
+            return compare(v, (anotherByte as Byte).v);
         }
 
         /// <summary>

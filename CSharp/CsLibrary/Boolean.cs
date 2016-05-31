@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Boolean class wraps a value of the primitive type bool (representing a boolean value) in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Boolean : Comparable<Boolean>
+    public class Boolean : Comparable
     {
 
         // an inner value
@@ -42,9 +42,9 @@ namespace JavaClasses
         /// argument represents false; and a negative value if this object represents
         /// false and the argument represents true
         /// </returns>
-        public override int compareTo(Boolean b)
+        public override int compareTo(Object b)
         {
-            return compare(v, b.v);
+            return compare(v, (b as Boolean).v);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(bool b)
         {
-            return new String(b.ToString().ToLower());
+            return new String(b.ToString());
         }
 
         /// <summary>

@@ -214,7 +214,7 @@ namespace JavaClasses
         [TestMethod]
         public void binarySearchTest13()
         {
-            Comparable<TestObject>[] a;
+            TestObject[] a;
             int b;
             a = new TestObject[]{
             new TestObject("first", 3),

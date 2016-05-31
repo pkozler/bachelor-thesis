@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Character class wraps a value of the primitive type char in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Character : Comparable<Character>
+    public class Character : Comparable
     {
 
         // an inner value
@@ -45,9 +45,9 @@ namespace JavaClasses
         /// Note that this is strictly a numerical comparison; it is not
         /// locale-dependent.
         /// </returns>
-        public override int compareTo(Character anotherCharacter)
+        public override int compareTo(Object anotherCharacter)
         {
-            return compare(v, anotherCharacter.v);
+            return compare(v, (anotherCharacter as Character).v);
         }
 
         /// <summary>

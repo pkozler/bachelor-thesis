@@ -283,7 +283,34 @@
         /// </returns>
         public static long round(double a)
         {
-            return (long)System.Math.Round(a);
+            // if NaN, the result is 0
+            if (Double.compare(a, Double.NaN) == 0)
+            {
+                return 0;
+            }
+
+            // if less than / equal to the corresponding integer type minimal value, the result is equal to that value
+            if (Double.compare(a, Double.NEGATIVE_INFINITY) == 0
+                || a <= Long.MIN_VALUE)
+            {
+                return Long.MIN_VALUE;
+            }
+
+            // if greater than / equal to the corresponding integer type maximal value, the result is equal to that value
+            if (Double.compare(a, Double.POSITIVE_INFINITY) == 0
+                || a >= Long.MAX_VALUE)
+            {
+                return Long.MAX_VALUE;
+            }
+
+            // rounding towards zero for negative values
+            if (a < 0 && a - System.Math.Truncate(a) <= -0.5)
+            {
+                return (long)System.Math.Truncate(a);
+            }
+
+            // rounding away from zero for positive values
+            return (long)System.Math.Round(a, System.MidpointRounding.AwayFromZero);
         }
 
         /// <summary>
@@ -294,7 +321,29 @@
         /// </returns>
         public static int round(float a)
         {
-            return (int)System.Math.Round(a);
+            if (Float.compare(a, Float.NaN) == 0)
+            {
+                return 0;
+            }
+
+            if (Float.compare(a, Float.NEGATIVE_INFINITY) == 0
+                || a <= Integer.MIN_VALUE)
+            {
+                return Integer.MIN_VALUE;
+            }
+
+            if (Float.compare(a, Float.POSITIVE_INFINITY) == 0
+                || a >= Integer.MAX_VALUE)
+            {
+                return Integer.MAX_VALUE;
+            }
+
+            if (a < 0 && a - (float)System.Math.Truncate(a) <= -0.5f)
+            {
+                return (int)System.Math.Truncate(a);
+            }
+            
+            return (int)System.Math.Round(a, System.MidpointRounding.AwayFromZero);
         }
 
     }

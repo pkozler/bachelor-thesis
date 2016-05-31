@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Integer class wraps a value of the primitive type int in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Integer : Comparable<Integer>
+    public class Integer : Comparable
     {
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace JavaClasses
         /// Integer; and a value greater than 0 if this Integer is numerically
         /// greater than the argument Integer (signed comparison).
         /// </returns>
-        public override int compareTo(Integer anotherInteger)
+        public override int compareTo(Object anotherInteger)
         {
-            return compare(v, anotherInteger.v);
+            return compare(v, (anotherInteger as Integer).v);
         }
 
         /// <summary>

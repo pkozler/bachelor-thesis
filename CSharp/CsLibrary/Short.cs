@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Short class wraps a value of primitive type short in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Short : Comparable<Short>
+    public class Short : Comparable
     {
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace JavaClasses
         /// and a value greater than 0 if this Short is numerically greater than the
         /// argument Short (signed comparison).
         /// </returns>
-        public override int compareTo(Short anotherShort)
+        public override int compareTo(Object anotherShort)
         {
-            return compare(v, anotherShort.v);
+            return compare(v, (anotherShort as Short).v);
         }
 
         /// <summary>

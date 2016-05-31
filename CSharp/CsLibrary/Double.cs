@@ -8,7 +8,7 @@ namespace JavaClasses
     /// The Double class wraps a value of the primitive type double in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Double : Comparable<Double>
+    public class Double : Comparable
     {
 
         /// <summary>
@@ -87,9 +87,9 @@ namespace JavaClasses
         /// anotherDouble; and a value greater than 0 if this Double is numerically
         /// greater than anotherDouble.
         /// </returns>
-        public override int compareTo(Double anotherDouble)
+        public override int compareTo(Object anotherDouble)
         {
-            return compare(v, anotherDouble.v);
+            return compare(v, (anotherDouble as Double).v);
         }
 
         /// <summary>

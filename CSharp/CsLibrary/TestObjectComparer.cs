@@ -10,7 +10,7 @@ namespace JavaClasses
      *
      * @author Petr Kozler
      */
-    public class TestObjectComparator : Comparator<TestObject> {
+    public class TestObjectComparator : Comparator {
         
         /**
          * Compares its two arguments for order.
@@ -19,7 +19,7 @@ namespace JavaClasses
          * @param o2 second object
          * @return comparison result
          */
-        public override int compare(TestObject o1, TestObject o2) {
+        public override int compare(Object o1, Object o2) {
             return (o1 as TestObject).getI() - (o2 as TestObject).getI();
         }
         

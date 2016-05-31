@@ -7,7 +7,7 @@
      *
      * @author Petr Kozler
      */
-    public class TestObject : Comparable<TestObject>
+    public class TestObject : Comparable
     {
         private String str;
         private int i;
@@ -103,9 +103,9 @@
          * @param o another object
          * @return comparison result
          */
-        public override int compareTo(TestObject o)
+        public override int compareTo(Object o)
         {
-            return i - o.i;
+            return i - (o as TestObject).i;
         }
         
     }

@@ -7,7 +7,7 @@ namespace JavaClasses
     /// The Long class wraps a value of the primitive type long in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Long : Comparable<Long>
+    public class Long : Comparable
     {
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace JavaClasses
         /// a value greater than 0 if this Long is numerically greater than the
         /// argument Long (signed comparison).
         /// </returns>
-        public override int compareTo(Long anotherLong)
+        public override int compareTo(Object anotherLong)
         {
-            return compare(v, anotherLong.v);
+            return compare(v, (anotherLong as Long).v);
         }
 
         /// <summary>

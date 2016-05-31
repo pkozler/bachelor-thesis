@@ -8,23 +8,23 @@ namespace JavaClasses
     /// The Float class wraps a value of primitive type float in an object.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
-    public class Float : Comparable<Float>
+    public class Float : Comparable
     {
 
         /// <summary>
         /// A constant holding the positive infinity of type float.
         /// </summary>
-        public const double POSITIVE_INFINITY = 1.0f / 0.0f;
+        public const float POSITIVE_INFINITY = 1.0f / 0.0f;
 
         /// <summary>
         /// A constant holding the negative infinity of type float.
         /// </summary>
-        public const double NEGATIVE_INFINITY = -1.0f / 0.0f;
+        public const float NEGATIVE_INFINITY = -1.0f / 0.0f;
 
         /// <summary>
         /// A constant holding a Not-a-Number (NaN) value of type float.
         /// </summary>
-        public const double NaN = 0.0f / 0.0f;
+        public const float NaN = 0.0f / 0.0f;
 
         /// <summary>
         /// A constant holding the largest positive finite value of type float, (2-2^-23)·2^127.
@@ -49,7 +49,7 @@ namespace JavaClasses
         /// <summary>
         /// A constant holding the smallest positive normal value of type float, 2^-126.
         /// </summary>
-        public const double MIN_NORMAL = 1.17549435E-38f;
+        public const float MIN_NORMAL = 1.17549435E-38f;
 
         // a "binary representation" of negative zero value for comparison purposes
         private static readonly int negativeZeroBits = floatToInt32Bits(-0.0f);
@@ -102,9 +102,9 @@ namespace JavaClasses
         /// and a value greater than 0 if this Float is numerically greater than
         /// anotherFloat.
         /// </returns>
-        public override int compareTo(Float anotherFloat)
+        public override int compareTo(Object anotherFloat)
         {
-            return compare(v, anotherFloat.v);
+            return compare(v, (anotherFloat as Float).v);
         }
 
         /// <summary>

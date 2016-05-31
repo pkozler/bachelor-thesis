@@ -73,7 +73,8 @@ namespace JavaClasses
         {
             public int Compare(Object x, Object y)
             {
-                return (x as Comparable<Object>).compareTo(y as Comparable<Object>);
+
+                return (x as Comparable).compareTo(y as Comparable);
             }
         }
 
@@ -561,7 +562,7 @@ namespace JavaClasses
         /// the array are less than the specified key. Note that this guarantees that
         /// the return value will be >= 0 if and only if the key is found.
         /// </returns>
-        public static int binarySearch<T>(T[] a, T key, Comparator<T> c) where T : Object
+        public static int binarySearch<T>(T[] a, T key, Comparator c) where T : Object
         {
             return binarySearchGeneric(a, null, null, key, c);
         }
@@ -585,7 +586,7 @@ namespace JavaClasses
         /// Note that this guarantees that the return value will be >= 0 if and only
         /// if the key is found.
         /// </returns>
-        public static int binarySearch<T>(T[] a, int fromIndex, int toIndex, T key, Comparator<T> c) where T : Object
+        public static int binarySearch<T>(T[] a, int fromIndex, int toIndex, T key, Comparator c) where T : Object
         {
             return binarySearchGeneric(a, fromIndex, toIndex, key, c);
         }
@@ -1435,7 +1436,7 @@ namespace JavaClasses
         /// </param><param name="c">the comparator to determine the order of the array. A null value
         /// indicates that the elements' natural ordering should be used.
         /// </param>
-        public static void sort<T>(T[] a, Comparator<T> c) where T : Object
+        public static void sort<T>(T[] a, Comparator c) where T : Object
         {
             sortGeneric(a, null, null, c);
         }
@@ -1450,7 +1451,7 @@ namespace JavaClasses
         /// </param><param name="c">the comparator to determine the order of the array. A null value
         /// indicates that the elements' natural ordering should be used.
         /// </param>
-        public static void sort<T>(T[] a, int fromIndex, int toIndex, Comparator<T> c) where T : Object
+        public static void sort<T>(T[] a, int fromIndex, int toIndex, Comparator c) where T : Object
         {
             sortGeneric(a, fromIndex, toIndex, c);
         }
