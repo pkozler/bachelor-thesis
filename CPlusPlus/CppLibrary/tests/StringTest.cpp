@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "test.h"
-#include "String.h"
+#include "String_.h"
 
 /*
  * Simple C++ Test Suite

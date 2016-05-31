@@ -20,7 +20,7 @@ LinkedList *new_LinkedList() {
  * Constructs a list containing the elements of the specified linked list, in
  * the order they are returned by the iteration over the list.
  *
- * @param c the linked list whose elements are to be placed into this list
+ * @param c the linked list whose elements are to be placed into the specified list
  */
 LinkedList *new_LinkedListAddAll(LinkedList *c) {
     LinkedList *list = new_LinkedList();
@@ -105,9 +105,10 @@ void _removeNode(LinkedList *ptr, LinkedListNode *node) {
 }
 
 /**
- * Appends the specified element to the end of this list.
+ * Appends the specified element to the end of the specified list.
  *
- * @param e element to be appended to this list
+ * @param ptr The allocated structure
+ * @param e element to be appended to the specified list
  * @return true
  */
 bool addLl(LinkedList *ptr, void *e) {
@@ -120,8 +121,9 @@ bool addLl(LinkedList *ptr, void *e) {
 }
 
 /**
- * Inserts the specified element at the specified position in this list.
+ * Inserts the specified element at the specified position in the specified list.
  *
+ * @param ptr The allocated structure
  * @param index index at which the specified element is to be inserted
  * @param element element to be inserted
  */
@@ -147,10 +149,11 @@ void addAtLl(LinkedList *ptr, int32_t index, void *element) {
 }
 
 /**
- * Returns the element at the specified position in this list.
+ * Returns the element at the specified position in the specified list.
  *
+ * @param ptr The allocated structure
  * @param index index of the element to return
- * @return the element at the specified position in this list
+ * @return the element at the specified position in the specified list
  */
 void *getLl(LinkedList *ptr, int32_t index) {
     LinkedListNode *node = ptr->first;
@@ -164,9 +167,10 @@ void *getLl(LinkedList *ptr, int32_t index) {
 }
 
 /**
- * Replaces the element at the specified position in this list with the
+ * Replaces the element at the specified position in the specified list with the
  * specified element.
  *
+ * @param ptr The allocated structure
  * @param index index of the element to replace
  * @param element element to be stored at the specified position
  * @return the element previously at the specified position
@@ -194,8 +198,9 @@ void *setLl(LinkedList *ptr, int32_t index, void *element) {
 }
 
 /**
- * Removes the element at the specified position in this list.
+ * Removes the element at the specified position in the specified list.
  *
+ * @param ptr The allocated structure
  * @param index the index of the element to be removed
  * @return the element previously at the specified position
  */
@@ -228,30 +233,34 @@ void *removeLl(LinkedList *ptr, int32_t index) {
 }
 
 /**
- * Returns the number of elements in this list.
+ * Returns the number of elements in the specified list.
  *
- * @return the number of elements in this list
+ * @param ptr The allocated structure
+ * @return the number of elements in the specified list
  */
 int32_t sizeLl(LinkedList *ptr) {
     return ptr->count;
 }
 
 /**
- * Returns true if this list contains no elements.
+ * Returns true if the specified list contains no elements.
  *
- * @return true if this list contains no elements
+ * @param ptr The allocated structure
+ * @return true if the specified list contains no elements
  */
 bool isEmptyLl(LinkedList *ptr) {
     return (ptr->count == 0);
 }
 
 /**
- * Removes all of the elements from this list.
+ * Removes all of the elements from the specified list.
+ *
+ * @param ptr The allocated structure
  */
 void clearLl(LinkedList *ptr) {
     LinkedListNode *node;
     ptr->count = 0;
-    
+
     while (ptr->first != NULL) {
         node = ptr->first;
         _removeNode(ptr, node);
@@ -262,6 +271,8 @@ void clearLl(LinkedList *ptr) {
 /**
  * Returns a string representation of the structure.
  *
+ * @param ptr The allocated structure
+ * @param toString The list element toString function
  * @return a string representation of the structure.
  */
 String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
@@ -270,7 +281,7 @@ String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
     append(sb, str);
     delete_String(str);
     LinkedListNode *node = ptr->first;
-    
+
     if (node != NULL) {
         str = toString(node->value);
         append(sb, str);

@@ -2,13 +2,14 @@
 {
 
     /// <summary>
-    /// Resizable-array implementation of the List interface.
+    /// Resizable-array implementation of the List abstract class.
     /// </summary>
     /// <typeparam name="E">the type of elements in this list</typeparam>
     /// <author>Petr Kozler (A13B0359P)</author>
     public class ArrayList<E> : List<E> where E : Object
     {
 
+        // an inner list
         public System.Collections.Generic.List<E> l { get; private set; }
 
         /// <summary>
@@ -34,7 +35,7 @@
         /// Appends the specified element to the end of this list.
         /// </summary>
         /// <param name="e">element to be appended to this list
-        /// </param><returns>true (as specified by Collection.add(E))
+        /// </param><returns>true
         /// </returns>
         public override bool add(E e)
         {
@@ -123,12 +124,12 @@
 
             if (l.Count > 0)
             {
-                sb.append(l[0].toString());
+                sb.append(l[0] == null ? "null" : l[0].toString());
             }
 
             for (int i = 1; i < l.Count; i++)
             {
-                sb.append(new String(", ")).append(l[i].toString());
+                sb.append(new String(", ")).append(l[i] == null ? "null" : l[i].toString());
             }
 
             return sb.append(new String("]")).toString();

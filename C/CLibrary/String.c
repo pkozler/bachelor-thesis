@@ -7,9 +7,10 @@
 
 /**
  * Constructs a new String by decoding the specified array of bytes using
- * the ansi charset.
+ * the ANSI charset.
  *
  * @param bytes The bytes to be decoded into characters
+ * @param length The array length
  */
 String *new_StringB(int8_t *value, int32_t length) {
     return new_StringRangeB(value, 0, length);
@@ -17,7 +18,7 @@ String *new_StringB(int8_t *value, int32_t length) {
 
 /**
  * Constructs a new String by decoding the specified subarray of bytes using
- * the platform's default charset.
+ * the ANSI charset.
  *
  * @param bytes The bytes to be decoded into characters
  * @param offset The index of the first byte to decode
@@ -25,18 +26,18 @@ String *new_StringB(int8_t *value, int32_t length) {
  */
 String *new_StringRangeB(int8_t *value, int32_t offset, int32_t length) {
     String *str = malloc(sizeof(String));
+    str->s = malloc(sizeof(char) * (length + 1));
     str->s[0] = '\0';
     strncat(str->s, (char *) value + offset, length);
+    str->len = strlen(str->s);
 
     return str;
 }
 
 /**
  * Initializes a newly created String structure so that it represents the same
- * sequence of characters as the argument; in other words, the newly created
- * string is a copy of the argument string. Unless an explicit copy of
- * original is needed, use of this constructor is unnecessary since Strings
- * are immutable.
+ * sequence of characters as the argument; in other words, the inner null terminated
+ * char array of the newly created String structure instance is a copy of the argument array.
  *
  * @param original A String
  */
@@ -56,21 +57,23 @@ void delete_String(String *ptr) {
 /**
  * Compares two strings lexicographically.
  *
+ * @param ptr The allocated structure
  * @param anotherString the String to be compared.
- * @return the value 0 if the argument string is equal to this string; a
- * value less than 0 if this string is lexicographically less than the
- * string argument; and a value greater than 0 if this string is
- * lexicographically greater than the string argument.
+ * @return the value 0 if the first string is equal to the second string; a
+ * value less than 0 if the first string is lexicographically less than the
+ * second string; and a value greater than 0 if the first string is
+ * lexicographically greater than the second string.
  */
 int32_t compareToStr(String *ptr, String *anotherString) {
     return strcmp(ptr->s, anotherString->s);
 }
 
 /**
- * Compares this string to the specified structure.
+ * Compares the one specified string to the other.
  *
- * @param anObject The structure to compare this String against
- * @return true if the given structure represents a String equivalent to this
+ * @param ptr The allocated structure
+ * @param anObject The String to compare the first one against
+ * @return true if the second given String represents a String equivalent to the first
  * string, false otherwise
  */
 bool equalsStr(String *ptr, String *anObject) {
@@ -86,8 +89,9 @@ bool equalsStr(String *ptr, String *anObject) {
 }
 
 /**
- * Returns a new string that is a substring of this string.
- * 
+ * Returns a new string that is a substring of the specified string.
+ *
+ * @param ptr The allocated structure
  * @param beginIndex the beginning index, inclusive.
  * @return the specified substring.
  */
@@ -96,8 +100,9 @@ String *substring(String *ptr, int32_t beginIndex) {
 }
 
 /**
- * Returns a new string that is a substring of this string.
+ * Returns a new string that is a substring of the specified string.
  *
+ * @param ptr The allocated structure
  * @param beginIndex the beginning index, inclusive.
  * @param endIndex the ending index, exclusive.
  * @return the specified substring.
@@ -114,12 +119,13 @@ String *substringTo(String *ptr, int32_t beginIndex, int32_t endIndex) {
 }
 
 /**
- * Returns the index within this string of the first occurrence of the
+ * Returns the index within the specified string of the first occurrence of the
  * specified character.
  *
+ * @param ptr The allocated structure
  * @param ch a character (Unicode code point).
  * @return the index of the first occurrence of the character in the
- * character sequence represented by this structure, or -1 if the character
+ * character sequence represented by the specified string, or -1 if the character
  * does not occur.
  */
 int32_t indexOfC(String *ptr, int32_t ch) {
@@ -127,13 +133,14 @@ int32_t indexOfC(String *ptr, int32_t ch) {
 }
 
 /**
- * Returns the index within this string of the first occurrence of the
+ * Returns the index within the specified string of the first occurrence of the
  * specified character, starting the search at the specified index.
  *
+ * @param ptr The allocated structure
  * @param ch a character (Unicode code point).
  * @param fromIndex the index to start the search from.
  * @return the index of the first occurrence of the character in the
- * character sequence represented by this structure that is greater than or
+ * character sequence represented by the specified string that is greater than or
  * equal to fromIndex, or -1 if the character does not occur.
  */
 int32_t indexOfFromC(String *ptr, int32_t ch, int32_t fromIndex) {
@@ -146,9 +153,10 @@ int32_t indexOfFromC(String *ptr, int32_t ch, int32_t fromIndex) {
 }
 
 /**
- * Returns the index within this string of the first occurrence of the
+ * Returns the index within the specified string of the first occurrence of the
  * specified substring.
  *
+ * @param ptr The allocated structure
  * @param str the substring to search for.
  * @return the index of the first occurrence of the specified substring, or
  * -1 if there is no such occurrence.
@@ -158,9 +166,10 @@ int32_t indexOfStr(String *ptr, String *str) {
 }
 
 /**
- * Returns the index within this string of the first occurrence of the
+ * Returns the index within the specified string of the first occurrence of the
  * specified substring, starting at the specified index.
  *
+ * @param ptr The allocated structure
  * @param str the substring to search for.
  * @param fromIndex the index from which to start the search.
  * @return the index of the first occurrence of the specified substring,
@@ -174,10 +183,11 @@ int32_t indexOfFromStr(String *ptr, String *str, int32_t fromIndex) {
 }
 
 /**
- * Returns the length of this string.
+ * Returns the length of the specified string.
  *
- * @return the length of the sequence of characters represented by this
- * structure.
+ * @param ptr The allocated structure
+ * @return the length of the sequence of characters represented by the specified
+ * string.
  */
 int32_t length(String *ptr) {
     return ptr->len;
@@ -187,8 +197,9 @@ int32_t length(String *ptr) {
  * Returns a copy of the string, with leading and trailing whitespace
  * omitted.
  *
- * @return A copy of this string with leading and trailing white space
- * removed, or this string if it has no leading or trailing white space.
+ * @param ptr The allocated structure
+ * @return A copy of the specified string with leading and trailing white space
+ * removed, or the specified string if it has no leading or trailing white space.
  */
 String *trim(String *ptr) {
     int32_t i, j;
@@ -208,9 +219,10 @@ String *trim(String *ptr) {
 }
 
 /**
- * Converts all of the characters in this String to lower case using the
+ * Converts all of the characters in the specified String to lower case using the
  * rules of the default locale.
  *
+ * @param ptr The allocated structure
  * @return the String, converted to lowercase.
  */
 String *toLowerCase(String *ptr) {
@@ -232,9 +244,10 @@ String *toLowerCase(String *ptr) {
 }
 
 /**
- * Converts all of the characters in this String to upper case using the
+ * Converts all of the characters in the specified String to upper case using the
  * rules of the default locale.
  *
+ * @param ptr The allocated structure
  * @return the String, converted to uppercase.
  */
 String *toUpperCase(String *ptr) {
@@ -258,8 +271,9 @@ String *toUpperCase(String *ptr) {
 /**
  * Returns the char value at the specified index.
  *
+ * @param ptr The allocated structure
  * @param index the index of the char value.
- * @return the char value at the specified index of this string. The first
+ * @return the char value at the specified index of the specified string. The first
  * char value is at index 0.
  */
 char charAt(String *ptr, int32_t index) {
@@ -268,11 +282,12 @@ char charAt(String *ptr, int32_t index) {
 
 /**
  * Returns a new string resulting from replacing all occurrences of oldChar
- * in this string with newChar.
+ * in the specified string with newChar.
  *
+ * @param ptr The allocated structure
  * @param oldChar the old character.
  * @param newChar the new character.
- * @return a string derived from this string by replacing every occurrence
+ * @return a string derived from the specified string by replacing every occurrence
  * of oldChar with newChar.
  */
 String *replace(String *ptr, char oldChar, char newChar) {
@@ -292,13 +307,14 @@ String *replace(String *ptr, char oldChar, char newChar) {
 }
 
 /**
- * Tests if this string starts with the specified prefix.
+ * Tests if the specified string starts with the specified prefix.
  *
+ * @param ptr The allocated structure
  * @param prefix the prefix.
- * @return true if the character sequence represented by the argument is a
- * prefix of the character sequence represented by this string; false
- * otherwise. Note also that true will be returned if the argument is an
- * empty string or is equal to this String structure as determined by the
+ * @return true if the character sequence represented by the second string is a
+ * prefix of the character sequence represented by the first string; false
+ * otherwise. Note also that true will be returned if the second string is an
+ * empty string or is equal to the first String structure as determined by the
  * equalsStr(String *, String *) function.
  */
 bool startsWith(String *ptr, String *prefix) {
@@ -307,13 +323,14 @@ bool startsWith(String *ptr, String *prefix) {
 }
 
 /**
- * Tests if this string ends with the specified suffix.
+ * Tests if the specified string ends with the specified suffix.
  *
+ * @param ptr The allocated structure
  * @param suffix the suffix.
- * @return true if the character sequence represented by the argument is a
- * suffix of the character sequence represented by this structure; false
- * otherwise. Note that the result will be true if the argument is the empty
- * string or is equal to this String structure as determined by the
+ * @return true if the character sequence represented by the second string is a
+ * suffix of the character sequence represented by the first string; false
+ * otherwise. Note that the result will be true if the second string is the empty
+ * string or is equal to the first String structure as determined by the
  * equalsStr(String *, String *) function.
  */
 bool endsWith(String *ptr, String *suffix) {
@@ -324,6 +341,7 @@ bool endsWith(String *ptr, String *suffix) {
 /**
  * Returns true if, and only if, length() is 0.
  *
+ * @param ptr The allocated structure
  * @return true if length() is 0, otherwise false
  */
 bool isEmptyStr(String *ptr) {
@@ -331,8 +349,9 @@ bool isEmptyStr(String *ptr) {
 }
 
 /**
- * This structure (which is already a string!) is itself returned.
+ * The specified structure (which is already a string!) is itself returned.
  *
+ * @param ptr The allocated structure
  * @return the string itself.
  */
 String *toStringStr(String *ptr) {

@@ -95,7 +95,7 @@ String *Arrays_toStringD(double *a, int32_t length);
 String *Arrays_toStringF(float *a, int32_t length);
 String *Arrays_toStringI(int32_t *a, int32_t length);
 String *Arrays_toStringL(int64_t *a, int32_t length);
-String *Arrays_toStringObj(void **a, int32_t length, int32_t size, String *(*toString)(const void *));
+String *Arrays_toStringObj(void **a, int32_t length, String *(*toString)(const void *));
 String *Arrays_toStringS(int16_t *a, int32_t length);
 
 #endif	/* ARRAYS_INCLUDED */

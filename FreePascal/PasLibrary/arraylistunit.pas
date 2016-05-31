@@ -11,7 +11,7 @@ type
   ObjectArray = array of Object_;
 
   (**
-   * Resizable-array implementation of the List interface.
+   * Resizable-array implementation of the List abstract class.
    *
    * @param E the type of elements in this list
    * @author Petr Kozler (A13B0359P)
@@ -100,7 +100,7 @@ end;
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
- * @return true (as specified by Collection.add(E))
+ * @return true
  *)
 function ArrayList.add(e: Object_) : boolean;
 begin

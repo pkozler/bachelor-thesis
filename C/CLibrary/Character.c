@@ -21,9 +21,10 @@ Character *new_Character(char value) {
 }
 
 /**
- * Returns the value of this Character structure.
+ * Returns the value of the specified Character structure.
  *
- * @return the primitive char value represented by this structure.
+ * @param ptr The allocated structure
+ * @return the primitive char value represented by the specified structure.
  */
 char charValue(Character *ptr) {
     return ptr->v;
@@ -32,11 +33,12 @@ char charValue(Character *ptr) {
 /**
  * Compares two Character structures numerically.
  *
+ * @param ptr The allocated structure
  * @param anotherCharacter the Character to be compared.
- * @return the value 0 if the argument Character is equal to this Character;
- * a value less than 0 if this Character is numerically less than the
- * Character argument; and a value greater than 0 if this Character is
- * numerically greater than the Character argument (unsigned comparison).
+ * @return the value 0 if the second Character is equal to the first Character;
+ * a value less than 0 if the first Character is numerically less than the
+ * second Character; and a value greater than 0 if the first Character is
+ * numerically greater than the second Character (unsigned comparison).
  * Note that this is strictly a numerical comparison; it is not
  * locale-dependent.
  */
@@ -57,8 +59,9 @@ int32_t Character_compare(char x, char y) {
 }
 
 /**
- * Compares this structure against the specified structure.
+ * Compares the one structure against the other.
  *
+ * @param ptr The allocated structure
  * @param obj the structure to compare with.
  * @return true if the structures are the same; false otherwise.
  */
@@ -75,9 +78,10 @@ bool equalsC(Character *ptr, Character *obj) {
 }
 
 /**
- * Returns a String structure representing this Character's value.
- * 
- * @return a string representation of this structure.
+ * Returns a String structure representing the specified Character's value.
+ *
+ * @param ptr The allocated structure
+ * @return a string representation of the specified structure.
  */
 String *toStringC(Character *ptr) {
     return Character_toString(ptr->v);
@@ -112,7 +116,7 @@ bool Character_isDigit(char ch) {
 
 /**
  * Determines if the specified character is a letter.
- * 
+ *
  * @param ch the character to be tested.
  * @return true if the character is a letter; false otherwise.
  */

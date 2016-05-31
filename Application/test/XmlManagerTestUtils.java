@@ -42,10 +42,10 @@ final class XmlManagerTestUtils {
      * the project root folder)
      */
     public static final String ROOT_TEST_TEMP_DATA_FOLDER = "temp-data";
+    // a XML file extension
+    private static final String XML_FILE_EXTENSION = ".xml";
     // exception message used if directory was not created
     private static final String NOT_CREATED_MESSAGE = "Failed to create a directory: ";
-    // exception message used if directory was not deleted
-    private static final String NOT_DELETED_MESSAGE = "Failed to delete a directory: ";
     // type of current test (positive or negative)
     private final String CURRENT_TEST_TYPE;
     // builder for reading XML files
@@ -182,7 +182,7 @@ final class XmlManagerTestUtils {
      * @return class file
      */
     public File getFileFromClass(String className) {
-        return new File(testSubfolderPath + File.separator + className.toLowerCase() + XmlManager.XML_FILE_EXTENSION);
+        return new File(testSubfolderPath + File.separator + className.toLowerCase() + XML_FILE_EXTENSION);
     }
 
     /**

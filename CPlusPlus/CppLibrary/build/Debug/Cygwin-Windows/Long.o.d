@@ -1,5 +1,5 @@
-build/Debug/Cygwin-Windows/Long.o: Long.cpp Long.h String.h
+build/Debug/Cygwin-Windows/Long.o: Long.cpp Long.h String_.h
 
 Long.h:
 
-String.h:
+String_.h:

@@ -28,9 +28,10 @@ long _getNegativeZeroFloatBits() {
 }
 
 /**
- * Returns the float value of this Float structure.
+ * Returns the float value of the specified Float structure.
  *
- * @return the float value represented by this structure
+ * @param ptr The allocated structure
+ * @return the float value represented by the specified structure
  */
 float floatValue(Float *ptr) {
     return ptr->v;
@@ -39,10 +40,11 @@ float floatValue(Float *ptr) {
 /**
  * Compares two Float structures numerically.
  *
+ * @param ptr The allocated structure
  * @param anotherFloat the Float to be compared.
- * @return the value 0 if anotherFloat is numerically equal to this Float; a
- * value less than 0 if this Float is numerically less than anotherFloat;
- * and a value greater than 0 if this Float is numerically greater than
+ * @return the value 0 if anotherFloat is numerically equal to the first Float; a
+ * value less than 0 if the first Float is numerically less than anotherFloat;
+ * and a value greater than 0 if the first Float is numerically greater than
  * anotherFloat.
  */
 int32_t compareToF(Float *ptr, Float *anotherFloat) {
@@ -90,8 +92,9 @@ int32_t Float_compare(float f1, float f2) {
 }
 
 /**
- * Compares this structure against the specified structure.
+ * Compares the one structure against the other.
  *
+ * @param ptr The allocated structure
  * @param obj the structure to be compared
  * @return true if the structures are the same; false otherwise.
  */
@@ -128,9 +131,10 @@ bool equalsF(Float *ptr, Float *obj) {
 }
 
 /**
- * Returns a string representation of this Float structure.
+ * Returns a string representation of the specified Float structure.
  *
- * @return a String representation of this structure.
+ * @param ptr The allocated structure
+ * @return a String representation of the specified structure.
  */
 String *toStringF(Float *ptr) {
     return Float_toString(ptr->v);

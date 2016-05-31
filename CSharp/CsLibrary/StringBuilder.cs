@@ -8,6 +8,7 @@
     public class StringBuilder : Object
     {
 
+        // an inner string builder
         private System.Text.StringBuilder sb;
 
         /// <summary>

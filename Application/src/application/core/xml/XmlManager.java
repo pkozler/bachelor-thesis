@@ -35,9 +35,9 @@ import org.xml.sax.SAXException;
 public class XmlManager implements IDataManager {
 
     /**
-     * XML file extension
+     * XML document file extension for created code files
      */
-    public static final String XML_FILE_EXTENSION = ".xml";
+    private static final String XML_FILE_EXTENSION = ".xml";
     /**
      * regular expression representing the set of allowed Java class names
      */

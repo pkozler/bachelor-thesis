@@ -10,6 +10,7 @@ namespace JavaClasses
     public class Boolean : Comparable<Boolean>
     {
 
+        // an inner value
         private bool v;
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(bool b)
         {
-            return new String(b.ToString());
+            return new String(b.ToString().ToLower());
         }
 
         /// <summary>

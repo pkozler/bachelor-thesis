@@ -2,13 +2,13 @@
 #define LINKEDLIST_INCLUDED
 
 #include "List.h"
-#include "String.h"
+#include "String_.h"
 #include <list>
 #include <cstdint>
 #include <sstream>
 
 /**
- * Doubly-linked list implementation of the List and Deque interfaces.
+ * Doubly-linked list implementation of the List abstract class.
  *
  * @author Petr Kozler (A13B0359P)
  */
@@ -51,7 +51,7 @@ template <class E> LinkedList<E>::~LinkedList() {
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
- * @return true (as specified by Collection.add(E))
+ * @return true
  */
 template <class E> bool LinkedList<E>::add(E *e) {
     l.push_back(e);

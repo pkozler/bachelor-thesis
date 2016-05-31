@@ -20,9 +20,10 @@ Byte *new_Byte(int8_t value) {
 }
 
 /**
- * Returns the value of this Byte as a byte.
+ * Returns the value of the specified Byte as a byte.
  *
- * @return the numeric value represented by this structure after conversion to
+ * @param ptr The allocated structure
+ * @return the numeric value represented by the specified structure after conversion to
  * type byte.
  */
 int8_t byteValue(Byte *ptr) {
@@ -32,11 +33,12 @@ int8_t byteValue(Byte *ptr) {
 /**
  * Compares two Byte structures numerically.
  *
+ * @param ptr The allocated structure
  * @param anotherByte the Byte to be compared.
- * @return the value 0 if this Byte is equal to the argument Byte; a value
- * less than 0 if this Byte is numerically less than the argument Byte; and
- * a value greater than 0 if this Byte is numerically greater than the
- * argument Byte (signed comparison).
+ * @return the value 0 if the first Byte is equal to the second Byte; a value
+ * less than 0 if the first Byte is numerically less than the second Byte; and
+ * a value greater than 0 if the first Byte is numerically greater than the
+ * second Byte (signed comparison).
  */
 int32_t compareToB(Byte *ptr, Byte *anotherByte) {
     return Byte_compare(ptr->v, anotherByte->v);
@@ -55,8 +57,9 @@ int32_t Byte_compare(int8_t x, int8_t y) {
 }
 
 /**
- * Compares this structure to the specified structure.
+ * Compares the one structure to the other.
  *
+ * @param ptr The allocated structure
  * @param obj the structure to compare with
  * @return true if the structures are the same; false otherwise.
  */
@@ -73,9 +76,10 @@ bool equalsB(Byte *ptr, Byte *obj) {
 }
 
 /**
- * Returns a String structure representing this Byte's value.
- * 
- * @return a string representation of the value of this structure in base 10.
+ * Returns a String structure representing the specified Byte's value.
+ *
+ * @param ptr The allocated structure
+ * @return a string representation of the value of the specified structure in base 10.
  */
 String *toStringB(Byte *ptr) {
     return Byte_toString(ptr->v);

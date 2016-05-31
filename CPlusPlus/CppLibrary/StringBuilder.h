@@ -1,7 +1,7 @@
 #ifndef STRINGBUILDER_INCLUDED
 #define	STRINGBUILDER_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <sstream>
 
 /**

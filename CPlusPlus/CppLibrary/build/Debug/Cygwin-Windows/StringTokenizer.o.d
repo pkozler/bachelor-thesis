@@ -1,6 +1,6 @@
 build/Debug/Cygwin-Windows/StringTokenizer.o: StringTokenizer.cpp \
- StringTokenizer.h String.h
+ StringTokenizer.h String_.h
 
 StringTokenizer.h:
 
-String.h:
+String_.h:

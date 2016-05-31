@@ -20,9 +20,10 @@ Integer *new_Integer(int32_t value) {
 }
 
 /**
- * Returns the value of this Integer as an int.
+ * Returns the value of the specified Integer as an int.
  *
- * @return the numeric value represented by this structure after conversion to
+ * @param ptr The allocated structure
+ * @return the numeric value represented by the specified structure after conversion to
  * type int.
  */
 int32_t intValue(Integer *ptr) {
@@ -32,11 +33,12 @@ int32_t intValue(Integer *ptr) {
 /**
  * Compares two Integer structures numerically.
  *
+ * @param ptr The allocated structure
  * @param anotherInteger the Integer to be compared.
- * @return the value 0 if this Integer is equal to the argument Integer; a
- * value less than 0 if this Integer is numerically less than the argument
- * Integer; and a value greater than 0 if this Integer is numerically
- * greater than the argument Integer (signed comparison).
+ * @return the value 0 if the first Integer is equal to the second Integer; a
+ * value less than 0 if the first Integer is numerically less than the second
+ * Integer; and a value greater than 0 if the first Integer is numerically
+ * greater than the second Integer (signed comparison).
  */
 int32_t compareToI(Integer *ptr, Integer *anotherInteger) {
     return Integer_compare(ptr->v, anotherInteger->v);
@@ -55,8 +57,9 @@ int32_t Integer_compare(int32_t x, int32_t y) {
 }
 
 /**
- * Compares this structure to the specified structure.
+ * Compares the one structure to the other.
  *
+ * @param ptr The allocated structure
  * @param obj the structure to compare with.
  * @return true if the structures are the same; false otherwise.
  */
@@ -73,9 +76,10 @@ bool equalsI(Integer *ptr, Integer *obj) {
 }
 
 /**
- * Returns a String structure representing this Integer's value.
- * 
- * @return a string representation of the value of this structure in base 10.
+ * Returns a String structure representing the specified Integer's value.
+ *
+ * @param ptr The allocated structure
+ * @return a string representation of the value of the specified structure in base 10.
  */
 String *toStringI(Integer *ptr) {
     return Integer_toString(ptr->v);

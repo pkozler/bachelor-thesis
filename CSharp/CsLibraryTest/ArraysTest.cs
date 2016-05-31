@@ -214,7 +214,7 @@ namespace JavaClasses
         [TestMethod]
         public void binarySearchTest13()
         {
-            TestObject[] a;
+            Comparable<TestObject>[] a;
             int b;
             a = new TestObject[]{
             new TestObject("first", 3),
@@ -1422,17 +1422,17 @@ namespace JavaClasses
             TestObject[] a;
             bool b;
             a = new TestObject[]{
-            new TestObject("first", 3),
-            new TestObject("second", 2),
-            new TestObject("third", 8),
-            new TestObject("fourth", 7),
-            new TestObject("fifth", 6),
-            new TestObject("sixth", 3),
-            new TestObject("seventh", 2),
-            new TestObject("eighth", 8),
-            new TestObject("nineth", 7),
-            new TestObject("tenth", 6)
-        };
+                new TestObject("first", 3),
+                new TestObject("second", 2),
+                new TestObject("third", 8),
+                new TestObject("fourth", 7),
+                new TestObject("fifth", 6),
+                new TestObject("sixth", 3),
+                new TestObject("seventh", 2),
+                new TestObject("eighth", 8),
+                new TestObject("nineth", 7),
+                new TestObject("tenth", 6)
+            };
             Arrays.sort(a);
             b = Arrays.equals(a, new TestObject[] {new TestObject("second", 2), new TestObject("seventh", 2), new TestObject("first", 3), new TestObject("sixth", 3), new TestObject("fifth", 6), new TestObject("tenth", 6), new TestObject("fourth", 7), new TestObject("nineth", 7), new TestObject("third", 8), new TestObject("eighth", 8)});
             Assert.AreEqual(true, b);
@@ -1696,16 +1696,16 @@ namespace JavaClasses
             Assert.AreEqual("[]", b);
             a = new TestObject[] { new TestObject("first", 1) };
             b = Arrays.toString(a);
-            Assert.AreEqual("[TestObject[str = first, i = 1]]", b);
+            Assert.AreEqual("[TestObject [str=first, i=1]]", b);
             a = new TestObject[] { null };
             b = Arrays.toString(a);
             Assert.AreEqual("[null]", b);
             a = new TestObject[] { new TestObject("first", 1), new TestObject("second", 2), new TestObject("third", 3) };
             b = Arrays.toString(a);
-            Assert.AreEqual("[TestObject[str = first, i = 1], TestObject[str = second, i = 2], TestObject[str = third, i = 3]]", b);
+            Assert.AreEqual("[TestObject [str=first, i=1], TestObject [str=second, i=2], TestObject [str=third, i=3]]", b);
             a = new TestObject[] { new TestObject("first", 1), null, new TestObject("third", 3) };
             b = Arrays.toString(a);
-            Assert.AreEqual("[TestObject[str = first, i = 1], null, TestObject[str = third, i = 3]]", b);
+            Assert.AreEqual("[TestObject [str=first, i=1], null, TestObject [str=third, i=3]]", b);
             a = new TestObject[] { null, null, null };
             b = Arrays.toString(a);
             Assert.AreEqual("[null, null, null]", b);

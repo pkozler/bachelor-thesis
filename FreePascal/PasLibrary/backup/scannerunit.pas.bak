@@ -5,7 +5,7 @@ unit ScannerUnit;
 interface
 
 uses
-  StringUnit;
+  StringUnit, SystemUnit, BooleanUnit, ByteUnit, ShortUnit, IntegerUnit, LongUnit, FloatUnit, DoubleUnit;
 
 type
   (**
@@ -14,6 +14,12 @@ type
    * @author Petr Kozler (A13B0359P)
    *)
   Scanner = class(Object_)
+    private
+      var line: ansiString;
+      function readLine() : String_;
+      function isEmptyOrWhiteSpace(l: ansiString) : boolean;
+      function removeLineToWhiteSpace() : ansiString;
+      function getNextToken() : String_;
     public
       constructor create(source: InputStream);
       function next() : String_;
@@ -32,6 +38,66 @@ implementation
 uses
   SysUtils;
 
+function Scanner.readLine() : String_;
+var
+  l: ansiString;
+begin
+  readLn(l);
+  readLine := String_.create(l);
+end;
+
+function Scanner.isEmptyOrWhiteSpace(l: ansiString) : boolean;
+var
+  len, i: longInt;
+begin
+  len := length(l);
+
+  if len = 0 then begin
+    exit(true);
+  end;
+
+  for i := 1 to len do begin
+    if l[i] > ' ' then begin
+      exit(false);
+    end;
+  end;
+
+  isEmptyOrWhiteSpace := true;
+end;
+
+function Scanner.removeLineToWhiteSpace() : ansiString;
+var
+  len, i: longInt;
+  token: ansiString;
+begin
+  len := length(line);
+  line := trimLeft(line);
+
+  for i := 1 to len do begin
+    if line[i] > ' ' then begin
+      break;
+    end;
+  end;
+
+  token := copy(line, 1, i);
+  delete(line, 1, i);
+  removeLineToWhiteSpace := token;
+end;
+
+function Scanner.getNextToken() : String_;
+var
+  l: String_;
+
+begin
+  while isEmptyOrWhiteSpace(line) do begin
+    l := readLine();
+    line := trimLeft(l.strProperty);
+    freeAndNil(l);
+  end;
+
+  getNextToken := String_.create(removeLineToWhiteSpace());
+end;
+
 (**
  * Constructs a new Scanner that produces values scanned from the specified
  * input stream.
@@ -40,6 +106,7 @@ uses
  *)
 constructor Scanner.create(source: InputStream);
 begin
+  line := '';
 end;
 
 (**
@@ -48,13 +115,8 @@ end;
  * @return the next token
  *)
 function Scanner.next() : String_;
-var
-  s: ansiString;
-  str: String_;
 begin
-  read(s);
-  str.create(s);
-  next := str; // TODO nacist retezec do prvniho bileho znaku
+  next := getNextToken();
 end;
 
 (**
@@ -64,11 +126,8 @@ end;
  * @return the boolean scanned from the input
  *)
 function Scanner.nextBoolean() : boolean;
-var
-  s: ansiString;
 begin
-  read(s);
-  nextBoolean := strToBool(s);
+  nextBoolean := Boolean_.parseBoolean(getNextToken());
 end;
 
 (**
@@ -77,11 +136,8 @@ end;
  * @return the byte scanned from the input
  *)
 function Scanner.nextByte() : shortInt;
-var
-  b: shortInt;
 begin
-  read(b);
-  nextByte := b;
+  nextByte := Byte_.parseByte(getNextToken());
 end;
 
 (**
@@ -90,11 +146,8 @@ end;
  * @return the short scanned from the input
  *)
 function Scanner.nextShort() : smallInt;
-var
-  s: smallInt;
 begin
-  read(s);
-  nextShort := s;
+  nextShort := Short.parseShort(getNextToken());
 end;
 
 (**
@@ -103,11 +156,8 @@ end;
  * @return the int scanned from the input
  *)
 function Scanner.nextInt() : longInt;
-var
-  i: longInt;
 begin
-  read(i);
-  nextInt := i;
+  nextInt := Integer_.parseInt(getNextToken());
 end;
 
 (**
@@ -116,11 +166,8 @@ end;
  * @return the long scanned from the input
  *)
 function Scanner.nextLong() : int64;
-var
-  l: int64;
 begin
-  read(l);
-  nextLong := l;
+  nextLong := Long.parseLong(getNextToken());
 end;
 
 (**
@@ -129,11 +176,8 @@ end;
  * @return the float scanned from the input
  *)
 function Scanner.nextFloat() : single;
-var
-  f: single;
 begin
-  read(f);
-  nextFloat := f;
+  nextFloat := Float.parseFloat(getNextToken());
 end;
 
 (**
@@ -142,11 +186,8 @@ end;
  * @return the double scanned from the input
  *)
 function Scanner.nextDouble() : double;
-var
-  d: double;
 begin
-  read(d);
-  nextDouble := d;
+  nextDouble := Double_.parseDouble(getNextToken());
 end;
 
 (**
@@ -156,11 +197,14 @@ end;
  *)
 function Scanner.nextLine() : String_;
 var
-  s: ansiString;
   str: String_;
 begin
-  readLn(s);
-  str.create(s);
+  if length(line) = 0 then begin
+     exit(readLine());
+  end;
+
+  str := String_.create(line);
+  line := '';
   nextLine := str;
 end;
 

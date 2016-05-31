@@ -4,13 +4,13 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="36">
+    <Units Count="23">
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="23"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="242"/>
       </Unit0>
       <Unit1>
         <Filename Value="mathtestunit.pas"/>
@@ -19,7 +19,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="595"/>
         <CursorPos X="7" Y="611"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="242"/>
       </Unit1>
       <Unit2>
         <Filename Value="systemtestunit.pas"/>
@@ -28,7 +28,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos Y="16"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit2>
       <Unit3>
         <Filename Value="stringtokenizertestunit.pas"/>
@@ -37,7 +37,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="55"/>
         <CursorPos X="33" Y="59"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit3>
       <Unit4>
         <Filename Value="stringtestunit.pas"/>
@@ -46,7 +46,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="310"/>
         <CursorPos X="27" Y="122"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit4>
       <Unit5>
         <Filename Value="stringbuildertestunit.pas"/>
@@ -55,7 +55,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="81"/>
         <CursorPos X="50" Y="103"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit5>
       <Unit6>
         <Filename Value="shorttestunit.pas"/>
@@ -63,15 +63,16 @@
         <UnitName Value="ShortTestUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="14"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit6>
       <Unit7>
         <Filename Value="scannertestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ScannerTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="10" Y="163"/>
-        <UsageCount Value="91"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="31" Y="8"/>
+        <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="longtestunit.pas"/>
@@ -79,7 +80,7 @@
         <UnitName Value="LongTestUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="14"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit8>
       <Unit9>
         <Filename Value="linkedlisttestunit.pas"/>
@@ -88,7 +89,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="514"/>
         <CursorPos X="129" Y="537"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit9>
       <Unit10>
         <Filename Value="integertestunit.pas"/>
@@ -96,7 +97,7 @@
         <UnitName Value="IntegerTestUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="22"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit10>
       <Unit11>
         <Filename Value="charactertestunit.pas"/>
@@ -105,7 +106,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="29"/>
         <CursorPos X="20" Y="45"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit11>
       <Unit12>
         <Filename Value="floattestunit.pas"/>
@@ -113,7 +114,7 @@
         <UnitName Value="FloatTestUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="14"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit12>
       <Unit13>
         <Filename Value="doubletestunit.pas"/>
@@ -122,7 +123,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="81"/>
         <CursorPos Y="14"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit13>
       <Unit14>
         <Filename Value="collectionstestunit.pas"/>
@@ -130,7 +131,7 @@
         <UnitName Value="CollectionsTestUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="15"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit14>
       <Unit15>
         <Filename Value="bytetestunit.pas"/>
@@ -139,7 +140,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="28"/>
         <CursorPos X="18" Y="36"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit15>
       <Unit16>
         <Filename Value="booleantestunit.pas"/>
@@ -147,7 +148,7 @@
         <UnitName Value="BooleanTestUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="14"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit16>
       <Unit17>
         <Filename Value="arraystestunit.pas"/>
@@ -156,7 +157,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2"/>
         <CursorPos Y="14"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit17>
       <Unit18>
         <Filename Value="arraylisttestunit.pas"/>
@@ -165,7 +166,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="513"/>
         <CursorPos X="23" Y="524"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="240"/>
       </Unit18>
       <Unit19>
         <Filename Value="printstreamtestunit.pas"/>
@@ -173,135 +174,92 @@
         <UnitName Value="PrintStreamTestUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="26" Y="16"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="188"/>
       </Unit19>
       <Unit20>
-        <Filename Value="..\Source\arraylistunit.pas"/>
-        <UnitName Value="ArrayListUnit"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
-      </Unit20>
-      <Unit21>
-        <Filename Value="mathtestunit.ppu"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
-        <DefaultSyntaxHighlighter Value="None"/>
-      </Unit21>
-      <Unit22>
-        <Filename Value="fpcunitproject.lpi"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="41"/>
-        <CursorPos X="19" Y="54"/>
-        <UsageCount Value="3"/>
-        <DefaultSyntaxHighlighter Value="XML"/>
-      </Unit22>
-      <Unit23>
         <Filename Value="..\PasLibrary\testobjectunit.pas"/>
         <UnitName Value="TestObjectUnit"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="70"/>
         <CursorPos X="3" Y="17"/>
-        <UsageCount Value="18"/>
-      </Unit23>
-      <Unit24>
+        <UsageCount Value="3"/>
+      </Unit20>
+      <Unit21>
         <Filename Value="..\PasLibrary\stringunit.pas"/>
         <UnitName Value="StringUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="40"/>
-        <CursorPos X="52" Y="53"/>
-        <UsageCount Value="10"/>
-      </Unit24>
-      <Unit25>
-        <Filename Value="..\PasLibrary\arraysunit.pas"/>
-        <UnitName Value="ArraysUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="8" Y="335"/>
-        <UsageCount Value="11"/>
-      </Unit25>
-      <Unit26>
-        <Filename Value="..\PasLibrary\systemunit.pas"/>
-        <UnitName Value="SystemUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="336"/>
-        <CursorPos X="8" Y="107"/>
-        <UsageCount Value="8"/>
-      </Unit26>
-      <Unit27>
-        <Filename Value="..\PasLibrary\booleanunit.pas"/>
-        <UnitName Value="BooleanUnit"/>
-        <TopLine Value="4"/>
-        <CursorPos X="67" Y="12"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit27>
-      <Unit28>
-        <Filename Value="..\PasLibrary\floatunit.pas"/>
-        <UnitName Value="FloatUnit"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="10"/>
-        <CursorPos X="61" Y="18"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit28>
-      <Unit29>
-        <Filename Value="..\PasLibrary\doubleunit.pas"/>
-        <UnitName Value="DoubleUnit"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="10"/>
-        <CursorPos Y="11"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="199"/>
+        <CursorPos X="12" Y="215"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
-      </Unit29>
-      <Unit30>
-        <Filename Value="..\PasLibrary\arraylistunit.pas"/>
-        <UnitName Value="ArrayListUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="9"/>
-        <UsageCount Value="9"/>
-      </Unit30>
-      <Unit31>
-        <Filename Value="..\PasLibrary\byteunit.pas"/>
-        <UnitName Value="ByteUnit"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="4"/>
-        <CursorPos X="88" Y="12"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit31>
-      <Unit32>
-        <Filename Value="..\PasLibrary\characterunit.pas"/>
-        <UnitName Value="CharacterUnit"/>
-        <EditorIndex Value="4"/>
-        <CursorPos X="91" Y="12"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit32>
-      <Unit33>
-        <Filename Value="..\PasLibrary\integerunit.pas"/>
-        <UnitName Value="IntegerUnit"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="84" Y="12"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit33>
-      <Unit34>
-        <Filename Value="..\PasLibrary\longunit.pas"/>
-        <UnitName Value="LongUnit"/>
-        <EditorIndex Value="6"/>
-        <CursorPos X="83" Y="12"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit34>
-      <Unit35>
-        <Filename Value="..\PasLibrary\shortunit.pas"/>
-        <UnitName Value="ShortUnit"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <UnitName Value="ScannerUnit"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="7"/>
-        <CursorPos X="84" Y="12"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="189"/>
+        <CursorPos X="17" Y="196"/>
+        <UsageCount Value="87"/>
         <Loaded Value="True"/>
-      </Unit35>
+      </Unit22>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="14" HistoryIndex="13">
+      <Position1>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="51" Column="31" TopLine="38"/>
+      </Position1>
+      <Position2>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="128" Column="27" TopLine="117"/>
+      </Position2>
+      <Position3>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="206" Column="13" TopLine="188"/>
+      </Position3>
+      <Position4>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="20" Column="36" TopLine="9"/>
+      </Position4>
+      <Position5>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="60" Column="9" TopLine="48"/>
+      </Position5>
+      <Position6>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="82" Column="22" TopLine="72"/>
+      </Position6>
+      <Position7>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="201" Column="27" TopLine="188"/>
+      </Position7>
+      <Position8>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="206" Column="9" TopLine="188"/>
+      </Position8>
+      <Position9>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="199" Column="3" TopLine="188"/>
+      </Position9>
+      <Position10>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="207" Column="19" TopLine="188"/>
+      </Position10>
+      <Position11>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="73" Column="21" TopLine="64"/>
+      </Position11>
+      <Position12>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="200" Column="3" TopLine="189"/>
+      </Position12>
+      <Position13>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <Caret Line="24" Column="26" TopLine="13"/>
+      </Position13>
+      <Position14>
+        <Filename Value="scannertestunit.pas"/>
+        <Caret Line="163" Column="10"/>
+      </Position14>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>

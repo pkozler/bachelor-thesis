@@ -2,7 +2,7 @@
 #define	TESTOBJECTCOMPARATOR_INCLUDED
 
 #include "TestObject.h"
-#include "String.h"
+#include "String_.h"
 
 /**
  * The {@code TestObjectComparator} class represents a comparator

@@ -1,5 +1,5 @@
-build/Debug/Cygwin-Windows/System.o: System.cpp System.h String.h
+build/Debug/Cygwin-Windows/System.o: System.cpp System.h String_.h
 
 System.h:
 
-String.h:
+String_.h:

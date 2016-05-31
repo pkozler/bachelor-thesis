@@ -19,9 +19,9 @@
       <itemPath>Math_.h</itemPath>
       <itemPath>Scanner.h</itemPath>
       <itemPath>Short.h</itemPath>
-      <itemPath>String.h</itemPath>
       <itemPath>StringBuilder.h</itemPath>
       <itemPath>StringTokenizer.h</itemPath>
+      <itemPath>String_.h</itemPath>
       <itemPath>System.h</itemPath>
       <itemPath>TestObject.h</itemPath>
       <itemPath>TestObjectComparator.h</itemPath>
@@ -49,9 +49,9 @@
       <itemPath>Math_.cpp</itemPath>
       <itemPath>Scanner.cpp</itemPath>
       <itemPath>Short.cpp</itemPath>
-      <itemPath>String.cpp</itemPath>
       <itemPath>StringBuilder.cpp</itemPath>
       <itemPath>StringTokenizer.cpp</itemPath>
+      <itemPath>String_.cpp</itemPath>
       <itemPath>System.cpp</itemPath>
       <itemPath>TestObject.cpp</itemPath>
       <itemPath>TestObjectComparator.cpp</itemPath>
@@ -167,11 +167,22 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>-std=c11 -lm -O2</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>-std=c++11 -lm -O2</commandLine>
         </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f18</output>
+        </linkerTool>
       </compileType>
       <item path="ArrayList.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -233,10 +244,6 @@
       </item>
       <item path="Short.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="String.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="String.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="StringBuilder.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StringBuilder.h" ex="false" tool="3" flavor2="0">
@@ -244,6 +251,10 @@
       <item path="StringTokenizer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="String_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="String_.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="System.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -377,36 +388,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f16</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f17">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f17</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f18">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f18</output>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f2">
@@ -585,9 +566,17 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -595,6 +584,9 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f18</output>
+        </linkerTool>
       </compileType>
       <item path="ArrayList.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -656,10 +648,6 @@
       </item>
       <item path="Short.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="String.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="String.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="StringBuilder.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StringBuilder.h" ex="false" tool="3" flavor2="0">
@@ -667,6 +655,10 @@
       <item path="StringTokenizer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="String_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="String_.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="System.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -798,36 +790,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f16</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f17">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f17</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f18">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f18</output>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f2">

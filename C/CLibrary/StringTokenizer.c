@@ -32,9 +32,10 @@ void delete_StringTokenizer(StringTokenizer *ptr) {
 }
 
 /**
- * Calculates the number of times that this tokenizer's nextToken function can
+ * Calculates the number of times that the specified tokenizer's nextToken function can
  * be called before it results in undefined behavior.
  *
+ * @param ptr The allocated structure
  * @return the number of tokens remaining in the string using the current
  * delimiter set.
  */
@@ -51,8 +52,9 @@ int32_t countTokens(StringTokenizer *ptr) {
 }
 
 /**
- * Tests if there are more tokens available from this tokenizer's string.
+ * Tests if there are more tokens available from the specified tokenizer's string.
  *
+ * @param ptr The allocated structure
  * @return true if and only if there is at least one token in the string
  * after the current position; false otherwise.
  */
@@ -61,9 +63,10 @@ bool hasMoreTokens(StringTokenizer *ptr) {
 }
 
 /**
- * Returns the next token from this string tokenizer.
+ * Returns the next token from the specified string tokenizer.
  *
- * @return the next token from this string tokenizer.
+ * @param ptr The allocated structure
+ * @return the next token from the specified string tokenizer.
  */
 String *nextToken(StringTokenizer *ptr) {
     if (ptr->first) {

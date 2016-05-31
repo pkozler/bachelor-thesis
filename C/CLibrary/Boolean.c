@@ -19,22 +19,24 @@ Boolean *new_Boolean(bool value) {
 }
 
 /**
- * Returns the value of this Boolean structure as a boolean primitive.
+ * Returns the value of the specified Boolean structure as a boolean primitive.
  *
- * @return the primitive boolean value of this structure.
+ * @param ptr The allocated structure
+ * @return the primitive boolean value of the specified structure.
  */
 bool booleanValue(Boolean *ptr) {
     return ptr->v;
 }
 
 /**
- * Compares this Boolean instance with another.
+ * Compares the one specified Boolean instance with another.
  *
+ * @param ptr The allocated structure
  * @param b the Boolean instance to be compared
- * @return zero if this structure represents the same boolean value as the
- * argument; a positive value if this structure represents true and the
- * argument represents false; and a negative value if this structure represents
- * false and the argument represents true
+ * @return zero if the first specified structure represents the same boolean value as the
+ * second; a positive value if the first structure represents true and the
+ * second represents false; and a negative value if the first structure represents
+ * false and the second represents true
  */
 int32_t compareToBool(Boolean *ptr, Boolean *b) {
     return Boolean_compare(ptr->v, b->v);
@@ -53,9 +55,10 @@ int32_t Boolean_compare(bool x, bool y) {
 }
 
 /**
- * Returns true if and only if the argument is not null and is a Boolean
- * structure that represents the same boolean value as this structure.
+ * Returns true if and only if the arguments are not null and are a Boolean
+ * structures that represents the same boolean value.
  *
+ * @param ptr The allocated structure
  * @param obj the structure to compare with.
  * @return true if the Boolean structures represent the same value; false
  * otherwise.
@@ -64,7 +67,7 @@ bool equalsBool(Boolean *ptr, Boolean *obj) {
     if (ptr == NULL || obj == NULL) {
         return false;
     }
-    
+
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
@@ -73,9 +76,10 @@ bool equalsBool(Boolean *ptr, Boolean *obj) {
 }
 
 /**
- * Returns a String structure representing this Boolean's value.
- * 
- * @return a string representation of this structure.
+ * Returns a String structure representing the specified Boolean's value.
+ *
+ * @param ptr The allocated structure
+ * @return a string representation of the specified structure.
  */
 String *toStringBool(Boolean *ptr) {
     return Boolean_toString(ptr->v);

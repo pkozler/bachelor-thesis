@@ -3,6 +3,7 @@ package test;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  *
@@ -15,6 +16,10 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(sc.next());
+        System.out.println(sc.nextLine());
+        
 //        PrintStreamTest.runTestSuite();
 //        StringTest.runTestSuite();
 //        StringBuilderTest.runTestSuite();

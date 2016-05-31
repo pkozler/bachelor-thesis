@@ -20,6 +20,7 @@ namespace JavaClasses
         /// </summary>
         public const int MIN_VALUE = -2147483648;
 
+        // an inner value
         private int v;
 
         /// <summary>

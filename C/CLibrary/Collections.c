@@ -9,6 +9,7 @@
  *
  * @param list the list to be searched.
  * @param key the key to be searched for.
+ * @param c The structure compare function
  * @return the index of the search key, if it is contained in the list;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
  * the point at which the key would be inserted into the list: the index of
@@ -18,7 +19,7 @@
  */
 int32_t Collections_binarySearch(ArrayList *list, void *key, int32_t (*c)(const void *, const void *)) {
     void *i = bsearch(key, list->dynamicArray, list->count, sizeof(void **), c);
-    
+
     if (i == NULL) {
         return -1;
     }
@@ -32,8 +33,11 @@ int32_t Collections_binarySearch(ArrayList *list, void *key, int32_t (*c)(const 
  *
  * @param dest The destination list.
  * @param src The source list.
+ * @param srcSize The source list size function.
+ * @param destSet The destination list set function.
+ * @param srcGet The source list get function.
  */
-void Collections_copy(void *dest, void *src, int32_t (*srcSize)(void *), 
+void Collections_copy(void *dest, void *src, int32_t (*srcSize)(void *),
         void *(*destSet)(void *, int32_t, void *), void *(*srcGet)(void *, int32_t)) {
     int32_t length = srcSize(src);
 
@@ -49,8 +53,10 @@ void Collections_copy(void *dest, void *src, int32_t (*srcSize)(void *),
  *
  * @param list the list to be filled with the specified element.
  * @param obj The element with which to fill the specified list.
+ * @param listSize The list size function.
+ * @param listSet The list set function.
  */
-void Collections_fill(void *list, void *obj, int32_t (*listSize)(void *), 
+void Collections_fill(void *list, void *obj, int32_t (*listSize)(void *),
         void *(*listSet)(void *, int32_t, void *)) {
     int32_t length = listSize(list);
 
@@ -65,6 +71,7 @@ void Collections_fill(void *list, void *obj, int32_t (*listSize)(void *),
  * ordering of its elements.
  *
  * @param list the list to be sorted.
+ * @param c The structure compare function
  */
 void Collections_sort(ArrayList *list, int32_t (* c)(const void *, const void *)) {
     void **aux = malloc(sizeof(void *) * list->count);

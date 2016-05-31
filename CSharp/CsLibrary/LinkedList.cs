@@ -4,13 +4,14 @@ namespace JavaClasses
 {
 
     /// <summary>
-    /// Doubly-linked list implementation of the List and Deque interfaces.
+    /// Doubly-linked list implementation of the List abstract class.
     /// </summary>
     /// <typeparam name="E">the type of elements held in this collection</typeparam>
     /// <author>Petr Kozler (A13B0359P)</author>
     public class LinkedList<E> : List<E> where E : Object
     {
 
+        // an inner list
         public System.Collections.Generic.LinkedList<E> l { get; private set; }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace JavaClasses
         /// Appends the specified element to the end of this list.
         /// </summary>
         /// <param name="e">element to be appended to this list
-        /// </param><returns>true (as specified by Collection.add(E))
+        /// </param><returns>true
         /// </returns>
         public override bool add(E e)
         {
@@ -53,7 +54,7 @@ namespace JavaClasses
         public override void add(int index, E element)
         {
             // creating the first node, if the list is empty
-            if (index < 1)
+            if (l.Count < 1)
             {
                 l.AddFirst(element);
                 return;
@@ -61,14 +62,21 @@ namespace JavaClasses
 
             LinkedListNode<E> node = l.First;
 
+            // inserting the new element before the first node if index is 0
+            if (index < 1)
+            {
+                l.AddBefore(node, element);
+                return;
+            }
+
             // iterating to the node at the specified position in the list
-            for (int i = 0; i < index; i++)
+            for (int i = 1; i < index; i++)
             {
                 node = node.Next;
             }
 
-            // inserting the new element before the node
-            l.AddBefore(node, element);
+            // inserting the new element after the node
+            l.AddAfter(node, element);
         }
         
         /// <summary>
@@ -189,13 +197,13 @@ namespace JavaClasses
 
             if (node != null)
             {
-                sb.append(node.Value.ToString());
+                sb.append(node.Value == null ? "null" : node.Value.ToString());
                 node = node.Next;
             }
 
             while (node != null)
             {
-                sb.append(", ").append(node.Value.ToString());
+                sb.append(", ").append(node.Value == null ? "null" : node.Value.ToString());
                 node = node.Next;
             }
 

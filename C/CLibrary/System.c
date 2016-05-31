@@ -50,6 +50,7 @@ void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (
 /**
  * Prints a boolean value.
  *
+ * @param ptr The allocated structure
  * @param b The boolean to be printed
  */
 void printBool(PrintStream *ptr, bool b) {
@@ -60,6 +61,7 @@ void printBool(PrintStream *ptr, bool b) {
 /**
  * Prints a character.
  *
+ * @param ptr The allocated structure
  * @param c The char to be printed
  */
 void printC(PrintStream *ptr, char c) {
@@ -70,20 +72,23 @@ void printC(PrintStream *ptr, char c) {
 /**
  * Prints an array of characters.
  *
+ * @param ptr The allocated structure
  * @param s The array of chars to be printed
+ * @param length The array length
  */
 void printS(PrintStream *ptr, char *s, int32_t length) {
     int i;
     for (i = 0; i < length; i++) {
         printf("%c", s[i]);
     }
-    
+
     fflush(stdout);
 }
 
 /**
  * Prints a double-precision floating-point number.
  *
+ * @param ptr The allocated structure
  * @param d The double to be printed
  */
 void printD(PrintStream *ptr, double d) {
@@ -94,6 +99,7 @@ void printD(PrintStream *ptr, double d) {
 /**
  * Prints a floating-point number.
  *
+ * @param ptr The allocated structure
  * @param f The float to be printed
  */
 void printF(PrintStream *ptr, float f) {
@@ -104,6 +110,7 @@ void printF(PrintStream *ptr, float f) {
 /**
  * Prints an integer.
  *
+ * @param ptr The allocated structure
  * @param i The int to be printed
  */
 void printI(PrintStream *ptr, int32_t i) {
@@ -114,6 +121,7 @@ void printI(PrintStream *ptr, int32_t i) {
 /**
  * Prints a long integer.
  *
+ * @param ptr The allocated structure
  * @param l The long to be printed
  */
 void printL(PrintStream *ptr, int64_t l) {
@@ -124,7 +132,9 @@ void printL(PrintStream *ptr, int64_t l) {
 /**
  * Prints a structure.
  *
+ * @param ptr The allocated structure
  * @param obj The structure to be printed
+ * @param toString The structure toString function
  */
 void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);
@@ -136,6 +146,7 @@ void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
 /**
  * Prints a string.
  *
+ * @param ptr The allocated structure
  * @param s The String to be printed
  */
 void printStr(PrintStream *ptr, String *s) {
@@ -145,6 +156,8 @@ void printStr(PrintStream *ptr, String *s) {
 
 /**
  * Terminates the current line by writing the line separator string.
+ *
+ * @param ptr The allocated structure
  */
 void println(PrintStream *ptr) {
     printf("\n");
@@ -154,6 +167,7 @@ void println(PrintStream *ptr) {
 /**
  * Prints a boolean and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The boolean to be printed
  */
 void printlnBool(PrintStream *ptr, bool x) {
@@ -164,6 +178,7 @@ void printlnBool(PrintStream *ptr, bool x) {
 /**
  * Prints a character and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The char to be printed.
  */
 void printlnC(PrintStream *ptr, char x) {
@@ -174,14 +189,16 @@ void printlnC(PrintStream *ptr, char x) {
 /**
  * Prints an array of characters and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x an array of chars to print.
+ * @param length The array length
  */
 void printlnS(PrintStream *ptr, char *x, int32_t length) {
     int i;
     for (i = 0; i < length; i++) {
         printf("%c", x[i]);
     }
-    
+
     printf("\n");
     fflush(stdout);
 }
@@ -189,6 +206,7 @@ void printlnS(PrintStream *ptr, char *x, int32_t length) {
 /**
  * Prints a double and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The double to be printed.
  */
 void printlnD(PrintStream *ptr, double x) {
@@ -199,6 +217,7 @@ void printlnD(PrintStream *ptr, double x) {
 /**
  * Prints a float and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The float to be printed.
  */
 void printlnF(PrintStream *ptr, float x) {
@@ -209,6 +228,7 @@ void printlnF(PrintStream *ptr, float x) {
 /**
  * Prints an integer and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The int to be printed.
  */
 void printlnI(PrintStream *ptr, int32_t x) {
@@ -219,6 +239,7 @@ void printlnI(PrintStream *ptr, int32_t x) {
 /**
  * Prints a long and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The long to be printed.
  */
 void printlnL(PrintStream *ptr, int64_t x) {
@@ -229,7 +250,9 @@ void printlnL(PrintStream *ptr, int64_t x) {
 /**
  * Prints a structure and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The structure to be printed.
+ * @param toString The structure toString function
  */
 void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
     String *s = toString(obj);
@@ -241,6 +264,7 @@ void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {
 /**
  * Prints a String and then terminate the line.
  *
+ * @param ptr The allocated structure
  * @param x The String to be printed.
  */
 void printlnStr(PrintStream *ptr, String *x) {

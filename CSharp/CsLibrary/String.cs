@@ -43,7 +43,7 @@ namespace JavaClasses
     }
 
     /// <summary>
-    /// This interface imposes a total ordering on the objects of each class that implements it.
+    /// This abstract class imposes a total ordering on the objects of each class that implements it.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class Comparable<T> : Object, IComparable<T> where T : Object
@@ -94,6 +94,7 @@ namespace JavaClasses
     public class String : Comparable<String>
     {
 
+        // an inner string
         public string s { get; private set; }
 
         /// <summary>
@@ -125,10 +126,8 @@ namespace JavaClasses
 
         /// <summary>
         /// Initializes a newly created String object so that it represents the same
-        /// sequence of characters as the argument; in other words, the newly created
-        /// string is a copy of the argument string. Unless an explicit copy of
-        /// original is needed, use of this constructor is unnecessary since Strings
-        /// are immutable.
+        /// sequence of characters as the argument; in other words, the inner string of the
+        /// newly created String object is a copy of the argument string.
         /// </summary>
         /// <param name="original">A String
         /// </param>

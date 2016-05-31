@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace JavaClasses
 {
@@ -50,7 +51,10 @@ namespace JavaClasses
         /// </summary>
         public const double MIN_NORMAL = 1.17549435E-38f;
 
+        // a "binary representation" of negative zero value for comparison purposes
         private static readonly int negativeZeroBits = floatToInt32Bits(-0.0f);
+
+        // an inner value
         private float v;
 
         /*
@@ -200,7 +204,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(float f)
         {
-            return new String(f.ToString());
+            return new String(f.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
@@ -212,7 +216,14 @@ namespace JavaClasses
         /// </returns>
         public static float parseFloat(String s)
         {
-            return float.Parse(s.ToString());
+            float result = float.Parse(s.ToString(), CultureInfo.InvariantCulture);
+
+            if (result == 0 && s.startsWith("-"))
+            {
+                return -0.0f;
+            }
+
+            return result;
         }
         
         public static implicit operator Float(float original)

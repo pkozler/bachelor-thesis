@@ -1,7 +1,7 @@
 #ifndef DOUBLE_INCLUDED
 #define DOUBLE_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <cstdint>
 
 typedef union {

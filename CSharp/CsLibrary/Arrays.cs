@@ -210,7 +210,20 @@ namespace JavaClasses
          */
         private static String toStringGeneric<T>(T[] a)
         {
-            return new String("[" + string.Join(", ", a) + "]");
+            StringBuilder sb = new StringBuilder();
+            sb.append(new String("["));
+
+            if (a.Length > 0)
+            {
+                sb.append(a[0] == null ? "null" : a[0].ToString());
+            }
+
+            for (int i = 1; i < a.Length; i++)
+            {
+                sb.append(new String(", ")).append(a[i] == null ? "null" : a[i].ToString());
+            }
+
+            return sb.append(new String("]")).toString();
         }
 
         /// <summary>

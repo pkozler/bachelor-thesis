@@ -30,7 +30,6 @@ type
       property arrProperty: ObjectArray read dynamicArray;
       constructor create();
       constructor create(c: ArrayList);
-      function getDynamicArray() : ObjectArray;
       function add(e: Object_) : boolean; override;
       procedure add(index: longInt; element: Object_); override;
       function get(index: longInt) : Object_; override;
@@ -71,11 +70,6 @@ begin
   for i := 0 to count - 1 do begin
     dynamicArray[i] := c.dynamicArray[i];
   end;
-end;
-
-function ArrayList.getDynamicArray() : ObjectArray;
-begin
-  getDynamicArray := dynamicArray;
 end;
 
 procedure ArrayList.expand();

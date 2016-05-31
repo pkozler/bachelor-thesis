@@ -1,6 +1,7 @@
 #ifndef SCANNER_INCLUDED
 #define	SCANNER_INCLUDED
 
+#include "String.h"
 #include "System.h"
 #include "String.h"
 #include <stdint.h>
@@ -12,7 +13,7 @@
  */
 
 typedef struct {
-    // really no code
+    char *line;
 } Scanner;
 
 Scanner *new_Scanner(InputStream *source);

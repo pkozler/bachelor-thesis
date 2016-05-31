@@ -13,7 +13,7 @@ exec("chcp 65001");
 $testedLibraries = array(
     new TestedLibrary("C", "C", "", ""),
     new TestedLibrary("C++", "CPlusPlus", "", ""),
-    new TestedLibrary("C#", "CSharp", "ScannerTest/bin/Debug/ScannerTest.exe", "PrintStreamTest/bin/Debug/PrintStream.exe"),
+    new TestedLibrary("C#", "CSharp", "ScannerTest/bin/Debug/ScannerTest.exe", "PrintStreamTest/bin/Debug/PrintStreamTest.exe"),
     new TestedLibrary("Free Pascal", "FreePascal", "ScannerTest/project.exe", "PrintStreamTest/project.exe"),
 );
 

@@ -81,7 +81,7 @@ end;
 
 (**
  * Calculates the number of times that this tokenizer's nextToken method can
- * be called before it generates an exception.
+ * be called before it causes an error.
  *
  * @return the number of tokens remaining in the string using the current
  * delimiter set.

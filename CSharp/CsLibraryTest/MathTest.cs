@@ -126,23 +126,23 @@ namespace JavaClasses
             a = Float.MIN_VALUE;
             b = Float.MAX_VALUE;
             c = Math.max(a, b);
-            Assert.AreEqual(3.4028235E38, c, DEFAULT_EPSILON);
+            Assert.AreEqual((float)3.4028235E38, c, (float)DEFAULT_EPSILON);
             a = Float.MAX_VALUE;
             b = Float.MIN_VALUE;
             c = Math.max(a, b);
-            Assert.AreEqual(3.4028235E38, c, DEFAULT_EPSILON);
+            Assert.AreEqual((float)3.4028235E38, c, (float)DEFAULT_EPSILON);
             a = -1;
             b = 1;
             c = Math.max(a, b);
-            Assert.AreEqual(1.0, c, DEFAULT_EPSILON);
+            Assert.AreEqual((float)1.0, c, (float)DEFAULT_EPSILON);
             a = 1;
             b = -1;
             c = Math.max(a, b);
-            Assert.AreEqual(1.0, c, DEFAULT_EPSILON);
+            Assert.AreEqual((float)1.0, c, (float)DEFAULT_EPSILON);
             a = 0;
             b = 0;
             c = Math.max(a, b);
-            Assert.AreEqual(0.0, c, DEFAULT_EPSILON);
+            Assert.AreEqual((float)0.0, c, (float)DEFAULT_EPSILON);
         }
 
         /// <summary>

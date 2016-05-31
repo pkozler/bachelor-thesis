@@ -28,9 +28,10 @@ long _getNegativeZeroDoubleBits() {
 }
 
 /**
- * Returns the double value of this Double structure.
+ * Returns the double value of the specified Double structure.
  *
- * @return the double value represented by this structure
+ * @param ptr The allocated structure
+ * @return the double value represented by the specified structure
  */
 double doubleValue(Double *ptr) {
     return ptr->v;
@@ -39,10 +40,11 @@ double doubleValue(Double *ptr) {
 /**
  * Compares two Double structures numerically.
  *
+ * @param ptr The allocated structure
  * @param anotherDouble the Double to be compared.
- * @return the value 0 if anotherDouble is numerically equal to this Double;
- * a value less than 0 if this Double is numerically less than
- * anotherDouble; and a value greater than 0 if this Double is numerically
+ * @return the value 0 if anotherDouble is numerically equal to the first Double;
+ * a value less than 0 if the first Double is numerically less than
+ * anotherDouble; and a value greater than 0 if the first Double is numerically
  * greater than anotherDouble.
  */
 int32_t compareToD(Double *ptr, Double *anotherDouble) {
@@ -90,8 +92,9 @@ int32_t Double_compare(double d1, double d2) {
 }
 
 /**
- * Compares this structure against the specified structure.
+ * Compares the one structure against the other.
  *
+ * @param ptr The allocated structure
  * @param obj the structure to compare with.
  * @return true if the structures are the same; false otherwise.
  */
@@ -128,9 +131,10 @@ bool equalsD(Double *ptr, Double *obj) {
 }
 
 /**
- * Returns a string representation of this Double structure.
+ * Returns a string representation of the specified Double structure.
  *
- * @return a String representation of this structure.
+ * @param ptr The allocated structure
+ * @return a String representation of the specified structure.
  */
 String *toStringD(Double *ptr) {
     return Double_toString(ptr->v);

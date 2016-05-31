@@ -1,7 +1,7 @@
 #ifndef TESTOBJECT_INCLUDED
 #define	TESTOBJECT_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 
 /**
  * The {@code TestObject} class represents a simple object that serves

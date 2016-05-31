@@ -1,7 +1,7 @@
 #ifndef INTEGER_INCLUDED
 #define	INTEGER_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <iostream>
 #include <sstream>
 #include <cstdint>

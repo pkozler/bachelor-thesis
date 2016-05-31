@@ -14,6 +14,7 @@ namespace JavaClasses
 
         public PrintStream()
         {
+            // setting the standard output format
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
         }
 

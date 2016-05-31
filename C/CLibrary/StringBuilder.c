@@ -27,10 +27,11 @@ void delete_StringBuilder(StringBuilder *ptr) {
 }
 
 /**
- * Appends the specified string to this character sequence.
+ * Appends the specified string to the specified character sequence.
  *
+ * @param ptr The allocated structure
  * @param str a string.
- * @return a reference to this structure.
+ * @return a pointer to the specified structure.
  */
 StringBuilder *append(StringBuilder *ptr, String *str) {
     if (ptr->count + str->len >= ptr->capacity) {
@@ -45,9 +46,10 @@ StringBuilder *append(StringBuilder *ptr, String *str) {
 }
 
 /**
- * Returns a string representing the data in this sequence.
+ * Returns a string representing the data in the specified sequence.
  *
- * @return a string representation of this sequence of characters.
+ * @param ptr The allocated structure
+ * @return a string representation of the specified sequence of characters.
  */
 String *toStringSb(StringBuilder *ptr) {
     return new_String(ptr->buffer);

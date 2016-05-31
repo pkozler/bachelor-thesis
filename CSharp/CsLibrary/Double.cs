@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace JavaClasses
 {
@@ -50,8 +51,10 @@ namespace JavaClasses
         /// </summary>
         public const double MIN_NORMAL = 2.2250738585072014E-308;
 
-        // binary representation of negative zero value for comparison purposes
+        // a "binary representation" of negative zero value for comparison purposes
         private static readonly long negativeZeroBits = BitConverter.DoubleToInt64Bits(-0.0);
+
+        // an inner value
         private double v;
 
         /// <summary>
@@ -197,7 +200,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(double d)
         {
-            return new String(d.ToString());
+            return new String(d.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
@@ -209,7 +212,15 @@ namespace JavaClasses
         /// </returns>
         public static double parseDouble(String s)
         {
-            return double.Parse(s.ToString());
+            double result = double.Parse(s.ToString(), CultureInfo.InvariantCulture);
+
+            // negative zero handling
+            if (result == 0 && s.startsWith("-"))
+            {
+                return -0.0;
+            }
+
+            return result;
         }
         
         public static implicit operator Double(double original)

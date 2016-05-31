@@ -27,24 +27,23 @@ namespace JavaClasses
 
         /*
              Returns the next token of the current line or reads the new line
-             from the standard input if the current line was completely scanned.
+             from the standard input if the current line has been scanned completely.
          */
-        private string nextElement()
+        private String getNextToken()
         {
-            // removing leading whitespaces from the current token
-            line.TrimStart();
-
             // reading the next line if the current is empty
-            if (string.IsNullOrEmpty(line))
+            while (string.IsNullOrWhiteSpace(line))
             {
-                line = Console.ReadLine();
+                // removing all leading whitespaces
+                line = Console.ReadLine().TrimStart();
             }
+            
+            // getting the next token (all characters to the first whitespace) from the current line
+            Match match = Regex.Match(line, @"([^\s]+)");
+            // removing the token from the current line
+            line = line.Remove(0, match.Index + match.Length);
 
-            // removing the next token (delimited by whitespaces) from the current line
-            Match match = Regex.Match(line, @"(?<=\s)");
-            string token = line.Remove(0, match.Index + match.Length);
-
-            return token;
+            return match.Value;
         }
 
         /// <summary>
@@ -54,7 +53,7 @@ namespace JavaClasses
         /// </returns>
         public String next()
         {
-            return nextElement();
+            return getNextToken();
         }
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace JavaClasses
         /// </returns>
         public bool nextBoolean()
         {
-            return bool.Parse(nextElement());
+            return Boolean.parseBoolean(getNextToken());
         }
 
         /// <summary>
@@ -75,7 +74,7 @@ namespace JavaClasses
         /// </returns>
         public sbyte nextByte()
         {
-            return sbyte.Parse(nextElement());
+            return Byte.parseByte(getNextToken());
         }
 
         /// <summary>
@@ -85,7 +84,7 @@ namespace JavaClasses
         /// </returns>
         public short nextShort()
         {
-            return short.Parse(nextElement());
+            return Short.parseShort(getNextToken());
         }
 
         /// <summary>
@@ -95,7 +94,7 @@ namespace JavaClasses
         /// </returns>
         public int nextInt()
         {
-            return int.Parse(nextElement());
+            return Integer.parseInt(getNextToken());
         }
 
         /// <summary>
@@ -105,7 +104,7 @@ namespace JavaClasses
         /// </returns>
         public long nextLong()
         {
-            return long.Parse(nextElement());
+            return Long.parseLong(getNextToken());
         }
 
         /// <summary>
@@ -115,7 +114,7 @@ namespace JavaClasses
         /// </returns>
         public float nextFloat()
         {
-            return float.Parse(nextElement());
+            return Float.parseFloat(getNextToken());
         }
 
         /// <summary>
@@ -125,7 +124,7 @@ namespace JavaClasses
         /// </returns>
         public double nextDouble()
         {
-            return double.Parse(nextElement());
+            return Double.parseDouble(getNextToken());
         }
 
         /// <summary>
@@ -135,18 +134,17 @@ namespace JavaClasses
         /// </returns>
         public String nextLine()
         {
-            // reading the next line if the current is empty and returning it
+            // reading the next line if the current is empty
             if (string.IsNullOrEmpty(line))
             {
                 return Console.ReadLine();
-            } // reading the rest of the current line if it is not empty
-            else
-            {
-                String str = line;
-                line = "";
-
-                return str;
             }
+
+            // returning the rest of the current line if not empty
+            String str = line;
+            line = "";
+
+            return str;
         }
 
     }

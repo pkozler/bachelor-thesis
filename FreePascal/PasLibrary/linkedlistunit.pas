@@ -17,7 +17,7 @@ type
   end;
 
   (**
-   * Doubly-linked list implementation of the List and Deque interfaces.
+   * Doubly-linked list implementation of the List abstract class.
    *
    * @param E the type of elements held in this collection
    * @author Petr Kozler (A13B0359P)
@@ -161,7 +161,7 @@ end;
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
- * @return true (as specified by Collection.add(E))
+ * @return true
  *)
 function LinkedList.add(e: Object_) : boolean;
 var

@@ -1,7 +1,7 @@
 #ifndef ARRAYS_INCLUDED
 #define	ARRAYS_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <algorithm>
 #include <sstream>
 #include <cstdint>
@@ -245,6 +245,7 @@ template <typename T> String *Arrays::toStringGeneric(T *a, int32_t length, Stri
  * search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @param c the comparator by which the array is ordered. A null value
  * indicates that the elements' natural ordering should be used.
@@ -289,6 +290,7 @@ template <class T> int32_t Arrays::binarySearch(T **a, int32_t fromIndex, int32_
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with nulls to
  * obtain the specified length
@@ -301,6 +303,7 @@ template <class T> T **Arrays::copyOf(T **original, int32_t length, int32_t newL
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -316,6 +319,7 @@ template <class T> T **Arrays::copyOfRange(T **original, int32_t length, int32_t
  * the specified comparator.
  *
  * @param a the array to be sorted
+ * @param length The array length
  * @param c the comparator to determine the order of the array. A null value
  * indicates that the elements' natural ordering should be used.
  */

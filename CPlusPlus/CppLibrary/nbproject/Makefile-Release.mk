@@ -50,9 +50,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/Math_.o \
 	${OBJECTDIR}/Scanner.o \
 	${OBJECTDIR}/Short.o \
-	${OBJECTDIR}/String.o \
 	${OBJECTDIR}/StringBuilder.o \
 	${OBJECTDIR}/StringTokenizer.o \
+	${OBJECTDIR}/String_.o \
 	${OBJECTDIR}/System.o \
 	${OBJECTDIR}/TestObject.o \
 	${OBJECTDIR}/TestObjectComparator.o \
@@ -180,11 +180,6 @@ ${OBJECTDIR}/Short.o: Short.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Short.o Short.cpp
 
-${OBJECTDIR}/String.o: String.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/String.o String.cpp
-
 ${OBJECTDIR}/StringBuilder.o: StringBuilder.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -194,6 +189,11 @@ ${OBJECTDIR}/StringTokenizer.o: StringTokenizer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringTokenizer.o StringTokenizer.cpp
+
+${OBJECTDIR}/String_.o: String_.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I. -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/String_.o String_.cpp
 
 ${OBJECTDIR}/System.o: System.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -581,19 +581,6 @@ ${OBJECTDIR}/Short_nomain.o: ${OBJECTDIR}/Short.o Short.cpp
 	    ${CP} ${OBJECTDIR}/Short.o ${OBJECTDIR}/Short_nomain.o;\
 	fi
 
-${OBJECTDIR}/String_nomain.o: ${OBJECTDIR}/String.o String.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/String.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -I. -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/String_nomain.o String.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/String.o ${OBJECTDIR}/String_nomain.o;\
-	fi
-
 ${OBJECTDIR}/StringBuilder_nomain.o: ${OBJECTDIR}/StringBuilder.o StringBuilder.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/StringBuilder.o`; \
@@ -618,6 +605,19 @@ ${OBJECTDIR}/StringTokenizer_nomain.o: ${OBJECTDIR}/StringTokenizer.o StringToke
 	    $(COMPILE.cc) -O2 -I. -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/StringTokenizer_nomain.o StringTokenizer.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/StringTokenizer.o ${OBJECTDIR}/StringTokenizer_nomain.o;\
+	fi
+
+${OBJECTDIR}/String__nomain.o: ${OBJECTDIR}/String_.o String_.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/String_.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -I. -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/String__nomain.o String_.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/String_.o ${OBJECTDIR}/String__nomain.o;\
 	fi
 
 ${OBJECTDIR}/System_nomain.o: ${OBJECTDIR}/System.o System.cpp 

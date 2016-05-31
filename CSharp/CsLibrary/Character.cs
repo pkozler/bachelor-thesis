@@ -10,6 +10,7 @@ namespace JavaClasses
     public class Character : Comparable<Character>
     {
 
+        // an inner value
         private char v;
 
         /// <summary>

@@ -16,7 +16,7 @@ StringBuilder::~StringBuilder() {
  * Appends the specified string to this character sequence.
  *
  * @param str a string.
- * @return a reference to this object.
+ * @return a pointer to this object.
  */
 StringBuilder *StringBuilder::append(String *str) {
     oss << str;

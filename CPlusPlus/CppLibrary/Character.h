@@ -1,7 +1,7 @@
 #ifndef CHARACTER_INCLUDED
 #define	CHARACTER_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <cstdint>
 
 /**

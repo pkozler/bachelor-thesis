@@ -1,7 +1,7 @@
 #ifndef FLOAT_INCLUDED
 #define FLOAT_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <cstdint>
 
 typedef union {

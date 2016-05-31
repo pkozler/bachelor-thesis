@@ -20,9 +20,10 @@ Long *new_Long(int64_t value) {
 }
 
 /**
- * Returns the value of this Long as a long value.
+ * Returns the value of the specified Long as a long value.
  *
- * @return the numeric value represented by this structure after conversion to
+ * @param ptr The allocated structure
+ * @return the numeric value represented by the specified structure after conversion to
  * type long.
  */
 int64_t longValue(Long *ptr) {
@@ -32,11 +33,12 @@ int64_t longValue(Long *ptr) {
 /**
  * Compares two Long structures numerically.
  *
+ * @param ptr The allocated structure
  * @param anotherLong the Long to be compared.
- * @return the value 0 if this Long is equal to the argument Long; a value
- * less than 0 if this Long is numerically less than the argument Long; and
- * a value greater than 0 if this Long is numerically greater than the
- * argument Long (signed comparison).
+ * @return the value 0 if the first Long is equal to the second Long; a value
+ * less than 0 if the first Long is numerically less than the second Long; and
+ * a value greater than 0 if the first Long is numerically greater than the
+ * second Long (signed comparison).
  */
 int32_t compareToL(Long *ptr, Long *anotherLong) {
     return Long_compare(ptr->v, anotherLong->v);
@@ -55,8 +57,9 @@ int32_t Long_compare(int64_t x, int64_t y) {
 }
 
 /**
- * Compares this structure to the specified structure.
+ * Compares the one structure to the other.
  *
+ * @param ptr The allocated structure
  * @param obj the structure to compare with.
  * @return true if the structures are the same; false otherwise.
  */
@@ -73,9 +76,10 @@ bool equalsL(Long *ptr, Long *obj) {
 }
 
 /**
- * Returns a String structure representing this Long's value.
+ * Returns a String structure representing the specified Long's value.
  *
- * @return a string representation of the value of this structure in base 10.
+ * @param ptr The allocated structure
+ * @return a string representation of the value of the specified structure in base 10.
  */
 String *toStringL(Long *ptr) {
     return Long_toString(ptr->v);

@@ -2,13 +2,13 @@
 #define	ARRAYLIST_INCLUDED
 
 #include "List.h"
-#include "String.h"
+#include "String_.h"
 #include <vector>
 #include <cstdint>
 #include <sstream>
 
 /**
- * Resizable-array implementation of the List interface.
+ * Resizable-array implementation of the List abstract class.
  *
  * @author Petr Kozler (A13B0359P)
  */
@@ -55,7 +55,7 @@ template <class E> ArrayList<E>::~ArrayList() {
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
- * @return true (as specified by Collection.add(E))
+ * @return true
  */
 template <class E> bool ArrayList<E>::add(E *e) {
     v.push_back(e);

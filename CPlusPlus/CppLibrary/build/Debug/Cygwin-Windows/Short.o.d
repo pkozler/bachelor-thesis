@@ -1,5 +1,5 @@
-build/Debug/Cygwin-Windows/Short.o: Short.cpp Short.h String.h
+build/Debug/Cygwin-Windows/Short.o: Short.cpp Short.h String_.h
 
 Short.h:
 
-String.h:
+String_.h:

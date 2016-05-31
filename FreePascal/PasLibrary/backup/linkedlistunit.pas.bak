@@ -19,7 +19,7 @@ type
   (**
    * Doubly-linked list implementation of the List and Deque interfaces.
    *
-   * @param E the type of elements in this list
+   * @param E the type of elements held in this collection
    * @author Petr Kozler (A13B0359P)
    *)
   LinkedList = class(List)

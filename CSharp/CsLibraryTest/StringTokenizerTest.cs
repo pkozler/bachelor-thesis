@@ -32,26 +32,32 @@ namespace JavaClasses
         {
             StringTokenizer a;
             String[] b;
+            bool c;
             // whitespaces inside the string
             a = new StringTokenizer("This is a test.");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
+            c = Arrays.equals(new String[] { "This", "is", "a", "test." }, b);
+            Assert.AreEqual(true, c);
             // whitespaces inside and outside the string
             a = new StringTokenizer(" This is   a test. ");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
+            c = Arrays.equals(new String[] { "This", "is", "a", "test." }, b);
+            Assert.AreEqual(true, c);
             // without whitespaces
             a = new StringTokenizer("This_is_a_test.");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This_is_a_test."}, b);
+            c = Arrays.equals(new String[] { "This_is_a_test." }, b);
+            Assert.AreEqual(true, c);
             // one character
             a = new StringTokenizer("_");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"_"}, b);
+            c = Arrays.equals(new String[] { "_" }, b);
+            Assert.AreEqual(true, c);
             // empty string
             a = new StringTokenizer("");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {}, b);
+            c = Arrays.equals(new String[] { }, b);
+            Assert.AreEqual(true, c);
         }
 
         /// <summary>
@@ -62,30 +68,37 @@ namespace JavaClasses
         {
             StringTokenizer a;
             String[] b;
+            bool c;
             // non-white delimiter (non-existent in string)
             a = new StringTokenizer("This is a test.", "_");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This is a test."}, b);
+            c = Arrays.equals(new String[] { "This is a test." }, b);
+            Assert.AreEqual(true, c);
             // non-white delimiter (inside the string)
             a = new StringTokenizer("This_is_a_test.", "_");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
+            c = Arrays.equals(new String[] { "This", "is", "a", "test." }, b);
+            Assert.AreEqual(true, c);
             // non-white delimiter (also the whitespaces inside the string)
             a = new StringTokenizer("This_is_ a _test.", "_");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This", "is", " a ", "test."}, b);
+            c = Arrays.equals(new String[] { "This", "is", " a ", "test." }, b);
+            Assert.AreEqual(true, c);
             // non-white delimiter (also the whitespaces inside and outside the string)
             a = new StringTokenizer("_This_is___a_test._", "_");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
+            c = Arrays.equals(new String[] { "This", "is", "a", "test." }, b);
+            Assert.AreEqual(true, c);
             // more delimiters (existing in the string)
             a = new StringTokenizer("This is_a test.", " _");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"This", "is", "a", "test."}, b);
+            c = Arrays.equals(new String[] { "This", "is", "a", "test." }, b);
+            Assert.AreEqual(true, c);
             // more delimiters (non-existent in the string)
             a = new StringTokenizer("Thisisatest.", " _");
             b = toStringArray(a);
-            Assert.AreEqual(new String[] {"Thisisatest."}, b);
+            c = Arrays.equals(new String[] { "Thisisatest." }, b);
+            Assert.AreEqual(true, c);
         }
 
         /// <summary>

@@ -46,6 +46,7 @@ type
    * @author Petr Kozler (A13B0359P)
    *)
   InputStream = class(Object_)
+    // no code yet
   end;
 
   (**

@@ -115,6 +115,7 @@ bool Arrays::compareObj(Object *a, Object *b) {
  * binary search algorithm
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -153,6 +154,7 @@ int32_t Arrays::binarySearch(int8_t *a, int32_t fromIndex, int32_t toIndex, int8
  * binary search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -191,6 +193,7 @@ int32_t Arrays::binarySearch(char *a, int32_t fromIndex, int32_t toIndex, char k
  * binary search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -229,6 +232,7 @@ int32_t Arrays::binarySearch(double *a, int32_t fromIndex, int32_t toIndex, doub
  * binary search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -267,6 +271,7 @@ int32_t Arrays::binarySearch(float *a, int32_t fromIndex, int32_t toIndex, float
  * binary search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -305,6 +310,7 @@ int32_t Arrays::binarySearch(int32_t *a, int32_t fromIndex, int32_t toIndex, int
  * binary search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -343,6 +349,7 @@ int32_t Arrays::binarySearch(int64_t *a, int32_t fromIndex, int32_t toIndex, int
  * search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -381,6 +388,7 @@ int32_t Arrays::binarySearch(Object **a, int32_t fromIndex, int32_t toIndex, Obj
  * binary search algorithm.
  *
  * @param a the array to be searched
+ * @param length The array length
  * @param key the value to be searched for
  * @return index of the search key, if it is contained in the array;
  * otherwise, (-(insertion point) - 1). The insertion point is defined as
@@ -419,6 +427,7 @@ int32_t Arrays::binarySearch(int16_t *a, int32_t fromIndex, int32_t toIndex, int
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with false
  * elements to obtain the specified length
@@ -432,6 +441,7 @@ bool *Arrays::copyOf(bool *original, int32_t length, int32_t newLength) {
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
@@ -445,6 +455,7 @@ int8_t *Arrays::copyOf(int8_t *original, int32_t length, int32_t newLength) {
  * (if necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with null
  * characters to obtain the specified length
@@ -458,6 +469,7 @@ char *Arrays::copyOf(char *original, int32_t length, int32_t newLength) {
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
@@ -471,6 +483,7 @@ double *Arrays::copyOf(double *original, int32_t length, int32_t newLength) {
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
@@ -484,6 +497,7 @@ float *Arrays::copyOf(float *original, int32_t length, int32_t newLength) {
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
@@ -497,6 +511,7 @@ int32_t *Arrays::copyOf(int32_t *original, int32_t length, int32_t newLength) {
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
@@ -510,6 +525,7 @@ int64_t *Arrays::copyOf(int64_t *original, int32_t length, int32_t newLength) {
  * necessary) so the copy has the specified length.
  *
  * @param original the array to be copied
+ * @param length The array length
  * @param newLength the length of the copy to be returned
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
@@ -522,6 +538,7 @@ int16_t *Arrays::copyOf(int16_t *original, int32_t length, int32_t newLength) {
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -537,6 +554,7 @@ bool *Arrays::copyOfRange(bool *original, int32_t length, int32_t from, int32_t 
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -551,6 +569,7 @@ int8_t *Arrays::copyOfRange(int8_t *original, int32_t length, int32_t from, int3
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -566,6 +585,7 @@ char *Arrays::copyOfRange(char *original, int32_t length, int32_t from, int32_t 
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -580,6 +600,7 @@ double *Arrays::copyOfRange(double *original, int32_t length, int32_t from, int3
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -594,6 +615,7 @@ float *Arrays::copyOfRange(float *original, int32_t length, int32_t from, int32_
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -608,6 +630,7 @@ int32_t *Arrays::copyOfRange(int32_t *original, int32_t length, int32_t from, in
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -622,6 +645,7 @@ int64_t *Arrays::copyOfRange(int64_t *original, int32_t length, int32_t from, in
  * Copies the specified range of the specified array into a new array.
  *
  * @param original the array from which a range is to be copied
+ * @param length The array length
  * @param from the initial index of the range to be copied, inclusive
  * @param to the final index of the range to be copied, exclusive. (This
  * index may lie outside the array.)
@@ -637,7 +661,9 @@ int16_t *Arrays::copyOfRange(int16_t *original, int32_t length, int32_t from, in
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(bool *a, int32_t length, bool *a2, int32_t length2) {
@@ -649,7 +675,9 @@ bool Arrays::equals(bool *a, int32_t length, bool *a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(int8_t *a, int32_t length, int8_t *a2, int32_t length2) {
@@ -661,7 +689,9 @@ bool Arrays::equals(int8_t *a, int32_t length, int8_t *a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(char *a, int32_t length, char *a2, int32_t length2) {
@@ -673,7 +703,9 @@ bool Arrays::equals(char *a, int32_t length, char *a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(double *a, int32_t length, double *a2, int32_t length2) {
@@ -685,7 +717,9 @@ bool Arrays::equals(double *a, int32_t length, double *a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(float *a, int32_t length, float *a2, int32_t length2) {
@@ -697,7 +731,9 @@ bool Arrays::equals(float *a, int32_t length, float *a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(int32_t *a, int32_t length, int32_t *a2, int32_t length2) {
@@ -709,7 +745,9 @@ bool Arrays::equals(int32_t *a, int32_t length, int32_t *a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(int64_t *a, int32_t length, int64_t *a2, int32_t length2) {
@@ -721,7 +759,9 @@ bool Arrays::equals(int64_t *a, int32_t length, int64_t *a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(Object **a, int32_t length, Object **a2, int32_t length2) {
@@ -733,7 +773,9 @@ bool Arrays::equals(Object **a, int32_t length, Object **a2, int32_t length2) {
  * another.
  *
  * @param a one array to be tested for equality
+ * @param length The array length
  * @param a2 the other array to be tested for equality
+ * @param length2 The other array length
  * @return true if the two arrays are equal
  */
 bool Arrays::equals(int16_t *a, int32_t length, int16_t *a2, int32_t length2) {
@@ -745,6 +787,7 @@ bool Arrays::equals(int16_t *a, int32_t length, int16_t *a2, int32_t length2) {
  * array of booleans.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(bool *a, int32_t length, bool val) {
@@ -771,6 +814,7 @@ void Arrays::fill(bool *a, int32_t fromIndex, int32_t toIndex, bool val) {
  * of bytes.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(int8_t *a, int32_t length, int8_t val) {
@@ -797,6 +841,7 @@ void Arrays::fill(int8_t *a, int32_t fromIndex, int32_t toIndex, int8_t val) {
  * of chars.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(char *a, int32_t length, char val) {
@@ -823,6 +868,7 @@ void Arrays::fill(char *a, int32_t fromIndex, int32_t toIndex, char val) {
  * of doubles.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(double *a, int32_t length, double val) {
@@ -849,6 +895,7 @@ void Arrays::fill(double *a, int32_t fromIndex, int32_t toIndex, double val) {
  * of floats.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(float *a, int32_t length, float val) {
@@ -875,6 +922,7 @@ void Arrays::fill(float *a, int32_t fromIndex, int32_t toIndex, float val) {
  * ints.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(int32_t *a, int32_t length, int32_t val) {
@@ -901,6 +949,7 @@ void Arrays::fill(int32_t *a, int32_t fromIndex, int32_t toIndex, int32_t val) {
  * of longs.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(int64_t *a, int32_t length, int64_t val) {
@@ -923,10 +972,11 @@ void Arrays::fill(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t val) {
 }
 
 /**
- * Assigns the specified Object reference to each element of the specified
+ * Assigns the specified Object pointer to each element of the specified
  * array of Objects.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(Object **a, int32_t length, Object *val) {
@@ -934,7 +984,7 @@ void Arrays::fill(Object **a, int32_t length, Object *val) {
 }
 
 /**
- * Assigns the specified Object reference to each element of the specified
+ * Assigns the specified Object pointer to each element of the specified
  * range of the specified array of Objects.
  *
  * @param a the array to be filled
@@ -953,6 +1003,7 @@ void Arrays::fill(Object **a, int32_t fromIndex, int32_t toIndex, Object *val) {
  * of shorts.
  *
  * @param a the array to be filled
+ * @param length The array length
  * @param val the value to be stored in all elements of the array
  */
 void Arrays::fill(int16_t *a, int32_t length, int16_t val) {
@@ -978,6 +1029,7 @@ void Arrays::fill(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t val) {
  * Sorts the specified array into ascending numerical order.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(int8_t *a, int32_t length) {
     sortGeneric(a, 0, length, compareB);
@@ -998,6 +1050,7 @@ void Arrays::sort(int8_t *a, int32_t fromIndex, int32_t toIndex) {
  * Sorts the specified array into ascending numerical order.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(char *a, int32_t length) {
     sortGeneric(a, 0, length, compareC);
@@ -1018,6 +1071,7 @@ void Arrays::sort(char *a, int32_t fromIndex, int32_t toIndex) {
  * Sorts the specified array into ascending numerical order.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(double *a, int32_t length) {
     sortGeneric(a, 0, length, compareD);
@@ -1038,6 +1092,7 @@ void Arrays::sort(double *a, int32_t fromIndex, int32_t toIndex) {
  * Sorts the specified array into ascending numerical order.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(float *a, int32_t length) {
     sortGeneric(a, 0, length, compareF);
@@ -1058,6 +1113,7 @@ void Arrays::sort(float *a, int32_t fromIndex, int32_t toIndex) {
  * Sorts the specified array into ascending numerical order.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(int32_t *a, int32_t length) {
     sortGeneric(a, 0, length, compareI);
@@ -1078,6 +1134,7 @@ void Arrays::sort(int32_t *a, int32_t fromIndex, int32_t toIndex) {
  * Sorts the specified array into ascending numerical order.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(int64_t *a, int32_t length) {
     sortGeneric(a, 0, length, compareL);
@@ -1099,6 +1156,7 @@ void Arrays::sort(int64_t *a, int32_t fromIndex, int32_t toIndex) {
  * the natural ordering of its elements.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(Object **a, int32_t length) {
     sortGeneric(a, 0, length, compareObj);
@@ -1120,6 +1178,7 @@ void Arrays::sort(Object **a, int32_t fromIndex, int32_t toIndex) {
  * Sorts the specified array into ascending numerical order.
  *
  * @param a the array to be sorted
+ * @param length The array length
  */
 void Arrays::sort(int16_t *a, int32_t length) {
     sortGeneric(a, 0, length, compareS);
@@ -1140,6 +1199,7 @@ void Arrays::sort(int16_t *a, int32_t fromIndex, int32_t toIndex) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(bool *a, int32_t length) {
@@ -1150,6 +1210,7 @@ String *Arrays::toString(bool *a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(int8_t *a, int32_t length) {
@@ -1160,6 +1221,7 @@ String *Arrays::toString(int8_t *a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(char *a, int32_t length) {
@@ -1170,6 +1232,7 @@ String *Arrays::toString(char *a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(double *a, int32_t length) {
@@ -1180,6 +1243,7 @@ String *Arrays::toString(double *a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(float *a, int32_t length) {
@@ -1190,6 +1254,7 @@ String *Arrays::toString(float *a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(int32_t *a, int32_t length) {
@@ -1200,6 +1265,7 @@ String *Arrays::toString(int32_t *a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(int64_t *a, int32_t length) {
@@ -1210,6 +1276,7 @@ String *Arrays::toString(int64_t *a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(Object **a, int32_t length) {
@@ -1220,6 +1287,7 @@ String *Arrays::toString(Object **a, int32_t length) {
  * Returns a string representation of the contents of the specified array.
  *
  * @param a the array whose string representation to return
+ * @param length The array length
  * @return a string representation of a
  */
 String *Arrays::toString(int16_t *a, int32_t length) {

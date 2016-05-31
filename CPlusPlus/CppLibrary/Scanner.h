@@ -2,7 +2,7 @@
 #define	SCANNER_INCLUDED
 
 #include "System.h"
-#include "String.h"
+#include "String_.h"
 #include <cstdint>
 
 /**
@@ -11,6 +11,12 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Scanner : public Object {
+    std::string line;
+    String *readLine();
+    bool isEmptyOrWhiteSpace(std::string line);
+    std::string trimStart(std::string line);
+    std::string removeLineToWhiteSpace();
+    String *getNextToken();
 public:
     Scanner(InputStream *source);
     String *next();

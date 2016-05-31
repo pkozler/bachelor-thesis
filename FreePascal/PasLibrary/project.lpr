@@ -27,16 +27,14 @@ uses
   TestObjectComparatorUnit;
 
 var
-  s1 : String_;
-  o1 : Object_;
+  s : String_;
   sc : Scanner;
 begin
-  s1 := 'zeroth';
-  o1 := Object_.create();
-
-  System_.out_.println(s1);
-  System_.out_.println(o1);
-
   sc := Scanner.create(System_.in_);
-  sc.nextLine();
+  s := sc.next();
+  System_.out_.println(s);
+  s := sc.nextLine();
+  System_.out_.println(s);
+
+  ReadLn();
 end.

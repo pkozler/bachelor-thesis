@@ -1,6 +1,6 @@
 build/Debug/Cygwin-Windows/TestObject.o: TestObject.cpp TestObject.h \
- String.h
+ String_.h
 
 TestObject.h:
 
-String.h:
+String_.h:

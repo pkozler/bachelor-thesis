@@ -18,6 +18,7 @@ namespace JavaClasses
         /// A constant holding the minimum value a byte can have, -2^7.
         public const sbyte MIN_VALUE = -128;
 
+        // an inner value
         private sbyte v;
 
         /// <summary>

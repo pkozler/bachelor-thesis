@@ -16,13 +16,13 @@ namespace JavaClasses
             float b;
             a = new Float(Float.MIN_VALUE);
             b = a.floatValue();
-            Assert.AreEqual(1.4E-45, b);
+            Assert.AreEqual((float)1.4E-45, b);
             a = new Float((float)0);
             b = a.floatValue();
-            Assert.AreEqual(0.0, b);
+            Assert.AreEqual((float)0.0, b);
             a = new Float(Float.MAX_VALUE);
             b = a.floatValue();
-            Assert.AreEqual(3.4028235E38, b);
+            Assert.AreEqual((float)3.4028235E38, b);
         }
 
         /// <summary>
@@ -173,11 +173,11 @@ namespace JavaClasses
         {
             float a;
             a = Float.parseFloat("0.1");
-            Assert.AreEqual(0.1, a);
+            Assert.AreEqual((float)0.1, a);
             a = Float.parseFloat("0");
-            Assert.AreEqual(0.0, a);
+            Assert.AreEqual((float)0.0, a);
             a = Float.parseFloat("-0.1");
-            Assert.AreEqual(-0.1, a);
+            Assert.AreEqual((float)-0.1, a);
         }
 
     }

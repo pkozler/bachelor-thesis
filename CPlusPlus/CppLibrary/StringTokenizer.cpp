@@ -1,7 +1,6 @@
 #include "StringTokenizer.h"
 
 #include <iostream>
-#include <cstring>
 
 /**
  * Constructs a string tokenizer for the specified string.
@@ -30,7 +29,7 @@ StringTokenizer::~StringTokenizer() {
 
 /**
  * Calculates the number of times that this tokenizer's nextToken method can
- * be called before it generates an exception.
+ * be called before it results in undefined behavior.
  *
  * @return the number of tokens remaining in the string using the current
  * delimiter set.

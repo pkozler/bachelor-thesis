@@ -19,7 +19,7 @@ type
   end;
 
   (**
-   * This interface imposes a total ordering on the objects of each class that implements it.
+   * This abstract class imposes a total ordering on the objects of each class that implements it.
    *)
   Comparable = class(Object_)
     public
@@ -122,7 +122,7 @@ end;
 
 (**
  * Constructs a new String by decoding the specified array of bytes using
- * the platform's default charset.
+ * the ANSI charset.
  *
  * @param bytes The bytes to be decoded into characters
  *)
@@ -133,7 +133,7 @@ end;
 
 (**
  * Constructs a new String by decoding the specified subarray of bytes using
- * the platform's default charset.
+ * the ANSI charset.
  *
  * @param bytes The bytes to be decoded into characters
  * @param offset The index of the first byte to decode
@@ -146,10 +146,8 @@ end;
 
 (**
  * Initializes a newly created String object so that it represents the same
- * sequence of characters as the argument; in other words, the newly created
- * string is a copy of the argument string. Unless an explicit copy of
- * original is needed, use of this constructor is unnecessary since Strings
- * are immutable.
+ * sequence of characters as the argument; in other words, the inner string of the
+ * newly created String object is a copy of the argument string.
  *
  * @param original A String
  *)

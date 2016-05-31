@@ -24,6 +24,7 @@ void PrintStream::print(char c) {
  * Prints an array of characters.
  *
  * @param s The array of chars to be printed
+ * @param length The array length
  */
 void PrintStream::print(char* s, int32_t length) {
     for (int i = 0; i < length; i++) {
@@ -116,6 +117,7 @@ void PrintStream::println(char x) {
  * Prints an array of characters and then terminate the line.
  *
  * @param x an array of chars to print.
+ * @param length The array length
  */
 void PrintStream::println(char* x, int32_t length) {
     for (int i = 0; i < length; i++) {

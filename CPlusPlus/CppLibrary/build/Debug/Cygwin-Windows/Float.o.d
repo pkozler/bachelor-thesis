@@ -1,5 +1,5 @@
-build/Debug/Cygwin-Windows/Float.o: Float.cpp Float.h String.h
+build/Debug/Cygwin-Windows/Float.o: Float.cpp Float.h String_.h
 
 Float.h:
 
-String.h:
+String_.h:
