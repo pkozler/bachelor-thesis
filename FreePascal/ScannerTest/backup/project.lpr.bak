@@ -32,7 +32,7 @@ begin
   testMethods[7] := @(testClass.nextFloatTest);
   testMethods[8] := @(testClass.nextDoubleTest);
 
-  if paramcount < 2 then begin
+  if paramcount < 1 then begin
     usage();
   end;
 

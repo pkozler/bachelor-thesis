@@ -72,7 +72,7 @@ begin
     d := Arrays.equals(b, c);
     AssertEquals(true, d);
     // without whitespaces
-    a := StringTokenizer.create('This_is_a_test.');
+    a := StringTokenizer.create('This_is_a_test');
     b := toStringArray(a);
     setLength(c, 1);
     c[0] := String_.create('This_is_a_test.');
@@ -224,13 +224,13 @@ begin
     // a test ansiString
     a := StringTokenizer.create('This is a test.');
     b := a.nextToken();
-    AssertEquals('This', b);
+    AssertEquals('This', b.strProperty);
     b := a.nextToken();
-    AssertEquals('is', b);
+    AssertEquals('is', b.strProperty);
     b := a.nextToken();
-    AssertEquals('a', b);
+    AssertEquals('a', b.strProperty);
     b := a.nextToken();
-    AssertEquals('test.', b);
+    AssertEquals('test.', b.strProperty);
 end;
 
 initialization

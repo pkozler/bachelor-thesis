@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef STRINGTOKENIZER_INCLUDED&#13;
+#define	STRINGTOKENIZER_INCLUDED&#13;
+&#13;
+#include "String.h"&#13;
+#include &lt;stdbool.h&gt;&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * The string tokenizer module allows an application to break a string into tokens.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+typedef struct {&#13;
+    char *str;&#13;
+    char *delim;&#13;
+    bool first;&#13;
+} StringTokenizer;&#13;
+&#13;
+StringTokenizer *new_StringTokenizer(String *str);&#13;
+StringTokenizer *new_StringTokenizerDelim(String *str, String *delim);&#13;
+void delete_StringTokenizer(StringTokenizer *ptr);&#13;
+int32_t countTokens(StringTokenizer *ptr);&#13;
+bool hasMoreTokens(StringTokenizer *ptr);&#13;
+String *nextToken(StringTokenizer *ptr);&#13;
+&#13;
+#endif	/* STRINGTOKENIZER_INCLUDED */&#13;
+&#13;
+&#13;
+#include "StringTokenizer.h"&#13;
+&#13;
+#include &lt;stdlib.h&gt;&#13;
+#include &lt;string.h&gt;&#13;
+&#13;
+/**&#13;
+ * Constructs a string tokenizer for the specified string.&#13;
+ *&#13;
+ * @param str a string to be parsed.&#13;
+ */&#13;
+StringTokenizer *new_StringTokenizer(String *str) {&#13;
+    return new_StringTokenizerDelim(str, new_String(" \t\n\r\f"));&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Constructs a string tokenizer for the specified string.&#13;
+ *&#13;
+ * @param str a string to be parsed.&#13;
+ * @param delim the delimiters.&#13;
+ */&#13;
+StringTokenizer *new_StringTokenizerDelim(String *str, String *delim) {&#13;
+    StringTokenizer *strTok = malloc(sizeof(StringTokenizer));&#13;
+    strTok-&gt;str = strdup(str-&gt;s);&#13;
+    strTok-&gt;delim = strdup(delim-&gt;s);&#13;
+    strTok-&gt;first = true;&#13;
+&#13;
+    return strTok;&#13;
+}&#13;
+&#13;
+void delete_StringTokenizer(StringTokenizer *ptr) {&#13;
+    free(ptr);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Calculates the number of times that the specified tokenizer's nextToken function can&#13;
+ * be called before it results in undefined behavior.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @return the number of tokens remaining in the string using the current&#13;
+ * delimiter set.&#13;
+ */&#13;
+int32_t countTokens(StringTokenizer *ptr) {&#13;
+    int32_t n = 0;&#13;
+    char *s = strdup(ptr-&gt;str);&#13;
+&#13;
+    while((s = strpbrk(s, ptr-&gt;delim)) != NULL) {&#13;
+        n++;&#13;
+        s++;&#13;
+    }&#13;
+&#13;
+    return n;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Tests if there are more tokens available from the specified tokenizer's string.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @return true if and only if there is at least one token in the string&#13;
+ * after the current position; false otherwise.&#13;
+ */&#13;
+bool hasMoreTokens(StringTokenizer *ptr) {&#13;
+    return (countTokens(ptr) &gt; 0);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the next token from the specified string tokenizer.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @return the next token from the specified string tokenizer.&#13;
+ */&#13;
+String *nextToken(StringTokenizer *ptr) {&#13;
+    if (ptr-&gt;first) {&#13;
+        ptr-&gt;first = false;&#13;
+        return new_String(strtok(ptr-&gt;str, ptr-&gt;delim));&#13;
+    }&#13;
+&#13;
+    return new_String(strtok(0, ptr-&gt;delim));&#13;
+}&#13;
+</code>
+<code lang="C++">#ifndef STRINGTOKENIZER_INCLUDED&#13;
+#define	STRINGTOKENIZER_INCLUDED&#13;
+&#13;
+#include "String_.h"&#13;
+#include &lt;cstdint&gt;&#13;
+&#13;
+/**&#13;
+ * The string tokenizer class allows an application to break a string into tokens.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+class StringTokenizer : public Object {&#13;
+    std::string str;&#13;
+    std::string delim;&#13;
+public:&#13;
+    StringTokenizer(String *str);&#13;
+    StringTokenizer(String *str, String *delim);&#13;
+    ~StringTokenizer();&#13;
+    int32_t countTokens();&#13;
+    bool hasMoreTokens();&#13;
+    String *nextToken();&#13;
+};&#13;
+&#13;
+#endif	// STRINGTOKENIZER_INCLUDED&#13;
+&#13;
+&#13;
+&#13;
+#include "StringTokenizer.h"&#13;
+&#13;
+#include &lt;iostream&gt;&#13;
+&#13;
+/**&#13;
+ * Constructs a string tokenizer for the specified string.&#13;
+ *&#13;
+ * @param str a string to be parsed.&#13;
+ */&#13;
+StringTokenizer::StringTokenizer(String *str) {&#13;
+    this-&gt;str = str-&gt;_s();&#13;
+    this-&gt;delim = " \t\n\r\f";&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Constructs a string tokenizer for the specified string.&#13;
+ *&#13;
+ * @param str a string to be parsed.&#13;
+ * @param delim the delimiters.&#13;
+ */&#13;
+StringTokenizer::StringTokenizer(String *str, String *delim) {&#13;
+    this-&gt;str = str-&gt;_s();&#13;
+    this-&gt;delim = delim-&gt;_s();&#13;
+}&#13;
+&#13;
+StringTokenizer::~StringTokenizer() {&#13;
+    // really no code&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Calculates the number of times that this tokenizer's nextToken method can&#13;
+ * be called before it results in undefined behavior.&#13;
+ *&#13;
+ * @return the number of tokens remaining in the string using the current&#13;
+ * delimiter set.&#13;
+ */&#13;
+int32_t StringTokenizer::countTokens() {&#13;
+    int32_t count = 0;&#13;
+    int32_t pos = 0;&#13;
+&#13;
+    while (pos != std::string::npos) {&#13;
+        pos += this-&gt;str.find_first_of(delim, pos) + 1;&#13;
+        count++;&#13;
+    }&#13;
+&#13;
+    return count;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Tests if there are more tokens available from this tokenizer's string.&#13;
+ *&#13;
+ * @return true if and only if there is at least one token in the string&#13;
+ * after the current position; false otherwise.&#13;
+ */&#13;
+bool StringTokenizer::hasMoreTokens() {&#13;
+    return (countTokens() &gt; 0);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the next token from this string tokenizer.&#13;
+ *&#13;
+ * @return the next token from this string tokenizer.&#13;
+ */&#13;
+String *StringTokenizer::nextToken() {&#13;
+    int32_t pos = this-&gt;str.find_first_of(delim);&#13;
+    std::string s = this-&gt;str.substr(0, pos);&#13;
+    this-&gt;str.erase(0, pos);&#13;
+&#13;
+    return new String(s);&#13;
+}&#13;
+</code>
+<code lang="C#">﻿using System;&#13;
+&#13;
+namespace JavaClasses&#13;
+{&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// The string tokenizer class allows an application to break a string into tokens.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class StringTokenizer : Object&#13;
+    {&#13;
+&#13;
+        // current string array containing tokens&#13;
+        private string[] tokens;&#13;
+        // current position in the array&#13;
+        private int tokenCounter = 0;&#13;
+&#13;
+        /*&#13;
+            Performs the string splitting.&#13;
+         */&#13;
+        private void initialize(string str, string delim = " \t\n\r\f")&#13;
+        {&#13;
+            // splitting the string to the array by the specified set of delimiters&#13;
+            tokens = str.Split(delim.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Constructs a string tokenizer for the specified string.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="str"&gt;a string to be parsed.&#13;
+        /// &lt;/param&gt;&#13;
+        public StringTokenizer(String str)&#13;
+        {&#13;
+            initialize(str.ToString());&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Constructs a string tokenizer for the specified string.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="str"&gt;a string to be parsed.&#13;
+        /// &lt;/param&gt;&lt;param name="delim"&gt;the delimiters.&#13;
+        /// &lt;/param&gt;&#13;
+        public StringTokenizer(String str, String delim)&#13;
+        {&#13;
+            initialize(str.ToString(), delim.ToString());&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Calculates the number of times that this tokenizer's nextToken method can&#13;
+        /// be called before it generates an exception.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;the number of tokens remaining in the string using the current&#13;
+        /// delimiter set.&#13;
+        /// &lt;/returns&gt;&#13;
+        public int countTokens()&#13;
+        {&#13;
+            return tokens.Length - tokenCounter;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Tests if there are more tokens available from this tokenizer's string.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;true if and only if there is at least one token in the string&#13;
+        /// after the current position; false otherwise.&#13;
+        /// &lt;/returns&gt;&#13;
+        public bool hasMoreTokens()&#13;
+        {&#13;
+            return countTokens() &gt; 0;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns the next token from this string tokenizer.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;the next token from this string tokenizer.&#13;
+        /// &lt;/returns&gt;&#13;
+        public String nextToken()&#13;
+        {&#13;
+            return tokens[tokenCounter++];&#13;
+        }&#13;
+&#13;
+    }&#13;
+&#13;
+}&#13;
+</code>
+<code lang="Free Pascal">unit StringTokenizerUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, StrUtils, StringUnit;
+
+type
+  (**
+   * The string tokenizer class allows an application to break a string into tokens.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  StringTokenizer = class(Object_)
+    private
+      var
+        tokens: array of ansiString;
+        tokenCounter: longInt;
+    public
+      constructor create(str: String_);
+      constructor create(str: String_; delim: String_);
+      function countTokens() : longInt;
+      function hasMoreTokens() : boolean;
+      function nextToken() : String_;
+  end;
+
+implementation
+
+uses
+  SysUtils;
+
+(**
+ * Constructs a string tokenizer for the specified string.
+ *
+ * @param str a string to be parsed.
+ *)
+constructor StringTokenizer.create(str: String_);
+begin
+  self.create(str, ' \t\n\r\f');
+end;
+
+(**
+ * Constructs a string tokenizer for the specified string.
+ *
+ * @param str a string to be parsed.
+ * @param delim the delimiters.
+ *)
+constructor StringTokenizer.create(str: String_; delim: String_);
+var
+  strStr, delimStr: ansiString;
+  count, len, i, tmp, index: longInt;
+begin
+  tokenCounter := 0;
+  count := 1;
+  strStr := str.toString();
+  delimStr := delim.toString();
+  len := length(strStr);
+
+  for i := 1 to len do begin
+    if ansiContainsStr(delimStr, strStr[i]) then begin
+      inc(count);
+    end;
+  end;
+
+  setLength(tokens, count);
+  index := 0;
+  tmp := 1;
+
+  for i := 1 to len do begin
+    if ansiContainsStr(delimStr, strStr[i]) then begin
+       tokens[index] := copy(strStr, tmp, i - tmp);
+       tmp := i;
+       inc(index);
+    end;
+  end;
+
+  tokens[index] := copy(strStr, tmp, i - tmp);
+end;
+
+(**
+ * Calculates the number of times that this tokenizer's nextToken method can
+ * be called before it causes an error.
+ *
+ * @return the number of tokens remaining in the string using the current
+ * delimiter set.
+ *)
+function StringTokenizer.countTokens() : longInt;
+begin
+  countTokens := length(tokens);
+end;
+
+(**
+ * Tests if there are more tokens available from this tokenizer's string.
+ *
+ * @return true if and only if there is at least one token in the string
+ * after the current position; false otherwise.
+ *)
+function StringTokenizer.hasMoreTokens() : boolean;
+begin
+  hasMoreTokens := (countTokens() &lt;&gt; 0);
+end;
+
+(**
+ * Returns the next token from this string tokenizer.
+ *
+ * @return the next token from this string tokenizer.
+ *)
+function StringTokenizer.nextToken() : String_;
+var
+  i: longInt;
+begin
+  i := tokenCounter;
+  inc(tokenCounter);
+  nextToken := tokens[i];
+end;
+
+end.
+
+</code>
+
+</codes>

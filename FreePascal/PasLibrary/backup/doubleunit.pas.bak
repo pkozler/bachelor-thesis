@@ -185,7 +185,7 @@ begin
     exit(false);
   end;
 
-  v2 := Double_(obj).v;
+  v2 := (obj as Double_).v;
 
   if isNan(v) and isNan(v2) then begin
     exit(true);
@@ -203,7 +203,7 @@ begin
     exit(vBits.bits = negativeZeroBits);
   end;
 
-  equals_ := (v = v2);
+  equals_ := v = v2;
 end;
 
 (**
@@ -223,8 +223,11 @@ end;
  * @return a string representation of the argument.
  *)
 class function Double_.toString_(d: double) : String_;
+var
+  fs: TFormatSettings;
 begin
-  toString_ := String_.create(FloatToStr(d));
+  fs.DecimalSeparator := '.';
+  toString_ := String_.create(FloatToStr(d, fs));
 end;
 
 (**
@@ -235,8 +238,11 @@ end;
  * @return the double value represented by the string argument.
  *)
 class function Double_.parseDouble(s: String_) : double;
+var
+  fs: TFormatSettings;
 begin
-  parseDouble := strToFloat(s.toString());
+  fs.DecimalSeparator := '.';
+  parseDouble := strToFloat(s.toString(), fs);
 end;
 
 operator := (original: double) s: Double_;

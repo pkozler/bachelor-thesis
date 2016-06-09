@@ -198,17 +198,17 @@ end;
  *)
 procedure DoubleTest.parseDoubleTest;
 var
-    b: double;
+    a: double;
 begin
     // positive value parsing
-    a := Double_.parseDouble('0.0000000000000000000000000000000000000000000001');
-    AssertEquals(1.0E-46, b);
+    a := Double_.parseDouble('1.0000000000000000000000000000000000000000000001');
+    AssertEquals(1.0E-46, a);
     // zero value parsing
     a := Double_.parseDouble('0');
-    AssertEquals(0.0, b);
+    AssertEquals(0.0, a);
     // negative value parsing
     a := Double_.parseDouble('-0.0000000000000000000000000000000000000000000001');
-    AssertEquals(-1.0E-46, b);
+    AssertEquals(-1.0E-46, a);
 end;
 
 initialization

@@ -186,14 +186,14 @@ end;
  *)
 procedure FloatTest.parseFloatTest;
 var
-    b: single;
+    a: single;
 begin
-    a := Float.parseFloat('0.1');
-    AssertEquals(0.1, b);
+    a := Float.parseFloat('1.1');
+    AssertEquals(0.1, a);
     a := Float.parseFloat('0');
-    AssertEquals(0.0, b);
+    AssertEquals(0.0, a);
     a := Float.parseFloat('-0.1');
-    AssertEquals(-0.1, b);
+    AssertEquals(-0.1, a);
 end;
 
 initialization

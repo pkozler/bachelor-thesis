@@ -212,7 +212,7 @@ function String_.substring(beginIndex: longInt; endIndex: longInt) : String_;
 var
   s: String_;
 begin
-  s.create(copy(str, beginIndex + 1, endIndex - beginIndex));
+  s := String_.create(copy(str, beginIndex + 1, endIndex - beginIndex));
   substring := s;
 end;
 
@@ -243,9 +243,16 @@ end;
 function String_.indexOf(ch: longInt; fromIndex: longInt) : longInt;
 var
   substr: ansiString;
+  i: longInt;
 begin
   substr := copy(str, fromIndex + 1, System.length(str) - fromIndex);
-  indexOf := pos(ansiChar(ch), substr);
+  i := pos(ansiChar(ch), substr) - 1;
+
+  if i < 0 then begin
+    exit(-1);
+  end;
+
+  indexOf := i + fromIndex;
 end;
 
 (**
@@ -273,9 +280,16 @@ end;
 function String_.indexOf(s: String_; fromIndex: longInt) : longInt;
 var
   substr: ansiString;
+  i: longInt;
 begin
   substr := copy(str, fromIndex + 1, System.length(str) - fromIndex + 1);
-  indexOf := pos(s.str, substr);
+  i := pos(s.str, substr) - 1;
+
+  if i < 0 then begin
+    exit(-1);
+  end;
+
+  indexOf := i + fromIndex;
 end;
 
 (**
@@ -300,7 +314,7 @@ function String_.trim() : String_;
 var
   s: String_;
 begin
-  s.create(SysUtils.trim(str));
+  s := String_.create(SysUtils.trim(str));
   trim := s;
 end;
 
@@ -314,7 +328,7 @@ function String_.toLowerCase() : String_;
 var
   s: String_;
 begin
-  s.create(lowerCase(str));
+  s := String_.create(lowerCase(str));
   toLowerCase := s;
 end;
 
@@ -341,7 +355,7 @@ end;
  *)
 function String_.charAt(index: longInt) : ansiChar;
 begin
-  charAt := str[index];
+  charAt := str[index + 1];
 end;
 
 (**

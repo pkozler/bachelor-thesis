@@ -188,17 +188,23 @@ begin
   newNode := LinkedListNode.create();
   newNode.value := element;
 
-  if index < 1 then begin
+  if count < 1 then begin
     addFirst(newNode);
   end
   else begin
     node := first;
 
-    for i := 0 to index - 1 do begin
-      node := node.next;
-    end;
+    if index < 1 then begin
+      addBefore(node, newNode);
+    end
+    else begin
 
-    addBefore(node, newNode);
+      for i := 1 to index - 1 do begin
+        node := node.next;
+      end;
+
+      addAfter(node, newNode);
+    end;
   end;
 
   inc(count);
@@ -322,32 +328,45 @@ var
   node: LinkedListNode;
 begin
   sb := StringBuilder.create();
-  str := '[';
+  str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
   node := first;
 
   if first <> nil then begin
-    str := node.value.toString();
+    if node.value = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := node.value.toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
     node := node.next;
   end;
 
   while node <> nil do begin
-    str := ', ';
+    str := String_.create(', ');
     sb.append(str);
     freeAndNil(str);
-    str := node.value.toString();
+
+    if node.value = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := node.value.toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
     node := node.next;
   end;
 
-  str := ']';
+  str := String_.create(']');
   sb.append(str);
   freeAndNil(str);
-  str := sb.toString();
+  str := sb.toString_();
   freeAndNil(sb);
   toString_ := str;
 end;

@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef SYSTEM_INCLUDED&#13;
+#define	SYSTEM_INCLUDED&#13;
+&#13;
+#include "String.h"&#13;
+#include &lt;stddef.h&gt;&#13;
+#include &lt;stdbool.h&gt;&#13;
+#include &lt;stdio.h&gt;&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * The System module contains several useful global variables and functions.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+/**&#13;
+ * A struct representing PrintStream which provides ability to print&#13;
+ * representations of various data values conveniently.&#13;
+ * Currently serves only as a fake structure for the purpose&#13;
+ * of the Java code imitation.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+typedef struct {&#13;
+    void *dummy; // dummy variable for the struct to have at least one member&#13;
+} PrintStream;&#13;
+&#13;
+/**&#13;
+ * This struct represents an input stream of bytes.&#13;
+ * Currently serves only as a fake structure for the purpose&#13;
+ * of the Java code imitation.&#13;
+ * &#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+typedef struct {&#13;
+    void *dummy; // dummy variable for the struct to have at least one member&#13;
+} InputStream;&#13;
+&#13;
+void printBool(PrintStream *ptr, bool b);&#13;
+void printC(PrintStream *ptr, char c);&#13;
+void printS(PrintStream *ptr, char *s, int32_t length);&#13;
+void printD(PrintStream *ptr, double d);&#13;
+void printF(PrintStream *ptr, float f);&#13;
+void printI(PrintStream *ptr, int32_t i);&#13;
+void printL(PrintStream *ptr, int64_t l);&#13;
+void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *));&#13;
+void printStr(PrintStream *ptr, String *s);&#13;
+void println(PrintStream *ptr);&#13;
+void printlnBool(PrintStream *ptr, bool x);&#13;
+void printlnC(PrintStream *ptr, char x);&#13;
+void printlnS(PrintStream *ptr, char *x, int32_t length);&#13;
+void printlnD(PrintStream *ptr, double x);&#13;
+void printlnF(PrintStream *ptr, float x);&#13;
+void printlnI(PrintStream *ptr, int32_t x);&#13;
+void printlnL(PrintStream *ptr, int64_t x);&#13;
+void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *));&#13;
+void printlnStr(PrintStream *ptr, String *x);&#13;
+&#13;
+/**&#13;
+ * The struct instance representing the fake "standard" input stream&#13;
+ * (for purpose of the imitation of Java code).&#13;
+ */&#13;
+InputStream *System_in;&#13;
+&#13;
+/**&#13;
+ * The struct instance representing the fake "standard" output stream&#13;
+ * (for purpose of the imitation of Java code).&#13;
+ */&#13;
+PrintStream *System_out;&#13;
+&#13;
+void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *));&#13;
+&#13;
+#endif	/* SYSTEM_INCLUDED */&#13;
+&#13;
+&#13;
+#include &lt;stdlib.h&gt;&#13;
+#include &lt;wchar.h&gt;&#13;
+&#13;
+#include "System.h"&#13;
+&#13;
+void _merge(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *)) {&#13;
+    int32_t middleIndex = (left + right) / 2;&#13;
+    int32_t leftIndex = left;&#13;
+    int32_t rightIndex = middleIndex + 1;&#13;
+    int32_t auxIndex = left;&#13;
+&#13;
+    while (leftIndex &lt;= middleIndex &amp;&amp; rightIndex &lt;= right) {&#13;
+        if (compare((void *) array[leftIndex], (void *) array[rightIndex]) &lt;= 0) {&#13;
+            aux[auxIndex] = array[leftIndex++];&#13;
+        } else {&#13;
+            aux[auxIndex] = array[rightIndex++];&#13;
+        }&#13;
+&#13;
+        auxIndex++;&#13;
+    }&#13;
+&#13;
+    while (leftIndex &lt;= middleIndex) {&#13;
+        aux[auxIndex] = array[leftIndex++];&#13;
+        auxIndex++;&#13;
+    }&#13;
+&#13;
+    while (rightIndex &lt;= right) {&#13;
+        aux[auxIndex] = array[rightIndex++];&#13;
+        auxIndex++;&#13;
+    }&#13;
+}&#13;
+&#13;
+void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *)) {&#13;
+    if (left == right) {&#13;
+        return;&#13;
+    }&#13;
+&#13;
+    int32_t middleIndex = (left + right) / 2;&#13;
+&#13;
+    _mergeSort(array, aux, left, middleIndex, compare);&#13;
+    _mergeSort(array, aux, middleIndex + 1, right, compare);&#13;
+    _merge(array, aux, left, right, compare);&#13;
+&#13;
+    int32_t i;&#13;
+    for (i = left; i &lt;= right; i++) {&#13;
+        array[i] = aux[i];&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a boolean value.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param b The boolean to be printed&#13;
+ */&#13;
+void printBool(PrintStream *ptr, bool b) {&#13;
+    printf("%s", b ? "true" : "false");&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a character.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param c The char to be printed&#13;
+ */&#13;
+void printC(PrintStream *ptr, char c) {&#13;
+    printf("%c", c);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an array of characters.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param s The array of chars to be printed&#13;
+ * @param length The array length&#13;
+ */&#13;
+void printS(PrintStream *ptr, char *s, int32_t length) {&#13;
+    int i;&#13;
+    for (i = 0; i &lt; length; i++) {&#13;
+        printf("%c", s[i]);&#13;
+    }&#13;
+&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a double-precision floating-point number.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param d The double to be printed&#13;
+ */&#13;
+void printD(PrintStream *ptr, double d) {&#13;
+    printf("%lG", d);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a floating-point number.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param f The float to be printed&#13;
+ */&#13;
+void printF(PrintStream *ptr, float f) {&#13;
+    printf("%G", f);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an integer.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param i The int to be printed&#13;
+ */&#13;
+void printI(PrintStream *ptr, int32_t i) {&#13;
+    printf("%d", i);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a long integer.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param l The long to be printed&#13;
+ */&#13;
+void printL(PrintStream *ptr, int64_t l) {&#13;
+    printf("%lld", l);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a structure.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param obj The structure to be printed&#13;
+ * @param toString The structure toString function&#13;
+ */&#13;
+void printObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {&#13;
+    String *s = toString(obj);&#13;
+    printf("%s", s-&gt;s);&#13;
+    delete_String(s);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a string.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param s The String to be printed&#13;
+ */&#13;
+void printStr(PrintStream *ptr, String *s) {&#13;
+    printf("%s", s-&gt;s);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Terminates the current line by writing the line separator string.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ */&#13;
+void println(PrintStream *ptr) {&#13;
+    printf("\n");&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a boolean and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The boolean to be printed&#13;
+ */&#13;
+void printlnBool(PrintStream *ptr, bool x) {&#13;
+    printf("%s\n", x ? "true" : "false");&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a character and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The char to be printed.&#13;
+ */&#13;
+void printlnC(PrintStream *ptr, char x) {&#13;
+    printf("%c\n", x);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an array of characters and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x an array of chars to print.&#13;
+ * @param length The array length&#13;
+ */&#13;
+void printlnS(PrintStream *ptr, char *x, int32_t length) {&#13;
+    int i;&#13;
+    for (i = 0; i &lt; length; i++) {&#13;
+        printf("%c", x[i]);&#13;
+    }&#13;
+&#13;
+    printf("\n");&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a double and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The double to be printed.&#13;
+ */&#13;
+void printlnD(PrintStream *ptr, double x) {&#13;
+    printf("%lG\n", x);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a float and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The float to be printed.&#13;
+ */&#13;
+void printlnF(PrintStream *ptr, float x) {&#13;
+    printf("%G\n", x);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an integer and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The int to be printed.&#13;
+ */&#13;
+void printlnI(PrintStream *ptr, int32_t x) {&#13;
+    printf("%d\n", x);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a long and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The long to be printed.&#13;
+ */&#13;
+void printlnL(PrintStream *ptr, int64_t x) {&#13;
+    printf("%lld\n", x);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a structure and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The structure to be printed.&#13;
+ * @param toString The structure toString function&#13;
+ */&#13;
+void printlnObj(PrintStream *ptr, void *obj, String *(*toString)(void *)) {&#13;
+    String *s = toString(obj);&#13;
+    printf("%s\n", s-&gt;s);&#13;
+    delete_String(s);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a String and then terminate the line.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param x The String to be printed.&#13;
+ */&#13;
+void printlnStr(PrintStream *ptr, String *x) {&#13;
+    printf("%s\n", x-&gt;s);&#13;
+    fflush(stdout);&#13;
+}&#13;
+&#13;
+InputStream sysIn;&#13;
+InputStream *System_in = &amp;sysIn;&#13;
+PrintStream sysOut;&#13;
+PrintStream *System_out = &amp;sysOut;</code>
+<code lang="C++">#ifndef SYSTEM_INCLUDED&#13;
+#define	SYSTEM_INCLUDED&#13;
+&#13;
+#include "String_.h"&#13;
+#include &lt;cstdint&gt;&#13;
+&#13;
+/**&#13;
+ * A PrintStream adds functionality to another output stream,&#13;
+ * namely the ability to print representations of various data values conveniently.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+class PrintStream : public Object {&#13;
+public:&#13;
+    void print(bool b);&#13;
+    void print(char c);&#13;
+    void print(char* s, int32_t length);&#13;
+    void print(double d);&#13;
+    void print(float f);&#13;
+    void print(int32_t i);&#13;
+    void print(int64_t l);&#13;
+    void print(Object *obj);&#13;
+    void print(String *s);&#13;
+    void println();&#13;
+    void println(bool x);&#13;
+    void println(char x);&#13;
+    void println(char* x, int32_t length);&#13;
+    void println(double x);&#13;
+    void println(float x);&#13;
+    void println(int32_t x);&#13;
+    void println(int64_t x);&#13;
+    void println(Object *obj);&#13;
+    void println(String *x);&#13;
+};&#13;
+&#13;
+/**&#13;
+ * This abstract class is the superclass of all classes&#13;
+ * representing an input stream of bytes.&#13;
+ * &#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+class InputStream : public Object {&#13;
+    // really no code&#13;
+};&#13;
+&#13;
+/**&#13;
+ * The System class contains several useful class fields and methods.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+class System {&#13;
+public:&#13;
+    /**&#13;
+     * The "standard" input stream.&#13;
+     */&#13;
+    static InputStream *in;&#13;
+    &#13;
+    /**&#13;
+     * The "standard" output stream.&#13;
+     */&#13;
+    static PrintStream *out;&#13;
+};&#13;
+&#13;
+#endif	// SYSTEM_INCLUDED&#13;
+&#13;
+&#13;
+#include "System.h"&#13;
+&#13;
+#include &lt;iostream&gt;&#13;
+&#13;
+/**&#13;
+ * Prints a boolean value.&#13;
+ *&#13;
+ * @param b The boolean to be printed&#13;
+ */&#13;
+void PrintStream::print(bool b) {&#13;
+    std::cout &lt;&lt; (b ? "true" : "false");&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a character.&#13;
+ *&#13;
+ * @param c The char to be printed&#13;
+ */&#13;
+void PrintStream::print(char c) {&#13;
+    std::cout &lt;&lt; c;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an array of characters.&#13;
+ *&#13;
+ * @param s The array of chars to be printed&#13;
+ * @param length The array length&#13;
+ */&#13;
+void PrintStream::print(char* s, int32_t length) {&#13;
+    for (int i = 0; i &lt; length; i++) {&#13;
+        std::cout &lt;&lt; s[i];&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a double-precision floating-point number.&#13;
+ *&#13;
+ * @param d The double to be printed&#13;
+ */&#13;
+void PrintStream::print(double d) {&#13;
+    std::cout &lt;&lt; d;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a floating-point number.&#13;
+ *&#13;
+ * @param f The float to be printed&#13;
+ */&#13;
+void PrintStream::print(float f) {&#13;
+    std::cout &lt;&lt; f;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an integer.&#13;
+ *&#13;
+ * @param i The int to be printed&#13;
+ */&#13;
+void PrintStream::print(int32_t i) {&#13;
+    std::cout &lt;&lt; i;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a long integer.&#13;
+ *&#13;
+ * @param l The long to be printed&#13;
+ */&#13;
+void PrintStream::print(int64_t l) {&#13;
+    std::cout &lt;&lt; l;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an object.&#13;
+ *&#13;
+ * @param obj The Object to be printed&#13;
+ */&#13;
+void PrintStream::print(Object *obj) {&#13;
+    String *s = obj-&gt;toString();&#13;
+    std::cout &lt;&lt; s-&gt;_s();&#13;
+    delete s;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a string.&#13;
+ *&#13;
+ * @param s The String to be printed&#13;
+ */&#13;
+void PrintStream::print(String *s) {&#13;
+    std::cout &lt;&lt; s-&gt;_s();&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Terminates the current line by writing the line separator string.&#13;
+ */&#13;
+void PrintStream::println() {&#13;
+    std::cout &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a boolean and then terminate the line.&#13;
+ *&#13;
+ * @param x The boolean to be printed&#13;
+ */&#13;
+void PrintStream::println(bool x) {&#13;
+    std::cout &lt;&lt; (x ? "true" : "false") &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a character and then terminate the line.&#13;
+ *&#13;
+ * @param x The char to be printed.&#13;
+ */&#13;
+void PrintStream::println(char x) {&#13;
+    std::cout &lt;&lt; x &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an array of characters and then terminate the line.&#13;
+ *&#13;
+ * @param x an array of chars to print.&#13;
+ * @param length The array length&#13;
+ */&#13;
+void PrintStream::println(char* x, int32_t length) {&#13;
+    for (int i = 0; i &lt; length; i++) {&#13;
+        std::cout &lt;&lt; x[i];&#13;
+    }&#13;
+    &#13;
+    std::cout &lt;&lt; "" &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a double and then terminate the line.&#13;
+ *&#13;
+ * @param x The double to be printed.&#13;
+ */&#13;
+void PrintStream::println(double x) {&#13;
+    std::cout &lt;&lt; x &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a float and then terminate the line.&#13;
+ *&#13;
+ * @param x The float to be printed.&#13;
+ */&#13;
+void PrintStream::println(float x) {&#13;
+    std::cout &lt;&lt; x &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an integer and then terminate the line.&#13;
+ *&#13;
+ * @param x The int to be printed.&#13;
+ */&#13;
+void PrintStream::println(int32_t x) {&#13;
+    std::cout &lt;&lt; x &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a long and then terminate the line.&#13;
+ *&#13;
+ * @param x The long to be printed.&#13;
+ */&#13;
+void PrintStream::println(int64_t x) {&#13;
+    std::cout &lt;&lt; x &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints an Object and then terminate the line.&#13;
+ *&#13;
+ * @param x The Object to be printed.&#13;
+ */&#13;
+void PrintStream::println(Object *obj) {&#13;
+    String *s = obj-&gt;toString();&#13;
+    std::cout &lt;&lt; s-&gt;_s() &lt;&lt; std::endl;&#13;
+    delete s;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Prints a String and then terminate the line.&#13;
+ *&#13;
+ * @param x The String to be printed.&#13;
+ */&#13;
+void PrintStream::println(String *x) {&#13;
+    std::cout &lt;&lt; x-&gt;_s() &lt;&lt; std::endl;&#13;
+}&#13;
+&#13;
+InputStream *System::in = new InputStream();&#13;
+PrintStream *System::out = new PrintStream();</code>
+<code lang="C#">﻿using System;&#13;
+using System.Threading;&#13;
+&#13;
+namespace JavaClasses&#13;
+{&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// A PrintStream adds functionality to another output stream,&#13;
+    /// namely the ability to print representations of various data values conveniently.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class PrintStream : Object&#13;
+    {&#13;
+&#13;
+        public PrintStream()&#13;
+        {&#13;
+            // setting the standard output format&#13;
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a boolean value.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="b"&gt;The boolean to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(bool b)&#13;
+        {&#13;
+            Console.Write(b);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a character.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="c"&gt;The char to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(char c)&#13;
+        {&#13;
+            Console.Write(c);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints an array of characters.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="s"&gt;The array of chars to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(char[] s)&#13;
+        {&#13;
+            Console.Write(s);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a double-precision floating-point number.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="d"&gt;The double to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(double d)&#13;
+        {&#13;
+            Console.Write(d);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a floating-point number.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="f"&gt;The float to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(float f)&#13;
+        {&#13;
+            Console.Write(f);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints an integer.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="i"&gt;The int to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(int i)&#13;
+        {&#13;
+            Console.Write(i);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a long integer.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="l"&gt;The long to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(long l)&#13;
+        {&#13;
+            Console.Write(l);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints an object.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="obj"&gt;The Object to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(Object obj)&#13;
+        {&#13;
+            Console.Write(obj);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a string.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="s"&gt;The String to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void print(String s)&#13;
+        {&#13;
+            Console.Write(s);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Terminates the current line by writing the line separator string.&#13;
+        public void println()&#13;
+        {&#13;
+            Console.WriteLine();&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a boolean and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The boolean to be printed&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(bool x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a character and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The char to be printed.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(char x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints an array of characters and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;an array of chars to print.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(char[] x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a double and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The double to be printed.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(double x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a float and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The float to be printed.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(float x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints an integer and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The int to be printed.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(int x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a long and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The long to be printed.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(long x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints an Object and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The Object to be printed.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(Object x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Prints a String and then terminate the line.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;The String to be printed.&#13;
+        /// &lt;/param&gt;&#13;
+        public void println(String x)&#13;
+        {&#13;
+            Console.WriteLine(x);&#13;
+        }&#13;
+&#13;
+    }&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// This abstract class is the superclass of all classes &#13;
+    /// representing an input stream of bytes.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class InputStream : Object&#13;
+    {&#13;
+        // really no code&#13;
+    }&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// The System class contains several useful class fields and methods.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class System_ : Object&#13;
+    {&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// The "standard" input stream.&#13;
+        /// &lt;/summary&gt;&#13;
+        public readonly static InputStream in_ = new InputStream();&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// The "standard" output stream.&#13;
+        /// &lt;/summary&gt;&#13;
+        public readonly static PrintStream out_ = new PrintStream();&#13;
+&#13;
+    }&#13;
+&#13;
+}&#13;
+</code>
+<code lang="Free Pascal">unit SystemUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  StringUnit, Classes;
+
+type
+  (**
+   * A PrintStream adds functionality to another output stream,
+   * namely the ability to print representations of various data values conveniently.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  PrintStream = class(Object_)
+    private
+      class function charArrayToString(s: array of ansiChar): ansiString;
+    public
+      procedure print(b: boolean);
+      procedure print(c: ansiChar);
+      procedure print(s: array of ansiChar);
+      procedure print(d: double);
+      procedure print(f: single);
+      procedure print(i: longInt);
+      procedure print(l: int64);
+      procedure print(obj: Object_);
+      procedure print(s: String_);
+      procedure println();
+      procedure println(x: boolean);
+      procedure println(x: ansiChar);
+      procedure println(x: array of ansiChar);
+      procedure println(x: double);
+      procedure println(x: single);
+      procedure println(x: longInt);
+      procedure println(x: int64);
+      procedure println(x: Object_);
+      procedure println(x: String_);
+  end;
+
+  (**
+   * This abstract class is the superclass of all classes
+   * representing an input stream of bytes.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  InputStream = class(Object_)
+    // no code yet
+  end;
+
+  (**
+   * The System class contains several useful class fields and methods.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  System_ = class
+    public
+      class var
+        (**
+         * The "standard" input stream.
+         *)
+        in_: InputStream;
+
+        (**
+         * The "standard" output stream.
+         *)
+        out_: PrintStream;
+  end;
+
+  CompareFunction = function(a, b: pointer) : longInt;
+
+  ObjectComparator = class(Comparator)
+    public function compare(o1, o2: Object_) : longInt; override;
+  end;
+
+  _java = class
+    private
+      class procedure merge(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+    public
+      class procedure mergeSort(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+      class procedure quickSort(x: pointer; left, right, size: longInt; c: CompareFunction);
+  end;
+
+implementation
+
+uses
+  SysUtils;
+
+function ObjectComparator.compare(o1, o2: Object_) : longInt;
+begin
+  compare := (o1 as Comparable).compareTo(o2 as Comparable);
+end;
+
+class procedure _java.merge(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+var
+  middleIndex, leftIndex, rightIndex, auxIndex: longInt;
+begin
+  middleIndex := (left + right) div 2;
+  leftIndex := left;
+  rightIndex := middleIndex + 1;
+  auxIndex := left;
+
+  while (leftIndex &lt;= middleIndex) and (rightIndex &lt;= right) do begin
+    if c.compare(arr[leftIndex], arr[rightIndex]) &lt;= 0 then begin
+      aux[auxIndex] := arr[leftIndex];
+      inc(leftIndex);
+    end
+    else begin
+      aux[auxIndex] := arr[rightIndex];
+      inc(rightIndex);
+    end;
+
+    inc(auxIndex);
+  end;
+
+  while leftIndex &lt;= middleIndex do begin
+    aux[auxIndex] := arr[leftIndex];
+    inc(leftIndex);
+    inc(auxIndex);
+  end;
+
+  while rightIndex &lt;= right do begin
+    aux[auxIndex] := arr[rightIndex];
+    inc(rightIndex);
+    inc(auxIndex);
+  end;
+end;
+
+class procedure _java.mergeSort(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+var
+  i, middleIndex: longInt;
+begin
+  if left = right then begin
+    exit;
+  end;
+
+  middleIndex := (left + right) div 2;
+
+  mergeSort(arr, aux, left, middleIndex, c);
+  mergeSort(arr, aux, middleIndex + 1, right, c);
+  merge(arr, aux, left, right, c);
+
+  for i := left to right do begin
+    arr[i] := aux[i];
+  end;
+end;
+
+class procedure _java.quickSort(x: pointer; left, right, size: longInt; c: CompareFunction);
+var
+  i, j: longInt;
+  tmpI, tmpJ, pivot: pointer;
+  tmp: ^pointer;
+begin
+  i := left;
+  j := right;
+  pivot := x + ((left + right) div 2) * size;
+
+  repeat
+    while c(pivot, x + i * size) &gt; 0 do begin
+      i := i + 1;
+    end;
+
+    while c(pivot, x + j * size) &lt; 0 do begin
+      j := j - 1;
+    end;
+
+    if i &lt;= j then begin
+      tmp := nil;
+      tmpI := x + i * size;
+      tmpJ := x + j * size;
+
+      move(tmpI, tmp, size);
+      move(tmpJ, tmpI, size);
+      move(tmp, tmpJ, size);
+
+      j := j - 1;
+      i := i + 1;
+    end;
+  until i &gt; j;
+
+  if left &lt; j then begin
+    quickSort(x, left, j, size, c);
+  end;
+
+  if i &lt; right then begin
+    quickSort(x, i, right, size, c);
+  end;
+end;
+
+class function PrintStream.charArrayToString(s: array of ansiChar): ansiString;
+var
+  str: ansiString;
+  i: longInt;
+begin
+  str := '';
+
+  for i := low(s) to high(s) do begin
+    str := str + s[i];
+  end;
+
+  charArrayToString := str;
+end;
+
+(**
+ * Prints a boolean value.
+ *
+ * @param b The boolean to be printed
+ *)
+procedure PrintStream.print(b: boolean);
+begin
+  write(b);
+end;
+
+(**
+ * Prints a character.
+ *
+ * @param c The char to be printed
+ *)
+procedure PrintStream.print(c: ansiChar);
+begin
+  write(c);
+end;
+
+(**
+ * Prints an array of characters.
+ *
+ * @param s The array of chars to be printed
+ *)
+procedure PrintStream.print(s: array of ansiChar);
+begin
+  write(charArrayToString(s));
+end;
+
+(**
+ * Prints a double-precision floating-point number.
+ *
+ * @param d The double to be printed
+ *)
+procedure PrintStream.print(d: double);
+begin
+  write(d);
+end;
+
+(**
+ * Prints a floating-point number.
+ *
+ * @param f The float to be printed
+ *)
+procedure PrintStream.print(f: single);
+begin
+  write(f);
+end;
+
+(**
+ * Prints an integer.
+ *
+ * @param i The int to be printed
+ *)
+procedure PrintStream.print(i: longInt);
+begin
+  write(i);
+end;
+
+(**
+ * Prints a long integer.
+ *
+ * @param l The long to be printed
+ *)
+procedure PrintStream.print(l: int64);
+begin
+  write(l);
+end;
+
+(**
+ * Prints an object.
+ *
+ * @param obj The Object to be printed
+ *)
+procedure PrintStream.print(obj: Object_);
+begin
+  write(obj.toString());
+end;
+
+(**
+ * Prints a string.
+ *
+ * @param s The String to be printed
+ *)
+procedure PrintStream.print(s: String_);
+begin
+  write(s.strProperty);
+end;
+
+(**
+ * Terminates the current line by writing the line separator string.
+ *)
+procedure PrintStream.println();
+begin
+  writeLn;
+end;
+
+(**
+ * Prints a boolean and then terminate the line.
+ *
+ * @param x The boolean to be printed
+ *)
+procedure PrintStream.println(x: boolean);
+begin
+  writeLn(x);
+end;
+
+(**
+ * Prints a character and then terminate the line.
+ *
+ * @param x The char to be printed.
+ *)
+procedure PrintStream.println(x: ansiChar);
+begin
+  writeLn(x);
+end;
+
+(**
+ * Prints an array of characters and then terminate the line.
+ *
+ * @param x an array of chars to print.
+ *)
+procedure PrintStream.println(x: array of ansiChar);
+begin
+  writeLn(charArrayToString(x));
+end;
+
+(**
+ * Prints a double and then terminate the line.
+ *
+ * @param x The double to be printed.
+ *)
+procedure PrintStream.println(x: double);
+begin
+  writeLn(x);
+end;
+
+(**
+ * Prints a float and then terminate the line.
+ *
+ * @param x The float to be printed.
+ *)
+procedure PrintStream.println(x: single);
+begin
+  writeLn(x);
+end;
+
+(**
+ * Prints an integer and then terminate the line.
+ *
+ * @param x The int to be printed.
+ *)
+procedure PrintStream.println(x: longInt);
+begin
+  writeLn(x);
+end;
+
+(**
+ * Prints a long and then terminate the line.
+ *
+ * @param x The long to be printed.
+ *)
+procedure PrintStream.println(x: int64);
+begin
+  writeLn(x);
+end;
+
+(**
+ * Prints an Object and then terminate the line.
+ *
+ * @param x The Object to be printed.
+ *)
+procedure PrintStream.println(x: Object_);
+begin
+  writeLn(x.toString());
+end;
+
+(**
+ * Prints a String and then terminate the line.
+ *
+ * @param x The String to be printed.
+ *)
+procedure PrintStream.println(x: String_);
+begin
+  writeLn(x.strProperty);
+end;
+
+begin
+  System_.in_ := InputStream.create();
+  System_.out_ := PrintStream.create();
+end.
+
+</code>
+
+</codes>

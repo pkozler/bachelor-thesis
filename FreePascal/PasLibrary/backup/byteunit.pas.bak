@@ -9,7 +9,7 @@ uses
 
 type
   (**
-   * The Byte class wraps a value of primitive type byte in an object.
+   * The Byte class wraps a value of primitive type shortInt (representing a byte value) in an object.
    *
    * @author Petr Kozler (A13B0359P)
    *)

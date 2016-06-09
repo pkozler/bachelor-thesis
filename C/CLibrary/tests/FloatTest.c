@@ -8,6 +8,8 @@
  * Simple C Test Suite
  */
 
+const float DEFAULT_EPSILON = 1E-20;
+
 /**
  * Tests the floatValue function.
  */
@@ -17,13 +19,13 @@ void floatValueTest() {
     float b;
     a = new_Float(Float_MIN_VALUE);
     b = floatValue(a);
-    assertEqualsF(1.4E-45f, b);
+    assertEqualsF(1.4E-45f, b, DEFAULT_EPSILON);
     a = new_Float((float) 0);
     b = floatValue(a);
-    assertEqualsF(0.0f, b);
+    assertEqualsF(0.0f, b, DEFAULT_EPSILON);
     a = new_Float(Float_MAX_VALUE);
     b = floatValue(a);
-    assertEqualsF(3.4028235E38f, b);
+    assertEqualsF(3.4028235E38f, b, DEFAULT_EPSILON);
 }
 
 /**
@@ -168,11 +170,11 @@ void toStringTest2() {
 void parseFloatTest() {
     float a;
     a = Float_parseFloat(new_String("0.1"));
-    assertEqualsF(0.1f, a);
+    assertEqualsF(0.1f, a, DEFAULT_EPSILON);
     a = Float_parseFloat(new_String("0"));
-    assertEqualsF(0.0f, a);
+    assertEqualsF(0.0f, a, DEFAULT_EPSILON);
     a = Float_parseFloat(new_String("-0.1"));
-    assertEqualsF(-0.1f, a);
+    assertEqualsF(-0.1f, a, DEFAULT_EPSILON);
 }
 
 int main(int argc, char** argv) {

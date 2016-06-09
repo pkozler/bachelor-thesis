@@ -57,7 +57,7 @@ begin
   end;
 
   for i := 1 to len do begin
-    if l[i] > ' ' then begin
+    if l[i] > #32 then begin
       exit(false);
     end;
   end;
@@ -74,20 +74,19 @@ begin
   line := trimLeft(line);
 
   for i := 1 to len do begin
-    if line[i] > ' ' then begin
+    if line[i] <= #32 then begin
       break;
     end;
   end;
 
   token := copy(line, 1, i);
   delete(line, 1, i);
-  removeLineToWhiteSpace := token;
+  removeLineToWhiteSpace := trim(token);
 end;
 
 function Scanner.getNextToken() : String_;
 var
   l: String_;
-
 begin
   while isEmptyOrWhiteSpace(line) do begin
     l := readLine();

@@ -11,7 +11,8 @@ class InputTestRunner {
         "nextIntTest",
         "nextLongTest",
         "nextFloatTest",
-        "nextDoubleTest"
+        "nextDoubleTest",
+        "nextLineTest",
     );
     private $inTestExecPath;
     private $errorsInClass;

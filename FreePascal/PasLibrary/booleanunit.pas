@@ -123,8 +123,17 @@ end;
  * @return the string representation of the specified boolean
  *)
 class function Boolean_.toString_(b: boolean) : String_;
+var
+  s: ansiString;
 begin
-  toString_ := String_.create(BoolToStr(b));
+  if b then begin
+    s := 'True';
+  end
+  else begin
+    s := 'False';
+  end;
+
+  toString_ := String_.create(s);
 end;
 
 (**
@@ -134,8 +143,15 @@ end;
  * @return the boolean represented by the string argument
  *)
 class function Boolean_.parseBoolean(s: String_) : boolean;
+var
+  str: ansiString;
 begin
-  parseBoolean := strToBool(s.toString());
+  str := lowerCase(trim(s.strProperty));
+  if ansiCompareStr(str, 'true') = 0 then begin
+    exit(true);
+  end;
+
+  parseBoolean := false;
 end;
 
 operator := (original: boolean) s: Boolean_;

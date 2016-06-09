@@ -290,10 +290,10 @@ void binarySearchTest13() {
     a[7] = new_TestObject(new_String("eighth"), 8);
     a[8] = new_TestObject(new_String("nineth"), 7);
     a[9] = new_TestObject(new_String("tenth"), 6);
-    Arrays_sortObj(a, length);
-    b = Arrays_binarySearchObj(a, length, new_TestObject(new_String("sixth"), 6));
+    Arrays_sortObj(a, length, compareToTo);
+    b = Arrays_binarySearchObj(a, length, new_TestObject(new_String("sixth"), 6), compareToTo);
     assertEqualsI(4, b);
-    b = Arrays_binarySearchObj(a, length, new_TestObject(new_String("sixth"), 4));
+    b = Arrays_binarySearchObj(a, length, new_TestObject(new_String("sixth"), 4), compareToTo);
     assertEqualsI(-5, b);
 }
 
@@ -317,10 +317,10 @@ void binarySearchTest14() {
     a[7] = new_TestObject(new_String("eighth"), 8);
     a[8] = new_TestObject(new_String("nineth"), 7);
     a[9] = new_TestObject(new_String("tenth"), 6);
-    Arrays_sortObj(a, length);
-    b = Arrays_binarySearchRangeObj(a, 1, 4, new_TestObject(new_String("sixth"), 6));
+    Arrays_sortObj(a, length, compareToTo);
+    b = Arrays_binarySearchRangeObj(a, 1, 4, new_TestObject(new_String("sixth"), 6), compareToTo);
     assertEqualsI(-5, b);
-    b = Arrays_binarySearchRangeObj(a, 1, 4, new_TestObject(new_String("sixth"), 4));
+    b = Arrays_binarySearchRangeObj(a, 1, 4, new_TestObject(new_String("sixth"), 4), compareToTo);
     assertEqualsI(-5, b);
 }
 
@@ -387,7 +387,7 @@ void copyOfTest() {
     b = Arrays_copyOfBool(a, length, 3);
     d = malloc(length2 * sizeof(bool));
     d[0] = true;
-    d[1] = false
+    d[1] = false;
     d[2] = false;
     c = Arrays_equalsBool(b, length, d, length2);
     assertEqualsBool(true, c);
@@ -395,7 +395,7 @@ void copyOfTest() {
     b = Arrays_copyOfBool(a, length, 5);
     d = malloc(length * sizeof(bool));
     d[0] = true;
-    d[1] = false
+    d[1] = false;
     d[2] = false;
     d[3] = false;
     d[4] = true;
@@ -405,7 +405,7 @@ void copyOfTest() {
     b = Arrays_copyOfBool(a, length, 7);
     d = malloc(length3 * sizeof(bool));
     d[0] = true;
-    d[1] = false
+    d[1] = false;
     d[2] = false;
     d[3] = false;
     d[4] = true;
@@ -751,7 +751,7 @@ void copyOfTest9() {
     d[0] = new_TestObject(new_String("first"), 3);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("third"), 8);
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2);
+    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfObj(a, length, 5);
     d = malloc(length * sizeof(char));
@@ -760,7 +760,7 @@ void copyOfTest9() {
     d[2] = new_TestObject(new_String("third"), 8);
     d[3] = new_TestObject(new_String("fourth"), 7);
     d[4] = new_TestObject(new_String("fifth"), 6);
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length);
+    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfObj(a, length, 7);
     d = malloc(length3 * sizeof(char));
@@ -771,7 +771,7 @@ void copyOfTest9() {
     d[4] = new_TestObject(new_String("fifth"), 6);
     d[5] = NULL;
     d[6] = NULL;
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length3);
+    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length3, equalsTo);
     assertEqualsBool(true, c);
 }
 
@@ -1102,21 +1102,21 @@ void copyOfRangeTest9() {
     d[0] = new_TestObject(new_String("first"), 3);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("third"), 8);
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2);
+    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeObj(a, length, 2, 5);
     d = malloc(length2 * sizeof(char));
     d[0] = new_TestObject(new_String("third"), 8);
     d[1] = new_TestObject(new_String("fourth"), 7);
     d[2] = new_TestObject(new_String("fifth"), 6);
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2);
+    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeObj(a, length, 4, 7);
     d = malloc(length2 * sizeof(char));
     d[0] = new_TestObject(new_String("fifth"), 6);
     d[1] = NULL;
     d[2] = NULL;
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2);
+    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
 }
 
@@ -1442,11 +1442,11 @@ void equalsTest8() {
     a[3] = new_TestObject(new_String("fourth"), 7);
     a[4] = new_TestObject(new_String("fifth"), 6);
     b = NULL;
-    c = Arrays_equalsObj(a, length, b, 0);
+    c = Arrays_equalsObj(a, length, b, 0, equalsTo);
     assertEqualsBool(false, c);
     b = malloc(length2 * sizeof(TestObject *));
     b[0] = new_TestObject(new_String("first"), 3);
-    c = Arrays_equalsObj(a, length, b, length2);
+    c = Arrays_equalsObj(a, length, b, length2, equalsTo);
     assertEqualsBool(false, c);
     b = malloc(length * sizeof(TestObject *));
     b[0] = new_TestObject(new_String("first"), 3);
@@ -1454,7 +1454,7 @@ void equalsTest8() {
     b[2] = new_TestObject(new_String("third"), 8);
     b[3] = new_TestObject(new_String("fourth"), 7);
     b[4] = new_TestObject(new_String("fifth"), 3);
-    c = Arrays_equalsObj(a, length, b, length);
+    c = Arrays_equalsObj(a, length, b, length, equalsTo);
     assertEqualsBool(false, c);
     b = malloc(length * sizeof(TestObject *));
     b[0] = new_TestObject(new_String("sixth"), 3);
@@ -1462,10 +1462,10 @@ void equalsTest8() {
     b[2] = new_TestObject(new_String("eighth"), 8);
     b[3] = new_TestObject(new_String("nineth"), 7);
     b[4] = new_TestObject(new_String("tenth"), 6);
-    c = Arrays_equalsObj(a, length, b, length);
+    c = Arrays_equalsObj(a, length, b, length, equalsTo);
     assertEqualsBool(false, c);
     b = a;
-    c = Arrays_equalsObj(a, length, b, length);
+    c = Arrays_equalsObj(a, length, b, length, equalsTo);
     assertEqualsBool(true, c);
 }
 
@@ -1810,7 +1810,7 @@ void fillTest15() {
     c[2] = new_TestObject(new_String("sixth"), 6);
     c[3] = new_TestObject(new_String("sixth"), 6);
     c[4] = new_TestObject(new_String("sixth"), 6);
-    b = Arrays_equalsObj((TestObject **) a, length, (TestObject **) c, length);
+    b = Arrays_equalsObj((TestObject **) a, length, (TestObject **) c, length, equalsTo);
     assertEqualsBool(true, b);
 }
 
@@ -1830,7 +1830,7 @@ void fillTest16() {
     c[2] = new_TestObject(new_String("sixth"), 6);
     c[3] = new_TestObject(new_String("sixth"), 6);
     c[4] = NULL;
-    b = Arrays_equalsObj((TestObject **) a, length, (TestObject **) c, length);
+    b = Arrays_equalsObj((TestObject **) a, length, (TestObject **) c, length, equalsTo);
     assertEqualsBool(true, b);
 }
 
@@ -1891,11 +1891,11 @@ void sortTest() {
     a[4] = (int8_t) 6;
     Arrays_sortB(a, length);
     c = malloc(length * sizeof(int8_t));
-    b[0] = (int8_t) 2;
-    b[1] = (int8_t) 3;
-    b[2] = (int8_t) 6;
-    b[3] = (int8_t) 7;
-    b[4] = (int8_t) 8;
+    c[0] = (int8_t) 2;
+    c[1] = (int8_t) 3;
+    c[2] = (int8_t) 6;
+    c[3] = (int8_t) 7;
+    c[4] = (int8_t) 8;
     b = Arrays_equalsB(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -1916,12 +1916,12 @@ void sortTest2() {
     a[3] = (int8_t) 7;
     a[4] = (int8_t) 6;
     Arrays_sortRangeB(a, 1, 4);
-    c = malloc(length * sizeof(int8_t)){3, 2, 7, 8, 6};
-    b[0] = (int8_t) 3;
-    b[1] = (int8_t) 2;
-    b[2] = (int8_t) 7;
-    b[3] = (int8_t) 8;
-    b[4] = (int8_t) 6;
+    c = malloc(length * sizeof(int8_t));
+    c[0] = (int8_t) 3;
+    c[1] = (int8_t) 2;
+    c[2] = (int8_t) 7;
+    c[3] = (int8_t) 8;
+    c[4] = (int8_t) 6;
     b = Arrays_equalsB(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -1942,11 +1942,11 @@ void sortTest3() {
     a[4] = 'f';
     Arrays_sortC(a, length);
     c = malloc(length * sizeof(char));
-    b[0] = 'b';
-    b[1] = 'c';
-    b[2] = 'f';
-    b[3] = 'g';
-    b[4] = 'h';
+    c[0] = 'b';
+    c[1] = 'c';
+    c[2] = 'f';
+    c[3] = 'g';
+    c[4] = 'h';
     b = Arrays_equalsC(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -1967,11 +1967,11 @@ void sortTest4() {
     a[4] = 'f';
     Arrays_sortRangeC(a, 1, 4);
     c = malloc(length * sizeof(char));
-    b[0] = 'c';
-    b[1] = 'b';
-    b[2] = 'g';
-    b[3] = 'h';
-    b[4] = 'f';
+    c[0] = 'c';
+    c[1] = 'b';
+    c[2] = 'g';
+    c[3] = 'h';
+    c[4] = 'f';
     b = Arrays_equalsC(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -1992,11 +1992,11 @@ void sortTest5() {
     a[4] = 6.0;
     Arrays_sortD(a, length);
     c = malloc(length * sizeof(double));
-    b[0] = 2.0;
-    b[1] = 3.0;
-    b[2] = 6.0;
-    b[3] = 7.0;
-    b[4] = 8.0;
+    c[0] = 2.0;
+    c[1] = 3.0;
+    c[2] = 6.0;
+    c[3] = 7.0;
+    c[4] = 8.0;
     b = Arrays_equalsD(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2017,11 +2017,11 @@ void sortTest6() {
     a[4] = 6.0;
     Arrays_sortRangeD(a, 1, 4);
     c = malloc(length * sizeof(double));
-    b[0] = 3.0;
-    b[1] = 2.0;
-    b[2] = 7.0;
-    b[3] = 8.0;
-    b[4] = 6.0;
+    c[0] = 3.0;
+    c[1] = 2.0;
+    c[2] = 7.0;
+    c[3] = 8.0;
+    c[4] = 6.0;
     b = Arrays_equalsD(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2042,11 +2042,11 @@ void sortTest7() {
     a[4] = 6.0F;
     Arrays_sortF(a, length);
     c = malloc(length * sizeof(float));
-    b[0] = 2.0F;
-    b[1] = 3.0F;
-    b[2] = 6.0F;
-    b[3] = 7.0F;
-    b[4] = 8.0F;
+    c[0] = 2.0F;
+    c[1] = 3.0F;
+    c[2] = 6.0F;
+    c[3] = 7.0F;
+    c[4] = 8.0F;
     b = Arrays_equalsF(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2067,11 +2067,11 @@ void sortTest8() {
     a[4] = 6.0F;
     Arrays_sortRangeF(a, 1, 4);
     c = malloc(length * sizeof(float));
-    b[0] = 3.0F;
-    b[1] = 2.0F;
-    b[2] = 7.0F;
-    b[3] = 8.0F;
-    b[4] = 6.0F;
+    c[0] = 3.0F;
+    c[1] = 2.0F;
+    c[2] = 7.0F;
+    c[3] = 8.0F;
+    c[4] = 6.0F;
     b = Arrays_equalsF(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2092,11 +2092,11 @@ void sortTest9() {
     a[4] = 6;
     Arrays_sortI(a, length);
     c = malloc(length * sizeof(int32_t));
-    b[0] = 2;
-    b[1] = 3;
-    b[2] = 6;
-    b[3] = 7;
-    b[4] = 8;
+    c[0] = 2;
+    c[1] = 3;
+    c[2] = 6;
+    c[3] = 7;
+    c[4] = 8;
     b = Arrays_equalsI(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2117,11 +2117,11 @@ void sortTest10() {
     a[4] = 6;
     Arrays_sortRangeI(a, 1, 4);
     c = malloc(length * sizeof(int32_t));
-    b[0] = 3;
-    b[1] = 2;
-    b[2] = 7;
-    b[3] = 8;
-    b[4] = 6;
+    c[0] = 3;
+    c[1] = 2;
+    c[2] = 7;
+    c[3] = 8;
+    c[4] = 6;
     b = Arrays_equalsI(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2142,11 +2142,11 @@ void sortTest11() {
     a[4] = 6L;
     Arrays_sortL(a, length);
     c = malloc(length * sizeof(int64_t));
-    b[0] = 2L;
-    b[1] = 3L;
-    b[2] = 6L;
-    b[3] = 7L;
-    b[4] = 8L;
+    c[0] = 2L;
+    c[1] = 3L;
+    c[2] = 6L;
+    c[3] = 7L;
+    c[4] = 8L;
     b = Arrays_equalsL(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2167,11 +2167,11 @@ void sortTest12() {
     a[4] = 6L;
     Arrays_sortRangeL(a, 1, 4);
     c = malloc(length * sizeof(int64_t));
-    b[0] = 3L;
-    b[1] = 2L;
-    b[2] = 7L;
-    b[3] = 8L;
-    b[4] = 6L;
+    c[0] = 3L;
+    c[1] = 2L;
+    c[2] = 7L;
+    c[3] = 8L;
+    c[4] = 6L;
     b = Arrays_equalsL(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2195,7 +2195,7 @@ void sortTest13() {
     a[7] = new_TestObject(new_String("eighth"), 8);
     a[8] = new_TestObject(new_String("nineth"), 7);
     a[9] = new_TestObject(new_String("tenth"), 6);
-    Arrays_sortObj(a, length);
+    Arrays_sortObj(a, length, compareToTo);
     c = malloc(length * sizeof(TestObject *));
     c[0] = new_TestObject(new_String("second"), 2);
     c[1] = new_TestObject(new_String("seventh"), 2);
@@ -2207,7 +2207,7 @@ void sortTest13() {
     c[7] = new_TestObject(new_String("nineth"), 7);
     c[8] = new_TestObject(new_String("third"), 8);
     c[9] = new_TestObject(new_String("eighth"), 8);
-    b = Arrays_equalsObj(a, length, c, length);
+    b = Arrays_equalsObj(a, length, c, length, equalsTo);
     assertEqualsBool(true, b);
 }
 
@@ -2230,7 +2230,7 @@ void sortTest14() {
     a[7] = new_TestObject(new_String("eighth"), 8);
     a[8] = new_TestObject(new_String("nineth"), 7);
     a[9] = new_TestObject(new_String("tenth"), 6);
-    Arrays_sortRangeObj(a, 1, 4);
+    Arrays_sortRangeObj(a, 1, 4, compareToTo);
     c = malloc(length * sizeof(TestObject *));
     c[0] = new_TestObject(new_String("first"), 3);
     c[1] = new_TestObject(new_String("second"), 2);
@@ -2242,7 +2242,7 @@ void sortTest14() {
     c[7] = new_TestObject(new_String("eighth"), 8);
     c[8] = new_TestObject(new_String("nineth"), 7);
     c[9] = new_TestObject(new_String("tenth"), 6);
-    b = Arrays_equalsObj(a, length, c, length);
+    b = Arrays_equalsObj(a, length, c, length, equalsTo);
     assertEqualsBool(true, b);
 }
 
@@ -2262,11 +2262,11 @@ void sortTest15() {
     a[4] = (int16_t) 6;
     Arrays_sortS(a, length);
     c = malloc(length * sizeof(int16_t));
-    b[0] = (int16_t) 2;
-    b[1] = (int16_t) 3;
-    b[2] = (int16_t) 6;
-    b[3] = (int16_t) 7;
-    b[4] = (int16_t) 8;
+    c[0] = (int16_t) 2;
+    c[1] = (int16_t) 3;
+    c[2] = (int16_t) 6;
+    c[3] = (int16_t) 7;
+    c[4] = (int16_t) 8;
     b = Arrays_equalsS(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2287,11 +2287,11 @@ void sortTest16() {
     a[4] = (int16_t) 6;
     Arrays_sortRangeS(a, 1, 4);
     c = malloc(length * sizeof(int16_t));
-    b[0] = (int16_t) 3;
-    b[1] = (int16_t) 2;
-    b[2] = (int16_t) 7;
-    b[3] = (int16_t) 8;
-    b[4] = (int16_t) 6;
+    c[0] = (int16_t) 3;
+    c[1] = (int16_t) 2;
+    c[2] = (int16_t) 7;
+    c[3] = (int16_t) 8;
+    c[4] = (int16_t) 6;
     b = Arrays_equalsS(a, length, c, length);
     assertEqualsBool(true, b);
 }
@@ -2499,33 +2499,33 @@ void toStringTest8() {
     TestObject **a;
     String *b;
     a = malloc(length * sizeof(TestObject *));
-    b = Arrays_toStringObj(a, length);
+    b = Arrays_toStringObj(a, length, toStringTo);
     assertEqualsStr("[]", b->s);
     a = malloc(length2 * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 1);
-    b = Arrays_toStringObj(a, length2);
+    b = Arrays_toStringObj(a, length2, toStringTo);
     assertEqualsStr("[TestObject[str = first, i = 1]]", b->s);
     a = malloc(length2 * sizeof(TestObject *));
     a[0] = NULL;
-    b = Arrays_toStringObj(a, length2);
+    b = Arrays_toStringObj(a, length2, toStringTo);
     assertEqualsStr("[NULL]", b->s);
     a = malloc(length3 * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 1);
     a[1] = new_TestObject(new_String("second"), 2);
     a[2] = new_TestObject(new_String("third"), 3);
-    b = Arrays_toStringObj(a, length3);
+    b = Arrays_toStringObj(a, length3, toStringTo);
     assertEqualsStr("[TestObject[str = first, i = 1], TestObject[str = second, i = 2], TestObject[str = third, i = 3]]", b->s);
     a = malloc(length3 * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 1);
     a[1] = NULL;
     a[2] = new_TestObject(new_String("third"), 3);
-    b = Arrays_toStringObj(a, length3);
+    b = Arrays_toStringObj(a, length3, toStringTo);
     assertEqualsStr("[TestObject[str = first, i = 1], NULL, TestObject[str = third, i = 3]]", b->s);
     a = malloc(length3 * sizeof(TestObject *));
     a[0] = NULL;
     a[1] = NULL;
     a[2] = NULL;
-    b = Arrays_toStringObj(a, length3);
+    b = Arrays_toStringObj(a, length3, toStringTo);
     assertEqualsStr("[NULL, NULL, NULL]", b->s);
 }
 

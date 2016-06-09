@@ -223,8 +223,11 @@ end;
  * @return a string representation of the argument.
  *)
 class function Float.toString_(f: single) : String_;
+var
+  fs: TFormatSettings;
 begin
-  toString_ := String_.create(FloatToStr(f));
+  fs.DecimalSeparator := '.';
+  toString_ := String_.create(FloatToStr(f, fs));
 end;
 
 (**
@@ -235,8 +238,11 @@ end;
  * @return the float value represented by the string argument.
  *)
 class function Float.parseFloat(s: String_) : single;
+var
+  fs: TFormatSettings;
 begin
-  parseFloat := strToFloat(s.toString());
+  fs.DecimalSeparator := '.';
+  parseFloat := strToFloat(trim(s.strProperty), fs);
 end;
 
 operator := (original: single) s: Float;

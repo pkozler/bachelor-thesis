@@ -11,7 +11,7 @@ type
   ObjectArray = array of Object_;
 
   (**
-   * Resizable-array implementation of the List interface.
+   * Resizable-array implementation of the List abstract class.
    *
    * @param E the type of elements in this list
    * @author Petr Kozler (A13B0359P)
@@ -100,7 +100,7 @@ end;
  * Appends the specified element to the end of this list.
  *
  * @param e element to be appended to this list
- * @return true (as specified by Collection.add(E))
+ * @return true
  *)
 function ArrayList.add(e: Object_) : boolean;
 begin
@@ -208,29 +208,29 @@ var
   i: longInt;
 begin
   sb := StringBuilder.create();
-  str := '[';
+  str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
 
   if count > 0 then begin
-    str := dynamicArray[0].toString();
+    str := dynamicArray[0].toString_();
     sb.append(str);
     freeAndNil(str);
   end;
 
   for i := 1 to count - 1 do begin
-    str := ', ';
+    str := String_.create(', ');
     sb.append(str);
     freeAndNil(str);
-    str := dynamicArray[i].toString();
+    str := dynamicArray[i].toString_();
     sb.append(str);
     freeAndNil(str);
   end;
 
-  str := ']';
+  str := String_.create(']');
   sb.append(str);
   freeAndNil(str);
-  str := sb.toString();
+  str := sb.toString_();
   freeAndNil(sb);
   toString_ := str;
 end;

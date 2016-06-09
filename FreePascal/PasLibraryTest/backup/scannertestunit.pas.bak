@@ -1,4 +1,4 @@
-unit PrintStreamTestUnit;
+unit ScannerTestUnit;
 
 {$mode objfpc}{$H+}
 
@@ -9,11 +9,11 @@ uses
   BooleanUnit, ByteUnit, ShortUnit, IntegerUnit, LongUnit, FloatUnit, DoubleUnit;
 
 type
-  ScanMethod = procedure(sc: Scanner);
+  ScanMethod = function(sc: Scanner): pointer;
   EqualsMethod = function(expected, actual: pointer): boolean;
   ToStringMethod = function(value: pointer): String_;
 
-  PrintStreamTest = class(TTestCase)
+  ScannerTest = class(TTestCase)
   private
     var errorsInMethod: longInt;
     procedure assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
@@ -32,7 +32,7 @@ type
   public
     property errorsInMethodProperty: longInt read errorsInMethod;
     constructor create(); override;
-    procedure PrintStreamTest;
+    procedure scannerTest;
     procedure nextTest;
     procedure nextBooleanTest;
     procedure nextByteTest;
@@ -79,7 +79,7 @@ var
 begin
   x := Boolean_.create(PBoolean(a)^);
   y := Boolean_.create(PBoolean(b)^);
-  _equalsBool := x.equals(y);
+  _equalsBool := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -90,7 +90,7 @@ var
 begin
   x := Byte_.create(PShortInt(a)^);
   y := Byte_.create(PShortInt(b)^);
-  _equalsB := x.equals(y);
+  _equalsB := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -101,7 +101,7 @@ var
 begin
   x := Double_.create(PDouble(a)^);
   y := Double_.create(PDouble(b)^);
-  _equalsD := x.equals(y);
+  _equalsD := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -112,7 +112,7 @@ var
 begin
   x := Float.create(PSingle(a)^);
   y := Float.create(PSingle(b)^);
-  _equalsF := x.equals(y);
+  _equalsF := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -123,7 +123,7 @@ var
 begin
   x := Integer_.create(PLongInt(a)^);
   y := Integer_.create(PLongInt(b)^);
-  _equalsI := x.equals(y);
+  _equalsI := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -134,7 +134,7 @@ var
 begin
   x := Long.create(PInt64(a)^);
   y := Long.create(PInt64(b)^);
-  _equalsL := x.equals(y);
+  _equalsL := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -145,7 +145,7 @@ var
 begin
   x := Short.create(PSmallInt(a)^);
   y := Short.create(PSmallInt(b)^);
-  _equalsS := x.equals(y);
+  _equalsS := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -185,52 +185,61 @@ begin
   _toStringS := Short.toString_(PSmallInt(a)^);
 end;
 
-procedure _scanBool(sc: Scanner);
+function _scanBool(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedBoolean := sc.nextBoolean();
+  _scanBool := @currentScannedValue.currentScannedBoolean;
 end;
 
-procedure _scanB(sc: Scanner);
+function _scanB(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedByte := sc.nextByte();
+  _scanB := @currentScannedValue.currentScannedByte;
 end;
 
-procedure _scanD(sc: Scanner);
+function _scanD(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedDouble := sc.nextDouble();
+  _scanD := @currentScannedValue.currentScannedDouble;
 end;
 
-procedure _scanF(sc: Scanner);
+function _scanF(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedFloat := sc.nextFloat();
+  _scanF := @currentScannedValue.currentScannedFloat;
 end;
 
-procedure _scanI(sc: Scanner);
+function _scanI(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedInt := sc.nextInt();
+  _scanI := @currentScannedValue.currentScannedInt;
 end;
 
-procedure _scanL(sc: Scanner);
+function _scanL(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedLong := sc.nextLong();
+  _scanL := @currentScannedValue.currentScannedLong;
 end;
 
-procedure _scanS(sc: Scanner);
+function _scanS(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedShort := sc.nextShort();
+  _scanS := @currentScannedValue.currentScannedShort;
 end;
 
-procedure _scanStr(sc: Scanner);
+function _scanStr(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedString := sc.next().strProperty;
+  _scanStr := @currentScannedValue.currentScannedString;
 end;
 
-procedure _scanStrLn(sc: Scanner);
+function _scanStrLn(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedString := sc.nextLine().strProperty;
+  _scanStrLn := @currentScannedValue.currentScannedString;
 end;
 
-procedure PrintStreamTest.assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
+procedure ScannerTest.assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
   scan: ScanMethod; e: EqualsMethod; ts: ToStringMethod);
 var
   actual: pointer;
@@ -251,7 +260,7 @@ begin
     end;
 end;
 
-procedure PrintStreamTest.assertEqualsString(name: ansiString; expected: String_; sc: Scanner; scan: ScanMethod);
+procedure ScannerTest.assertEqualsString(name: ansiString; expected: String_; sc: Scanner; scan: ScanMethod);
 var
   actual: String_;
 begin
@@ -271,52 +280,52 @@ begin
     end;
 end;
 
-procedure PrintStreamTest.nextAssertEquals(sc: Scanner; expected: String_);
+procedure ScannerTest.nextAssertEquals(sc: Scanner; expected: String_);
 begin
     assertEqualsString('next', expected, sc, @_scanStr);
 end;
 
-procedure PrintStreamTest.nextBooleanAssertEquals(sc: Scanner; expected: boolean);
+procedure ScannerTest.nextBooleanAssertEquals(sc: Scanner; expected: boolean);
 begin
-    assertEqualsPointer('nextBoolean', @expected, sc, @_scanBool, @_equalsB, @_toStringB);
+    assertEqualsPointer('nextBoolean', @expected, sc, @_scanBool, @_equalsBool, @_toStringBool);
 end;
 
-procedure PrintStreamTest.nextByteAssertEquals(sc: Scanner; expected: shortInt);
+procedure ScannerTest.nextByteAssertEquals(sc: Scanner; expected: shortInt);
 begin
     assertEqualsPointer('nextByte', @expected, sc, @_scanB, @_equalsB, @_toStringB);
 end;
 
-procedure PrintStreamTest.nextShortAssertEquals(sc: Scanner; expected: smallInt);
+procedure ScannerTest.nextShortAssertEquals(sc: Scanner; expected: smallInt);
 begin
     assertEqualsPointer('nextShort', @expected, sc, @_scanS, @_equalsS, @_toStringS);
 end;
 
-procedure PrintStreamTest.nextIntAssertEquals(sc: Scanner; expected: longInt);
+procedure ScannerTest.nextIntAssertEquals(sc: Scanner; expected: longInt);
 begin
     assertEqualsPointer('nextInt', @expected, sc, @_scanI, @_equalsI, @_toStringI);
 end;
 
-procedure PrintStreamTest.nextLongAssertEquals(sc: Scanner; expected: int64);
+procedure ScannerTest.nextLongAssertEquals(sc: Scanner; expected: int64);
 begin
     assertEqualsPointer('nextLong', @expected, sc, @_scanL, @_equalsL, @_toStringL);
 end;
 
-procedure PrintStreamTest.nextFloatAssertEquals(sc: Scanner; expected: single);
+procedure ScannerTest.nextFloatAssertEquals(sc: Scanner; expected: single);
 begin
     assertEqualsPointer('nextFloat', @expected, sc, @_scanF, @_equalsF, @_toStringF);
 end;
 
-procedure PrintStreamTest.nextDoubleAssertEquals(sc: Scanner; expected: double);
+procedure ScannerTest.nextDoubleAssertEquals(sc: Scanner; expected: double);
 begin
     assertEqualsPointer('nextDouble', @expected, sc, @_scanD, @_equalsD, @_toStringD);
 end;
 
-procedure PrintStreamTest.nextLineAssertEquals(sc: Scanner; expected: String_);
+procedure ScannerTest.nextLineAssertEquals(sc: Scanner; expected: String_);
 begin
     assertEqualsString('nextLine', expected, sc, @_scanStrLn);
 end;
 
-constructor PrintStreamTest.create();
+constructor ScannerTest.create();
 begin
     errorsInMethod := 0;
 end;
@@ -324,7 +333,7 @@ end;
 (**
  * Tests the constructor.
  *)
-procedure PrintStreamTest.PrintStreamTest;
+procedure ScannerTest.scannerTest;
 var
   a: Scanner;
 begin
@@ -345,7 +354,7 @@ end;
 (**
  * Tests the next method.
  *)
-procedure PrintStreamTest.nextTest;
+procedure ScannerTest.nextTest;
 var
   a: Scanner;
 begin
@@ -366,7 +375,7 @@ end;
 (**
  * Tests the nextBoolean method.
  *)
-procedure PrintStreamTest.nextBooleanTest;
+procedure ScannerTest.nextBooleanTest;
 var
   a: Scanner;
 begin
@@ -386,7 +395,7 @@ end;
 (**
  * Tests the nextByte method.
  *)
-procedure PrintStreamTest.nextByteTest;
+procedure ScannerTest.nextByteTest;
 var
   a: Scanner;
 begin
@@ -408,7 +417,7 @@ end;
 (**
  * Tests the nextShort method.
  *)
-procedure PrintStreamTest.nextShortTest;
+procedure ScannerTest.nextShortTest;
 var
   a: Scanner;
 begin
@@ -429,7 +438,7 @@ end;
 (**
  * Tests the nextInt method.
  *)
-procedure PrintStreamTest.nextIntTest;
+procedure ScannerTest.nextIntTest;
 var
   a: Scanner;
 begin
@@ -450,7 +459,7 @@ end;
 (**
  * Tests the nextLong method.
  *)
-procedure PrintStreamTest.nextLongTest;
+procedure ScannerTest.nextLongTest;
 var
   a: Scanner;
 begin
@@ -471,7 +480,7 @@ end;
 (**
  * Tests the nextFloat method.
  *)
-procedure PrintStreamTest.nextFloatTest;
+procedure ScannerTest.nextFloatTest;
 var
   a: Scanner;
 begin
@@ -517,7 +526,7 @@ end;
 (**
  * Tests the nextDouble method.
  *)
-procedure PrintStreamTest.nextDoubleTest;
+procedure ScannerTest.nextDoubleTest;
 var
   a: Scanner;
 begin
@@ -558,7 +567,7 @@ end;
 (**
  * Tests the nextLine method.
  *)
-procedure PrintStreamTest.nextLineTest;
+procedure ScannerTest.nextLineTest;
 var
   a: Scanner;
 begin
@@ -577,6 +586,6 @@ end;
 
 initialization
 
-  //RegisterTest(PrintStreamTest);
+  //RegisterTest(ScannerTest);
 end.
 

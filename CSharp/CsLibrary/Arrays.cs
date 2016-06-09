@@ -73,7 +73,6 @@ namespace JavaClasses
         {
             public int Compare(Object x, Object y)
             {
-
                 return (x as Comparable).compareTo(y as Comparable);
             }
         }
@@ -122,8 +121,7 @@ namespace JavaClasses
                 // filling the rest of the new array with the default value of the given type
                 for (int i = original.Length; i < to; i++)
                 {
-                    a[i - fromValue] =
-                     default(T);
+                    a[i - fromValue] = default(T);
                 }
             }
             // the specified upper boundary is less then the original array length

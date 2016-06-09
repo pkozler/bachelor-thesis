@@ -60,7 +60,7 @@ begin
     a := LinkedList.create();
     setLength(c, 0);
     b := a.equals(toList(c));
-    AssertEquals(true, b);
+    AssertTrue(b);
 end;
 
 (**
@@ -78,7 +78,7 @@ begin
     b := LinkedList.create(a);
     setLength(e, 0);
     d := b.equals(toList(e));
-    AssertEquals(true, d);
+    AssertTrue(d);
     // creating the list from a list with one element
     a := LinkedList.create();
     c := TestObject.create('first', 1);
@@ -87,7 +87,7 @@ begin
     setLength(e, 1);
     e[0] :=  TestObject.create('first', 1);
     d := b.equals(toList(e));
-    AssertEquals(true, d);
+    AssertTrue(d);
     // creating the list from a list with some elements
     a := LinkedList.create();
     c := TestObject.create('first', 1);
@@ -102,7 +102,7 @@ begin
     e[1] := TestObject.create('second', 2);
     e[2] := TestObject.create('third', 3);
     d := b.equals(toList(e));
-    AssertEquals(true, d);
+    AssertTrue(d);
 end;
 
 (**
@@ -122,14 +122,14 @@ begin
     setLength(d, 1);
     d[0] :=  TestObject.create('first', 1);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     b := TestObject.create('second', 2);
     a.add(b);
     setLength(d, 2);
     d[0] :=  TestObject.create('first', 1);
     d[1] := TestObject.create('second', 2);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     b := TestObject.create('first', 2);
     a.add(b);
     setLength(d, 3);
@@ -137,7 +137,7 @@ begin
     d[1] := TestObject.create('second', 2);
     d[2] := TestObject.create('first', 2);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     b := TestObject.create('second', 1);
     a.add(b);
     setLength(d, 4);
@@ -146,7 +146,7 @@ begin
     d[2] := TestObject.create('first', 2);
     d[3] := TestObject.create('second', 1);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     b := TestObject.create('first', 1);
     a.add(b);
     setLength(d, 5);
@@ -156,7 +156,7 @@ begin
     d[3] := TestObject.create('second', 1);
     d[4] := TestObject.create('first', 1);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -176,7 +176,7 @@ begin
     setLength(d, 1);
     d[0] :=  TestObject.create('first', 1);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // adding an element at the end
     b := TestObject.create('second', 2);
     a.add(1, b);
@@ -184,7 +184,7 @@ begin
     d[0] :=  TestObject.create('first', 1);
     d[1] := TestObject.create('second', 2);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // adding an element at the beginning
     b := TestObject.create('third', 3);
     a.add(0, b);
@@ -193,7 +193,7 @@ begin
     d[1] := TestObject.create('first', 1);
     d[2] := TestObject.create('second', 2);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // adding an element in the middle
     b := TestObject.create('fourth', 4);
     a.add(1, b);
@@ -203,7 +203,7 @@ begin
     d[2] := TestObject.create('first', 1);
     d[3] := TestObject.create('second', 2);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // adding an element in the middle
     b := TestObject.create('fifth', 5);
     a.add(2, b);
@@ -214,7 +214,7 @@ begin
     d[3] := TestObject.create('first', 1);
     d[4] := TestObject.create('second', 2);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -235,12 +235,12 @@ begin
     a := toList(d);
     b := nil;
     c := a.equals(b);
-    AssertEquals(false, c);
+    AssertFalse(c);
     setLength(d, 1);
     d[0] := TestObject.create('first', 3);
     b := toList(d);
     c := a.equals(b);
-    AssertEquals(false, c);
+    AssertFalse(c);
     setLength(d, 5);
     d[0] := TestObject.create('first', 3);
     d[1] := TestObject.create('second', 2);
@@ -249,7 +249,7 @@ begin
     d[4] := TestObject.create('fifth', 3);
     b := toList(d);
     c := a.equals(b);
-    AssertEquals(false, c);
+    AssertFalse(c);
     setLength(d, 5);
     d[0] := TestObject.create('sixth', 3);
     d[1] := TestObject.create('seventh', 2);
@@ -258,10 +258,10 @@ begin
     d[4] := TestObject.create('tenth', 6);
     b := toList(d);
     c := a.equals(b);
-    AssertEquals(false, c);
+    AssertTrue(c);
     b := a;
     c := a.equals(b);
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -279,17 +279,17 @@ begin
     a.add(b);
     b := a.get(0) as TestObject;
     c := b.equals(TestObject.create('first', 1));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // getting an element from the beginning (more elements in the list)
     b := TestObject.create('second', 2);
     a.add(b);
     b := a.get(0) as TestObject;
     c := b.equals(TestObject.create('first', 1));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // getting an element from the end
     b := a.get(1) as TestObject;
     c := b.equals(TestObject.create('second', 2));
-    AssertEquals(true, c);
+    AssertTrue(c);
     b := TestObject.create('third', 3);
     a.add(b);
     b := TestObject.create('fourth', 4);
@@ -299,11 +299,11 @@ begin
     // getting an element from the beginning
     b := a.get(0) as TestObject;
     c := b.equals(TestObject.create('first', 1));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // getting an element from the end
     b := a.get(4) as TestObject;
     c := b.equals(TestObject.create('fifth', 5));
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -337,7 +337,7 @@ begin
     d[3] := TestObject.create('fourth', 4);
     d[4] := TestObject.create('fifth', 5);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // replacing an element in the middle
     b := TestObject.create('seventh', 7);
     a.set_(2, b);
@@ -348,7 +348,7 @@ begin
     d[3] := TestObject.create('fourth', 4);
     d[4] := TestObject.create('fifth', 5);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // replacing an element at the end
     b := TestObject.create('eighth', 8);
     a.set_(4, b);
@@ -359,7 +359,7 @@ begin
     d[3] := TestObject.create('fourth', 4);
     d[4] := TestObject.create('eighth', 8);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -391,7 +391,7 @@ begin
     d[2] := TestObject.create('fourth', 4);
     d[3] := TestObject.create('fifth', 5);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // removing the element from the middle
     a.remove(1);
     setLength(d, 3);
@@ -399,14 +399,14 @@ begin
     d[1] := TestObject.create('fourth', 4);
     d[2] := TestObject.create('fifth', 5);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // removing an element from the end
     a.remove(2);
     setLength(d, 2);
     d[0] :=  TestObject.create('second', 2);
     d[1] := TestObject.create('fourth', 4);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -456,24 +456,24 @@ var
 begin
     a := LinkedList.create();
     c := a.isEmpty();
-    AssertEquals(true, c);
+    AssertTrue(c);
     b := TestObject.create('first', 1);
     a.add(b);
     c := a.isEmpty();
-    AssertEquals(false, c);
+    AssertFalse(c);
     b := TestObject.create('second', 2);
     a.add(b);
     b := TestObject.create('third', 3);
     a.add(b);
     c := a.isEmpty();
-    AssertEquals(false, c);
+    AssertFalse(c);
     a.remove(0);
     c := a.isEmpty();
-    AssertEquals(false, c);
+    AssertFalse(c);
     a.remove(0);
     a.remove(0);
     c := a.isEmpty();
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -491,13 +491,13 @@ begin
     a.clear();
     setLength(d, 0);
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // clear after adding one element
     b := TestObject.create('first', 1);
     a.add(b);
     a.clear();
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
     // clear after adding more elements
     b := TestObject.create('first', 1);
     a.add(b);
@@ -507,7 +507,7 @@ begin
     a.add(b);
     a.clear();
     c := a.equals(toList(d));
-    AssertEquals(true, c);
+    AssertTrue(c);
 end;
 
 (**
@@ -527,14 +527,14 @@ begin
     b := TestObject.create('first', 1);
     a.add(b);
     c := a.toString_();
-    AssertEquals('[TestObject [str:=first, i:=1]]', c.strProperty);
+    AssertEquals('[TestObject [str=first, i=1]]', c.strProperty);
     // the text representation of a list with some elements
     b := TestObject.create('second', 2);
     a.add(b);
     b := TestObject.create('third', 3);
     a.add(b);
     c := a.toString_();
-    AssertEquals('[TestObject [str:=first, i:=1], TestObject [str:=second, i:=2], TestObject [str:=third, i:=3]]', c.strProperty);
+    AssertEquals('[TestObject [str=first, i=1], TestObject [str=second, i=2], TestObject [str=third, i=3]]', c.strProperty);
 end;
 
 initialization

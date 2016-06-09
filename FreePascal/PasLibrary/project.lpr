@@ -4,6 +4,7 @@ program project;
 
 uses
   Classes,
+  Math,
   SysUtils,
   ArrayListUnit,
   ArraysUnit,
@@ -27,14 +28,9 @@ uses
   TestObjectComparatorUnit;
 
 var
-  s : String_;
-  sc : Scanner;
+  sc: Scanner;
 begin
-  sc := Scanner.create(System_.in_);
-  s := sc.next();
-  System_.out_.println(s);
-  s := sc.nextLine();
-  System_.out_.println(s);
-
-  ReadLn();
+    sc := Scanner.create(System_.in_);
+    System_.out_.print(sc.nextDouble());
+    readln();
 end.

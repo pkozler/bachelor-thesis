@@ -42,7 +42,7 @@ begin
   testMethods[17] := @(testClass.printlnTest9);
   testMethods[18] := @(testClass.printlnTest10);
 
-  if paramcount < 2 then begin
+  if paramcount < 1 then begin
     usage();
   end;
 

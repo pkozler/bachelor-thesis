@@ -38,7 +38,7 @@ uses
  *)
 constructor StringTokenizer.create(str: String_);
 begin
-  self.create(str, ' \t\n\r\f');
+  self.create(str, #32#9#10#11#12#13);
 end;
 
 (**
@@ -49,13 +49,13 @@ end;
  *)
 constructor StringTokenizer.create(str: String_; delim: String_);
 var
-  strStr, delimStr: ansiString;
+  strStr, delimStr, tmpStr: ansiString;
   count, len, i, tmp, index: longInt;
 begin
   tokenCounter := 0;
   count := 1;
-  strStr := str.toString();
-  delimStr := delim.toString();
+  strStr := str.strProperty;
+  delimStr := delim.strProperty;
   len := length(strStr);
 
   for i := 1 to len do begin
@@ -70,13 +70,25 @@ begin
 
   for i := 1 to len do begin
     if ansiContainsStr(delimStr, strStr[i]) then begin
-       tokens[index] := copy(strStr, tmp, i - tmp);
-       tmp := i;
-       inc(index);
+       tmpStr := copy(strStr, tmp, i - tmp);
+
+       if length(tmpStr) > 0 then begin
+          tokens[index] := tmpStr;
+          inc(index);
+       end;
+
+       tmp := i + 1;
     end;
   end;
 
-  tokens[index] := copy(strStr, tmp, i - tmp);
+  tmpStr := copy(strStr, tmp, i - tmp + 1);
+
+  if length(tmpStr) > 0 then begin
+     tokens[index] := tmpStr;
+     inc(index);
+  end;
+
+  setLength(tokens, index);
 end;
 
 (**
@@ -88,7 +100,7 @@ end;
  *)
 function StringTokenizer.countTokens() : longInt;
 begin
-  countTokens := length(tokens);
+  countTokens := length(tokens) - tokenCounter;
 end;
 
 (**

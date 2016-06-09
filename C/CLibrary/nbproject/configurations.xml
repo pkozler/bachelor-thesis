@@ -16,7 +16,7 @@
       <itemPath>LinkedList.h</itemPath>
       <itemPath>List.h</itemPath>
       <itemPath>Long.h</itemPath>
-      <itemPath>Math.h</itemPath>
+      <itemPath>Math_.h</itemPath>
       <itemPath>Scanner.h</itemPath>
       <itemPath>Short.h</itemPath>
       <itemPath>String.h</itemPath>
@@ -45,7 +45,7 @@
       <itemPath>LinkedList.c</itemPath>
       <itemPath>List.c</itemPath>
       <itemPath>Long.c</itemPath>
-      <itemPath>Math.c</itemPath>
+      <itemPath>Math_.c</itemPath>
       <itemPath>Scanner.c</itemPath>
       <itemPath>Short.c</itemPath>
       <itemPath>String.c</itemPath>
@@ -168,11 +168,22 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>-std=c11 -lm -O2</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>-std=c++11 -lm -O2</commandLine>
         </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f14</output>
+        </linkerTool>
       </compileType>
       <item path="ArrayList.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -222,9 +233,9 @@
       </item>
       <item path="Long.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Math.c" ex="false" tool="0" flavor2="0">
+      <item path="Math_.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="Math.h" ex="false" tool="3" flavor2="0">
+      <item path="Math_.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Scanner.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -312,36 +323,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f12</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f13">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f13</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f14">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f14</output>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f15">
@@ -572,9 +553,17 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>.</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -582,6 +571,9 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f14</output>
+        </linkerTool>
       </compileType>
       <item path="ArrayList.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -631,9 +623,9 @@
       </item>
       <item path="Long.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Math.c" ex="false" tool="0" flavor2="0">
+      <item path="Math_.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="Math.h" ex="false" tool="3" flavor2="0">
+      <item path="Math_.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Scanner.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -721,36 +713,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f12</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f13">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f13</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f14">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f14</output>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f15">

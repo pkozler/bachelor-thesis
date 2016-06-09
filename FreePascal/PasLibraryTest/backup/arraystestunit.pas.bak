@@ -38,7 +38,7 @@ type
        procedure copyOfTest7;
        procedure copyOfTest8;
        procedure copyOfTest9;
-       procedure copyOfRangeTest1;
+       procedure copyOfRangeTest;
        procedure copyOfRangeTest2;
        procedure copyOfRangeTest3;
        procedure copyOfRangeTest4;
@@ -526,8 +526,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest;
 var
-    a, b: array of boolean;
-    c: boolean;
+    a, b, c: array of boolean;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  true;
@@ -537,34 +537,34 @@ begin
     a[4] := true ;
     // new array is smaller
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := true;
-    a[1] := false;
-    a[2] := false;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := true;
+    c[1] := false;
+    c[2] := false;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     // new array has the same length
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := true;
-    a[1] := false;
-    a[2] := false;
-    a[3] := false;
-    a[4] := true;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := true;
+    c[1] := false;
+    c[2] := false;
+    c[3] := false;
+    c[4] := true;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     // new array is bigger
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := true;
-    a[1] := false;
-    a[2] := false;
-    a[3] := false;
-    a[4] := true;
-    a[5] := false;
-    a[6] := false;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := true;
+    c[1] := false;
+    c[2] := false;
+    c[3] := false;
+    c[4] := true;
+    c[5] := false;
+    c[6] := false;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -572,8 +572,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest2;
 var
-    a, b: array of shortInt;
-    c: boolean;
+    a, b, c: array of shortInt;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  shortInt(3);
@@ -582,32 +582,32 @@ begin
     a[3] := shortInt(7);
     a[4] := shortInt(6) ;
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    a[5] := 0;
-    a[6] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    c[5] := 0;
+    c[6] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -615,42 +615,42 @@ end;
  *)
 procedure ArraysTest.copyOfTest3;
 var
-    a, b: array of ansiChar;
-    c: boolean;
+    a, b, c: array of ansiChar;
+    d: boolean;
 begin
     setLength(a, 5);
-    a[0] :=  'c';
+    a[0] :=  'd';
     a[1] := 'b';
     a[2] := 'h';
     a[3] := 'g';
     a[4] := 'f' ;
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := 'c';
-    a[1] := 'b';
-    a[2] := 'h';
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 'd';
+    c[1] := 'b';
+    c[2] := 'h';
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := 'c';
-    a[1] := 'b';
-    a[2] := 'h';
-    a[3] := 'g';
-    a[4] := 'f';
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := 'd';
+    c[1] := 'b';
+    c[2] := 'h';
+    c[3] := 'g';
+    c[4] := 'f';
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := 'c';
-    a[1] := 'b';
-    a[2] := 'h';
-    a[3] := 'g';
-    a[4] := 'f';
-    a[5] := #0;
-    a[6] := #0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := 'd';
+    c[1] := 'b';
+    c[2] := 'h';
+    c[3] := 'g';
+    c[4] := 'f';
+    c[5] := #0;
+    c[6] := #0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -658,8 +658,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest4;
 var
-    a, b: array of double;
-    c: boolean;
+    a, b, c: array of double;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  3.0;
@@ -668,32 +668,32 @@ begin
     a[3] := 7.0;
     a[4] := 6.0 ;
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    a[3] := 7.0;
-    a[4] := 6.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    c[3] := 7.0;
+    c[4] := 6.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    a[3] := 7.0;
-    a[4] := 6.0;
-    a[5] := 0.0;
-    a[6] := 0.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    c[3] := 7.0;
+    c[4] := 6.0;
+    c[5] := 0.0;
+    c[6] := 0.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -701,8 +701,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest5;
 var
-    a, b: array of single;
-    c: boolean;
+    a, b, c: array of single;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  3.0;
@@ -711,32 +711,32 @@ begin
     a[3] := 7.0;
     a[4] := 6.0 ;
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    a[3] := 7.0;
-    a[4] := 6.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    c[3] := 7.0;
+    c[4] := 6.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    a[3] := 7.0;
-    a[4] := 6.0;
-    a[5] := 0.0;
-    a[6] := 0.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    c[3] := 7.0;
+    c[4] := 6.0;
+    c[5] := 0.0;
+    c[6] := 0.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -744,8 +744,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest6;
 var
-    a, b: array of longInt;
-    c: boolean;
+    a, b, c: array of longInt;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  3;
@@ -754,32 +754,32 @@ begin
     a[3] := 7;
     a[4] := 6;
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    a[5] := 0;
-    a[6] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    c[5] := 0;
+    c[6] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -787,8 +787,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest7;
 var
-    a, b: array of int64;
-    c: boolean;
+    a, b, c: array of int64;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  3;
@@ -797,32 +797,32 @@ begin
     a[3] := 7;
     a[4] := 6 ;
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    a[5] := 0;
-    a[6] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    c[5] := 0;
+    c[6] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -830,8 +830,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest8;
 var
-    a, b: array of smallInt;
-    c: boolean;
+    a, b, c: array of smallInt;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  smallInt(3);
@@ -840,32 +840,32 @@ begin
     a[3] := smallInt(7);
     a[4] := smallInt(6) ;
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    a[3] := 7;
-    a[4] := 6;
-    a[5] := 0;
-    a[6] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    c[3] := 7;
+    c[4] := 6;
+    c[5] := 0;
+    c[6] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -873,8 +873,8 @@ end;
  *)
 procedure ArraysTest.copyOfTest9;
 var
-    a, b: array of Object_;
-    c: boolean;
+    a, b, c: array of Object_;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] := TestObject.create('first', 3);
@@ -883,41 +883,41 @@ begin
     a[3] := TestObject.create('fourth', 7);
     a[4] := TestObject.create('fifth', 6);
     b := Arrays.copyOf(a, 3);
-    setLength(a, 3);
-    a[0] := TestObject.create('first', 3);
-    a[1] := TestObject.create('second', 2);
-    a[2] := TestObject.create('third', 8);
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := TestObject.create('first', 3);
+    c[1] := TestObject.create('second', 2);
+    c[2] := TestObject.create('third', 8);
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 5);
-    setLength(a, 5);
-    a[0] := TestObject.create('first', 3);
-    a[1] := TestObject.create('second', 2);
-    a[2] := TestObject.create('third', 8);
-    a[3] := TestObject.create('fourth', 7);
-    a[4] := TestObject.create('fifth', 6);
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 5);
+    c[0] := TestObject.create('first', 3);
+    c[1] := TestObject.create('second', 2);
+    c[2] := TestObject.create('third', 8);
+    c[3] := TestObject.create('fourth', 7);
+    c[4] := TestObject.create('fifth', 6);
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOf(a, 7);
-    setLength(a, 7);
-    a[0] := TestObject.create('first', 3);
-    a[1] := TestObject.create('second', 2);
-    a[2] := TestObject.create('third', 8);
-    a[3] := TestObject.create('fourth', 7);
-    a[4] := TestObject.create('fifth', 6);
-    a[5] := nil;
-    a[6] := nil;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 7);
+    c[0] := TestObject.create('first', 3);
+    c[1] := TestObject.create('second', 2);
+    c[2] := TestObject.create('third', 8);
+    c[3] := TestObject.create('fourth', 7);
+    c[4] := TestObject.create('fifth', 6);
+    c[5] := nil;
+    c[6] := nil;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
  * Tests the copyOfRange method with array of booleans.
  *)
-procedure ArraysTest.copyOfRangeTest1;
+procedure ArraysTest.copyOfRangeTest;
 var
-    a, b: array of boolean;
-    c: boolean;
+    a, b, c: array of boolean;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  true;
@@ -927,28 +927,28 @@ begin
     a[4] := true;
     // copy from the beginning
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := true;
-    a[1] := false;
-    a[2] := false;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := true;
+    c[1] := false;
+    c[2] := false;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     // copy from the middle
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := false;
-    a[1] := false;
-    a[2] := true;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := false;
+    c[1] := false;
+    c[2] := true;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     // copy from the end
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := true;
-    a[1] := false;
-    a[2] := false;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := true;
+    c[1] := false;
+    c[2] := false;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -956,8 +956,8 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest2;
 var
-    a, b: array of shortInt;
-    c: boolean;
+    a, b, c: array of shortInt;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  shortInt(3);
@@ -966,26 +966,26 @@ begin
     a[3] := shortInt(7);
     a[4] := shortInt(6) ;
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := 8;
-    a[1] := 7;
-    a[2] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 8;
+    c[1] := 7;
+    c[2] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := 6;
-    a[1] := 0;
-    a[2] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 6;
+    c[1] := 0;
+    c[2] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -993,36 +993,36 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest3;
 var
-    a, b: array of ansiChar;
-    c: boolean;
+    a, b, c: array of ansiChar;
+    d: boolean;
 begin
     setLength(a, 5);
-    a[0] :=  'c';
+    a[0] :=  'd';
     a[1] := 'b';
     a[2] := 'h';
     a[3] := 'g';
     a[4] := 'f';
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := 'c';
-    a[1] := 'b';
-    a[2] := 'h';
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 'd';
+    c[1] := 'b';
+    c[2] := 'h';
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := 'h';
-    a[1] := 'g';
-    a[2] := 'f';
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 'h';
+    c[1] := 'g';
+    c[2] := 'f';
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := 'f';
-    a[1] := #0;
-    a[2] := #0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 'f';
+    c[1] := #0;
+    c[2] := #0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -1030,8 +1030,8 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest4;
 var
-    a, b: array of double;
-    c: boolean;
+    a, b, c: array of double;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] :=  3.0;
@@ -1040,26 +1040,26 @@ begin
     a[3] := 7.0;
     a[4] := 6.0;
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := 8.0;
-    a[1] := 7.0;
-    a[2] := 6.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 8.0;
+    c[1] := 7.0;
+    c[2] := 6.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := 6.0;
-    a[1] := 0.0;
-    a[2] := 0.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 6.0;
+    c[1] := 0.0;
+    c[2] := 0.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -1067,8 +1067,8 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest5;
 var
-    a, b: array of single;
-    c: boolean;
+    a, b, c: array of single;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] := 3.0;
@@ -1077,26 +1077,26 @@ begin
     a[3] := 7.0;
     a[4] := 6.0;
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := 3.0;
-    a[1] := 2.0;
-    a[2] := 8.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3.0;
+    c[1] := 2.0;
+    c[2] := 8.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := 8.0;
-    a[1] := 7.0;
-    a[2] := 6.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 8.0;
+    c[1] := 7.0;
+    c[2] := 6.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := 6.0;
-    a[1] := 0.0;
-    a[2] := 0.0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 6.0;
+    c[1] := 0.0;
+    c[2] := 0.0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -1104,8 +1104,8 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest6;
 var
-    a, b: array of longInt;
-    c: boolean;
+    a, b, c: array of longInt;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] := 3;
@@ -1114,26 +1114,26 @@ begin
     a[3] := 7;
     a[4] := 6;
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := 8;
-    a[1] := 7;
-    a[2] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 8;
+    c[1] := 7;
+    c[2] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := 6;
-    a[1] := 0;
-    a[2] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 6;
+    c[1] := 0;
+    c[2] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -1141,8 +1141,8 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest7;
 var
-    a, b: array of int64;
-    c: boolean;
+    a, b, c: array of int64;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] := 3;
@@ -1151,26 +1151,26 @@ begin
     a[3] := 7;
     a[4] := 6 ;
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := 8;
-    a[1] := 7;
-    a[2] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 8;
+    c[1] := 7;
+    c[2] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := 6;
-    a[1] := 0;
-    a[2] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 6;
+    c[1] := 0;
+    c[2] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -1178,8 +1178,8 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest8;
 var
-    a, b: array of smallInt;
-    c: boolean;
+    a, b, c: array of smallInt;
+    d: boolean;
 begin
     setLength(a, 5);
     a[0] := smallInt(3);
@@ -1188,26 +1188,26 @@ begin
     a[3] := smallInt(7);
     a[4] := smallInt(6);
     b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
-    a[0] := 3;
-    a[1] := 2;
-    a[2] := 8;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 3;
+    c[1] := 2;
+    c[2] := 8;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := 8;
-    a[1] := 7;
-    a[2] := 6;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 8;
+    c[1] := 7;
+    c[2] := 6;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := 6;
-    a[1] := 0;
-    a[2] := 0;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := 6;
+    c[1] := 0;
+    c[2] := 0;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -1215,36 +1215,36 @@ end;
  *)
 procedure ArraysTest.copyOfRangeTest9;
 var
-    a, b: array of Object_;
-    c: boolean;
+    a, b, c: array of Object_;
+    d: boolean;
 begin
     setLength(a, 5);
-    TestObject.create('first', 3);
-    TestObject.create('second', 2);
-    TestObject.create('third', 8);
-    TestObject.create('fourth', 7);
-    TestObject.create('fifth', 6);
-    b := Arrays.copyOfRange(a, 0, 3);
-    setLength(a, 3);
     a[0] := TestObject.create('first', 3);
     a[1] := TestObject.create('second', 2);
     a[2] := TestObject.create('third', 8);
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    a[3] := TestObject.create('fourth', 7);
+    a[4] := TestObject.create('fifth', 6);
+    b := Arrays.copyOfRange(a, 0, 3);
+    setLength(c, 3);
+    c[0] := TestObject.create('first', 3);
+    c[1] := TestObject.create('second', 2);
+    c[2] := TestObject.create('third', 8);
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 2, 5);
-    setLength(a, 3);
-    a[0] := TestObject.create('third', 8);
-    a[1] := TestObject.create('fourth', 7);
-    a[2] := TestObject.create('fifth', 6);
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := TestObject.create('third', 8);
+    c[1] := TestObject.create('fourth', 7);
+    c[2] := TestObject.create('fifth', 6);
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
     b := Arrays.copyOfRange(a, 4, 7);
-    setLength(a, 3);
-    a[0] := TestObject.create('fifth', 6);
-    a[1] := nil;
-    a[2] := nil;
-    c := Arrays.equals(b, a);
-    AssertEquals(true, c);
+    setLength(c, 3);
+    c[0] := TestObject.create('fifth', 6);
+    c[1] := nil;
+    c[2] := nil;
+    d := Arrays.equals(b, c);
+    AssertEquals(true, d);
 end;
 
 (**
@@ -1434,7 +1434,7 @@ begin
     a[2] := 8.0;
     a[3] := 7.0;
     a[4] := 6.0;
-    b := null;
+    b := nil;
     c := Arrays.equals(a, b);
     AssertEquals(false, c);
     setLength(b, 1);
@@ -1476,7 +1476,7 @@ begin
     a[2] := 8;
     a[3] := 7;
     a[4] := 6;
-    b := null;
+    b := nil;
     c := Arrays.equals(a, b);
     AssertEquals(false, c);
     setLength(b, 1);
@@ -1518,7 +1518,7 @@ begin
     a[2] := 8;
     a[3] := 7;
     a[4] := 6;
-    b := null;
+    b := nil;
     c := Arrays.equals(a, b);
     AssertEquals(false, c);
     setLength(b, 1);
@@ -2682,7 +2682,7 @@ begin
     setLength(a, 1);
     a[0] := TestObject.create('first', 1);
     b := Arrays.toString(a);
-    AssertEquals('[TestObject[str := first, i := 1]]', b.strProperty);
+    AssertEquals('[TestObject [str=first, i=1]]', b.strProperty);
     setLength(a, 1);
     a[0] := nil;
     b := Arrays.toString(a);
@@ -2692,13 +2692,13 @@ begin
     a[1] := TestObject.create('second', 2);
     a[2] := TestObject.create('third', 3);
     b := Arrays.toString(a);
-    AssertEquals('[TestObject[str := first, i := 1], TestObject[str := second, i := 2], TestObject[str := third, i := 3]]', b.strProperty);
+    AssertEquals('[TestObject [str=first, i=1], TestObject [str=second, i=2], TestObject [str=third, i=3]]', b.strProperty);
     setLength(a, 3);
     a[0] := TestObject.create('first', 1);
     a[1] := nil;
     a[2] := TestObject.create('third', 3);
     b := Arrays.toString(a);
-    AssertEquals('[TestObject[str := first, i := 1], null, TestObject[str := third, i := 3]]', b.strProperty);
+    AssertEquals('[TestObject [str=first, i=1], null, TestObject [str=third, i=3]]', b.strProperty);
     setLength(a, 3);
     a[0] := nil;
     a[1] := nil;
@@ -2717,11 +2717,11 @@ var
 begin
     setLength(a, 0);
     b := Arrays.toString(a);
-    AssertEquals('[]', b);
+    AssertEquals('[]', b.strProperty);
     setLength(a, 1);
     a[0] := smallInt(3);
     b := Arrays.toString(a);
-    AssertEquals('[3]', b);
+    AssertEquals('[3]', b.strProperty);
     setLength(a, 5);
     a[0] := smallInt(3);
     a[1] := smallInt(2);
@@ -2729,7 +2729,7 @@ begin
     a[3] := smallInt(7);
     a[4] := smallInt(6);
     b := Arrays.toString(a);
-    AssertEquals('[3, 2, 8, 7, 6]', b);
+    AssertEquals('[3, 2, 8, 7, 6]', b.strProperty);
 end;
 
 initialization

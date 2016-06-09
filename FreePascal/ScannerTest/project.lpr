@@ -1,6 +1,6 @@
 program project;
 
-uses sysutils, ScannerTestUnit, unit1;
+uses sysutils, ScannerTestUnit;
 
 const TEST_METHOD_COUNT = 9;
 
@@ -31,8 +31,9 @@ begin
   testMethods[6] := @(testClass.nextLongTest);
   testMethods[7] := @(testClass.nextFloatTest);
   testMethods[8] := @(testClass.nextDoubleTest);
+  testMethods[9] := @(testClass.nextLineTest);
 
-  if paramcount < 2 then begin
+  if paramcount < 1 then begin
     usage();
   end;
 

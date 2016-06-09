@@ -15,7 +15,7 @@ var
 procedure usage;
 begin
   writeLn('Zadejte platné číslo testovací metody. ('
-  + intToStr(0) + ' - ' + intToStr(length(testMethods)) + ')');
+  + intToStr(0) + ' - ' + intToStr(length(testMethods) - 1) + ')');
   halt(-1);
 end;
 
@@ -42,12 +42,14 @@ begin
   testMethods[17] := @(testClass.printlnTest9);
   testMethods[18] := @(testClass.printlnTest10);
 
-  if paramcount < 2 then begin
+      writeLn(paramcount);
+  if paramcount < 1 then begin
     usage();
   end;
 
   try
     n := strToInt(paramStr(1));
+    writeLn(n);
   except
     on e: EConvertError do begin
       usage();

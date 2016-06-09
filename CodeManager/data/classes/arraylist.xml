@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef ARRAYLIST_INCLUDED&#13;
+#define	ARRAYLIST_INCLUDED&#13;
+&#13;
+#include "String.h"&#13;
+#include &lt;stdbool.h&gt;&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * Struct definition for the resizable-array implementation of the list data structure.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+typedef struct {&#13;
+    int32_t count;&#13;
+    int32_t capacity;&#13;
+    void **dynamicArray;&#13;
+} ArrayList;&#13;
+&#13;
+ArrayList *new_ArrayList();&#13;
+ArrayList *new_ArrayListAddAll(ArrayList *c);&#13;
+void delete_ArrayList(ArrayList *ptr);&#13;
+bool addAl(ArrayList *ptr, void *e);&#13;
+void addAtAl(ArrayList *ptr, int32_t index, void *element);&#13;
+void *getAl(ArrayList *ptr, int32_t index);&#13;
+void *setAl(ArrayList *ptr, int32_t index, void *element);&#13;
+void *removeAl(ArrayList *ptr, int32_t index);&#13;
+int32_t sizeAl(ArrayList *ptr);&#13;
+bool isEmptyAl(ArrayList *ptr);&#13;
+void clearAl(ArrayList *ptr);&#13;
+String *toStringAl(ArrayList *ptr, String *(*toString)(void *));&#13;
+&#13;
+#endif	/* ARRAYLIST_INCLUDED */&#13;
+&#13;
+&#13;
+&#13;
+#include "ArrayList.h"&#13;
+&#13;
+#include "StringBuilder.h"&#13;
+#include &lt;stdlib.h&gt;&#13;
+#include &lt;string.h&gt;&#13;
+&#13;
+#define _DEFAULT_CAPACITY 10&#13;
+#define _RESIZE_COEF 2&#13;
+&#13;
+/**&#13;
+ * Constructs an empty list with an initial capacity of ten.&#13;
+ */&#13;
+ArrayList *new_ArrayList() {&#13;
+    ArrayList *list = malloc(sizeof (ArrayList));&#13;
+    list-&gt;count = 0;&#13;
+    list-&gt;capacity = _DEFAULT_CAPACITY;&#13;
+    list-&gt;dynamicArray = malloc(list-&gt;capacity * sizeof (void *));&#13;
+&#13;
+    return list;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Constructs a list containing the elements of the specified array list, in&#13;
+ * the order they are returned by the iteration over the list.&#13;
+ *&#13;
+ * @param c the array list whose elements are to be placed into the specified list&#13;
+ */&#13;
+ArrayList *new_ArrayListAddAll(ArrayList *c) {&#13;
+    ArrayList *list = malloc(sizeof (ArrayList));&#13;
+    list-&gt;count = c-&gt;count;&#13;
+    list-&gt;capacity = c-&gt;capacity;&#13;
+    list-&gt;dynamicArray = malloc(list-&gt;capacity * sizeof (void *));&#13;
+&#13;
+    int32_t i;&#13;
+    for (i = 0; i &lt; list-&gt;count; i++) {&#13;
+        list-&gt;dynamicArray[i] = c-&gt;dynamicArray[i];&#13;
+    }&#13;
+&#13;
+    return list;&#13;
+}&#13;
+&#13;
+void delete_ArrayList(ArrayList *ptr) {&#13;
+    clearAl(ptr);&#13;
+    free(ptr);&#13;
+}&#13;
+&#13;
+void _expandList(ArrayList *ptr) {&#13;
+    ptr-&gt;count++;&#13;
+&#13;
+    if (ptr-&gt;count == ptr-&gt;capacity) {&#13;
+        ptr-&gt;capacity *= _RESIZE_COEF;&#13;
+        ptr-&gt;dynamicArray = realloc(ptr-&gt;dynamicArray, ptr-&gt;capacity);&#13;
+    }&#13;
+}&#13;
+&#13;
+void _shrinkList(ArrayList *ptr) {&#13;
+    ptr-&gt;count--;&#13;
+&#13;
+    if (ptr-&gt;count &lt; ptr-&gt;capacity / _RESIZE_COEF&#13;
+            &amp;&amp; ptr-&gt;capacity &gt;= _DEFAULT_CAPACITY * _RESIZE_COEF) {&#13;
+        ptr-&gt;capacity /= _RESIZE_COEF;&#13;
+        ptr-&gt;dynamicArray = realloc(ptr-&gt;dynamicArray, ptr-&gt;capacity);&#13;
+    }&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Appends the specified element to the end of the specified list.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param e element to be appended to the specified list&#13;
+ * @return true&#13;
+ */&#13;
+bool addAl(ArrayList *ptr, void *e) {&#13;
+    ptr-&gt;dynamicArray[ptr-&gt;count] = e;&#13;
+    _expandList(ptr);&#13;
+&#13;
+    return true;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Inserts the specified element at the specified position in the specified list.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param index index at which the specified element is to be inserted&#13;
+ * @param element element to be inserted&#13;
+ */&#13;
+void addAtAl(ArrayList *ptr, int32_t index, void *element) {&#13;
+    int32_t i;&#13;
+&#13;
+    for (i = ptr-&gt;count; i &gt; index; i--) {&#13;
+        ptr-&gt;dynamicArray[i] = ptr-&gt;dynamicArray[i - 1];&#13;
+    }&#13;
+&#13;
+    ptr-&gt;dynamicArray[index] = element;&#13;
+    _expandList(ptr);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the element at the specified position in the specified list.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param index index of the element to return&#13;
+ * @return the element at the specified position in the specified list&#13;
+ */&#13;
+void *getAl(ArrayList *ptr, int32_t index) {&#13;
+    return ptr-&gt;dynamicArray[index];&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Replaces the element at the specified position in the specified list with the&#13;
+ * specified element.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param index index of the element to replace&#13;
+ * @param element element to be stored at the specified position&#13;
+ * @return the element previously at the specified position&#13;
+ */&#13;
+void *setAl(ArrayList *ptr, int32_t index, void *element) {&#13;
+    void *original = ptr-&gt;dynamicArray[index];&#13;
+    ptr-&gt;dynamicArray[index] = element;&#13;
+&#13;
+    return original;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Removes the element at the specified position in the specified list.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param index the index of the element to be removed&#13;
+ * @return the element that was removed from the list&#13;
+ */&#13;
+void *removeAl(ArrayList *ptr, int32_t index) {&#13;
+    void *removed = ptr-&gt;dynamicArray[index];&#13;
+    int32_t i;&#13;
+&#13;
+    for (i = index; i &lt; ptr-&gt;count - 1; i++) {&#13;
+        ptr-&gt;dynamicArray[i] = ptr-&gt;dynamicArray[i + 1];&#13;
+    }&#13;
+&#13;
+    _shrinkList(ptr);&#13;
+    return removed;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the number of elements in the specified list.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @return the number of elements in the specified list&#13;
+ */&#13;
+int32_t sizeAl(ArrayList *ptr) {&#13;
+    return ptr-&gt;count;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns true if the specified list contains no elements.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @return true if the specified list contains no elements&#13;
+ */&#13;
+bool isEmptyAl(ArrayList *ptr) {&#13;
+    return (ptr-&gt;count == 0);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Removes all of the elements from the specified list.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ */&#13;
+void clearAl(ArrayList *ptr) {&#13;
+    free(ptr-&gt;dynamicArray);&#13;
+&#13;
+    ptr-&gt;count = 0;&#13;
+    ptr-&gt;capacity = _DEFAULT_CAPACITY;&#13;
+    ptr-&gt;dynamicArray = malloc(ptr-&gt;capacity * sizeof (void *));&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a string representation of the structure.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param toString The list element toString function&#13;
+ * @return a string representation of the structure.&#13;
+ */&#13;
+String *toStringAl(ArrayList *ptr, String *(*toString)(void *)) {&#13;
+    int32_t length = ptr-&gt;count;&#13;
+    StringBuilder *sb = new_StringBuilder();&#13;
+    String *str = new_String("[");&#13;
+    append(sb, str);&#13;
+    delete_String(str);&#13;
+&#13;
+    if (length &gt; 0) {&#13;
+        str = toString(ptr-&gt;dynamicArray[0]);&#13;
+        append(sb, str);&#13;
+        delete_String(str);&#13;
+    }&#13;
+&#13;
+    int32_t i;&#13;
+    for (i = 1; i &lt; length; i++) {&#13;
+        str = new_String(", ");&#13;
+        append(sb, str);&#13;
+        delete_String(str);&#13;
+        str = toString(ptr-&gt;dynamicArray[i]);&#13;
+        append(sb, str);&#13;
+        delete_String(str);&#13;
+    }&#13;
+&#13;
+    str = new_String("]");&#13;
+    append(sb, str);&#13;
+    delete_String(str);&#13;
+    str = toStringSb(sb);&#13;
+    delete_StringBuilder(sb);&#13;
+&#13;
+    return str;&#13;
+}&#13;
+</code>
+<code lang="C++">#ifndef ARRAYLIST_INCLUDED&#13;
+#define	ARRAYLIST_INCLUDED&#13;
+&#13;
+#include "List.h"&#13;
+#include "String_.h"&#13;
+#include &lt;vector&gt;&#13;
+#include &lt;cstdint&gt;&#13;
+#include &lt;sstream&gt;&#13;
+&#13;
+/**&#13;
+ * Resizable-array implementation of the List abstract class.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+template &lt;class E&gt; class ArrayList : public List&lt;E&gt; {&#13;
+    static const int32_t DEFAULT_CAPACITY;&#13;
+    std::vector&lt;E *&gt; v;&#13;
+public:&#13;
+    std::vector&lt;E *&gt; _v() { return v; }&#13;
+    ArrayList();&#13;
+    ArrayList(ArrayList&lt;E&gt; *c);&#13;
+    ~ArrayList();&#13;
+    bool add(E *e);&#13;
+    void add(int32_t index, E *element);&#13;
+    E *get(int32_t index);&#13;
+    E *set(int32_t index, E *element);&#13;
+    E *remove(int32_t index);&#13;
+    int32_t size();&#13;
+    void clear();&#13;
+    String *toString();&#13;
+};&#13;
+&#13;
+template &lt;class E&gt; const int32_t ArrayList&lt;E&gt;::DEFAULT_CAPACITY = 10;&#13;
+&#13;
+/**&#13;
+ * Constructs an empty list with an initial capacity of ten.&#13;
+ */&#13;
+template &lt;class E&gt; ArrayList&lt;E&gt;::ArrayList() {}&#13;
+&#13;
+/**&#13;
+ * Constructs a list containing the elements of the specified collection, in&#13;
+ * the order they are returned by the collection's iterator.&#13;
+ *&#13;
+ * @param c the collection whose elements are to be placed into this list&#13;
+ */&#13;
+template &lt;class E&gt; ArrayList&lt;E&gt;::ArrayList(ArrayList&lt;E&gt; *c) {&#13;
+    v = c-&gt;v;&#13;
+}&#13;
+&#13;
+template &lt;class E&gt; ArrayList&lt;E&gt;::~ArrayList() {&#13;
+    v.clear();&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Appends the specified element to the end of this list.&#13;
+ *&#13;
+ * @param e element to be appended to this list&#13;
+ * @return true&#13;
+ */&#13;
+template &lt;class E&gt; bool ArrayList&lt;E&gt;::add(E *e) {&#13;
+    v.push_back(e);&#13;
+&#13;
+    return true;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Inserts the specified element at the specified position in this list.&#13;
+ *&#13;
+ * @param index index at which the specified element is to be inserted&#13;
+ * @param element element to be inserted&#13;
+ */&#13;
+template &lt;class E&gt; void ArrayList&lt;E&gt;::add(int32_t index, E *element) {&#13;
+    v[index] = element;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the element at the specified position in this list.&#13;
+ *&#13;
+ * @param index index of the element to return&#13;
+ * @return the element at the specified position in this list&#13;
+ */&#13;
+template &lt;class E&gt; E *ArrayList&lt;E&gt;::get(int32_t index) {&#13;
+    return v[index];&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Replaces the element at the specified position in this list with the&#13;
+ * specified element.&#13;
+ *&#13;
+ * @param index index of the element to replace&#13;
+ * @param element element to be stored at the specified position&#13;
+ * @return the element previously at the specified position&#13;
+ */&#13;
+template &lt;class E&gt; E *ArrayList&lt;E&gt;::set(int32_t index, E *element) {&#13;
+    E *original = v[index];&#13;
+    v[index] = element;&#13;
+&#13;
+    return original;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Removes the element at the specified position in this list.&#13;
+ *&#13;
+ * @param index the index of the element to be removed&#13;
+ * @return the element that was removed from the list&#13;
+ */&#13;
+template &lt;class E&gt; E *ArrayList&lt;E&gt;::remove(int32_t index) {&#13;
+    E *removed = v[index];&#13;
+    v.erase(v.begin() + index);&#13;
+&#13;
+    return removed;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the number of elements in this list.&#13;
+ *&#13;
+ * @return the number of elements in this list&#13;
+ */&#13;
+template &lt;class E&gt; int32_t ArrayList&lt;E&gt;::size() {&#13;
+    return v.size();&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Removes all of the elements from this list.&#13;
+ */&#13;
+template &lt;class E&gt; void ArrayList&lt;E&gt;::clear() {&#13;
+    v.clear();&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a string representation of the object.&#13;
+ *&#13;
+ * @return a string representation of the object.&#13;
+ */&#13;
+template &lt;class E&gt; String *ArrayList&lt;E&gt;::toString() {&#13;
+    int32_t length = v.size();&#13;
+    std::ostringstream oss("[");&#13;
+&#13;
+    if (length &gt; 0) {&#13;
+        String *str = ((Object *)v[0])-&gt;toString();&#13;
+        oss &lt;&lt; str;&#13;
+        delete str;&#13;
+    }&#13;
+&#13;
+    for (int32_t i = 1; i &lt; length; i++) {&#13;
+        String *str = ((Object *)v[i])-&gt;toString();&#13;
+        oss &lt;&lt; ", " &lt;&lt; str;&#13;
+        delete str;&#13;
+    }&#13;
+&#13;
+    oss &lt;&lt; "]";&#13;
+&#13;
+    return new String(oss.str());&#13;
+}&#13;
+&#13;
+#endif	// ARRAYLIST_INCLUDED&#13;
+&#13;
+&#13;
+#include "ArrayList.h"&#13;
+// for future purposes</code>
+<code lang="C#">﻿namespace JavaClasses&#13;
+{&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// Resizable-array implementation of the List abstract class.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;typeparam name="E"&gt;the type of elements in this list&lt;/typeparam&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class ArrayList&lt;E&gt; : List&lt;E&gt; where E : Object&#13;
+    {&#13;
+&#13;
+        // an inner list&#13;
+        public System.Collections.Generic.List&lt;E&gt; l { get; private set; }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Constructs an empty list with an initial capacity of ten.&#13;
+        /// &lt;/summary&gt;&#13;
+        public ArrayList()&#13;
+        {&#13;
+            l = new System.Collections.Generic.List&lt;E&gt;(10);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Constructs a list containing the elements of the specified collection, in&#13;
+        /// the order they are returned by the collection's iterator.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="c"&gt;the collection whose elements are to be placed into this list&#13;
+        /// &lt;/param&gt;&#13;
+        public ArrayList(ArrayList&lt;E&gt; c)&#13;
+        {&#13;
+            l = new System.Collections.Generic.List&lt;E&gt;(c.l);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Appends the specified element to the end of this list.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="e"&gt;element to be appended to this list&#13;
+        /// &lt;/param&gt;&lt;returns&gt;true&#13;
+        /// &lt;/returns&gt;&#13;
+        public override bool add(E e)&#13;
+        {&#13;
+            l.Add(e);&#13;
+            return true;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Inserts the specified element at the specified position in this list.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="index"&gt;index at which the specified element is to be inserted&#13;
+        /// &lt;/param&gt;&lt;param name="element"&gt;element to be inserted&#13;
+        /// &lt;/param&gt;&#13;
+        public override void add(int index, E element)&#13;
+        {&#13;
+            l.Insert(index, element);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns the element at the specified position in this list.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="index"&gt;index of the element to return&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the element at the specified position in this list&#13;
+        /// &lt;/returns&gt;&#13;
+        public override E get(int index)&#13;
+        {&#13;
+            return l[index];&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Replaces the element at the specified position in this list with the&#13;
+        /// specified element.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="index"&gt;index of the element to replace&#13;
+        /// &lt;/param&gt;&lt;param name="element"&gt;element to be stored at the specified position&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the element previously at the specified position&#13;
+        /// &lt;/returns&gt;&#13;
+        public override E set(int index, E element)&#13;
+        {&#13;
+            // replacing the element on the specified index and returning its original value&#13;
+            E original = l[index];&#13;
+            l[index] = element;&#13;
+            return original;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Removes the element at the specified position in this list.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="index"&gt;the index of the element to be removed&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the element that was removed from the list&#13;
+        /// &lt;/returns&gt;&#13;
+        public override E remove(int index)&#13;
+        {&#13;
+            // removing the element on the specified index and returning its value&#13;
+            E removed = l[index];&#13;
+            l.RemoveAt(index);&#13;
+            return removed;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns the number of elements in this list.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;the number of elements in this list&#13;
+        /// &lt;/returns&gt;&#13;
+        public override int size()&#13;
+        {&#13;
+            return l.Count;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Removes all of the elements from this list.&#13;
+        public override void clear()&#13;
+        {&#13;
+            l.Clear();&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns a string representation of the object.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;a string representation of the object.&#13;
+        /// &lt;/returns&gt;&#13;
+        public override String toString()&#13;
+        {&#13;
+            StringBuilder sb = new StringBuilder();&#13;
+            sb.append(new String("["));&#13;
+&#13;
+            if (l.Count &gt; 0)&#13;
+            {&#13;
+                sb.append(l[0] == null ? "null" : l[0].toString());&#13;
+            }&#13;
+&#13;
+            for (int i = 1; i &lt; l.Count; i++)&#13;
+            {&#13;
+                sb.append(new String(", ")).append(l[i] == null ? "null" : l[i].toString());&#13;
+            }&#13;
+&#13;
+            return sb.append(new String("]")).toString();&#13;
+        }&#13;
+        &#13;
+    }&#13;
+&#13;
+}&#13;
+</code>
+<code lang="Free Pascal">unit ArrayListUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  StringUnit, ListUnit;
+
+type
+  ObjectArray = array of Object_;
+
+  (**
+   * Resizable-array implementation of the List abstract class.
+   *
+   * @param E the type of elements in this list
+   * @author Petr Kozler (A13B0359P)
+   *)
+  ArrayList = class(List)
+    private
+      const
+        DEFAULT_CAPACITY = 10;
+        RESIZE_COEF = 2;
+      var
+        dynamicArray: array of Object_;
+        count: longInt;
+      procedure expand();
+      procedure shrink();
+    public
+      property arrProperty: ObjectArray read dynamicArray;
+      constructor create();
+      constructor create(c: ArrayList);
+      function add(e: Object_) : boolean; override;
+      procedure add(index: longInt; element: Object_); override;
+      function get(index: longInt) : Object_; override;
+      function set_(index: longInt; element: Object_) : Object_; override;
+      function remove(index: longInt) : Object_; override;
+      function size() : longInt; override;
+      procedure clear(); override;
+      function toString_() : String_; override;
+  end;
+
+implementation
+
+uses
+  StringBuilderUnit, Classes, SysUtils;
+
+(**
+ * Constructs an empty list with an initial capacity of ten.
+ *)
+constructor ArrayList.create();
+begin
+  setLength(dynamicArray, DEFAULT_CAPACITY);
+  count := 0;
+end;
+
+(**
+ * Constructs a list containing the elements of the specified collection, in
+ * the order they are returned by the collection's iterator.
+ *
+ * @param c the collection whose elements are to be placed into this list
+ *)
+constructor ArrayList.create(c: ArrayList);
+var
+  i: longInt;
+begin
+  setLength(dynamicArray, length(c.dynamicArray));
+  count := c.count;
+
+  for i := 0 to count - 1 do begin
+    dynamicArray[i] := c.dynamicArray[i];
+  end;
+end;
+
+procedure ArrayList.expand();
+var
+  len: longInt;
+begin
+  inc(count);
+  len := length(dynamicArray);
+
+  if count = len then begin
+    setLength(dynamicArray, len * RESIZE_COEF);
+  end;
+end;
+
+procedure ArrayList.shrink();
+var
+  len: longInt;
+begin
+  dec(count);
+  len := length(dynamicArray);
+
+  if (count &lt; len div RESIZE_COEF) and (len &gt;= DEFAULT_CAPACITY * RESIZE_COEF) then begin
+    setLength(dynamicArray, len div RESIZE_COEF);
+  end;
+end;
+
+(**
+ * Appends the specified element to the end of this list.
+ *
+ * @param e element to be appended to this list
+ * @return true
+ *)
+function ArrayList.add(e: Object_) : boolean;
+begin
+  dynamicArray[count] := e;
+  expand();
+  add := true;
+end;
+
+(**
+ * Inserts the specified element at the specified position in this list.
+ *
+ * @param index index at which the specified element is to be inserted
+ * @param element element to be inserted
+ *)
+procedure ArrayList.add(index: longInt; element: Object_);
+var
+  i: longInt;
+begin
+  for i := count downto index + 1 do begin
+    dynamicArray[i] := dynamicArray[i - 1];
+  end;
+
+  dynamicArray[index] := element;
+  expand();
+end;
+
+(**
+ * Returns the element at the specified position in this list.
+ *
+ * @param index index of the element to return
+ * @return the element at the specified position in this list
+ *)
+function ArrayList.get(index: longInt) : Object_;
+begin
+  get := dynamicArray[index];
+end;
+
+(**
+ * Replaces the element at the specified position in this list with the
+ * specified element.
+ *
+ * @param index index of the element to replace
+ * @param element element to be stored at the specified position
+ * @return the element previously at the specified position
+ *)
+function ArrayList.set_(index: longInt; element: Object_) : Object_;
+var
+  original: Object_;
+begin
+  original := dynamicArray[index];
+  dynamicArray[index] := element;
+  set_ := original;
+end;
+
+(**
+ * Removes the element at the specified position in this list.
+ *
+ * @param index the index of the element to be removed
+ * @return the element that was removed from the list
+ *)
+function ArrayList.remove(index: longInt) : Object_;
+var
+  removed: Object_;
+  i: longInt;
+begin
+  removed := dynamicArray[index];
+
+  for i := index to count - 1 do begin
+    dynamicArray[i] := dynamicArray[i + 1];
+  end;
+
+  shrink();
+  remove := removed;
+end;
+
+(**
+ * Returns the number of elements in this list.
+ *
+ * @return the number of elements in this list
+ *)
+function ArrayList.size() : longInt;
+begin
+  size := count;
+end;
+
+(**
+ * Removes all of the elements from this list.
+ *)
+procedure ArrayList.clear();
+begin
+  setLength(dynamicArray, 0);
+  count := 0;
+  setLength(dynamicArray, DEFAULT_CAPACITY);
+end;
+
+(**
+ * Returns a string representation of the object.
+ *
+ * @return a string representation of the object.
+ *)
+function ArrayList.toString_() : String_;
+var
+  sb: StringBuilder;
+  str: String_;
+  i: longInt;
+begin
+  sb := StringBuilder.create();
+  str := '[';
+  sb.append(str);
+  freeAndNil(str);
+
+  if count &gt; 0 then begin
+    str := dynamicArray[0].toString();
+    sb.append(str);
+    freeAndNil(str);
+  end;
+
+  for i := 1 to count - 1 do begin
+    str := ', ';
+    sb.append(str);
+    freeAndNil(str);
+    str := dynamicArray[i].toString();
+    sb.append(str);
+    freeAndNil(str);
+  end;
+
+  str := ']';
+  sb.append(str);
+  freeAndNil(str);
+  str := sb.toString();
+  freeAndNil(sb);
+  toString_ := str;
+end;
+
+end.
+
+</code>
+
+</codes>

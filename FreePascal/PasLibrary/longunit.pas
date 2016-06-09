@@ -145,7 +145,7 @@ end;
  *)
 class function Long.parseLong(s: String_) : int64;
 begin
-  parseLong := strToInt64(s.toString());
+  parseLong := strToInt64(trim(s.strProperty));
 end;
 
 operator := (original: int64) s: Long;

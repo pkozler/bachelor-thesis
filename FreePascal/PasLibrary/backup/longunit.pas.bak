@@ -9,7 +9,7 @@ uses
 
 type
   (**
-   * The Long class wraps a value of the primitive type long in an object.
+   * The Long class wraps a value of the primitive type int64 (representing a long value) in an object.
    *
    * @author Petr Kozler (A13B0359P)
    *)

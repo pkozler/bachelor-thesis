@@ -144,7 +144,7 @@ end;
  *)
 class function Integer_.parseInt(s: String_) : longInt;
 begin
-  parseInt := strToInt(s.toString());
+  parseInt := strToInt(trim(s.strProperty));
 end;
 
 operator := (original: longInt) s: Integer_;

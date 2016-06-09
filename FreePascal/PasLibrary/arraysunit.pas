@@ -38,54 +38,54 @@ type
   Arrays = class
     private
       class function binarySearchPointer(a: pointer; fromIndex, toIndex, size: longInt; key: pointer; c: CompareFunction) : longInt;
-      class function binarySearchObject(a: array of Object_; fromIndex, toIndex: longInt; key: Object_; c: Comparator) : longInt;
-      class function copyOfRangePointer(original: pointer; length, size, from, to_: longInt) : pointer;
-      class function copyOfRangeObject(original: array of Object_; from, to_: longInt) : ObjectArray;
+      class function binarySearchObject(var a: array of Object_; fromIndex, toIndex: longInt; key: Object_; c: Comparator) : longInt;
+      class function copyOfRangePointer(original, copyArray: pointer; length, size, from, to_: longInt; defaultValue: pointer) : pointer;
+      class function copyOfRangeObject(var original: array of Object_; from, to_: longInt) : ObjectArray;
       class function equalsPointer(a: pointer; length: longInt; a2: pointer; length2, size: longInt; e: EqualsFunction) : boolean;
-      class function equalsObject(a: array of Object_; a2: array of Object_) : boolean;
+      class function equalsObject(var a: array of Object_; a2: array of Object_) : boolean;
       class procedure fillPointer(a: pointer; fromIndex, toIndex, size: longInt; val: pointer);
-      class procedure fillObject(a: array of Object_; fromIndex, toIndex: longInt; val: Object_);
+      class procedure fillObject(var a: array of Object_; fromIndex, toIndex: longInt; val: Object_);
       class procedure sortPointer(a: pointer; fromIndex, toIndex, size: longInt; c: CompareFunction);
-      class procedure sortObject(a: array of Object_; fromIndex, toIndex: longInt; c: Comparator);
+      class procedure sortObject(var a: array of Object_; fromIndex, toIndex: longInt; c: Comparator);
       class function toStringPointer(a: pointer; length, size: longInt; ts: ToStringFunction) : String_;
-      class function toStringObject(a: array of Object_) : String_;
+      class function toStringObject(var a: array of Object_) : String_;
     public
-      class function binarySearch(a: array of shortInt; key: shortInt) : longInt;
-      class function binarySearch(a: array of shortInt; fromIndex: longInt; toIndex: longInt; key: shortInt) : longInt;
-      class function binarySearch(a: array of ansiChar; key: ansiChar) : longInt;
-      class function binarySearch(a: array of ansiChar; fromIndex: longInt; toIndex: longInt; key: ansiChar) : longInt;
-      class function binarySearch(a: array of double; key: double) : longInt;
-      class function binarySearch(a: array of double; fromIndex: longInt; toIndex: longInt; key: double) : longInt;
-      class function binarySearch(a: array of single; key: single) : longInt;
-      class function binarySearch(a: array of single; fromIndex: longInt; toIndex: longInt; key: single) : longInt;
-      class function binarySearch(a: array of longInt; key: longInt) : longInt;
-      class function binarySearch(a: array of longInt; fromIndex: longInt; toIndex: longInt; key: longInt) : longInt;
-      class function binarySearch(a: array of int64; key: int64) : longInt;
-      class function binarySearch(a: array of int64; fromIndex: longInt; toIndex: longInt; key: int64) : longInt;
-      class function binarySearch(a: array of Object_; key: Object_) : longInt;
-      class function binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_) : longInt;
-      class function binarySearch(a: array of smallInt; key: smallInt) : longInt;
-      class function binarySearch(a: array of smallInt; fromIndex: longInt; toIndex: longInt; key: smallInt) : longInt;
-      class function binarySearch(a: array of Object_; key: Object_; c: Comparator) : longInt;
-      class function binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_; c: Comparator) : longInt;
-      class function copyOf(original: array of boolean; newLength: longInt) : BooleanArray;
-      class function copyOf(original: array of shortInt; newLength: longInt) : ShortIntArray;
-      class function copyOf(original: array of ansiChar; newLength: longInt) : AnsiCharArray;
-      class function copyOf(original: array of double; newLength: longInt) : DoubleArray;
-      class function copyOf(original: array of single; newLength: longInt) : SingleArray;
-      class function copyOf(original: array of longInt; newLength: longInt) : LongIntArray;
-      class function copyOf(original: array of int64; newLength: longInt) : Int64Array;
-      class function copyOf(original: array of smallInt; newLength: longInt) : SmallIntArray;
-      class function copyOf(original: array of Object_; newLength: longInt) : ObjectArray;
-      class function copyOfRange(original: array of boolean; from: longInt; to_: longInt) : BooleanArray;
-      class function copyOfRange(original: array of shortInt; from: longInt; to_: longInt) : ShortIntArray;
-      class function copyOfRange(original: array of ansiChar; from: longInt; to_: longInt) : AnsiCharArray;
-      class function copyOfRange(original: array of double; from: longInt; to_: longInt) : DoubleArray;
-      class function copyOfRange(original: array of single; from: longInt; to_: longInt) : SingleArray;
-      class function copyOfRange(original: array of longInt; from: longInt; to_: longInt) : LongIntArray;
-      class function copyOfRange(original: array of int64; from: longInt; to_: longInt) : Int64Array;
-      class function copyOfRange(original: array of smallInt; from: longInt; to_: longInt) : SmallIntArray;
-      class function copyOfRange(original: array of Object_; from: longInt; to_: longInt) : ObjectArray;
+      class function binarySearch(var a: array of shortInt; key: shortInt) : longInt;
+      class function binarySearch(var a: array of shortInt; fromIndex: longInt; toIndex: longInt; key: shortInt) : longInt;
+      class function binarySearch(var a: array of ansiChar; key: ansiChar) : longInt;
+      class function binarySearch(var a: array of ansiChar; fromIndex: longInt; toIndex: longInt; key: ansiChar) : longInt;
+      class function binarySearch(var a: array of double; key: double) : longInt;
+      class function binarySearch(var a: array of double; fromIndex: longInt; toIndex: longInt; key: double) : longInt;
+      class function binarySearch(var a: array of single; key: single) : longInt;
+      class function binarySearch(var a: array of single; fromIndex: longInt; toIndex: longInt; key: single) : longInt;
+      class function binarySearch(var a: array of longInt; key: longInt) : longInt;
+      class function binarySearch(var a: array of longInt; fromIndex: longInt; toIndex: longInt; key: longInt) : longInt;
+      class function binarySearch(var a: array of int64; key: int64) : longInt;
+      class function binarySearch(var a: array of int64; fromIndex: longInt; toIndex: longInt; key: int64) : longInt;
+      class function binarySearch(var a: array of Object_; key: Object_) : longInt;
+      class function binarySearch(var a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_) : longInt;
+      class function binarySearch(var a: array of smallInt; key: smallInt) : longInt;
+      class function binarySearch(var a: array of smallInt; fromIndex: longInt; toIndex: longInt; key: smallInt) : longInt;
+      class function binarySearch(var a: array of Object_; key: Object_; c: Comparator) : longInt;
+      class function binarySearch(var a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_; c: Comparator) : longInt;
+      class function copyOf(var original: array of boolean; newLength: longInt) : BooleanArray;
+      class function copyOf(var original: array of shortInt; newLength: longInt) : ShortIntArray;
+      class function copyOf(var original: array of ansiChar; newLength: longInt) : AnsiCharArray;
+      class function copyOf(var original: array of double; newLength: longInt) : DoubleArray;
+      class function copyOf(var original: array of single; newLength: longInt) : SingleArray;
+      class function copyOf(var original: array of longInt; newLength: longInt) : LongIntArray;
+      class function copyOf(var original: array of int64; newLength: longInt) : Int64Array;
+      class function copyOf(var original: array of smallInt; newLength: longInt) : SmallIntArray;
+      class function copyOf(var original: array of Object_; newLength: longInt) : ObjectArray;
+      class function copyOfRange(var original: array of boolean; from: longInt; to_: longInt) : BooleanArray;
+      class function copyOfRange(var original: array of shortInt; from: longInt; to_: longInt) : ShortIntArray;
+      class function copyOfRange(var original: array of ansiChar; from: longInt; to_: longInt) : AnsiCharArray;
+      class function copyOfRange(var original: array of double; from: longInt; to_: longInt) : DoubleArray;
+      class function copyOfRange(var original: array of single; from: longInt; to_: longInt) : SingleArray;
+      class function copyOfRange(var original: array of longInt; from: longInt; to_: longInt) : LongIntArray;
+      class function copyOfRange(var original: array of int64; from: longInt; to_: longInt) : Int64Array;
+      class function copyOfRange(var original: array of smallInt; from: longInt; to_: longInt) : SmallIntArray;
+      class function copyOfRange(var original: array of Object_; from: longInt; to_: longInt) : ObjectArray;
       class function equals(a: array of boolean; a2: array of boolean) : boolean;
       class function equals(a: array of shortInt; a2: array of shortInt) : boolean;
       class function equals(a: array of ansiChar; a2: array of ansiChar) : boolean;
@@ -95,57 +95,67 @@ type
       class function equals(a: array of int64; a2: array of int64) : boolean;
       class function equals(a: array of Object_; a2: array of Object_) : boolean;
       class function equals(a: array of smallInt; a2: array of smallInt) : boolean;
-      class procedure fill(a: array of boolean; val: boolean);
-      class procedure fill(a: array of boolean; fromIndex: longInt; toIndex: longInt; val: boolean);
-      class procedure fill(a: array of shortInt; val: shortInt);
-      class procedure fill(a: array of shortInt; fromIndex: longInt; toIndex: longInt; val: shortInt);
-      class procedure fill(a: array of ansiChar; val: ansiChar);
-      class procedure fill(a: array of ansiChar; fromIndex: longInt; toIndex: longInt; val: ansiChar);
-      class procedure fill(a: array of double; val: double);
-      class procedure fill(a: array of double; fromIndex: longInt; toIndex: longInt; val: double);
-      class procedure fill(a: array of single; val: single);
-      class procedure fill(a: array of single; fromIndex: longInt; toIndex: longInt; val: single);
-      class procedure fill(a: array of longInt; val: longInt);
-      class procedure fill(a: array of longInt; fromIndex: longInt; toIndex: longInt; val: longInt);
-      class procedure fill(a: array of int64; val: int64);
-      class procedure fill(a: array of int64; fromIndex: longInt; toIndex: longInt; val: int64);
-      class procedure fill(a: array of Object_; val: Object_);
-      class procedure fill(a: array of Object_; fromIndex: longInt; toIndex: longInt; val: Object_);
-      class procedure fill(a: array of smallInt; val: smallInt);
-      class procedure fill(a: array of smallInt; fromIndex: longInt; toIndex: longInt; val: smallInt);
-      class procedure sort(a: array of shortInt);
-      class procedure sort(a: array of shortInt; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of ansiChar);
-      class procedure sort(a: array of ansiChar; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of double);
-      class procedure sort(a: array of double; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of single);
-      class procedure sort(a: array of single; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of longInt);
-      class procedure sort(a: array of longInt; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of int64);
-      class procedure sort(a: array of int64; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of Object_);
-      class procedure sort(a: array of Object_; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of smallInt);
-      class procedure sort(a: array of smallInt; fromIndex: longInt; toIndex: longInt);
-      class procedure sort(a: array of Object_; c: Comparator);
-      class procedure sort(a: array of Object_; fromIndex: longInt; toIndex: longInt; c: Comparator);
-      class function toString(a: array of boolean) : String_;
-      class function toString(a: array of shortInt) : String_;
-      class function toString(a: array of ansiChar) : String_;
-      class function toString(a: array of double) : String_;
-      class function toString(a: array of single) : String_;
-      class function toString(a: array of longInt) : String_;
-      class function toString(a: array of int64) : String_;
-      class function toString(a: array of Object_) : String_;
-      class function toString(a: array of smallInt) : String_;
+      class procedure fill(var a: array of boolean; val: boolean);
+      class procedure fill(var a: array of boolean; fromIndex: longInt; toIndex: longInt; val: boolean);
+      class procedure fill(var a: array of shortInt; val: shortInt);
+      class procedure fill(var a: array of shortInt; fromIndex: longInt; toIndex: longInt; val: shortInt);
+      class procedure fill(var a: array of ansiChar; val: ansiChar);
+      class procedure fill(var a: array of ansiChar; fromIndex: longInt; toIndex: longInt; val: ansiChar);
+      class procedure fill(var a: array of double; val: double);
+      class procedure fill(var a: array of double; fromIndex: longInt; toIndex: longInt; val: double);
+      class procedure fill(var a: array of single; val: single);
+      class procedure fill(var a: array of single; fromIndex: longInt; toIndex: longInt; val: single);
+      class procedure fill(var a: array of longInt; val: longInt);
+      class procedure fill(var a: array of longInt; fromIndex: longInt; toIndex: longInt; val: longInt);
+      class procedure fill(var a: array of int64; val: int64);
+      class procedure fill(var a: array of int64; fromIndex: longInt; toIndex: longInt; val: int64);
+      class procedure fill(var a: array of Object_; val: Object_);
+      class procedure fill(var a: array of Object_; fromIndex: longInt; toIndex: longInt; val: Object_);
+      class procedure fill(var a: array of smallInt; val: smallInt);
+      class procedure fill(var a: array of smallInt; fromIndex: longInt; toIndex: longInt; val: smallInt);
+      class procedure sort(var a: array of shortInt);
+      class procedure sort(var a: array of shortInt; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of ansiChar);
+      class procedure sort(var a: array of ansiChar; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of double);
+      class procedure sort(var a: array of double; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of single);
+      class procedure sort(var a: array of single; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of longInt);
+      class procedure sort(var a: array of longInt; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of int64);
+      class procedure sort(var a: array of int64; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of Object_);
+      class procedure sort(var a: array of Object_; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of smallInt);
+      class procedure sort(var a: array of smallInt; fromIndex: longInt; toIndex: longInt);
+      class procedure sort(var a: array of Object_; c: Comparator);
+      class procedure sort(var a: array of Object_; fromIndex: longInt; toIndex: longInt; c: Comparator);
+      class function toString(var a: array of boolean) : String_;
+      class function toString(var a: array of shortInt) : String_;
+      class function toString(var a: array of ansiChar) : String_;
+      class function toString(var a: array of double) : String_;
+      class function toString(var a: array of single) : String_;
+      class function toString(var a: array of longInt) : String_;
+      class function toString(var a: array of int64) : String_;
+      class function toString(var a: array of Object_) : String_;
+      class function toString(var a: array of smallInt) : String_;
   end;
 
 implementation
 
 uses
   BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, StringBuilderUnit, SysUtils, Classes;
+
+var
+  defaultBoolean: boolean = false;
+  defaultByte: shortInt = 0;
+  defaultShort: smallInt = 0;
+  defaultInt: longInt = 0;
+  defaultLong: int64 = 0;
+  defaultFloat: single = 0;
+  defaultDouble: double = 0;
+  defaultChar: ansiChar = #0;
 
 function _compareB(a, b: pointer) : longInt;
 begin
@@ -339,15 +349,14 @@ begin
       upper := middle - 1;
     end
     else begin
-      binarySearchPointer := middle;
-      exit;
+      exit(middle);
     end;
   end;
 
   binarySearchPointer := -(lower + 1);
 end;
 
-class function Arrays.binarySearchObject(a: array of Object_; fromIndex, toIndex: longInt; key: Object_; c: Comparator) : longInt;
+class function Arrays.binarySearchObject(var a: array of Object_; fromIndex, toIndex: longInt; key: Object_; c: Comparator) : longInt;
 var
   lower, upper, middle : longInt;
   middleValue : Object_;
@@ -366,48 +375,43 @@ begin
       upper := middle - 1;
     end
     else begin
-      binarySearchObject := middle;
-      exit;
+      exit(middle);
     end;
   end;
 
   binarySearchObject := -(lower + 1);
 end;
 
-class function Arrays.copyOfRangePointer(original: pointer; length, size, from, to_: longInt) : pointer;
+class function Arrays.copyOfRangePointer(original, copyArray: pointer; length, size, from, to_: longInt; defaultValue: pointer) : pointer;
 var
-  src, dest, a: pointer;
-  i, zero: longInt;
+  src, dest: pointer;
+  i: longInt;
 begin
-  a := getmem(size * (to_ - from));
-
   if to_ > length then begin
     for i := from to length - 1 do begin
       src := original + i * size;
-      dest := a + (i - from) * size;
-      move(src, dest, size);
+      dest := copyArray + (i - from) * size;
+      move(src^, dest^, size);
     end;
 
-    zero := 0;
-
     for i := length to to_ - 1 do begin
-      src := @zero;
-      dest := a + (i - from) * size;
-      move(src, dest, size);
+      src := defaultValue;
+      dest := copyArray + (i - from) * size;
+      move(src^, dest^, size);
     end;
   end
   else begin
     for i := from to to_ - 1 do begin
       src := original + i * size;
-      dest := a + (i - from) * size;
-      move(src, dest, size);
+      dest := copyArray + (i - from) * size;
+      move(src^, dest^, size);
     end;
   end;
 
-  copyOfRangePointer := a;
+  copyOfRangePointer := copyArray;
 end;
 
-class function Arrays.copyOfRangeObject(original: array of Object_; from, to_: longInt) : ObjectArray;
+class function Arrays.copyOfRangeObject(var original: array of Object_; from, to_: longInt) : ObjectArray;
 var
   a: array of Object_;
   len, i: longInt;
@@ -454,14 +458,11 @@ begin
   equalsPointer := true;
 end;
 
-class function Arrays.equalsObject(a: array of Object_; a2: array of Object_) : boolean;
+class function Arrays.equalsObject(var a: array of Object_; a2: array of Object_) : boolean;
 var
   len, i: longInt;
+  e: boolean;
 begin
-  if @a = @a2 then begin
-    exit(true);
-  end;
-
   len := length(a);
 
   if length(a2) <> len then begin
@@ -469,7 +470,14 @@ begin
   end;
 
   for i := 0 to len - 1 do begin
-    if not a[i].equals_(a2[i]) then begin
+    if a[i] = nil then begin
+      e := a2[i] = nil;
+    end
+    else begin
+      e := a[i].equals_(a2[i]);
+    end;
+
+    if not e then begin
       exit(false);
     end;
   end;
@@ -482,13 +490,14 @@ var
   i: longInt;
   dest: pointer;
 begin
+
   for i := fromIndex to toIndex - 1 do begin
     dest := a + i * size;
-    move(val, dest, size);
+    move(val^, dest^, size);
   end;
 end;
 
-class procedure Arrays.fillObject(a: array of Object_; fromIndex, toIndex: longInt; val: Object_);
+class procedure Arrays.fillObject(var a: array of Object_; fromIndex, toIndex: longInt; val: Object_);
 var
   i: longInt;
 begin
@@ -499,15 +508,15 @@ end;
 
 class procedure Arrays.sortPointer(a: pointer; fromIndex, toIndex, size: longInt; c: CompareFunction);
 begin
-  _java.quickSort(a, fromIndex, toIndex, size, c);
+  _java.quickSort(a, fromIndex, toIndex - 1, size, c);
 end;
 
-class procedure Arrays.sortObject(a: array of Object_; fromIndex, toIndex: longInt; c: Comparator);
+class procedure Arrays.sortObject(var a: array of Object_; fromIndex, toIndex: longInt; c: Comparator);
 var
   aux: array of Object_;
 begin
   setLength(aux, toIndex - fromIndex);
-  _java.mergeSort(a, aux, fromIndex, toIndex, c);
+  _java.mergeSort(a, aux, fromIndex, toIndex - 1, c);
 end;
 
 class function Arrays.toStringPointer(a: pointer; length, size: longInt; ts: ToStringFunction) : String_;
@@ -517,7 +526,7 @@ var
   i: longInt;
 begin
   sb := StringBuilder.create();
-  str := '[';
+  str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
 
@@ -528,7 +537,7 @@ begin
   end;
 
   for i := 1 to length - 1 do begin
-    str := ', ';
+    str := String_.create(', ');
     sb.append(str);
     freeAndNil(str);
     str := ts(a + i * size);
@@ -536,15 +545,15 @@ begin
     freeAndNil(str);
   end;
 
-  str := ']';
+  str := String_.create(']');
   sb.append(str);
   freeAndNil(str);
-  str := sb.toString();
+  str := sb.toString_();
   freeAndNil(sb);
   toStringPointer := str;
 end;
 
-class function Arrays.toStringObject(a: array of Object_) : String_;
+class function Arrays.toStringObject(var a: array of Object_) : String_;
 var
   sb: StringBuilder;
   str: String_;
@@ -552,26 +561,39 @@ var
 begin
   len := length(a);
   sb := StringBuilder.create();
-  str := '[';
+  str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
 
   if len > 0 then begin
-    str := a[0].toString_();
+    if a[0] = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := a[0].toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
   end;
 
   for i := 1 to len - 1 do begin
-    str := ', ';
+    str := String_.create(', ');
     sb.append(str);
     freeAndNil(str);
-    str := a[i].toString_();
+
+    if a[i] = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := a[i].toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
   end;
 
-  str := ']';
+  str := String_.create(']');
   sb.append(str);
   freeAndNil(str);
   str := sb.toString_();
@@ -592,7 +614,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of shortInt; key: shortInt) : longInt;
+class function Arrays.binarySearch(var a: array of shortInt; key: shortInt) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], 0, length(a), sizeOf(shortInt), @key, @_compareB);
 end;
@@ -614,7 +636,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of shortInt; fromIndex: longInt; toIndex: longInt; key: shortInt) : longInt;
+class function Arrays.binarySearch(var a: array of shortInt; fromIndex: longInt; toIndex: longInt; key: shortInt) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(shortInt), @key, @_compareB);
 end;
@@ -632,7 +654,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of ansiChar; key: ansiChar) : longInt;
+class function Arrays.binarySearch(var a: array of ansiChar; key: ansiChar) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], 0, length(a), sizeOf(ansiChar), @key, @_compareC);
 end;
@@ -654,7 +676,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of ansiChar; fromIndex: longInt; toIndex: longInt; key: ansiChar) : longInt;
+class function Arrays.binarySearch(var a: array of ansiChar; fromIndex: longInt; toIndex: longInt; key: ansiChar) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(ansiChar), @key, @_compareC);
 end;
@@ -672,7 +694,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of double; key: double) : longInt;
+class function Arrays.binarySearch(var a: array of double; key: double) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], 0, length(a), sizeOf(double), @key, @_compareD);
 end;
@@ -694,7 +716,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of double; fromIndex: longInt; toIndex: longInt; key: double) : longInt;
+class function Arrays.binarySearch(var a: array of double; fromIndex: longInt; toIndex: longInt; key: double) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(double), @key, @_compareD);
 end;
@@ -712,7 +734,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of single; key: single) : longInt;
+class function Arrays.binarySearch(var a: array of single; key: single) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], 0, length(a), sizeOf(single), @key, @_compareF);
 end;
@@ -734,7 +756,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of single; fromIndex: longInt; toIndex: longInt; key: single) : longInt;
+class function Arrays.binarySearch(var a: array of single; fromIndex: longInt; toIndex: longInt; key: single) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(single), @key, @_compareF);
 end;
@@ -752,7 +774,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of longInt; key: longInt) : longInt;
+class function Arrays.binarySearch(var a: array of longInt; key: longInt) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], 0, length(a), sizeOf(longInt), @key, @_compareI);
 end;
@@ -774,7 +796,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of longInt; fromIndex: longInt; toIndex: longInt; key: longInt) : longInt;
+class function Arrays.binarySearch(var a: array of longInt; fromIndex: longInt; toIndex: longInt; key: longInt) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(longInt), @key, @_compareI);
 end;
@@ -792,7 +814,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of int64; key: int64) : longInt;
+class function Arrays.binarySearch(var a: array of int64; key: int64) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], 0, length(a), sizeOf(int64), @key, @_compareL);
 end;
@@ -814,7 +836,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of int64; fromIndex: longInt; toIndex: longInt; key: int64) : longInt;
+class function Arrays.binarySearch(var a: array of int64; fromIndex: longInt; toIndex: longInt; key: int64) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(int64), @key, @_compareL);
 end;
@@ -832,7 +854,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of Object_; key: Object_) : longInt;
+class function Arrays.binarySearch(var a: array of Object_; key: Object_) : longInt;
 begin
   binarySearch := binarySearchObject(a, 0, length(a), key, ObjectComparator.create());
 end;
@@ -854,7 +876,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_) : longInt;
+class function Arrays.binarySearch(var a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_) : longInt;
 begin
   binarySearch := binarySearchObject(a, fromIndex, toIndex, key, ObjectComparator.create());
 end;
@@ -872,7 +894,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of smallInt; key: smallInt) : longInt;
+class function Arrays.binarySearch(var a: array of smallInt; key: smallInt) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], 0, length(a), sizeOf(smallInt), @key, @_compareS);
 end;
@@ -894,7 +916,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of smallInt; fromIndex: longInt; toIndex: longInt; key: smallInt) : longInt;
+class function Arrays.binarySearch(var a: array of smallInt; fromIndex: longInt; toIndex: longInt; key: smallInt) : longInt;
 begin
   binarySearch := binarySearchPointer(@a[0], fromIndex, toIndex, sizeOf(smallInt), @key, @_compareS);
 end;
@@ -914,7 +936,7 @@ end;
  * the array are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  *)
-class function Arrays.binarySearch(a: array of Object_; key: Object_; c: Comparator) : longInt;
+class function Arrays.binarySearch(var a: array of Object_; key: Object_; c: Comparator) : longInt;
 begin
   binarySearch := binarySearchObject(a, 0, length(a), key, c);
 end;
@@ -938,7 +960,7 @@ end;
  * Note that this guarantees that the return value will be >= 0 if and only
  * if the key is found.
  *)
-class function Arrays.binarySearch(a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_; c: Comparator) : longInt;
+class function Arrays.binarySearch(var a: array of Object_; fromIndex: longInt; toIndex: longInt; key: Object_; c: Comparator) : longInt;
 begin
   binarySearch := binarySearchObject(a, fromIndex, toIndex, key, c);
 end;
@@ -952,9 +974,12 @@ end;
  * @return a copy of the original array, truncated or padded with false
  * elements to obtain the specified length
  *)
-class function Arrays.copyOf(original: array of boolean; newLength: longInt) : BooleanArray;
+class function Arrays.copyOf(var original: array of boolean; newLength: longInt) : BooleanArray;
+var
+  copyArray: array of boolean;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(boolean), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(boolean), 0, newLength, @defaultBoolean);
 end;
 
 (**
@@ -966,9 +991,12 @@ end;
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of shortInt; newLength: longInt) : ShortIntArray;
+class function Arrays.copyOf(var original: array of shortInt; newLength: longInt) : ShortIntArray;
+var
+  copyArray: array of shortInt;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(shortInt), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(shortInt), 0, newLength, @defaultByte);
 end;
 
 (**
@@ -980,9 +1008,12 @@ end;
  * @return a copy of the original array, truncated or padded with null
  * characters to obtain the specified length
  *)
-class function Arrays.copyOf(original: array of ansiChar; newLength: longInt) : AnsiCharArray;
+class function Arrays.copyOf(var original: array of ansiChar; newLength: longInt) : AnsiCharArray;
+var
+  copyArray: array of ansiChar;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(ansiChar), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(ansiChar), 0, newLength, @defaultChar);
 end;
 
 (**
@@ -994,9 +1025,12 @@ end;
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of double; newLength: longInt) : DoubleArray;
+class function Arrays.copyOf(var original: array of double; newLength: longInt) : DoubleArray;
+var
+  copyArray: array of double;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(double), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(double), 0, newLength, @defaultDouble);
 end;
 
 (**
@@ -1008,9 +1042,12 @@ end;
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of single; newLength: longInt) : SingleArray;
+class function Arrays.copyOf(var original: array of single; newLength: longInt) : SingleArray;
+var
+  copyArray: array of single;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(single), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(single), 0, newLength, @defaultFloat);
 end;
 
 (**
@@ -1022,9 +1059,12 @@ end;
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of longInt; newLength: longInt) : LongIntArray;
+class function Arrays.copyOf(var original: array of longInt; newLength: longInt) : LongIntArray;
+var
+  copyArray: array of longInt;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(longInt), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(longInt), 0, newLength, @defaultInt);
 end;
 
 (**
@@ -1036,9 +1076,12 @@ end;
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of int64; newLength: longInt) : Int64Array;
+class function Arrays.copyOf(var original: array of int64; newLength: longInt) : Int64Array;
+var
+  copyArray: array of int64;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(int64), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(int64), 0, newLength, @defaultLong);
 end;
 
 (**
@@ -1050,9 +1093,12 @@ end;
  * @return a copy of the original array, truncated or padded with zeros to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of smallInt; newLength: longInt) : SmallIntArray;
+class function Arrays.copyOf(var original: array of smallInt; newLength: longInt) : SmallIntArray;
+var
+  copyArray: array of smallInt;
 begin
-  copyOf := copyOfRangePointer(@original[0], length(original), sizeOf(smallInt), 0, newLength);
+  setLength(copyArray, newLength);
+  copyOf := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(smallInt), 0, newLength, @defaultShort);
 end;
 
 (**
@@ -1064,7 +1110,7 @@ end;
  * @return a copy of the original array, truncated or padded with nulls to
  * obtain the specified length
  *)
-class function Arrays.copyOf(original: array of Object_; newLength: longInt) : ObjectArray;
+class function Arrays.copyOf(var original: array of Object_; newLength: longInt) : ObjectArray;
 begin
   copyOf := copyOfRangeObject(original, 0, newLength);
 end;
@@ -1080,9 +1126,12 @@ end;
  * array, truncated or padded with false elements to obtain the required
  * length
  *)
-class function Arrays.copyOfRange(original: array of boolean; from: longInt; to_: longInt) : BooleanArray;
+class function Arrays.copyOfRange(var original: array of boolean; from: longInt; to_: longInt) : BooleanArray;
+var
+  copyArray: array of boolean;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(boolean), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(boolean), from, to_, @defaultBoolean);
 end;
 
 (**
@@ -1095,9 +1144,12 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with zeros to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of shortInt; from: longInt; to_: longInt) : ShortIntArray;
+class function Arrays.copyOfRange(var original: array of shortInt; from: longInt; to_: longInt) : ShortIntArray;
+var
+  copyArray: array of shortInt;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(shortInt), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(shortInt), from, to_, @defaultByte);
 end;
 
 (**
@@ -1111,9 +1163,12 @@ end;
  * array, truncated or padded with null characters to obtain the required
  * length
  *)
-class function Arrays.copyOfRange(original: array of ansiChar; from: longInt; to_: longInt) : AnsiCharArray;
+class function Arrays.copyOfRange(var original: array of ansiChar; from: longInt; to_: longInt) : AnsiCharArray;
+var
+  copyArray: array of ansiChar;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(ansiChar), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(ansiChar), from, to_, @defaultChar);
 end;
 
 (**
@@ -1126,9 +1181,12 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with zeros to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of double; from: longInt; to_: longInt) : DoubleArray;
+class function Arrays.copyOfRange(var original: array of double; from: longInt; to_: longInt) : DoubleArray;
+var
+  copyArray: array of double;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(double), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(double), from, to_, @defaultDouble);
 end;
 
 (**
@@ -1141,9 +1199,12 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with zeros to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of single; from: longInt; to_: longInt) : SingleArray;
+class function Arrays.copyOfRange(var original: array of single; from: longInt; to_: longInt) : SingleArray;
+var
+  copyArray: array of single;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(single), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(single), from, to_, @defaultFloat);
 end;
 
 (**
@@ -1156,9 +1217,12 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with zeros to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of longInt; from: longInt; to_: longInt) : LongIntArray;
+class function Arrays.copyOfRange(var original: array of longInt; from: longInt; to_: longInt) : LongIntArray;
+var
+  copyArray: array of longInt;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(longInt), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(longInt), from, to_, @defaultInt);
 end;
 
 (**
@@ -1171,9 +1235,12 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with zeros to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of int64; from: longInt; to_: longInt) : Int64Array;
+class function Arrays.copyOfRange(var original: array of int64; from: longInt; to_: longInt) : Int64Array;
+var
+  copyArray: array of int64;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(int64), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(int64), from, to_, @defaultLong);
 end;
 
 (**
@@ -1186,9 +1253,12 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with zeros to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of smallInt; from: longInt; to_: longInt) : SmallIntArray;
+class function Arrays.copyOfRange(var original: array of smallInt; from: longInt; to_: longInt) : SmallIntArray;
+var
+  copyArray: array of smallInt;
 begin
-  copyOfRange := copyOfRangePointer(@original[0], length(original), sizeOf(smallInt), from, to_);
+  setLength(copyArray, to_ - from);
+  copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(smallInt), from, to_, @defaultShort);
 end;
 
 (**
@@ -1201,7 +1271,7 @@ end;
  * @return a new array containing the specified range from the original
  * array, truncated or padded with nulls to obtain the required length
  *)
-class function Arrays.copyOfRange(original: array of Object_; from: longInt; to_: longInt) : ObjectArray;
+class function Arrays.copyOfRange(var original: array of Object_; from: longInt; to_: longInt) : ObjectArray;
 begin
   copyOfRange := copyOfRangeObject(original, from, to_);
 end;
@@ -1215,8 +1285,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of boolean; a2: array of boolean) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(boolean), @_equalsBool);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(boolean), @_equalsBool);
 end;
 
 (**
@@ -1228,8 +1318,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of shortInt; a2: array of shortInt) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(shortInt), @_equalsB);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(shortInt), @_equalsB);
 end;
 
 (**
@@ -1241,8 +1351,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of ansiChar; a2: array of ansiChar) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(ansiChar), @_equalsC);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(ansiChar), @_equalsC);
 end;
 
 (**
@@ -1254,8 +1384,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of double; a2: array of double) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(double), @_equalsD);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(double), @_equalsD);
 end;
 
 (**
@@ -1267,8 +1417,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of single; a2: array of single) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(single), @_equalsF);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(single), @_equalsF);
 end;
 
 (**
@@ -1280,8 +1450,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of longInt; a2: array of longInt) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(longInt), @_equalsI);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(longInt), @_equalsI);
 end;
 
 (**
@@ -1293,8 +1483,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of int64; a2: array of int64) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(int64), @_equalsL);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(int64), @_equalsL);
 end;
 
 (**
@@ -1319,8 +1529,28 @@ end;
  * @return true if the two arrays are equal
  *)
 class function Arrays.equals(a: array of smallInt; a2: array of smallInt) : boolean;
+var
+  p, p2: pointer;
+  l, l2: longInt;
 begin
-  equals := equalsPointer(@a[0], length(a), @a2[0], length(a2), sizeOf(smallInt), @_equalsS);
+  l := length(a);
+  l2 := length(a2);
+
+  if length(a) = 0 then begin
+    p := nil;
+  end
+  else begin
+    p := @a[0];
+  end;
+
+  if length(a2) = 0 then begin
+    p2 := nil;
+  end
+  else begin
+    p2 := @a2[0];
+  end;
+
+  equals := equalsPointer(p, l, p2, l2, sizeOf(smallInt), @_equalsS);
 end;
 
 (**
@@ -1330,7 +1560,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of boolean; val: boolean);
+class procedure Arrays.fill(var a: array of boolean; val: boolean);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(boolean), @val);
 end;
@@ -1346,7 +1576,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of boolean; fromIndex: longInt; toIndex: longInt; val: boolean);
+class procedure Arrays.fill(var a: array of boolean; fromIndex: longInt; toIndex: longInt; val: boolean);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(boolean), @val);
 end;
@@ -1358,7 +1588,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of shortInt; val: shortInt);
+class procedure Arrays.fill(var a: array of shortInt; val: shortInt);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(shortInt), @val);
 end;
@@ -1374,7 +1604,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of shortInt; fromIndex: longInt; toIndex: longInt; val: shortInt);
+class procedure Arrays.fill(var a: array of shortInt; fromIndex: longInt; toIndex: longInt; val: shortInt);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(shortInt), @val);
 end;
@@ -1386,7 +1616,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of ansiChar; val: ansiChar);
+class procedure Arrays.fill(var a: array of ansiChar; val: ansiChar);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(ansiChar), @val);
 end;
@@ -1402,7 +1632,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of ansiChar; fromIndex: longInt; toIndex: longInt; val: ansiChar);
+class procedure Arrays.fill(var a: array of ansiChar; fromIndex: longInt; toIndex: longInt; val: ansiChar);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(ansiChar), @val);
 end;
@@ -1414,7 +1644,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of double; val: double);
+class procedure Arrays.fill(var a: array of double; val: double);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(double), @val);
 end;
@@ -1430,7 +1660,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of double; fromIndex: longInt; toIndex: longInt; val: double);
+class procedure Arrays.fill(var a: array of double; fromIndex: longInt; toIndex: longInt; val: double);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(double), @val);
 end;
@@ -1442,7 +1672,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of single; val: single);
+class procedure Arrays.fill(var a: array of single; val: single);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(single), @val);
 end;
@@ -1458,7 +1688,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of single; fromIndex: longInt; toIndex: longInt; val: single);
+class procedure Arrays.fill(var a: array of single; fromIndex: longInt; toIndex: longInt; val: single);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(single), @val);
 end;
@@ -1470,7 +1700,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of longInt; val: longInt);
+class procedure Arrays.fill(var a: array of longInt; val: longInt);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(longInt), @val);
 end;
@@ -1486,7 +1716,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of longInt; fromIndex: longInt; toIndex: longInt; val: longInt);
+class procedure Arrays.fill(var a: array of longInt; fromIndex: longInt; toIndex: longInt; val: longInt);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(longInt), @val);
 end;
@@ -1498,7 +1728,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of int64; val: int64);
+class procedure Arrays.fill(var a: array of int64; val: int64);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(int64), @val);
 end;
@@ -1514,7 +1744,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of int64; fromIndex: longInt; toIndex: longInt; val: int64);
+class procedure Arrays.fill(var a: array of int64; fromIndex: longInt; toIndex: longInt; val: int64);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(int64), @val);
 end;
@@ -1526,7 +1756,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of Object_; val: Object_);
+class procedure Arrays.fill(var a: array of Object_; val: Object_);
 begin
   fillObject(a, 0, length(a), val);
 end;
@@ -1542,7 +1772,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of Object_; fromIndex: longInt; toIndex: longInt; val: Object_);
+class procedure Arrays.fill(var a: array of Object_; fromIndex: longInt; toIndex: longInt; val: Object_);
 begin
   fillObject(a, fromIndex, toIndex, val);
 end;
@@ -1554,7 +1784,7 @@ end;
  * @param a the array to be filled
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of smallInt; val: smallInt);
+class procedure Arrays.fill(var a: array of smallInt; val: smallInt);
 begin
   fillPointer(@a[0], 0, length(a), sizeOf(smallInt), @val);
 end;
@@ -1570,7 +1800,7 @@ end;
  * with the specified value
  * @param val the value to be stored in all elements of the array
  *)
-class procedure Arrays.fill(a: array of smallInt; fromIndex: longInt; toIndex: longInt; val: smallInt);
+class procedure Arrays.fill(var a: array of smallInt; fromIndex: longInt; toIndex: longInt; val: smallInt);
 begin
   fillPointer(@a[0], fromIndex, toIndex, sizeOf(smallInt), @val);
 end;
@@ -1580,7 +1810,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of shortInt);
+class procedure Arrays.sort(var a: array of shortInt);
 begin
   sortPointer(@a[0], 0, length(a), sizeOf(shortInt), @_compareB);
 end;
@@ -1592,7 +1822,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of shortInt; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of shortInt; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(shortInt), @_compareB);
 end;
@@ -1602,7 +1832,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of ansiChar);
+class procedure Arrays.sort(var a: array of ansiChar);
 begin
   sortPointer(@a[0], 0, length(a), sizeOf(ansiChar), @_compareC);
 end;
@@ -1614,7 +1844,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of ansiChar; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of ansiChar; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(ansiChar), @_compareC);
 end;
@@ -1624,7 +1854,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of double);
+class procedure Arrays.sort(var a: array of double);
 begin
   sortPointer(@a[0], 0, length(a), sizeOf(double), @_compareD);
 end;
@@ -1636,7 +1866,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of double; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of double; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(double), @_compareD);
 end;
@@ -1646,7 +1876,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of single);
+class procedure Arrays.sort(var a: array of single);
 begin
   sortPointer(@a[0], 0, length(a), sizeOf(single), @_compareF);
 end;
@@ -1658,7 +1888,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of single; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of single; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(single), @_compareF);
 end;
@@ -1668,7 +1898,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of longInt);
+class procedure Arrays.sort(var a: array of longInt);
 begin
   sortPointer(@a[0], 0, length(a), sizeOf(longInt), @_compareI);
 end;
@@ -1680,7 +1910,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of longInt; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of longInt; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(longInt), @_compareI);
 end;
@@ -1690,7 +1920,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of int64);
+class procedure Arrays.sort(var a: array of int64);
 begin
   sortPointer(@a[0], 0, length(a), sizeOf(int64), @_compareL);
 end;
@@ -1702,7 +1932,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of int64; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of int64; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(int64), @_compareL);
 end;
@@ -1713,7 +1943,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of Object_);
+class procedure Arrays.sort(var a: array of Object_);
 begin
   sortObject(a, 0, length(a), ObjectComparator.create());
 end;
@@ -1726,7 +1956,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of Object_; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of Object_; fromIndex: longInt; toIndex: longInt);
 begin
   sortObject(a, fromIndex, toIndex, ObjectComparator.create());
 end;
@@ -1736,7 +1966,7 @@ end;
  *
  * @param a the array to be sorted
  *)
-class procedure Arrays.sort(a: array of smallInt);
+class procedure Arrays.sort(var a: array of smallInt);
 begin
   sortPointer(@a[0], 0, length(a), sizeOf(smallInt), @_compareS);
 end;
@@ -1748,7 +1978,7 @@ end;
  * @param fromIndex the index of the first element (inclusive) to be sorted
  * @param toIndex the index of the last element (exclusive) to be sorted
  *)
-class procedure Arrays.sort(a: array of smallInt; fromIndex: longInt; toIndex: longInt);
+class procedure Arrays.sort(var a: array of smallInt; fromIndex: longInt; toIndex: longInt);
 begin
   sortPointer(@a[0], fromIndex, toIndex, sizeOf(smallInt), @_compareS);
 end;
@@ -1761,9 +1991,9 @@ end;
  * @param c the comparator to determine the order of the array. A null value
  * indicates that the elements' natural ordering should be used.
  *)
-class procedure Arrays.sort(a: array of Object_; c: Comparator);
+class procedure Arrays.sort(var a: array of Object_; c: Comparator);
 begin
-
+  sortObject(a, 0, length(a), c);
 end;
 
 (**
@@ -1776,9 +2006,9 @@ end;
  * @param c the comparator to determine the order of the array. A null value
  * indicates that the elements' natural ordering should be used.
  *)
-class procedure Arrays.sort(a: array of Object_; fromIndex: longInt; toIndex: longInt; c: Comparator);
+class procedure Arrays.sort(var a: array of Object_; fromIndex: longInt; toIndex: longInt; c: Comparator);
 begin
-
+  sortObject(a, fromIndex, toIndex, c);
 end;
 
 (**
@@ -1787,7 +2017,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of boolean) : String_;
+class function Arrays.toString(var a: array of boolean) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(boolean), @_toStringBool);
 end;
@@ -1798,7 +2028,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of shortInt) : String_;
+class function Arrays.toString(var a: array of shortInt) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(shortInt), @_toStringB);
 end;
@@ -1809,7 +2039,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of ansiChar) : String_;
+class function Arrays.toString(var a: array of ansiChar) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(ansiChar), @_toStringC);
 end;
@@ -1820,7 +2050,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of double) : String_;
+class function Arrays.toString(var a: array of double) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(double), @_toStringD);
 end;
@@ -1831,7 +2061,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of single) : String_;
+class function Arrays.toString(var a: array of single) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(single), @_toStringF);
 end;
@@ -1842,7 +2072,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of longInt) : String_;
+class function Arrays.toString(var a: array of longInt) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(longInt), @_toStringI);
 end;
@@ -1853,7 +2083,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of int64) : String_;
+class function Arrays.toString(var a: array of int64) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(int64), @_toStringL);
 end;
@@ -1864,7 +2094,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of Object_) : String_;
+class function Arrays.toString(var a: array of Object_) : String_;
 begin
   toString := toStringObject(a);
 end;
@@ -1875,7 +2105,7 @@ end;
  * @param a the array whose string representation to return
  * @return a string representation of a
  *)
-class function Arrays.toString(a: array of smallInt) : String_;
+class function Arrays.toString(var a: array of smallInt) : String_;
 begin
   toString := toStringPointer(@a[0], length(a), sizeOf(smallInt), @_toStringS);
 end;

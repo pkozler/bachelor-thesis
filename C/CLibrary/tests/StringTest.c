@@ -58,7 +58,7 @@ void stringTest2() {
     a[12] = (int8_t) 's';
     a[13] = (int8_t) 't';
     a[14] = (int8_t) '.';
-    b = new_String(a, length);
+    b = new_StringB(a, length);
     assertEqualsStr("This is a test.", b->s);
     // array without whitespaces
     a = malloc(length2 * sizeof(int8_t));
@@ -66,11 +66,11 @@ void stringTest2() {
     a[1] = (int8_t) '2';
     a[2] = (int8_t) '3';
     a[3] = (int8_t) '4';
-    b = new_String(a, length2);
+    b = new_StringB(a, length2);
     assertEqualsStr("1234", b->s);
     // empty array
-    a = malloc(length3 * sizeof(int8_t)){};
-    b = new_String(a, length3);
+    a = malloc(length3 * sizeof(int8_t));
+    b = new_StringB(a, length3);
     assertEqualsStr("", b->s);
 }
 
@@ -99,7 +99,7 @@ void stringTest3() {
     a[12] = (int8_t) 's';
     a[13] = (int8_t) 't';
     a[14] = (int8_t) '.';
-    b = new_String(a, 10, 4);
+    b = new_StringRangeB(a, 10, 4);
     assertEqualsStr("test", b->s);
 }
 
@@ -189,16 +189,16 @@ void substringTest2() {
     String *a, *b;
     a = new_String("This is a test.");
     // string from the beginning to the position near the beginning
-    b = substring(a, 0, 4);
+    b = substringTo(a, 0, 4);
     assertEqualsStr("This", b->s);
     // string from the beginning to the position far from the beginning
-    b = substring(a, 10, 14);
+    b = substringTo(a, 10, 14);
     assertEqualsStr("test", b->s);
     // string from the end
-    b = substring(a, 14, 15);
+    b = substringTo(a, 14, 15);
     assertEqualsStr(".", b->s);
     // equal indexes
-    b = substring(a, 10, 10);
+    b = substringTo(a, 10, 10);
     assertEqualsStr("", b->s);
 }
 

@@ -9,7 +9,7 @@ uses
   BooleanUnit, ByteUnit, ShortUnit, IntegerUnit, LongUnit, FloatUnit, DoubleUnit;
 
 type
-  ScanMethod = procedure(sc: Scanner);
+  ScanMethod = function(sc: Scanner): pointer;
   EqualsMethod = function(expected, actual: pointer): boolean;
   ToStringMethod = function(value: pointer): String_;
 
@@ -79,7 +79,7 @@ var
 begin
   x := Boolean_.create(PBoolean(a)^);
   y := Boolean_.create(PBoolean(b)^);
-  _equalsBool := x.equals(y);
+  _equalsBool := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -90,7 +90,7 @@ var
 begin
   x := Byte_.create(PShortInt(a)^);
   y := Byte_.create(PShortInt(b)^);
-  _equalsB := x.equals(y);
+  _equalsB := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -101,7 +101,7 @@ var
 begin
   x := Double_.create(PDouble(a)^);
   y := Double_.create(PDouble(b)^);
-  _equalsD := x.equals(y);
+  _equalsD := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -112,7 +112,7 @@ var
 begin
   x := Float.create(PSingle(a)^);
   y := Float.create(PSingle(b)^);
-  _equalsF := x.equals(y);
+  _equalsF := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -123,7 +123,7 @@ var
 begin
   x := Integer_.create(PLongInt(a)^);
   y := Integer_.create(PLongInt(b)^);
-  _equalsI := x.equals(y);
+  _equalsI := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -134,7 +134,7 @@ var
 begin
   x := Long.create(PInt64(a)^);
   y := Long.create(PInt64(b)^);
-  _equalsL := x.equals(y);
+  _equalsL := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -145,7 +145,7 @@ var
 begin
   x := Short.create(PSmallInt(a)^);
   y := Short.create(PSmallInt(b)^);
-  _equalsS := x.equals(y);
+  _equalsS := x.equals_(y);
   freeAndNil(x);
   freeAndNil(y);
 end;
@@ -185,49 +185,58 @@ begin
   _toStringS := Short.toString_(PSmallInt(a)^);
 end;
 
-procedure _scanBool(sc: Scanner);
+function _scanBool(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedBoolean := sc.nextBoolean();
+  _scanBool := @currentScannedValue.currentScannedBoolean;
 end;
 
-procedure _scanB(sc: Scanner);
+function _scanB(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedByte := sc.nextByte();
+  _scanB := @currentScannedValue.currentScannedByte;
 end;
 
-procedure _scanD(sc: Scanner);
+function _scanD(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedDouble := sc.nextDouble();
+  _scanD := @currentScannedValue.currentScannedDouble;
 end;
 
-procedure _scanF(sc: Scanner);
+function _scanF(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedFloat := sc.nextFloat();
+  _scanF := @currentScannedValue.currentScannedFloat;
 end;
 
-procedure _scanI(sc: Scanner);
+function _scanI(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedInt := sc.nextInt();
+  _scanI := @currentScannedValue.currentScannedInt;
 end;
 
-procedure _scanL(sc: Scanner);
+function _scanL(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedLong := sc.nextLong();
+  _scanL := @currentScannedValue.currentScannedLong;
 end;
 
-procedure _scanS(sc: Scanner);
+function _scanS(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedShort := sc.nextShort();
+  _scanS := @currentScannedValue.currentScannedShort;
 end;
 
-procedure _scanStr(sc: Scanner);
+function _scanStr(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedString := sc.next().strProperty;
+  _scanStr := @currentScannedValue.currentScannedString;
 end;
 
-procedure _scanStrLn(sc: Scanner);
+function _scanStrLn(sc: Scanner) : pointer;
 begin
   currentScannedValue.currentScannedString := sc.nextLine().strProperty;
+  _scanStrLn := @currentScannedValue.currentScannedString;
 end;
 
 procedure ScannerTest.assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
@@ -239,8 +248,7 @@ begin
     writeLn('Testovaná metoda: "' + name + '"');
     writeLn('Očekávaná hodnota: "' + ts(expected).strProperty + '"');
 
-    scan(sc);
-    actual := @currentScannedValue;
+    actual := scan(sc);
 
     if e(expected, actual) then begin
         writeLn('OK');
@@ -278,7 +286,7 @@ end;
 
 procedure ScannerTest.nextBooleanAssertEquals(sc: Scanner; expected: boolean);
 begin
-    assertEqualsPointer('nextBoolean', @expected, sc, @_scanBool, @_equalsB, @_toStringB);
+    assertEqualsPointer('nextBoolean', @expected, sc, @_scanBool, @_equalsBool, @_toStringBool);
 end;
 
 procedure ScannerTest.nextByteAssertEquals(sc: Scanner; expected: shortInt);

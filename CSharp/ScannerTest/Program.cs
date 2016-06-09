@@ -18,7 +18,8 @@ namespace JavaClasses
             testClass.nextIntTest,
             testClass.nextLongTest,
             testClass.nextFloatTest,
-            testClass.nextDoubleTest
+            testClass.nextDoubleTest,
+            testClass.nextLineTest
         };
 
         private static void usage()

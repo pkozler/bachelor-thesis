@@ -76,9 +76,9 @@ type
 
   _java = class
     private
-      class procedure merge(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+      class procedure merge(var arr, aux: array of Object_; left, right: longInt; c: Comparator);
     public
-      class procedure mergeSort(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+      class procedure mergeSort(var arr, aux: array of Object_; left, right: longInt; c: Comparator);
       class procedure quickSort(x: pointer; left, right, size: longInt; c: CompareFunction);
   end;
 
@@ -92,7 +92,7 @@ begin
   compare := (o1 as Comparable).compareTo(o2 as Comparable);
 end;
 
-class procedure _java.merge(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+class procedure _java.merge(var arr, aux: array of Object_; left, right: longInt; c: Comparator);
 var
   middleIndex, leftIndex, rightIndex, auxIndex: longInt;
 begin
@@ -127,7 +127,7 @@ begin
   end;
 end;
 
-class procedure _java.mergeSort(arr, aux: array of Object_; left, right: longInt; c: Comparator);
+class procedure _java.mergeSort(var arr, aux: array of Object_; left, right: longInt; c: Comparator);
 var
   i, middleIndex: longInt;
 begin
@@ -150,7 +150,7 @@ class procedure _java.quickSort(x: pointer; left, right, size: longInt; c: Compa
 var
   i, j: longInt;
   tmpI, tmpJ, pivot: pointer;
-  tmp: ^pointer;
+  tmp: pointer;
 begin
   i := left;
   j := right;
@@ -166,13 +166,13 @@ begin
     end;
 
     if i <= j then begin
-      tmp := nil;
+      tmp := getmem(size);
       tmpI := x + i * size;
       tmpJ := x + j * size;
 
-      move(tmpI, tmp, size);
-      move(tmpJ, tmpI, size);
-      move(tmp, tmpJ, size);
+      move(tmpI^, tmp^, size);
+      move(tmpJ^, tmpI^, size);
+      move(tmp^, tmpJ^, size);
 
       j := j - 1;
       i := i + 1;
@@ -279,7 +279,7 @@ end;
  *)
 procedure PrintStream.print(obj: Object_);
 begin
-  write(obj.toString());
+  write(obj.toString_().strProperty);
 end;
 
 (**
@@ -377,7 +377,7 @@ end;
  *)
 procedure PrintStream.println(x: Object_);
 begin
-  writeLn(x.toString());
+  writeLn(x.toString_().strProperty);
 end;
 
 (**

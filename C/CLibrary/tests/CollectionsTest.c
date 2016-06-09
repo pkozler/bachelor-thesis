@@ -26,10 +26,10 @@ void binarySearchTest() {
     addAl(a, new_TestObject(new_String("eighth"), 8));
     addAl(a, new_TestObject(new_String("nineth"), 7));
     addAl(a, new_TestObject(new_String("tenth"), 6));
-    Collections_sort(a);
-    b = Collections_binarySearch(a, new_TestObject(new_String("sixth"), 6));
+    Collections_sort(a, compareToTo);
+    b = Collections_binarySearch(a, new_TestObject(new_String("sixth"), 6), compareToTo);
     assertEqualsI(4, b);
-    b = Collections_binarySearch(a, new_TestObject(new_String("sixth"), 4));
+    b = Collections_binarySearch(a, new_TestObject(new_String("sixth"), 4), compareToTo);
     assertEqualsI(-5, b);
 }
 
@@ -55,7 +55,7 @@ void copyTest() {
     addAl(b, new_TestObject(new_String("zeroth"), 0));
     addAl(b, new_TestObject(new_String("zeroth"), 0));
     addAl(b, new_TestObject(new_String("zeroth"), 0));
-    Collections_copy(b, a);
+    Collections_copy(b, a, sizeAl, setAl, getAl);
     c = new_ArrayList();
     addAl(c, new_TestObject(new_String("first"), 3));
     addAl(c, new_TestObject(new_String("second"), 2));
@@ -80,7 +80,7 @@ void fillTest() {
     addAl(a, new_TestObject(new_String("third"), 8));
     addAl(a, new_TestObject(new_String("fourth"), 7));
     addAl(a, new_TestObject(new_String("fifth"), 6));
-    Collections_fill(a, new_TestObject(new_String("sixth"), 6));
+    Collections_fill(a, new_TestObject(new_String("sixth"), 6), sizeAl, setAl);
     b = new_ArrayList();
     addAl(b, new_TestObject(new_String("sixth"), 6));
     addAl(b, new_TestObject(new_String("sixth"), 6));
@@ -109,7 +109,7 @@ void sortTest() {
     addAl(a, new_TestObject(new_String("eighth"), 8));
     addAl(a, new_TestObject(new_String("nineth"), 7));
     addAl(a, new_TestObject(new_String("tenth"), 6));
-    Collections_sort(a);
+    Collections_sort(a, compareToTo);
     b = new_ArrayList();
     addAl(b, new_TestObject(new_String("second"), 2));
     addAl(b, new_TestObject(new_String("seventh"), 2));
@@ -130,11 +130,9 @@ int main(int argc, char** argv) {
     setUpTestModule("CollectionsTest", testCount);
 
     registerTest(binarySearchTest, "binarySearchTest");
-    registerTest(binarySearchTest2, "binarySearchTest2");
     registerTest(copyTest, "copyTest");
     registerTest(fillTest, "fillTest");
     registerTest(sortTest, "sortTest");
-    registerTest(sortTest2, "sortTest2");
     
     runTests();
 

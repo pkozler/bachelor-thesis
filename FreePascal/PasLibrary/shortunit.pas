@@ -136,7 +136,7 @@ end;
  *)
 class function Short.parseShort(s: String_) : smallInt;
 begin
-  parseShort := strToInt(s.toString());
+  parseShort := strToInt(trim(s.strProperty));
 end;
 
 operator := (original: smallInt) s: Short;

@@ -936,12 +936,12 @@ namespace JavaClasses
             b = null;
             c = Arrays.equals(a, b);
             Assert.AreEqual(false, c);
-            a = new TestObject[]{
+            b = new TestObject[]{
             new TestObject("first", 3)
         };
             c = Arrays.equals(a, b);
             Assert.AreEqual(false, c);
-            a = new TestObject[]{
+            b = new TestObject[]{
             new TestObject("first", 3),
             new TestObject("second", 2),
             new TestObject("third", 8),
@@ -957,7 +957,7 @@ namespace JavaClasses
             new TestObject("tenth", 6)
         };
             c = Arrays.equals(a, b);
-            Assert.AreEqual(false, c);
+            Assert.AreEqual(true, c);
             b = a;
             c = Arrays.equals(a, b);
             Assert.AreEqual(true, c);

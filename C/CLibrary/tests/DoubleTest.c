@@ -8,6 +8,8 @@
  * Simple C Test Suite
  */
 
+const double DEFAULT_EPSILON = 1E-20;
+
 /**
  * Tests the doubleValue function.
  */
@@ -18,15 +20,15 @@ void doubleValueTest() {
     // minimal non-zero absolute value
     a = new_Double(Double_MIN_VALUE);
     b = doubleValue(a);
-    assertEqualsD(4.9E-324, b);
+    assertEqualsD(4.9E-324, b, DEFAULT_EPSILON);
     // zero value
     a = new_Double((double) 0);
     b = doubleValue(a);
-    assertEqualsD(0.0, b);
+    assertEqualsD(0.0, b, DEFAULT_EPSILON);
     // maximal finite absolute value
     a = new_Double(Double_MAX_VALUE);
     b = doubleValue(a);
-    assertEqualsD(1.7976931348623157E308, b);
+    assertEqualsD(1.7976931348623157E308, b, DEFAULT_EPSILON);
 }
 
 /**
@@ -181,18 +183,18 @@ void parseDoubleTest() {
     double a;
     // positive value parsing
     a = Double_parseDouble(new_String("0.0000000000000000000000000000000000000000000001"));
-    assertEqualsD(1.0E-46, a);
+    assertEqualsD(1.0E-46, a, DEFAULT_EPSILON);
     // zero value parsing
     a = Double_parseDouble(new_String("0"));
-    assertEqualsD(0.0, a);
+    assertEqualsD(0.0, a, DEFAULT_EPSILON);
     // negative value parsing
     a = Double_parseDouble(new_String("-0.0000000000000000000000000000000000000000000001"));
-    assertEqualsD(-1.0E-46, a);
+    assertEqualsD(-1.0E-46, a, DEFAULT_EPSILON);
 }
 
 int main(int argc, char** argv) {
     const int testCount = 7;
-    setUpTestModule("DoubleTest");
+    setUpTestModule("DoubleTest", testCount);
 
     registerTest(doubleValueTest, "doubleValueTest");
     registerTest(compareToTest, "compareToTest");

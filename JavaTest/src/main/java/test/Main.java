@@ -16,9 +16,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(sc.next());
-        System.out.println(sc.nextLine());
         
 //        PrintStreamTest.runTestSuite();
 //        StringTest.runTestSuite();
@@ -32,7 +29,7 @@ public class Main {
 //        BooleanTest.runTestSuite();
 //        CharacterTest.runTestSuite();
 //        MathTest.runTestSuite();
-//        ArraysTest.runTestSuite();
+        ArraysTest.runTestSuite();
 //        ArrayListTest.runTestSuite();
 //        LinkedListTest.runTestSuite();
 //        CollectionsTest.runTestSuite();

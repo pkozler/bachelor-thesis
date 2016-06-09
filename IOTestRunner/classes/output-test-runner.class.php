@@ -21,7 +21,7 @@ class OutputTestRunner {
         "printlnTest7",
         "printlnTest8",
         "printlnTest9",
-        "printlnTest10"
+        "printlnTest10",
     );
     private $outTestExecPath;
     private $output;

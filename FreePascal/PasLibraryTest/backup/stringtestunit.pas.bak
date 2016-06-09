@@ -11,7 +11,7 @@ type
 
   StringTest = class(TTestCase)
   published
-       procedure stringTest;
+       procedure stringTest1;
        procedure stringTest2;
        procedure stringTest3;
        procedure compareToTest;
@@ -31,7 +31,6 @@ type
        procedure startsWithTest;
        procedure endsWithTest;
        procedure isEmptyTest;
-       procedure toStringTest;
   end;
 
 implementation
@@ -39,24 +38,24 @@ implementation
 (**
  * Tests the constructor with standard ansiString as a parameter.
  *)
-procedure StringTest.stringTest;
+procedure StringTest.stringTest1;
 var
     a: String_;
 begin
     // a ansiString with whitespaces
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     AssertEquals('This is a test.', a.strProperty);
     // letters
-    a := 'test';
+    a := String_.create('test');
     AssertEquals('test', a.strProperty);
     // digits
-    a := '1234';
+    a := String_.create('1234');
     AssertEquals('1234', a.strProperty);
     // one ansiChar
-    a := 'a';
+    a := String_.create('a');
     AssertEquals('a', a.strProperty);
     // empty ansiString
-    a := '';
+    a := String_.create('');
     AssertEquals('', a.strProperty);
 end;
 
@@ -202,7 +201,7 @@ procedure StringTest.substringTest;
 var
     a, b: String_;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     // ansiString from the beginning
     b := a.substring(0);
     AssertEquals('This is a test.', b.strProperty);
@@ -218,7 +217,7 @@ procedure StringTest.substringTest2;
 var
     a, b: String_;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     // ansiString from the beginning to the position near the beginning
     b := a.substring(0, 4);
     AssertEquals('This', b.strProperty);
@@ -241,7 +240,7 @@ var
     a: String_;
     b: longInt;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     // ansiChar occurring once
     b := a.indexOf('a');
     AssertEquals(8, b);
@@ -267,7 +266,7 @@ var
     a: String_;
     b: longInt;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     b := a.indexOf('a', 10);
     AssertEquals(-1, b);
     b := a.indexOf('t', 10);
@@ -288,7 +287,7 @@ var
     a: String_;
     b: longInt;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     // occurring ansiString (at the beginning)
     b := a.indexOf('This');
     AssertEquals(0, b);
@@ -308,7 +307,7 @@ var
     a: String_;
     b: longInt;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     b := a.indexOf('This', 0);
     AssertEquals(0, b);
     b := a.indexOf('test', 4);
@@ -326,15 +325,15 @@ var
     b: longInt;
 begin
     // ansiString with multiple chars
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     b := a.length();
     AssertEquals(15, b);
     // ansiString with one ansiChar
-    a := '.';
+    a := String_.create('.');
     b := a.length();
     AssertEquals(1, b);
     // empty ansiString
-    a := '';
+    a := String_.create('');
     b := a.length();
     AssertEquals(0, b);
 end;
@@ -347,23 +346,23 @@ var
     a, b: String_;
 begin
     // ansiString without whitespaces
-    a := 'test';
+    a := String_.create('test');
     b := a.trim();
     AssertEquals('test', b.strProperty);
     // whitespaces on the left side
-    a := '   test';
+    a := String_.create('   test');
     b := a.trim();
     AssertEquals('test', b.strProperty);
     // whitespaces on the right side
-    a := 'test   ';
+    a := String_.create('test   ');
     b := a.trim();
     AssertEquals('test', b.strProperty);
     // whitespaces on bots sides
-    a := ' test ';
+    a := String_.create(' test ');
     b := a.trim();
     AssertEquals('test', b.strProperty);
     // whitespaces inside
-    a := 't e s t';
+    a := String_.create('t e s t');
     b := a.trim();
     AssertEquals('t e s t', b.strProperty);
 end;
@@ -376,15 +375,15 @@ var
     a, b: String_;
 begin
     // all letters lowercase
-    a := 'test';
+    a := String_.create('test');
     b := a.toLowerCase();
     AssertEquals('test', b.strProperty);
     // all letters uppercase
-    a := 'TEST';
+    a := String_.create('TEST');
     b := a.toLowerCase();
     AssertEquals('test', b.strProperty);
     // different cases
-    a := 'TesT';
+    a := String_.create('TesT');
     b := a.toLowerCase();
     AssertEquals('test', b.strProperty);
 end;
@@ -396,13 +395,13 @@ procedure StringTest.toUpperCaseTest;
 var
     a, b: String_;
 begin
-    a := 'test';
+    a := String_.create('test');
     b := a.toUpperCase();
     AssertEquals('TEST', b.strProperty);
-    a := 'TEST';
+    a := String_.create('TEST');
     b := a.toUpperCase();
     AssertEquals('TEST', b.strProperty);
-    a := 'TesT';
+    a := String_.create('TesT');
     b := a.toUpperCase();
     AssertEquals('TEST', b.strProperty);
 end;
@@ -415,7 +414,7 @@ var
     a: String_;
     b: ansiChar;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     // at the beginning
     b := a.charAt(0);
     AssertEquals('T', b);
@@ -434,7 +433,7 @@ procedure StringTest.replaceTest;
 var
     a, b: String_;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     // replacing chars inside the ansiString
     b := a.replace(' ', '_');
     AssertEquals('This_is_a_test.', b.strProperty);
@@ -457,17 +456,17 @@ var
     a, b: String_;
     c: boolean;
 begin
-    a := 'This is a test.';
+    a := String_.create('This is a test.');
     // ansiString at the beginning
-    b := 'This ';
+    b := String_.create('This ');
     c := a.startsWith(b);
     AssertEquals(true, c);
     // ansiString inside
-    b := 'is';
+    b := String_.create('is');
     c := a.startsWith(b);
     AssertEquals(false, c);
     // ansiString at the end
-    b := 'test.';
+    b := String_.create('test.');
     c := a.startsWith(b);
     AssertEquals(false, c);
 end;
@@ -480,14 +479,14 @@ var
     a, b: String_;
     c: boolean;
 begin
-    a := 'This is a test.';
-    b := 'This ';
+    a := String_.create('This is a test.');
+    b := String_.create('This ');
     c := a.endsWith(b);
     AssertEquals(false, c);
-    b := 'is';
+    b := String_.create('is');
     c := a.endsWith(b);
     AssertEquals(false, c);
-    b := 'test.';
+    b := String_.create('test.');
     c := a.endsWith(b);
     AssertEquals(true, c);
 end;
@@ -501,15 +500,15 @@ var
     b: boolean;
 begin
     // non-empty ansiString
-    a := 'This is a test.';
+    a := String_.create('This is a test');
     b := a.isEmpty();
     AssertEquals(false, b);
     // non-empty ansiString with a single ansiChar
-    a := '.';
+    a := String_.create('.');
     b := a.isEmpty();
     AssertEquals(false, b);
     // empty ansiString
-    a := '';
+    a := String_.create('');
     b := a.isEmpty();
     AssertEquals(true, b);
 end;

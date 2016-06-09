@@ -13,7 +13,7 @@
 #include "LinkedList.h";
 #include "List.h"
 #include "Long.h";
-#include "Math.h";
+#include "Math_.h";
 #include "Scanner.h";
 #include "Short.h";
 #include "String.h";
@@ -23,11 +23,11 @@
 #include "TestObject.h"
 
 int main(int argc, char** argv) {
-    Scanner *sc = new_Scanner(System_in);
+    /*Scanner *sc = new_Scanner(System_in);
     printlnStr(System_out, next(sc));
     printlnStr(System_out, nextLine(sc));
     
-    /*StringBuilder *sb = new_StringBuilder();
+    StringBuilder *sb = new_StringBuilder();
     append(sb, new_String("Příliš "));
     append(sb, new_String("žluťoučký "));
     append(sb, new_String("kůň "));

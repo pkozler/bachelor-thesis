@@ -581,19 +581,20 @@ end;
  *)
 procedure MathTest.roundTest;
 var
-    a, b: double;
+    a: double;
+    b: int64;
 begin
     // rounding to even value
     a := 1.5;
-    b := Math_.round(a);
+    b := Math_.round_(a);
     AssertEquals(2, b);
     // rounding to odd value
     a := 0.5;
-    b := Math_.round(a);
+    b := Math_.round_(a);
     AssertEquals(1, b);
     // rounding of negative value
     a := -0.5;
-    b := Math_.round(a);
+    b := Math_.round_(a);
     AssertEquals(0, b);
 end;
 
@@ -602,16 +603,17 @@ end;
  *)
 procedure MathTest.roundTest2;
 var
-    a, b: single;
+    a: single;
+    b: longInt;
 begin
-    //a := 1.5f;
-    b := Math_.round(a);
+    a := 1.5;
+    b := Math_.round_(a);
     AssertEquals(2, b);
-    //a := 0.5f;
-    b := Math_.round(a);
+    a := 0.5;
+    b := Math_.round_(a);
     AssertEquals(1, b);
-    //a := -0.5f;
-    b := Math_.round(a);
+    a := -0.5;
+    b := Math_.round_(a);
     AssertEquals(0, b);
 end;
 

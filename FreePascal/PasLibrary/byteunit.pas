@@ -136,7 +136,7 @@ end;
  *)
 class function Byte_.parseByte(s: String_) : shortInt;
 begin
-  parseByte := strToInt(s.toString());
+  parseByte := strToInt(trim(s.strProperty));
 end;
 
 operator := (original: shortint) s: Byte_;

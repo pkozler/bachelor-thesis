@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef INTEGER_INCLUDED&#13;
+#define	INTEGER_INCLUDED&#13;
+&#13;
+#include "String.h"&#13;
+#include &lt;stdbool.h&gt;&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * The Integer struct wraps a value of the type int32_t, representing an integer value.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+/**&#13;
+ * A constant holding the maximum value an int can have, 2^31-1.&#13;
+ */&#13;
+#define Integer_MAX_VALUE 2147483647&#13;
+/**&#13;
+ * A constant holding the minimum value an int can have, -2^31.&#13;
+ */&#13;
+#define Integer_MIN_VALUE -2147483648&#13;
+&#13;
+typedef struct {&#13;
+    int32_t v;&#13;
+} Integer;&#13;
+&#13;
+Integer *new_Integer(int32_t value);&#13;
+int32_t intValue(Integer *ptr);&#13;
+int32_t compareToI(Integer *ptr, Integer *anotherInteger);&#13;
+int32_t Integer_compare(int32_t x, int32_t y);&#13;
+bool equalsI(Integer *ptr, Integer *obj);&#13;
+String *toStringI(Integer *ptr);&#13;
+String *Integer_toString(int32_t i);&#13;
+int32_t Integer_parseInt(String *s);&#13;
+&#13;
+#endif	/* INTEGER_INCLUDED */&#13;
+&#13;
+&#13;
+#include "Integer.h"&#13;
+&#13;
+#include &lt;stdio.h&gt;&#13;
+#include &lt;stdlib.h&gt;&#13;
+#include &lt;string.h&gt;&#13;
+&#13;
+#define _MAX_INT_STRLEN 11&#13;
+&#13;
+/**&#13;
+ * Constructs a newly allocated Integer structure that represents the specified&#13;
+ * int value.&#13;
+ *&#13;
+ * @param value the value to be represented by the Integer structure.&#13;
+ */&#13;
+Integer *new_Integer(int32_t value) {&#13;
+    Integer *i = malloc(sizeof(Integer));&#13;
+    i-&gt;v = value;&#13;
+&#13;
+    return i;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the value of the specified Integer as an int.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @return the numeric value represented by the specified structure after conversion to&#13;
+ * type int.&#13;
+ */&#13;
+int32_t intValue(Integer *ptr) {&#13;
+    return ptr-&gt;v;&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares two Integer structures numerically.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param anotherInteger the Integer to be compared.&#13;
+ * @return the value 0 if the first Integer is equal to the second Integer; a&#13;
+ * value less than 0 if the first Integer is numerically less than the second&#13;
+ * Integer; and a value greater than 0 if the first Integer is numerically&#13;
+ * greater than the second Integer (signed comparison).&#13;
+ */&#13;
+int32_t compareToI(Integer *ptr, Integer *anotherInteger) {&#13;
+    return Integer_compare(ptr-&gt;v, anotherInteger-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares two int values numerically.&#13;
+ *&#13;
+ * @param x the first int to compare&#13;
+ * @param y the second int to compare&#13;
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x&#13;
+ * &gt; y&#13;
+ */&#13;
+int32_t Integer_compare(int32_t x, int32_t y) {&#13;
+    return (x &lt; y) ? -1 : ((x == y) ? 0 : 1);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Compares the one structure to the other.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @param obj the structure to compare with.&#13;
+ * @return true if the structures are the same; false otherwise.&#13;
+ */&#13;
+bool equalsI(Integer *ptr, Integer *obj) {&#13;
+    if (ptr == NULL || obj == NULL) {&#13;
+        return false;&#13;
+    }&#13;
+&#13;
+    if (sizeof(*ptr) != sizeof(*obj)) {&#13;
+        return false;&#13;
+    }&#13;
+&#13;
+    return (ptr-&gt;v == obj-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a String structure representing the specified Integer's value.&#13;
+ *&#13;
+ * @param ptr The allocated structure&#13;
+ * @return a string representation of the value of the specified structure in base 10.&#13;
+ */&#13;
+String *toStringI(Integer *ptr) {&#13;
+    return Integer_toString(ptr-&gt;v);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns a String structure representing the specified integer.&#13;
+ *&#13;
+ * @param i an integer to be converted.&#13;
+ * @return a string representation of the argument in base 10.&#13;
+ */&#13;
+String *Integer_toString(int32_t i) {&#13;
+    char *str = malloc(_MAX_INT_STRLEN + 1);&#13;
+    char buf[_MAX_INT_STRLEN];&#13;
+&#13;
+    str[0] = '\0';&#13;
+    sprintf(buf, "%d", i);&#13;
+    strcat(str, buf);&#13;
+&#13;
+    return new_String(str);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Parses the string argument as a signed decimal integer.&#13;
+ *&#13;
+ * @param s a String containing the int representation to be parsed&#13;
+ * @return the integer value represented by the argument in decimal.&#13;
+ */&#13;
+int32_t Integer_parseInt(String *s) {&#13;
+    return strtol(s-&gt;s, NULL, 10);&#13;
+}&#13;
+</code>
+<code lang="C++">#ifndef INTEGER_INCLUDED&#13;
+#define	INTEGER_INCLUDED&#13;
+&#13;
+#include "String_.h"&#13;
+#include &lt;iostream&gt;&#13;
+#include &lt;sstream&gt;&#13;
+#include &lt;cstdint&gt;&#13;
+&#13;
+/**&#13;
+ * The Integer class wraps a value of the primitive type int32_t (representing an int value) in an object.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+class Integer : public Comparable&lt;Integer&gt; {&#13;
+    int32_t v;&#13;
+public:&#13;
+    /**&#13;
+     * A constant holding the maximum value an int can have, 2^31-1.&#13;
+     */&#13;
+    static const int32_t MIN_VALUE;&#13;
+    &#13;
+    /**&#13;
+     * A constant holding the minimum value an int can have, -2^31.&#13;
+     */&#13;
+    static const int32_t MAX_VALUE;&#13;
+    &#13;
+    Integer(int32_t value);&#13;
+    int32_t intValue();&#13;
+    int32_t compareTo(Integer *anotherInteger);&#13;
+    static int32_t compare(int32_t x, int32_t y);&#13;
+    bool equals(Integer *obj);&#13;
+    String *toString();&#13;
+    static String *toString(int32_t i);&#13;
+    static int32_t parseInt(String *s);&#13;
+};&#13;
+&#13;
+#endif	// INTEGER_INCLUDED&#13;
+&#13;
+&#13;
+#include "Integer.h"
+
+#include &lt;string&gt;
+
+const int32_t Integer::MAX_VALUE = 2147483647;
+const int32_t Integer::MIN_VALUE = -2147483648;
+
+/**
+ * Constructs a newly allocated Integer object that represents the specified
+ * int value.
+ *
+ * @param value the value to be represented by the Integer object.
+ */
+Integer::Integer(int32_t value) {
+    v = value;
+}
+
+/**
+ * Returns the value of this Integer as an int.
+ *
+ * @return the numeric value represented by this object after conversion to
+ * type int.
+ */
+int32_t Integer::intValue() {
+    return v;
+}
+
+/**
+ * Compares two Integer objects numerically.
+ *
+ * @param anotherInteger the Integer to be compared.
+ * @return the value 0 if this Integer is equal to the argument Integer; a
+ * value less than 0 if this Integer is numerically less than the argument
+ * Integer; and a value greater than 0 if this Integer is numerically
+ * greater than the argument Integer (signed comparison).
+ */
+int32_t Integer::compareTo(Integer *anotherInteger) {
+    return Integer::compare(v, anotherInteger-&gt;v);
+}
+
+/**
+ * Compares two int values numerically.
+ *
+ * @param x the first int to compare
+ * @param y the second int to compare
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x
+ * &gt; y
+ */
+int32_t Integer::compare(int32_t x, int32_t y) {
+    return (x &lt; y) ? -1 : ((x == y) ? 0 : 1);
+}
+
+/**
+ * Compares this object to the specified object.
+ *
+ * @param obj the object to compare with.
+ * @return true if the objects are the same; false otherwise.
+ */
+bool Integer::equals(Integer *obj) {
+    if (obj == nullptr) {
+        return false;
+    }
+
+    if (sizeof(*this) != sizeof(*obj)) {
+        return false;
+    }
+    
+    return (v == obj-&gt;v);
+}
+
+/**
+ * Returns a String object representing this Integer's value.
+ * 
+ * @return a string representation of the value of this object in base 10.
+ */
+String *Integer::toString() {
+    return toString(v);
+}
+
+/**
+ * Returns a String object representing the specified integer.
+ *
+ * @param i an integer to be converted.
+ * @return a string representation of the argument in base 10.
+ */
+String *Integer::toString(int32_t i) {
+    return new String(std::to_string(i));
+}
+
+/**
+ * Parses the string argument as a signed decimal integer.
+ *
+ * @param s a String containing the int representation to be parsed
+ * @return the integer value represented by the argument in decimal.
+ */
+int32_t Integer::parseInt(String *s) {
+    return std::stoi(s-&gt;_s(), nullptr, 10);
+}
+</code>
+<code lang="C#">﻿using System;&#13;
+&#13;
+namespace JavaClasses&#13;
+{&#13;
+&#13;
+    /// &lt;summary&gt;&#13;
+    /// The Integer class wraps a value of the primitive type int in an object.&#13;
+    /// &lt;/summary&gt;&#13;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;&#13;
+    public class Integer : Comparable&#13;
+    {&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// A constant holding the maximum value an int can have, 2^31-1.&#13;
+        /// &lt;/summary&gt;&#13;
+        public const int MAX_VALUE = 2147483647;&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// A constant holding the minimum value an int can have, -2^31.&#13;
+        /// &lt;/summary&gt;&#13;
+        public const int MIN_VALUE = -2147483648;&#13;
+&#13;
+        // an inner value&#13;
+        private int v;&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Constructs a newly allocated Integer object that represents the specified&#13;
+        /// int value.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="value"&gt;the value to be represented by the Integer object.&#13;
+        /// &lt;/param&gt;&#13;
+        public Integer(int value)&#13;
+        {&#13;
+            v = value;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns the value of this Integer as an int.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;the numeric value represented by this object after conversion to&#13;
+        /// type int.&#13;
+        /// &lt;/returns&gt;&#13;
+        public int intValue()&#13;
+        {&#13;
+            return v;&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares two Integer objects numerically.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="anotherInteger"&gt;the Integer to be compared.&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the value 0 if this Integer is equal to the argument Integer; a&#13;
+        /// value less than 0 if this Integer is numerically less than the argument&#13;
+        /// Integer; and a value greater than 0 if this Integer is numerically&#13;
+        /// greater than the argument Integer (signed comparison).&#13;
+        /// &lt;/returns&gt;&#13;
+        public override int compareTo(Object anotherInteger)&#13;
+        {&#13;
+            return compare(v, (anotherInteger as Integer).v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares two int values numerically.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="x"&gt;the first int to compare&#13;
+        /// &lt;/param&gt;&lt;param name="y"&gt;the second int to compare&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x&#13;
+        /// &gt; y&#13;
+        /// &lt;/returns&gt;&#13;
+        public static int compare(int x, int y)&#13;
+        {&#13;
+            /* 1 if x is greater, 0 if x equals y, -1 otherwise&#13;
+             (same as for a long type) */&#13;
+            return (x &lt; y) ? -1 : ((x == y) ? 0 : 1);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Compares this object to the specified object.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="obj"&gt;the object to compare with.&#13;
+        /// &lt;/param&gt;&lt;returns&gt;true if the objects are the same; false otherwise.&#13;
+        /// &lt;/returns&gt;&#13;
+        public override bool equals(Object obj)&#13;
+        {&#13;
+            if (obj == null)&#13;
+            {&#13;
+                return false;&#13;
+            }&#13;
+&#13;
+            if (GetType() != obj.GetType())&#13;
+            {&#13;
+                return false;&#13;
+            }&#13;
+&#13;
+            return v.Equals((obj as Integer).v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns a String object representing this Integer's value.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;returns&gt;a string representation of the value of this object in base 10.&#13;
+        /// &lt;/returns&gt;&#13;
+        public override String toString()&#13;
+        {&#13;
+            return Integer.toString(v);&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Returns a String object representing the specified integer.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="i"&gt;an integer to be converted.&#13;
+        /// &lt;/param&gt;&lt;returns&gt;a string representation of the argument in base 10.&#13;
+        /// &lt;/returns&gt;&#13;
+        public static String toString(int i)&#13;
+        {&#13;
+            return new String(i.ToString());&#13;
+        }&#13;
+&#13;
+        /// &lt;summary&gt;&#13;
+        /// Parses the string argument as a signed decimal integer.&#13;
+        /// &lt;/summary&gt;&#13;
+        /// &lt;param name="s"&gt;a String containing the int representation to be parsed&#13;
+        /// &lt;/param&gt;&lt;returns&gt;the integer value represented by the argument in decimal.&#13;
+        /// &lt;/returns&gt;&#13;
+        public static int parseInt(String s)&#13;
+        {&#13;
+            return int.Parse(s.ToString());&#13;
+        }&#13;
+        &#13;
+        public static implicit operator Integer(int original)&#13;
+        {&#13;
+            return new Integer(original);&#13;
+        }&#13;
+        &#13;
+    }&#13;
+&#13;
+}&#13;
+</code>
+<code lang="Free Pascal">unit IntegerUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  SysUtils, StringUnit;
+
+type
+  (**
+   * The Integer class wraps a value of the primitive type longInt (representing an int value) in an object.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  Integer_ = class(Comparable)
+    private
+      var
+        v: longInt;
+    public
+      const
+          (**
+           * A constant holding the maximum value an int can have, 2^31-1.
+           *)
+           MAX_VALUE = 2147483647;
+          (**
+           * A constant holding the minimum value an int can have, -2^31.
+           *)
+           MIN_VALUE = -2147483648;
+      constructor create(value: longInt);
+      function intValue() : longInt;
+      function compareTo(anotherInteger: Object_) : longInt; override;
+      class function compare(x, y: longInt) : longInt;
+      function equals_(obj: Object_) : boolean; override;
+      function toString_() : String_; override;
+      class function toString_(i: longInt) : String_;
+      class function parseInt(s: String_) : longInt;
+  end;
+
+implementation
+
+(**
+ * Constructs a newly allocated Integer object that represents the specified
+ * int value.
+ *
+ * @param value the value to be represented by the Integer object.
+ *)
+constructor Integer_.create(value: longInt);
+begin
+  v := value;
+end;
+
+(**
+ * Returns the value of this Integer as an int.
+ *
+ * @return the numeric value represented by this object after conversion to
+ * type int.
+ *)
+function Integer_.intValue() : longInt;
+begin
+  intValue := v;
+end;
+
+(**
+ * Compares two Integer objects numerically.
+ *
+ * @param anotherInteger the Integer to be compared.
+ * @return the value 0 if this Integer is equal to the argument Integer; a
+ * value less than 0 if this Integer is numerically less than the argument
+ * Integer; and a value greater than 0 if this Integer is numerically
+ * greater than the argument Integer (signed comparison).
+ *)
+function Integer_.compareTo(anotherInteger: Object_) : longInt;
+begin
+  compareTo := compare(v, (anotherInteger as Integer_).v);
+end;
+
+(**
+ * Compares two int values numerically.
+ *
+ * @param x the first int to compare
+ * @param y the second int to compare
+ * @return the value 0 if x == y; a value less than 0 if x &lt; y; and a value greater than 0 if x
+ * &gt; y
+ *)
+class function Integer_.compare(x, y: longInt) : longInt;
+begin
+  if x &lt; y then begin
+     compare := -1;
+  end
+  else if x = y then begin
+     compare := 0;
+  end
+  else begin
+    compare := 1;
+  end;
+end;
+
+(**
+ * Compares this object to the specified object.
+ *
+ * @param obj the object to compare with.
+ * @return true if the objects are the same; false otherwise.
+ *)
+function Integer_.equals_(obj: Object_) : boolean;
+begin
+  if obj = nil then begin
+    exit(false);
+  end;
+
+  if typeOf(self) &lt;&gt; typeOf(obj) then begin
+    exit(false);
+  end;
+
+  equals_ := v = (obj as Integer_).v;
+end;
+
+(**
+ * Returns a String object representing this Integer's value.
+ *
+ * @return a string representation of the value of this object in base 10.
+ *)
+function Integer_.toString_() : String_;
+begin
+  toString_ := Integer_.toString_(v);
+end;
+
+(**
+ * Returns a String object representing the specified integer.
+ *
+ * @param i an integer to be converted.
+ * @return a string representation of the argument in base 10.
+ *)
+class function Integer_.toString_(i: longInt) : String_;
+begin
+  toString_ := String_.create(IntToStr(i));
+end;
+
+(**
+ * Parses the string argument as a signed decimal integer.
+ *
+ * @param s a String containing the int representation to be parsed
+ * @return the integer value represented by the argument in decimal.
+ *)
+class function Integer_.parseInt(s: String_) : longInt;
+begin
+  parseInt := strToInt(s.toString());
+end;
+
+operator := (original: longInt) s: Integer_;
+begin
+  s.create(original);
+end;
+
+end.
+
+</code>
+
+</codes>

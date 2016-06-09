@@ -100,14 +100,14 @@ void stringTokenizerTest2() {
     String **c;
     bool d;
     // non-white delimiter (non-existent in string)
-    a = new_StringTokenizer(new_String("This is a test."), new_String("_"));
+    a = new_StringTokenizerDelim(new_String("This is a test."), new_String("_"));
     b = toStringArray(a);
     c = malloc(length * sizeof(String *));
     c[0] = new_String("This is a test.");
     d = Arrays_equalsObj(c, length, b.arr, b.len, equalsStr);
     assertEqualsBool(true, d);
     // non-white delimiter (inside the string)
-    a = new_StringTokenizer(new_String("This_is_a_test."), new_String("_"));
+    a = new_StringTokenizerDelim(new_String("This_is_a_test."), new_String("_"));
     b = toStringArray(a);
     c = malloc(length2 * sizeof(String *));
     c[0] = new_String("This");
@@ -117,7 +117,7 @@ void stringTokenizerTest2() {
     d = Arrays_equalsObj(c, length2, b.arr, b.len, equalsStr);
     assertEqualsBool(true, d);
     // non-white delimiter (also the whitespaces inside the string)
-    a = new_StringTokenizer(new_String("This_is_ a _test."), new_String("_"));
+    a = new_StringTokenizerDelim(new_String("This_is_ a _test."), new_String("_"));
     b = toStringArray(a);
     c = malloc(length2 * sizeof(String *));
     c[0] = new_String("This");
@@ -127,7 +127,7 @@ void stringTokenizerTest2() {
     d = Arrays_equalsObj(c, length2, b.arr, b.len, equalsStr);
     assertEqualsBool(true, d);
     // non-white delimiter (also the whitespaces inside and outside the string)
-    a = new_StringTokenizer(new_String("_This_is___a_test._"), new_String("_"));
+    a = new_StringTokenizerDelim(new_String("_This_is___a_test._"), new_String("_"));
     b = toStringArray(a);
     c = malloc(length2 * sizeof(String *));
     c[0] = new_String("This");
@@ -137,7 +137,7 @@ void stringTokenizerTest2() {
     d = Arrays_equalsObj(c, length2, b.arr, b.len, equalsStr);
     assertEqualsBool(true, d);
     // more delimiters (existing in the string)
-    a = new_StringTokenizer(new_String("This is_a test."), new_String(" _"));
+    a = new_StringTokenizerDelim(new_String("This is_a test."), new_String(" _"));
     b = toStringArray(a);
     c = malloc(length2 * sizeof(String *));
     c[0] = new_String("This");
@@ -147,7 +147,7 @@ void stringTokenizerTest2() {
     d = Arrays_equalsObj(c, length2, b.arr, b.len, equalsStr);
     assertEqualsBool(true, d);
     // more delimiters (non-existent in the string)
-    a = new_StringTokenizer(new_String("Thisisatest."), new_String(" _"));
+    a = new_StringTokenizerDelim(new_String("Thisisatest."), new_String(" _"));
     b = toStringArray(a);
     c = malloc(length * sizeof(String *));
     c[0] = new_String("Thisisatest.");
@@ -175,7 +175,7 @@ void countTokensTest() {
     b = countTokens(a);
     assertEqualsI(1, b);
     // tokenize with non-white characters as delimiters
-    a = new_StringTokenizer(new_String("This_is_a_test."), new_String("_"));
+    a = new_StringTokenizerDelim(new_String("This_is_a_test."), new_String("_"));
     b = countTokens(a);
     assertEqualsI(4, b);
     // tokenize an empty string
@@ -200,7 +200,7 @@ void hasMoreTokensTest() {
     a = new_StringTokenizer(new_String("This_is_a_test."));
     b = hasMoreTokens(a);
     assertEqualsBool(true, b);
-    a = new_StringTokenizer(new_String("This_is_a_test."), new_String("_"));
+    a = new_StringTokenizerDelim(new_String("This_is_a_test."), new_String("_"));
     b = hasMoreTokens(a);
     assertEqualsBool(true, b);
     a = new_StringTokenizer(new_String(""));

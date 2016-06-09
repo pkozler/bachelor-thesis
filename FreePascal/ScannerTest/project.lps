@@ -8,8 +8,10 @@
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="5"/>
-        <UsageCount Value="197"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="14"/>
+        <CursorPos X="45" Y="34"/>
+        <UsageCount Value="203"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -18,7 +20,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="101"/>
         <CursorPos X="5" Y="106"/>
-        <UsageCount Value="42"/>
+        <UsageCount Value="41"/>
       </Unit1>
       <Unit2>
         <Filename Value="..\PasLibrary\linkedlistunit.pas"/>
@@ -26,7 +28,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="169"/>
         <CursorPos Y="178"/>
-        <UsageCount Value="42"/>
+        <UsageCount Value="41"/>
       </Unit2>
       <Unit3>
         <Filename Value="..\PasLibrary\arraysunit.pas"/>
@@ -34,13 +36,13 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="358"/>
         <CursorPos X="6" Y="414"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="0"/>
       </Unit3>
       <Unit4>
         <Filename Value="..\PasLibrary\collectionsunit.pas"/>
         <UnitName Value="CollectionsUnit"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="1"/>
+        <UsageCount Value="0"/>
       </Unit4>
       <Unit5>
         <Filename Value="..\PasLibrary\stringunit.pas"/>
@@ -48,7 +50,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="148"/>
         <CursorPos Y="60"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit5>
       <Unit6>
         <Filename Value="..\PasLibrary\stringbuilderunit.pas"/>
@@ -56,7 +58,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="51"/>
         <CursorPos X="11" Y="55"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit6>
       <Unit7>
         <Filename Value="..\PasLibrary\stringtokenizerunit.pas"/>
@@ -64,7 +66,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="56"/>
         <CursorPos X="7" Y="65"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit7>
       <Unit8>
         <Filename Value="..\PasLibrary\mathunit.pas"/>
@@ -72,20 +74,18 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
         <CursorPos X="18" Y="35"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit8>
       <Unit9>
         <Filename Value="..\PasLibrary\systemunit.pas"/>
         <UnitName Value="SystemUnit"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="292"/>
-        <CursorPos X="4" Y="362"/>
-        <UsageCount Value="50"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="375"/>
+        <CursorPos X="6" Y="389"/>
+        <UsageCount Value="49"/>
       </Unit9>
     </Units>
-    <JumpHistory Count="2" HistoryIndex="1">
+    <JumpHistory Count="3" HistoryIndex="2">
       <Position1>
         <Filename Value="project.lpr"/>
         <Caret Line="5"/>
@@ -94,6 +94,10 @@
         <Filename Value="project.lpr"/>
         <Caret Line="11" Column="18"/>
       </Position2>
+      <Position3>
+        <Filename Value="project.lpr"/>
+        <Caret Column="5"/>
+      </Position3>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

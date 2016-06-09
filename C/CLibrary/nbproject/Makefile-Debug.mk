@@ -47,7 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/LinkedList.o \
 	${OBJECTDIR}/List.o \
 	${OBJECTDIR}/Long.o \
-	${OBJECTDIR}/Math.o \
+	${OBJECTDIR}/Math_.o \
 	${OBJECTDIR}/Scanner.o \
 	${OBJECTDIR}/Short.o \
 	${OBJECTDIR}/String.o \
@@ -164,10 +164,10 @@ ${OBJECTDIR}/Long.o: Long.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -I. -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Long.o Long.c
 
-${OBJECTDIR}/Math.o: Math.c 
+${OBJECTDIR}/Math_.o: Math_.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I. -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Math.o Math.c
+	$(COMPILE.c) -g -I. -I. -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Math_.o Math_.c
 
 ${OBJECTDIR}/Scanner.o: Scanner.c 
 	${MKDIR} -p ${OBJECTDIR}
@@ -536,17 +536,17 @@ ${OBJECTDIR}/Long_nomain.o: ${OBJECTDIR}/Long.o Long.c
 	    ${CP} ${OBJECTDIR}/Long.o ${OBJECTDIR}/Long_nomain.o;\
 	fi
 
-${OBJECTDIR}/Math_nomain.o: ${OBJECTDIR}/Math.o Math.c 
+${OBJECTDIR}/Math__nomain.o: ${OBJECTDIR}/Math_.o Math_.c 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Math.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Math_.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.c) -g -I. -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Math_nomain.o Math.c;\
+	    $(COMPILE.c) -g -I. -I. -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Math__nomain.o Math_.c;\
 	else  \
-	    ${CP} ${OBJECTDIR}/Math.o ${OBJECTDIR}/Math_nomain.o;\
+	    ${CP} ${OBJECTDIR}/Math_.o ${OBJECTDIR}/Math__nomain.o;\
 	fi
 
 ${OBJECTDIR}/Scanner_nomain.o: ${OBJECTDIR}/Scanner.o Scanner.c 

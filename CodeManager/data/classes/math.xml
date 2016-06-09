@@ -1,0 +1,1355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<code lang="C">#ifndef MATH_INCLUDED&#13;
+#define	MATH_INCLUDED&#13;
+&#13;
+#include &lt;stdint.h&gt;&#13;
+&#13;
+/**&#13;
+ * The module Math contains functions for performing basic numeric operations such as the elementary exponential,&#13;
+ * logarithm, square root, and trigonometric functions.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+&#13;
+/**&#13;
+ * The double value that is closer than any other to e, the base of the natural logarithms.&#13;
+ */&#13;
+#define Math_E 2.7182818284590452354&#13;
+/**&#13;
+ * The double value that is closer than any other to pi, the ratio of the circumference of a circle to its diameter.&#13;
+ */&#13;
+#define Math_PI 3.14159265358979323846&#13;
+&#13;
+double Math_absD(double a);&#13;
+float Math_absF(float a);&#13;
+int32_t Math_absI(int32_t a);&#13;
+int64_t Math_absL(int64_t a);&#13;
+double Math_maxD(double a, double b);&#13;
+float Math_maxF(float a, float b);&#13;
+int32_t Math_maxI(int32_t a, int32_t b);&#13;
+int64_t Math_maxL(int64_t a, int64_t b);&#13;
+double Math_minD(double a, double b);&#13;
+float Math_minF(float a, float b);&#13;
+int32_t Math_minI(int32_t a, int32_t b);&#13;
+int64_t Math_minL(int64_t a, int64_t b);&#13;
+double Math_pow(double a, double b);&#13;
+double Math_sqrt(double a);&#13;
+double Math_log(double a);&#13;
+double Math_log10(double a);&#13;
+double Math_sin(double a);&#13;
+double Math_cos(double a);&#13;
+double Math_tan(double a);&#13;
+double Math_asin(double a);&#13;
+double Math_acos(double a);&#13;
+double Math_atan(double a);&#13;
+int64_t Math_roundL(double a);&#13;
+int32_t Math_roundI(float a);&#13;
+&#13;
+#endif	/* MATH_INCLUDED */&#13;
+&#13;
+&#13;
+#include "Math.h"&#13;
+&#13;
+#include &lt;stdlib.h&gt;&#13;
+#include &lt;math.h&gt;&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of a double value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+double Math_absD(double a) {&#13;
+    return fabs(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of a float value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+float Math_absF(float a) {&#13;
+    return fabsf(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of an int value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+int32_t Math_absI(int32_t a) {&#13;
+    return abs(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of a long value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+int64_t Math_absL(int64_t a) {&#13;
+    return labs(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two double values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+double Math_maxD(double a, double b) {&#13;
+    return fmax(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two float values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+float Math_maxF(float a, float b) {&#13;
+    return fmaxf(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two int values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+int32_t Math_maxI(int32_t a, int32_t b) {&#13;
+    return fmaxl(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two long values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+int64_t Math_maxL(int64_t a, int64_t b) {&#13;
+    return fmaxl(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two double values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+double Math_minD(double a, double b) {&#13;
+    return fmin(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two float values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+float Math_minF(float a, float b) {&#13;
+    return fminf(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two int values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+int32_t Math_minI(int32_t a, int32_t b) {&#13;
+    return fminl(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two long values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+int64_t Math_minL(int64_t a, int64_t b) {&#13;
+    return fminl(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the value of the first argument raised to the power of the second&#13;
+ * argument.&#13;
+ *&#13;
+ * @param a the base.&#13;
+ * @param b the exponent.&#13;
+ * @return the value a^b.&#13;
+ */&#13;
+double Math_pow(double a, double b) {&#13;
+    return pow(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the correctly rounded positive square root of a double value.&#13;
+ *&#13;
+ * @param a a value.&#13;
+ * @return the positive square root of a. If the argument is NaN or less&#13;
+ * than zero, the result is NaN.&#13;
+ */&#13;
+double Math_sqrt(double a) {&#13;
+    return sqrt(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the natural logarithm (base e) of a double value.&#13;
+ *&#13;
+ * @param a a value&#13;
+ * @return the value ln a, the natural logarithm of a.&#13;
+ */&#13;
+double Math_log(double a) {&#13;
+    return log(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the base 10 logarithm of a double value.&#13;
+ *&#13;
+ * @param a a value&#13;
+ * @return the base 10 logarithm of a.&#13;
+ */&#13;
+double Math_log10(double a) {&#13;
+    return log10(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the trigonometric sine of an angle.&#13;
+ *&#13;
+ * @param a an angle, in radians.&#13;
+ * @return the sine of the argument.&#13;
+ */&#13;
+double Math_sin(double a) {&#13;
+    return sin(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the trigonometric cosine of an angle.&#13;
+ *&#13;
+ * @param a an angle, in radians.&#13;
+ * @return the cosine of the argument.&#13;
+ */&#13;
+double Math_cos(double a) {&#13;
+    return cos(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the trigonometric tangent of an angle.&#13;
+ *&#13;
+ * @param a an angle, in radians.&#13;
+ * @return the tangent of the argument.&#13;
+ */&#13;
+double Math_tan(double a) {&#13;
+    return tan(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the arc sine of a value; the returned angle is in the range -pi/2&#13;
+ * through pi/2.&#13;
+ *&#13;
+ * @param a the value whose arc sine is to be returned.&#13;
+ * @return the arc sine of the argument.&#13;
+ */&#13;
+double Math_asin(double a) {&#13;
+    return asin(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the arc cosine of a value; the returned angle is in the range 0.0&#13;
+ * through pi.&#13;
+ *&#13;
+ * @param a the value whose arc cosine is to be returned.&#13;
+ * @return the arc cosine of the argument.&#13;
+ */&#13;
+double Math_acos(double a) {&#13;
+    return acos(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the arc tangent of a value; the returned angle is in the range&#13;
+ * -pi/2 through pi/2.&#13;
+ *&#13;
+ * @param a the value whose arc tangent is to be returned.&#13;
+ * @return the arc tangent of the argument.&#13;
+ */&#13;
+double Math_atan(double a) {&#13;
+    return atan(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the closest long to the argument, with ties rounding up.&#13;
+ *&#13;
+ * @param a a floating-point value to be rounded to a long.&#13;
+ * @return the value of the argument rounded to the nearest long value.&#13;
+ */&#13;
+int64_t Math_roundD(double a) {&#13;
+    return (int64_t) round(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the closest int to the argument, with ties rounding up.&#13;
+ *&#13;
+ * @param a a floating-point value to be rounded to an integer.&#13;
+ * @return the value of the argument rounded to the nearest int value.&#13;
+ */&#13;
+int32_t Math_roundF(float a) {&#13;
+    return (int32_t) roundf(a);&#13;
+}&#13;
+</code>
+<code lang="C++">#ifndef MATH_INCLUDED&#13;
+#define	MATH_INCLUDED&#13;
+&#13;
+#include &lt;cstdint&gt;&#13;
+&#13;
+/**&#13;
+ * The class Math contains methods for performing basic numeric operations such as the elementary exponential,&#13;
+ * logarithm, square root, and trigonometric functions.&#13;
+ *&#13;
+ * @author Petr Kozler (A13B0359P)&#13;
+ */&#13;
+class Math {&#13;
+public:&#13;
+    static const double E;&#13;
+    static const double PI;&#13;
+    static double abs(double a);&#13;
+    static float abs(float a);&#13;
+    static int32_t abs(int32_t a);&#13;
+    static int64_t abs(int64_t a);&#13;
+    static double max(double a, double b);&#13;
+    static float max(float a, float b);&#13;
+    static int32_t max(int32_t a, int32_t b);&#13;
+    static int64_t max(int64_t a, int64_t b);&#13;
+    static double min(double a, double b);&#13;
+    static float min(float a, float b);&#13;
+    static int32_t min(int32_t a, int32_t b);&#13;
+    static int64_t min(int64_t a, int64_t b);&#13;
+    static double pow(double a, double b);&#13;
+    static double sqrt(double a);&#13;
+    static double log(double a);&#13;
+    static double log10(double a);&#13;
+    static double sin(double a);&#13;
+    static double cos(double a);&#13;
+    static double tan(double a);&#13;
+    static double asin(double a);&#13;
+    static double acos(double a);&#13;
+    static double atan(double a);&#13;
+    static int64_t round(double a);&#13;
+    static int32_t round(float a);&#13;
+};&#13;
+&#13;
+#endif	// MATH_INCLUDED&#13;
+&#13;
+&#13;
+#include "Math_.h"&#13;
+&#13;
+#include &lt;cmath&gt;&#13;
+&#13;
+/**&#13;
+ * The double value that is closer than any other to e, the base of the natural logarithms.&#13;
+ */&#13;
+const double Math::E = 2.7182818284590452354;&#13;
+/**&#13;
+ * The double value that is closer than any other to pi, the ratio of the circumference of a circle to its diameter.&#13;
+ */&#13;
+const double Math::PI = 3.14159265358979323846;&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of a double value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+double Math::abs(double a) {&#13;
+    return std::fabs(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of a float value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+float Math::abs(float a) {&#13;
+    return std::fabs(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of an int value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+int32_t Math::abs(int32_t a) {&#13;
+    return std::abs(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the absolute value of a long value.&#13;
+ *&#13;
+ * @param a the argument whose absolute value is to be determined&#13;
+ * @return the absolute value of the argument.&#13;
+ */&#13;
+int64_t Math::abs(int64_t a) {&#13;
+    return std::abs(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two double values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+double Math::max(double a, double b) {&#13;
+    return max(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two float values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+float Math::max(float a, float b) {&#13;
+    return max(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two int values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+int32_t Math::max(int32_t a, int32_t b) {&#13;
+    return max(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the greater of two long values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the larger of a and b.&#13;
+ */&#13;
+int64_t Math::max(int64_t a, int64_t b) {&#13;
+    return max(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two double values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+double Math::min(double a, double b) {&#13;
+    return min(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two float values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+float Math::min(float a, float b) {&#13;
+    return min(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two int values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+int32_t Math::min(int32_t a, int32_t b) {&#13;
+    return min(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the smaller of two long values.&#13;
+ *&#13;
+ * @param a an argument.&#13;
+ * @param b another argument.&#13;
+ * @return the smaller of a and b.&#13;
+ */&#13;
+int64_t Math::min(int64_t a, int64_t b) {&#13;
+    return min(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the value of the first argument raised to the power of the second&#13;
+ * argument.&#13;
+ *&#13;
+ * @param a the base.&#13;
+ * @param b the exponent.&#13;
+ * @return the value a^b.&#13;
+ */&#13;
+double Math::pow(double a, double b) {&#13;
+    return std::pow(a, b);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the correctly rounded positive square root of a double value.&#13;
+ *&#13;
+ * @param a a value.&#13;
+ * @return the positive square root of a. If the argument is NaN or less&#13;
+ * than zero, the result is NaN.&#13;
+ */&#13;
+double Math::sqrt(double a) {&#13;
+    return std::sqrt(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the natural logarithm (base e) of a double value.&#13;
+ *&#13;
+ * @param a a value&#13;
+ * @return the value ln a, the natural logarithm of a.&#13;
+ */&#13;
+double Math::log(double a) {&#13;
+    return std::log(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the base 10 logarithm of a double value.&#13;
+ *&#13;
+ * @param a a value&#13;
+ * @return the base 10 logarithm of a.&#13;
+ */&#13;
+double Math::log10(double a) {&#13;
+    return std::log10(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the trigonometric sine of an angle.&#13;
+ *&#13;
+ * @param a an angle, in radians.&#13;
+ * @return the sine of the argument.&#13;
+ */&#13;
+double Math::sin(double a) {&#13;
+    return std::sin(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the trigonometric cosine of an angle.&#13;
+ *&#13;
+ * @param a an angle, in radians.&#13;
+ * @return the cosine of the argument.&#13;
+ */&#13;
+double Math::cos(double a) {&#13;
+    return std::cos(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the trigonometric tangent of an angle.&#13;
+ *&#13;
+ * @param a an angle, in radians.&#13;
+ * @return the tangent of the argument.&#13;
+ */&#13;
+double Math::tan(double a) {&#13;
+    return std::tan(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the arc sine of a value; the returned angle is in the range -pi/2&#13;
+ * through pi/2.&#13;
+ *&#13;
+ * @param a the value whose arc sine is to be returned.&#13;
+ * @return the arc sine of the argument.&#13;
+ */&#13;
+double Math::asin(double a) {&#13;
+    return std::asin(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the arc cosine of a value; the returned angle is in the range 0.0&#13;
+ * through pi.&#13;
+ *&#13;
+ * @param a the value whose arc cosine is to be returned.&#13;
+ * @return the arc cosine of the argument.&#13;
+ */&#13;
+double Math::acos(double a) {&#13;
+    return std::acos(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the arc tangent of a value; the returned angle is in the range&#13;
+ * -pi/2 through pi/2.&#13;
+ *&#13;
+ * @param a the value whose arc tangent is to be returned.&#13;
+ * @return the arc tangent of the argument.&#13;
+ */&#13;
+double Math::atan(double a) {&#13;
+    return std::atan(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the closest long to the argument, with ties rounding up.&#13;
+ *&#13;
+ * @param a a floating-point value to be rounded to a long.&#13;
+ * @return the value of the argument rounded to the nearest long value.&#13;
+ */&#13;
+int64_t Math::round(double a) {&#13;
+    return (int64_t) std::round(a);&#13;
+}&#13;
+&#13;
+/**&#13;
+ * Returns the closest int to the argument, with ties rounding up.&#13;
+ *&#13;
+ * @param a a floating-point value to be rounded to an integer.&#13;
+ * @return the value of the argument rounded to the nearest int value.&#13;
+ */&#13;
+int32_t Math::round(float a) {&#13;
+    return (int32_t) std::round(a);&#13;
+}&#13;
+</code>
+<code lang="C#">﻿namespace JavaClasses&#13;
+{
+
+    /// &lt;summary&gt;
+    /// The class Math contains methods for performing basic numeric operations such as the elementary exponential,
+    /// logarithm, square root, and trigonometric functions.
+    /// &lt;/summary&gt;
+    /// &lt;author&gt;Petr Kozler (A13B0359P)&lt;/author&gt;
+    public static class Math&#13;
+    {
+
+        /// &lt;summary&gt;
+        /// The double value that is closer than any other to e, the base of the natural logarithms.
+        /// &lt;/summary&gt;
+        public const double E = 2.7182818284590452354;
+
+        /// &lt;summary&gt;
+        /// The double value that is closer than any other to pi, the ratio of the circumference of a circle to its diameter.
+        /// &lt;/summary&gt;
+        public const double PI = 3.14159265358979323846;
+
+        /// &lt;summary&gt;
+        /// Returns the absolute value of a double value.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the argument whose absolute value is to be determined
+        /// &lt;/param&gt;&lt;returns&gt;the absolute value of the argument.
+        /// &lt;/returns&gt;
+        public static double abs(double a)&#13;
+        {
+            return System.Math.Abs(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the absolute value of a float value.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the argument whose absolute value is to be determined
+        /// &lt;/param&gt;&lt;returns&gt;the absolute value of the argument.
+        /// &lt;/returns&gt;
+        public static float abs(float a)&#13;
+        {
+            return System.Math.Abs(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the absolute value of an int value.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the argument whose absolute value is to be determined
+        /// &lt;/param&gt;&lt;returns&gt;the absolute value of the argument.
+        /// &lt;/returns&gt;
+        public static int abs(int a)&#13;
+        {
+            return System.Math.Abs(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the absolute value of a long value.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the argument whose absolute value is to be determined
+        /// &lt;/param&gt;&lt;returns&gt;the absolute value of the argument.
+        /// &lt;/returns&gt;
+        public static long abs(long a)&#13;
+        {
+            return System.Math.Abs(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the greater of two double values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the larger of a and b.
+        /// &lt;/returns&gt;
+        public static double max(double a, double b)&#13;
+        {
+            return System.Math.Max(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the greater of two float values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the larger of a and b.
+        /// &lt;/returns&gt;
+        public static float max(float a, float b)&#13;
+        {
+            return System.Math.Max(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the greater of two int values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the larger of a and b.
+        /// &lt;/returns&gt;
+        public static int max(int a, int b)&#13;
+        {
+            return System.Math.Max(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the greater of two long values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the larger of a and b.
+        /// &lt;/returns&gt;
+        public static long max(long a, long b)&#13;
+        {
+            return System.Math.Max(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the smaller of two double values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the smaller of a and b.
+        /// &lt;/returns&gt;
+        public static double min(double a, double b)&#13;
+        {
+            return System.Math.Min(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the smaller of two float values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the smaller of a and b.
+        /// &lt;/returns&gt;
+        public static float min(float a, float b)&#13;
+        {
+            return System.Math.Min(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the smaller of two int values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the smaller of a and b.
+        /// &lt;/returns&gt;
+        public static int min(int a, int b)&#13;
+        {
+            return System.Math.Min(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the smaller of two long values.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an argument.
+        /// &lt;/param&gt;&lt;param name="b"&gt;another argument.
+        /// &lt;/param&gt;&lt;returns&gt;the smaller of a and b.
+        /// &lt;/returns&gt;
+        public static long min(long a, long b)&#13;
+        {
+            return System.Math.Min(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the value of the first argument raised to the power of the second
+        /// argument.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the base.
+        /// &lt;/param&gt;&lt;param name="b"&gt;the exponent.
+        /// &lt;/param&gt;&lt;returns&gt;the value a^b.
+        /// &lt;/returns&gt;
+        public static double pow(double a, double b)&#13;
+        {
+            return System.Math.Pow(a, b);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the correctly rounded positive square root of a double value.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;a value.
+        /// &lt;/param&gt;&lt;returns&gt;the positive square root of a. If the argument is NaN or less
+        /// than zero, the result is NaN.
+        /// &lt;/returns&gt;
+        public static double sqrt(double a)&#13;
+        {
+            return System.Math.Sqrt(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the natural logarithm (base e) of a double value.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;a value
+        /// &lt;/param&gt;&lt;returns&gt;the value ln a, the natural logarithm of a.
+        /// &lt;/returns&gt;
+        public static double log(double a)&#13;
+        {
+            return System.Math.Log(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the base 10 logarithm of a double value.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;a value
+        /// &lt;/param&gt;&lt;returns&gt;the base 10 logarithm of a.
+        /// &lt;/returns&gt;
+        public static double log10(double a)&#13;
+        {
+            return System.Math.Log10(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the trigonometric sine of an angle.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an angle, in radians.
+        /// &lt;/param&gt;&lt;returns&gt;the sine of the argument.
+        /// &lt;/returns&gt;
+        public static double sin(double a)&#13;
+        {
+            return System.Math.Sin(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the trigonometric cosine of an angle.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an angle, in radians.
+        /// &lt;/param&gt;&lt;returns&gt;the cosine of the argument.
+        /// &lt;/returns&gt;
+        public static double cos(double a)&#13;
+        {
+            return System.Math.Cos(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the trigonometric tangent of an angle.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;an angle, in radians.
+        /// &lt;/param&gt;&lt;returns&gt;the tangent of the argument.
+        /// &lt;/returns&gt;
+        public static double tan(double a)&#13;
+        {
+            return System.Math.Tan(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the arc sine of a value; the returned angle is in the range -pi/2
+        /// through pi/2.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the value whose arc sine is to be returned.
+        /// &lt;/param&gt;&lt;returns&gt;the arc sine of the argument.
+        /// &lt;/returns&gt;
+        public static double asin(double a)&#13;
+        {
+            return System.Math.Asin(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the arc cosine of a value; the returned angle is in the range 0.0
+        /// through pi.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the value whose arc cosine is to be returned.
+        /// &lt;/param&gt;&lt;returns&gt;the arc cosine of the argument.
+        /// &lt;/returns&gt;
+        public static double acos(double a)&#13;
+        {
+            return System.Math.Acos(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the arc tangent of a value; the returned angle is in the range
+        /// -pi/2 through pi/2.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;the value whose arc tangent is to be returned.
+        /// &lt;/param&gt;&lt;returns&gt;the arc tangent of the argument.
+        /// &lt;/returns&gt;
+        public static double atan(double a)&#13;
+        {
+            return System.Math.Atan(a);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the closest long to the argument, with ties rounding up.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;a floating-point value to be rounded to a long.
+        /// &lt;/param&gt;&lt;returns&gt;the value of the argument rounded to the nearest long value.
+        /// &lt;/returns&gt;
+        public static long round(double a)&#13;
+        {
+            // if NaN, the result is 0
+            if (Double.compare(a, Double.NaN) == 0)&#13;
+            {&#13;
+                return 0;&#13;
+            }
+
+            // if less than / equal to the corresponding integer type minimal value, the result is equal to that value
+            if (Double.compare(a, Double.NEGATIVE_INFINITY) == 0
+                || a &lt;= Long.MIN_VALUE)&#13;
+            {&#13;
+                return Long.MIN_VALUE;&#13;
+            }&#13;
+&#13;
+            // if greater than / equal to the corresponding integer type maximal value, the result is equal to that value&#13;
+            if (Double.compare(a, Double.POSITIVE_INFINITY) == 0
+                || a &gt;= Long.MAX_VALUE)&#13;
+            {&#13;
+                return Long.MAX_VALUE;&#13;
+            }
+
+            // rounding towards zero for negative values
+            if (a &lt; 0 &amp;&amp; a - System.Math.Truncate(a) &lt;= -0.5)&#13;
+            {&#13;
+                return (long)System.Math.Truncate(a);&#13;
+            }&#13;
+&#13;
+            // rounding away from zero for positive values&#13;
+            return (long)System.Math.Round(a, System.MidpointRounding.AwayFromZero);
+        }
+
+        /// &lt;summary&gt;
+        /// Returns the closest int to the argument, with ties rounding up.
+        /// &lt;/summary&gt;
+        /// &lt;param name="a"&gt;a floating-point value to be rounded to an integer.
+        /// &lt;/param&gt;&lt;returns&gt;the value of the argument rounded to the nearest int value.
+        /// &lt;/returns&gt;
+        public static int round(float a)&#13;
+        {
+            if (Float.compare(a, Float.NaN) == 0)&#13;
+            {&#13;
+                return 0;&#13;
+            }
+
+            if (Float.compare(a, Float.NEGATIVE_INFINITY) == 0
+                || a &lt;= Integer.MIN_VALUE)&#13;
+            {&#13;
+                return Integer.MIN_VALUE;&#13;
+            }&#13;
+&#13;
+            if (Float.compare(a, Float.POSITIVE_INFINITY) == 0
+                || a &gt;= Integer.MAX_VALUE)&#13;
+            {&#13;
+                return Integer.MAX_VALUE;&#13;
+            }
+
+            if (a &lt; 0 &amp;&amp; a - (float)System.Math.Truncate(a) &lt;= -0.5f)&#13;
+            {&#13;
+                return (int)System.Math.Truncate(a);&#13;
+            }
+            
+            return (int)System.Math.Round(a, System.MidpointRounding.AwayFromZero);
+        }
+
+    }
+
+}
+</code>
+<code lang="Free Pascal">unit MathUnit;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Math, IntegerUnit, LongUnit, FloatUnit, DoubleUnit;
+
+type
+  (**
+   * The class Math contains methods for performing basic numeric operations such as the elementary exponential,
+   * logarithm, square root, and trigonometric functions.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
+  Math_ = class
+    public
+      const
+          (**
+           * The double value that is closer than any other to e, the base of the natural logarithms.
+           *)
+           E = 2.7182818284590452354;
+          (**
+           * The double value that is closer than any other to pi, the ratio of the circumference of a circle to its diameter.
+           *)
+           PI = 3.14159265358979323846;
+      class function abs_(a: double) : double;
+      class function abs_(a: single) : single;
+      class function abs_(a: longInt) : longInt;
+      class function abs_(a: int64) : int64;
+      class function max_(a: double; b: double) : double;
+      class function max_(a: single; b: single) : single;
+      class function max_(a: longInt; b: longInt) : longInt;
+      class function max_(a: int64; b: int64) : int64;
+      class function min_(a: double; b: double) : double;
+      class function min_(a: single; b: single) : single;
+      class function min_(a: longInt; b: longInt) : longInt;
+      class function min_(a: int64; b: int64) : int64;
+      class function pow(a: double; b: double) : double;
+      class function sqrt_(a: double) : double;
+      class function log(a: double) : double;
+      class function log10_(a: double) : double;
+      class function sin_(a: double) : double;
+      class function cos_(a: double) : double;
+      class function tan_(a: double) : double;
+      class function asin(a: double) : double;
+      class function acos(a: double) : double;
+      class function atan(a: double) : double;
+      class function round_(a: double) : int64;
+      class function round_(a: single) : longInt;
+  end;
+
+implementation
+
+(**
+ * Returns the absolute value of a double value.
+ *
+ * @param a the argument whose absolute value is to be determined
+ * @return the absolute value of the argument.
+ *)
+class function Math_.abs_(a: double) : double;
+begin
+  abs_ := abs(a);
+end;
+
+(**
+ * Returns the absolute value of a float value.
+ *
+ * @param a the argument whose absolute value is to be determined
+ * @return the absolute value of the argument.
+ *)
+class function Math_.abs_(a: single) : single;
+begin
+  abs_ := abs(a);
+end;
+
+(**
+ * Returns the absolute value of an int value.
+ *
+ * @param a the argument whose absolute value is to be determined
+ * @return the absolute value of the argument.
+ *)
+class function Math_.abs_(a: longInt) : longInt;
+begin
+  abs_ := abs(a);
+end;
+
+(**
+ * Returns the absolute value of a long value.
+ *
+ * @param a the argument whose absolute value is to be determined
+ * @return the absolute value of the argument.
+ *)
+class function Math_.abs_(a: int64) : int64;
+begin
+  abs_ := abs(a);
+end;
+
+(**
+ * Returns the greater of two double values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the larger of a and b.
+ *)
+class function Math_.max_(a: double; b: double) : double;
+begin
+  max_ := max(a, b);
+end;
+
+(**
+ * Returns the greater of two float values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the larger of a and b.
+ *)
+class function Math_.max_(a: single; b: single) : single;
+begin
+  max_ := max(a, b);
+end;
+
+(**
+ * Returns the greater of two int values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the larger of a and b.
+ *)
+class function Math_.max_(a: longInt; b: longInt) : longInt;
+begin
+  max_ := max(a, b);
+end;
+
+(**
+ * Returns the greater of two long values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the larger of a and b.
+ *)
+class function Math_.max_(a: int64; b: int64) : int64;
+begin
+  max_ := max(a, b);
+end;
+
+(**
+ * Returns the smaller of two double values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the smaller of a and b.
+ *)
+class function Math_.min_(a: double; b: double) : double;
+begin
+  min_ := min(a, b);
+end;
+
+(**
+ * Returns the smaller of two float values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the smaller of a and b.
+ *)
+class function Math_.min_(a: single; b: single) : single;
+begin
+  min_ := min(a, b);
+end;
+
+(**
+ * Returns the smaller of two int values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the smaller of a and b.
+ *)
+class function Math_.min_(a: longInt; b: longInt) : longInt;
+begin
+  min_ := min(a, b);
+end;
+
+(**
+ * Returns the smaller of two long values.
+ *
+ * @param a an argument.
+ * @param b another argument.
+ * @return the smaller of a and b.
+ *)
+class function Math_.min_(a: int64; b: int64) : int64;
+begin
+  min_ := min(a, b);
+end;
+
+(**
+ * Returns the value of the first argument raised to the power of the second
+ * argument.
+ *
+ * @param a the base.
+ * @param b the exponent.
+ * @return the value a^b.
+ *)
+class function Math_.pow(a: double; b: double) : double;
+begin
+  pow := power(a, b);
+end;
+
+(**
+ * Returns the correctly rounded positive square root of a double value.
+ *
+ * @param a a value.
+ * @return the positive square root of a. If the argument is NaN or less
+ * than zero, the result is NaN.
+ *)
+class function Math_.sqrt_(a: double) : double;
+begin
+  sqrt_ := sqrt(a);
+end;
+
+(**
+ * Returns the natural logarithm (base e) of a double value.
+ *
+ * @param a a value
+ * @return the value ln a, the natural logarithm of a.
+ *)
+class function Math_.log(a: double) : double;
+begin
+  log := ln(a);
+end;
+
+(**
+ * Returns the base 10 logarithm of a double value.
+ *
+ * @param a a value
+ * @return the base 10 logarithm of a.
+ *)
+class function Math_.log10_(a: double) : double;
+begin
+  log10_ := log10(a);
+end;
+
+(**
+ * Returns the trigonometric sine of an angle.
+ *
+ * @param a an angle, in radians.
+ * @return the sine of the argument.
+ *)
+class function Math_.sin_(a: double) : double;
+begin
+  sin_ := sin(a);
+end;
+
+(**
+ * Returns the trigonometric cosine of an angle.
+ *
+ * @param a an angle, in radians.
+ * @return the cosine of the argument.
+ *)
+class function Math_.cos_(a: double) : double;
+begin
+  cos_ := cos(a);
+end;
+
+(**
+ * Returns the trigonometric tangent of an angle.
+ *
+ * @param a an angle, in radians.
+ * @return the tangent of the argument.
+ *)
+class function Math_.tan_(a: double) : double;
+begin
+  tan_ := tan(a);
+end;
+
+(**
+ * Returns the arc sine of a value; the returned angle is in the range -pi/2
+ * through pi/2.
+ *
+ * @param a the value whose arc sine is to be returned.
+ * @return the arc sine of the argument.
+ *)
+class function Math_.asin(a: double) : double;
+begin
+  asin := arcsin(a);
+end;
+
+(**
+ * Returns the arc cosine of a value; the returned angle is in the range 0.0
+ * through pi.
+ *
+ * @param a the value whose arc cosine is to be returned.
+ * @return the arc cosine of the argument.
+ *)
+class function Math_.acos(a: double) : double;
+begin
+  acos := arccos(a);
+end;
+
+(**
+ * Returns the arc tangent of a value; the returned angle is in the range
+ * -pi/2 through pi/2.
+ *
+ * @param a the value whose arc tangent is to be returned.
+ * @return the arc tangent of the argument.
+ *)
+class function Math_.atan(a: double) : double;
+begin
+  atan := arctan(a);
+end;
+
+(**
+ * Returns the closest long to the argument, with ties rounding up.
+ *
+ * @param a a floating-point value to be rounded to a long.
+ * @return the value of the argument rounded to the nearest long value.
+ *)
+class function Math_.round_(a: double) : int64;
+begin
+  if Double_.compare(a, Double_.NaN) = 0 then begin
+    exit(0);
+  end;
+
+  if (Double_.compare(a, Double_.NEGATIVE_INFINITY) = 0)
+  and (a &lt;= Long.MIN_VALUE) then begin
+    exit(Long.MIN_VALUE);
+  end;
+
+  if (Double_.compare(a, Double_.POSITIVE_INFINITY) = 0)
+  and (a &gt;= Long.MAX_VALUE) then begin
+    exit(Long.MAX_VALUE);
+  end;
+
+  if (a &lt; 0) and (frac(a) &lt;= 0.5) then begin
+    exit(trunc(a));
+  end;
+
+  if (a &gt; 0) and (frac(a) &gt;= 0.5) then begin
+    exit(trunc(a) + 1);
+  end;
+
+  round_ := int64(round(a));
+end;
+
+(**
+ * Returns the closest int to the argument, with ties rounding up.
+ *
+ * @param a a floating-point value to be rounded to an integer.
+ * @return the value of the argument rounded to the nearest int value.
+ *)
+class function Math_.round_(a: single) : longInt;
+begin
+  if Float.compare(a, Float.NaN) = 0 then begin
+    exit(0);
+  end;
+
+  if (Float.compare(a, Float.NEGATIVE_INFINITY) = 0)
+  and (a &lt;= Integer_.MIN_VALUE) then begin
+    exit(Integer_.MIN_VALUE);
+  end;
+
+  if (Float.compare(a, Float.POSITIVE_INFINITY) = 0)
+  and (a &gt;= Integer_.MAX_VALUE) then begin
+    exit(Integer_.MAX_VALUE);
+  end;
+
+  if (a &lt; 0) and (frac(a) &lt;= 0.5) then begin
+    exit(trunc(a));
+  end;
+
+  if (a &gt; 0) and (frac(a) &gt;= 0.5) then begin
+    exit(trunc(a) + 1);
+  end;
+
+  round_ := longInt(round(a));
+end;
+
+end.
+
+</code>
+
+</codes>

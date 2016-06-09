@@ -68,8 +68,13 @@ begin
     else begin
       e := o1.equals_(o2);
     end;
+
+    if not e then begin
+      exit(false);
+    end;
   end;
 
+  equals_ := true;
 end;
 
 (**

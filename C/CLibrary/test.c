@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
+#include "math.h"
 
 void assertEqualsBool(bool expected, bool actual) {
     if (expected != actual) {

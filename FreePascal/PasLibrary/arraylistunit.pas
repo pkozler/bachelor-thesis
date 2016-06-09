@@ -208,29 +208,42 @@ var
   i: longInt;
 begin
   sb := StringBuilder.create();
-  str := '[';
+  str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
 
   if count > 0 then begin
-    str := dynamicArray[0].toString();
+    if dynamicArray[0] = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := dynamicArray[0].toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
   end;
 
   for i := 1 to count - 1 do begin
-    str := ', ';
+    str := String_.create(', ');
     sb.append(str);
     freeAndNil(str);
-    str := dynamicArray[i].toString();
+
+    if dynamicArray[i] = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := dynamicArray[i].toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
   end;
 
-  str := ']';
+  str := String_.create(']');
   sb.append(str);
   freeAndNil(str);
-  str := sb.toString();
+  str := sb.toString_();
   freeAndNil(sb);
   toString_ := str;
 end;

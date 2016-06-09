@@ -5,7 +5,7 @@ unit MathUnit;
 interface
 
 uses
-  Math;
+  Math, IntegerUnit, LongUnit, FloatUnit, DoubleUnit;
 
 type
   (**
@@ -61,7 +61,7 @@ implementation
  *)
 class function Math_.abs(a: double) : double;
 begin
-  abs := abs(a);
+  abs := System.abs(a);
 end;
 
 (**
@@ -72,7 +72,7 @@ end;
  *)
 class function Math_.abs(a: single) : single;
 begin
-  abs := abs(a);
+  abs := System.abs(a);
 end;
 
 (**
@@ -83,7 +83,7 @@ end;
  *)
 class function Math_.abs(a: longInt) : longInt;
 begin
-  abs := abs(a);
+  abs := System.abs(a);
 end;
 
 (**
@@ -94,7 +94,7 @@ end;
  *)
 class function Math_.abs(a: int64) : int64;
 begin
-  abs := abs(a);
+  abs := System.abs(a);
 end;
 
 (**
@@ -106,7 +106,7 @@ end;
  *)
 class function Math_.max(a: double; b: double) : double;
 begin
-  max := max(a, b);
+  max := Math.max(a, b);
 end;
 
 (**
@@ -118,7 +118,7 @@ end;
  *)
 class function Math_.max(a: single; b: single) : single;
 begin
-  max := max(a, b);
+  max := Math.max(a, b);
 end;
 
 (**
@@ -130,7 +130,7 @@ end;
  *)
 class function Math_.max(a: longInt; b: longInt) : longInt;
 begin
-  max := max(a, b);
+  max := Math.max(a, b);
 end;
 
 (**
@@ -142,7 +142,7 @@ end;
  *)
 class function Math_.max(a: int64; b: int64) : int64;
 begin
-  max := max(a, b);
+  max := Math.max(a, b);
 end;
 
 (**
@@ -154,7 +154,7 @@ end;
  *)
 class function Math_.min(a: double; b: double) : double;
 begin
-  min := min(a, b);
+  min := Math.min(a, b);
 end;
 
 (**
@@ -166,7 +166,7 @@ end;
  *)
 class function Math_.min(a: single; b: single) : single;
 begin
-  min := min(a, b);
+  min := Math.min(a, b);
 end;
 
 (**
@@ -178,7 +178,7 @@ end;
  *)
 class function Math_.min(a: longInt; b: longInt) : longInt;
 begin
-  min := min(a, b);
+  min := Math.min(a, b);
 end;
 
 (**
@@ -190,7 +190,7 @@ end;
  *)
 class function Math_.min(a: int64; b: int64) : int64;
 begin
-  min := min(a, b);
+  min := Math.min(a, b);
 end;
 
 (**
@@ -215,7 +215,7 @@ end;
  *)
 class function Math_.sqrt(a: double) : double;
 begin
-  sqrt := sqrt(a);
+  sqrt := System.sqrt(a);
 end;
 
 (**
@@ -237,7 +237,7 @@ end;
  *)
 class function Math_.log10(a: double) : double;
 begin
-  log10 := log10(a);
+  log10 := Math.log10(a);
 end;
 
 (**
@@ -248,7 +248,7 @@ end;
  *)
 class function Math_.sin(a: double) : double;
 begin
-  sin := sin(a);
+  sin := System.sin(a);
 end;
 
 (**
@@ -259,7 +259,7 @@ end;
  *)
 class function Math_.cos(a: double) : double;
 begin
-  cos := cos(a);
+  cos := System.cos(a);
 end;
 
 (**
@@ -270,7 +270,7 @@ end;
  *)
 class function Math_.tan(a: double) : double;
 begin
-  tan := tan(a);
+  tan := Math.tan(a);
 end;
 
 (**
@@ -317,7 +317,29 @@ end;
  *)
 class function Math_.round(a: double) : int64;
 begin
-  round := int64(round(a));
+  if Double_.compare(a, Double_.NaN) = 0 then begin
+    exit(0);
+  end;
+
+  if (Double_.compare(a, Double_.NEGATIVE_INFINITY) = 0)
+  and (a <= Long.MIN_VALUE) then begin
+    exit(Long.MIN_VALUE);
+  end;
+
+  if (Double_.compare(a, Double_.POSITIVE_INFINITY) = 0)
+  and (a >= Long.MAX_VALUE) then begin
+    exit(Long.MAX_VALUE);
+  end;
+
+  if (a < 0) and (frac(a) <= 0.5) then begin
+    exit(trunc(a));
+  end;
+
+  if (a > 0) and (frac(a) >= 0.5) then begin
+    exit(trunc(a) + 1);
+  end;
+
+  round := int64(System.round(a));
 end;
 
 (**
@@ -328,7 +350,29 @@ end;
  *)
 class function Math_.round(a: single) : longInt;
 begin
-  round := longInt(round(a));
+  if Float.compare(a, Float.NaN) = 0 then begin
+    exit(0);
+  end;
+
+  if (Float.compare(a, Float.NEGATIVE_INFINITY) = 0)
+  and (a <= Integer_.MIN_VALUE) then begin
+    exit(Integer_.MIN_VALUE);
+  end;
+
+  if (Float.compare(a, Float.POSITIVE_INFINITY) = 0)
+  and (a >= Integer_.MAX_VALUE) then begin
+    exit(Integer_.MAX_VALUE);
+  end;
+
+  if (a < 0) and (frac(a) <= 0.5) then begin
+    exit(trunc(a));
+  end;
+
+  if (a > 0) and (frac(a) >= 0.5) then begin
+    exit(trunc(a) + 1);
+  end;
+
+  round := longInt(System.round(a));
 end;
 
 end.

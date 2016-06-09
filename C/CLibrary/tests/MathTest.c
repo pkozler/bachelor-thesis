@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "test.h"
-#include "Math.h"
+#include "Math_.h"
 #include "Integer.h"
 #include "Long.h"
 #include "Float.h"
@@ -374,7 +374,7 @@ void sqrtTest() {
 void logTest() {
     double a, b;
     // logarithm of the square of E
-    a = Math_E * Math_E;  * Math_E;
+    a = Math_E * Math_E;
     b = Math_log(a);
     assertEqualsD(2.0, b, DEFAULT_EPSILON);
     // logarithm of E

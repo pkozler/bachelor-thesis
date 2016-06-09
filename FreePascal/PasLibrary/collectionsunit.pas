@@ -62,28 +62,30 @@ end;
 class function Collections.binarySearch(list: ArrayList; key: Object_; c: Comparator) : longInt;
 var
   objectArray: array of Object_;
-  l, m, h: longInt;
+  lower, upper, middle : longInt;
+  middleValue : Object_;
 begin
   objectArray := list.arrProperty;
 
-  l := 0;
-  h := list.size() - 1;
-  binarySearch := -1;
+  lower := 0;
+  upper := list.size() - 1;
 
-  while l <= h do begin
-    m := (l + h) div 2;
+  while lower <= upper do begin
+    middle := lower + ((upper - lower) div 2);
+    middleValue := objectArray[middle];
 
-    if c.compare(objectArray[m], key) > 0 then begin
-      h := m - 1;
+    if c.compare(middleValue, key) < 0 then begin
+      lower := middle + 1;
     end
-    else if c.compare(objectArray[m], key) < 0 then begin
-      l := m + 1;
+    else if c.compare(middleValue, key) > 0 then begin
+      upper := middle - 1;
     end
     else begin
-      binarySearch := m;
-      break;
+      exit(middle);
     end;
   end;
+
+  binarySearch := -(lower + 1);
 end;
 
 (**
