@@ -14,11 +14,11 @@
 /**
  * A constant holding the maximum value a long can have, 2^63-1.
  */
-#define Long_MAX_VALUE 9223372036854775807
+#define Long_MAX_VALUE 9223372036854775807LL
 /**
  * A constant holding the minimum value a long can have, -2^63.
  */
-#define Long_MIN_VALUE -9223372036854775808
+#define Long_MIN_VALUE -9223372036854775808LL
 
 typedef struct {
     int64_t v;

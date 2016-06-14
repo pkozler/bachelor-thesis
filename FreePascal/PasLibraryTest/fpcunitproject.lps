@@ -8,7 +8,7 @@
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="8"/>
+        <IsVisibleTab Value="True"/>
         <CursorPos X="6" Y="24"/>
         <UsageCount Value="242"/>
         <Loaded Value="True"/>
@@ -71,9 +71,8 @@
         <Filename Value="scannertestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ScannerTestUnit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
-        <TopLine Value="245"/>
+        <TopLine Value="567"/>
         <CursorPos X="24" Y="251"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>

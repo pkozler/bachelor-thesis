@@ -32,8 +32,8 @@ char Character::charValue() {
  * Note that this is strictly a numerical comparison; it is not
  * locale-dependent.
  */
-int32_t Character::compareTo(Character *anotherCharacter) {
-    return compare(v, anotherCharacter->v);
+int32_t Character::compareTo(Object *anotherCharacter) {
+    return compare(v, ((Character *)anotherCharacter)->v);
 }
 
 /**
@@ -54,16 +54,16 @@ int32_t Character::compare(char x, char y) {
  * @param obj the object to compare with.
  * @return true if the objects are the same; false otherwise.
  */
-bool Character::equals(Character *obj) {
+bool Character::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof(*this) != sizeof(*obj)) {
+    if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
     
-    return (v == obj->v);
+    return (v == ((Character *)obj)->v);
 }
 
 /**

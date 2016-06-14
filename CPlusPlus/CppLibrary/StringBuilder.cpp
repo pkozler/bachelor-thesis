@@ -5,11 +5,7 @@
  * capacity of 16 characters.
  */
 StringBuilder::StringBuilder() {
-    // really no code
-}
-
-StringBuilder::~StringBuilder() {
-    // really no code
+    // no code yet
 }
 
 /**
@@ -19,7 +15,7 @@ StringBuilder::~StringBuilder() {
  * @return a pointer to this object.
  */
 StringBuilder *StringBuilder::append(String *str) {
-    oss << str;
+    oss << str->_s();
     
     return this;
 }

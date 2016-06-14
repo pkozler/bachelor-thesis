@@ -4,7 +4,29 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>../CppLibrary/ArrayList.h</itemPath>
+      <itemPath>../CppLibrary/Arrays.h</itemPath>
+      <itemPath>../CppLibrary/Boolean.h</itemPath>
+      <itemPath>../CppLibrary/Byte.h</itemPath>
+      <itemPath>../CppLibrary/Character.h</itemPath>
+      <itemPath>../CppLibrary/Collections.h</itemPath>
+      <itemPath>../CppLibrary/Double.h</itemPath>
+      <itemPath>../CppLibrary/Float.h</itemPath>
+      <itemPath>../CppLibrary/Integer.h</itemPath>
+      <itemPath>../CppLibrary/LinkedList.h</itemPath>
+      <itemPath>../CppLibrary/List.h</itemPath>
+      <itemPath>../CppLibrary/Long.h</itemPath>
+      <itemPath>../CppLibrary/Math_.h</itemPath>
       <itemPath>PrintStreamTest.h</itemPath>
+      <itemPath>../CppLibrary/Scanner.h</itemPath>
+      <itemPath>../CppLibrary/Short.h</itemPath>
+      <itemPath>../CppLibrary/StringBuilder.h</itemPath>
+      <itemPath>../CppLibrary/StringTokenizer.h</itemPath>
+      <itemPath>../CppLibrary/String_.h</itemPath>
+      <itemPath>../CppLibrary/System.h</itemPath>
+      <itemPath>../CppLibrary/TestObject.h</itemPath>
+      <itemPath>../CppLibrary/TestObjectComparator.h</itemPath>
+      <itemPath>../CppLibrary/test.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,8 +35,30 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../CppLibrary/ArrayList.cpp</itemPath>
+      <itemPath>../CppLibrary/Arrays.cpp</itemPath>
+      <itemPath>../CppLibrary/Boolean.cpp</itemPath>
+      <itemPath>../CppLibrary/Byte.cpp</itemPath>
+      <itemPath>../CppLibrary/Character.cpp</itemPath>
+      <itemPath>../CppLibrary/Collections.cpp</itemPath>
+      <itemPath>../CppLibrary/Double.cpp</itemPath>
+      <itemPath>../CppLibrary/Float.cpp</itemPath>
+      <itemPath>../CppLibrary/Integer.cpp</itemPath>
+      <itemPath>../CppLibrary/LinkedList.cpp</itemPath>
+      <itemPath>../CppLibrary/List.cpp</itemPath>
+      <itemPath>../CppLibrary/Long.cpp</itemPath>
+      <itemPath>../CppLibrary/Math_.cpp</itemPath>
       <itemPath>PrintStreamTest.cpp</itemPath>
+      <itemPath>../CppLibrary/Scanner.cpp</itemPath>
+      <itemPath>../CppLibrary/Short.cpp</itemPath>
+      <itemPath>../CppLibrary/StringBuilder.cpp</itemPath>
+      <itemPath>../CppLibrary/StringTokenizer.cpp</itemPath>
+      <itemPath>../CppLibrary/String_.cpp</itemPath>
+      <itemPath>../CppLibrary/System.cpp</itemPath>
+      <itemPath>../CppLibrary/TestObject.cpp</itemPath>
+      <itemPath>../CppLibrary/TestObjectComparator.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>../CppLibrary/test.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -37,12 +81,110 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandLine>-std=c11 -lm -O2</commandLine>
+        </cTool>
         <ccTool>
           <incDir>
             <pElem>../CppLibrary</pElem>
           </incDir>
+          <commandLine>-std=c++11 -lm -O2</commandLine>
         </ccTool>
       </compileType>
+      <item path="../CppLibrary/ArrayList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../CppLibrary/test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/test.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="PrintStreamTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
@@ -70,6 +212,100 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="../CppLibrary/ArrayList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../CppLibrary/test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/test.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="PrintStreamTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">

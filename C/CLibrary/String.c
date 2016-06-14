@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <wchar.h>
 
 /**
  * Constructs a new String by decoding the specified array of bytes using
@@ -77,14 +78,14 @@ int32_t compareToStr(String *ptr, String *anotherString) {
  * string, false otherwise
  */
 bool equalsStr(String *ptr, String *anObject) {
-    if (anObject == NULL || anObject == NULL) {
+    if (ptr == NULL || anObject == NULL) {
         return false;
     }
 
     if (sizeof(*ptr) != sizeof(*anObject)) {
         return false;
     }
-
+    
     return !strcmp(ptr->s, anObject->s);
 }
 
@@ -96,7 +97,7 @@ bool equalsStr(String *ptr, String *anObject) {
  * @return the specified substring.
  */
 String *substring(String *ptr, int32_t beginIndex) {
-    return substringTo(ptr, 0, strlen(ptr->s) - 1);
+    return substringTo(ptr, beginIndex, ptr->len);
 }
 
 /**
@@ -109,8 +110,10 @@ String *substring(String *ptr, int32_t beginIndex) {
  */
 String *substringTo(String *ptr, int32_t beginIndex, int32_t endIndex) {
     int32_t len = endIndex - beginIndex;
-    char *to = (char*) malloc(len);
-    strncpy(to, ptr->s + beginIndex, (size_t) endIndex - beginIndex);
+    char *to = (char*) malloc(len * sizeof(char));
+    to[0] = '\0';
+    
+    strncat(to, ptr->s + beginIndex, (size_t) len);
 
     String *str = new_String(to);
     free(to);
@@ -145,11 +148,15 @@ int32_t indexOfC(String *ptr, int32_t ch) {
  */
 int32_t indexOfFromC(String *ptr, int32_t ch, int32_t fromIndex) {
     char* str = ptr->s + fromIndex;
-
     char* c = strchr(str, ch);
-    int32_t index = (int32_t)(c - str);
+    
+    if (c == NULL) {
+        return -1;
+    }
+    
+    size_t index = (size_t)(c - ptr->s);
 
-    return index;
+    return (int32_t) index;
 }
 
 /**
@@ -177,9 +184,15 @@ int32_t indexOfStr(String *ptr, String *str) {
  */
 int32_t indexOfFromStr(String *ptr, String *str, int32_t fromIndex) {
     char* str0 = ptr->s + fromIndex;
-    int32_t index = (int32_t) strcspn(str0, str->s);
+    char* s = strstr(str0, str->s);
 
-    return index;
+    if (s == NULL) {
+        return -1;
+    }
+    
+    size_t index = (size_t)(s - ptr->s);
+
+    return (int32_t) index;
 }
 
 /**
@@ -291,19 +304,19 @@ char charAt(String *ptr, int32_t index) {
  * of oldChar with newChar.
  */
 String *replace(String *ptr, char oldChar, char newChar) {
-    char *str = (char*) malloc(ptr->len);
+    char *str = strdup(ptr->s);
     int32_t i;
 
-    for (i = 0; ptr->s[i]; i++) {
-        if (ptr->s[i] == oldChar) {
-            ptr->s[i] = newChar;
+    for (i = 0; str[i]; i++) {
+        if (str[i] == oldChar) {
+            str[i] = newChar;
         }
     }
 
-    String *changedStr = new_String(str);
+    String *replacedStr = new_String(str);
     free(str);
 
-    return changedStr;
+    return replacedStr;
 }
 
 /**

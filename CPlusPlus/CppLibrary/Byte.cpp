@@ -1,6 +1,7 @@
 #include "Byte.h"
 
 #include <string>
+#include <cstdlib>
 
 const int8_t Byte::MAX_VALUE = 127;
 const int8_t Byte::MIN_VALUE = -128;
@@ -34,8 +35,8 @@ int8_t Byte::byteValue() {
  * a value greater than 0 if this Byte is numerically greater than the
  * argument Byte (signed comparison).
  */
-int32_t Byte::compareTo(Byte *anotherByte) {
-    return compare(v, anotherByte->v);
+int32_t Byte::compareTo(Object *anotherByte) {
+    return compare(v, ((Byte *)anotherByte)->v);
 }
 
 /**
@@ -56,16 +57,16 @@ int32_t Byte::compare(int8_t x, int8_t y) {
  * @param obj the object to compare with
  * @return true if the objects are the same; false otherwise.
  */
-bool Byte::equals(Byte *obj) {
+bool Byte::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof(*this) != sizeof(*obj)) {
+    if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
     
-    return (v == obj->v);
+    return (v == ((Byte *)obj)->v);
 }
 
 /**
@@ -94,5 +95,9 @@ String *Byte::toString(int8_t b) {
  * @return the byte value represented by the argument in decimal
  */
 int8_t Byte::parseByte(String *s) {
-    return (int8_t) std::stoi(s->_s(), nullptr, 10);
+    String *str = s->trim();
+    int8_t value = strtol(str->_s().c_str(), nullptr, 10);
+    delete str;
+    
+    return value;
 }

@@ -31,6 +31,19 @@ std::ostream &operator<<(std::ostream &s, Object &o) {
     return s << o.toString()->_s();
 }
 
+void String::init(int8_t *value, int32_t offset, int32_t length) {
+    char *s = new char[length + 1];
+    
+    int32_t i;
+    for (i = 0; i < length; i++) {
+        s[i] = value[i + offset];
+    }
+    
+    s[i] = '\0';
+    this->s = s;
+    delete[] s;
+}
+
 /**
  * Constructs a new String by decoding the specified array of bytes using
  * the ANSI charset.
@@ -39,7 +52,7 @@ std::ostream &operator<<(std::ostream &s, Object &o) {
  * @param length The array length
  */
 String::String(int8_t *value, int32_t length) {
-    this->s = ((char *) value, length);
+    init(value, 0, length);
 }
 
 /**
@@ -51,7 +64,7 @@ String::String(int8_t *value, int32_t length) {
  * @param length The number of bytes to decode
  */
 String::String(int8_t *value, int32_t offset, int32_t length) {
-    this->s = ((char *) (value + offset), length);
+    init(value, offset, length);
 }
 
 /**
@@ -74,8 +87,8 @@ String::String(std::string original) {
  * string argument; and a value greater than 0 if this string is
  * lexicographically greater than the string argument.
  */
-int32_t String::compareTo(String *anotherString) {
-    return this->s.compare(anotherString->s);
+int32_t String::compareTo(Object *anotherString) {
+    return this->s.compare(((String *)anotherString)->s);
 }
 
 /**
@@ -85,16 +98,16 @@ int32_t String::compareTo(String *anotherString) {
  * @return true if the given object represents a String equivalent to this
  * string, false otherwise
  */
-bool String::equals(String *anObject) {
+bool String::equals(Object *anObject) {
     if (anObject == nullptr) {
         return false;
     }
 
-    if (sizeof (*this) != sizeof (*anObject)) {
+    if (sizeof(this) != sizeof(*anObject)) {
         return false;
     }
-
-    return (bool) !this->s.compare(anObject->s);
+    
+    return !this->s.compare(((String *)anObject)->s);
 }
 
 /**
@@ -115,7 +128,7 @@ String *String::substring(int32_t beginIndex) {
  * @return the specified substring.
  */
 String *String::substring(int32_t beginIndex, int32_t endIndex) {
-    return new String(this->s.substr(beginIndex, endIndex - beginIndex + 1));
+    return new String(this->s.substr(beginIndex, endIndex - beginIndex));
 }
 
 /**
@@ -209,7 +222,7 @@ String *String::trim() {
  */
 String *String::toLowerCase() {
     std::string lowerCaseStr = this->s;
-    std::transform(this->s.begin(), this->s.end(), std::back_inserter(lowerCaseStr), ::tolower);
+    std::transform(lowerCaseStr.begin(), lowerCaseStr.end(), lowerCaseStr.begin(), ::tolower);
     return new String(lowerCaseStr);
 }
 
@@ -221,7 +234,7 @@ String *String::toLowerCase() {
  */
 String *String::toUpperCase() {
     std::string upperCaseStr = this->s;
-    std::transform(this->s.begin(), this->s.end(), std::back_inserter(upperCaseStr), ::toupper);
+    std::transform(upperCaseStr.begin(), upperCaseStr.end(), upperCaseStr.begin(), ::toupper);
     return new String(upperCaseStr);
 }
 

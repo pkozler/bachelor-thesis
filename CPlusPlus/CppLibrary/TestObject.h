@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler
  */
-class TestObject : public Comparable<TestObject> {
+class TestObject : public Comparable {
     String *str;
     int32_t i;
 public:
@@ -21,7 +21,7 @@ public:
     void setI(int32_t i);
     bool equals(Object *obj);
     String *toString();
-    int32_t compareTo(TestObject *o);
+    int32_t compareTo(Object *o);
 };
 
 #endif	// TESTOBJECT_INCLUDED

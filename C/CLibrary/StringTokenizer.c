@@ -1,7 +1,10 @@
 #include "StringTokenizer.h"
+#include "ArrayList.h"
+#include "System.h"
 
 #include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
 
 /**
  * Constructs a string tokenizer for the specified string.
@@ -20,14 +23,37 @@ StringTokenizer *new_StringTokenizer(String *str) {
  */
 StringTokenizer *new_StringTokenizerDelim(String *str, String *delim) {
     StringTokenizer *strTok = malloc(sizeof(StringTokenizer));
-    strTok->str = strdup(str->s);
-    strTok->delim = strdup(delim->s);
-    strTok->first = true;
+    char *ch = strpbrk(str->s, delim->s);
+    
+    for (strTok->tokensLength = 1; ch != NULL; strTok->tokensLength++) {
+        ch = strpbrk(ch + 1, delim->s);
+    }
+    
+    strTok->tokenCounter = 0;
+    strTok->tokens = (char **) malloc(strTok->tokensLength * sizeof(char *));
+    
+    char *s = strtok(str->s, delim->s);
+    int32_t i = 0;
+    
+    while (s != NULL) {
+        strTok->tokens[i] = s;
+        i++;
+        s = strtok(NULL, delim->s);
+    }
 
+    strTok->tokensLength = i;
+    strTok->tokens = realloc(strTok->tokens, strTok->tokensLength * sizeof(char *));
+    
     return strTok;
 }
 
 void delete_StringTokenizer(StringTokenizer *ptr) {
+    int32_t i;
+    for (i = 0; i < ptr->tokensLength; i++) {
+        free(ptr->tokens[i]);
+    }
+    
+    free(ptr->tokens);
     free(ptr);
 }
 
@@ -40,15 +66,7 @@ void delete_StringTokenizer(StringTokenizer *ptr) {
  * delimiter set.
  */
 int32_t countTokens(StringTokenizer *ptr) {
-    int32_t n = 0;
-    char *s = strdup(ptr->str);
-
-    while((s = strpbrk(s, ptr->delim)) != NULL) {
-        n++;
-        s++;
-    }
-
-    return n;
+    return ptr->tokensLength - ptr->tokenCounter;
 }
 
 /**
@@ -69,10 +87,8 @@ bool hasMoreTokens(StringTokenizer *ptr) {
  * @return the next token from the specified string tokenizer.
  */
 String *nextToken(StringTokenizer *ptr) {
-    if (ptr->first) {
-        ptr->first = false;
-        return new_String(strtok(ptr->str, ptr->delim));
-    }
-
-    return new_String(strtok(0, ptr->delim));
+    String *str = new_String(ptr->tokens[ptr->tokenCounter]);
+    ptr->tokenCounter++;
+    
+    return str;
 }

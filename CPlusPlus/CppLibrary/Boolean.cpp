@@ -27,8 +27,8 @@ bool Boolean::booleanValue() {
  * argument represents false; and a negative value if this object represents
  * false and the argument represents true
  */
-int32_t Boolean::compareTo(Boolean *b) {
-    return compare(v, b->v);
+int32_t Boolean::compareTo(Object *b) {
+    return compare(v, ((Boolean *)b)->v);
 }
 
 /**
@@ -51,16 +51,16 @@ int32_t Boolean::compare(bool x, bool y) {
  * @return true if the Boolean objects represent the same value; false
  * otherwise.
  */
-bool Boolean::equals(Boolean *obj) {
+bool Boolean::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof(*this) != sizeof(*obj)) {
+    if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
     
-    return (v == obj->v);
+    return (v == ((Boolean *)obj)->v);
 }
 
 /**
@@ -91,17 +91,21 @@ String *Boolean::toString(bool b) {
 bool Boolean::parseBoolean(String *s) {
     String *trueStr = new String("true");
     String *falseStr = new String("false");
+    String *trimmedStr = s->trim();
+    String *str = trimmedStr->toLowerCase();
     bool value = false;
 
-    if (s->toLowerCase()->equals(trueStr)) {
+    if (str->equals(trueStr)) {
         value = true;
     }
-    else if (s->toLowerCase()->equals(falseStr)) {
+    else if (str->equals(falseStr)) {
         value = false;
     }
 
     delete trueStr;
     delete falseStr;
+    delete trimmedStr;
+    delete str;
 
     return value;
 }

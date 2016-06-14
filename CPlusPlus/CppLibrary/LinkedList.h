@@ -141,19 +141,20 @@ template <class E> void LinkedList<E>::clear() {
  */
 template <class E> String *LinkedList<E>::toString() {
     int32_t length = l.size();
-    std::ostringstream oss("[");
+    std::ostringstream oss("");
+    oss << "[";
 
     if (length > 0) {
-        String *str = ((Object *) *l.begin())->toString();
-        oss << str;
+        String *str = *l.begin() == nullptr ? new String("null") : ((Object *) *l.begin())->toString();
+        oss << str->_s();
         delete str;
     }
 
     for (int32_t i = 1; i < length; i++) {
         auto it = l.begin();
         std::advance(it, i);
-        String *str = ((Object *) *it)->toString();
-        oss << ", " << str;
+        String *str = *it == nullptr ? new String("null") : ((Object *) *it)->toString();
+        oss << ", " << str->_s();
         delete str;
     }
 

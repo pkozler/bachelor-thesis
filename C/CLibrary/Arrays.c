@@ -15,6 +15,16 @@
 #include <string.h>
 #include <stdlib.h>
 
+bool _defaultBool = false;
+int8_t _defaultByte = 0;
+char _defaultChar = '\0';
+double _defaultDouble = 0.0;
+float _defaultFloat = 0.0f;
+int32_t _defaultInt = 0;
+int64_t _defaultLong = 0LL;
+void *_defaultPointer = NULL;
+int16_t _defaultShort = 0;
+
 int32_t _compareB(const void *a, const void *b) {
     return Byte_compare(*(int8_t*)a, *(int8_t*)b);
 }
@@ -155,18 +165,29 @@ String *_toStringS(const void *a) {
     return Short_toString(*(int16_t*)a);
 }
 
-int32_t _binarySearchPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, void *key, int32_t (*c)(const void *, const void *)) {
+int32_t _binarySearchPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, void *key, int32_t (*c)(const void *, const void *), bool isObjectArray) {
     int32_t lower = fromIndex;
     int32_t upper = toIndex - 1;
 
     while (lower <= upper) {
         int32_t middle = ((uint32_t)lower + (uint32_t)upper) >> 1;
-        void *middleValue = a + middle * size;
-
-        if (c(middleValue, key) < 0) {
+        int32_t cmp; 
+        
+        if (isObjectArray) {
+            void **o1 = a + middle * size;
+            void **o2 = key;
+            cmp = c(*o1, *o2);
+        }
+        else {
+            void *o1 = a + middle * size;
+            void *o2 = key;
+            cmp = c(o1, o2);
+        }
+        
+        if (cmp < 0) {
             lower = middle + 1;
         }
-        else if (c(middleValue, key) > 0) {
+        else if (cmp > 0) {
             upper = middle - 1;
         }
         else {
@@ -177,17 +198,17 @@ int32_t _binarySearchPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_
     return -(lower + 1);
 }
 
-void *_copyOfRangePointer(void *original, int32_t length, int32_t size, int32_t from, int32_t to) {
-    void *a = malloc(size * (to - from));
+void *_copyOfRangePointer(void *original, int32_t length, int32_t size, int32_t from, int32_t to, void *defaultValue) {
+    void *a = calloc(to - from, size);
     int32_t i;
 
     if (to > length) {
-        for (i = 0; i < length; i++) {
+        for (i = from; i < length; i++) {
             memcpy(a + (i - from) * size, original + i * size, size);
         }
 
         for (i = length; i < to; i++) {
-            memset(a + (i - from) * size, 0, size);
+            memcpy(a + (i - from) * size, defaultValue, size);
         }
     }
     else {
@@ -199,11 +220,11 @@ void *_copyOfRangePointer(void *original, int32_t length, int32_t size, int32_t 
     return a;
 }
 
-bool _equalsPointer(void *a, int32_t length, void *a2, int32_t length2, int32_t size, bool (*equals)(const void *, const void *)) {
+bool _equalsPointer(void *a, int32_t length, void *a2, int32_t length2, int32_t size, bool (*equals)(const void *, const void *), bool isObjectArray) {
     if (a == a2) {
         return true;
     }
-
+    
     if (a == NULL || a2 == NULL) {
         return false;
     }
@@ -211,10 +232,23 @@ bool _equalsPointer(void *a, int32_t length, void *a2, int32_t length2, int32_t 
     if (length2 != length) {
         return false;
     }
-
+    
     int32_t i;
     for (i = 0; i < length; i++) {
-        if (!equals(a + i * size, a2 + i * size)) {
+        bool e;
+        
+        if (isObjectArray) {
+            void **o1 = a + i * size;
+            void **o2 = a2 + i * size;
+            e = *o1 == NULL ? *o2 == NULL : equals(*o1, *o2);
+        }
+        else {
+            void *o1 = a + i * size;
+            void *o2 = a2 + i * size;
+            e = equals(o1, o2);
+        }
+        
+        if (!e) {
             return false;
         }
     }
@@ -229,9 +263,9 @@ void _fillPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, voi
     }
 }
 
-void _sortPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, int32_t (*c)(const void *, const void *), bool stable) {
-    if (!stable) {
-        qsort(a + fromIndex, toIndex - fromIndex, size, c);
+void _sortPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, int32_t (*c)(const void *, const void *), bool isObjectArray) {
+    if (!isObjectArray) {
+        qsort(a + fromIndex * size, toIndex - fromIndex, size, c);
     }
     else {
         void **aux = malloc(sizeof(void *) * (toIndex - fromIndex));
@@ -240,14 +274,22 @@ void _sortPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, int
     }
 }
 
-String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toString)(const void *)) {
+String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toString)(const void *), bool isObjectArray) {
     StringBuilder *sb = new_StringBuilder();
     String *str = new_String("[");
     append(sb, str);
     delete_String(str);
 
     if (length > 0) {
-        str = toString(a);
+        if (isObjectArray) {
+            void **o = a;
+            str = *o == NULL ? new_String("null") : toString(*o);
+        }
+        else  {
+            void *o = a;
+            str = toString(o);
+        }
+        
         append(sb, str);
         delete_String(str);
     }
@@ -257,7 +299,16 @@ String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toStri
         str = new_String(", ");
         append(sb, str);
         delete_String(str);
-        str = toString(a + i * size);
+        
+        if (isObjectArray) {
+            void **o = a + i * size;
+            str = *o == NULL ? new_String("null") : toString(*o);
+        }
+        else  {
+            void *o = a + i * size;
+            str = toString(o);
+        }
+        
         append(sb, str);
         delete_String(str);
     }
@@ -286,7 +337,7 @@ String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toStri
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchB(int8_t *a, int32_t length, int8_t key) {
-    return _binarySearchPointer(a, 0, length, sizeof(int8_t), &key, _compareC);
+    return _binarySearchPointer(a, 0, length, sizeof(int8_t), &key, _compareC, false);
 }
 
 /**
@@ -307,7 +358,7 @@ int32_t Arrays_binarySearchB(int8_t *a, int32_t length, int8_t key) {
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeB(int8_t *a, int32_t fromIndex, int32_t toIndex, int8_t key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int8_t), &key, _compareC);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int8_t), &key, _compareC, false);
 }
 
 /**
@@ -325,7 +376,7 @@ int32_t Arrays_binarySearchRangeB(int8_t *a, int32_t fromIndex, int32_t toIndex,
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchC(char *a, int32_t length, char key) {
-    return _binarySearchPointer(a, 0, length, sizeof(char), &key, _compareC);
+    return _binarySearchPointer(a, 0, length, sizeof(char), &key, _compareC, false);
 }
 
 /**
@@ -346,7 +397,7 @@ int32_t Arrays_binarySearchC(char *a, int32_t length, char key) {
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeC(char *a, int32_t fromIndex, int32_t toIndex, char key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(char), &key, _compareC);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(char), &key, _compareC, false);
 }
 
 /**
@@ -364,7 +415,7 @@ int32_t Arrays_binarySearchRangeC(char *a, int32_t fromIndex, int32_t toIndex, c
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchD(double *a, int32_t length, double key) {
-    return _binarySearchPointer(a, 0, length, sizeof(double), &key, _compareD);
+    return _binarySearchPointer(a, 0, length, sizeof(double), &key, _compareD, false);
 }
 
 /**
@@ -385,7 +436,7 @@ int32_t Arrays_binarySearchD(double *a, int32_t length, double key) {
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeD(double *a, int32_t fromIndex, int32_t toIndex, double key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(double), &key, _compareD);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(double), &key, _compareD, false);
 }
 
 /**
@@ -403,7 +454,7 @@ int32_t Arrays_binarySearchRangeD(double *a, int32_t fromIndex, int32_t toIndex,
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchF(float *a, int32_t length, float key) {
-    return _binarySearchPointer(a, 0, length, sizeof(float), &key, _compareF);
+    return _binarySearchPointer(a, 0, length, sizeof(float), &key, _compareF, false);
 }
 
 /**
@@ -424,7 +475,7 @@ int32_t Arrays_binarySearchF(float *a, int32_t length, float key) {
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeF(float *a, int32_t fromIndex, int32_t toIndex, float key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(float), &key, _compareF);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(float), &key, _compareF, false);
 }
 
 /**
@@ -442,7 +493,7 @@ int32_t Arrays_binarySearchRangeF(float *a, int32_t fromIndex, int32_t toIndex, 
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchI(int32_t *a, int32_t length, int32_t key) {
-    return _binarySearchPointer(a, 0, length, sizeof(int32_t), &key, _compareI);
+    return _binarySearchPointer(a, 0, length, sizeof(int32_t), &key, _compareI, false);
 }
 
 /**
@@ -463,7 +514,7 @@ int32_t Arrays_binarySearchI(int32_t *a, int32_t length, int32_t key) {
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex, int32_t key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int32_t), &key, _compareI);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int32_t), &key, _compareI, false);
 }
 
 /**
@@ -481,7 +532,7 @@ int32_t Arrays_binarySearchRangeI(int32_t *a, int32_t fromIndex, int32_t toIndex
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchL(int64_t *a, int32_t length, int64_t key) {
-    return _binarySearchPointer(a, 0, length, sizeof(int64_t), &key, _compareL);
+    return _binarySearchPointer(a, 0, length, sizeof(int64_t), &key, _compareL, false);
 }
 
 /**
@@ -502,7 +553,7 @@ int32_t Arrays_binarySearchL(int64_t *a, int32_t length, int64_t key) {
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex, int64_t key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int64_t), &key, _compareL);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int64_t), &key, _compareL, false);
 }
 
 /**
@@ -521,7 +572,7 @@ int32_t Arrays_binarySearchRangeL(int64_t *a, int32_t fromIndex, int32_t toIndex
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchObj(void **a, int32_t length, void *key, int32_t (*c)(const void *, const void *)) {
-    return _binarySearchPointer(a, 0, length, sizeof(void *), &key, c);
+    return _binarySearchPointer(a, 0, length, sizeof(void *), &key, c, true);
 }
 
 /**
@@ -543,7 +594,7 @@ int32_t Arrays_binarySearchObj(void **a, int32_t length, void *key, int32_t (*c)
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeObj(void **a, int32_t fromIndex, int32_t toIndex, void *key, int32_t (*c)(const void *, const void *)) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(void *), &key, c);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(void *), &key, c, true);
 }
 
 /**
@@ -561,7 +612,7 @@ int32_t Arrays_binarySearchRangeObj(void **a, int32_t fromIndex, int32_t toIndex
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays_binarySearchS(int16_t *a, int32_t length, int16_t key) {
-    return _binarySearchPointer(a, 0, length, sizeof(int16_t), &key, _compareS);
+    return _binarySearchPointer(a, 0, length, sizeof(int16_t), &key, _compareS, false);
 }
 
 /**
@@ -582,7 +633,7 @@ int32_t Arrays_binarySearchS(int16_t *a, int32_t length, int16_t key) {
  * if the key is found.
  */
 int32_t Arrays_binarySearchRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex, int16_t key) {
-    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int16_t), &key, _compareS);
+    return _binarySearchPointer(a, fromIndex, toIndex, sizeof(int16_t), &key, _compareS, false);
 }
 
 /**
@@ -596,7 +647,7 @@ int32_t Arrays_binarySearchRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex
  * elements to obtain the specified length
  */
 bool *Arrays_copyOfBool(bool *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(bool), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(bool), 0, newLength, &_defaultBool);
 }
 
 /**
@@ -610,7 +661,7 @@ bool *Arrays_copyOfBool(bool *original, int32_t length, int32_t newLength) {
  * obtain the specified length
  */
 int8_t *Arrays_copyOfB(int8_t *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(int8_t), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(int8_t), 0, newLength, &_defaultByte);
 }
 
 /**
@@ -624,7 +675,7 @@ int8_t *Arrays_copyOfB(int8_t *original, int32_t length, int32_t newLength) {
  * characters to obtain the specified length
  */
 char *Arrays_copyOfC(char *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(char), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(char), 0, newLength, &_defaultChar);
 }
 
 /**
@@ -638,7 +689,7 @@ char *Arrays_copyOfC(char *original, int32_t length, int32_t newLength) {
  * obtain the specified length
  */
 double *Arrays_copyOfD(double *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(double), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(double), 0, newLength, &_defaultDouble);
 }
 
 /**
@@ -652,7 +703,7 @@ double *Arrays_copyOfD(double *original, int32_t length, int32_t newLength) {
  * obtain the specified length
  */
 float *Arrays_copyOfF(float *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(float), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(float), 0, newLength, &_defaultFloat);
 }
 
 /**
@@ -666,7 +717,7 @@ float *Arrays_copyOfF(float *original, int32_t length, int32_t newLength) {
  * obtain the specified length
  */
 int32_t *Arrays_copyOfI(int32_t *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(int32_t), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(int32_t), 0, newLength, &_defaultInt);
 }
 
 /**
@@ -680,7 +731,7 @@ int32_t *Arrays_copyOfI(int32_t *original, int32_t length, int32_t newLength) {
  * obtain the specified length
  */
 int64_t *Arrays_copyOfL(int64_t *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(int64_t), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(int64_t), 0, newLength, &_defaultLong);
 }
 
 /**
@@ -694,7 +745,7 @@ int64_t *Arrays_copyOfL(int64_t *original, int32_t length, int32_t newLength) {
  * obtain the specified length
  */
 int16_t *Arrays_copyOfS(int16_t *original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(int16_t), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(int16_t), 0, newLength, &_defaultShort);
 }
 
 /**
@@ -708,7 +759,7 @@ int16_t *Arrays_copyOfS(int16_t *original, int32_t length, int32_t newLength) {
  * obtain the specified length
  */
 void **Arrays_copyOfObj(void **original, int32_t length, int32_t newLength) {
-    return _copyOfRangePointer(original, length, sizeof(void *), 0, newLength);
+    return _copyOfRangePointer(original, length, sizeof(void *), 0, newLength, &_defaultPointer);
 }
 
 /**
@@ -724,7 +775,7 @@ void **Arrays_copyOfObj(void **original, int32_t length, int32_t newLength) {
  * length
  */
 bool *Arrays_copyOfRangeBool(bool *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(bool), from, to);
+    return _copyOfRangePointer(original, length, sizeof(bool), from, to, &_defaultBool);
 }
 
 /**
@@ -739,7 +790,7 @@ bool *Arrays_copyOfRangeBool(bool *original, int32_t length, int32_t from, int32
  * array, truncated or padded with zeros to obtain the required length
  */
 int8_t *Arrays_copyOfRangeB(int8_t *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(int8_t), from, to);
+    return _copyOfRangePointer(original, length, sizeof(int8_t), from, to, &_defaultByte);
 }
 
 /**
@@ -755,7 +806,7 @@ int8_t *Arrays_copyOfRangeB(int8_t *original, int32_t length, int32_t from, int3
  * length
  */
 char *Arrays_copyOfRangeC(char *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(char), from, to);
+    return _copyOfRangePointer(original, length, sizeof(char), from, to, &_defaultChar);
 }
 
 /**
@@ -770,7 +821,7 @@ char *Arrays_copyOfRangeC(char *original, int32_t length, int32_t from, int32_t 
  * array, truncated or padded with zeros to obtain the required length
  */
 double *Arrays_copyOfRangeD(double *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(double), from, to);
+    return _copyOfRangePointer(original, length, sizeof(double), from, to, &_defaultDouble);
 }
 
 /**
@@ -785,7 +836,7 @@ double *Arrays_copyOfRangeD(double *original, int32_t length, int32_t from, int3
  * array, truncated or padded with zeros to obtain the required length
  */
 float *Arrays_copyOfRangeF(float *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(float), from, to);
+    return _copyOfRangePointer(original, length, sizeof(float), from, to, &_defaultFloat);
 }
 
 /**
@@ -800,7 +851,7 @@ float *Arrays_copyOfRangeF(float *original, int32_t length, int32_t from, int32_
  * array, truncated or padded with zeros to obtain the required length
  */
 int32_t *Arrays_copyOfRangeI(int32_t *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(int32_t), from, to);
+    return _copyOfRangePointer(original, length, sizeof(int32_t), from, to, &_defaultInt);
 }
 
 /**
@@ -815,7 +866,7 @@ int32_t *Arrays_copyOfRangeI(int32_t *original, int32_t length, int32_t from, in
  * array, truncated or padded with zeros to obtain the required length
  */
 int64_t *Arrays_copyOfRangeL(int64_t *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(int64_t), from, to);
+    return _copyOfRangePointer(original, length, sizeof(int64_t), from, to, &_defaultLong);
 }
 
 /**
@@ -830,7 +881,7 @@ int64_t *Arrays_copyOfRangeL(int64_t *original, int32_t length, int32_t from, in
  * array, truncated or padded with zeros to obtain the required length
  */
 int16_t *Arrays_copyOfRangeS(int16_t *original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(int16_t), from, to);
+    return _copyOfRangePointer(original, length, sizeof(int16_t), from, to, &_defaultShort);
 }
 
 /**
@@ -845,7 +896,7 @@ int16_t *Arrays_copyOfRangeS(int16_t *original, int32_t length, int32_t from, in
  * array, truncated or padded with nulls to obtain the required length
  */
 void **Arrays_copyOfRangeObj(void **original, int32_t length, int32_t from, int32_t to) {
-    return _copyOfRangePointer(original, length, sizeof(void *), from, to);
+    return _copyOfRangePointer(original, length, sizeof(void *), from, to, &_defaultPointer);
 }
 
 /**
@@ -859,7 +910,7 @@ void **Arrays_copyOfRangeObj(void **original, int32_t length, int32_t from, int3
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsBool(bool *a, int32_t length, bool *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(bool), _equalsBool);
+    return _equalsPointer(a, length, a2, length2, sizeof(bool), _equalsBool, false);
 }
 
 /**
@@ -873,7 +924,7 @@ bool Arrays_equalsBool(bool *a, int32_t length, bool *a2, int32_t length2) {
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsB(int8_t *a, int32_t length, int8_t *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(int8_t), _equalsC);
+    return _equalsPointer(a, length, a2, length2, sizeof(int8_t), _equalsC, false);
 }
 
 /**
@@ -887,7 +938,7 @@ bool Arrays_equalsB(int8_t *a, int32_t length, int8_t *a2, int32_t length2) {
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsC(char *a, int32_t length, char *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(char), _equalsC);
+    return _equalsPointer(a, length, a2, length2, sizeof(char), _equalsC, false);
 }
 
 /**
@@ -901,7 +952,7 @@ bool Arrays_equalsC(char *a, int32_t length, char *a2, int32_t length2) {
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsD(double *a, int32_t length, double *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(double), _equalsD);
+    return _equalsPointer(a, length, a2, length2, sizeof(double), _equalsD, false);
 }
 
 /**
@@ -915,7 +966,7 @@ bool Arrays_equalsD(double *a, int32_t length, double *a2, int32_t length2) {
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsF(float *a, int32_t length, float *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(float), _equalsF);
+    return _equalsPointer(a, length, a2, length2, sizeof(float), _equalsF, false);
 }
 
 /**
@@ -929,7 +980,7 @@ bool Arrays_equalsF(float *a, int32_t length, float *a2, int32_t length2) {
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsI(int32_t *a, int32_t length, int32_t *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(int32_t), _equalsI);
+    return _equalsPointer(a, length, a2, length2, sizeof(int32_t), _equalsI, false);
 }
 
 /**
@@ -943,7 +994,7 @@ bool Arrays_equalsI(int32_t *a, int32_t length, int32_t *a2, int32_t length2) {
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsL(int64_t *a, int32_t length, int64_t *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(int64_t), _equalsL);
+    return _equalsPointer(a, length, a2, length2, sizeof(int64_t), _equalsL, false);
 }
 
 /**
@@ -958,7 +1009,7 @@ bool Arrays_equalsL(int64_t *a, int32_t length, int64_t *a2, int32_t length2) {
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsObj(void **a, int32_t length, void **a2, int32_t length2, bool (*equals)(const void *, const void *)) {
-    return _equalsPointer(a, length, a2, length2, sizeof(void *), equals);
+    return _equalsPointer(a, length, a2, length2, sizeof(void *), equals, true);
 }
 
 /**
@@ -972,7 +1023,7 @@ bool Arrays_equalsObj(void **a, int32_t length, void **a2, int32_t length2, bool
  * @return true if the two arrays are equal
  */
 bool Arrays_equalsS(int16_t *a, int32_t length, int16_t *a2, int32_t length2) {
-    return _equalsPointer(a, length, a2, length2, sizeof(int16_t), _equalsS);
+    return _equalsPointer(a, length, a2, length2, sizeof(int16_t), _equalsS, false);
 }
 
 /**
@@ -1398,7 +1449,7 @@ void Arrays_sortRangeS(int16_t *a, int32_t fromIndex, int32_t toIndex) {
  * @return a string representation of a
  */
 String *Arrays_toStringBool(bool *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(bool), _toStringBool);
+    return _toStringPointer(a, length, sizeof(bool), _toStringBool, false);
 }
 
 /**
@@ -1409,7 +1460,7 @@ String *Arrays_toStringBool(bool *a, int32_t length) {
  * @return a string representation of a
  */
 String *Arrays_toStringB(int8_t *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(int8_t), _toStringC);
+    return _toStringPointer(a, length, sizeof(int8_t), _toStringB, false);
 }
 
 /**
@@ -1420,7 +1471,7 @@ String *Arrays_toStringB(int8_t *a, int32_t length) {
  * @return a string representation of a
  */
 String *Arrays_toStringC(char *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(char), _toStringC);
+    return _toStringPointer(a, length, sizeof(char), _toStringC, false);
 }
 
 /**
@@ -1431,7 +1482,7 @@ String *Arrays_toStringC(char *a, int32_t length) {
  * @return a string representation of a
  */
 String *Arrays_toStringD(double *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(double), _toStringD);
+    return _toStringPointer(a, length, sizeof(double), _toStringD, false);
 }
 
 /**
@@ -1442,7 +1493,7 @@ String *Arrays_toStringD(double *a, int32_t length) {
  * @return a string representation of a
  */
 String *Arrays_toStringF(float *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(float), _toStringF);
+    return _toStringPointer(a, length, sizeof(float), _toStringF, false);
 }
 
 /**
@@ -1453,7 +1504,7 @@ String *Arrays_toStringF(float *a, int32_t length) {
  * @return a string representation of a
  */
 String *Arrays_toStringI(int32_t *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(int32_t), _toStringI);
+    return _toStringPointer(a, length, sizeof(int32_t), _toStringI, false);
 }
 
 /**
@@ -1464,7 +1515,7 @@ String *Arrays_toStringI(int32_t *a, int32_t length) {
  * @return a string representation of a
  */
 String *Arrays_toStringL(int64_t *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(int64_t), _toStringL);
+    return _toStringPointer(a, length, sizeof(int64_t), _toStringL, false);
 }
 
 /**
@@ -1476,7 +1527,7 @@ String *Arrays_toStringL(int64_t *a, int32_t length) {
  * @return a string representation of a
  */
 String *Arrays_toStringObj(void **a, int32_t length, String *(*toString)(const void *)) {
-    return _toStringPointer(a, length, sizeof(void *), toString);
+    return _toStringPointer(a, length, sizeof(void *), toString, true);
 }
 
 /**
@@ -1487,5 +1538,5 @@ String *Arrays_toStringObj(void **a, int32_t length, String *(*toString)(const v
  * @return a string representation of a
  */
 String *Arrays_toStringS(int16_t *a, int32_t length) {
-    return _toStringPointer(a, length, sizeof(int16_t), _toStringS);
+    return _toStringPointer(a, length, sizeof(int16_t), _toStringS, false);
 }

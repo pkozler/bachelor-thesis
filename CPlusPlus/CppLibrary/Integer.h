@@ -11,7 +11,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Integer : public Comparable<Integer> {
+class Integer : public Comparable {
     int32_t v;
 public:
     /**
@@ -26,9 +26,9 @@ public:
     
     Integer(int32_t value);
     int32_t intValue();
-    int32_t compareTo(Integer *anotherInteger);
+    int32_t compareTo(Object *anotherInteger);
     static int32_t compare(int32_t x, int32_t y);
-    bool equals(Integer *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(int32_t i);
     static int32_t parseInt(String *s);

@@ -98,8 +98,10 @@ String *Integer_toString(int32_t i) {
     str[0] = '\0';
     sprintf(buf, "%d", i);
     strcat(str, buf);
-
-    return new_String(str);
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**
@@ -109,5 +111,9 @@ String *Integer_toString(int32_t i) {
  * @return the integer value represented by the argument in decimal.
  */
 int32_t Integer_parseInt(String *s) {
-    return strtol(s->s, NULL, 10);
+    String *str = trim(s);
+    int32_t value = strtol(str->s, NULL, 10);
+    free(str);
+    
+    return value;
 }

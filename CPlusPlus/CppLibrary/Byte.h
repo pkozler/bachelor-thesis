@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Byte : public Comparable<Byte> {
+class Byte : public Comparable {
     int8_t v;
 public:
     /**
@@ -24,9 +24,9 @@ public:
     
     Byte(int8_t value);
     int8_t byteValue();
-    int32_t compareTo(Byte *anotherByte);
+    int32_t compareTo(Object *anotherByte);
     static int32_t compare(int8_t x, int8_t y);
-    bool equals(Byte *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(int8_t b);
     static int8_t parseByte(String *s);

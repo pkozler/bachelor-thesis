@@ -130,21 +130,26 @@ bool addLl(LinkedList *ptr, void *e) {
 void addAtLl(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = element;
-
-    if (index < 1) {
+    
+    if (ptr->count < 1) {
         _addFirst(ptr, newNode);
     }
     else {
         LinkedListNode *node = ptr->first;
-
-        int32_t i;
-        for (i = 0; i < index; i++) {
-            node = node->next;
+    
+        if (index < 1) {
+            _addBefore(ptr, node, newNode);
         }
+        else {
+            int32_t i;
+            for (i = 1; i < index; i++) {
+                node = node->next;
+            }
 
-        _addBefore(ptr, node, newNode);
+            _addAfter(ptr, node, newNode);
+        }
     }
-
+    
     ptr->count++;
 }
 
@@ -283,7 +288,7 @@ String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
     LinkedListNode *node = ptr->first;
 
     if (node != NULL) {
-        str = toString(node->value);
+        str = node->value == NULL ? new_String("null") : toString(node->value);
         append(sb, str);
         delete_String(str);
         node = node->next;
@@ -293,7 +298,7 @@ String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
         str = new_String(", ");
         append(sb, str);
         delete_String(str);
-        str = toString(node->value);
+        str = node->value == NULL ? new_String("null") : toString(node->value);
         append(sb, str);
         delete_String(str);
         node = node->next;

@@ -83,7 +83,7 @@ void registerTest(void (*testFunction)(), char *testFunctionName) {
 }
 
 void runTests() {
-    printf("%%SUITE_STARTING%% MathTest\n");
+    printf("%%SUITE_STARTING%% %s\n", testFileName);
     printf("%%SUITE_STARTED%%\n");
 
     for (counter = 0; counter < testCount; counter++) {

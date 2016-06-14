@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 #include "ArrayList.h";
 #include "Arrays.h";
@@ -20,13 +21,8 @@
 #include "System.h";
 #include "TestObject.h"
 #include "TestObjectComparator.h"
-
-using namespace std;
+#include "test.h"
 
 int main(int argc, char** argv) {
-    Scanner *sc = new Scanner(System::in);
-    System::out->println(sc->next());
-    System::out->println(sc->nextLine());
-    
-    return 0;
+    return (EXIT_SUCCESS);
 }

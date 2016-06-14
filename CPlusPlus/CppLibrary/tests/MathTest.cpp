@@ -12,7 +12,7 @@
  * Simple C++ Test Suite
  */
 
-const double DEFAULT_EPSILON = 1E-20;
+const double DEFAULT_EPSILON = 1E-0;
 
 /**
  * Tests the abs method with a double value.
@@ -74,15 +74,15 @@ void absTest3() {
 
 void absTest4() {
     int64_t a, b;
-    a = Long::MIN_VALUE + 1L;
+    a = Long::MIN_VALUE + 1LL;
     b = Math::abs(a);
-    Test::assertEquals(-9223372036854775807L, b);
+    Test::assertEquals(9223372036854775807LL, b);
     a = 0;
     b = Math::abs(a);
-    Test::assertEquals(0L, b);
-    a = Long::MAX_VALUE - 1L;
+    Test::assertEquals(0LL, b);
+    a = Long::MAX_VALUE - 1LL;
     b = Math::abs(a);
-    Test::assertEquals(9223372036854775806L, b);
+    Test::assertEquals(9223372036854775806LL, b);
 }
 
 /**
@@ -295,11 +295,11 @@ void minTest4() {
     a = Long::MIN_VALUE;
     b = Long::MAX_VALUE;
     c = Math::min(a, b);
-    Test::assertEquals(-9223372036854775808L, c);
+    Test::assertEquals(-9223372036854775808LL, c);
     a = Long::MAX_VALUE;
     b = Long::MIN_VALUE;
     c = Math::min(a, b);
-    Test::assertEquals(-9223372036854775808L, c);
+    Test::assertEquals(-9223372036854775808LL, c);
     a = -1;
     b = 1;
     c = Math::min(a, b);
@@ -374,7 +374,7 @@ void sqrtTest() {
 void logTest() {
     double a, b;
     // logarithm of the square of E
-    a = Math::E * Math::E;  * Math::E;
+    a = Math::E * Math::E;
     b = Math::log(a);
     Test::assertEquals(2.0, b, DEFAULT_EPSILON);
     // logarithm of E

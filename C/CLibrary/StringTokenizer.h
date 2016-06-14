@@ -12,9 +12,9 @@
  */
 
 typedef struct {
-    char *str;
-    char *delim;
-    bool first;
+    char **tokens;
+    int32_t tokensLength;
+    int32_t tokenCounter;
 } StringTokenizer;
 
 StringTokenizer *new_StringTokenizer(String *str);

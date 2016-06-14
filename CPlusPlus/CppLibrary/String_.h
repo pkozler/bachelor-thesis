@@ -19,7 +19,7 @@ public:
 /**
  * This abstract class imposes a total ordering on the objects of each class that implements it.
  */
-template <class T> class Comparable : public Object {
+class Comparable : public Object {
 public:
     /**
      * Compares this object with the specified object for order.
@@ -28,13 +28,13 @@ public:
      * @return a negative integer, zero, or a positive integer as this object
      * is less than, equal to, or greater than the specified object.
      */
-    virtual int32_t compareTo(T *o) = 0;
+    virtual int32_t compareTo(Object *o) = 0;
 };
 
 /**
  * A comparison function, which imposes a total ordering on some collection of objects.
  */
-template <class T> class Comparator : public Object {
+class Comparator : public Object {
 public:
     /**
      * Compares its two arguments for order.
@@ -44,7 +44,7 @@ public:
      * @return a negative integer, zero, or a positive integer as the
      * first argument is less than, equal to, or greater than the second.
      */
-    virtual int32_t compare(T *o1, T *o2) = 0;
+    virtual int32_t compare(Object *o1, Object *o2) = 0;
 };
 
 /**
@@ -52,15 +52,16 @@ public:
  *
  * @author Petr Kozler (A13B0359P)
  */
-class String : public Comparable<String> {
+class String : public Comparable {
     std::string s;
+    void init(int8_t *value, int32_t offset, int32_t length);
 public:
     const std::string _s() const { return s; }
     String(int8_t *value, int32_t length);
     String(int8_t *value, int32_t offset, int32_t length);
     String(std::string original);
-    int32_t compareTo(String *anotherString);
-    bool equals(String *anObject);
+    int32_t compareTo(Object *anotherString);
+    bool equals(Object *anObject);
     String *substring(int32_t beginIndex);
     String *substring(int32_t beginIndex, int32_t endIndex);
     int32_t indexOf(int32_t ch);

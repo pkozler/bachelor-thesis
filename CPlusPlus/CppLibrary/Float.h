@@ -14,7 +14,7 @@ typedef union {
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Float : public Comparable<Float> {
+class Float : public Comparable {
     float v;
     static int32_t getNegativeZeroBits();
 public:
@@ -60,9 +60,9 @@ public:
     
     Float(float value);
     float floatValue();
-    int32_t compareTo(Float *anotherFloat);
+    int32_t compareTo(Object *anotherFloat);
     static int32_t compare(float f1, float f2);
-    bool equals(Float *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(float f);
     static float parseFloat(String *s);

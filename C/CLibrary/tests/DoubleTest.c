@@ -8,7 +8,7 @@
  * Simple C Test Suite
  */
 
-const double DEFAULT_EPSILON = 1E-20;
+const double DEFAULT_EPSILON = 1E-10;
 
 /**
  * Tests the doubleValue function.

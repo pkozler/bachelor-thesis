@@ -22,6 +22,10 @@ String *_readLine() {
     while (true) {
         scanf("%c", &c);
         
+        if (c == '\r') {
+            continue;
+        }
+        
         if (c == '\n') {
             String *line = toStringSb(sb);
             delete_StringBuilder(sb);
@@ -55,7 +59,11 @@ bool _isEmptyOrWhiteSpace(char *line) {
 char *_trimStart(char *line) {
     int32_t i;
     
-    for (i = 0; isspace((int) line[i]); i++);
+    for (i = 0; line[i]; i++) {
+        if (!isspace((int) line[i])) {
+            break;
+        }
+    }
     
     return strdup(line + i);
 }
@@ -67,7 +75,11 @@ char *_removeLineToWhiteSpace(Scanner *ptr) {
     
     ptr->line = _trimStart(ptr->line);
     
-    for (i = 0; !isspace((int) ptr->line[i]); i++);
+    for (i = 0; ptr->line[i]; i++) {
+        if (isspace((int) ptr->line[i])) {
+            break;
+        }
+    }
     
     token = malloc(sizeof(char) * i);
     token[0] = '\0';
@@ -88,7 +100,9 @@ String *_getNextToken(Scanner *ptr) {
         delete_String(line);
     }
     
-    return new_String(_removeLineToWhiteSpace(ptr)); 
+    String *str = new_String(_removeLineToWhiteSpace(ptr));
+
+    return str;
 }
 
 /**

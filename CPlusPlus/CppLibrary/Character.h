@@ -9,14 +9,14 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Character : public Comparable<Character> {
+class Character : public Comparable {
     char v;
 public:
     Character(char value);
     char charValue();
-    int32_t compareTo(Character *anotherCharacter);
+    int32_t compareTo(Object *anotherCharacter);
     static int32_t compare(char x, char y);
-    bool equals(Character *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(char c);
     static bool isDigit(char ch);

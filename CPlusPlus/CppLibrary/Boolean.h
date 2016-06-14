@@ -9,14 +9,14 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Boolean : public Comparable<Boolean> {
+class Boolean : public Comparable {
     bool v;
 public:
     Boolean(bool value);
     bool booleanValue();
-    int32_t compareTo(Boolean *b);
+    int32_t compareTo(Object *b);
     static int32_t compare(bool x, bool y);
-    bool equals(Boolean *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(bool b);
     static bool parseBoolean(String *s);

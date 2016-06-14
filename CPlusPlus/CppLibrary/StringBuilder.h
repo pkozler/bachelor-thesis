@@ -13,7 +13,6 @@ class StringBuilder : public Object {
     std::ostringstream oss;
 public:
     StringBuilder();
-    ~StringBuilder();
     StringBuilder *append(String *str);
     String *toString();
 };

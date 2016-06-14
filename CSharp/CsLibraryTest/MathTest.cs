@@ -73,13 +73,13 @@ namespace JavaClasses
             long a, b;
             a = Long.MIN_VALUE + 1;
             b = Math.abs(a);
-            Assert.AreEqual(9223372036854775807, b);
+            Assert.AreEqual(9223372036854775807L, b);
             a = 0;
             b = Math.abs(a);
-            Assert.AreEqual(0, b);
+            Assert.AreEqual(0L, b);
             a = Long.MAX_VALUE - 1;
             b = Math.abs(a);
-            Assert.AreEqual(9223372036854775806, b);
+            Assert.AreEqual(9223372036854775806L, b);
         }
 
         /// <summary>

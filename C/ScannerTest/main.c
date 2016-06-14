@@ -11,11 +11,12 @@ const int32_t TEST_FUNCTION_COUNT = 10;
 TestFunction *testFunctions;
 
 void usage() {
-    printf("Zadejte platné číslo testovací metody. ({%d} - {%d})", 0, TEST_FUNCTION_COUNT - 1);
+    printf("Zadejte platné číslo testovací metody. (%d - %d)", 0, TEST_FUNCTION_COUNT - 1);
     exit(-1);
 }
 
 int main(int argc, char** argv) {
+    errorsInFunction = 0;
     testFunctions = malloc(TEST_FUNCTION_COUNT * sizeof(TestFunction));
     testFunctions[0] = scannerTest;
     testFunctions[1] = nextTest;

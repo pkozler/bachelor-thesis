@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Short : public Comparable<Short> {
+class Short : public Comparable {
     int16_t v;
 public:
     /**
@@ -24,9 +24,9 @@ public:
     
     Short(int16_t value);
     int16_t shortValue();
-    int32_t compareTo(Short *anotherShort);
+    int32_t compareTo(Object *anotherShort);
     static int32_t compare(int16_t x, int16_t y);
-    int16_t equals(Short *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(int16_t s);
     static int16_t parseShort(String *s);

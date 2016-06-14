@@ -3,6 +3,7 @@
 
 #include "String_.h"
 #include <string>
+#include "System.h"
 
 /**
  * An ordered collection (also known as a sequence).
@@ -40,16 +41,17 @@ template <class E> bool List<E>::equals(Object *o) {
     }
 
     List<E> *other = (List<E> *) o;
-    int length = size();
+    int32_t length = size();
 
     if (other->size() != length) {
         return false;
     }
-
-    int i;
+    
+    int32_t i;
     for (i = 0; i < length; i++) {
         Object *o1 = (Object *) get(i);
         Object *o2 = (Object *) other->get(i);
+        
         bool equals = o1 == nullptr ? o2 == nullptr : o1->equals(o2);
 
         if (!equals) {

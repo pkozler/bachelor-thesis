@@ -111,7 +111,7 @@ end;
  *)
 function StringTokenizer.hasMoreTokens() : boolean;
 begin
-  hasMoreTokens := (countTokens() <> 0);
+  hasMoreTokens := (countTokens() > 0);
 end;
 
 (**

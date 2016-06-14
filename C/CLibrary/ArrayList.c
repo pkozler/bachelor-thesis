@@ -3,6 +3,7 @@
 #include "StringBuilder.h"
 #include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
 
 #define _DEFAULT_CAPACITY 10
 #define _RESIZE_COEF 2
@@ -29,7 +30,7 @@ ArrayList *new_ArrayListAddAll(ArrayList *c) {
     ArrayList *list = malloc(sizeof (ArrayList));
     list->count = c->count;
     list->capacity = c->capacity;
-    list->dynamicArray = malloc(list->capacity * sizeof (void *));
+    list->dynamicArray = malloc(list->capacity * sizeof(void *));
 
     int32_t i;
     for (i = 0; i < list->count; i++) {
@@ -49,7 +50,7 @@ void _expandList(ArrayList *ptr) {
 
     if (ptr->count == ptr->capacity) {
         ptr->capacity *= _RESIZE_COEF;
-        ptr->dynamicArray = realloc(ptr->dynamicArray, ptr->capacity);
+        ptr->dynamicArray = realloc(ptr->dynamicArray, ptr->capacity * sizeof(void *));
     }
 }
 
@@ -59,7 +60,7 @@ void _shrinkList(ArrayList *ptr) {
     if (ptr->count < ptr->capacity / _RESIZE_COEF
             && ptr->capacity >= _DEFAULT_CAPACITY * _RESIZE_COEF) {
         ptr->capacity /= _RESIZE_COEF;
-        ptr->dynamicArray = realloc(ptr->dynamicArray, ptr->capacity);
+        ptr->dynamicArray = realloc(ptr->dynamicArray, ptr->capacity * sizeof(void *));
     }
 }
 
@@ -189,17 +190,17 @@ String *toStringAl(ArrayList *ptr, String *(*toString)(void *)) {
     delete_String(str);
 
     if (length > 0) {
-        str = toString(ptr->dynamicArray[0]);
+        str = ptr->dynamicArray[0] == NULL ? new_String("null") : toString(ptr->dynamicArray[0]);
         append(sb, str);
         delete_String(str);
     }
-
+    
     int32_t i;
     for (i = 1; i < length; i++) {
         str = new_String(", ");
         append(sb, str);
         delete_String(str);
-        str = toString(ptr->dynamicArray[i]);
+        str = ptr->dynamicArray[i] == NULL ? new_String("null") : toString(ptr->dynamicArray[i]);
         append(sb, str);
         delete_String(str);
     }

@@ -1,9 +1,10 @@
 #include "Long.h"
 
 #include <string>
+#include <cstdlib>
 
-const int64_t Long::MAX_VALUE = 9223372036854775807L;
-const int64_t Long::MIN_VALUE = -9223372036854775808L;
+const int64_t Long::MAX_VALUE = 9223372036854775807LL;
+const int64_t Long::MIN_VALUE = -9223372036854775808LL;
 
 /**
  * Constructs a newly allocated Long object that represents the specified
@@ -34,8 +35,8 @@ int64_t Long::longValue() {
  * a value greater than 0 if this Long is numerically greater than the
  * argument Long (signed comparison).
  */
-int32_t Long::compareTo(Long *anotherLong) {
-    return Long::compare(v, anotherLong->v);
+int32_t Long::compareTo(Object *anotherLong) {
+    return Long::compare(v, ((Long *)anotherLong)->v);
 }
 
 /**
@@ -56,16 +57,16 @@ int32_t Long::compare(int64_t x, int64_t y) {
  * @param obj the object to compare with.
  * @return true if the objects are the same; false otherwise.
  */
-bool Long::equals(Long *obj) {
+bool Long::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof(*this) != sizeof(*obj)) {
+    if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
     
-    return (v == obj->v);
+    return (v == ((Long *)obj)->v);
 }
 
 /**
@@ -95,5 +96,9 @@ String *Long::toString(int64_t l) {
  * @return the long represented by the argument in decimal.
  */
 int64_t Long::parseLong(String *s) {
-    return std::stol(s->_s(), nullptr, 10);
+    String *str = s->trim();
+    int64_t value = strtoll(str->_s().c_str(), nullptr, 10);
+    delete str;
+    
+    return value;
 }

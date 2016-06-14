@@ -8,6 +8,8 @@
  * Simple C++ Test Suite
  */
 
+const double DEFAULT_EPSILON = 1E-10;
+
 /**
  * Tests the doubleValue method.
  */
@@ -18,15 +20,15 @@ void doubleValueTest() {
     // minimal non-zero absolute value
     a = new Double(Double::MIN_VALUE);
     b = a->doubleValue();
-    Test::assertEquals(4.9E-324, b);
+    Test::assertEquals(4.9E-324, b, DEFAULT_EPSILON);
     // zero value
     a = new Double((double) 0);
     b = a->doubleValue();
-    Test::assertEquals(0.0, b);
+    Test::assertEquals(0.0, b, DEFAULT_EPSILON);
     // maximal finite absolute value
     a = new Double(Double::MAX_VALUE);
     b = a->doubleValue();
-    Test::assertEquals(1.7976931348623157E308, b);
+    Test::assertEquals(1.7976931348623157E308, b, DEFAULT_EPSILON);
 }
 
 /**
@@ -181,13 +183,13 @@ void parseDoubleTest() {
     double a;
     // positive value parsing
     a = Double::parseDouble(new String("0.0000000000000000000000000000000000000000000001"));
-    Test::assertEquals(1.0E-46, a);
+    Test::assertEquals(1.0E-46, a, DEFAULT_EPSILON);
     // zero value parsing
     a = Double::parseDouble(new String("0"));
-    Test::assertEquals(0.0, a);
+    Test::assertEquals(0.0, a, DEFAULT_EPSILON);
     // negative value parsing
     a = Double::parseDouble(new String("-0.0000000000000000000000000000000000000000000001"));
-    Test::assertEquals(-1.0E-46, a);
+    Test::assertEquals(-1.0E-46, a, DEFAULT_EPSILON);
 }
 
 int main(int argc, char** argv) {

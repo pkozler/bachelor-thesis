@@ -4,7 +4,28 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>../CLibrary/ArrayList.h</itemPath>
+      <itemPath>../CLibrary/Arrays.h</itemPath>
+      <itemPath>../CLibrary/Boolean.h</itemPath>
+      <itemPath>../CLibrary/Byte.h</itemPath>
+      <itemPath>../CLibrary/Character.h</itemPath>
+      <itemPath>../CLibrary/Collections.h</itemPath>
+      <itemPath>../CLibrary/Double.h</itemPath>
+      <itemPath>../CLibrary/Float.h</itemPath>
+      <itemPath>../CLibrary/Integer.h</itemPath>
+      <itemPath>../CLibrary/LinkedList.h</itemPath>
+      <itemPath>../CLibrary/List.h</itemPath>
+      <itemPath>../CLibrary/Long.h</itemPath>
+      <itemPath>../CLibrary/Math_.h</itemPath>
+      <itemPath>../CLibrary/Scanner.h</itemPath>
       <itemPath>ScannerTest.h</itemPath>
+      <itemPath>../CLibrary/Short.h</itemPath>
+      <itemPath>../CLibrary/String.h</itemPath>
+      <itemPath>../CLibrary/StringBuilder.h</itemPath>
+      <itemPath>../CLibrary/StringTokenizer.h</itemPath>
+      <itemPath>../CLibrary/System.h</itemPath>
+      <itemPath>../CLibrary/TestObject.h</itemPath>
+      <itemPath>../CLibrary/test.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,8 +34,29 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../CLibrary/ArrayList.c</itemPath>
+      <itemPath>../CLibrary/Arrays.c</itemPath>
+      <itemPath>../CLibrary/Boolean.c</itemPath>
+      <itemPath>../CLibrary/Byte.c</itemPath>
+      <itemPath>../CLibrary/Character.c</itemPath>
+      <itemPath>../CLibrary/Collections.c</itemPath>
+      <itemPath>../CLibrary/Double.c</itemPath>
+      <itemPath>../CLibrary/Float.c</itemPath>
+      <itemPath>../CLibrary/Integer.c</itemPath>
+      <itemPath>../CLibrary/LinkedList.c</itemPath>
+      <itemPath>../CLibrary/List.c</itemPath>
+      <itemPath>../CLibrary/Long.c</itemPath>
+      <itemPath>../CLibrary/Math_.c</itemPath>
+      <itemPath>../CLibrary/Scanner.c</itemPath>
       <itemPath>ScannerTest.c</itemPath>
+      <itemPath>../CLibrary/Short.c</itemPath>
+      <itemPath>../CLibrary/String.c</itemPath>
+      <itemPath>../CLibrary/StringBuilder.c</itemPath>
+      <itemPath>../CLibrary/StringTokenizer.c</itemPath>
+      <itemPath>../CLibrary/System.c</itemPath>
+      <itemPath>../CLibrary/TestObject.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>../CLibrary/test.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -41,8 +83,96 @@
           <incDir>
             <pElem>../CLibrary</pElem>
           </incDir>
+          <commandLine>-std=c11 -lm -O2</commandLine>
         </cTool>
+        <ccTool>
+          <commandLine>-std=c++11 -lm -O2</commandLine>
+        </ccTool>
       </compileType>
+      <item path="../CLibrary/ArrayList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/String.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/String.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/test.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ScannerTest.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ScannerTest.h" ex="false" tool="3" flavor2="0">
@@ -70,6 +200,90 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="../CLibrary/ArrayList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/String.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/String.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/test.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ScannerTest.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ScannerTest.h" ex="false" tool="3" flavor2="0">

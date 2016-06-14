@@ -1,6 +1,11 @@
 #include "Math_.h"
 
 #include <cmath>
+#include <stdlib.h>
+#include "Integer.h"
+#include "Long.h"
+#include "Float.h"
+#include "Double.h"
 
 /**
  * The double value that is closer than any other to e, the base of the natural logarithms.
@@ -48,7 +53,7 @@ int32_t Math::abs(int32_t a) {
  * @return the absolute value of the argument.
  */
 int64_t Math::abs(int64_t a) {
-    return std::abs(a);
+    return ::llabs(a);
 }
 
 /**
@@ -59,7 +64,7 @@ int64_t Math::abs(int64_t a) {
  * @return the larger of a and b.
  */
 double Math::max(double a, double b) {
-    return max(a, b);
+    return std::max(a, b);
 }
 
 /**
@@ -70,7 +75,7 @@ double Math::max(double a, double b) {
  * @return the larger of a and b.
  */
 float Math::max(float a, float b) {
-    return max(a, b);
+    return std::max(a, b);
 }
 
 /**
@@ -81,7 +86,7 @@ float Math::max(float a, float b) {
  * @return the larger of a and b.
  */
 int32_t Math::max(int32_t a, int32_t b) {
-    return max(a, b);
+    return std::max(a, b);
 }
 
 /**
@@ -92,7 +97,7 @@ int32_t Math::max(int32_t a, int32_t b) {
  * @return the larger of a and b.
  */
 int64_t Math::max(int64_t a, int64_t b) {
-    return max(a, b);
+    return std::max(a, b);
 }
 
 /**
@@ -103,7 +108,7 @@ int64_t Math::max(int64_t a, int64_t b) {
  * @return the smaller of a and b.
  */
 double Math::min(double a, double b) {
-    return min(a, b);
+    return std::min(a, b);
 }
 
 /**
@@ -114,7 +119,7 @@ double Math::min(double a, double b) {
  * @return the smaller of a and b.
  */
 float Math::min(float a, float b) {
-    return min(a, b);
+    return std::min(a, b);
 }
 
 /**
@@ -125,7 +130,7 @@ float Math::min(float a, float b) {
  * @return the smaller of a and b.
  */
 int32_t Math::min(int32_t a, int32_t b) {
-    return min(a, b);
+    return std::min(a, b);
 }
 
 /**
@@ -136,7 +141,7 @@ int32_t Math::min(int32_t a, int32_t b) {
  * @return the smaller of a and b.
  */
 int64_t Math::min(int64_t a, int64_t b) {
-    return min(a, b);
+    return std::min(a, b);
 }
 
 /**
@@ -252,6 +257,24 @@ double Math::atan(double a) {
  * @return the value of the argument rounded to the nearest long value.
  */
 int64_t Math::round(double a) {
+    if (Double::compare(a, Double::NaN) == 0) {
+        return 0;
+    }
+
+    if (Double::compare(a, Double::NEGATIVE_INFINITY) == 0
+        || a <= Long::MIN_VALUE) {
+        return Long::MIN_VALUE;
+    }
+
+    if (Double::compare(a, Double::POSITIVE_INFINITY) == 0
+        || a >= Long::MAX_VALUE) {
+        return Long::MAX_VALUE;
+    }
+
+    if (a < 0 && a - std::trunc(a) <= -0.5) {
+        return (int64_t)std::trunc(a);
+    }
+
     return (int64_t) std::round(a);
 }
 
@@ -262,5 +285,23 @@ int64_t Math::round(double a) {
  * @return the value of the argument rounded to the nearest int value.
  */
 int32_t Math::round(float a) {
+    if (Float::compare(a, Float::NaN) == 0) {
+        return 0;
+    }
+
+    if (Float::compare(a, Float::NEGATIVE_INFINITY) == 0
+        || a <= Integer::MIN_VALUE) {
+        return Integer::MIN_VALUE;
+    }
+
+    if (Float::compare(a, Float::POSITIVE_INFINITY) == 0
+        || a >= Integer::MAX_VALUE) {
+        return Integer::MAX_VALUE;
+    }
+
+    if (a < 0 && a - std::trunc(a) <= -0.5) {
+        return (int32_t)std::trunc(a);
+    }
+
     return (int32_t) std::round(a);
 }

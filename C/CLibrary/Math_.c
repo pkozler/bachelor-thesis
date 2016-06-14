@@ -1,4 +1,8 @@
 #include "Math_.h"
+#include "Double.h"
+#include "Float.h"
+#include "Long.h"
+#include "Integer.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -40,7 +44,7 @@ int32_t Math_absI(int32_t a) {
  * @return the absolute value of the argument.
  */
 int64_t Math_absL(int64_t a) {
-    return labs(a);
+    return llabs(a);
 }
 
 /**
@@ -244,7 +248,25 @@ double Math_atan(double a) {
  * @return the value of the argument rounded to the nearest long value.
  */
 int64_t Math_roundD(double a) {
-    return (int64_t) round(a);
+    if (Double_compare(a, Double_NaN) == 0) {
+        return 0;
+    }
+
+    if (Double_compare(a, Double_NEGATIVE_INFINITY) == 0
+        || a <= Long_MIN_VALUE) {
+        return Long_MIN_VALUE;
+    }
+
+    if (Double_compare(a, Double_POSITIVE_INFINITY) == 0
+        || a >= Long_MAX_VALUE) {
+        return Long_MAX_VALUE;
+    }
+
+    if (a < 0 && a - trunc(a) <= -0.5) {
+        return (int64_t)trunc(a);
+    }
+
+    return (int64_t)round(a);
 }
 
 /**
@@ -254,5 +276,23 @@ int64_t Math_roundD(double a) {
  * @return the value of the argument rounded to the nearest int value.
  */
 int32_t Math_roundF(float a) {
-    return (int32_t) roundf(a);
+    if (Float_compare(a, Float_NaN) == 0) {
+        return 0;
+    }
+
+    if (Float_compare(a, Float_NEGATIVE_INFINITY) == 0
+        || a <= Integer_MIN_VALUE) {
+        return Integer_MIN_VALUE;
+    }
+
+    if (Float_compare(a, Float_POSITIVE_INFINITY) == 0
+        || a >= Integer_MAX_VALUE) {
+        return Integer_MAX_VALUE;
+    }
+
+    if (a < 0 && a - truncf(a) <= -0.5) {
+        return (int32_t)truncf(a);
+    }
+
+    return (int32_t)roundf(a);
 }

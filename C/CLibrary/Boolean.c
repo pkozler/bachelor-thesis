@@ -98,8 +98,10 @@ String *Boolean_toString(bool b) {
     str[0] = '\0';
     sprintf(buf, "%s", b ? "true" : "false");
     strcat(str, buf);
-
-    return new_String(str);
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**
@@ -111,17 +113,21 @@ String *Boolean_toString(bool b) {
 bool Boolean_parseBoolean(String *s) {
     String *trueStr = new_String("true");
     String *falseStr = new_String("false");
+    String *trimmedStr = trim(s);
+    String *str = toLowerCase(trimmedStr);
     bool value = false;
 
-    if (equalsStr(toLowerCase(s), trueStr)) {
+    if (equalsStr(str, trueStr)) {
         value = true;
     }
-    else if (equalsStr(toLowerCase(s), falseStr)) {
+    else if (equalsStr(str, falseStr)) {
         value = false;
     }
 
     free(trueStr);
     free(falseStr);
-
+    free(trimmedStr);
+    free(str);
+    
     return value;
 }

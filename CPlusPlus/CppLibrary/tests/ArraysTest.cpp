@@ -319,7 +319,7 @@ void binarySearchTest17() {
     const int32_t length = 10;
     TestObject **a;
     int32_t b;
-    Comparator<TestObject> *c;
+    Comparator *c;
     a = new TestObject *[length];
     a[0] = new TestObject(new String("first"), 3);
     a[1] = new TestObject(new String("second"), 2);
@@ -332,10 +332,10 @@ void binarySearchTest17() {
     a[8] = new TestObject(new String("nineth"), 7);
     a[9] = new TestObject(new String("tenth"), 6);
     c = new TestObjectComparator();
-    Arrays::sort(a, length, c);
-    b = Arrays::binarySearch(a, length, new TestObject(new String("sixth"), 6), c);
+    Arrays::sort((Object **)a, length, c);
+    b = Arrays::binarySearch((Object **)a, length, new TestObject(new String("sixth"), 6), c);
     Test::assertEquals(4, b);
-    b = Arrays::binarySearch(a, length, new TestObject(new String("sixth"), 4), c);
+    b = Arrays::binarySearch((Object **)a, length, new TestObject(new String("sixth"), 4), c);
     Test::assertEquals(-5, b);
 }
 
@@ -348,7 +348,7 @@ void binarySearchTest18() {
     const int32_t length = 10;
     TestObject **a;
     int32_t b;
-    Comparator<TestObject> *c;
+    Comparator *c;
     a = new TestObject *[length];
     a[0] = new TestObject(new String("first"), 3);
     a[1] = new TestObject(new String("second"), 2);
@@ -361,10 +361,10 @@ void binarySearchTest18() {
     a[8] = new TestObject(new String("nineth"), 7);
     a[9] = new TestObject(new String("tenth"), 6);
     c = new TestObjectComparator();
-    Arrays::sort(a, length, c);
-    b = Arrays::binarySearch(a, 1, 4, new TestObject(new String("sixth"), 6), c);
+    Arrays::sort((Object **)a, length, c);
+    b = Arrays::binarySearch((Object **)a, 1, 4, new TestObject(new String("sixth"), 6), c);
     Test::assertEquals(-5, b);
-    b = Arrays::binarySearch(a, 1, 4, new TestObject(new String("sixth"), 4), c);
+    b = Arrays::binarySearch((Object **)a, 1, 4, new TestObject(new String("sixth"), 4), c);
     Test::assertEquals(-5, b);
 }
 
@@ -383,7 +383,7 @@ void copyOfTest() {
     };
     // new array is smaller
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new bool[length2] {
+    c = Arrays::equals(b, length2, new bool[length2] {
         true, false, false
     }, length2);
     Test::assertEquals(true, c);
@@ -395,7 +395,7 @@ void copyOfTest() {
     Test::assertEquals(true, c);
     // new array is bigger
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new bool[length3] {
+    c = Arrays::equals(b, length3, new bool[length3] {
         true, false, false, false, true, false, false
     }, length3);
     Test::assertEquals(true, c);
@@ -413,13 +413,13 @@ void copyOfTest2() {
     bool c;
     a = new int8_t[length]{(int8_t) 3, (int8_t) 2, (int8_t) 8, (int8_t) 7, (int8_t) 6};
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new int8_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int8_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 5);
     c = Arrays::equals(b, length, new int8_t[length]{3, 2, 8, 7, 6}, length);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new int8_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
+    c = Arrays::equals(b, length3, new int8_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
     Test::assertEquals(true, c);
 }
 
@@ -437,7 +437,7 @@ void copyOfTest3() {
         'c', 'b', 'h', 'g', 'f'
     };
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new char[length2] {
+    c = Arrays::equals(b, length2, new char[length2] {
         'c', 'b', 'h'
     }, length2);
     Test::assertEquals(true, c);
@@ -447,7 +447,7 @@ void copyOfTest3() {
     }, length);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new char[length3] {
+    c = Arrays::equals(b, length3, new char[length3] {
         'c', 'b', 'h', 'g', 'f', '\0', '\0' }, length3);
     Test::assertEquals(true, c);
 }
@@ -466,7 +466,7 @@ void copyOfTest4() {
         3.0, 2.0, 8.0, 7.0, 6.0
     };
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new double[length2] {
+    c = Arrays::equals(b, length2, new double[length2] {
         3.0, 2.0, 8.0
     }, length2);
     Test::assertEquals(true, c);
@@ -476,7 +476,7 @@ void copyOfTest4() {
     }, length);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new double[length3] {
+    c = Arrays::equals(b, length3, new double[length3] {
         3.0, 2.0, 8.0, 7.0, 6.0, 0.0, 0.0
     }, length3);
     Test::assertEquals(true, c);
@@ -496,7 +496,7 @@ void copyOfTest5() {
         3.0F, 2.0F, 8.0F, 7.0F, 6.0F
     };
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new float[length2] {
+    c = Arrays::equals(b, length2, new float[length2] {
         3.0F, 2.0F, 8.0F
     }, length2);
     Test::assertEquals(true, c);
@@ -506,7 +506,7 @@ void copyOfTest5() {
     }, length);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new float[length3] {
+    c = Arrays::equals(b, length3, new float[length3] {
         3.0F, 2.0F, 8.0F, 7.0F, 6.0F, 0.0F, 0.0F
     }, length3);
     Test::assertEquals(true, c);
@@ -524,13 +524,13 @@ void copyOfTest6() {
     bool c;
     a = new int32_t[length]{3, 2, 8, 7, 6};
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new int32_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int32_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 5);
     c = Arrays::equals(b, length, new int32_t[length]{3, 2, 8, 7, 6}, length);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new int32_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
+    c = Arrays::equals(b, length3, new int32_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
     Test::assertEquals(true, c);
 }
 
@@ -546,13 +546,13 @@ void copyOfTest7() {
     bool c;
     a = new int64_t[length]{3L, 2L, 8L, 7L, 6L};
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new int64_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int64_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 5);
     c = Arrays::equals(b, length, new int64_t[length]{3, 2, 8, 7, 6}, length);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new int64_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
+    c = Arrays::equals(b, length3, new int64_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
     Test::assertEquals(true, c);
 }
 
@@ -568,13 +568,13 @@ void copyOfTest8() {
     bool c;
     a = new int16_t[length]{(int16_t) 3, (int16_t) 2, (int16_t) 8, (int16_t) 7, (int16_t) 6};
     b = Arrays::copyOf(a, length, 3);
-    c = Arrays::equals(b, length, new int16_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int16_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 5);
     c = Arrays::equals(b, length, new int16_t[length]{3, 2, 8, 7, 6}, length);
     Test::assertEquals(true, c);
     b = Arrays::copyOf(a, length, 7);
-    c = Arrays::equals(b, length, new int16_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
+    c = Arrays::equals(b, length3, new int16_t[length3]{3, 2, 8, 7, 6, 0, 0}, length3);
     Test::assertEquals(true, c);
 }
 
@@ -594,14 +594,14 @@ void copyOfTest9() {
     a[2] = new TestObject(new String("third"), 8);
     a[3] = new TestObject(new String("fourth"), 7);
     a[4] = new TestObject(new String("fifth"), 6);
-    b = Arrays::copyOf(a, length, 3);
+    b = (TestObject **)Arrays::copyOf((Object **)a, length, 3);
     d = new TestObject *[length2];
     d[0] = new TestObject(new String("first"), 3);
     d[1] = new TestObject(new String("second"), 2);
     d[2] = new TestObject(new String("third"), 8);
-    c = Arrays::equals((Object **) b, length, (Object **) d, length2);
+    c = Arrays::equals((Object **) b, length2, (Object **) d, length2);
     Test::assertEquals(true, c);
-    b = Arrays::copyOf(a, length, 5);
+    b = (TestObject **)Arrays::copyOf((Object **)a, length, 5);
     d = new TestObject *[length];
     d[0] = new TestObject(new String("first"), 3);
     d[1] = new TestObject(new String("second"), 2);
@@ -610,7 +610,7 @@ void copyOfTest9() {
     d[4] = new TestObject(new String("fifth"), 6);
     c = Arrays::equals((Object **) b, length, (Object **) d, length);
     Test::assertEquals(true, c);
-    b = Arrays::copyOf(a, length, 7);
+    b = (TestObject **)Arrays::copyOf((Object **)a, length, 7);
     d = new TestObject *[length3];
     d[0] = new TestObject(new String("first"), 3);
     d[1] = new TestObject(new String("second"), 2);
@@ -619,7 +619,7 @@ void copyOfTest9() {
     d[4] = new TestObject(new String("fifth"), 6);
     d[5] = NULL;
     d[6] = NULL;
-    c = Arrays::equals((Object **) b, length, (Object **) d, length3);
+    c = Arrays::equals((Object **) b, length3, (Object **) d, length3);
     Test::assertEquals(true, c);
 }
 
@@ -627,7 +627,7 @@ void copyOfTest9() {
  * Tests the copyOfRange method with array of booleans.
  */
 
-void copyOfRangeTest1() {
+void copyOfRangeTest() {
     const int32_t length = 5;
     const int32_t length2 = 3;
     bool *a, *b;
@@ -637,19 +637,19 @@ void copyOfRangeTest1() {
     };
     // copy from the beginning
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new bool[length2] {
+    c = Arrays::equals(b, length2, new bool[length2] {
         true, false, false
     }, length2);
     Test::assertEquals(true, c);
     // copy from the middle
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new bool[length2] {
+    c = Arrays::equals(b, length2, new bool[length2] {
         false, false, true
     }, length2);
     Test::assertEquals(true, c);
     // copy from the end
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new bool[length2] {
+    c = Arrays::equals(b, length2, new bool[length2] {
         true, false, false
     }, length2);
     Test::assertEquals(true, c);
@@ -666,13 +666,13 @@ void copyOfRangeTest2() {
     bool c;
     a = new int8_t[length]{(int8_t) 3, (int8_t) 2, (int8_t) 8, (int8_t) 7, (int8_t) 6};
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new int8_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int8_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new int8_t[length2]{8, 7, 6}, length2);
+    c = Arrays::equals(b, length2, new int8_t[length2]{8, 7, 6}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new int8_t[length2]{6, 0, 0}, length2);
+    c = Arrays::equals(b, length2, new int8_t[length2]{6, 0, 0}, length2);
     Test::assertEquals(true, c);
 }
 
@@ -689,17 +689,17 @@ void copyOfRangeTest3() {
         'c', 'b', 'h', 'g', 'f'
     };
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new char[length2] {
+    c = Arrays::equals(b, length2, new char[length2] {
         'c', 'b', 'h'
     }, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new char[length2] {
+    c = Arrays::equals(b, length2, new char[length2] {
         'h', 'g', 'f'
     }, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new char[length2] {
+    c = Arrays::equals(b, length2, new char[length2] {
         'f', '\0', '\0' }, length2);
     Test::assertEquals(true, c);
 }
@@ -717,17 +717,17 @@ void copyOfRangeTest4() {
         3.0, 2.0, 8.0, 7.0, 6.0
     };
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new double[length2] {
+    c = Arrays::equals(b, length2, new double[length2] {
         3.0, 2.0, 8.0
     }, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new double[length2] {
+    c = Arrays::equals(b, length2, new double[length2] {
         8.0, 7.0, 6.0
     }, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new double[length2] {
+    c = Arrays::equals(b, length2, new double[length2] {
         6.0, 0.0, 0.0
     }, length2);
     Test::assertEquals(true, c);
@@ -746,17 +746,17 @@ void copyOfRangeTest5() {
         3.0F, 2.0F, 8.0F, 7.0F, 6.0F
     };
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new float[length2] {
+    c = Arrays::equals(b, length2, new float[length2] {
         3.0F, 2.0F, 8.0F
     }, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new float[length2] {
+    c = Arrays::equals(b, length2, new float[length2] {
         8.0F, 7.0F, 6.0F
     }, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new float[length2] {
+    c = Arrays::equals(b, length2, new float[length2] {
         6.0F, 0.0F, 0.0F
     }, length2);
     Test::assertEquals(true, c);
@@ -773,13 +773,13 @@ void copyOfRangeTest6() {
     bool c;
     a = new int32_t[length]{3, 2, 8, 7, 6};
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new int32_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int32_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new int32_t[length2]{8, 7, 6}, length2);
+    c = Arrays::equals(b, length2, new int32_t[length2]{8, 7, 6}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new int32_t[length2]{6, 0, 0}, length2);
+    c = Arrays::equals(b, length2, new int32_t[length2]{6, 0, 0}, length2);
     Test::assertEquals(true, c);
 }
 
@@ -794,13 +794,13 @@ void copyOfRangeTest7() {
     bool c;
     a = new int64_t[length]{3L, 2L, 8L, 7L, 6L};
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new int64_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int64_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new int64_t[length2]{8, 7, 6}, length2);
+    c = Arrays::equals(b, length2, new int64_t[length2]{8, 7, 6}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new int64_t[length2]{6, 0, 0}, length2);
+    c = Arrays::equals(b, length2, new int64_t[length2]{6, 0, 0}, length2);
     Test::assertEquals(true, c);
 }
 
@@ -815,13 +815,13 @@ void copyOfRangeTest8() {
     bool c;
     a = new int16_t[length]{(int16_t) 3, (int16_t) 2, (int16_t) 8, (int16_t) 7, (int16_t) 6};
     b = Arrays::copyOfRange(a, length, 0, 3);
-    c = Arrays::equals(b, length, new int16_t[length2]{3, 2, 8}, length2);
+    c = Arrays::equals(b, length2, new int16_t[length2]{3, 2, 8}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 2, 5);
-    c = Arrays::equals(b, length, new int16_t[length2]{8, 7, 6}, length2);
+    c = Arrays::equals(b, length2, new int16_t[length2]{8, 7, 6}, length2);
     Test::assertEquals(true, c);
     b = Arrays::copyOfRange(a, length, 4, 7);
-    c = Arrays::equals(b, length, new int16_t[length2]{6, 0, 0}, length2);
+    c = Arrays::equals(b, length2, new int16_t[length2]{6, 0, 0}, length2);
     Test::assertEquals(true, c);
 }
 
@@ -840,26 +840,26 @@ void copyOfRangeTest9() {
     a[2] = new TestObject(new String("third"), 8);
     a[3] = new TestObject(new String("fourth"), 7);
     a[4] = new TestObject(new String("fifth"), 6);
-    b = Arrays::copyOfRange(a, length, 0, 3);
+    b = (TestObject **)Arrays::copyOfRange((Object **)a, length, 0, 3);
     d = new TestObject *[length2];
     d[0] = new TestObject(new String("first"), 3);
     d[1] = new TestObject(new String("second"), 2);
     d[2] = new TestObject(new String("third"), 8);
-    c = Arrays::equals((Object **) b, length, (Object **) d, length2);
+    c = Arrays::equals((Object **) b, length2, (Object **) d, length2);
     Test::assertEquals(true, c);
-    b = Arrays::copyOfRange(a, length, 2, 5);
+    b = (TestObject **)Arrays::copyOfRange((Object **)a, length, 2, 5);
     d = new TestObject *[length2];
     d[0] = new TestObject(new String("third"), 8);
     d[1] = new TestObject(new String("fourth"), 7);
     d[2] = new TestObject(new String("fifth"), 6);
-    c = Arrays::equals((Object **) b, length, (Object **) d, length2);
+    c = Arrays::equals((Object **) b, length2, (Object **) d, length2);
     Test::assertEquals(true, c);
-    b = Arrays::copyOfRange(a, length, 4, 7);
+    b = (TestObject **)Arrays::copyOfRange((Object **)a, length, 4, 7);
     d = new TestObject *[length2];
     d[0] = new TestObject(new String("fifth"), 6);
     d[1] = NULL;
     d[2] = NULL;
-    c = Arrays::equals((Object **) b, length, (Object **) d, length2);
+    c = Arrays::equals((Object **) b, length2, (Object **) d, length2);
     Test::assertEquals(true, c);
 }
 
@@ -1126,7 +1126,7 @@ void equalsTest8() {
     b[3] = new TestObject(new String("nineth"), 7);
     b[4] = new TestObject(new String("tenth"), 6);
     c = Arrays::equals(a, length, b, length);
-    Test::assertEquals(false, c);
+    Test::assertEquals(true, c);
     b = a;
     c = Arrays::equals(a, length, b, length);
     Test::assertEquals(true, c);
@@ -1168,7 +1168,7 @@ void fillTest() {
     bool *a;
     bool b;
     // the array for filling
-    a = new bool[5];
+    a = new bool[5]();
     Arrays::fill(a, length, true);
     b = Arrays::equals(a, length, new bool[length] {
         true, true, true, true, true
@@ -1185,7 +1185,7 @@ void fillTest2() {
     bool *a;
     bool b;
     // the array for partial filling
-    a = new bool[5];
+    a = new bool[5]();
     Arrays::fill(a, 1, 4, true);
     b = Arrays::equals(a, length, new bool[length] {
         false, true, true, true, false
@@ -1201,7 +1201,7 @@ void fillTest3() {
     const int32_t length = 5;
     int8_t *a;
     bool b;
-    a = new int8_t[5];
+    a = new int8_t[5]();
     Arrays::fill(a, length, (int8_t) 8);
     b = Arrays::equals(a, length, new int8_t[length]{8, 8, 8, 8, 8}, length);
     Test::assertEquals(true, b);
@@ -1215,7 +1215,7 @@ void fillTest4() {
     const int32_t length = 5;
     int8_t *a;
     bool b;
-    a = new int8_t[5];
+    a = new int8_t[5]();
     Arrays::fill(a, 1, 4, (int8_t) 8);
     b = Arrays::equals(a, length, new int8_t[length]{0, 8, 8, 8, 0}, length);
     Test::assertEquals(true, b);
@@ -1229,7 +1229,7 @@ void fillTest5() {
     const int32_t length = 5;
     char *a;
     bool b;
-    a = new char[5];
+    a = new char[5]();
     Arrays::fill(a, length, 'h');
     b = Arrays::equals(a, length, new char[length] {
         'h', 'h', 'h', 'h', 'h'
@@ -1245,7 +1245,7 @@ void fillTest6() {
     const int32_t length = 5;
     char *a;
     bool b;
-    a = new char[5];
+    a = new char[5]();
     Arrays::fill(a, 1, 4, 'h');
     b = Arrays::equals(a, length, new char[length] {
         '\0', 'h', 'h', 'h', '\0'
@@ -1261,7 +1261,7 @@ void fillTest7() {
     const int32_t length = 5;
     double *a;
     bool b;
-    a = new double[5];
+    a = new double[5]();
     Arrays::fill(a, length, 8.0);
     b = Arrays::equals(a, length, new double[length] {
         8.0, 8.0, 8.0, 8.0, 8.0
@@ -1277,7 +1277,7 @@ void fillTest8() {
     const int32_t length = 5;
     double *a;
     bool b;
-    a = new double[5];
+    a = new double[5]();
     Arrays::fill(a, 1, 4, 8.0);
     b = Arrays::equals(a, length, new double[length] {
         0.0, 8.0, 8.0, 8.0, 0.0
@@ -1293,7 +1293,7 @@ void fillTest9() {
     const int32_t length = 5;
     float *a;
     bool b;
-    a = new float[5];
+    a = new float[5]();
     Arrays::fill(a, length, 8.0F);
     b = Arrays::equals(a, length, new float[length] {
         8.0F, 8.0F, 8.0F, 8.0F, 8.0F
@@ -1309,7 +1309,7 @@ void fillTest10() {
     const int32_t length = 5;
     float *a;
     bool b;
-    a = new float[5];
+    a = new float[5]();
     Arrays::fill(a, 1, 4, 8.0F);
     b = Arrays::equals(a, length, new float[length] {
         0.0F, 8.0F, 8.0F, 8.0F, 0.0F
@@ -1325,7 +1325,7 @@ void fillTest11() {
     const int32_t length = 5;
     int32_t *a;
     bool b;
-    a = new int32_t[5];
+    a = new int32_t[5]();
     Arrays::fill(a, length, 8);
     b = Arrays::equals(a, length, new int32_t[length]{8, 8, 8, 8, 8}, length);
     Test::assertEquals(true, b);
@@ -1339,7 +1339,7 @@ void fillTest12() {
     const int32_t length = 5;
     int32_t *a;
     bool b;
-    a = new int32_t[5];
+    a = new int32_t[5]();
     Arrays::fill(a, 1, 4, 8);
     b = Arrays::equals(a, length, new int32_t[length]{0, 8, 8, 8, 0}, length);
     Test::assertEquals(true, b);
@@ -1353,7 +1353,7 @@ void fillTest13() {
     const int32_t length = 5;
     int64_t *a;
     bool b;
-    a = new int64_t[5];
+    a = new int64_t[5]();
     Arrays::fill(a, length, 8L);
     b = Arrays::equals(a, length, new int64_t[length]{8, 8, 8, 8, 8}, length);
     Test::assertEquals(true, b);
@@ -1367,7 +1367,7 @@ void fillTest14() {
     const int32_t length = 5;
     int64_t *a;
     bool b;
-    a = new int64_t[5];
+    a = new int64_t[5]();
     Arrays::fill(a, 1, 4, 8L);
     b = Arrays::equals(a, length, new int64_t[length]{0, 8, 8, 8, 0}, length);
     Test::assertEquals(true, b);
@@ -1381,7 +1381,7 @@ void fillTest15() {
     const int32_t length = 5;
     TestObject **a, **c;
     bool b;
-    a = new TestObject *[5];
+    a = new TestObject *[5]();
     Arrays::fill((Object **) a, length, new TestObject(new String("sixth"), 6));
     c = new TestObject *[length];
     c[0] = new TestObject(new String("sixth"), 6);
@@ -1401,14 +1401,14 @@ void fillTest16() {
     const int32_t length = 5;
     TestObject **a, **c;
     bool b;
-    a = new TestObject *[5];
+    a = new TestObject *[5]();
     Arrays::fill((Object **) a, 1, 4, new TestObject(new String("sixth"), 6));
     c = new TestObject *[length];
-    c[0] = NULL;
+    c[0] = nullptr;
     c[1] = new TestObject(new String("sixth"), 6);
     c[2] = new TestObject(new String("sixth"), 6);
     c[3] = new TestObject(new String("sixth"), 6);
-    c[4] = NULL;
+    c[4] = nullptr;
     b = Arrays::equals((Object **) a, length, (Object **) c, length);
     Test::assertEquals(true, b);
 }
@@ -1421,7 +1421,7 @@ void fillTest17() {
     const int32_t length = 5;
     int16_t *a;
     bool b;
-    a = new int16_t[5];
+    a = new int16_t[5]();
     Arrays::fill(a, length, (int16_t) 8);
     b = Arrays::equals(a, length, new int16_t[length]{8, 8, 8, 8, 8}, length);
     Test::assertEquals(true, b);
@@ -1435,7 +1435,7 @@ void fillTest18() {
     const int32_t length = 5;
     int16_t *a;
     bool b;
-    a = new int16_t[5];
+    a = new int16_t[5]();
     Arrays::fill(a, 1, 4, (int16_t) 8);
     b = Arrays::equals(a, length, new int16_t[length]{0, 8, 8, 8, 0}, length);
     Test::assertEquals(true, b);
@@ -1742,7 +1742,7 @@ void sortTest17() {
     const int32_t length = 10;
     TestObject **a, **d;
     bool b;
-    Comparator<TestObject> *c;
+    Comparator *c;
     a = new TestObject *[length];
     a[0] = new TestObject(new String("first"), 3);
     a[1] = new TestObject(new String("second"), 2);
@@ -1755,7 +1755,7 @@ void sortTest17() {
     a[8] = new TestObject(new String("nineth"), 7);
     a[9] = new TestObject(new String("tenth"), 6);
     c = new TestObjectComparator();
-    Arrays::sort(a, length, c);
+    Arrays::sort((Object **)a, length, c);
     d = new TestObject *[length];
     d[0] = new TestObject(new String("second"), 2);
     d[1] = new TestObject(new String("seventh"), 2);
@@ -1780,7 +1780,7 @@ void sortTest18() {
     const int32_t length = 10;
     TestObject **a, **d;
     bool b;
-    Comparator<TestObject> *c;
+    Comparator *c;
     a = new TestObject *[length];
     a[0] = new TestObject(new String("first"), 3);
     a[1] = new TestObject(new String("second"), 2);
@@ -1793,7 +1793,7 @@ void sortTest18() {
     a[8] = new TestObject(new String("nineth"), 7);
     a[9] = new TestObject(new String("tenth"), 6);
     c = new TestObjectComparator();
-    Arrays::sort(a, 1, 4, c);
+    Arrays::sort((Object **)a, 1, 4, c);
     d = new TestObject *[length];
     d[0] = new TestObject(new String("first"), 3);
     d[1] = new TestObject(new String("second"), 2);
@@ -1995,29 +1995,29 @@ void toStringTest8() {
     a = new Object *[length2];
     a[0] = new TestObject(new String("first"), 1);
     b = Arrays::toString(a, length2);
-    Test::assertEquals("[TestObject[str = first, i = 1]]", b->_s());
+    Test::assertEquals("[TestObject [str=first, i=1]]", b->_s());
     a = new Object *[length2];
     a[0] = NULL;
     b = Arrays::toString(a, length2);
-    Test::assertEquals("[NULL]", b->_s());
+    Test::assertEquals("[null]", b->_s());
     a = new Object *[length3];
     a[0] = new TestObject(new String("first"), 1);
     a[1] = new TestObject(new String("second"), 2);
     a[2] = new TestObject(new String("third"), 3);
     b = Arrays::toString(a, length3);
-    Test::assertEquals("[TestObject[str = first, i = 1], TestObject[str = second, i = 2], TestObject[str = third, i = 3]]", b->_s());
+    Test::assertEquals("[TestObject [str=first, i=1], TestObject [str=second, i=2], TestObject [str=third, i=3]]", b->_s());
     a = new Object *[length3];
     a[0] = new TestObject(new String("first"), 1);
     a[1] = NULL;
     a[2] = new TestObject(new String("third"), 3);
     b = Arrays::toString(a, length3);
-    Test::assertEquals("[TestObject[str = first, i = 1], NULL, TestObject[str = third, i = 3]]", b->_s());
+    Test::assertEquals("[TestObject [str=first, i=1], null, TestObject [str=third, i=3]]", b->_s());
     a = new Object *[length3];
     a[0] = NULL;
     a[1] = NULL;
     a[2] = NULL;
     b = Arrays::toString(a, length3);
-    Test::assertEquals("[NULL, NULL, NULL]", b->_s());
+    Test::assertEquals("[null, null, null]", b->_s());
 }
 
 /**
@@ -2071,7 +2071,7 @@ int main(int argc, char** argv) {
     Test::registerTest(copyOfTest7, "copyOfTest7");
     Test::registerTest(copyOfTest8, "copyOfTest8");
     Test::registerTest(copyOfTest9, "copyOfTest9");
-    Test::registerTest(copyOfRangeTest1, "copyOfRangeTest1");
+    Test::registerTest(copyOfRangeTest, "copyOfRangeTest");
     Test::registerTest(copyOfRangeTest2, "copyOfRangeTest2");
     Test::registerTest(copyOfRangeTest3, "copyOfRangeTest3");
     Test::registerTest(copyOfRangeTest4, "copyOfRangeTest4");

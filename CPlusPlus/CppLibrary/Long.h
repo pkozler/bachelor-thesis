@@ -9,7 +9,7 @@
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Long : public Comparable<Long> {
+class Long : public Comparable {
     int64_t v;
 public:
     /**
@@ -24,9 +24,9 @@ public:
     
     Long(int64_t value);
     int64_t longValue();
-    int32_t compareTo(Long *anotherLong);
+    int32_t compareTo(Object *anotherLong);
     static int32_t compare(int64_t x, int64_t y);
-    bool equals(Long *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(int64_t l);
     static int64_t parseLong(String *s);

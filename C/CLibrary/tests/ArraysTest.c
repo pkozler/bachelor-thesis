@@ -389,7 +389,7 @@ void copyOfTest() {
     d[0] = true;
     d[1] = false;
     d[2] = false;
-    c = Arrays_equalsBool(b, length, d, length2);
+    c = Arrays_equalsBool(b, length2, d, length2);
     assertEqualsBool(true, c);
     // new_array has the same length
     b = Arrays_copyOfBool(a, length, 5);
@@ -411,7 +411,7 @@ void copyOfTest() {
     d[4] = true;
     d[5] = false;
     d[6] = false;
-    c = Arrays_equalsBool(b, length, d, length3);
+    c = Arrays_equalsBool(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -436,7 +436,7 @@ void copyOfTest2() {
     d[0] = (int8_t) 3;
     d[1] = (int8_t) 2;
     d[2] = (int8_t) 8;
-    c = Arrays_equalsB(b, length, d, length2);
+    c = Arrays_equalsB(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfB(a, length, 5);
     d = malloc(length * sizeof(int8_t));
@@ -456,7 +456,7 @@ void copyOfTest2() {
     d[4] = (int8_t) 6;
     d[5] = (int8_t) 0;
     d[6] = (int8_t) 0;
-    c = Arrays_equalsB(b, length, d, length3);
+    c = Arrays_equalsB(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -481,7 +481,7 @@ void copyOfTest3() {
     d[0] = 'c';
     d[1] = 'b';
     d[2] = 'h';
-    c = Arrays_equalsC(b, length, d, length2);
+    c = Arrays_equalsC(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfC(a, length, 5);
     d = malloc(length * sizeof(char));
@@ -501,7 +501,7 @@ void copyOfTest3() {
     d[4] = 'f';
     d[5] = '\0';
     d[6] = '\0';
-    c = Arrays_equalsC(b, length, d, length3);
+    c = Arrays_equalsC(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -526,7 +526,7 @@ void copyOfTest4() {
     d[0] = 3.0;
     d[1] = 2.0;
     d[2] = 8.0;
-    c = Arrays_equalsD(b, length, d, length2);
+    c = Arrays_equalsD(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfD(a, length, 5);
     d = malloc(length * sizeof(double));
@@ -546,7 +546,7 @@ void copyOfTest4() {
     d[4] = 6.0;
     d[5] = 0.0;
     d[6] = 0.0;
-    c = Arrays_equalsD(b, length, d, length3);
+    c = Arrays_equalsD(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -571,7 +571,7 @@ void copyOfTest5() {
     d[0] = 3.0F;
     d[1] = 2.0F;
     d[2] = 8.0F;
-    c = Arrays_equalsF(b, length, d, length2);
+    c = Arrays_equalsF(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfF(a, length, 5);
     d = malloc(length * sizeof(float));
@@ -591,7 +591,7 @@ void copyOfTest5() {
     d[4] = 6.0F;
     d[5] = 0.0F;
     d[6] = 0.0F;
-    c = Arrays_equalsF(b, length, d, length3);
+    c = Arrays_equalsF(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -616,7 +616,7 @@ void copyOfTest6() {
     d[0] = 3;
     d[1] = 2;
     d[2] = 8;
-    c = Arrays_equalsI(b, length, d, length2);
+    c = Arrays_equalsI(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfI(a, length, 5);
     d = malloc(length * sizeof(int32_t));
@@ -636,7 +636,7 @@ void copyOfTest6() {
     d[4] = 6;
     d[5] = 0;
     d[6] = 0;
-    c = Arrays_equalsI(b, length, d, length3);
+    c = Arrays_equalsI(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -661,7 +661,7 @@ void copyOfTest7() {
     d[0] = 3L;
     d[1] = 2L;
     d[2] = 8L;
-    c = Arrays_equalsL(b, length, d, length2);
+    c = Arrays_equalsL(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfL(a, length, 5);
     d = malloc(length * sizeof(int64_t));
@@ -681,7 +681,7 @@ void copyOfTest7() {
     d[4] = 6L;
     d[5] = 0L;
     d[6] = 0L;
-    c = Arrays_equalsL(b, length, d, length3);
+    c = Arrays_equalsL(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -706,7 +706,7 @@ void copyOfTest8() {
     d[0] = (int16_t) 3;
     d[1] = (int16_t) 2;
     d[2] = (int16_t) 8;
-    c = Arrays_equalsS(b, length, d, length2);
+    c = Arrays_equalsS(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfS(a, length, 5);
     d = malloc(length * sizeof(int16_t));
@@ -726,7 +726,7 @@ void copyOfTest8() {
     d[4] = (int16_t) 6;
     d[5] = (int16_t) 0;
     d[6] = (int16_t) 0;
-    c = Arrays_equalsS(b, length, d, length3);
+    c = Arrays_equalsS(b, length3, d, length3);
     assertEqualsBool(true, c);
 }
 
@@ -740,21 +740,21 @@ void copyOfTest9() {
     const int32_t length3 = 7;
     TestObject **a, **b, **d;
     bool c;
-    a = malloc(length * sizeof(char));
+    a = malloc(length * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 3);
     a[1] = new_TestObject(new_String("second"), 2);
     a[2] = new_TestObject(new_String("third"), 8);
     a[3] = new_TestObject(new_String("fourth"), 7);
     a[4] = new_TestObject(new_String("fifth"), 6);
     b = Arrays_copyOfObj(a, length, 3);
-    d = malloc(length2 * sizeof(char));
+    d = malloc(length2 * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("first"), 3);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("third"), 8);
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
+    c = Arrays_equalsObj((TestObject **) b, length2, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfObj(a, length, 5);
-    d = malloc(length * sizeof(char));
+    d = malloc(length * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("first"), 3);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("third"), 8);
@@ -763,7 +763,7 @@ void copyOfTest9() {
     c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfObj(a, length, 7);
-    d = malloc(length3 * sizeof(char));
+    d = malloc(length3 * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("first"), 3);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("third"), 8);
@@ -771,7 +771,7 @@ void copyOfTest9() {
     d[4] = new_TestObject(new_String("fifth"), 6);
     d[5] = NULL;
     d[6] = NULL;
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length3, equalsTo);
+    c = Arrays_equalsObj((TestObject **) b, length3, (TestObject **) d, length3, equalsTo);
     assertEqualsBool(true, c);
 }
 
@@ -779,7 +779,7 @@ void copyOfTest9() {
  * Tests the copyOfRange function with array of booleans.
  */
 
-void copyOfRangeTest1() {
+void copyOfRangeTest() {
     const int32_t length = 5;
     const int32_t length2 = 3;
     bool *a, *b, *d;
@@ -796,7 +796,7 @@ void copyOfRangeTest1() {
     d[0] = true;
     d[1] = false;
     d[2] = false;
-    c = Arrays_equalsBool(b, length, d, length2);
+    c = Arrays_equalsBool(b, length2, d, length2);
     assertEqualsBool(true, c);
     // copy from the middle
     b = Arrays_copyOfRangeBool(a, length, 2, 5);
@@ -804,7 +804,7 @@ void copyOfRangeTest1() {
     d[0] = false;
     d[1] = false;
     d[2] = true;
-    c = Arrays_equalsBool(b, length, d, length2);
+    c = Arrays_equalsBool(b, length2, d, length2);
     assertEqualsBool(true, c);
     // copy from the end
     b = Arrays_copyOfRangeBool(a, length, 4, 7);
@@ -812,7 +812,7 @@ void copyOfRangeTest1() {
     d[0] = true;
     d[1] = false;
     d[2] = false;
-    c = Arrays_equalsBool(b, length, d, length2);
+    c = Arrays_equalsBool(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -836,21 +836,21 @@ void copyOfRangeTest2() {
     d[0] = (int8_t) 3;
     d[1] = (int8_t) 2;
     d[2] = (int8_t) 8;
-    c = Arrays_equalsB(b, length, d, length2);
+    c = Arrays_equalsB(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeB(a, length, 2, 5);
     d = malloc(length2 * sizeof(int8_t));
     d[0] = (int8_t) 8;
     d[1] = (int8_t) 7;
     d[2] = (int8_t) 6;
-    c = Arrays_equalsB(b, length, d, length2);
+    c = Arrays_equalsB(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeB(a, length, 4, 7);
     d = malloc(length2 * sizeof(int8_t));
     d[0] = (int8_t) 6;
     d[1] = (int8_t) 0;
     d[2] = (int8_t) 0;
-    c = Arrays_equalsB(b, length, d, length2);
+    c = Arrays_equalsB(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -874,21 +874,21 @@ void copyOfRangeTest3() {
     d[0] = 'c';
     d[1] = 'b';
     d[2] = 'h';
-    c = Arrays_equalsC(b, length, d, length2);
+    c = Arrays_equalsC(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeC(a, length, 2, 5);
     d = malloc(length2 * sizeof(char));
     d[0] = 'h';
     d[1] = 'g';
     d[2] = 'f';
-    c = Arrays_equalsC(b, length, d, length2);
+    c = Arrays_equalsC(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeC(a, length, 4, 7);
     d = malloc(length2 * sizeof(char));
     d[0] = 'f';
     d[1] = '\0';
     d[2] = '\0';
-    c = Arrays_equalsC(b, length, d, length2);
+    c = Arrays_equalsC(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -912,21 +912,21 @@ void copyOfRangeTest4() {
     d[0] = 3.0;
     d[1] = 2.0;
     d[2] = 8.0;
-    c = Arrays_equalsD(b, length, d, length2);
+    c = Arrays_equalsD(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeD(a, length, 2, 5);
     d = malloc(length2 * sizeof(double));
     d[0] = 8.0;
     d[1] = 7.0;
     d[2] = 6.0;
-    c = Arrays_equalsD(b, length, d, length2);
+    c = Arrays_equalsD(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeD(a, length, 4, 7);
     d = malloc(length2 * sizeof(double));
     d[0] = 6.0;
     d[1] = 0.0;
     d[2] = 0.0;
-    c = Arrays_equalsD(b, length, d, length2);
+    c = Arrays_equalsD(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -950,21 +950,21 @@ void copyOfRangeTest5() {
     d[0] = 3.0F;
     d[1] = 2.0F;
     d[2] = 8.0F;
-    c = Arrays_equalsF(b, length, d, length2);
+    c = Arrays_equalsF(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeF(a, length, 2, 5);
     d = malloc(length2 * sizeof(float));
     d[0] = 8.0F;
     d[1] = 7.0F;
     d[2] = 6.0F;
-    c = Arrays_equalsF(b, length, d, length2);
+    c = Arrays_equalsF(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeF(a, length, 4, 7);
     d = malloc(length2 * sizeof(float));
     d[0] = 6.0F;
     d[1] = 0.0F;
     d[2] = 0.0F;
-    c = Arrays_equalsF(b, length, d, length2);
+    c = Arrays_equalsF(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -988,21 +988,21 @@ void copyOfRangeTest6() {
     d[0] = 3;
     d[1] = 2;
     d[2] = 8;
-    c = Arrays_equalsI(b, length, d, length2);
+    c = Arrays_equalsI(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeI(a, length, 2, 5);
     d = malloc(length2 * sizeof(int32_t));
     d[0] = 8;
     d[1] = 7;
     d[2] = 6;
-    c = Arrays_equalsI(b, length, d, length2);
+    c = Arrays_equalsI(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeI(a, length, 4, 7);
     d = malloc(length2 * sizeof(int32_t));
     d[0] = 6;
     d[1] = 0;
     d[2] = 0;
-    c = Arrays_equalsI(b, length, d, length2);
+    c = Arrays_equalsI(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -1026,21 +1026,21 @@ void copyOfRangeTest7() {
     d[0] = 3L;
     d[1] = 2L;
     d[2] = 8L;
-    c = Arrays_equalsL(b, length, d, length2);
+    c = Arrays_equalsL(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeL(a, length, 2, 5);
     d = malloc(length2 * sizeof(int64_t));
     d[0] = 8L;
     d[1] = 7L;
     d[2] = 6L;
-    c = Arrays_equalsL(b, length, d, length2);
+    c = Arrays_equalsL(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeL(a, length, 4, 7);
     d = malloc(length2 * sizeof(int64_t));
     d[0] = 6L;
     d[1] = 0L;
     d[2] = 0L;
-    c = Arrays_equalsL(b, length, d, length2);
+    c = Arrays_equalsL(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -1064,21 +1064,21 @@ void copyOfRangeTest8() {
     d[0] = (int16_t) 3;
     d[1] = (int16_t) 2;
     d[2] = (int16_t) 8;
-    c = Arrays_equalsS(b, length, d, length2);
+    c = Arrays_equalsS(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeS(a, length, 2, 5);
     d = malloc(length2 * sizeof(int16_t));
     d[0] = (int16_t) 8;
     d[1] = (int16_t) 7;
     d[2] = (int16_t) 6;
-    c = Arrays_equalsS(b, length, d, length2);
+    c = Arrays_equalsS(b, length2, d, length2);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeS(a, length, 4, 7);
     d = malloc(length2 * sizeof(int16_t));
     d[0] = (int16_t) 6;
     d[1] = (int16_t) 0;
     d[2] = (int16_t) 0;
-    c = Arrays_equalsS(b, length, d, length2);
+    c = Arrays_equalsS(b, length2, d, length2);
     assertEqualsBool(true, c);
 }
 
@@ -1091,32 +1091,32 @@ void copyOfRangeTest9() {
     const int32_t length2 = 3;
     TestObject **a, **b, **d;
     bool c;
-    a = malloc(length * sizeof(char));
+    a = malloc(length * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 3);
     a[1] = new_TestObject(new_String("second"), 2);
     a[2] = new_TestObject(new_String("third"), 8);
     a[3] = new_TestObject(new_String("fourth"), 7);
     a[4] = new_TestObject(new_String("fifth"), 6);
     b = Arrays_copyOfRangeObj(a, length, 0, 3);
-    d = malloc(length2 * sizeof(char));
+    d = malloc(length2 * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("first"), 3);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("third"), 8);
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
+    c = Arrays_equalsObj((TestObject **) b, length2, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeObj(a, length, 2, 5);
-    d = malloc(length2 * sizeof(char));
+    d = malloc(length2 * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("third"), 8);
     d[1] = new_TestObject(new_String("fourth"), 7);
     d[2] = new_TestObject(new_String("fifth"), 6);
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
+    c = Arrays_equalsObj((TestObject **) b, length2, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
     b = Arrays_copyOfRangeObj(a, length, 4, 7);
-    d = malloc(length2 * sizeof(char));
+    d = malloc(length2 * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("fifth"), 6);
     d[1] = NULL;
     d[2] = NULL;
-    c = Arrays_equalsObj((TestObject **) b, length, (TestObject **) d, length2, equalsTo);
+    c = Arrays_equalsObj((TestObject **) b, length2, (TestObject **) d, length2, equalsTo);
     assertEqualsBool(true, c);
 }
 
@@ -1263,7 +1263,7 @@ void equalsTest4() {
     const int32_t length2 = 1;
     double *a, *b;
     bool c;
-    a = malloc(length * sizeof(float));
+    a = malloc(length * sizeof(double));
     a[0] = 3.0;
     a[1] = 2.0;
     a[2] = 8.0;
@@ -1272,11 +1272,11 @@ void equalsTest4() {
     b = NULL;
     c = Arrays_equalsD(a, length, b, 0);
     assertEqualsBool(false, c);
-    b = malloc(length2 * sizeof(float));
+    b = malloc(length2 * sizeof(double));
     b[0] = 3.0;
     c = Arrays_equalsD(a, length, b, length2);
     assertEqualsBool(false, c);
-    b = malloc(length * sizeof(float));
+    b = malloc(length * sizeof(double));
     b[0] = 3.0;
     b[1] = 2.0;
     b[2] = 8.0;
@@ -1284,7 +1284,7 @@ void equalsTest4() {
     b[4] = 3.0;
     c = Arrays_equalsD(a, length, b, length);
     assertEqualsBool(false, c);
-    b = malloc(length * sizeof(float));
+    b = malloc(length * sizeof(double));
     b[0] = 3.0;
     b[1] = 2.0;
     b[2] = 8.0;
@@ -1463,7 +1463,7 @@ void equalsTest8() {
     b[3] = new_TestObject(new_String("nineth"), 7);
     b[4] = new_TestObject(new_String("tenth"), 6);
     c = Arrays_equalsObj(a, length, b, length, equalsTo);
-    assertEqualsBool(false, c);
+    assertEqualsBool(true, c);
     b = a;
     c = Arrays_equalsObj(a, length, b, length, equalsTo);
     assertEqualsBool(true, c);
@@ -1521,7 +1521,7 @@ void fillTest() {
     bool *a, *c;
     bool b;
     // the array for filling
-    a = malloc(5 * sizeof(bool));
+    a = calloc(5, sizeof(bool));
     Arrays_fillBool(a, length, true);
     c = malloc(length * sizeof(bool));
     c[0] = true;
@@ -1542,7 +1542,7 @@ void fillTest2() {
     bool *a, *c;
     bool b;
     // the array for partial filling
-    a = malloc(5 * sizeof(bool));
+    a = calloc(5, sizeof(bool));
     Arrays_fillRangeBool(a, 1, 4, true);
     c = malloc(length * sizeof(bool));
     c[0] = false;
@@ -1562,7 +1562,7 @@ void fillTest3() {
     const int32_t length = 5;
     int8_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int8_t));
+    a = calloc(5, sizeof(int8_t));
     Arrays_fillB(a, length, (int8_t) 8);
     c = malloc(length * sizeof(int8_t));
     c[0] = (int8_t) 8;
@@ -1582,7 +1582,7 @@ void fillTest4() {
     const int32_t length = 5;
     int8_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int8_t));
+    a = calloc(5, sizeof(int8_t));
     Arrays_fillRangeB(a, 1, 4, (int8_t) 8);
     c = malloc(length * sizeof(int8_t));
     c[0] = (int8_t) 0;
@@ -1602,7 +1602,7 @@ void fillTest5() {
     const int32_t length = 5;
     char *a, *c;
     bool b;
-    a = malloc(5 * sizeof(char));
+    a = calloc(5, sizeof(char));
     Arrays_fillC(a, length, 'h');
     c = malloc(length * sizeof(char));
     c[0] = 'h';
@@ -1622,7 +1622,7 @@ void fillTest6() {
     const int32_t length = 5;
     char *a, *c;
     bool b;
-    a = malloc(5 * sizeof(char));
+    a = calloc(5, sizeof(char));
     Arrays_fillRangeC(a, 1, 4, 'h');
     c = malloc(length * sizeof(char));
     c[0] = '\0';
@@ -1642,7 +1642,7 @@ void fillTest7() {
     const int32_t length = 5;
     double *a, *c;
     bool b;
-    a = malloc(5 * sizeof(double));
+    a = calloc(5, sizeof(double));
     Arrays_fillD(a, length, 8.0);
     c = malloc(length * sizeof(double));
     c[0] = 8.0;
@@ -1662,7 +1662,7 @@ void fillTest8() {
     const int32_t length = 5;
     double *a, *c;
     bool b;
-    a = malloc(5 * sizeof(double));
+    a = calloc(5, sizeof(double));
     Arrays_fillRangeD(a, 1, 4, 8.0);
     c = malloc(length * sizeof(double));
     c[0] = 0.0;
@@ -1682,7 +1682,7 @@ void fillTest9() {
     const int32_t length = 5;
     float *a, *c;
     bool b;
-    a = malloc(5 * sizeof(float));
+    a = calloc(5, sizeof(float));
     Arrays_fillF(a, length, 8.0F);
     c = malloc(length * sizeof(float));
     c[0] = 8.0F;
@@ -1702,7 +1702,7 @@ void fillTest10() {
     const int32_t length = 5;
     float *a, *c;
     bool b;
-    a = malloc(5 * sizeof(float));
+    a = calloc(5, sizeof(float));
     Arrays_fillRangeF(a, 1, 4, 8.0F);
     c = malloc(length * sizeof(float));
     c[0] = 0.0F;
@@ -1722,7 +1722,7 @@ void fillTest11() {
     const int32_t length = 5;
     int32_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int32_t));
+    a = calloc(5, sizeof(int32_t));
     Arrays_fillI(a, length, 8);
     c = malloc(length * sizeof(int32_t));
     c[0] = 8;
@@ -1742,7 +1742,7 @@ void fillTest12() {
     const int32_t length = 5;
     int32_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int32_t));
+    a = calloc(5, sizeof(int32_t));
     Arrays_fillRangeI(a, 1, 4, 8);
     c = malloc(length * sizeof(int32_t));
     c[0] = 0;
@@ -1762,7 +1762,7 @@ void fillTest13() {
     const int32_t length = 5;
     int64_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int64_t));
+    a = calloc(5, sizeof(int64_t));
     Arrays_fillL(a, length, 8L);
     c = malloc(length * sizeof(int64_t));
     c[0] = 8L;
@@ -1782,7 +1782,7 @@ void fillTest14() {
     const int32_t length = 5;
     int64_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int64_t));
+    a = calloc(5, sizeof(int64_t));
     Arrays_fillRangeL(a, 1, 4, 8L);
     c = malloc(length * sizeof(int64_t));
     c[0] = 0L;
@@ -1802,9 +1802,9 @@ void fillTest15() {
     const int32_t length = 5;
     TestObject **a, **c;
     bool b;
-    a = malloc(5 * sizeof(char));
+    a = calloc(length, sizeof(TestObject *));
     Arrays_fillObj((TestObject **) a, length, new_TestObject(new_String("sixth"), 6));
-    c = malloc(length * sizeof(char));
+    c = malloc(length * sizeof(TestObject *));
     c[0] = new_TestObject(new_String("sixth"), 6);
     c[1] = new_TestObject(new_String("sixth"), 6);
     c[2] = new_TestObject(new_String("sixth"), 6);
@@ -1822,9 +1822,9 @@ void fillTest16() {
     const int32_t length = 5;
     TestObject **a, **c;
     bool b;
-    a = malloc(5 * sizeof(char));
+    a = calloc(length, sizeof(TestObject *));
     Arrays_fillRangeObj((TestObject **) a, 1, 4, new_TestObject(new_String("sixth"), 6));
-    c = malloc(length * sizeof(char));
+    c = malloc(length * sizeof(TestObject *));
     c[0] = NULL;
     c[1] = new_TestObject(new_String("sixth"), 6);
     c[2] = new_TestObject(new_String("sixth"), 6);
@@ -1842,7 +1842,7 @@ void fillTest17() {
     const int32_t length = 5;
     int16_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int16_t));
+    a = calloc(5, sizeof(int16_t));
     Arrays_fillS(a, length, (int16_t) 8);
     c = malloc(length * sizeof(int16_t));
     c[0] = (int16_t) 8;
@@ -1862,7 +1862,7 @@ void fillTest18() {
     const int32_t length = 5;
     int16_t *a, *c;
     bool b;
-    a = malloc(5 * sizeof(int16_t));
+    a = calloc(5, sizeof(int16_t));
     Arrays_fillRangeS(a, 1, 4, (int16_t) 8);
     c = malloc(length * sizeof(int16_t));
     c[0] = (int16_t) 0;
@@ -2504,29 +2504,29 @@ void toStringTest8() {
     a = malloc(length2 * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 1);
     b = Arrays_toStringObj(a, length2, toStringTo);
-    assertEqualsStr("[TestObject[str = first, i = 1]]", b->s);
+    assertEqualsStr("[TestObject [str=first, i=1]]", b->s);
     a = malloc(length2 * sizeof(TestObject *));
     a[0] = NULL;
     b = Arrays_toStringObj(a, length2, toStringTo);
-    assertEqualsStr("[NULL]", b->s);
+    assertEqualsStr("[null]", b->s);
     a = malloc(length3 * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 1);
     a[1] = new_TestObject(new_String("second"), 2);
     a[2] = new_TestObject(new_String("third"), 3);
     b = Arrays_toStringObj(a, length3, toStringTo);
-    assertEqualsStr("[TestObject[str = first, i = 1], TestObject[str = second, i = 2], TestObject[str = third, i = 3]]", b->s);
+    assertEqualsStr("[TestObject [str=first, i=1], TestObject [str=second, i=2], TestObject [str=third, i=3]]", b->s);
     a = malloc(length3 * sizeof(TestObject *));
     a[0] = new_TestObject(new_String("first"), 1);
     a[1] = NULL;
     a[2] = new_TestObject(new_String("third"), 3);
     b = Arrays_toStringObj(a, length3, toStringTo);
-    assertEqualsStr("[TestObject[str = first, i = 1], NULL, TestObject[str = third, i = 3]]", b->s);
+    assertEqualsStr("[TestObject [str=first, i=1], null, TestObject [str=third, i=3]]", b->s);
     a = malloc(length3 * sizeof(TestObject *));
     a[0] = NULL;
     a[1] = NULL;
     a[2] = NULL;
     b = Arrays_toStringObj(a, length3, toStringTo);
-    assertEqualsStr("[NULL, NULL, NULL]", b->s);
+    assertEqualsStr("[null, null, null]", b->s);
 }
 
 /**
@@ -2585,7 +2585,7 @@ int main(int argc, char** argv) {
     registerTest(copyOfTest7, "copyOfTest7");
     registerTest(copyOfTest8, "copyOfTest8");
     registerTest(copyOfTest9, "copyOfTest9");
-    registerTest(copyOfRangeTest1, "copyOfRangeTest1");
+    registerTest(copyOfRangeTest, "copyOfRangeTest");
     registerTest(copyOfRangeTest2, "copyOfRangeTest2");
     registerTest(copyOfRangeTest3, "copyOfRangeTest3");
     registerTest(copyOfRangeTest4, "copyOfRangeTest4");

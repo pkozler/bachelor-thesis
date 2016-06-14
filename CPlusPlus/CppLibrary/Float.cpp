@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cmath>
+#include <cstdlib>
 
 const float Float::POSITIVE_INFINITY = 1.0f / 0.0f;
 const float Float::NEGATIVE_INFINITY = -1.0f / 0.0f;
@@ -47,8 +48,8 @@ float Float::floatValue() {
  * and a value greater than 0 if this Float is numerically greater than
  * anotherFloat.
  */
-int32_t Float::compareTo(Float *anotherFloat) {
-    return compare(v, anotherFloat->v);
+int32_t Float::compareTo(Object *anotherFloat) {
+    return compare(v, ((Float *)anotherFloat)->v);
 }
 
 /**
@@ -97,16 +98,16 @@ int32_t Float::compare(float f1, float f2) {
  * @param obj the object to be compared
  * @return true if the objects are the same; false otherwise.
  */
-bool Float::equals(Float *obj) {
+bool Float::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof (*this) != sizeof (*obj)) {
+    if (sizeof (this) != sizeof (*obj)) {
         return false;
     }
 
-    float v2 = obj->v;
+    float v2 = ((Float *)obj)->v;
 
     if (std::isnan(v) && std::isnan(v2)) {
         return true;
@@ -155,5 +156,9 @@ String *Float::toString(float f) {
  * @return the float value represented by the string argument.
  */
 float Float::parseFloat(String *s) {
-    return std::stof(s->_s(), nullptr);
+    String *str = s->trim();
+    float value = strtof(str->_s().c_str(), nullptr);
+    delete str;
+    
+    return value;
 }

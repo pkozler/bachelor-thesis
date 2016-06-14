@@ -17,9 +17,10 @@
 LinkedList<TestObject> *toList(TestObject **array, int32_t length) {
     LinkedList<TestObject> *list = new LinkedList<TestObject>();
 
-    std::for_each(array, array + length, [list](TestObject *o) {
-       list->add(o);
-    });
+    int32_t i;
+    for (i = 0; i < length; i++) {
+        list->add(array[i]);
+    }
 
     return list;
 }
@@ -111,7 +112,7 @@ void addTest() {
     d = new TestObject *[length2];
     d[0] = new TestObject(new String("first"), 1);
     d[1] = new TestObject(new String("second"), 2);
-    c = a->equals(toList(d, length));
+    c = a->equals(toList(d, length2));
     Test::assertEquals(true, c);
     b = new TestObject(new String("first"), 2);
     a->add(b);
@@ -119,7 +120,7 @@ void addTest() {
     d[0] = new TestObject(new String("first"), 1);
     d[1] = new TestObject(new String("second"), 2);
     d[2] = new TestObject(new String("first"), 2);
-    c = a->equals(toList(d, length));
+    c = a->equals(toList(d, length3));
     Test::assertEquals(true, c);
     b = new TestObject(new String("second"), 1);
     a->add(b);
@@ -128,7 +129,7 @@ void addTest() {
     d[1] = new TestObject(new String("second"), 2);
     d[2] = new TestObject(new String("first"), 2);
     d[3] = new TestObject(new String("second"), 1);
-    c = a->equals(toList(d, length));
+    c = a->equals(toList(d, length4));
     Test::assertEquals(true, c);
     b = new TestObject(new String("first"), 1);
     a->add(b);

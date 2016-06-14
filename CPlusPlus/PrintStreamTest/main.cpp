@@ -16,7 +16,7 @@ void usage() {
 }
 
 int main(int argc, char** argv) {
-    testFunctions = new TestFunction[] {
+    testFunctions = new TestFunction[TEST_FUNCTION_COUNT] {
         printTest,
         printTest2,
         printTest3,

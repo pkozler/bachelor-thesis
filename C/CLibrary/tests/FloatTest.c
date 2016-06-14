@@ -8,7 +8,7 @@
  * Simple C Test Suite
  */
 
-const float DEFAULT_EPSILON = 1E-20;
+const float DEFAULT_EPSILON = 1E-10;
 
 /**
  * Tests the floatValue function.

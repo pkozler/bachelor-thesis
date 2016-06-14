@@ -153,8 +153,10 @@ String *Double_toString(double d) {
     str[0] = '\0';
     sprintf(buf, "%lG", d);
     strcat(str, buf);
-
-    return new_String(str);
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**
@@ -165,5 +167,9 @@ String *Double_toString(double d) {
  * @return the double value represented by the string argument.
  */
 double Double_parseDouble(String *s) {
-    return strtod(s->s, NULL);
+    String *str = trim(s);
+    double value = strtod(str->s, NULL);
+    free(str);
+    
+    return value;
 }

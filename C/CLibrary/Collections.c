@@ -18,14 +18,28 @@
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Collections_binarySearch(ArrayList *list, void *key, int32_t (*c)(const void *, const void *)) {
-    void *i = bsearch(key, list->dynamicArray, list->count, sizeof(void **), c);
+    int32_t lower = 0;
+    int32_t upper = sizeAl(list) - 1;
 
-    if (i == NULL) {
-        return -1;
+    while (lower <= upper) {
+        int32_t middle = ((uint32_t)lower + (uint32_t)upper) >> 1;
+        
+        void *o1 = getAl(list, middle);
+        void *o2 = key;
+        int32_t cmp = c(o1, o2);
+
+        if (cmp < 0) {
+            lower = middle + 1;
+        }
+        else if (cmp > 0) {
+            upper = middle - 1;
+        }
+        else {
+            return middle;
+        }
     }
-    else {
-        return (i - (void *) list->dynamicArray) / sizeof(void **);
-    }
+
+    return -(lower + 1);
 }
 
 /**

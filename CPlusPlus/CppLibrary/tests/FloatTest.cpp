@@ -8,6 +8,8 @@
  * Simple C++ Test Suite
  */
 
+const float DEFAULT_EPSILON = 1E-10;
+
 /**
  * Tests the floatValue method.
  */
@@ -17,13 +19,13 @@ void floatValueTest() {
     float b;
     a = new Float(Float::MIN_VALUE);
     b = a->floatValue();
-    Test::assertEquals(1.4E-45f, b);
+    Test::assertEquals(1.4E-45f, b, DEFAULT_EPSILON);
     a = new Float((float) 0);
     b = a->floatValue();
-    Test::assertEquals(0.0f, b);
+    Test::assertEquals(0.0f, b, DEFAULT_EPSILON);
     a = new Float(Float::MAX_VALUE);
     b = a->floatValue();
-    Test::assertEquals(3.4028235E38f, b);
+    Test::assertEquals(3.4028235E38f, b, DEFAULT_EPSILON);
 }
 
 /**
@@ -168,11 +170,11 @@ void toStringTest2() {
 void parseFloatTest() {
     float a;
     a = Float::parseFloat(new String("0.1"));
-    Test::assertEquals(0.1f, a);
+    Test::assertEquals(0.1f, a, DEFAULT_EPSILON);
     a = Float::parseFloat(new String("0"));
-    Test::assertEquals(0.0f, a);
+    Test::assertEquals(0.0f, a, DEFAULT_EPSILON);
     a = Float::parseFloat(new String("-0.1"));
-    Test::assertEquals(-0.1f, a);
+    Test::assertEquals(-0.1f, a, DEFAULT_EPSILON);
 }
 
 int main(int argc, char** argv) {

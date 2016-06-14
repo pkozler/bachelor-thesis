@@ -1,6 +1,7 @@
 #include "Short.h"
 
 #include <string>
+#include <cstdlib>
 
 const int16_t Short::MAX_VALUE = 32767;
 const int16_t Short::MIN_VALUE = -32768;
@@ -34,8 +35,8 @@ int16_t Short::shortValue() {
  * and a value greater than 0 if this Short is numerically greater than the
  * argument Short (signed comparison).
  */
-int32_t Short::compareTo(Short *anotherShort) {
-    return compare(v, anotherShort->v);
+int32_t Short::compareTo(Object *anotherShort) {
+    return compare(v, ((Short *)anotherShort)->v);
 }
 
 /**
@@ -56,16 +57,16 @@ int32_t Short::compare(int16_t x, int16_t y) {
  * @param obj the object to compare with
  * @return true if the objects are the same; false otherwise.
  */
-int16_t Short::equals(Short *obj) {
+bool Short::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof(*this) != sizeof(*obj)) {
+    if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
     
-    return (v == obj->v);
+    return (v == ((Short *)obj)->v);
 }
 
 /**
@@ -94,5 +95,9 @@ String *Short::toString(int16_t s) {
  * @return the short value represented by the argument in decimal.
  */
 int16_t Short::parseShort(String *s) {
-    return (int16_t) std::stoi(s->_s(), nullptr, 10);
+    String *str = s->trim();
+    int16_t value = strtol(str->_s().c_str(), nullptr, 10);
+    delete str;
+    
+    return value;
 }

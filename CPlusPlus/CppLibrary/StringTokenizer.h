@@ -10,8 +10,10 @@
  * @author Petr Kozler (A13B0359P)
  */
 class StringTokenizer : public Object {
-    std::string str;
-    std::string delim;
+    std::string *tokens;
+    int32_t tokensLength;
+    int32_t tokenCounter;
+    void init(std::string str, std::string delim);
 public:
     StringTokenizer(String *str);
     StringTokenizer(String *str, String *delim);

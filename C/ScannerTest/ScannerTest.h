@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-int32_t errorsInFunction = 0;
+extern int32_t errorsInFunction;
 
 void scannerTest();
 void nextTest();

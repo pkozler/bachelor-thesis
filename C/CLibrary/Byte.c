@@ -98,8 +98,10 @@ String *Byte_toString(int8_t b) {
     str[0] = '\0';
     sprintf(buf, "%hd", b);
     strcat(str, buf);
-
-    return new_String(str);
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**
@@ -109,5 +111,9 @@ String *Byte_toString(int8_t b) {
  * @return the byte value represented by the argument in decimal
  */
 int8_t Byte_parseByte(String *s) {
-    return strtol(s->s, NULL, 10);
+    String *str = trim(s);
+    int8_t value = strtol(str->s, NULL, 10);
+    free(str);
+    
+    return value;
 }

@@ -35,6 +35,27 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/2078953063/ArrayList.o \
+	${OBJECTDIR}/_ext/2078953063/Arrays.o \
+	${OBJECTDIR}/_ext/2078953063/Boolean.o \
+	${OBJECTDIR}/_ext/2078953063/Byte.o \
+	${OBJECTDIR}/_ext/2078953063/Character.o \
+	${OBJECTDIR}/_ext/2078953063/Collections.o \
+	${OBJECTDIR}/_ext/2078953063/Double.o \
+	${OBJECTDIR}/_ext/2078953063/Float.o \
+	${OBJECTDIR}/_ext/2078953063/Integer.o \
+	${OBJECTDIR}/_ext/2078953063/LinkedList.o \
+	${OBJECTDIR}/_ext/2078953063/List.o \
+	${OBJECTDIR}/_ext/2078953063/Long.o \
+	${OBJECTDIR}/_ext/2078953063/Math_.o \
+	${OBJECTDIR}/_ext/2078953063/Scanner.o \
+	${OBJECTDIR}/_ext/2078953063/Short.o \
+	${OBJECTDIR}/_ext/2078953063/String.o \
+	${OBJECTDIR}/_ext/2078953063/StringBuilder.o \
+	${OBJECTDIR}/_ext/2078953063/StringTokenizer.o \
+	${OBJECTDIR}/_ext/2078953063/System.o \
+	${OBJECTDIR}/_ext/2078953063/TestObject.o \
+	${OBJECTDIR}/_ext/2078953063/test.o \
 	${OBJECTDIR}/PrintStreamTest.o \
 	${OBJECTDIR}/main.o
 
@@ -62,6 +83,111 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/printstreamtest.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/printstreamtest ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/2078953063/ArrayList.o: ../CLibrary/ArrayList.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/ArrayList.o ../CLibrary/ArrayList.c
+
+${OBJECTDIR}/_ext/2078953063/Arrays.o: ../CLibrary/Arrays.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Arrays.o ../CLibrary/Arrays.c
+
+${OBJECTDIR}/_ext/2078953063/Boolean.o: ../CLibrary/Boolean.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Boolean.o ../CLibrary/Boolean.c
+
+${OBJECTDIR}/_ext/2078953063/Byte.o: ../CLibrary/Byte.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Byte.o ../CLibrary/Byte.c
+
+${OBJECTDIR}/_ext/2078953063/Character.o: ../CLibrary/Character.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Character.o ../CLibrary/Character.c
+
+${OBJECTDIR}/_ext/2078953063/Collections.o: ../CLibrary/Collections.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Collections.o ../CLibrary/Collections.c
+
+${OBJECTDIR}/_ext/2078953063/Double.o: ../CLibrary/Double.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Double.o ../CLibrary/Double.c
+
+${OBJECTDIR}/_ext/2078953063/Float.o: ../CLibrary/Float.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Float.o ../CLibrary/Float.c
+
+${OBJECTDIR}/_ext/2078953063/Integer.o: ../CLibrary/Integer.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Integer.o ../CLibrary/Integer.c
+
+${OBJECTDIR}/_ext/2078953063/LinkedList.o: ../CLibrary/LinkedList.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/LinkedList.o ../CLibrary/LinkedList.c
+
+${OBJECTDIR}/_ext/2078953063/List.o: ../CLibrary/List.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/List.o ../CLibrary/List.c
+
+${OBJECTDIR}/_ext/2078953063/Long.o: ../CLibrary/Long.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Long.o ../CLibrary/Long.c
+
+${OBJECTDIR}/_ext/2078953063/Math_.o: ../CLibrary/Math_.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Math_.o ../CLibrary/Math_.c
+
+${OBJECTDIR}/_ext/2078953063/Scanner.o: ../CLibrary/Scanner.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Scanner.o ../CLibrary/Scanner.c
+
+${OBJECTDIR}/_ext/2078953063/Short.o: ../CLibrary/Short.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Short.o ../CLibrary/Short.c
+
+${OBJECTDIR}/_ext/2078953063/String.o: ../CLibrary/String.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/String.o ../CLibrary/String.c
+
+${OBJECTDIR}/_ext/2078953063/StringBuilder.o: ../CLibrary/StringBuilder.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/StringBuilder.o ../CLibrary/StringBuilder.c
+
+${OBJECTDIR}/_ext/2078953063/StringTokenizer.o: ../CLibrary/StringTokenizer.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/StringTokenizer.o ../CLibrary/StringTokenizer.c
+
+${OBJECTDIR}/_ext/2078953063/System.o: ../CLibrary/System.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/System.o ../CLibrary/System.c
+
+${OBJECTDIR}/_ext/2078953063/TestObject.o: ../CLibrary/TestObject.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/TestObject.o ../CLibrary/TestObject.c
+
+${OBJECTDIR}/_ext/2078953063/test.o: ../CLibrary/test.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/test.o ../CLibrary/test.c
 
 ${OBJECTDIR}/PrintStreamTest.o: PrintStreamTest.c 
 	${MKDIR} -p ${OBJECTDIR}

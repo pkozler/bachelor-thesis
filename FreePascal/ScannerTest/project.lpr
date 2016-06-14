@@ -2,7 +2,7 @@ program project;
 
 uses sysutils, ScannerTestUnit;
 
-const TEST_METHOD_COUNT = 9;
+const TEST_METHOD_COUNT = 10;
 
 type
   TestMethod = procedure of object;
@@ -15,7 +15,7 @@ var
 procedure usage;
 begin
   writeLn('Zadejte platné číslo testovací metody. ('
-  + intToStr(0) + ' - ' + intToStr(length(testMethods) - 1) + ')');
+  + intToStr(0) + ' - ' + intToStr(TEST_METHOD_COUNT - 1) + ')');
   halt(-1);
 end;
 

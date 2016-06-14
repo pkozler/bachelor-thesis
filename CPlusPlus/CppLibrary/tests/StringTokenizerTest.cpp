@@ -54,7 +54,7 @@ void stringTokenizerTest() {
     c[1] = new String("is");
     c[2] = new String("a");
     c[3] = new String("test.");
-    d = Arrays::equals(c, length, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // whitespaces inside and outside the string
     a = new StringTokenizer(new String(" This is   a test. "));
@@ -64,27 +64,27 @@ void stringTokenizerTest() {
     c[1] = new String("is");
     c[2] = new String("a");
     c[3] = new String("test.");
-    d = Arrays::equals(c, length, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // without whitespaces
     a = new StringTokenizer(new String("This_is_a_test."));
     b = toStringArray(a);
     c = new String *[length2];
     c[0] = new String("This_is_a_test.");
-    d = Arrays::equals(c, length2, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length2, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // one character
     a = new StringTokenizer(new String("_"));
     b = toStringArray(a);
     c = new String *[length2];
     c[0] = new String("_");
-    d = Arrays::equals(c, length2, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length2, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // empty string
     a = new StringTokenizer(new String(""));
     b = toStringArray(a);
     c = new String *[length3];
-    d = Arrays::equals(c, length3, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length3, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
 }
 
@@ -104,7 +104,7 @@ void stringTokenizerTest2() {
     b = toStringArray(a);
     c = new String *[length];
     c[0] = new String("This is a test.");
-    d = Arrays::equals(c, length, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // non-white delimiter (inside the string)
     a = new StringTokenizer(new String("This_is_a_test."), new String("_"));
@@ -114,7 +114,7 @@ void stringTokenizerTest2() {
     c[1] = new String("is");
     c[2] = new String("a");
     c[3] = new String("test.");
-    d = Arrays::equals(c, length2, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length2, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // non-white delimiter (also the whitespaces inside the string)
     a = new StringTokenizer(new String("This_is_ a _test."), new String("_"));
@@ -124,7 +124,7 @@ void stringTokenizerTest2() {
     c[1] = new String("is");
     c[2] = new String(" a ");
     c[3] = new String("test.");
-    d = Arrays::equals(c, length2, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length2, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // non-white delimiter (also the whitespaces inside and outside the string)
     a = new StringTokenizer(new String("_This_is___a_test._"), new String("_"));
@@ -134,7 +134,7 @@ void stringTokenizerTest2() {
     c[1] = new String("is");
     c[2] = new String("a");
     c[3] = new String("test.");
-    d = Arrays::equals(c, length2, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length2, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // more delimiters (existing in the string)
     a = new StringTokenizer(new String("This is_a test."), new String(" _"));
@@ -144,14 +144,14 @@ void stringTokenizerTest2() {
     c[1] = new String("is");
     c[2] = new String("a");
     c[3] = new String("test.");
-    d = Arrays::equals(c, length2, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length2, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
     // more delimiters (non-existent in the string)
     a = new StringTokenizer(new String("Thisisatest."), new String(" _"));
     b = toStringArray(a);
     c = new String *[length];
     c[0] = new String("Thisisatest.");
-    d = Arrays::equals(c, length, b.arr, b.len);
+    d = Arrays::equals((Object **)c, length, (Object **)b.arr, b.len);
     Test::assertEquals(true, d);
 }
 

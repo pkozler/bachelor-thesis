@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cmath>
+#include <cstdlib>
 
 const double Double::POSITIVE_INFINITY = 1.0 / 0.0;
 const double Double::NEGATIVE_INFINITY = -1.0 / 0.0;
@@ -47,8 +48,8 @@ double Double::doubleValue() {
  * anotherDouble; and a value greater than 0 if this Double is numerically
  * greater than anotherDouble.
  */
-int32_t Double::compareTo(Double *anotherDouble) {
-    return compare(v, anotherDouble->v);
+int32_t Double::compareTo(Object *anotherDouble) {
+    return compare(v, ((Double *)anotherDouble)->v);
 }
 
 /**
@@ -97,16 +98,16 @@ int32_t Double::compare(double d1, double d2) {
  * @param obj the object to compare with.
  * @return true if the objects are the same; false otherwise.
  */
-bool Double::equals(Double *obj) {
+bool Double::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof (*this) != sizeof (*obj)) {
+    if (sizeof (this) != sizeof (*obj)) {
         return false;
     }
 
-    double v2 = obj->v;
+    double v2 = ((Double *)obj)->v;
 
     if (std::isnan(v) && std::isnan(v2)) {
         return true;
@@ -155,5 +156,9 @@ String *Double::toString(double d) {
  * @return the double value represented by the string argument.
  */
 double Double::parseDouble(String *s) {
-    return std::stod(s->_s(), nullptr);
+    String *str = s->trim();
+    double value = strtod(str->_s().c_str(), nullptr);
+    delete str;
+    
+    return value;
 }

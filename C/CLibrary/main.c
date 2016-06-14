@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <wchar.h>
 
 #include "ArrayList.h";
 #include "Arrays.h";
@@ -21,21 +22,8 @@
 #include "StringTokenizer.h";
 #include "System.h";
 #include "TestObject.h"
+#include "test.h"
 
 int main(int argc, char** argv) {
-    /*Scanner *sc = new_Scanner(System_in);
-    printlnStr(System_out, next(sc));
-    printlnStr(System_out, nextLine(sc));
-    
-    StringBuilder *sb = new_StringBuilder();
-    append(sb, new_String("Příliš "));
-    append(sb, new_String("žluťoučký "));
-    append(sb, new_String("kůň "));
-    append(sb, new_String("úpěl "));
-    append(sb, new_String("ďábelské "));
-    append(sb, new_String("ódy."));
-    
-    printlnStr(System_out, toStringSb(sb));*/
-    
     return (EXIT_SUCCESS);
 }

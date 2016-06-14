@@ -14,52 +14,34 @@
  */
 class Collections {
     static void *currentComparator; // hack to make the Comparator compare function call work
-    template <class T> static bool compareObj(T *a, T *b);
-    template <class T> static bool compareObjComp(T *a, T *b);
-    template <class T> static int32_t compareObjI(T *a, T *b);
-    template <class T> static int32_t compareObjCompI(T *a, T *b);
-    template <class T> static int32_t binarySearchGeneric(ArrayList<T> *list, T *key, int32_t (*c)(T *, T *));
-    template <class T> static void sortGeneric(ArrayList<T> *list, bool (*c)(T *, T *));
+    static bool compareObj(Object *a, Object *b);
+    static bool compareObjComp(Object *a, Object *b);
+    static int32_t compareObjI(Object *a, Object *b);
+    static int32_t compareObjCompI(Object *a, Object *b);
+    template <class T> static int32_t binarySearchGeneric(ArrayList<T> *list, T *key, int32_t (*c)(Object *, Object *));
+    template <class T> static void sortGeneric(ArrayList<T> *list, bool (*c)(Object *, Object *));
 public:
     template <class T> static int32_t binarySearch (ArrayList<T> *list, T *key);
-    template <class T> static int32_t binarySearch (ArrayList<T> *list, T *key, Comparator<T> *c);
+    template <class T> static int32_t binarySearch (ArrayList<T> *list, T *key, Comparator *c);
     template <class T> static void copy (List<T> *dest, List<T> *src);
     template <class T> static void fill (List<T> *list, T *obj);
     template <class T> static void sort(ArrayList<T> *list);
-    template <class T> static void sort(ArrayList<T> *list, Comparator<T> *c);
+    template <class T> static void sort(ArrayList<T> *list, Comparator *c);
 };
 
-template <class T> int32_t Collections::compareObjI(T *a, T *b) {
-    Comparable<Object> *x = (Comparable<Object> *) a;
-    Comparable<Object> *y = (Comparable<Object> *) b;
-    
-    return x->compareTo(y);
-}
-
-template <class T> int32_t Collections::compareObjCompI(T *a, T *b) {
-    return ((Comparator<Object> *) currentComparator)->compare(a, b);
-}
-
-template <class T> bool Collections::compareObj(T *a, T *b) {
-    return compareObjI(a, b) < 0;
-}
-
-template <class T> bool Collections::compareObjComp(T *a, T *b) {
-    return compareObjCompI(a, b) < 0;
-}
-
-template <class T> static int32_t binarySearchGeneric(ArrayList<T> *list, T *key, int32_t (*c)(T *, T *)) {
+template <class T> int32_t Collections::binarySearchGeneric(ArrayList<T> *list, T *key, int32_t (*c)(Object *, Object *)) {
     int32_t lower = 0;
-    int32_t upper = list->_v().size() - 1;
-
+    int32_t upper = list->size() - 1;
+    
     while (lower <= upper) {
         int32_t middle = ((uint32_t)lower + (uint32_t)upper) >> 1;
-        Comparable<T> *middleValue = (Comparable<T> *) list->_v()[middle];
-
-        if (c(middleValue, key) < 0) {
+        Object *middleValue = (Object *) list->get(middle);
+        Object *k = (Object *) key;
+        
+        if (c(middleValue, k) < 0) {
             lower = middle + 1;
         }
-        else if (c(middleValue, key) > 0) {
+        else if (c(middleValue, k) > 0) {
             upper = middle - 1;
         }
         else {
@@ -70,8 +52,19 @@ template <class T> static int32_t binarySearchGeneric(ArrayList<T> *list, T *key
     return -(lower + 1);
 }
 
-template <class T> void Collections::sortGeneric(ArrayList<T> *list, bool (*c)(T *, T *)) {
-    std::stable_sort(list->_v().begin(), list->_v().end(), c);
+template <class T> void Collections::sortGeneric(ArrayList<T> *list, bool (*c)(Object *, Object *)) {
+    int32_t length = list->size();
+    Object **a = new Object*[length];
+    
+    for (int32_t i = 0; i < length; i++) {
+        a[i] = ((Object *) list->get(i));
+    }
+    
+    std::stable_sort(a, a + length, c);
+    
+    for (int32_t i = 0; i < length; i++) {
+        list->set(i, (T *)a[i]);
+    }
 }
 
 /**
@@ -88,7 +81,7 @@ template <class T> void Collections::sortGeneric(ArrayList<T> *list, bool (*c)(T
  * the return value will be >= 0 if and only if the key is found.
  */
 template <class T> int32_t Collections::binarySearch (ArrayList<T> *list, T *key) {
-    binarySearchGeneric(list, key, compareObjI);
+    return binarySearchGeneric(list, key, compareObjI);
 }
 
 /**
@@ -106,9 +99,9 @@ template <class T> int32_t Collections::binarySearch (ArrayList<T> *list, T *key
  * the list are less than the specified key. Note that this guarantees that
  * the return value will be >= 0 if and only if the key is found.
  */
-template <class T> int32_t Collections::binarySearch (ArrayList<T> *list, T *key, Comparator<T> *c) {
+template <class T> int32_t Collections::binarySearch (ArrayList<T> *list, T *key, Comparator *c) {
     currentComparator = c;
-    binarySearchGeneric(list, key, compareObjCompI);
+    return binarySearchGeneric(list, key, compareObjCompI);
 }
 
 /**
@@ -158,7 +151,7 @@ template <class T> void Collections::sort(ArrayList<T> *list) {
  * @param c the comparator to determine the order of the list. A null value
  * indicates that the elements' natural ordering should be used.
  */
-template <class T> void Collections::sort(ArrayList<T> *list, Comparator<T> *c) {
+template <class T> void Collections::sort(ArrayList<T> *list, Comparator *c) {
     currentComparator = c;
     sortGeneric(list, compareObjComp);
 }

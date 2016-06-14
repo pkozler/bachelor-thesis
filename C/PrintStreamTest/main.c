@@ -11,7 +11,7 @@ const int32_t TEST_FUNCTION_COUNT = 19;
 TestFunction *testFunctions;
 
 void usage() {
-    printf("Zadejte platné číslo testovací metody. ({%d} - {%d})", 0, TEST_FUNCTION_COUNT - 1);
+    printf("Zadejte platné číslo testovací metody. (%d - %d)", 0, TEST_FUNCTION_COUNT - 1);
     exit(-1);
 }
 

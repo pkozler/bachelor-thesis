@@ -1,6 +1,7 @@
 #include "TestObject.h"
 
 #include <string>
+#include "System.h"
 
 /**
  * Creates a new object.
@@ -64,7 +65,7 @@ bool TestObject::equals(Object *obj) {
         return false;
     }
 
-    if (sizeof(*this) != sizeof(*obj)) {
+    if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
 
@@ -88,6 +89,6 @@ String *TestObject::toString() {
  * @param o another object
  * @return comparison result
  */
-int32_t TestObject::compareTo(TestObject *o) {
-    return i - o->getI();
+int32_t TestObject::compareTo(Object *o) {
+    return i - ((TestObject *)o)->getI();
 }

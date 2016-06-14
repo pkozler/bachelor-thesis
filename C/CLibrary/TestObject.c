@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define _MAX_TO_STRLEN 256
+#define _MAX_TO_STRLEN 255
 
 /**
  * Creates a new structure.
@@ -85,10 +85,16 @@ bool equalsTo(TestObject *ptr, TestObject *obj) {
  * @return string representation
  */
 String *toStringTo(TestObject *ptr) {
-    char *buf = calloc(_MAX_TO_STRLEN, sizeof(char));
-    sprintf(buf, "TestObject [str=%s, i=%d]", ptr->str, ptr->i);
+    char *str = malloc((_MAX_TO_STRLEN + 1) * sizeof(char));
+    char buf[_MAX_TO_STRLEN];
 
-    return new_String(buf);
+    str[0] = '\0';
+    sprintf(buf, "TestObject [str=%s, i=%d]", ptr->str->s, ptr->i);
+    strcat(str, buf);
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**

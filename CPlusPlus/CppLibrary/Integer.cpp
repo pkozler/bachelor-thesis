@@ -1,6 +1,7 @@
 #include "Integer.h"
 
 #include <string>
+#include <cstdlib>
 
 const int32_t Integer::MAX_VALUE = 2147483647;
 const int32_t Integer::MIN_VALUE = -2147483648;
@@ -34,8 +35,8 @@ int32_t Integer::intValue() {
  * Integer; and a value greater than 0 if this Integer is numerically
  * greater than the argument Integer (signed comparison).
  */
-int32_t Integer::compareTo(Integer *anotherInteger) {
-    return Integer::compare(v, anotherInteger->v);
+int32_t Integer::compareTo(Object *anotherInteger) {
+    return Integer::compare(v, ((Integer *)anotherInteger)->v);
 }
 
 /**
@@ -56,16 +57,16 @@ int32_t Integer::compare(int32_t x, int32_t y) {
  * @param obj the object to compare with.
  * @return true if the objects are the same; false otherwise.
  */
-bool Integer::equals(Integer *obj) {
+bool Integer::equals(Object *obj) {
     if (obj == nullptr) {
         return false;
     }
 
-    if (sizeof(*this) != sizeof(*obj)) {
+    if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
     
-    return (v == obj->v);
+    return (v == ((Integer *)obj)->v);
 }
 
 /**
@@ -94,5 +95,9 @@ String *Integer::toString(int32_t i) {
  * @return the integer value represented by the argument in decimal.
  */
 int32_t Integer::parseInt(String *s) {
-    return std::stoi(s->_s(), nullptr, 10);
+    String *str = s->trim();
+    int32_t value = strtol(str->_s().c_str(), nullptr, 10);
+    delete str;
+    
+    return value;
 }

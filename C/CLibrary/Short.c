@@ -98,8 +98,10 @@ String *Short_toString(int16_t s) {
     str[0] = '\0';
     sprintf(buf, "%hd", s);
     strcat(str, buf);
-
-    return new_String(str);
+    String *st = new_String(str);
+    free(str);
+    
+    return st;
 }
 
 /**
@@ -109,5 +111,9 @@ String *Short_toString(int16_t s) {
  * @return the short value represented by the argument in decimal.
  */
 int16_t Short_parseShort(String *s) {
-    return strtol(s->s, NULL, 10);
+    String *str = trim(s);
+    int16_t value = strtol(str->s, NULL, 10);
+    free(str);
+    
+    return value;
 }

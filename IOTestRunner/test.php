@@ -11,8 +11,8 @@ require_once(ROOT_PATH . "/classes/output-test-runner.class.php");
 exec("chcp 65001");
 
 $testedLibraries = array(
-    new TestedLibrary("C", "C", "", ""),
-    new TestedLibrary("C++", "CPlusPlus", "", ""),
+    new TestedLibrary("C", "C", "ScannerTest/dist/Debug/Cygwin-Windows/scannertest.exe", "PrintStreamTest/dist/Debug/Cygwin-Windows/printstreamtest.exe"),
+    new TestedLibrary("C++", "CPlusPlus", "ScannerTest/dist/Debug/Cygwin-Windows/scannertest.exe", "PrintStreamTest/dist/Debug/Cygwin-Windows/printstreamtest.exe"),
     new TestedLibrary("C#", "CSharp", "ScannerTest/bin/Debug/ScannerTest.exe", "PrintStreamTest/bin/Debug/PrintStreamTest.exe"),
     new TestedLibrary("Free Pascal", "FreePascal", "ScannerTest/project.exe", "PrintStreamTest/project.exe"),
 );

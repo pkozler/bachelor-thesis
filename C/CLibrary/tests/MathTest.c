@@ -12,7 +12,7 @@
  * Simple C Test Suite
  */
 
-const double DEFAULT_EPSILON = 1E-20;
+const double DEFAULT_EPSILON = 1E-10;
 
 /**
  * Tests the abs function with a double value.
@@ -74,15 +74,15 @@ void absTest3() {
 
 void absTest4() {
     int64_t a, b;
-    a = Long_MIN_VALUE + 1L;
+    a = Long_MIN_VALUE + 1LL;
     b = Math_absL(a);
-    assertEqualsL(-9223372036854775807L, b);
+    assertEqualsL(9223372036854775807LL, b);
     a = 0;
     b = Math_absL(a);
-    assertEqualsL(0L, b);
-    a = Long_MAX_VALUE - 1L;
+    assertEqualsL(0LL, b);
+    a = Long_MAX_VALUE - 1LL;
     b = Math_absL(a);
-    assertEqualsL(9223372036854775806L, b);
+    assertEqualsL(9223372036854775806LL, b);
 }
 
 /**

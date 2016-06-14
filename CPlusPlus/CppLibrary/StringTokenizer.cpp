@@ -1,6 +1,41 @@
 #include "StringTokenizer.h"
+#include "System.h"
 
 #include <iostream>
+#include <cstring>
+#include <string.h>
+
+void StringTokenizer::init(std::string str, std::string delim) {
+    size_t pos = str.find_first_of(delim, 0);
+    
+    for (tokensLength = 1; pos != str.npos; tokensLength++) {
+        pos = str.find_first_of(delim, pos + 1);
+    }
+    
+    tokenCounter = 0;
+    tokens = new std::string[tokensLength];
+    
+    char* tmpS = strdup(str.c_str());
+    
+    char *s = strtok(tmpS, delim.c_str());
+    int32_t i = 0;
+    
+    while (s != 0) {
+        tokens[i] = s;
+        i++;
+        s = strtok(NULL, delim.c_str());
+    }
+    
+    tokensLength = i;
+    std::string *tempTokens = new std::string[tokensLength];
+    
+    for (int32_t j = 0; j < tokensLength; j++) {
+        tempTokens[j] = tokens[j];
+    }
+    
+    delete[] tokens;
+    tokens = tempTokens;
+}
 
 /**
  * Constructs a string tokenizer for the specified string.
@@ -8,8 +43,7 @@
  * @param str a string to be parsed.
  */
 StringTokenizer::StringTokenizer(String *str) {
-    this->str = str->_s();
-    this->delim = " \t\n\r\f";
+    init(str->_s(), " \t\n\r\f");
 }
 
 /**
@@ -19,12 +53,11 @@ StringTokenizer::StringTokenizer(String *str) {
  * @param delim the delimiters.
  */
 StringTokenizer::StringTokenizer(String *str, String *delim) {
-    this->str = str->_s();
-    this->delim = delim->_s();
+    init(str->_s(), delim->_s());
 }
 
 StringTokenizer::~StringTokenizer() {
-    // really no code
+    delete[] tokens;
 }
 
 /**
@@ -35,15 +68,7 @@ StringTokenizer::~StringTokenizer() {
  * delimiter set.
  */
 int32_t StringTokenizer::countTokens() {
-    int32_t count = 0;
-    int32_t pos = 0;
-
-    while (pos != std::string::npos) {
-        pos += this->str.find_first_of(delim, pos) + 1;
-        count++;
-    }
-
-    return count;
+    return tokensLength - tokenCounter;
 }
 
 /**
@@ -62,9 +87,8 @@ bool StringTokenizer::hasMoreTokens() {
  * @return the next token from this string tokenizer.
  */
 String *StringTokenizer::nextToken() {
-    int32_t pos = this->str.find_first_of(delim);
-    std::string s = this->str.substr(0, pos);
-    this->str.erase(0, pos);
-
-    return new String(s);
+    String *str = new String(tokens[tokenCounter]);
+    tokenCounter++;
+    
+    return str;
 }

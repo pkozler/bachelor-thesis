@@ -18,6 +18,8 @@
  * Simple C++ Test Suite
  */
 
+int32_t errorsInFunction;
+
 union {
     bool currentScannedBoolean;
     int8_t currentScannedByte;
@@ -29,96 +31,89 @@ union {
     String *currentScannedString;
 } currentScannedValue;
 
-bool _equalsBool(void *a, void *b) {
+bool _testEqualsBool(void *a, void *b) {
     Boolean *x = new Boolean(*((bool *)a));
     Boolean *y = new Boolean(*((bool *)b));
-    delete x, y;
 
     return x->equals(y);
 };
 
-bool _equalsB(void *a, void *b) {
+bool _testEqualsB(void *a, void *b) {
     Byte *x = new Byte(*((int8_t *) a));
     Byte *y = new Byte(*((int8_t *) b));
-    delete x, y;
 
     return x->equals(y);
 };
 
-bool _equalsD(void *a, void *b) {
+bool _testEqualsD(void *a, void *b) {
     Double *x = new Double(*((double *) a));
     Double *y = new Double(*((double *) b));
-    delete x, y;
 
     return x->equals(y);
 };
 
-bool _equalsF(void *a, void *b) {
+bool _testEqualsF(void *a, void *b) {
     Float *x = new Float(*((float *) a));
     Float *y = new Float(*((float *) b));
-    delete x, y;
 
     return x->equals(y);
 };
 
-bool _equalsI(void *a, void *b) {
+bool _testEqualsI(void *a, void *b) {
     Integer *x = new Integer(*((int32_t *) a));
     Integer *y = new Integer(*((int32_t *) b));
-    delete x, y;
 
     return x->equals(y);
 };
 
-bool _equalsL(void *a, void *b) {
+bool _testEqualsL(void *a, void *b) {
     Long *x = new Long(*((int64_t *) a));
     Long *y = new Long(*((int64_t *) b));
-    delete x, y;
 
     return x->equals(y);
 };
 
-bool _equalsS(void *a, void *b) {
+bool _testEqualsS(void *a, void *b) {
     Short *x = new Short(*((int16_t *) a));
     Short *y = new Short(*((int16_t *) b));
-    delete x, y;
 
     return x->equals(y);
 };
 
-bool _equalsStr(void *a, void *b) {
-    return ((String *)a)->equals((String *)b);
+bool _testEqualsStr(void *a, void *b) {
+    return (*((String **) a))->equals(*((String **) b));
 };
 
-String *_toStringBool(void *a) {
+String *_testToStringBool(void *a) {
     return Boolean::toString(*((bool *)a));
 };
 
-String *_toStringB(void *a) {
+String *_testToStringB(void *a) {
     return Byte::toString(*((int8_t *) a));
 };
 
-String *_toStringD(void *a) {
+String *_testToStringD(void *a) {
     return Double::toString(*((double *) a));
 };
 
-String *_toStringF(void *a) {
+String *_testToStringF(void *a) {
     return Float::toString(*((float *) a));
 };
 
-String *_toStringI(void *a) {
+String *_testToStringI(void *a) {
     return Integer::toString(*((int32_t *) a));
 };
 
-String *_toStringL(void *a) {
+String *_testToStringL(void *a) {
     return Long::toString(*((int64_t *) a));
 };
 
-String *_toStringS(void *a) {
+String *_testToStringS(void *a) {
     return Short::toString(*((int16_t *) a));
 };
 
-String *_toStringStr(void *a) {
-    return ((String *) a)->toString();
+String *_testToStringStr(void *a) {
+    return (*((String **) a))->toString();
 };
 
 void _scanBool(Scanner *sc) {
@@ -160,9 +155,9 @@ void _scanStrLn(Scanner *sc) {
 void assertEquals(std::string name, void *expected, Scanner *sc, void (*scan)(Scanner *),
         bool (*equals) (void *, void *), String *(*toString)(void *)) {
     std::cout << "" << std::endl;
-    std::cout << "Testovaná metoda: \"{0}\"" << name << std::endl;
+    std::cout << "Testovaná metoda: \"" << name << "\"" << std::endl;
     void *actual;
-    std::cout << "Očekávaná hodnota: \"{0}\"" << toString(expected)->_s() << std::endl;
+    std::cout << "Očekávaná hodnota: \"" << toString(expected)->_s() << "\"" << std::endl;
 
     scan(sc);
     actual = &currentScannedValue;
@@ -171,45 +166,45 @@ void assertEquals(std::string name, void *expected, Scanner *sc, void (*scan)(Sc
         std::cout << "OK" << std::endl;
     }
     else {
-        std::cout << "FAIL - skutečná hodnota: \"{0}\"" << toString(expected)->_s() << std::endl;
+        std::cout << "FAIL - skutečná hodnota: \"" << toString(actual)->_s() << "\"" << std::endl;
         errorsInFunction++;
     }
 }
 
 void nextAssertEquals(Scanner *sc, String *expected) {
-    assertEquals("next", expected, sc, _scanStr, _equalsStr, _toStringStr);
+    assertEquals("next", &expected, sc, _scanStr, _testEqualsStr, _testToStringStr);
 }
 
 void nextBooleanAssertEquals(Scanner *sc, bool expected) {
-    assertEquals("nextBoolean", &expected, sc, _scanBool, _equalsBool, _toStringBool);
+    assertEquals("nextBoolean", &expected, sc, _scanBool, _testEqualsBool, _testToStringBool);
 }
 
 void nextByteAssertEquals(Scanner *sc, int8_t expected) {
-    assertEquals("nextByte", &expected, sc, _scanB, _equalsB, _toStringB);
+    assertEquals("nextByte", &expected, sc, _scanB, _testEqualsB, _testToStringB);
 }
 
 void nextShortAssertEquals(Scanner *sc, int16_t expected) {
-    assertEquals("nextShort", &expected, sc, _scanS, _equalsS, _toStringS);
+    assertEquals("nextShort", &expected, sc, _scanS, _testEqualsS, _testToStringS);
 }
 
 void nextIntAssertEquals(Scanner *sc, int32_t expected) {
-    assertEquals("nextInt", &expected, sc, _scanI, _equalsI, _toStringI);
+    assertEquals("nextInt", &expected, sc, _scanI, _testEqualsI, _testToStringI);
 }
 
 void nextLongAssertEquals(Scanner *sc, int64_t expected) {
-    assertEquals("nextLong", &expected, sc, _scanL, _equalsL, _toStringL);
+    assertEquals("nextLong", &expected, sc, _scanL, _testEqualsL, _testToStringL);
 }
 
 void nextFloatAssertEquals(Scanner *sc, float expected) {
-    assertEquals("nextFloat", &expected, sc, _scanF, _equalsF, _toStringF);
+    assertEquals("nextFloat", &expected, sc, _scanF, _testEqualsF, _testToStringF);
 }
 
 void nextDoubleAssertEquals(Scanner *sc, double expected) {
-    assertEquals("nextDouble", &expected, sc, _scanD, _equalsD, _toStringD);
+    assertEquals("nextDouble", &expected, sc, _scanD, _testEqualsD, _testToStringD);
 }
 
 void nextLineAssertEquals(Scanner *sc, String *expected) {
-    assertEquals("nextLine", expected, sc, _scanStrLn, _equalsStr, _toStringStr);
+    assertEquals("nextLine", &expected, sc, _scanStrLn, _testEqualsStr, _testToStringStr);
 }
 
 /**
@@ -226,8 +221,8 @@ void scannerTest() {
     nextByteAssertEquals(a, 0);
     nextShortAssertEquals(a, 0);
     nextIntAssertEquals(a, 0);
-    nextLongAssertEquals(a, 0);
-    nextFloatAssertEquals(a, 0.1f);
+    nextLongAssertEquals(a, 0LL);
+    nextFloatAssertEquals(a, 0.1F);
     nextDoubleAssertEquals(a, 0.1);
     nextLineAssertEquals(a, new String(" "));
 }
@@ -340,16 +335,16 @@ void nextLongTest() {
     Scanner *a;
     a = new Scanner(System::in);
 
-    nextLongAssertEquals(a, (int64_t) 0L);
-    nextLongAssertEquals(a, (int64_t) 0L);
-    nextLongAssertEquals(a, (int64_t) 0L);
-    nextLongAssertEquals(a, (int64_t) 1L);
-    nextLongAssertEquals(a, (int64_t) 1L);
-    nextLongAssertEquals(a, (int64_t) - 1L);
-    nextLongAssertEquals(a, (int64_t) 9223372036854775807L);
-    nextLongAssertEquals(a, (int64_t) 9223372036854775807L);
-    nextLongAssertEquals(a, (int64_t) - 9223372036854775807L);
-    nextLongAssertEquals(a, (int64_t) - 9223372036854775808L);
+    nextLongAssertEquals(a, (int64_t) 0LL);
+    nextLongAssertEquals(a, (int64_t) 0LL);
+    nextLongAssertEquals(a, (int64_t) 0LL);
+    nextLongAssertEquals(a, (int64_t) 1LL);
+    nextLongAssertEquals(a, (int64_t) 1LL);
+    nextLongAssertEquals(a, (int64_t) - 1LL);
+    nextLongAssertEquals(a, (int64_t) 9223372036854775807LL);
+    nextLongAssertEquals(a, (int64_t) 9223372036854775807LL);
+    nextLongAssertEquals(a, (int64_t) - 9223372036854775807LL);
+    nextLongAssertEquals(a, (int64_t) - 9223372036854775808LL);
 }
 
 /**

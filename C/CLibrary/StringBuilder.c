@@ -36,7 +36,7 @@ void delete_StringBuilder(StringBuilder *ptr) {
 StringBuilder *append(StringBuilder *ptr, String *str) {
     if (ptr->count + str->len >= ptr->capacity) {
         ptr->capacity += str->len * _STR_RESIZE_COEF;
-        ptr->buffer = realloc(ptr->buffer, ptr->capacity);
+        ptr->buffer = realloc(ptr->buffer, ptr->capacity * sizeof (char));
     }
 
     strcat(ptr->buffer, str->s);

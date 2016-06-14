@@ -14,7 +14,7 @@ typedef union {
  *
  * @author Petr Kozler (A13B0359P)
  */
-class Double : public Comparable<Double> {
+class Double : public Comparable {
     double v;
     static int64_t getNegativeZeroBits();
 public:
@@ -60,9 +60,9 @@ public:
     
     Double(double value);
     double doubleValue();
-    int32_t compareTo(Double *anotherDouble);
+    int32_t compareTo(Object *anotherDouble);
     static int32_t compare(double d1, double d2);
-    bool equals(Double *obj);
+    bool equals(Object *obj);
     String *toString();
     static String *toString(double d);
     static double parseDouble(String *s);

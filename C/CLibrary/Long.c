@@ -98,8 +98,10 @@ String *Long_toString(int64_t l) {
     str[0] = '\0';
     sprintf(buf, "%lld", l);
     strcat(str, buf);
-
-    return new_String(str);
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**
@@ -110,5 +112,9 @@ String *Long_toString(int64_t l) {
  * @return the long represented by the argument in decimal.
  */
 int64_t Long_parseLong(String *s) {
-    return strtol(s->s, NULL, 10);
+    String *str = trim(s);
+    int64_t value = strtoll(str->s, NULL, 10);
+    free(str);
+    
+    return value;
 }

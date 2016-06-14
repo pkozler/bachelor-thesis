@@ -94,7 +94,7 @@ void Test::assertEquals(char expected, char actual) {
 }
 
 void Test::assertEquals(std::string expected, std::string actual) {
-    if (!expected.compare(actual)) {
+    if (expected.compare(actual)) {
         std::cout << "%TEST_FAILED% time=0 testname=" << testList[counter].testFunctionName
                 << " (" << testFileName << ") message=Expected: " 
                 << expected << "; Actual: " << actual << std::endl;
@@ -111,7 +111,7 @@ void Test::registerTest(void (*testFunction)(), std::string testFunctionName) {
 }
 
 void Test::runTests() {
-    std::cout << "%SUITE_STARTING% MathTest" << std::endl;
+    std::cout << "%SUITE_STARTING% " << testFileName << std::endl;
     std::cout << "%SUITE_STARTED%" << std::endl;
 
     int32_t count = testList.size();

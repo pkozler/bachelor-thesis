@@ -44,7 +44,11 @@ template <class E> ArrayList<E>::ArrayList() {}
  * @param c the collection whose elements are to be placed into this list
  */
 template <class E> ArrayList<E>::ArrayList(ArrayList<E> *c) {
-    v = c->v;
+    int32_t length = c->size();
+    
+    for (int32_t i = 0; i < length; i++) {
+        add(c->get(i));
+    }
 }
 
 template <class E> ArrayList<E>::~ArrayList() {
@@ -70,7 +74,7 @@ template <class E> bool ArrayList<E>::add(E *e) {
  * @param element element to be inserted
  */
 template <class E> void ArrayList<E>::add(int32_t index, E *element) {
-    v[index] = element;
+    v.insert(v.begin() + index, element);
 }
 
 /**
@@ -134,17 +138,18 @@ template <class E> void ArrayList<E>::clear() {
  */
 template <class E> String *ArrayList<E>::toString() {
     int32_t length = v.size();
-    std::ostringstream oss("[");
+    std::ostringstream oss("");
+    oss << "[";
 
     if (length > 0) {
-        String *str = ((Object *)v[0])->toString();
-        oss << str;
+        String *str = v[0] == nullptr ? new String("null") : ((Object *)v[0])->toString();
+        oss << str->_s();
         delete str;
     }
 
     for (int32_t i = 1; i < length; i++) {
-        String *str = ((Object *)v[i])->toString();
-        oss << ", " << str;
+        String *str = v[i] == nullptr ? new String("null") : ((Object *)v[i])->toString();
+        oss << ", " << str->_s();
         delete str;
     }
 

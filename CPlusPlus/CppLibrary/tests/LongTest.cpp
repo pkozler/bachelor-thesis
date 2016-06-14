@@ -132,13 +132,13 @@ void equalsTest() {
 void toStringTest() {
     Long *a;
     String *b;
-    a = new Long((int64_t) 10000000000L);
+    a = new Long((int64_t) 10000000000LL);
     b = a->toString();
     Test::assertEquals("10000000000", b->_s());
     a = new Long((int64_t) 0);
     b = a->toString();
     Test::assertEquals("0", b->_s());
-    a = new Long((int64_t) - 10000000000L);
+    a = new Long((int64_t) - 10000000000LL);
     b = a->toString();
     Test::assertEquals("-10000000000", b->_s());
 }
@@ -150,13 +150,13 @@ void toStringTest() {
 void toStringTest2() {
     int64_t a;
     String *b;
-    a = (int64_t) 10000000000L;
+    a = (int64_t) 10000000000LL;
     b = Long::toString(a);
     Test::assertEquals("10000000000", b->_s());
     a = (int64_t) 0;
     b = Long::toString(a);
     Test::assertEquals("0", b->_s());
-    a = (int64_t) - 10000000000L;
+    a = (int64_t) - 10000000000LL;
     b = Long::toString(a);
     Test::assertEquals("-10000000000", b->_s());
 }
@@ -168,11 +168,11 @@ void toStringTest2() {
 void parseLongTest() {
     int64_t a;
     a = Long::parseLong(new String("10000000000"));
-    Test::assertEquals(10000000000, a);
+    Test::assertEquals(10000000000LL, a);
     a = Long::parseLong(new String("0"));
-    Test::assertEquals((int64_t)0, a);
+    Test::assertEquals((int64_t)0LL, a);
     a = Long::parseLong(new String("-10000000000"));
-    Test::assertEquals(-10000000000, a);
+    Test::assertEquals(-10000000000LL, a);
 }
 
 int main(int argc, char** argv) {

@@ -16,7 +16,8 @@ void usage() {
 }
 
 int main(int argc, char** argv) {
-    testFunctions = new TestFunction[] {
+    errorsInFunction = 0;
+    testFunctions = new TestFunction[TEST_FUNCTION_COUNT] {
         scannerTest,
         nextTest,
         nextBooleanTest,
@@ -30,8 +31,7 @@ int main(int argc, char** argv) {
     };
     int32_t n;
 
-    if (argc < 2)
-    {
+    if (argc < 2) {
         usage();
     }
 

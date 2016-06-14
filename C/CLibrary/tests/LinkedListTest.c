@@ -52,7 +52,7 @@ void linkedListTest2() {
     TestObject **e;
     // creating the list from an empty list
     a = new_LinkedList();
-    b = new_LinkedList(a);
+    b = new_LinkedListAddAll(a);
     e = malloc(length * sizeof(TestObject *));
     d = equalsList(b, sizeLl, getLl, toList(e, length), sizeLl, getLl, equalsTo);
     assertEqualsBool(true, d);
@@ -60,7 +60,7 @@ void linkedListTest2() {
     a = new_LinkedList();
     c = new_TestObject(new_String("first"), 1);
     addLl(a, c);
-    b = new_LinkedList(a);
+    b = new_LinkedListAddAll(a);
     e = malloc(length2 * sizeof(TestObject *));
     e[0] = new_TestObject(new_String("first"), 1);
     d = equalsList(b, sizeLl, getLl, toList(e, length2), sizeLl, getLl, equalsTo);
@@ -77,7 +77,7 @@ void linkedListTest2() {
     addLl(a, c);
     c = new_TestObject(new_String("third"), 3);
     addLl(a, c);
-    b = new_LinkedList(a);
+    b = new_LinkedListAddAll(a);
     d = equalsList(b, sizeLl, getLl, toList(e, length3), sizeLl, getLl, equalsTo);
     assertEqualsBool(true, d);
 }
@@ -109,7 +109,7 @@ void addTest() {
     d = malloc(length2 * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("first"), 1);
     d[1] = new_TestObject(new_String("second"), 2);
-    c = equalsList(a, sizeLl, getLl, toList(d, length), sizeLl, getLl, equalsTo);
+    c = equalsList(a, sizeLl, getLl, toList(d, length2), sizeLl, getLl, equalsTo);
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("first"), 2);
     addLl(a, b);
@@ -117,7 +117,7 @@ void addTest() {
     d[0] = new_TestObject(new_String("first"), 1);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("first"), 2);
-    c = equalsList(a, sizeLl, getLl, toList(d, length), sizeLl, getLl, equalsTo);
+    c = equalsList(a, sizeLl, getLl, toList(d, length3), sizeLl, getLl, equalsTo);
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("second"), 1);
     addLl(a, b);
@@ -126,7 +126,7 @@ void addTest() {
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("first"), 2);
     d[3] = new_TestObject(new_String("second"), 1);
-    c = equalsList(a, sizeLl, getLl, toList(d, length), sizeLl, getLl, equalsTo);
+    c = equalsList(a, sizeLl, getLl, toList(d, length4), sizeLl, getLl, equalsTo);
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("first"), 1);
     addLl(a, b);
@@ -263,17 +263,17 @@ void getTest() {
     b = new_TestObject(new_String("first"), 1);
     addLl(a, b);
     b = getLl(a, 0);
-    c = equalsList(b, sizeLl, getLl, new_TestObject(new_String("first"), 1), sizeLl, getLl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("first"), 1));
     assertEqualsBool(true, c);
     // getting an element from the beginning (more elements in the list)
     b = new_TestObject(new_String("second"), 2);
     addLl(a, b);
     b = getLl(a, 0);
-    c = equalsList(b, sizeLl, getLl, new_TestObject(new_String("first"), 1), sizeLl, getLl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("first"), 1));
     assertEqualsBool(true, c);
     // getting an element from the end
     b = getLl(a, 1);
-    c = equalsList(b, sizeLl, getLl, new_TestObject(new_String("second"), 2), sizeLl, getLl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("second"), 2));
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("third"), 3);
     addLl(a, b);
@@ -283,11 +283,11 @@ void getTest() {
     addLl(a, b);
     // getting an element from the beginning
     b = getLl(a, 0);
-    c = equalsList(b, sizeLl, getLl, new_TestObject(new_String("first"), 1), sizeLl, getLl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("first"), 1));
     assertEqualsBool(true, c);
     // getting an element from the end
     b = getLl(a, 4);
-    c = equalsList(b, sizeLl, getLl, new_TestObject(new_String("fifth"), 5), sizeLl, getLl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("fifth"), 5));
     assertEqualsBool(true, c);
 }
 

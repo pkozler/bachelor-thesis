@@ -15,7 +15,7 @@
 ArrayList *toList(TestObject **array, int32_t length) {
     ArrayList *list = new_ArrayList();
 
-    int i;
+    int32_t i;
     for (i = 0; i < length; i++) {
         addAl(list, array[i]);
     }
@@ -53,7 +53,7 @@ void arrayListTest2() {
     TestObject **e;
     // creating the list from an empty list
     a = new_ArrayList();
-    b = new_ArrayList(a);
+    b = new_ArrayListAddAll(a);
     e = malloc(length * sizeof(TestObject *));
     d = equalsList(b, sizeAl, getAl, toList(e, length), sizeAl, getAl, equalsTo);
     assertEqualsBool(true, d);
@@ -61,7 +61,7 @@ void arrayListTest2() {
     a = new_ArrayList();
     c = new_TestObject(new_String("first"), 1);
     addAl(a, c);
-    b = new_ArrayList(a);
+    b = new_ArrayListAddAll(a);
     e = malloc(length2 * sizeof(TestObject *));
     e[0] = new_TestObject(new_String("first"), 1);
     d = equalsList(b, sizeAl, getAl, toList(e, length2), sizeAl, getAl, equalsTo);
@@ -78,7 +78,7 @@ void arrayListTest2() {
     addAl(a, c);
     c = new_TestObject(new_String("third"), 3);
     addAl(a, c);
-    b = new_ArrayList(a);
+    b = new_ArrayListAddAll(a);
     d = equalsList(b, sizeAl, getAl, toList(e, length3), sizeAl, getAl, equalsTo);
     assertEqualsBool(true, d);
 }
@@ -110,7 +110,7 @@ void addTest() {
     d = malloc(length2 * sizeof(TestObject *));
     d[0] = new_TestObject(new_String("first"), 1);
     d[1] = new_TestObject(new_String("second"), 2);
-    c = equalsList(a, sizeAl, getAl, toList(d, length), sizeAl, getAl, equalsTo);
+    c = equalsList(a, sizeAl, getAl, toList(d, length2), sizeAl, getAl, equalsTo);
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("first"), 2);
     addAl(a, b);
@@ -118,7 +118,7 @@ void addTest() {
     d[0] = new_TestObject(new_String("first"), 1);
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("first"), 2);
-    c = equalsList(a, sizeAl, getAl, toList(d, length), sizeAl, getAl, equalsTo);
+    c = equalsList(a, sizeAl, getAl, toList(d, length3), sizeAl, getAl, equalsTo);
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("second"), 1);
     addAl(a, b);
@@ -127,7 +127,7 @@ void addTest() {
     d[1] = new_TestObject(new_String("second"), 2);
     d[2] = new_TestObject(new_String("first"), 2);
     d[3] = new_TestObject(new_String("second"), 1);
-    c = equalsList(a, sizeAl, getAl, toList(d, length), sizeAl, getAl, equalsTo);
+    c = equalsList(a, sizeAl, getAl, toList(d, length4), sizeAl, getAl, equalsTo);
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("first"), 1);
     addAl(a, b);
@@ -264,17 +264,17 @@ void getTest() {
     b = new_TestObject(new_String("first"), 1);
     addAl(a, b);
     b = getAl(a, 0);
-    c = equalsList(b, sizeAl, getAl, new_TestObject(new_String("first"), 1), sizeAl, getAl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("first"), 1));
     assertEqualsBool(true, c);
     // getting an element from the beginning (more elements in the list)
     b = new_TestObject(new_String("second"), 2);
     addAl(a, b);
     b = getAl(a, 0);
-    c = equalsList(b, sizeAl, getAl, new_TestObject(new_String("first"), 1), sizeAl, getAl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("first"), 1));
     assertEqualsBool(true, c);
     // getting an element from the end
     b = getAl(a, 1);
-    c = equalsList(b, sizeAl, getAl, new_TestObject(new_String("second"), 2), sizeAl, getAl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("second"), 2));
     assertEqualsBool(true, c);
     b = new_TestObject(new_String("third"), 3);
     addAl(a, b);
@@ -284,11 +284,11 @@ void getTest() {
     addAl(a, b);
     // getting an element from the beginning
     b = getAl(a, 0);
-    c = equalsList(b, sizeAl, getAl, new_TestObject(new_String("first"), 1), sizeAl, getAl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("first"), 1));
     assertEqualsBool(true, c);
     // getting an element from the end
     b = getAl(a, 4);
-    c = equalsList(b, sizeAl, getAl, new_TestObject(new_String("fifth"), 5), sizeAl, getAl, equalsTo);
+    c = equalsTo(b, new_TestObject(new_String("fifth"), 5));
     assertEqualsBool(true, c);
 }
 

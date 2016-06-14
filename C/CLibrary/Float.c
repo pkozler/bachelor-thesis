@@ -153,8 +153,10 @@ String *Float_toString(float f) {
     str[0] = '\0';
     sprintf(buf, "%G", f);
     strcat(str, buf);
-
-    return new_String(str);
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**
@@ -165,5 +167,9 @@ String *Float_toString(float f) {
  * @return the float value represented by the string argument.
  */
 float Float_parseFloat(String *s) {
-    return strtof(s->s, NULL);
+    String *str = trim(s);
+    float value = strtof(str->s, NULL);
+    free(str);
+    
+    return value;
 }

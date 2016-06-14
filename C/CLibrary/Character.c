@@ -95,13 +95,13 @@ String *toStringC(Character *ptr) {
  */
 String *Character_toString(char c) {
     char *str = malloc(_MAX_CHAR_STRLEN + 1);
-    char buf[_MAX_CHAR_STRLEN];
 
-    str[0] = '\0';
-    sprintf(buf, "%c", c);
-    strcat(str, buf);
-
-    return new_String(str);
+    str[0] = c;
+    str[1] = '\0';
+    String *s = new_String(str);
+    free(str);
+    
+    return s;
 }
 
 /**

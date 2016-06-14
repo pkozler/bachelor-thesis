@@ -132,13 +132,13 @@ void equalsTest() {
 void toStringTest() {
     Long *a;
     String *b;
-    a = new_Long((int64_t) 10000000000L);
+    a = new_Long((int64_t) 10000000000LL);
     b = toStringL(a);
     assertEqualsStr("10000000000", b->s);
     a = new_Long((int64_t) 0);
     b = toStringL(a);
     assertEqualsStr("0", b->s);
-    a = new_Long((int64_t) - 10000000000L);
+    a = new_Long((int64_t) - 10000000000LL);
     b = toStringL(a);
     assertEqualsStr("-10000000000", b->s);
 }
@@ -150,13 +150,13 @@ void toStringTest() {
 void toStringTest2() {
     int64_t a;
     String *b;
-    a = (int64_t) 10000000000L;
+    a = (int64_t) 10000000000LL;
     b = Long_toString(a);
     assertEqualsStr("10000000000", b->s);
     a = (int64_t) 0;
     b = Long_toString(a);
     assertEqualsStr("0", b->s);
-    a = (int64_t) - 10000000000L;
+    a = (int64_t) - 10000000000LL;
     b = Long_toString(a);
     assertEqualsStr("-10000000000", b->s);
 }
@@ -168,11 +168,11 @@ void toStringTest2() {
 void parseLongTest() {
     int64_t a;
     a = Long_parseLong(new_String("10000000000"));
-    assertEqualsL(10000000000, a);
+    assertEqualsL(10000000000LL, a);
     a = Long_parseLong(new_String("0"));
-    assertEqualsL((int64_t)0, a);
+    assertEqualsL(0LL, a);
     a = Long_parseLong(new_String("-10000000000"));
-    assertEqualsL(-10000000000, a);
+    assertEqualsL(-10000000000LL, a);
 }
 
 int main(int argc, char** argv) {
