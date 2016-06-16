@@ -18,10 +18,10 @@
             System_.out_.println(o1.equals(o3));
             System_.out_.println(s1);*/
 
-            Scanner sc = new Scanner(System_.in_);
+            /*Scanner sc = new Scanner(System_.in_);
 
             System_.out_.println(sc.next());
-            System_.out_.println(sc.nextLine());
+            System_.out_.println(sc.nextLine());*/
         }
     }
 }

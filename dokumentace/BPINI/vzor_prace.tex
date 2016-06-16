@@ -355,7 +355,7 @@ Modul \texttt{System} definuje základní procedury pro vstupní a výstupní op
 Procedury mohou mít jeden nebo dva parametry. V~prvním případě parametr představuje proměnnou, do které má být vstup načten či která má být vypsána na výstup. V~druhém případě je první parametr odkaz na soubor, se kterým se má pracovat místo standardního vstupu nebo výstupu \cite{pas-guide-read, pas-guide-write, pas-guide-readln, pas-guide-writeln}.
 
 \chapter{Implementace knihoven}
-Tato kapitola se věnuje způsobu, jakým byly implementovány jednotlivé typy knihoven s~rozhraním v~duchu jazyka Java do ostatních popisovaných jazyků.
+Tato kapitola popisuje způsoby, jakými byly implementovány jednotlivé typy knihoven s~rozhraním v~duchu jazyka Java do ostatních popisovaných jazyků.
 
 \section{Pravidla při implementaci}
 Při implementaci knihoven byla (v~rámci možností každého z~jazyků) za účelem zpřehlednění kódu a maximální podobnosti s~knihovnami jazyka Java dodržována následující pravidla:
@@ -421,7 +421,7 @@ Uvedené obalové metody a funkce pro manipulaci s~poli byly ve všech použitý
 Výčet naprogramovaných metod nebo funkcí, které slouží jako obdoby metod třídy \texttt{String} z~Javy, je následující: \texttt{compareTo()}, \texttt{equals()}, \texttt{substring()}, \texttt{indexOf()}, \texttt{length()}, \texttt{trim()}, \texttt{toLowerCase()}, \texttt{toUpperCase()}, \texttt{charAt()}, \texttt{replace()}, \texttt{startsWith()}, \texttt{endsWith()}, \texttt{isEmpty()} a \texttt{toString()}. Konstruktory (resp. funkce pro vytváření struktur v~jazyce C) podporují instancování třídy/struktury \texttt{String} buď z~polí bajtů (kde číselné hodnoty jednotlivých bajtů reprezentují ASCII hodnoty znaků řetězce na příslušné pozici), nebo ze standardní reprezentace řetězce v~daném jazyce (pole hodnot typu \texttt{char} v~C, instance třídy \texttt{std::string} v~C++ instance třídy \texttt{System.String} v~C\# a hodnota typu \texttt{AnsiString} v~Pascalu).\par
 Další částečně implementovanou knihovnou je \texttt{StringTokenizer}, sloužící k~rozdělování řetězců na podřetězce podle určených oddělovačů, kde byly naprogramovány metody, resp. funkce \texttt{countTokens()}, \texttt{hasMoreTokens()} a \texttt{nextToken()}. Konstruktory umožňují rozdělení řetězce buď podle zadané množiny oddělovačů, nebo při jejím neuvedení podle množiny výchozí (tj. podle bílých znaků).\par
 Poslední vytvořenou knihovnou pro manipulaci se seznamy je \texttt{String\-Builder}, která je určena k~postupnému sestavování řetězce ze zadaných podřetězců, s~metodami/funkcemi \texttt{append()} a \texttt{toString()}.\par
-Pro všechny použité jazyky zde bylo ve velkém počtu případů možné využít stejně nebo podobně fungujících vestavěných metod nebo funkcí daného jazyka pro napodobení metod třídy \texttt{String}. Třídu \texttt{System.Text.String\-Builder} jazyka C\# bylo možné použít beze změny, téměř beze změny pak i třídu \texttt{std::ostringstream} jazyka C++. Implementace od základu (jen s~použitím funkcí pro alokaci a realokaci paměti) byla nutná v~jazycích C a Pascal. Ne zcela triviální kód vyžadovala ve většině jazyků třída \texttt{String\-Tokenizer}. Výjimkou byl jazyk C\#, kde byla implementace usnadněna díky dostupnosti metody \texttt{Split()} třídy \texttt{String} -- s~podřetězci pak bylo možno zacházet jako s~prvky pole. V~jazycích C a C++ byla možná implementace s~podporou funkcí jako \texttt{strtok()}, resp. \texttt{string::find\_first\_of()}.
+Pro všechny použité jazyky zde bylo ve velkém počtu případů možné využít stejně nebo podobně fungujících vestavěných metod nebo funkcí daného jazyka pro napodobení metod třídy \texttt{String}. Třídu \texttt{System.Text.String\-Builder} jazyka C\# bylo možné použít beze změny, téměř beze změny pak i třídu \texttt{std::ostringstream} jazyka C++. Implementace od základu (jen s~použitím funkcí pro alokaci a realokaci paměti) byla nutná v~jazycích C a Pascal. Ne zcela triviální kód vyžadovala ve většině jazyků třída \texttt{String\-Tokenizer}. Výjimkou byl jazyk C\#, kde byla implementace usnadněna díky dostupnosti metody \texttt{Split()} třídy \texttt{String} -- s~podřetězci pak bylo možno zacházet jako s~prvky pole. V~jazycích C a C++ byla možná implementace s~podporou funkcí jako je \texttt{strtok()}.
 
 \section{Třída pro matematické funkce}
 Z~metod pro matematické funkce poskytovaných v~jazyce Java jako členy třídy \texttt{Math} podporují obalové knihovny následující metody: \texttt{abs()}, \texttt{max()}, \texttt{min()}, \texttt{pow()}, \texttt{sqrt()}, \texttt{log()}, \texttt{log10()}, metody pro goniometrické funkce \texttt{sin()}, \texttt{cos()}, \texttt{tan()}, \texttt{asin()}, \texttt{acos()}, \texttt{atan()} a metodu pro zaokrouhlování \texttt{round()}. V~případě metod přetížených pro práci s~hodnotami různých číselných datových typů byla implementována podpora všech. Kromě uvedených metod obsahují knihovny definice základních matematických konstant $\pi$ a $e$. Vytvoření matematické knihovny bylo ve všech jazycích poměrně triviální vzhledem k~podpoře uvedených matematických funkcí prostřednictvím vestavěných funkcí nebo metod vestavěných tříd.
@@ -429,47 +429,77 @@ Z~metod pro matematické funkce poskytovaných v~jazyce Java jako členy třídy
 \section{Třídy pro uživatelský vstup a výstup}
 Naprogramované knihovny napodobující třídu \texttt{Scanner} jazyka Java pro načítání uživatelského vstupu obsahují metody s~názvem začínajícím řetězcem \uv{next}. Jejich funkcionalita byla ve všech jazycích implementována podobným způsobem -- uživatelský vstup je vnitřně načítán po řádcích, přičemž aktuálně načtená řádka je uložena jako řetězec a při volání libovolné metody/funkce s~výjimkou \texttt{nextLine()} je prohledána na výskyt nebílých znaků. První řetězec tvořený výhradně nebílými znaky je odstraněn z~uloženého řetězce a v~případě metody nebo funkce \texttt{next()} je vrácen jako načtený token. V~ostatních metodách/funkcích s~výjimkou \texttt{nextLine()} je před navrácením převeden na hodnotu odpovídajícího datového typu. Metoda/funkce \texttt{nextLine()} vrátí zbytek načtené řádky. Pokud načtená řádka neobsahuje další tokeny, při dalším zavolání jakékoliv metody/funkce \uv{next} je nejprve načtena nová řádka z~uživatelského vstupu.\par
 Pro implementaci obalových metod \texttt{print()} a \texttt{println()} pro výpis hodnot různých datových typů na obrazovku, které napodobují funkcionalitu stejnojmenných metod třídy \texttt{PrintStream} jazyka Java, bylo ve všech jazycích možné s~minimem dodatečného kódu využít vestavěné knihovny -- funkci \texttt{printf()} v~jazyce C (s~doplněním řetězce \uv{\textbackslash n} v~případě výpisů s~ukončením řádky), funkci \texttt{std::cout} v~jazyce C++ (spolu s~funkcí \texttt{std::endl} pro výpisy s~ukončením řádky), metody \texttt{Write()} a \texttt{WriteLine()} třídy \texttt{System.Console} v~jazyce C\# a funkce \texttt{Write()} a \texttt{WriteLn()} v~jazyce Pascal.\par
-V případě výpisů číselných hodnot byl zvolen formát pro anglický jazyk (s tečkou \uv{.} jako desetinným oddělovačem). Formátování výstupu implementovaných subrutin se přesto může mírně lišit od jejich předloh v~jazyce Java, to však pro účely této práce není považováno za zásadní nedostatek.\par
+V~případě výpisů číselných hodnot byl zvolen formát pro anglický jazyk (s~tečkou \uv{.} jako desetinným oddělovačem). Formátování výstupu implementovaných subrutin se přesto může mírně lišit od jejich předloh v~jazyce Java, to však pro účely této práce není považováno za zásadní nedostatek.\par
 Po vzoru Javy byly ve všech jazycích s~výjimkou C vytvořeny kromě tříd \texttt{Scanner} a \texttt{PrintStream} taktéž třídy \texttt{InputStream} a \texttt{System}. Třída \texttt{InputStream} nemá implementovánu žádnou funkcionalitu, je určena budoucím účelům a slouží jako typ objektu předávaného v~konstruktoru třídy \texttt{Scanner} podle předlohy jazyka Java. Ve třídě \texttt{System} byly vytvořeny pouze dva statické atributy \texttt{in} a \texttt{out}, které uchovávají instance třídy \texttt{InputStream}, resp. \texttt{PrintStream} a umožňují tak vytváření instance třídy \texttt{Scanner} a volání metod pro výstup přesně v~duchu jazyka Java. Náhradou v~jazyce C jsou instance prázdných struktur \texttt{InputStream} a \texttt{PrintStream} uložené v~globálních proměnných \texttt{System\_in} a \texttt{System\_out}.
 
 \chapter{Vytvoření aplikace pro správu zdrojového kódu}
-Tato kapitola popisuje vytvoření Java aplikace sloužící ke správě zdrojových kódů implementovaných knihoven ukládaných do datových souborů ve formátu XML.
+Tato kapitola se věnuje vytvoření desktopové aplikace sloužící ke správě zdrojových kódů implementovaných knihoven.
 
-\section{Návrh aplikace}
+\section{Analýza}
+Aplikace bude vytvořena pro běh na platformě Java ve verzi 1.8 (č. aktualizace 60 a vyšší).
 
-Programový kód aplikace je strukturován do tří vrstev s využitím MVC architektury. Datová vrstva představuje výkonné jádro aplikace určené pro manipulaci s~XML soubory. Další dvě vrstvy tvoří uživatelské rozhraní -- jedná se o~prezentační vrstvu popisující jednotlivé grafické komponenty rozhraní spolu s~jejich rozložením a dále aplikační vrstvu pro obsluhu uživatelem vyvolaných událostí nad těmito komponentami a volání požadovaných operací jádra aplikace. Struktura balíků aplikace je následující:
-\begin{enumerate}
-\item{\texttt{application} -- obsahuje podbalíky s~\texttt{.java} soubory programového kódu aplikace a \texttt{.java} soubor s~třídou Main, která je spouštěcí třídou programu}
-\begin{enumerate}
-\item{\texttt{application.config} -- obsahuje třídu s~konfiguračními konstantymi programu}
-\item{\texttt{application.core} -- obsahuje obecné rozhraní pro napojení obsluhy GUI na jádro}
-\begin{enumerate}
-\item{\texttt{application.core.xml} -- obsahuje třídy jádra pro operace s~XML soubory}
-\end{enumerate}
-\item{\texttt{application.dialogs} -- obsahuje podpůrné třídy pro vytváření dialogů GUI}
-\end{enumerate}
-\item{\texttt{resources} -- obsahuje podbalíky s~ostatními soubory nezbytnými pro běh aplikace}
-\begin{enumerate}
-\item{\texttt{resources.fxml} -- obsahuje FXML dokument pro definici ovládacích prvků GUI}
-\item{\texttt{resources.strings} -- obsahuje texty popisů ovládacích prvků GUI v~češtině (možno doplnit o~další jazyky)}
-\item{\texttt{resources.styles} -- obsahuje styly aplikované na ovládací prvky GUI}
-\end{enumerate}
-\end{enumerate}
-Podrobný návrh aplikace z~hlediska vzájemné závislostí tříd znázorňuje UML diagram tříd v~příloze \ref{sec:uml-diagram}.
+\subsection{Případy užití}
+Cílem vytvoření aplikace je umožnit načítání, zobrazování, úpravu a ukládání zdrojových kódů obalových knihoven podle zvoleného programovacího jazyka a zvolené Java třídy, jejíž rozhraní je předlohou pro vytvoření dané knihovny. Aplikace bude fungovat ve dvou režimech, mezi kterými bude možné se přepínat. Jedná se o~režim zobrazení kódu a režim úpravy kódu.\par
+V~prvním jmenovaném režimu bude možné přidávat, upravovat a měnit položky v~seznamech jazyků a tříd. Při označení položky v~obou seznamech bude zobrazen zdrojový kód příslušné knihovny. Po přepnutí do druhého režimu bude zpřístupněna úprava aktuálně zobrazeného zdrojového kódu. To umožní aktualizaci uložených knihoven dle potřeby. Diagram případů užití aplikace se nachází v~příloze \ref{sec:uc-diagram}.
 
-\section{Datová vrstva}
+\subsection{Struktura aplikace}
+Programový kód vytvořené aplikace bude strukturován podle MVC (Model-View-Controller) architektury. Model představuje aplikační vrstvu, která tvoří jádro aplikace určené ke čtení a manipulaci s~daty. View a Controller tvoří grafické uživatelské rozhraní, které představuje prezentační vrstvu. View označuje kód aplikace popisující jednotlivé komponenty uživatelského rozhraní. Controller pak obsahuje metody pro obsluhu uživatelem vyvolaných událostí nad těmito komponentami a volání požadovaných operací jádra aplikace.
 
-Data aplikace sestávají z~jednoho hlavního XML souboru \texttt{main.xml} a z~adresáře \texttt{classes}. Soubor \texttt{main.xml} obsahuje dvojici seznamů -- seznam podporovaných jazyků (pro účely práce tedy C, C++, C\# a Pascal) a seznam v~nich naprogramovaných knihoven. Složka \texttt{classes} obsahuje XML soubory knihoven odpovídající seznamu knihoven v~hlavním souboru. Každý z~těchto souborů pak obsahuje element s~vytvořeným kódem pro každý z~jazyků uvedených v~seznamu hlavního souboru datové vrstvy.\par
-Základ aplikace představuje třída \texttt{application.core.xml.Xml\-Manager} pro vytváření, čtení, úpravu a odstraňování datových XML souborů knihoven a odpovídajících záznamů v~hlavním XML souboru. Názvy XML elementů definuje výčtový typ \texttt{application.core.xml.XmlKeyword}. Hlavní třída datové vrstvy \texttt{XmlManager} implementuje rozhraní \texttt{application.core\-.IDataManager}, pomocí něhož je ke třídě přistupováno ve třídě obsluhy GUI. Tento návrh umožňuje případný snadný přechod na jinou datovou vrstvu (například pro ukládání dat do databáze).
+\subsection{Vstup a výstup}
+Aplikace bude ukládat a načítat seznamy Java tříd, programovacích jazyků a zdrojové kódy knihoven do datových souborů ve formátu XML. Tento způsob byl zvolen jako vhodný kompromis mezi použitím databázového systému, které by bylo vzhledem k~jednoduchosti hierarchie dat zbytečně komplikované a neumožňovalo by jednoduché přímé zobrazení a editaci dat, a ukládáním do prostých textových souborů, které by vyžadovalo vlastní návrh formátu dat od základu. Použití XML formátu vyžaduje pouze určení struktury XML souborů a umožňuje zobrazení a úpravu dat v~čitelné formě v~textovém editoru. Jak pro čtení, tak pro zápis dat v~XML formátu bude použita technologie DOM (Document Object Model), která umožňuje v~kódu programu přistupovat k~obsahu XML dokumentu jako k~elementům uspořádaným ve stromové struktuře.
 
-\section{Prezentační vrstva}
+\subsection{Grafické uživatelské rozhraní}
+Součástí aplikace bude jednoduché grafické uživatelské rozhraní. Pro jeho vytvoření bude použita vestavěná grafická knihovna JavaFX. Možnou alternativou by mohla být starší grafická knihovna Swing, pro aplikaci MVC architektury se však JavaFX jeví jako vhodnější. Návrh okna GUI je na obrázku \ref{fig:window-design}.
 
-Prezentační vrstvu tvoří soubory balíku \texttt{resources}. Základem je FXML dokument \texttt{Window.fxml} v~podbalíku \texttt{resources.fxml}, který definuje hlavní okno GUI s~odkazem na třídu obsluhy v~aplikační vrstvě, jednotlivé grafické komponenty okna (hlavní menu, seznamy knihoven a jazyků, textové pole pro zobrazení a úpravu kódu a tlačítka pro spouštění operací s~daty), jejich rozměry, popisy (resp. klíče k~textům popisů), počáteční stav, rozložení v~okně a odkazy na metody obslužné třídy pro zpracování událostí nad těmito komponentami.\par
-Řetězce popisů pro prvky GUI přiřazené jednotlivým klíčům jsou definovány v~souborech podbalíku \texttt{resources.strings}, koncovka názvů \uv{\_cs} značí texty pro češtinu. Oddělení textů umožňuje snadný překlad GUI aplikace do dalších jazyků a jejich případné přepínání za běhu programu. Vzhled prvků GUI je dále upraven v~souboru stylů v~podbalíku \texttt{resources.styles}. To umožňuje změnu vzhledu z~jednoho místa kódu (a případně pro více oken aplikace). Soubor stylů je využit zejména pro nastavení písma kódu v~textovém poli (výchozí písmo má různou šířku znaků, ale pro zdrojový kód je vhodné použití strojového písma s~jednotnou šířkou).
+\begin{figure}
+\caption{Návrh okna GUI}
+    \includegraphics[
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+]{window-design.png}
+\label{fig:window-design}
+\end{figure}
 
-\section{Aplikační vrstva}
-Základem aplikační logiky je třída s~názvem \texttt{application.controller\-.WindowController}, která obsahuje metody pro obsluhu událostí prvků hlavního okna GUI definovaných v~dokumentu \texttt{Window.fxml}. Součástí této obsluhy je obvykle validace vstupních dat zadaných prostřednictvím dialogů a následné volání metod instance třídy jádra implementující rozhraní \texttt{IDataManager}, v~případě ukládání dat do XML souborů tedy třídy datové vrstvy \texttt{XmlManager}. Zobrazování různých typů dialogů pro zadávání uživatelského vstupu nebo pro výpisy hlášení zprostředkovává třída \texttt{application\-.dialogs.DialogFactory}.\par
-Inicializace objektu pro správu dat a objektu pro vytváření dialogů, jejich propojení s~kontrolerem hlavního okna \texttt{WindowController} a zobrazení tohoto okna probíhá bezprostředně po spuštění aplikace v~hlavní třídě \texttt{application.Main}, přičemž jsou použity cesty ke konkrétním částem aplikace (k~FXML dokumentu okna a ke třídě správce dat) a další hodnoty výchozího nastavení aplikace (např. jazyk uživatelského rozhraní) uložené jako statické konstanty v~konfigurační třídě \texttt{application.config.Config}. Návrh poskytuje do budoucna možnost jednoduché konfigurace a výměny jednotlivých vrstev aplikace bez nutnosti zásahu (nebo s~nutností pouze minimálních zásahů) do ostatních vrstev.
+\section{Popis implementace}
+Aplikace byla naprogramována s~použitím Oracle Java SE Development Kit 8 v~integrovaném vývojovém prostředí Netbeans 8.0.2.
+
+\subsection{Struktura balíků a datového adresáře}
+Struktura balíků se zdrojovými kódy aplikace (které jsou součástí vytvořeného spustitelného \texttt{.jar} souboru) je následující:
+\begin{itemize}
+\item{\texttt{<kořen>} -- obsahuje \texttt{.java} soubory třídy \texttt{Main}, která je spouštěcí třídou programu, a třídy \texttt{Config}, která obsahuje veřejné konstanty použité na různých místech kódu a slouží tak jako konfigurační soubor aplikace}
+\item{\texttt{app} -- obsahuje obecné rozhraní jádra pro napojení obsluhy GUI na jádro}
+\item{\texttt{app.xml} -- obsahuje třídy jádra pro operace s~XML soubory}
+\item{\texttt{gui} -- obsahuje třídy pro obsluhu událostí GUI a pro vytváření dialogů}
+\item{\texttt{gui.fxml} -- obsahuje \texttt{.fxml} dokument pro definici ovládacích prvků GUI}
+\item{\texttt{gui.strings} --  obsahuje \texttt{.properties} soubor s~texty popisů ovládacích prvků GUI}
+\item{\texttt{gui.strings.xml} -- obsahuje soubor s~texty GUI specifické pro operace s~daty uloženými v~XML souborech, jako jsou např. hlášení o~chybách při čtení/zápisu souborů}
+\item{\texttt{gui.styles} -- obsahuje {.css} soubor se styly aplikované na ovládací prvky GUI}
+\end{itemize}
+
+\noindent
+Odděleně od zdrojových kódů se nachází adresář datových souborů. Jeho cesta je uvedena v~konfiguračním souboru aplikace (výchozí název je \texttt{data}), není součástí spustitelného souboru aplikace, jeho obsah je aplikací načítán a upravován dle pokynů uživatele a má následující strukturu:
+\begin{itemize}
+\item{\texttt{<kořen>} -- obsahuje hlavní XML dokument se seznamy Java tříd a programovacích jazyků}
+\item{\texttt{classes} -- obsahuje XML dokumenty se zdrojovými kódy obalových knihoven}
+\end{itemize}
+
+\noindent
+Podrobný návrh aplikace z~hlediska vzájemné závislosti tříd znázorňuje UML diagram tříd v~příloze \ref{sec:uml-diagram}.
+
+\subsection{Datová vrstva}
+Data aplikace sestávají z~jednoho hlavního XML souboru \texttt{main.xml} a z~adresáře \texttt{classes}. Soubor \texttt{main.xml} obsahuje dvojici seznamů -- seznam podporovaných jazyků (pro účely práce tedy C, C++, C\# a Pascal) představovaný elementem \texttt{languages} s~položkami v~podobě elementů \texttt{language}, a dále seznam Java tříd (element \texttt{classes} obsahující elementy \texttt{class} jako své položky), pro které jsou v~uvedených jazycích vytvořeny rozhraním odpovídající knihovny.\par
+Složka \texttt{classes} obsahuje XML soubory knihoven odpovídající seznamu knihoven v~hlavním souboru. Název souboru knihoven odpovídá názvu příslušné třídy. Každý z~těchto souborů pak obsahuje elementy \texttt{code} s~vytvořeným zdrojovým kódem pro každý z~jazyků uvedených v~seznamu hlavního souboru. Programovací jazyk, ve kterém je napsán kód, který je obsahem daného elementu \texttt{code}, je určen atributem \texttt{lang}. Strukturu jednotlivých XML souborů graficky znázorňují diagramy v~příloze \ref{sec:xml-structure}.
+
+\subsection{Aplikační vrstva}
+Aplikační vrstva tvoří jádro aplikace a představuje prostředníka mezi datovou a prezentační vrstvou. Umožňuje načítat a ukládat data v~datové vrstvě a je oddělena od GUI, které využívá metody jejích tříd. Základem aplikační vrstvy je třída \texttt{app.xml.Xml\-Manager} pro vytváření, čtení, úpravu a odstraňování datových XML souborů se zdrojovými kódy a odpovídajících záznamů v~hlavním datovém XML souboru. Názvy XML elementů definuje výčtový typ \texttt{app.xml.XmlKeyword}.Hlavní třída této vrstvy \texttt{XmlManager} implementuje rozhraní \texttt{app.IDataManager}, pomocí něhož je ke třídě přistupováno v~obsluze GUI. Tento návrh umožňuje případný snadný přechod na jinou datovou vrstvu (např. databázový systém).\par
+Pro načítání a ukládání XML dokumentů s~využitím technologie DOM je využito vestavěných tříd \texttt{DocumentBuilder} z~balíku \texttt{javax.xml.parsers}, \texttt{Transformer} z~balíku \texttt{javax.xml.transform} a \texttt{Document}, \texttt{NodeList}, \texttt{Node} a \texttt{Element} z~balíku \texttt{org.w3c.dom}.
+
+\subsection{Prezentační vrstva}
+Hlavní okno GUI poskytuje uživateli snadný přístup k~operacím aplikační vrstvy. Umožňuje prostřednictvím jádra spravovat seznamy tříd i programovacích jazyků, vyhledávat třídy v~seznamu podle zadané počáteční části názvu a zobrazovat a upravovat uložené zdrojové kódy. Toto okno s~odkazem na třídu obsluhy definuje FXML dokument \texttt{gui.fxml.Window.fxml}. Zde se nachází popis jednotlivých grafických komponent okna (hlavní menu, seznamy knihoven a jazyků, textové pole pro zobrazení a úpravu kódu a tlačítka pro spouštění operací s~daty), jejich rozměry, textové popisky (resp. klíče k~textům), počáteční stav, rozložení v~okně a odkazy na metody obslužné třídy pro zpracování událostí nad těmito komponentami.\par
+Řetězce popisů pro prvky GUI přiřazené jednotlivým klíčům jsou definovány v~souborech podbalíků \texttt{gui.strings} a \texttt{gui.strings.xml}, koncovka názvů \uv{\_cs} značí texty pro češtinu. Oddělení textů umožňuje snadný překlad GUI aplikace do dalších jazyků a jejich případné přepínání za běhu programu. Vzhled prvků GUI je dále upraven v~souboru stylů v~podbalíku \texttt{gui.styles}. To umožňuje změnu vzhledu z~jednoho místa kódu (a případně pro více oken aplikace). Soubor stylů je využit zejména pro nastavení písma kódu v~textovém poli (výchozí písmo má různou šířku znaků, ale pro zdrojový kód je vhodné použití strojového písma s~jednotnou šířkou).\par
+Obsluhu událostí okna obstarává třída \texttt{gui.WindowController}. Součástí metod obsluhy je obvykle validace vstupních dat zadaných prostřednictvím dialogů (zobrazování různých typů dialogů pro zadávání uživatelského vstupu nebo pro výpisy hlášení zprostředkovává třída \texttt{gui.DialogFactory}) a následné volání metod instance třídy jádra, která implementuje rozhraní \texttt{IDataManager} -- v~případě ukládání dat do XML souborů se tedy jedná o~vytvořenou třídu \texttt{XmlManager}. Vlastní provádění obsluhy je řešeno s~využitím instancí vestavěné třídy \texttt{javafx.concurrent.Task}, která slouží k~definici operací spouštěných na pozadí (tj. v~novém vlákně) a k~následnému zobrazení výsledku do grafických prvků okna v~hlavním vlákně GUI. Díky tomu je možné provádět potenciálně časově náročné operace, aniž by okno GUI přestávalo odpovídat do okamžiku jejich dokončení, a následně správně zobrazovat výsledky těchto operací v~GUI.\par
+Inicializace objektu pro správu dat a objektu pro vytváření dialogů, jejich propojení s~kontrolerem hlavního okna \texttt{WindowController} a zobrazení tohoto okna probíhá bezprostředně po spuštění aplikace v~hlavní třídě \texttt{Main}, přičemž jsou použity cesty ke konkrétním částem aplikace (k~FXML dokumentu okna a ke třídě správce dat) a další hodnoty výchozího nastavení aplikace (např. jazyk uživatelského rozhraní) uložené jako statické konstanty v~konfigurační třídě \texttt{Config}. Návrh poskytuje do budoucna možnost jednoduché konfigurace a výměny jednotlivých vrstev aplikace bez nutnosti zásahu (nebo s~nutností pouze minimálních zásahů) do ostatních vrstev.
 
 \chapter{Testování aplikace a knihoven}
 Tato kapitola shrnuje způsoby testování jednotlivých částí vytvořeného programového vybavení.
@@ -502,6 +532,9 @@ Nad knihovnami pro načítání uživatelského vstupu a výpis výstupu (tedy k
 Jako řešení tohoto specifického případu testování byla zvolena částečná kombinace obou uvedených principů s~podporou vytvořeného skriptu pro automatizované spouštění testů. V~každém použitém jazyce byla vytvořena dvojice jednoduchých utilit, z~nichž jedna slouží ke spouštění podprogramů testovací třídy/modulu pro knihovnu Scanner a v~případě druhé jsou spouštěny podprogramy testovací třídy/modulu určené k~testování knihovny PrintStream. Testovací metoda/funkce k~zavolání je zvolena podle pořadí jejího výskytu v~programovém kódu testovací sady, které je předáno volajícímu programu při jeho spuštění jako parametr příkazové řádky.\par
 Automatizaci postupného spouštění testů zajišťuje jednoduchý skript naprogramovaný v~jazyce PHP (použitá verze interpretu je 5.6.). Tento skript spouští testovací utilitu na zadané cestě vestavěnou funkcí \texttt{exec()}. V~případě testování vstupu je utilita spuštěna s~přesměrováním standardního vstupu zvenčí na příslušný předpřipravený soubor s~testovacími daty a následným zobrazením výstupu utility. Při testování výstupu jsou řetězce vypisované utilitou ukládány skriptem do proměnné, jejíž obsah je poté porovnáván s~očekávaným řetězcem výstupu.
 
+\subsection{Výsledky testování knihoven}
+Testování odhalilo řadu převážně drobných chyb v~implementaci knihoven, z~nichž valná většina byla postupně odstraněna. Výjimkou jsou drobné odlišnosti ve výstupech matematických funkcí pro desetinná čísla, v~převodu desetinných čísel do řetězců a zpět a ve formátování výpisů desetinných čísel na obrazovku, které se odstranit nepodařilo, nicméně výsledky metod/funkcí pro matematické výpočty se s~odpovídajícími metodami třídy \texttt{Math} jazyka Java shodují s~tolerancí maximálního rozdílu mezi očekávanou a skutečnou hodnotou $10^{-10}$ (v~případě jazyka C\# až $10^{-20}$). Dále se nepodařilo odstranit problém, který způsoboval pád programu při pokusech o~konverzi obecných objektů třídy \texttt{Object} na porovnávatelné objekty třídy \texttt{Comparable} s~využitím genericity v~jazyce C\# (v~jazyce C++ se v~obdobných situacích objevily problémy při překladu). Z~tohoto důvodu byla podpora genericity ze tříd napodobujících rozhraní jazyka Java pro porovnávání objektů odstraněna a metody těchto tříd tak vyžadují přetypování porovnávaných objektů. Zbylou funkcionalitu knihoven se díky automatizovaným testům podařilo odladit tak, aby výstupy jejich metod/funkcí odpovídaly výstupům příslušných metod knihoven jazyka Java.
+
 \section{Testování aplikace}
 Pro jednotlivé části aplikace byly použity různé způsoby testování.
 
@@ -532,8 +565,13 @@ Uživatelské rozhraní aplikace bylo ověřeno ručním testováním s~porovná
 \item{Po kliknutí na tlačítko \texttt{Najít} se změní výběr položky v~seznamu tříd na první nalezenou položku, jejíž název začíná na řetězec zadaný do vyhledávacího políčka bez ohledu na velikost písmen.}
 \end{enumerate}
 
+\subsection{Výsledky testování aplikace}
+Při testování byly postupně zjištěny nedostatky jak ve funkcionalitě jádra, tak uživatelského rozhraní aplikace. Všechny odhalené chyby se nakonec podařilo úspěšně odstranit. Jádro aplikace po odladění požadovaným způsobem zpracovává korektní vstupní data pro všechny prováděné operace a na nekorektní vstupy reaguje výjimkami s~chybovými hláškami podle očekávání. Uživatelské rozhraní taktéž reaguje na akce uživatele předpokládaným způsobem podle uvedeného seznamu požadavků.
+
 \chapter{Závěr}
-% TODO dopsat !!!
+Dosažené výsledky z~velké části odpovídají původním představám. Po prostudování jednotlivých programovacích jazyků a jejich vestavěných knihoven byly naprogramovány knihovny s~rozhraním ve stylu vestavěných tříd jazyka Java, které poskytuje funkcionalitu podle požadavků vedoucího práce, pro správu zdrojových kódů těchto knihoven byla vytvořena desktopová aplikace a obě části programového vybavení (tedy jak knihovny, tak aplikace) byly důkladně otestovány a odladěny, aby byla zajištěna jejich správná funkčnost.\par
+Lze tedy konstatovat, že se podařilo splnit všechny body zadání práce, ačkoliv některé části programového vybavení nebyly dokončeny v~rozsahu podle původních představ. To se týká například aplikace pro správu knihoven, kde by bylo vhodné doimplementovat zvýraznění syntaxe zdrojového kódu v~textovém poli nebo knihoven pro výstup na obrazovku, kde byla původně plánována implementace formátování výstupu podle zadaných formátovacích řetězců (po vzoru metody \texttt{printf()} třídy \texttt{java.io.PrintStream}).\par
+Práce ukázala jednu z~možností, jak je možné usnadnit převod programového kódu mezi různými programovacími jazyky. Cílem dalších prací podobného charakteru by mohla být automatizace tohoto procesu včetně převodu klíčových slov a syntaktických konstrukcí daného programovacího jazyka na jejich ekvivalenty v~cílovém jazyce.
 
 
 % 
@@ -558,6 +596,18 @@ Uživatelské rozhraní aplikace bylo ověřeno ručním testováním s~porovná
 
 \appendix
 \chapter*{PŘÍLOHY}
+\chapter{Diagram případů užití aplikace}\label{sec:uc-diagram}
+Tato příloha obsahuje diagram případů užití aplikace pro správu zdrojového kódu.
+
+\begin{figure}
+    \includegraphics[
+    page=1,
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+]{uc.pdf}
+\end{figure}
+
 \chapter{UML diagram tříd aplikace}\label{sec:uml-diagram}
 Tato příloha obsahuje návrh aplikace pro správu zdrojového kódu znázorněný pomocí UML diagramu tříd.
 
@@ -570,8 +620,20 @@ Tato příloha obsahuje návrh aplikace pro správu zdrojového kódu znázorně
 ]{uml.pdf}
 \end{figure}
 
+\chapter{Diagram struktury XML souborů}\label{sec:xml-structure}
+Tato příloha obsahuje diagram znázorňující strukturu jednotlivých typů XML souborů pro ukládání dat aplikace pro správu zdrojového kódu.
+
+\begin{figure}
+    \includegraphics[
+    page=1,
+    width=\textwidth,
+    height=\textheight,
+    keepaspectratio
+]{xml-structure.pdf}
+\end{figure}
+
 \chapter{Uživatelská příručka aplikace}
-V~adresáři \texttt{CodeManager/bin} kořenového adresáře vytvořeného programového vybavení, které je součástí této práce, se nachází spustitelný soubor aplikace pro správu zdrojových kódů \texttt{CodeManager.jar}. Po jeho spuštění se otevře hlavní okno uživatelského rozhraní aplikace v~režimu zobrazování zdrojového kódu.\par
+V~adresáři \texttt{CodeManager/bin} kořenového adresáře přiloženého CD se nachází spustitelný soubor aplikace pro správu zdrojových kódů \texttt{CodeManager.jar}. Po jeho spuštění se otevře hlavní okno uživatelského rozhraní aplikace v~režimu zobrazování zdrojového kódu.\par
 
 \section{Popis uživatelského rozhraní}
 V~levé části hlavního okna se nachází seznam uložených tříd v~jazyce Java, pro které byly implementovány knihovny v~ostatních uložených programovacích jazycích, s~tlačítky pro přidání, úpravu nebo odstranění třídy. V~horní části se nachází nalevo (nad seznamem) vyhledávací pole uložených tříd, napravo pak nabídka uložených jazyků, vedle níž se nacházejí tlačítka pro přidání, úpravu nebo odstranění jazyka. Pod nabídkou jazyků (v~pravé části okna) je umístěno textové pole pro zobrazení a úpravu zdrojových kódů a pod ním tlačítka pro kopírování a vkládání kódu a spouštění a ukládání jeho úpravy. V~horní části okna nad vyhledávacím polem a nabídkou jazyků se nachází hlavní menu aplikace, které sdružuje funkcionalitu tlačítek v~okně.
@@ -611,7 +673,7 @@ Pokud je vybrána Java třída i programovací jazyk, lze příslušný zdrojov�
 \end{figure}
 
 \chapter{Nástroj pro převod kódu}
-K~usnadnění převodu kódu psaném v~jazyce Java do jiných jazyků byl vytvořen jednoduchý nástroj s~webovým rozhraním. Soubor \texttt{index.html} pro jeho otevření v~okně webového prohlížeče se nachází v~adresáři pojmenovaném \texttt{CodeConverter}, nacházejícím se v~kořenovém adresáři vytvořeného programového vybavení. Ukázka webového rozhraní nástroje je na obrázku \ref{fig:convert-helper-page}
+K~usnadnění převodu kódu psaném v~jazyce Java do jiných jazyků byl vytvořen jednoduchý nástroj s~webovým rozhraním. Soubor \texttt{index.html} pro jeho otevření v~okně webového prohlížeče se nachází v~adresáři pojmenovaném \texttt{CodeConverter}, nacházejícím se v~kořenovém adresáři přiloženého CD. Ukázka webového rozhraní nástroje je na obrázku \ref{fig:convert-helper-page}
 
 \section{Popis uživatelského rozhraní}
 V~horní části webového rozhraní pod popisem nástroje se nachází přepínače pro nastavení programovacího jazyka, do kterého bude kód převáděn. Pod nimi se nachází dvě textová pole. Pole v~levé části je editovatelné a je určeno k~zadání původního zdrojového kódu jazyka Java. Pole v~pravé části slouží k~zobrazení výsledku a je určeno pouze pro čtení.

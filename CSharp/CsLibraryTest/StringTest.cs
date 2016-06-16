@@ -2,6 +2,11 @@
 
 namespace JavaClasses
 {
+
+    /// <summary>
+    /// A String class test suite.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     [TestClass]
 	public class StringTest
 	{

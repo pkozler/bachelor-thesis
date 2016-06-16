@@ -16,7 +16,7 @@
       <Unit1>
         <Filename Value="..\PasLibrary\arraylistunit.pas"/>
         <UnitName Value="ArrayListUnit"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="214"/>
         <CursorPos X="14" Y="120"/>
         <UsageCount Value="73"/>
@@ -25,7 +25,7 @@
       <Unit2>
         <Filename Value="..\PasLibrary\linkedlistunit.pas"/>
         <UnitName Value="LinkedListUnit"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="333"/>
         <CursorPos X="6" Y="187"/>
         <UsageCount Value="73"/>
@@ -34,7 +34,7 @@
       <Unit3>
         <Filename Value="..\PasLibrary\arraysunit.pas"/>
         <UnitName Value="ArraysUnit"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="789"/>
         <CursorPos X="6" Y="414"/>
         <UsageCount Value="42"/>
@@ -65,7 +65,6 @@
       <Unit7>
         <Filename Value="..\PasLibrary\stringtokenizerunit.pas"/>
         <UnitName Value="StringTokenizerUnit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="34"/>
         <CursorPos X="36" Y="114"/>
@@ -97,7 +96,7 @@
       <Unit11>
         <Filename Value="..\PasLibraryTest\arraystestunit.pas"/>
         <UnitName Value="ArraysTestUnit"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="923"/>
         <CursorPos X="18" Y="932"/>
         <UsageCount Value="14"/>
@@ -106,14 +105,16 @@
       <Unit12>
         <Filename Value="..\PasLibraryTest\scannertestunit.pas"/>
         <UnitName Value="ScannerTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="166"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="73"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="..\PasLibrary\scannerunit.pas"/>
         <UnitName Value="ScannerUnit"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="71"/>
         <CursorPos Y="75"/>
         <UsageCount Value="12"/>

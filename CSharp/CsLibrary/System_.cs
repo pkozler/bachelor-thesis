@@ -11,7 +11,9 @@ namespace JavaClasses
     /// <author>Petr Kozler (A13B0359P)</author>
     public class PrintStream : Object
     {
-
+        /// <summary>
+        /// Creates a new print stream.
+        /// </summary>
         public PrintStream()
         {
             // setting the standard output format

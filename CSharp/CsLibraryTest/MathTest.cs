@@ -2,10 +2,16 @@
 
 namespace JavaClasses
 {
+
+    /// <summary>
+    /// A Math class test suite.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
 	[TestClass]
 	public class MathTest
 	{
-        const double DEFAULT_EPSILON = 1E-20;
+        // maximal difference between expected and actual value
+        private const double DEFAULT_EPSILON = 1E-20;
 
         /// <summary>
         /// Tests the abs method with a double value.

@@ -1,7 +1,11 @@
 ﻿
 namespace JavaClasses
 {
-    
+
+    /// <summary>
+    /// A PrintStream class test suite.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class PrintStreamTest
     {
         

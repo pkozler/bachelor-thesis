@@ -2,6 +2,11 @@
 
 namespace JavaClasses
 {
+
+    /// <summary>
+    /// A Short class test suite.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
 	[TestClass]
 	public class ShortTest
 	{

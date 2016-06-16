@@ -1,75 +1,70 @@
 ﻿namespace JavaClasses
 {
-    
-    /**
-     * The {@code TestObject} class represents a simple object that serves
-     * for demonstration the functionality of libraries working with objects.
-     *
-     * @author Petr Kozler
-     */
+
+    /// <summary>
+    /// The TestObject class represents a simple object that serves
+    /// for demonstration the functionality of libraries working with objects.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class TestObject : Comparable
     {
+        // string value
         private String str;
+        // integer value
         private int i;
-
-        /**
-         * Creates a new object.
-         *
-         * @param str string value
-         * @param i integer value
-         */
+        
+        /// <summary>
+        /// Creates a new object.
+        /// </summary>
+        /// <param name="str">string value</param>
+        /// <param name="i">integer value</param>
         public TestObject(String str, int i)
         {
             this.str = str;
             this.i = i;
         }
-
-        /**
-         * Returns a value of the string field.
-         *
-         * @return string value
-         */
+        
+        /// <summary>
+        /// Returns a value of the string field.
+        /// </summary>
+        /// <returns>string value</returns>
         public String getStr()
         {
             return str;
         }
-
-        /**
-         * Changes a value of the string field.
-         *
-         * @param str string value
-         */
+        
+        /// <summary>
+        /// Changes a value of the string field.
+        /// </summary>
+        /// <param name="str">string value</param>
         public void setStr(String str)
         {
             this.str = str;
         }
-
-        /**
-         * Returns a value of the integer field.
-         *
-         * @return integer value
-         */
+        
+        /// <summary>
+        /// Returns a value of the integer field.
+        /// </summary>
+        /// <returns>integer value</returns>
         public int getI()
         {
             return i;
         }
-
-        /**
-         * Changes a value of the integer field.
-         *
-         * @param i integer value
-         */
+        
+        /// <summary>
+        /// Changes a value of the integer field.
+        /// </summary>
+        /// <param name="i">integer value</param>
         public void setI(int i)
         {
             this.i = i;
         }
         
-        /**
-         * Indicates whether some other object is equal to this one.
-         *
-         * @param obj another object
-         * @return TRUE if objects are equal, FALSE otherwise
-         */
+        /// <summary>
+        /// Indicates whether some other object is equal to this one.
+        /// </summary>
+        /// <param name="obj">another object</param>
+        /// <returns>TRUE if objects are equal, FALSE otherwise</returns>
         public override bool equals(Object obj)
         {
             if (obj == null)
@@ -86,23 +81,21 @@
 
             return i == other.i;
         }
-
-        /**
-         * Returns a string representation of the object.
-         *
-         * @return string representation
-         */
+        
+        /// <summary>
+        /// Returns a string representation of the object.
+        /// </summary>
+        /// <returns>string representation</returns>
         public override String toString()
         {
             return new String("TestObject [str=" + str.s + ", i=" + i + "]");
         }
         
-        /**
-         * Compares this object with the specified object for order.
-         *
-         * @param o another object
-         * @return comparison result
-         */
+        /// <summary>
+        /// Compares this object with the specified object for order.
+        /// </summary>
+        /// <param name="o">another object</param>
+        /// <returns>comparison result</returns>
         public override int compareTo(Object o)
         {
             return i - (o as TestObject).i;

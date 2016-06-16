@@ -3,15 +3,25 @@
 namespace JavaClasses
 {
 
+    /// <summary>
+    /// A Scanner class test suite.
+    /// </summary>
+    /// <author>Petr Kozler (A13B0359P)</author>
     public class ScannerTest
     {
-
+        
+        // error count for the current test method
         public int errorsInMethod { get; private set; } = 0;
 
+        // delegate for testing if the scanned value are equal to the expected value
         private delegate bool EqualsMethod<T>(T expected, T actual);
 
+        // delegate for scanning the value from the user input
         private delegate T ScanMethod<T>();
 
+        /*
+            Invokes the specified scanner method and verifies the scanned value with the specified expected value.
+        */
         private void assertEquals<T>(string name, T expected, ScanMethod<T> scan, EqualsMethod<T> equals)
         {
             WriteLine();
@@ -41,6 +51,9 @@ namespace JavaClasses
             }
         }
 
+        /*
+            Verifies that the scanned string value is equal to the expected value.
+        */
         private void nextAssertEquals(Scanner sc, String expected)
         {
             assertEquals("next", expected, sc.next, (e, a) =>
@@ -49,6 +62,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned boolean value is equal to the expected value.
+        */
         private void nextBooleanAssertEquals(Scanner sc, bool expected)
         {
             assertEquals("nextBoolean", expected, sc.nextBoolean, (e, a) =>
@@ -60,6 +76,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned byte value is equal to the expected value.
+        */
         private void nextByteAssertEquals(Scanner sc, sbyte expected)
         {
             assertEquals("nextByte", expected, sc.nextByte, (e, a) =>
@@ -71,6 +90,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned short value is equal to the expected value.
+        */
         private void nextShortAssertEquals(Scanner sc, short expected)
         {
             assertEquals("nextShort", expected, sc.nextShort, (e, a) =>
@@ -82,6 +104,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned int value is equal to the expected value.
+        */
         private void nextIntAssertEquals(Scanner sc, int expected)
         {
             assertEquals("nextInt", expected, sc.nextInt, (e, a) =>
@@ -93,6 +118,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned long value is equal to the expected value.
+        */
         private void nextLongAssertEquals(Scanner sc, long expected)
         {
             assertEquals("nextLong", expected, sc.nextLong, (e, a) =>
@@ -104,6 +132,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned float value is equal to the expected value.
+        */
         private void nextFloatAssertEquals(Scanner sc, float expected)
         {
             assertEquals("nextFloat", expected, sc.nextFloat, (e, a) =>
@@ -115,6 +146,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned double value is equal to the expected value.
+        */
         private void nextDoubleAssertEquals(Scanner sc, double expected)
         {
             assertEquals("nextDouble", expected, sc.nextDouble, (e, a) =>
@@ -126,6 +160,9 @@ namespace JavaClasses
             });
         }
 
+        /*
+            Verifies that the scanned line string value is equal to the expected value.
+        */
         private void nextLineAssertEquals(Scanner sc, String expected)
         {
             assertEquals("nextLine", expected, sc.nextLine, (e, a) =>
