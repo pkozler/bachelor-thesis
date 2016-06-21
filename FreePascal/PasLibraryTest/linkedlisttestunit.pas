@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A LinkedList class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   LinkedListTest = class(TTestCase)
   private
        function toList(arr: array of TestObject): LinkedList;

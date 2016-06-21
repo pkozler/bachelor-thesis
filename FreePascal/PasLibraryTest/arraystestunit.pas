@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Arrays class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ArraysTest = class(TTestCase)
   published
        procedure binarySearchTest;

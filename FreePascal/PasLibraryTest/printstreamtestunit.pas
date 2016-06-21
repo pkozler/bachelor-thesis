@@ -10,6 +10,11 @@ uses
 
 type
 
+  (**
+   * A PrintStream class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   PrintStreamTest = class(TTestCase)
   public
     procedure printTest;

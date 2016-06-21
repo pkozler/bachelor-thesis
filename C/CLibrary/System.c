@@ -3,44 +3,61 @@
 
 #include "System.h"
 
+/*
+    Merges the specified subarrays for Merge sort.
+ */
 void _merge(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *)) {
     int32_t middleIndex = (left + right) / 2;
     int32_t leftIndex = left;
     int32_t rightIndex = middleIndex + 1;
     int32_t auxIndex = left;
 
+    // moving elements to the auxilliary array until one of the indices leaves the specified boundary
     while (leftIndex <= middleIndex && rightIndex <= right) {
+        // comparing the struct pointer values and setting the less one as the auxilliary array element
         if (compare((void *) array[leftIndex], (void *) array[rightIndex]) <= 0) {
             aux[auxIndex] = array[leftIndex++];
-        } else {
+        }
+        else {
             aux[auxIndex] = array[rightIndex++];
         }
 
+        // incrementing the auxilliary array index
         auxIndex++;
     }
 
+    // setting the rest of the left subarray
     while (leftIndex <= middleIndex) {
         aux[auxIndex] = array[leftIndex++];
         auxIndex++;
     }
 
+    // setting the rest of the right subarray
     while (rightIndex <= right) {
         aux[auxIndex] = array[rightIndex++];
         auxIndex++;
     }
 }
 
+/*
+    Implements the recursive Mergesort stable sorting algorithm for the struct pointer arrays.
+ */
 void _mergeSort(void **array, void **aux, int32_t left, int32_t right, int32_t (*compare)(const void *, const void *)) {
     if (left == right) {
         return;
     }
 
+    // setting the middle index for splitting the specified array into subarrays
     int32_t middleIndex = (left + right) / 2;
 
+    // sorting the left subarray recursively
     _mergeSort(array, aux, left, middleIndex, compare);
+    // sorting the right subarray recursively
     _mergeSort(array, aux, middleIndex + 1, right, compare);
+    // merging the sorted subarrays back into one array
     _merge(array, aux, left, right, compare);
 
+    // setting the values from the auxilliary array into original array
     int32_t i;
     for (i = left; i <= right; i++) {
         array[i] = aux[i];

@@ -5,8 +5,8 @@ namespace JavaClasses
 {
     
     /// <summary>
-    /// The {@code TestObjectComparator} class represents a comparator
-    /// for the {@code TestObject} class instances.
+    /// The TestObjectComparator class represents a comparator
+    /// for the TestObject class instances.
     /// </summary>
     /// <author>Petr Kozler (A13B0359P)</author>
     public class TestObjectComparator : Comparator {

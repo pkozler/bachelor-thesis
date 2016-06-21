@@ -11,6 +11,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Scanner : public Object {
+    // current line
     std::string line;
     String *readLine();
     bool isEmptyOrWhiteSpace(std::string line);

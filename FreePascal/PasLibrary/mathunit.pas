@@ -317,24 +317,29 @@ end;
  *)
 class function Math_.round(a: double) : int64;
 begin
+  // if NaN, the result is 0
   if Double_.compare(a, Double_.NaN) = 0 then begin
     exit(0);
   end;
 
+  // if less than / equal to the corresponding integer type minimal value, the result is equal to that value
   if (Double_.compare(a, Double_.NEGATIVE_INFINITY) = 0)
   and (a <= Long.MIN_VALUE) then begin
     exit(Long.MIN_VALUE);
   end;
 
+  // if greater than / equal to the corresponding integer type maximal value, the result is equal to that value
   if (Double_.compare(a, Double_.POSITIVE_INFINITY) = 0)
   and (a >= Long.MAX_VALUE) then begin
     exit(Long.MAX_VALUE);
   end;
 
+  // rounding towards zero for negative values
   if (a < 0) and (frac(a) <= 0.5) then begin
     exit(trunc(a));
   end;
 
+  // rounding away from zero for positive values
   if (a > 0) and (frac(a) >= 0.5) then begin
     exit(trunc(a) + 1);
   end;
@@ -350,24 +355,29 @@ end;
  *)
 class function Math_.round(a: single) : longInt;
 begin
+  // if NaN, the result is 0
   if Float.compare(a, Float.NaN) = 0 then begin
     exit(0);
   end;
 
+  // if less than / equal to the corresponding integer type minimal value, the result is equal to that value
   if (Float.compare(a, Float.NEGATIVE_INFINITY) = 0)
   and (a <= Integer_.MIN_VALUE) then begin
     exit(Integer_.MIN_VALUE);
   end;
 
+  // if greater than / equal to the corresponding integer type maximal value, the result is equal to that value
   if (Float.compare(a, Float.POSITIVE_INFINITY) = 0)
   and (a >= Integer_.MAX_VALUE) then begin
     exit(Integer_.MAX_VALUE);
   end;
 
+  // rounding towards zero for negative values
   if (a < 0) and (frac(a) <= 0.5) then begin
     exit(trunc(a));
   end;
 
+  // rounding away from zero for positive values
   if (a > 0) and (frac(a) >= 0.5) then begin
     exit(trunc(a) + 1);
   end;

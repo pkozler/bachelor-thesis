@@ -10,6 +10,11 @@ uses
 
 type
 
+  (**
+   * A Collections class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   CollectionsTest = class(TTestCase)
   published
        procedure binarySearchTest;

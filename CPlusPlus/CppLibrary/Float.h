@@ -4,6 +4,10 @@
 #include "String_.h"
 #include <cstdint>
 
+/*
+    FloatInt32 union provides the ability to set the float value
+    and get the int32_t value with the same binary representation.
+*/
 typedef union {
     float val;
     int32_t bits;
@@ -15,6 +19,7 @@ typedef union {
  * @author Petr Kozler (A13B0359P)
  */
 class Float : public Comparable {
+    // an inner value
     float v;
     static int32_t getNegativeZeroBits();
 public:

@@ -1,6 +1,12 @@
 #ifndef PRINTSTREAMTEST_H
 #define	PRINTSTREAMTEST_H
 
+/**
+ * A PrintStream class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
 void printTest();
 void printTest2();
 void printTest3();

@@ -5,6 +5,7 @@
 #include <string.h>
 #include <ctype.h>
 
+// maximum possible string length of the char value used as the string buffer size
 #define _MAX_CHAR_STRLEN 1
 
 /**
@@ -55,6 +56,7 @@ int32_t compareToC(Character *ptr, Character *anotherCharacter) {
  * > y
  */
 int32_t Character_compare(char x, char y) {
+    // positive number if x is greater, 0 if x equals y, negative number otherwise
     return x - y;
 }
 
@@ -66,14 +68,17 @@ int32_t Character_compare(char x, char y) {
  * @return true if the structures are the same; false otherwise.
  */
 bool equalsC(Character *ptr, Character *obj) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 
+    // testing object fields equality
     return (ptr->v == obj->v);
 }
 
@@ -96,6 +101,7 @@ String *toStringC(Character *ptr) {
 String *Character_toString(char c) {
     char *str = malloc(_MAX_CHAR_STRLEN + 1);
 
+    // creating the null-terminated string from the char
     str[0] = c;
     str[1] = '\0';
     String *s = new_String(str);

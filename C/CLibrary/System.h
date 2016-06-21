@@ -23,7 +23,8 @@
  */
 
 typedef struct {
-    void *dummy; // dummy variable for the struct to have at least one member
+    // dummy variable for the struct to have at least one member
+    void *dummy;
 } PrintStream;
 
 /**
@@ -35,7 +36,8 @@ typedef struct {
  */
 
 typedef struct {
-    void *dummy; // dummy variable for the struct to have at least one member
+    // dummy variable for the struct to have at least one member
+    void *dummy;
 } InputStream;
 
 void printBool(PrintStream *ptr, bool b);

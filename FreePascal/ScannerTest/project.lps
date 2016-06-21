@@ -4,13 +4,13 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="14">
+    <Units Count="9">
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="-1"/>
-        <CursorPos X="57" Y="18"/>
+        <TopLine Value="10"/>
+        <CursorPos X="6" Y="54"/>
         <UsageCount Value="203"/>
       </Unit0>
       <Unit1>
@@ -19,7 +19,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="213"/>
         <CursorPos X="14" Y="120"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="66"/>
       </Unit1>
       <Unit2>
         <Filename Value="..\PasLibrary\linkedlistunit.pas"/>
@@ -27,7 +27,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="332"/>
         <CursorPos X="6" Y="187"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="66"/>
       </Unit2>
       <Unit3>
         <Filename Value="..\PasLibrary\arraysunit.pas"/>
@@ -35,83 +35,49 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="789"/>
         <CursorPos X="6" Y="414"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="35"/>
       </Unit3>
       <Unit4>
-        <Filename Value="..\PasLibrary\collectionsunit.pas"/>
-        <UnitName Value="CollectionsUnit"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
-      </Unit4>
-      <Unit5>
-        <Filename Value="..\PasLibrary\stringunit.pas"/>
-        <UnitName Value="StringUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="211"/>
-        <CursorPos Y="60"/>
-        <UsageCount Value="3"/>
-      </Unit5>
-      <Unit6>
-        <Filename Value="..\PasLibrary\stringbuilderunit.pas"/>
-        <UnitName Value="StringBuilderUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="51"/>
-        <CursorPos X="11" Y="55"/>
-        <UsageCount Value="1"/>
-      </Unit6>
-      <Unit7>
         <Filename Value="..\PasLibrary\stringtokenizerunit.pas"/>
         <UnitName Value="StringTokenizerUnit"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="34"/>
         <CursorPos X="36" Y="114"/>
-        <UsageCount Value="9"/>
-      </Unit7>
-      <Unit8>
-        <Filename Value="..\PasLibrary\mathunit.pas"/>
-        <UnitName Value="MathUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="317"/>
-        <CursorPos X="7" Y="332"/>
         <UsageCount Value="3"/>
-      </Unit8>
-      <Unit9>
+      </Unit4>
+      <Unit5>
         <Filename Value="..\PasLibrary\systemunit.pas"/>
         <UnitName Value="SystemUnit"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="375"/>
         <CursorPos X="6" Y="389"/>
-        <UsageCount Value="42"/>
-      </Unit9>
-      <Unit10>
-        <Filename Value="..\PasLibraryTest\mathtestunit.pas"/>
-        <UnitName Value="MathTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <UsageCount Value="3"/>
-      </Unit10>
-      <Unit11>
+        <UsageCount Value="36"/>
+      </Unit5>
+      <Unit6>
         <Filename Value="..\PasLibraryTest\arraystestunit.pas"/>
         <UnitName Value="ArraysTestUnit"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="923"/>
         <CursorPos X="18" Y="932"/>
-        <UsageCount Value="13"/>
-      </Unit11>
-      <Unit12>
+        <UsageCount Value="7"/>
+      </Unit6>
+      <Unit7>
         <Filename Value="..\PasLibraryTest\scannertestunit.pas"/>
         <UnitName Value="ScannerTestUnit"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="73"/>
-        <UsageCount Value="9"/>
-      </Unit12>
-      <Unit13>
+        <TopLine Value="229"/>
+        <CursorPos X="3" Y="289"/>
+        <UsageCount Value="10"/>
+      </Unit7>
+      <Unit8>
         <Filename Value="..\PasLibrary\scannerunit.pas"/>
         <UnitName Value="ScannerUnit"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="71"/>
         <CursorPos Y="75"/>
-        <UsageCount Value="11"/>
-      </Unit13>
+        <UsageCount Value="5"/>
+      </Unit8>
     </Units>
     <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>

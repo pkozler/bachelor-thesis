@@ -21,6 +21,7 @@
 #define Short_MIN_VALUE -32768
 
 typedef struct {
+    // an inner value
     int16_t v;
 } Short;
 

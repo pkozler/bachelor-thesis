@@ -19,10 +19,14 @@ type
   ArrayList = class(List)
     private
       const
+        // initial length of the inner dynamically resized array
         DEFAULT_CAPACITY = 10;
+        // coefficient for increasing or decreasing the capacity of inner array
         RESIZE_COEF = 2;
       var
+        // dynamically resized array
         dynamicArray: array of Object_;
+        // current element count
         count: longInt;
       procedure expand();
       procedure shrink();
@@ -50,6 +54,7 @@ uses
  *)
 constructor ArrayList.create();
 begin
+  // setting the inner array length to the default capacity
   setLength(dynamicArray, DEFAULT_CAPACITY);
   count := 0;
 end;
@@ -64,14 +69,20 @@ constructor ArrayList.create(c: ArrayList);
 var
   i: longInt;
 begin
+  // setting the inner array length to the specified list capacity
   setLength(dynamicArray, length(c.dynamicArray));
   count := c.count;
 
+  // copying all elements from the specified list
   for i := 0 to count - 1 do begin
     dynamicArray[i] := c.dynamicArray[i];
   end;
 end;
 
+(*
+    Increases the capacity of the inner array if the element count
+    reaches the current capacity.
+ *)
 procedure ArrayList.expand();
 var
   len: longInt;
@@ -79,11 +90,16 @@ begin
   inc(count);
   len := length(dynamicArray);
 
+  // expanding the array by the resize coefficient
   if count = len then begin
     setLength(dynamicArray, len * RESIZE_COEF);
   end;
 end;
 
+(*
+    Decreases the capacity of the inner array if the element count reaches the half
+    of the current capacity (and the current capacity is greater than the default capacity).
+ *)
 procedure ArrayList.shrink();
 var
   len: longInt;
@@ -92,6 +108,7 @@ begin
   len := length(dynamicArray);
 
   if (count < len div RESIZE_COEF) and (len >= DEFAULT_CAPACITY * RESIZE_COEF) then begin
+    // shrinking the array by the resize coefficient
     setLength(dynamicArray, len div RESIZE_COEF);
   end;
 end;
@@ -104,6 +121,7 @@ end;
  *)
 function ArrayList.add(e: Object_) : boolean;
 begin
+  // storing the element on the index specified by the current element count
   dynamicArray[count] := e;
   expand();
   add := true;
@@ -119,10 +137,12 @@ procedure ArrayList.add(index: longInt; element: Object_);
 var
   i: longInt;
 begin
+  // moving the elements with greater index than specified by 1 away from the beginning of array
   for i := count downto index + 1 do begin
     dynamicArray[i] := dynamicArray[i - 1];
   end;
 
+  // storing the element on the specified index
   dynamicArray[index] := element;
   expand();
 end;
@@ -168,6 +188,7 @@ var
 begin
   removed := dynamicArray[index];
 
+  // moving the elements with greater index than removed by 1 towards the beginning of array
   for i := index to count - 1 do begin
     dynamicArray[i] := dynamicArray[i + 1];
   end;
@@ -193,6 +214,7 @@ procedure ArrayList.clear();
 begin
   setLength(dynamicArray, 0);
   count := 0;
+  // resizing the inner array to the default capacity
   setLength(dynamicArray, DEFAULT_CAPACITY);
 end;
 
@@ -213,7 +235,13 @@ begin
   freeAndNil(str);
 
   if count > 0 then begin
-    str := dynamicArray[0].toString_();
+    if dynamicArray[0] = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := dynamicArray[0].toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
   end;
@@ -222,7 +250,14 @@ begin
     str := String_.create(', ');
     sb.append(str);
     freeAndNil(str);
-    str := dynamicArray[i].toString_();
+
+    if dynamicArray[i] = nil then begin
+      str := String_.create('null');
+    end
+    else begin
+      str := dynamicArray[i].toString_();
+    end;
+
     sb.append(str);
     freeAndNil(str);
   end;

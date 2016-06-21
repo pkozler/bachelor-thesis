@@ -9,15 +9,17 @@ uses
 
 type
   (**
-   * The {@code TestObject} class represents a simple object that serves
+   * The TestObject class represents a simple object that serves
    * for demonstration the functionality of libraries working with objects.
    *
-   * @author Petr Kozler
+   * @author Petr Kozler (A13B0359P)
    *)
   TestObject = class(Comparable)
     private
       var
+         // string value
          str: String_;
+         // integer value
          i: longInt;
     public
       constructor create(newStr: String_; newI: longInt);

@@ -248,24 +248,29 @@ double Math_atan(double a) {
  * @return the value of the argument rounded to the nearest long value.
  */
 int64_t Math_roundD(double a) {
+    // if NaN, the result is 0
     if (Double_compare(a, Double_NaN) == 0) {
         return 0;
     }
 
+    // if less than / equal to the corresponding integer type minimal value, the result is equal to that value
     if (Double_compare(a, Double_NEGATIVE_INFINITY) == 0
         || a <= Long_MIN_VALUE) {
         return Long_MIN_VALUE;
     }
 
+    // if greater than / equal to the corresponding integer type maximal value, the result is equal to that value
     if (Double_compare(a, Double_POSITIVE_INFINITY) == 0
         || a >= Long_MAX_VALUE) {
         return Long_MAX_VALUE;
     }
 
+    // rounding towards zero for negative values
     if (a < 0 && a - trunc(a) <= -0.5) {
         return (int64_t)trunc(a);
     }
 
+    // rounding away from zero for positive values
     return (int64_t)round(a);
 }
 
@@ -276,23 +281,28 @@ int64_t Math_roundD(double a) {
  * @return the value of the argument rounded to the nearest int value.
  */
 int32_t Math_roundF(float a) {
+    // if NaN, the result is 0
     if (Float_compare(a, Float_NaN) == 0) {
         return 0;
     }
 
+    // if less than / equal to the corresponding integer type minimal value, the result is equal to that value
     if (Float_compare(a, Float_NEGATIVE_INFINITY) == 0
         || a <= Integer_MIN_VALUE) {
         return Integer_MIN_VALUE;
     }
 
+    // if greater than / equal to the corresponding integer type maximal value, the result is equal to that value
     if (Float_compare(a, Float_POSITIVE_INFINITY) == 0
         || a >= Integer_MAX_VALUE) {
         return Integer_MAX_VALUE;
     }
 
+    // rounding towards zero for negative values
     if (a < 0 && a - truncf(a) <= -0.5) {
         return (int32_t)truncf(a);
     }
 
+    // rounding away from zero for positive values
     return (int32_t)roundf(a);
 }

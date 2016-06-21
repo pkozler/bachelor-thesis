@@ -4,8 +4,10 @@
 #include "test.h"
 #include "Short.h"
 
-/*
- * Simple C Test Suite
+/**
+ * A Short module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

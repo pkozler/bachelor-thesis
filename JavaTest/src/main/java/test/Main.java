@@ -14,7 +14,7 @@ public class Main {
     static {
         System.setProperty("log4j.configurationFile", "log4j-config.xml");
     }
-
+    
     public static void main(String[] args) throws FileNotFoundException {
         
 //        PrintStreamTest.runTestSuite();
@@ -29,7 +29,7 @@ public class Main {
 //        BooleanTest.runTestSuite();
 //        CharacterTest.runTestSuite();
 //        MathTest.runTestSuite();
-        ArraysTest.runTestSuite();
+//        ArraysTest.runTestSuite();
 //        ArrayListTest.runTestSuite();
 //        LinkedListTest.runTestSuite();
 //        CollectionsTest.runTestSuite();

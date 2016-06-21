@@ -41,7 +41,7 @@
                 return false;
             }
 
-            // comparing corresponding elements of lists
+            // comparing the corresponding elements of the lists
             for (int i = 0; i < length; i++)
             {
                 E o1 = get(i);

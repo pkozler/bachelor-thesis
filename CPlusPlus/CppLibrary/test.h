@@ -8,13 +8,25 @@
 
 typedef void (*testFunction)();
 
+/**
+ * TestContainer class serves as a container for the test function pointer 
+ * and the string value which holds the name of the test function.
+ * 
+ * @author Petr Kozler (A13B0359P)
+ */
 class TestContainer {
 public:
-    std::string testFunctionName;
+    // a test function to call
     void (*testFunction)();
+    // a test function name to print in the test results
+    std::string testFunctionName;
     TestContainer(void (*testFunction)(), std::string testFunctionName);
 };
 
+/**
+ * Test class provides the methods for running the registered test functions
+ * and for verifying the result values.
+ */
 class Test {
     static std::string testFileName;
     static int32_t counter;

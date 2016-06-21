@@ -10,6 +10,11 @@ uses
 
 type
 
+  (**
+   * An PrintStream class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   PrintStreamTest = class(TTestCase)
   public
     procedure printTest;
@@ -45,10 +50,10 @@ begin
     // print of boolean values
     a := true;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := false;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -61,24 +66,24 @@ begin
     // print of lowercase letters
     a := 'a';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 'z';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // print of uppercase letters
     a := 'A';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 'Z';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // print of digits
     a := '0';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := '9';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -91,12 +96,12 @@ begin
     // empty ansiChar array
     setLength(a, 0);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiChar array with one ansiChar
     setLength(a, 1);
     a[0] :=  'a' ;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiChar array with some chars
     setLength(a, 6);
     a[0] :=  'a';
@@ -106,7 +111,7 @@ begin
     a[4] := '0';
     a[5] := '9' ;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -119,31 +124,31 @@ begin
     // zeros with and without sign
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ones with and without sign
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // maximal absolute value with and without sign
     a := Double_.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Double_.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // minimal absolute value with and without sign
     a := Double_.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Double_.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -155,28 +160,28 @@ var
 begin
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Float.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Float.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Float.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -Float.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -189,21 +194,21 @@ begin
     // zero
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ones with and without sign
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // maximal and minimal value
     a := Integer_.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Integer_.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -215,19 +220,19 @@ var
 begin
     a := 0;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := 1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := -1;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Long.MAX_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := Long.MIN_VALUE;
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -240,21 +245,21 @@ begin
     // object with an empty ansiString
     a := TestObject.create('', 0);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // object with digits
     a := TestObject.create('0', 1);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := TestObject.create('9', -1);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // object with letters
     a := TestObject.create('Aa', Integer_.MAX_VALUE);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     a := TestObject.create('Zz', Integer_.MIN_VALUE);
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**
@@ -267,15 +272,15 @@ begin
     // empty ansiString
     a := '';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiString with one ansiChar
     a := 'a';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
     // ansiString with some chars
     a := 'azAZ09';
     System_.out_.print(a);
-    System_.out_.print('\n');
+    System_.out_.print(lineEnding);
 end;
 
 (**

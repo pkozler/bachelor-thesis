@@ -13,10 +13,12 @@
  */
 
 typedef struct {
+    // current line
     char *line;
 } Scanner;
 
 Scanner *new_Scanner(InputStream *source);
+void delete_Scanner(Scanner *ptr);
 String *next(Scanner *ptr);
 bool nextBoolean(Scanner *ptr);
 int8_t nextByte(Scanner *ptr);

@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Byte class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ByteTest = class(TTestCase)
   published
        procedure byteValueTest;
@@ -198,21 +203,17 @@ end;
  *)
 procedure ByteTest.parseByteTest;
 var
-    a: Byte_;
-    b: shortInt;
+    a: shortInt;
 begin
     // positive value parsing
     a := Byte_.parseByte('100');
-    b := a.byteValue();
-    AssertEquals(100, b);
+    AssertEquals(100, a);
     // zero value parsing
     a := Byte_.parseByte('0');
-    b := a.byteValue();
-    AssertEquals(0, b);
+    AssertEquals(0, a);
     // negative value parsing
     a := Byte_.parseByte('-100');
-    b := a.byteValue();
-    AssertEquals(-100, b);
+    AssertEquals(-100, a);
 end;
 
 initialization

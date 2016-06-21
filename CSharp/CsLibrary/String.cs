@@ -119,6 +119,7 @@ namespace JavaClasses
         /// </param>
         public String(sbyte[] bytes, int offset, int length)
         {
+            // parsing to the unsigned byte array
             byte[] unsigned = (byte[])(Array)bytes;
             s = Encoding.Default.GetString(unsigned, offset, length);
         }
@@ -158,16 +159,19 @@ namespace JavaClasses
         /// </returns>
         public override bool equals(Object anObject)
         {
+            // testing another object reference for a NULL value
             if (anObject == null)
             {
                 return false;
             }
 
+            // testing object class equality
             if (GetType() != anObject.GetType())
             {
                 return false;
             }
 
+            // testing object fields equality
             return s.Equals((anObject as String).s);
         }
 

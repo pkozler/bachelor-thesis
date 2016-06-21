@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A Character class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   CharacterTest = class(TTestCase)
   published
        procedure charValueTest;

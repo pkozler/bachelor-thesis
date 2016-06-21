@@ -4,6 +4,10 @@
 #include "String_.h"
 #include <cstdint>
 
+/*
+    DoubleInt64 union provides the ability to set the double value
+    and get the int64_t value with the same binary representation.
+*/
 typedef union {
     double val;
     int64_t bits;
@@ -15,6 +19,7 @@ typedef union {
  * @author Petr Kozler (A13B0359P)
  */
 class Double : public Comparable {
+    // an inner value
     double v;
     static int64_t getNegativeZeroBits();
 public:

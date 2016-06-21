@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Boolean class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   BooleanTest = class(TTestCase)
   published
        procedure booleanValueTest;
@@ -165,12 +170,10 @@ var
 begin
     // true value parsing
     a := Boolean_.parseBoolean('true');
-    b := a.booleanValue();
-    AssertEquals(true, b);
+    AssertEquals(true, a);
     // false value parsing
     a := Boolean_.parseBoolean('false');
-    b := a.booleanValue();
-    AssertEquals(false, b);
+    AssertEquals(false, a);
 end;
 
 initialization

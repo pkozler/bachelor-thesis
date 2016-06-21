@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A Float class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   FloatTest = class(TTestCase)
   published
        procedure floatValueTest;

@@ -5,8 +5,10 @@
 #include "Arrays.h"
 #include "TestObject.h"
 
-/*
- * Simple C Test Suite
+/**
+ * An Arrays module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

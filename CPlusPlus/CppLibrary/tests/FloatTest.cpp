@@ -4,10 +4,13 @@
 #include "test.h"
 #include "Float.h"
 
-/*
- * Simple C++ Test Suite
+/**
+ * A Float class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
+// maximal difference between expected and actual value
 const float DEFAULT_EPSILON = 1E-10;
 
 /**

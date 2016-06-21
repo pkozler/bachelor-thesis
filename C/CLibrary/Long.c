@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// maximum possible string length of the int64_t value used as the string buffer size
 #define _MAX_LONG_STRLEN 20
 
 /**
@@ -53,6 +54,7 @@ int32_t compareToL(Long *ptr, Long *anotherLong) {
  * > y
  */
 int32_t Long_compare(int64_t x, int64_t y) {
+    // 1 if x is greater, 0 if x equals y, -1 otherwise
     return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
@@ -64,14 +66,17 @@ int32_t Long_compare(int64_t x, int64_t y) {
  * @return true if the structures are the same; false otherwise.
  */
 bool equalsL(Long *ptr, Long *obj) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 
+    // testing object fields equality
     return (ptr->v == obj->v);
 }
 
@@ -96,7 +101,9 @@ String *Long_toString(int64_t l) {
     char buf[_MAX_LONG_STRLEN];
 
     str[0] = '\0';
+    // printing the string representation to the buffer
     sprintf(buf, "%lld", l);
+    // creating the null-terminated string from the buffer
     strcat(str, buf);
     String *s = new_String(str);
     free(str);

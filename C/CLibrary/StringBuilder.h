@@ -11,8 +11,11 @@
  */
 
 typedef struct {
+    // string buffer
     char *buffer;
+    // current appended character count
     int32_t count;
+    // current buffer capacity
     int32_t capacity;
 } StringBuilder;
 

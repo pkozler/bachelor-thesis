@@ -44,6 +44,10 @@
  */
 #define Float_MIN_NORMAL 1.17549435e-38f
 
+/*
+    FloatInt32 union provides the ability to set the float value
+    and get the int32_t value with the same binary representation.
+*/
 typedef union {
     float val;
     int32_t bits;

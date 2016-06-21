@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A Byte class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ByteTest = class(TTestCase)
   published
        procedure byteValueTest;

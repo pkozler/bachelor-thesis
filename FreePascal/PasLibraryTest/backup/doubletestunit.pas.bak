@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Double class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   DoubleTest = class(TTestCase)
   published
        procedure doubleValueTest;
@@ -201,7 +206,7 @@ var
     a: double;
 begin
     // positive value parsing
-    a := Double_.parseDouble('1.0000000000000000000000000000000000000000000001');
+    a := Double_.parseDouble('0.0000000000000000000000000000000000000000000001');
     AssertEquals(1.0E-46, a);
     // zero value parsing
     a := Double_.parseDouble('0');

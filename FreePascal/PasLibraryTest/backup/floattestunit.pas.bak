@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Float class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   FloatTest = class(TTestCase)
   published
        procedure floatValueTest;
@@ -188,7 +193,7 @@ procedure FloatTest.parseFloatTest;
 var
     a: single;
 begin
-    a := Float.parseFloat('1.1');
+    a := Float.parseFloat('0.1');
     AssertEquals(0.1, a);
     a := Float.parseFloat('0');
     AssertEquals(0.0, a);

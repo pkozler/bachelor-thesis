@@ -4,8 +4,11 @@
 #include "test.h"
 #include "Collections.h"
 #include "TestObject.h"
-/*
- * Simple C Test Suite
+
+/**
+ * A Collections module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

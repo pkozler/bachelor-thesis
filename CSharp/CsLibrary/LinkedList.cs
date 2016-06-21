@@ -190,24 +190,28 @@ namespace JavaClasses
         /// </returns>
         public override String toString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.append("[");
+            // create StringBuilder for appending the text
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("[");
 
             LinkedListNode<E> node = l.First;
 
+            // append the first element string representation
             if (node != null)
             {
-                sb.append(node.Value == null ? "null" : node.Value.ToString());
+                sb.Append(node.Value == null ? "null" : node.Value.ToString());
                 node = node.Next;
             }
 
-            while (node != null)
+            // append another elements string representation
+            for (int i = 1; i < l.Count; i++)
             {
-                sb.append(", ").append(node.Value == null ? "null" : node.Value.ToString());
+                sb.Append(", ").Append(node.Value == null ? "null" : node.Value.ToString());
                 node = node.Next;
             }
 
-            return sb.append("]").toString();
+            // create Java-like string
+            return new String(sb.Append("]").ToString());
         }
         
     }

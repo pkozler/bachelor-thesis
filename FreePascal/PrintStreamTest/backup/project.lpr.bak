@@ -1,17 +1,27 @@
 program project;
 
+(**
+ * A PrintStream class test utility.
+ *
+ * @author Petr Kozler (A13B0359P)
+ *)
+
 uses sysutils, PrintStreamTestUnit;
 
+// a test method pointer array length
 const TEST_METHOD_COUNT = 19;
 
 type
-  TestMethod = procedure of object;
+  TestMethod = procedure of object; // a test method pointer
 
 var
-  testClass: PrintStreamTest;
-  testMethods: array of TestMethod;
+  testClass: PrintStreamTest; // a test class
+  testMethods: array of TestMethod; // an array of the test method pointers
   n: longInt;
 
+(*
+  Prints help message if the specified method index is not valid.
+*)
 procedure usage;
 begin
   writeLn('Zadejte platné číslo testovací metody. ('
@@ -19,6 +29,10 @@ begin
   halt(-1);
 end;
 
+(**
+ * Calls the PrintStream test method with the index specified in the command-line argument
+ * and returns the count of errors found during the test as the exit status.
+ *)
 begin
   testClass := PrintStreamTest.create();
   setLength(testMethods, TEST_METHOD_COUNT);
@@ -42,14 +56,12 @@ begin
   testMethods[17] := @(testClass.printlnTest9);
   testMethods[18] := @(testClass.printlnTest10);
 
-      writeLn(paramcount);
   if paramcount < 1 then begin
     usage();
   end;
 
   try
     n := strToInt(paramStr(1));
-    writeLn(n);
   except
     on e: EConvertError do begin
       usage();

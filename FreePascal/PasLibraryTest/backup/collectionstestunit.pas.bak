@@ -10,6 +10,11 @@ uses
 
 type
 
+  (**
+   * An Collections class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   CollectionsTest = class(TTestCase)
   published
        procedure binarySearchTest;
@@ -204,7 +209,8 @@ begin
     b.add(TestObject.create('nineth', 7));
     b.add(TestObject.create('third', 8));
     b.add(TestObject.create('eighth', 8));
-    AssertEquals(b, a);
+    d := b.equals_(a);
+    AssertEquals(true, d);
 end;
 
 initialization

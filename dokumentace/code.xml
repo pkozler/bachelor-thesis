@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<codes>
+<!-- zdrojove kody knihoven -->
+	<code lang="C">
+/* kod v jazyce C */
+	</code>
+	<code lang="C++">
+/* kod v jazyce C++ */
+	</code>
+	<code lang="C#">
+/* kod v jazyce C# */
+	</code>
+	<code lang="Free Pascal">
+(* kod v jazyce Free Pascal *)
+	</code>
+</codes>

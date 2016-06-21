@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Short class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ShortTest = class(TTestCase)
   published
        procedure shortValueTest;
@@ -186,18 +191,14 @@ end;
  *)
 procedure ShortTest.parseShortTest;
 var
-    a: Short;
-    b: smallInt;
+    a: smallInt;
 begin
     a := Short.parseShort('1000');
-    b := a.shortValue();
-    AssertEquals(1000, b);
+    AssertEquals(1000, a);
     a := Short.parseShort('0');
-    b := a.shortValue();
-    AssertEquals(0, b);
+    AssertEquals(0, a);
     a := Short.parseShort('-1000');
-    b := a.shortValue();
-    AssertEquals(-1000, b);
+    AssertEquals(-1000, a);
 end;
 
 initialization

@@ -12,8 +12,11 @@
  */
 
 typedef struct {
+    // string token array
     char **tokens;
+    // token array length
     int32_t tokensLength;
+    // current position in the token array
     int32_t tokenCounter;
 } StringTokenizer;
 

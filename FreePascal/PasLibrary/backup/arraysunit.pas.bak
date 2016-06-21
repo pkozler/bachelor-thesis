@@ -8,6 +8,11 @@ uses
   SystemUnit, StringUnit;
 
 type
+
+  (*
+   * pointer definitions for casting the pointers so they can be dereferenced
+   * for getting the value of the specified type
+   *)
   PBoolean = ^boolean;
   PShortInt = ^shortInt;
   PAnsiChar = ^ansiChar;
@@ -17,6 +22,9 @@ type
   PInt64 = ^int64;
   PSmallInt = ^smallInt;
 
+  (*
+   * default values used for copying one array to the another with greater length:
+   *)
   BooleanArray = array of boolean;
   ShortIntArray = array of shortInt;
   AnsiCharArray = array of ansiChar;
@@ -27,7 +35,9 @@ type
   SmallIntArray = array of smallInt;
   ObjectArray = array of Object_;
 
+  // pointer to function for testing if two values are equal
   EqualsFunction = function(a, b: pointer): boolean;
+  // pointer to function for returning the string representation of the specified value
   ToStringFunction = function(a: pointer): String_;
 
   (**
@@ -147,6 +157,10 @@ implementation
 uses
   BooleanUnit, ByteUnit, DoubleUnit, FloatUnit, CharacterUnit, IntegerUnit, LongUnit, ShortUnit, StringBuilderUnit, SysUtils, Classes;
 
+(*
+ * default values used for copying one array to the another with greater length:
+ *)
+
 var
   defaultBoolean: boolean = false;
   defaultByte: shortInt = 0;
@@ -156,6 +170,10 @@ var
   defaultFloat: single = 0;
   defaultDouble: double = 0;
   defaultChar: ansiChar = #0;
+
+(*
+ * functions for comparing the two specified values:
+ *)
 
 function _compareB(a, b: pointer) : longInt;
 begin
@@ -191,6 +209,10 @@ function _compareS(a, b: pointer) : longInt;
 begin
   _compareS := Short.compare(PSmallInt(a)^, PSmallInt(b)^);
 end;
+
+(*
+ * functions for testing if the two specified values are equal:
+ *)
 
 function _equalsBool(a, b: pointer) : boolean;
 var
@@ -290,6 +312,10 @@ begin
   end;
 end;
 
+(*
+ * functions for returning the string representation of the specified value:
+ *)
+
 function _toStringBool(a: pointer) : String_;
 begin
   _toStringBool := Boolean_.toString_(PBoolean(a)^);
@@ -330,77 +356,110 @@ begin
   _toStringS := Short.toString_(PSmallInt(a)^);
 end;
 
+(*
+    Represents the type-agnostic method for binary searching
+    in the specified sorted part of any primitive value array
+    according to a specified compare function.
+ *)
 class function Arrays.binarySearchPointer(a: pointer; fromIndex, toIndex, size: longInt; key: pointer; c: CompareFunction) : longInt;
 var
   lower, upper, middle : longInt;
   middleValue : pointer;
 begin
+  // initial lower index
   lower := fromIndex;
+  // initial upper index
   upper := toIndex - 1;
 
   while lower <= upper do begin
+    // middle index
     middle := lower + ((upper - lower) div 2);
     middleValue := a + middle * size;
 
+    // middle index is the new lower index if the key is greater than middle value
     if c(middleValue, key) < 0 then begin
       lower := middle + 1;
     end
+    // middle index is the new upper index if the key is greater than middle value
     else if c(middleValue, key) > 0 then begin
       upper := middle - 1;
     end
+    // returning the element if middle index value is equal to the key
     else begin
       exit(middle);
     end;
   end;
 
+  // returning the negative index if element not found
   binarySearchPointer := -(lower + 1);
 end;
 
+(*
+    Represents the type-agnostic method for binary searching
+    in the specified sorted part of any object reference array
+    according to a specified comparator.
+ *)
 class function Arrays.binarySearchObject(var a: array of Object_; fromIndex, toIndex: longInt; key: Object_; c: Comparator) : longInt;
 var
   lower, upper, middle : longInt;
   middleValue : Object_;
 begin
+  // initial lower index
   lower := fromIndex;
+  // initial upper index
   upper := toIndex - 1;
 
   while lower <= upper do begin
+    // middle index
     middle := lower + ((upper - lower) div 2);
     middleValue := a[middle];
 
+    // middle index is the new lower index if the key is greater than middle value
     if c.compare(middleValue, key) < 0 then begin
       lower := middle + 1;
     end
+    // middle index is the new upper index if the key is greater than middle value
     else if c.compare(middleValue, key) > 0 then begin
       upper := middle - 1;
     end
+    // returning the element if middle index value is equal to the key
     else begin
       exit(middle);
     end;
   end;
 
+  // returning the negative index if element not found
   binarySearchObject := -(lower + 1);
 end;
 
+(*
+    Represents the type-agnostic method for copying
+    the specified part of any primitive value array.
+ *)
 class function Arrays.copyOfRangePointer(original, copyArray: pointer; length, size, from, to_: longInt; defaultValue: pointer) : pointer;
 var
   src, dest: pointer;
   i: longInt;
 begin
+  // the specified upper boundary if greater than the original array length
   if to_ > length then begin
+    // copying the values from the original array to its last element
     for i := from to length - 1 do begin
       src := original + i * size;
       dest := copyArray + (i - from) * size;
       move(src^, dest^, size);
     end;
 
+    // filling the rest of the new array with the default value of the given type
     for i := length to to_ - 1 do begin
       src := defaultValue;
       dest := copyArray + (i - from) * size;
       move(src^, dest^, size);
     end;
   end
+  // the specified upper boundary is less then the original array length
   else begin
+    // copying the values from the original array to the element on the specified upper boundary
     for i := from to to_ - 1 do begin
       src := original + i * size;
       dest := copyArray + (i - from) * size;
@@ -411,24 +470,34 @@ begin
   copyOfRangePointer := copyArray;
 end;
 
+(*
+    Represents the type-agnostic method for copying
+    the specified part of any object reference array.
+ *)
 class function Arrays.copyOfRangeObject(var original: array of Object_; from, to_: longInt) : ObjectArray;
 var
   a: array of Object_;
   len, i: longInt;
 begin
+  // a new array with the length equal to the difference of boundaries of the original array
   setLength(a, to_ - from);
   len := length(original);
 
+  // the specified upper boundary if greater than the original array length
   if to_ > len then begin
+    // copying the values from the original array to its last element
     for i := from to len - 1 do begin
       a[i - from] := original[i];
     end;
 
+    // filling the rest of the new array with the default value of the given type
     for i := len to to_ - 1 do begin
       a[i - from] := nil;
     end;
   end
+  // the specified upper boundary is less then the original array length
   else begin
+    // copying the values from the original array to the element on the specified upper boundary
     for i := from to to_ - 1 do begin
       a[i - from] := original[i];
     end;
@@ -437,18 +506,25 @@ begin
   copyOfRangeObject := a;
 end;
 
+(*
+    Represents the type-agnostic method for testing if two
+    specified primitive value arrays are equal.
+ *)
 class function Arrays.equalsPointer(a: pointer; length: longInt; a2: pointer; length2, size: longInt; e: EqualsFunction) : boolean;
 var
   i: longInt;
 begin
+  // comparing pointers
   if a = a2 then begin
     exit(true);
   end;
 
+  // comparing the array lengths
   if length2 <> length then begin
     exit(false);
   end;
 
+  // comparing corresponding elements of arrays
   for i := 0 to length - 1 do begin
     if not e(a + i * size, a2 + i * size) then begin
       exit(false);
@@ -458,6 +534,10 @@ begin
   equalsPointer := true;
 end;
 
+(*
+    Represents the type-agnostic method for testing if two
+    specified object reference arrays are equal.
+ *)
 class function Arrays.equalsObject(var a: array of Object_; a2: array of Object_) : boolean;
 var
   len, i: longInt;
@@ -465,11 +545,14 @@ var
 begin
   len := length(a);
 
+  // comparing the array lengths (if array is NULL, then its length is 0)
   if length(a2) <> len then begin
     exit(false);
   end;
 
+  // comparing corresponding elements of arrays
   for i := 0 to len - 1 do begin
+    // checking NULL values for object pointers
     if a[i] = nil then begin
       e := a2[i] = nil;
     end
@@ -485,57 +568,89 @@ begin
   equalsObject := true;
 end;
 
+(*
+    Represents the type-agnostic method for filling
+    the specified part of any primitive value array
+    with the specified value.
+ *)
 class procedure Arrays.fillPointer(a: pointer; fromIndex, toIndex, size: longInt; val: pointer);
 var
   i: longInt;
   dest: pointer;
 begin
 
+  // setting each element to the value
   for i := fromIndex to toIndex - 1 do begin
     dest := a + i * size;
     move(val^, dest^, size);
   end;
 end;
 
+(*
+    Represents the type-agnostic method for filling
+    the specified part of any object reference array
+    with the specified value.
+ *)
 class procedure Arrays.fillObject(var a: array of Object_; fromIndex, toIndex: longInt; val: Object_);
 var
   i: longInt;
 begin
+  // setting each element to the value
   for i := fromIndex to toIndex - 1 do begin
     a[i] := val;
   end;
 end;
 
+(*
+    Represents the type-agnostic method for sorting
+    the specified part of any primitive value array
+    according to a specified compare function.
+ *)
 class procedure Arrays.sortPointer(a: pointer; fromIndex, toIndex, size: longInt; c: CompareFunction);
 begin
+  // unstable sort for primitive values
   _java.quickSort(a, fromIndex, toIndex - 1, size, c);
 end;
 
+(*
+    Represents the type-agnostic method for sorting
+    the specified part of any object reference array
+    according to a specified comparator.
+ *)
 class procedure Arrays.sortObject(var a: array of Object_; fromIndex, toIndex: longInt; c: Comparator);
 var
   aux: array of Object_;
 begin
+  // creating the auxilliary array for the function implementing the stable sorting algoritm
   setLength(aux, toIndex - fromIndex);
+  // stable sort for object references
   _java.mergeSort(a, aux, fromIndex, toIndex - 1, c);
 end;
 
+(*
+    Represents the type-agnostic method for creating
+    the string representation of any primitive value array.
+ *)
 class function Arrays.toStringPointer(a: pointer; length, size: longInt; ts: ToStringFunction) : String_;
 var
   sb: StringBuilder;
   str: String_;
   i: longInt;
 begin
+  // create StringBuilder for appending the text
   sb := StringBuilder.create();
   str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
 
+  // append first element string representation
   if length > 0 then begin
     str := ts(a);
     sb.append(str);
     freeAndNil(str);
   end;
 
+  // append another elements string representation
   for i := 1 to length - 1 do begin
     str := String_.create(', ');
     sb.append(str);
@@ -545,6 +660,7 @@ begin
     freeAndNil(str);
   end;
 
+  // create Java-like string
   str := String_.create(']');
   sb.append(str);
   freeAndNil(str);
@@ -553,19 +669,26 @@ begin
   toStringPointer := str;
 end;
 
+(*
+    Represents the type-agnostic method for creating
+    the string representation of any object reference array.
+ *)
 class function Arrays.toStringObject(var a: array of Object_) : String_;
 var
   sb: StringBuilder;
   str: String_;
   len, i: longInt;
 begin
+  // create StringBuilder for appending the text
   len := length(a);
   sb := StringBuilder.create();
   str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
 
+  // append first element string representation
   if len > 0 then begin
+    // checking NULL values
     if a[0] = nil then begin
       str := String_.create('null');
     end
@@ -577,11 +700,13 @@ begin
     freeAndNil(str);
   end;
 
+  // append another elements string representation
   for i := 1 to len - 1 do begin
     str := String_.create(', ');
     sb.append(str);
     freeAndNil(str);
 
+    // checking NULL values
     if a[i] = nil then begin
       str := String_.create('null');
     end
@@ -593,6 +718,7 @@ begin
     freeAndNil(str);
   end;
 
+  // create Java-like string
   str := String_.create(']');
   sb.append(str);
   freeAndNil(str);
@@ -1130,6 +1256,7 @@ class function Arrays.copyOfRange(var original: array of boolean; from: longInt;
 var
   copyArray: array of boolean;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(boolean), from, to_, @defaultBoolean);
 end;
@@ -1148,6 +1275,7 @@ class function Arrays.copyOfRange(var original: array of shortInt; from: longInt
 var
   copyArray: array of shortInt;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(shortInt), from, to_, @defaultByte);
 end;
@@ -1167,6 +1295,7 @@ class function Arrays.copyOfRange(var original: array of ansiChar; from: longInt
 var
   copyArray: array of ansiChar;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(ansiChar), from, to_, @defaultChar);
 end;
@@ -1185,6 +1314,7 @@ class function Arrays.copyOfRange(var original: array of double; from: longInt; 
 var
   copyArray: array of double;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(double), from, to_, @defaultDouble);
 end;
@@ -1203,6 +1333,7 @@ class function Arrays.copyOfRange(var original: array of single; from: longInt; 
 var
   copyArray: array of single;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(single), from, to_, @defaultFloat);
 end;
@@ -1221,6 +1352,7 @@ class function Arrays.copyOfRange(var original: array of longInt; from: longInt;
 var
   copyArray: array of longInt;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(longInt), from, to_, @defaultInt);
 end;
@@ -1239,6 +1371,7 @@ class function Arrays.copyOfRange(var original: array of int64; from: longInt; t
 var
   copyArray: array of int64;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(int64), from, to_, @defaultLong);
 end;
@@ -1257,6 +1390,7 @@ class function Arrays.copyOfRange(var original: array of smallInt; from: longInt
 var
   copyArray: array of smallInt;
 begin
+  // creating a new array with the specified length so its elements can be passed as the pointer
   setLength(copyArray, to_ - from);
   copyOfRange := copyOfRangePointer(@original[0], @copyArray[0], length(original), sizeOf(smallInt), from, to_, @defaultShort);
 end;
@@ -1289,6 +1423,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -1322,6 +1457,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -1355,6 +1491,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -1388,6 +1525,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -1421,6 +1559,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -1454,6 +1593,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -1487,6 +1627,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -1533,6 +1674,7 @@ var
   p, p2: pointer;
   l, l2: longInt;
 begin
+  // setting each pointer to NULL if the corresponding array length is 0
   l := length(a);
   l2 := length(a2);
 
@@ -2008,7 +2150,7 @@ end;
  *)
 class procedure Arrays.sort(var a: array of Object_; fromIndex: longInt; toIndex: longInt; c: Comparator);
 begin
-
+  sortObject(a, fromIndex, toIndex, c);
 end;
 
 (**

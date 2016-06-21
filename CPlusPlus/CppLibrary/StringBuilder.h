@@ -10,6 +10,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class StringBuilder : public Object {
+    // an inner string builder
     std::ostringstream oss;
 public:
     StringBuilder();

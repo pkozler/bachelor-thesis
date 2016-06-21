@@ -3,6 +3,13 @@
 
 #include <cstdint>
 
+/**
+ * A Scanner class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
+ */
+
+// error count for the current test function
 extern int32_t errorsInFunction; 
 
 void scannerTest();

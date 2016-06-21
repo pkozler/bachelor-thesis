@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An StringBuilder class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   StringBuilderTest = class(TTestCase)
   published
        procedure stringBuilderTest;
@@ -95,7 +100,7 @@ begin
     a := StringBuilder.create();
     a.append('This').append(' is').append(' a').append(' test.');
     b := a.toString_();
-    AssertEquals('This is a test.+', b.strProperty);
+    AssertEquals('This is a test.', b.strProperty);
     // appending a ansiString piecewise (more pieces)
     a := StringBuilder.create();
     a.append('This').append(' ').append('is').append(' ').append('a').append(' ').append('test').append('.');

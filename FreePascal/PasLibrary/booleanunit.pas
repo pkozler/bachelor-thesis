@@ -16,6 +16,7 @@ type
   Boolean_ = class(Comparable)
     private
       var
+        // an inner value
         v : boolean;
     public
       constructor create(value: boolean);
@@ -74,6 +75,7 @@ end;
  *)
 class function Boolean_.compare(x, y: boolean) : longInt;
 begin
+  // 0 if x equals y, 1 if x is TRUE and y is FALSE, -1 otherwise
   if x = y then begin
     compare := 0;
   end
@@ -95,14 +97,17 @@ end;
  *)
 function Boolean_.equals_(obj: Object_) : boolean;
 begin
+  // testing another object reference for a NULL value
   if obj = nil then begin
     exit(false);
   end;
 
+  // testing object class equality
   if typeOf(self) <> typeOf(obj) then begin
     exit(false);
   end;
 
+  // testing object fields equality
   equals_ := v = (obj as Boolean_).v;
 end;
 
@@ -127,10 +132,10 @@ var
   s: ansiString;
 begin
   if b then begin
-    s := 'True';
+    s := 'true';
   end
   else begin
-    s := 'False';
+    s := 'false';
   end;
 
   toString_ := String_.create(s);
@@ -146,11 +151,13 @@ class function Boolean_.parseBoolean(s: String_) : boolean;
 var
   str: ansiString;
 begin
+  // test if the string is equal to "true"
   str := lowerCase(trim(s.strProperty));
   if ansiCompareStr(str, 'true') = 0 then begin
     exit(true);
   end;
 
+  // return false otherwise
   parseBoolean := false;
 end;
 

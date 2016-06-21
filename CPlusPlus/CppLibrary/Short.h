@@ -10,6 +10,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Short : public Comparable {
+    // an inner value
     int16_t v;
 public:
     /**

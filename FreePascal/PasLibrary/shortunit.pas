@@ -16,6 +16,7 @@ type
   Short = class(Comparable)
     private
       var
+        // an inner value
         v: smallInt;
     public
       const
@@ -85,6 +86,7 @@ end;
  *)
 class function Short.compare(x, y: smallInt) : longInt;
 begin
+  // positive number if x is greater, 0 if x equals y, negative number otherwise
   compare := x - y;
 end;
 
@@ -96,14 +98,17 @@ end;
  *)
 function Short.equals_(obj: Object_) : boolean;
 begin
+  // testing another object reference for a NULL value
   if obj = nil then begin
     exit(false);
   end;
 
+  // testing object class equality
   if typeOf(self) <> typeOf(obj) then begin
     exit(false);
   end;
 
+  // testing object fields equality
   equals_ := v = (obj as Short).v;
 end;
 

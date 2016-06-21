@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Integer class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   IntegerTest = class(TTestCase)
   published
        procedure intValueTest;

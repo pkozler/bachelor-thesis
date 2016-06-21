@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An ArrayList class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ArrayListTest = class(TTestCase)
   private
        function toList(arr: array of TestObject): ArrayList;

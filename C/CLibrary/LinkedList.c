@@ -10,6 +10,7 @@
 LinkedList *new_LinkedList() {
     LinkedList *list = malloc(sizeof(LinkedList));
     list->count = 0;
+    // setting the empty nodes
     list->first = NULL;
     list->last = NULL;
 
@@ -26,6 +27,7 @@ LinkedList *new_LinkedListAddAll(LinkedList *c) {
     LinkedList *list = new_LinkedList();
     LinkedListNode *node = c->first;
 
+    // copying all elements from the specified list
     while (node != NULL) {
         addLl(list, node->value);
         node = node->next;
@@ -34,11 +36,17 @@ LinkedList *new_LinkedListAddAll(LinkedList *c) {
     return list;
 }
 
+/*
+    Destructs the LinkedList.
+ */
 void delete_LinkedList(LinkedList *ptr) {
     clearLl(ptr);
     free(ptr);
 }
 
+/*
+    Adds the new node after the specified existing node in the list and updates the pointers.
+ */
 void _addAfter(LinkedList *ptr, LinkedListNode *node, LinkedListNode *newNode) {
     newNode->previous = node;
     newNode->next = node->next;
@@ -53,6 +61,9 @@ void _addAfter(LinkedList *ptr, LinkedListNode *node, LinkedListNode *newNode) {
     node->next = newNode;
 }
 
+/*
+    Adds the new node before the specified existing node in the list and updates the pointers.
+ */
 void _addBefore(LinkedList *ptr, LinkedListNode *node, LinkedListNode *newNode) {
     newNode->previous = node->previous;
     newNode->next = node;
@@ -67,6 +78,9 @@ void _addBefore(LinkedList *ptr, LinkedListNode *node, LinkedListNode *newNode) 
     node->previous = newNode;
 }
 
+/*
+    Adds the new node to the beginning of the list and updates the pointers.
+ */
 void _addFirst(LinkedList *ptr, LinkedListNode *newNode) {
     if (ptr->first == NULL) {
         ptr->first = newNode;
@@ -79,6 +93,9 @@ void _addFirst(LinkedList *ptr, LinkedListNode *newNode) {
     }
 }
 
+/*
+    Adds the new node to the end of the list and updates the pointers.
+ */
 void _addLast(LinkedList *ptr, LinkedListNode *newNode) {
     if (ptr->last == NULL) {
         _addFirst(ptr, newNode);
@@ -88,6 +105,9 @@ void _addLast(LinkedList *ptr, LinkedListNode *newNode) {
     }
 }
 
+/*
+    Removes the specified existing node from the list and updates the pointers.
+ */
 void _removeNode(LinkedList *ptr, LinkedListNode *node) {
     if (node->previous == NULL) {
         ptr->first = node->next;
@@ -112,8 +132,10 @@ void _removeNode(LinkedList *ptr, LinkedListNode *node) {
  * @return true
  */
 bool addLl(LinkedList *ptr, void *e) {
+    // creating the node for storing the element
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = e;
+    // adding as the last node of the list
     _addLast(ptr, newNode);
     ptr->count++;
 
@@ -128,24 +150,29 @@ bool addLl(LinkedList *ptr, void *e) {
  * @param element element to be inserted
  */
 void addAtLl(LinkedList *ptr, int32_t index, void *element) {
+    // creating the node for storing the element
     LinkedListNode *newNode = malloc(sizeof(LinkedListNode));
     newNode->value = element;
     
+    // adding as the first node of the list if the list is currently empty
     if (ptr->count < 1) {
         _addFirst(ptr, newNode);
     }
     else {
         LinkedListNode *node = ptr->first;
     
+        // adding before the first node of the list if the index is 0
         if (index < 1) {
             _addBefore(ptr, node, newNode);
         }
         else {
+            
             int32_t i;
             for (i = 1; i < index; i++) {
                 node = node->next;
             }
 
+            // adding after the node found on the specified position, if the index is not 0
             _addAfter(ptr, node, newNode);
         }
     }
@@ -163,6 +190,7 @@ void addAtLl(LinkedList *ptr, int32_t index, void *element) {
 void *getLl(LinkedList *ptr, int32_t index) {
     LinkedListNode *node = ptr->first;
 
+    // iterating over the list to the node on the specified position
     int32_t i;
     for (i = 0; i < index; i++) {
         node = node->next;
@@ -183,6 +211,7 @@ void *getLl(LinkedList *ptr, int32_t index) {
 void *setLl(LinkedList *ptr, int32_t index, void *element) {
     LinkedListNode *original;
 
+    // setting the first node if the index is 0
     if (index < 1) {
         original = ptr->first->value;
         ptr->first->value = element;
@@ -195,6 +224,7 @@ void *setLl(LinkedList *ptr, int32_t index, void *element) {
             node = node->next;
         }
 
+        // setting the node on the specified position
         original = node->value;
         node->value = element;
     }
@@ -213,6 +243,7 @@ void *removeLl(LinkedList *ptr, int32_t index) {
     LinkedListNode *removed;
     LinkedListNode *node;
 
+    // removing the first node if the index is 0
     if (index < 1) {
         node = ptr->first;
         removed = node->value;
@@ -227,6 +258,7 @@ void *removeLl(LinkedList *ptr, int32_t index) {
             node = node->next;
         }
 
+        // removing the node on the specified position
         removed = node->value;
         _removeNode(ptr, node);
         free(node);
@@ -266,6 +298,7 @@ void clearLl(LinkedList *ptr) {
     LinkedListNode *node;
     ptr->count = 0;
 
+    // deallocating the memory of the each list node after removing it
     while (ptr->first != NULL) {
         node = ptr->first;
         _removeNode(ptr, node);
@@ -281,12 +314,14 @@ void clearLl(LinkedList *ptr) {
  * @return a string representation of the structure.
  */
 String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
+    // create StringBuilder for appending the text
     StringBuilder *sb = new_StringBuilder();
     String *str = new_String("[");
     append(sb, str);
     delete_String(str);
     LinkedListNode *node = ptr->first;
 
+    // append first element string representation
     if (node != NULL) {
         str = node->value == NULL ? new_String("null") : toString(node->value);
         append(sb, str);
@@ -294,6 +329,7 @@ String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
         node = node->next;
     }
 
+    // append another elements string representation
     while (node != NULL) {
         str = new_String(", ");
         append(sb, str);
@@ -304,6 +340,7 @@ String *toStringLl(LinkedList *ptr, String *(*toString)(void *)) {
         node = node->next;
     }
 
+    // create Java-like string
     str = new_String("]");
     append(sb, str);
     delete_String(str);

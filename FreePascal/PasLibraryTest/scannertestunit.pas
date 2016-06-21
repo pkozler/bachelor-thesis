@@ -9,12 +9,21 @@ uses
   BooleanUnit, ByteUnit, ShortUnit, IntegerUnit, LongUnit, FloatUnit, DoubleUnit;
 
 type
+  // pointer to function for scanning the value from the user input
   ScanMethod = function(sc: Scanner): pointer;
+  // pointer to function for testing if the scanned value are equal to the expected value
   EqualsMethod = function(expected, actual: pointer): boolean;
+  // pointer to function for getting the string representation of the current scanned value
   ToStringMethod = function(value: pointer): String_;
 
+  (**
+   * A Scanner class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ScannerTest = class(TTestCase)
   private
+    // error count for the current test method
     var errorsInMethod: longInt;
     procedure assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
       scan: ScanMethod; e: EqualsMethod; ts: ToStringMethod);
@@ -58,6 +67,7 @@ type
   DataType = (BooleanType, ByteType, ShortType, IntType,
               LongType, FloatType, DoubleType, StringType);
 
+  // current scanned value
   CurrentValue = record
     case value: DataType of
          BooleanType: (currentScannedBoolean: boolean);
@@ -72,6 +82,10 @@ type
 
 var
    currentScannedValue: CurrentValue;
+
+(*
+ * functions for testing if the two scanned values are equal:
+ *)
 
 function _equalsBool(a, b: pointer) : boolean;
 var
@@ -150,6 +164,10 @@ begin
   freeAndNil(y);
 end;
 
+(*
+ * functions for getting the string representation of the current scanned value:
+ *)
+
 function _toStringBool(a: pointer) : String_;
 begin
   _toStringBool := Boolean_.toString_(PBoolean(a)^);
@@ -184,6 +202,10 @@ function _toStringS(a: pointer) : String_;
 begin
   _toStringS := Short.toString_(PSmallInt(a)^);
 end;
+
+(*
+ * functions for scanning the next value with the specified scanner:
+ *)
 
 function _scanBool(sc: Scanner) : pointer;
 begin
@@ -239,6 +261,9 @@ begin
   _scanStrLn := @currentScannedValue.currentScannedString;
 end;
 
+(*
+    Invokes the specified scanner method and verifies the scanned value with the specified expected value.
+*)
 procedure ScannerTest.assertEqualsPointer(name: ansiString; expected: pointer; sc: Scanner;
   scan: ScanMethod; e: EqualsMethod; ts: ToStringMethod);
 var
@@ -259,6 +284,9 @@ begin
     end;
 end;
 
+(*
+    Invokes the specified scanner method and verifies the scanned value with the specified expected value.
+*)
 procedure ScannerTest.assertEqualsString(name: ansiString; expected: String_; sc: Scanner; scan: ScanMethod);
 var
   actual: String_;
@@ -279,51 +307,81 @@ begin
     end;
 end;
 
+(*
+    Verifies that the scanned string value is equal to the expected value.
+*)
 procedure ScannerTest.nextAssertEquals(sc: Scanner; expected: String_);
 begin
     assertEqualsString('next', expected, sc, @_scanStr);
 end;
 
+(*
+    Verifies that the scanned boolean value is equal to the expected value.
+*)
 procedure ScannerTest.nextBooleanAssertEquals(sc: Scanner; expected: boolean);
 begin
     assertEqualsPointer('nextBoolean', @expected, sc, @_scanBool, @_equalsBool, @_toStringBool);
 end;
 
+(*
+    Verifies that the scanned byte value is equal to the expected value.
+*)
 procedure ScannerTest.nextByteAssertEquals(sc: Scanner; expected: shortInt);
 begin
     assertEqualsPointer('nextByte', @expected, sc, @_scanB, @_equalsB, @_toStringB);
 end;
 
+(*
+    Verifies that the scanned short value is equal to the expected value.
+*)
 procedure ScannerTest.nextShortAssertEquals(sc: Scanner; expected: smallInt);
 begin
     assertEqualsPointer('nextShort', @expected, sc, @_scanS, @_equalsS, @_toStringS);
 end;
 
+(*
+    Verifies that the scanned int value is equal to the expected value.
+*)
 procedure ScannerTest.nextIntAssertEquals(sc: Scanner; expected: longInt);
 begin
     assertEqualsPointer('nextInt', @expected, sc, @_scanI, @_equalsI, @_toStringI);
 end;
 
+(*
+    Verifies that the scanned long value is equal to the expected value.
+*)
 procedure ScannerTest.nextLongAssertEquals(sc: Scanner; expected: int64);
 begin
     assertEqualsPointer('nextLong', @expected, sc, @_scanL, @_equalsL, @_toStringL);
 end;
 
+(*
+    Verifies that the scanned float value is equal to the expected value.
+*)
 procedure ScannerTest.nextFloatAssertEquals(sc: Scanner; expected: single);
 begin
     assertEqualsPointer('nextFloat', @expected, sc, @_scanF, @_equalsF, @_toStringF);
 end;
 
+(*
+    Verifies that the scanned double value is equal to the expected value.
+*)
 procedure ScannerTest.nextDoubleAssertEquals(sc: Scanner; expected: double);
 begin
     assertEqualsPointer('nextDouble', @expected, sc, @_scanD, @_equalsD, @_toStringD);
 end;
 
+(*
+    Verifies that the scanned line string value is equal to the expected value.
+*)
 procedure ScannerTest.nextLineAssertEquals(sc: Scanner; expected: String_);
 begin
     assertEqualsString('nextLine', expected, sc, @_scanStrLn);
 end;
 
+(*
+    Initializes the test.
+*)
 constructor ScannerTest.create();
 begin
     errorsInMethod := 0;

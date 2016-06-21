@@ -16,6 +16,7 @@ type
   Long = class(Comparable)
     private
       var
+        // an inner value
         v: int64;
     public
       const
@@ -85,6 +86,7 @@ end;
  *)
 class function Long.compare(x, y: int64) : longInt;
 begin
+  // 1 if x is greater, 0 if x equals y, -1 otherwise
   if x < y then begin
      compare := -1;
   end
@@ -104,14 +106,17 @@ end;
  *)
 function Long.equals_(obj: Object_) : boolean;
 begin
+  // testing another object reference for a NULL value
   if obj = nil then begin
     exit(false);
   end;
 
+  // testing object class equality
   if typeOf(self) <> typeOf(obj) then begin
     exit(false);
   end;
 
+  // testing object fields equality
   equals_ := v = (obj as Long).v;
 end;
 

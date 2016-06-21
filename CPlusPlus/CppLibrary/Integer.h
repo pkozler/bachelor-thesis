@@ -12,6 +12,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Integer : public Comparable {
+    // an inner value
     int32_t v;
 public:
     /**

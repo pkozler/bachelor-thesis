@@ -40,6 +40,7 @@ int32_t Boolean::compareTo(Object *b) {
  * value greater than 0 if x && !y
  */
 int32_t Boolean::compare(bool x, bool y) {
+    // 0 if x equals y, 1 if x is TRUE and y is FALSE, -1 otherwise
     return (x == y) ? 0 : (x ? 1 : -1);
 }
 
@@ -52,14 +53,17 @@ int32_t Boolean::compare(bool x, bool y) {
  * otherwise.
  */
 bool Boolean::equals(Object *obj) {
+    // testing another object reference for a NULL value
     if (obj == nullptr) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
-    
+
+    // testing object fields equality
     return (v == ((Boolean *)obj)->v);
 }
 
@@ -95,9 +99,11 @@ bool Boolean::parseBoolean(String *s) {
     String *str = trimmedStr->toLowerCase();
     bool value = false;
 
+    // test if the string is equal to "true"
     if (str->equals(trueStr)) {
         value = true;
     }
+    // test if the string is equal to "false"
     else if (str->equals(falseStr)) {
         value = false;
     }

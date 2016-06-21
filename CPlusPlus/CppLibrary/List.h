@@ -32,10 +32,12 @@ public:
  * @return true if the specified object is equal to this list
  */
 template <class E> bool List<E>::equals(Object *o) {
+    // comparing pointers
     if (this == o) {
         return true;
     }
 
+    // testing the pointer for a NULL value
     if (o == nullptr) {
         return false;
     }
@@ -43,11 +45,13 @@ template <class E> bool List<E>::equals(Object *o) {
     List<E> *other = (List<E> *) o;
     int32_t length = size();
 
+    // comparing the list sizes
     if (other->size() != length) {
         return false;
     }
     
     int32_t i;
+    // comparing the corresponding elements of the lists
     for (i = 0; i < length; i++) {
         Object *o1 = (Object *) get(i);
         Object *o2 = (Object *) other->get(i);

@@ -5,7 +5,9 @@
 #include <string.h>
 #include <wchar.h>
 
+// initial capacity for the inner dynamically resized array
 #define _DEFAULT_CAPACITY 10
+// coefficient for increasing or decreasing the capacity of inner array
 #define _RESIZE_COEF 2
 
 /**
@@ -15,6 +17,7 @@ ArrayList *new_ArrayList() {
     ArrayList *list = malloc(sizeof (ArrayList));
     list->count = 0;
     list->capacity = _DEFAULT_CAPACITY;
+    // allocating the inner array to the default capacity
     list->dynamicArray = malloc(list->capacity * sizeof (void *));
 
     return list;
@@ -30,8 +33,10 @@ ArrayList *new_ArrayListAddAll(ArrayList *c) {
     ArrayList *list = malloc(sizeof (ArrayList));
     list->count = c->count;
     list->capacity = c->capacity;
+    // allocating the inner array to the specified list capacity
     list->dynamicArray = malloc(list->capacity * sizeof(void *));
 
+    // copying all elements from the specified list
     int32_t i;
     for (i = 0; i < list->count; i++) {
         list->dynamicArray[i] = c->dynamicArray[i];
@@ -40,26 +45,39 @@ ArrayList *new_ArrayListAddAll(ArrayList *c) {
     return list;
 }
 
+/*
+    Destructs the ArrayList.
+ */
 void delete_ArrayList(ArrayList *ptr) {
     clearAl(ptr);
     free(ptr);
 }
 
+/*
+    Increases the capacity of the inner array if the element count
+    reaches the current capacity.
+ */
 void _expandList(ArrayList *ptr) {
     ptr->count++;
 
     if (ptr->count == ptr->capacity) {
         ptr->capacity *= _RESIZE_COEF;
+        // reallocating the memory (expanding the allocated memory by the resize coefficient)
         ptr->dynamicArray = realloc(ptr->dynamicArray, ptr->capacity * sizeof(void *));
     }
 }
 
+/*
+    Decreases the capacity of the inner array if the element count reaches the half
+    of the current capacity (and the current capacity is greater than the default capacity).
+ */
 void _shrinkList(ArrayList *ptr) {
     ptr->count--;
 
     if (ptr->count < ptr->capacity / _RESIZE_COEF
             && ptr->capacity >= _DEFAULT_CAPACITY * _RESIZE_COEF) {
         ptr->capacity /= _RESIZE_COEF;
+        // reallocating the memory (shrinking the allocated memory by the resize coefficient)
         ptr->dynamicArray = realloc(ptr->dynamicArray, ptr->capacity * sizeof(void *));
     }
 }
@@ -72,6 +90,7 @@ void _shrinkList(ArrayList *ptr) {
  * @return true
  */
 bool addAl(ArrayList *ptr, void *e) {
+    // storing the element on the index specified by the current element count
     ptr->dynamicArray[ptr->count] = e;
     _expandList(ptr);
 
@@ -88,10 +107,12 @@ bool addAl(ArrayList *ptr, void *e) {
 void addAtAl(ArrayList *ptr, int32_t index, void *element) {
     int32_t i;
 
+    // moving the elements with greater index than specified by 1 away from the beginning of array
     for (i = ptr->count; i > index; i--) {
         ptr->dynamicArray[i] = ptr->dynamicArray[i - 1];
     }
 
+    // storing the element on the specified index
     ptr->dynamicArray[index] = element;
     _expandList(ptr);
 }
@@ -134,6 +155,7 @@ void *removeAl(ArrayList *ptr, int32_t index) {
     void *removed = ptr->dynamicArray[index];
     int32_t i;
 
+    // moving the elements with greater index than removed by 1 towards the beginning of array
     for (i = index; i < ptr->count - 1; i++) {
         ptr->dynamicArray[i] = ptr->dynamicArray[i + 1];
     }
@@ -172,6 +194,7 @@ void clearAl(ArrayList *ptr) {
 
     ptr->count = 0;
     ptr->capacity = _DEFAULT_CAPACITY;
+    // allocating the array with the default capacity
     ptr->dynamicArray = malloc(ptr->capacity * sizeof (void *));
 }
 
@@ -184,17 +207,21 @@ void clearAl(ArrayList *ptr) {
  */
 String *toStringAl(ArrayList *ptr, String *(*toString)(void *)) {
     int32_t length = ptr->count;
+    
+    // create StringBuilder for appending the text
     StringBuilder *sb = new_StringBuilder();
     String *str = new_String("[");
     append(sb, str);
     delete_String(str);
 
+    // append first element string representation
     if (length > 0) {
         str = ptr->dynamicArray[0] == NULL ? new_String("null") : toString(ptr->dynamicArray[0]);
         append(sb, str);
         delete_String(str);
     }
     
+    // append another elements string representation
     int32_t i;
     for (i = 1; i < length; i++) {
         str = new_String(", ");
@@ -205,6 +232,7 @@ String *toStringAl(ArrayList *ptr, String *(*toString)(void *)) {
         delete_String(str);
     }
 
+    // create Java-like string
     str = new_String("]");
     append(sb, str);
     delete_String(str);

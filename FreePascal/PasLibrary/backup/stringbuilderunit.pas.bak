@@ -16,13 +16,20 @@ type
   StringBuilder = class(Object_)
     private
       const
+        // initial capacity for the inner dynamically resized string buffer
         DEFAULT_CAPACITY = 16;
+        // coefficient for increasing the string buffer capacity
         RESIZE_COEF = 2;
       var
+        // char pointer used as a string buffer
         buffer: ^ansiChar;
-        count, capacity: longInt;
+        // current appended character count
+        count: longInt;
+        // current buffer capacity
+        capacity: longInt;
     public
       constructor create();
+      destructor destroy(); override;
       function append(str: String_) : StringBuilder;
       function toString_() : String_;
   end;
@@ -40,8 +47,18 @@ constructor StringBuilder.create();
 begin
   count := 0;
   capacity := DEFAULT_CAPACITY;
+  // allocating the inner buffer to the default capacity
   buffer := getMem(capacity);
   buffer[0] := #0;
+end;
+
+(*
+    Destructs the StringBuilder.
+ *)
+destructor StringBuilder.destroy();
+begin
+  freeMem(buffer);
+  inherited;
 end;
 
 (**
@@ -56,14 +73,19 @@ var
   len: longInt;
 begin
   len := str.length();
-  cStr := getMem(len + 1);
-  strPCopy(cStr, str.toString());
 
+  // converting the string into the null-terminated char array for appending to the buffer
+  cStr := getMem(len + 1);
+  strPCopy(cStr, str.strProperty);
+
+  // increasing the buffer capacity if the new string length reaches the current capacity
   if count + len >= capacity then begin
     capacity := count + len * RESIZE_COEF;
+    // reallocating the memory (expanding the allocated memory by the resize coefficient)
     buffer := reAllocMem(buffer, capacity);
   end;
 
+  // concatenating the new string
   strcat(buffer, cStr);
   count := count + len;
   append := self;
@@ -76,12 +98,8 @@ end;
  *)
 function StringBuilder.toString_() : String_;
 begin
+  // converting the null-terminated char array into string
   toString_ := String_.create(strPas(buffer));
-end;
-
-function StringBuilder.toString() : ansiString;
-begin
-  toString := strPas(buffer);
 end;
 
 end.

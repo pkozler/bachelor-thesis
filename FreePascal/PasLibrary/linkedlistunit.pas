@@ -7,13 +7,20 @@ interface
 uses
   StringUnit, ListUnit;
 
+(*
+    LinkedListNode structure represents the node in the doubly-linked list
+    containing the element and the references to the next and the previous node in the list.
+ *)
 type
   LinkedListNode = class
     private
       var
-        next: LinkedListNode;
-        previous: LinkedListNode;
+        // stored element
         value: Object_;
+        // next node in the list
+        next: LinkedListNode;
+        // previous node in the list
+        previous: LinkedListNode;
   end;
 
   (**
@@ -25,8 +32,11 @@ type
   LinkedList = class(List)
     private
       var
+        // list element count
         count: longInt;
+        // first node in the list
         first: LinkedListNode;
+        // last node in the list
         last: LinkedListNode;
       procedure addAfter(node, newNode: LinkedListNode);
       procedure addBefore(node, newNode: LinkedListNode);
@@ -58,6 +68,7 @@ uses
 constructor LinkedList.create();
 begin
   count := 0;
+  // setting the empty nodes
   first := nil;
   last := nil;
 end;
@@ -81,12 +92,18 @@ begin
   end;
 end;
 
+(*
+    Destructs the LinkedList.
+ *)
 destructor LinkedList.destroy();
 begin
   clear();
   inherited;
 end;
 
+(*
+    Adds the new node after the specified existing node in the list and updates the references.
+ *)
 procedure LinkedList.addAfter(node, newNode: LinkedListNode);
 begin
   newNode.previous := node;
@@ -102,6 +119,9 @@ begin
   node.next := newNode;
 end;
 
+(*
+    Adds the new node before the specified existing node in the list and updates the references.
+ *)
 procedure LinkedList.addBefore(node, newNode: LinkedListNode);
 begin
   newNode.previous := node.previous;
@@ -117,6 +137,9 @@ begin
   node.previous := newNode;
 end;
 
+(*
+    Adds the new node to the beginning of the list and updates the references.
+ *)
 procedure LinkedList.addFirst(newNode: LinkedListNode);
 begin
   if first = nil then begin
@@ -130,6 +153,9 @@ begin
   end;
 end;
 
+(*
+    Adds the new node to the end of the list and updates the references.
+ *)
 procedure LinkedList.addLast(newNode: LinkedListNode);
 begin
   if last = nil then begin
@@ -140,6 +166,9 @@ begin
   end;
 end;
 
+(*
+    Removes the specified existing node from the list and updates the references.
+ *)
 procedure LinkedList.removeNode(node: LinkedListNode);
 begin
   if node.previous = nil then begin
@@ -167,8 +196,10 @@ function LinkedList.add(e: Object_) : boolean;
 var
   newNode: LinkedListNode;
 begin
+  // creating the node for storing the element
   newNode := LinkedListNode.create();
   newNode.value := e;
+  // adding as the last node of the list
   addLast(newNode);
   inc(count);
   add := true;
@@ -185,15 +216,18 @@ var
   node, newNode: LinkedListNode;
   i: longInt;
 begin
+  // creating the node for storing the element
   newNode := LinkedListNode.create();
   newNode.value := element;
 
+  // adding as the first node of the list if the list is currently empty
   if count < 1 then begin
     addFirst(newNode);
   end
   else begin
     node := first;
 
+    // adding before the first node of the list if the index is 0
     if index < 1 then begin
       addBefore(node, newNode);
     end
@@ -203,6 +237,7 @@ begin
         node := node.next;
       end;
 
+      // adding after the node found on the specified position, if the index is not 0
       addAfter(node, newNode);
     end;
   end;
@@ -223,6 +258,7 @@ var
 begin
   node := first;
 
+  // iterating over the list to the node on the specified position
   for i := 0 to index - 1 do begin
     node := node.next;
   end;
@@ -244,6 +280,7 @@ var
   original: Object_;
   i: longInt;
 begin
+  // setting the first node if the index is 0
   if index < 1 then begin
     original := first.value;
     first.value := element;
@@ -255,6 +292,7 @@ begin
       node := node.next;
     end;
 
+    // setting the node on the specified position
     original := node.value;
     node.value := element;
   end;
@@ -274,6 +312,7 @@ var
   removed: Object_;
   i: longInt;
 begin
+  // removing the first node if the index is 0
   if index < 1 then begin
     node := first;
     removed := node.value;
@@ -287,6 +326,7 @@ begin
       node := node.next;
     end;
 
+    // removing the node on the specified position
     removed := node.value;
     removeNode(node);
     freeAndNil(node);
@@ -311,6 +351,7 @@ end;
  *)
 procedure LinkedList.clear();
 begin
+  // deallocating the memory of the each list node after removing it
   while first <> nil do begin
     remove(0);
   end;
@@ -327,12 +368,14 @@ var
   str: String_;
   node: LinkedListNode;
 begin
+  // create StringBuilder for appending the text
   sb := StringBuilder.create();
   str := String_.create('[');
   sb.append(str);
   freeAndNil(str);
   node := first;
 
+  // append first element string representation
   if first <> nil then begin
     if node.value = nil then begin
       str := String_.create('null');
@@ -346,6 +389,7 @@ begin
     node := node.next;
   end;
 
+  // append another elements string representation
   while node <> nil do begin
     str := String_.create(', ');
     sb.append(str);
@@ -363,6 +407,7 @@ begin
     node := node.next;
   end;
 
+  // create Java-like string
   str := String_.create(']');
   sb.append(str);
   freeAndNil(str);

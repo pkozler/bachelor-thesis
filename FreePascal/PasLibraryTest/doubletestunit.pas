@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A Double class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   DoubleTest = class(TTestCase)
   published
        procedure doubleValueTest;

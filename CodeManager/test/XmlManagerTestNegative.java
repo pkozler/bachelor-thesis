@@ -1,7 +1,8 @@
 
-import app.ADataManagementException;
-import app.xml.XmlKeyword;
-import app.xml.XmlManager;
+import main.Config;
+import main.app.ADataManagementException;
+import main.app.xml.XmlKeyword;
+import main.app.xml.XmlManager;
 import java.io.File;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,7 +46,7 @@ public class XmlManagerTestNegative {
      * Creates a clean test test data directory structure and creates the XML
      * manager before each test is run.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws org.xml.sax.SAXException SAX error
      * @throws javax.xml.transform.TransformerException transformer error
@@ -61,7 +62,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the initialize method without the main file.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -87,7 +88,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the initialize method without the data subfolder.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -113,7 +114,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the loadClassList method with duplicate class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -134,7 +135,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the loadClassList method with no class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -155,7 +156,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the loadLanguageList method with duplicate language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -176,7 +177,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the loadLanguageList method with no language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -197,7 +198,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addClass method with duplicate class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -219,7 +220,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addClass method with no class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -241,7 +242,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addClass method with already existing class file for the new class.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -264,7 +265,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addClass method with already existing item in the main file for the new class.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -286,7 +287,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editClass method with duplicate class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -311,7 +312,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editClass method with no class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -335,7 +336,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editClass method with missing class file for the old class.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -360,7 +361,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editClass method with already existing class file for the new class.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -385,7 +386,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editClass method with missing item in the main file for the old class.
      * 
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -409,7 +410,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editClass method with already existing item in the main file for the new class.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -433,7 +434,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeClass method with duplicate class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -456,7 +457,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeClass method with no class list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -479,7 +480,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeClass method with missing class file for the old class.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -503,7 +504,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeClass method with missing item in the main file for the old class.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -526,7 +527,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addLanguage method with duplicate language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -548,7 +549,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addLanguage method with no language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -570,7 +571,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addLanguage method with already existing code in a class file for the new language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -595,7 +596,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the addLanguage method with already existing item in the main file for the new language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -617,7 +618,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editLanguage method with duplicate language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -641,7 +642,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editLanguage method with no language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -665,7 +666,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editLanguage method with missing code in a class file for the old language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -691,7 +692,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editLanguage method with already existing code in a class file for the new language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -717,7 +718,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editLanguage method with missing item in the main file for the old language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -740,7 +741,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the editLanguage method with already existing item in the main file for the new language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -764,7 +765,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeLanguage method with duplicate language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -786,7 +787,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeLanguage method with no language list element.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -807,7 +808,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeLanguage method with missing code in a class file for the old language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -831,7 +832,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the removeLanguage method with missing item in the main file for the old language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -853,7 +854,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the saveCode method with missing the code element for the specified language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -880,7 +881,7 @@ public class XmlManagerTestNegative {
     /**
      * Tests the loadCode method with missing the code element for the specified language.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error

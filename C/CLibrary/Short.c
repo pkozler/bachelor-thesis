@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// maximum possible string length of the int16_t value used as the string buffer size
 #define _MAX_SHORT_STRLEN 6
 
 /**
@@ -53,6 +54,7 @@ int32_t compareToS(Short *ptr, Short *anotherShort) {
  * > y
  */
 int32_t Short_compare(int16_t x, int16_t y) {
+    // positive number if x is greater, 0 if x equals y, negative number otherwise
     return x - y;
 }
 
@@ -64,14 +66,17 @@ int32_t Short_compare(int16_t x, int16_t y) {
  * @return true if the structures are the same; false otherwise.
  */
 bool equalsS(Short *ptr, Short *obj) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 
+    // testing object fields equality
     return (ptr->v == obj->v);
 }
 
@@ -96,7 +101,9 @@ String *Short_toString(int16_t s) {
     char buf[_MAX_SHORT_STRLEN];
 
     str[0] = '\0';
+    // printing the string representation to the buffer
     sprintf(buf, "%hd", s);
+    // creating the null-terminated string from the buffer
     strcat(str, buf);
     String *st = new_String(str);
     free(str);

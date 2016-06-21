@@ -45,6 +45,7 @@ int32_t Character::compareTo(Object *anotherCharacter) {
  * > y
  */
 int32_t Character::compare(char x, char y) {
+    // positive number if x is greater, 0 if x equals y, negative number otherwise
     return x - y;
 }
 
@@ -55,14 +56,17 @@ int32_t Character::compare(char x, char y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool Character::equals(Object *obj) {
+    // testing another object reference for a NULL value
     if (obj == nullptr) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
-    
+
+    // testing object fields equality
     return (v == ((Character *)obj)->v);
 }
 

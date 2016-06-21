@@ -4,10 +4,13 @@
 #include "test.h"
 #include "Double.h"
 
-/*
- * Simple C++ Test Suite
+/**
+ * A Double class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
+// maximal difference between expected and actual value
 const double DEFAULT_EPSILON = 1E-10;
 
 /**

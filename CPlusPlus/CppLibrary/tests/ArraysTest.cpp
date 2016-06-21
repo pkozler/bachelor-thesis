@@ -6,8 +6,10 @@
 #include "TestObject.h"
 #include "TestObjectComparator.h"
 
-/*
- * Simple C++ Test Suite
+/**
+ * An Arrays class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

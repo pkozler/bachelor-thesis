@@ -1,7 +1,7 @@
 
-import app.ADataManagementException;
-import app.xml.XmlKeyword;
-import app.xml.XmlManager;
+import main.app.ADataManagementException;
+import main.app.xml.XmlKeyword;
+import main.app.xml.XmlManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the initialize method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws java.io.IOException IO error
@@ -87,7 +87,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the loadClassList method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws java.io.IOException IO error
@@ -103,7 +103,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the loadLanguageList method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws java.io.IOException
      * @throws javax.xml.parsers.ParserConfigurationException
      * @throws javax.xml.transform.TransformerException
@@ -119,7 +119,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the addClass method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -161,7 +161,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the editClass method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -216,7 +216,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the removeClass method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -257,7 +257,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the addLanguage method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -307,7 +307,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the editLanguage method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -369,7 +369,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the removeLanguage method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -417,7 +417,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the saveCode method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws org.xml.sax.SAXException SAX error
@@ -468,7 +468,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests the loadCode method.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws java.io.IOException IO error
@@ -518,7 +518,7 @@ public class XmlManagerTestPositive {
     /**
      * Tests all methods.
      *
-     * @throws app.ADataManagementException an error
+     * @throws main.app.ADataManagementException an error
      * @throws javax.xml.parsers.ParserConfigurationException parser error
      * @throws javax.xml.transform.TransformerException transformer error
      * @throws java.io.IOException IO error

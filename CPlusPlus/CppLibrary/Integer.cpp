@@ -48,6 +48,7 @@ int32_t Integer::compareTo(Object *anotherInteger) {
  * > y
  */
 int32_t Integer::compare(int32_t x, int32_t y) {
+    // 1 if x is greater, 0 if x equals y, -1 otherwise
     return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
@@ -58,14 +59,17 @@ int32_t Integer::compare(int32_t x, int32_t y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool Integer::equals(Object *obj) {
+    // testing another object reference for a NULL value
     if (obj == nullptr) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
-    
+
+    // testing object fields equality
     return (v == ((Integer *)obj)->v);
 }
 

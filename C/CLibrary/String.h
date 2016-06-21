@@ -11,7 +11,9 @@
  */
 
 typedef struct {
+    // an inner string
     char *s;
+    // inner string length
     int32_t len;
 } String;
 

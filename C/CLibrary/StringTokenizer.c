@@ -25,16 +25,19 @@ StringTokenizer *new_StringTokenizerDelim(String *str, String *delim) {
     StringTokenizer *strTok = malloc(sizeof(StringTokenizer));
     char *ch = strpbrk(str->s, delim->s);
     
+    // determining the greatest possible length of the token array
     for (strTok->tokensLength = 1; ch != NULL; strTok->tokensLength++) {
         ch = strpbrk(ch + 1, delim->s);
     }
     
     strTok->tokenCounter = 0;
+    // allocating the token array with the determined length
     strTok->tokens = (char **) malloc(strTok->tokensLength * sizeof(char *));
     
     char *s = strtok(str->s, delim->s);
     int32_t i = 0;
     
+    // inserting the tokens into the token array
     while (s != NULL) {
         strTok->tokens[i] = s;
         i++;
@@ -42,12 +45,17 @@ StringTokenizer *new_StringTokenizerDelim(String *str, String *delim) {
     }
 
     strTok->tokensLength = i;
+    // reallocating the token array to the exact length
     strTok->tokens = realloc(strTok->tokens, strTok->tokensLength * sizeof(char *));
     
     return strTok;
 }
 
+/*
+    Destructs the StringTokenizer.
+ */
 void delete_StringTokenizer(StringTokenizer *ptr) {
+    // deallocating the memory for the each string token
     int32_t i;
     for (i = 0; i < ptr->tokensLength; i++) {
         free(ptr->tokens[i]);

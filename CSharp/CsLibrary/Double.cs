@@ -137,7 +137,7 @@ namespace JavaClasses
 
             /* testing for other values and returning
                1 if first value is greater, 0 if first value 
-               equals second value, -1 otherwise (same as for a float type) */
+               equals second value, -1 otherwise */
             return (d1 > d2 ? 1 : d1 < d2 ? -1 : 0);
         }
 
@@ -149,11 +149,13 @@ namespace JavaClasses
         /// </returns>
         public override bool equals(Object obj)
         {
+            // testing another object reference for a NULL value
             if (obj == null)
             {
                 return false;
             }
 
+            // testing object class equality
             if (GetType() != obj.GetType())
             {
                 return false;
@@ -212,15 +214,16 @@ namespace JavaClasses
         /// </returns>
         public static double parseDouble(String s)
         {
-            double result = double.Parse(s.ToString(), CultureInfo.InvariantCulture);
+            // parsing with invariant culture formatting
+            double value = double.Parse(s.ToString(), CultureInfo.InvariantCulture);
 
             // negative zero handling
-            if (result == 0 && s.startsWith("-"))
+            if (value == 0 && s.startsWith("-"))
             {
                 return -0.0;
             }
 
-            return result;
+            return value;
         }
         
         public static implicit operator Double(double original)

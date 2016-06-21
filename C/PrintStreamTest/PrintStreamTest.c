@@ -11,8 +11,10 @@
 #include "TestObject.h"
 #include "String.h"
 
-/*
- * Simple C Test Suite
+/**
+ * A PrintStream module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

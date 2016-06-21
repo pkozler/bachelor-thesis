@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A String class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   StringTest = class(TTestCase)
   published
        procedure stringTest1;

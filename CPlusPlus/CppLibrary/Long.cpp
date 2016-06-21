@@ -48,6 +48,7 @@ int32_t Long::compareTo(Object *anotherLong) {
  * > y
  */
 int32_t Long::compare(int64_t x, int64_t y) {
+    // 1 if x is greater, 0 if x equals y, -1 otherwise
     return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
@@ -58,14 +59,17 @@ int32_t Long::compare(int64_t x, int64_t y) {
  * @return true if the objects are the same; false otherwise.
  */
 bool Long::equals(Object *obj) {
+    // testing another object reference for a NULL value
     if (obj == nullptr) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(this) != sizeof(*obj)) {
         return false;
     }
-    
+
+    // testing object fields equality
     return (v == ((Long *)obj)->v);
 }
 

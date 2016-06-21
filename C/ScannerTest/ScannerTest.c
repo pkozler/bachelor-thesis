@@ -14,12 +14,15 @@
 #include "Character.h"
 #include "String.h"
 
-/*
- * Simple C Test Suite
+/**
+ * A Scanner module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 int32_t errorsInFunction;
 
+// current scanned value
 union {
     bool currentScannedBoolean;
     int8_t currentScannedByte;
@@ -30,6 +33,10 @@ union {
     double currentScannedDouble;
     String *currentScannedString;
 } currentScannedValue;
+
+/*
+ * functions for testing if the two scanned values are equal:
+ */
 
 bool _testEqualsBool(void *a, void *b) {
     Boolean *x = new_Boolean(*((bool *)a));
@@ -84,6 +91,10 @@ bool _testEqualsStr(void *a, void *b) {
     return equalsStr(*((String **)a), *((String **)b));
 };
 
+/*
+ * functions for getting the string representation of the current scanned value:
+ */
+
 String *_testToStringBool(void *a) {
     return Boolean_toString(*((bool *)a));
 };
@@ -115,6 +126,10 @@ String *_testToStringS(void *a) {
 String *_testToStringStr(void *a) {
     return toStringStr(*((String **) a));
 };
+
+/*
+ * functions for scanning the next value with the specified scanner:
+ */
 
 void _scanBool(Scanner *sc) {
     currentScannedValue.currentScannedBoolean = nextBoolean(sc);
@@ -152,6 +167,9 @@ void _scanStrLn(Scanner *sc) {
     currentScannedValue.currentScannedString = nextLine(sc);
 };
 
+/*
+    Invokes the specified scanner method and verifies the scanned value with the specified expected value.
+*/
 void assertEquals(const char *name, void *expected, Scanner *sc, void (*scan)(Scanner *),
         bool (*equals) (void *, void *), String *(*toString)(void *)) {
     printf("\n");
@@ -176,38 +194,65 @@ void assertEquals(const char *name, void *expected, Scanner *sc, void (*scan)(Sc
     }
 }
 
+/*
+    Verifies that the scanned string value is equal to the expected value.
+*/
 void nextAssertEquals(Scanner *sc, String *expected) {
     assertEquals("next", &expected, sc, _scanStr, _testEqualsStr, _testToStringStr);
 }
 
+/*
+    Verifies that the scanned boolean value is equal to the expected value.
+*/
 void nextBooleanAssertEquals(Scanner *sc, bool expected) {
     assertEquals("nextBoolean", &expected, sc, _scanBool, _testEqualsBool, _testToStringBool);
 }
 
+/*
+    Verifies that the scanned byte value is equal to the expected value.
+*/
 void nextByteAssertEquals(Scanner *sc, int8_t expected) {
     assertEquals("nextByte", &expected, sc, _scanB, _testEqualsB, _testToStringB);
 }
 
+/*
+    Verifies that the scanned short value is equal to the expected value.
+*/
 void nextShortAssertEquals(Scanner *sc, int16_t expected) {
     assertEquals("nextShort", &expected, sc, _scanS, _testEqualsS, _testToStringS);
 }
 
+/*
+    Verifies that the scanned int value is equal to the expected value.
+*/
 void nextIntAssertEquals(Scanner *sc, int32_t expected) {
     assertEquals("nextInt", &expected, sc, _scanI, _testEqualsI, _testToStringI);
 }
 
+/*
+    Verifies that the scanned long value is equal to the expected value.
+*/
 void nextLongAssertEquals(Scanner *sc, int64_t expected) {
     assertEquals("nextLong", &expected, sc, _scanL, _testEqualsL, _testToStringL);
 }
 
+/*
+    Verifies that the scanned float value is equal to the expected value.
+*/
 void nextFloatAssertEquals(Scanner *sc, float expected) {
     assertEquals("nextFloat", &expected, sc, _scanF, _testEqualsF, _testToStringF);
 }
 
+/*
+    Verifies that the scanned double value is equal to the expected value.
+*/
 void nextDoubleAssertEquals(Scanner *sc, double expected) {
     assertEquals("nextDouble", &expected, sc, _scanD, _testEqualsD, _testToStringD);
 }
 
+/*
+    Verifies that the scanned line string value is equal to the expected value.
+*/
 void nextLineAssertEquals(Scanner *sc, String *expected) {
     assertEquals("nextLine", &expected, sc, _scanStrLn, _testEqualsStr, _testToStringStr);
 }

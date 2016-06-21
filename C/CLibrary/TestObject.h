@@ -6,14 +6,15 @@
 #include <stdint.h>
 
 /**
- * The {@code TestObject} struct represents a simple structure that serves
+ * The TestObject struct represents a simple structure that serves
  * for demonstration the functionality of libraries working with structures.
  *
  * @author Petr Kozler
  */
-
 typedef struct {
+    // string value
     String *str;
+    // integer value
     int32_t i;
 } TestObject;
 

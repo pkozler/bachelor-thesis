@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// maximum possible string length of the bool value used as the string buffer size
 #define _MAX_BOOL_STRLEN 5
 
 /**
@@ -51,6 +52,7 @@ int32_t compareToBool(Boolean *ptr, Boolean *b) {
  * value greater than 0 if x && !y
  */
 int32_t Boolean_compare(bool x, bool y) {
+    // 0 if x equals y, 1 if x is TRUE and y is FALSE, -1 otherwise
     return (x == y) ? 0 : (x ? 1 : -1);
 }
 
@@ -64,14 +66,17 @@ int32_t Boolean_compare(bool x, bool y) {
  * otherwise.
  */
 bool equalsBool(Boolean *ptr, Boolean *obj) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 
+    // testing object fields equality
     return (ptr->v == obj->v);
 }
 
@@ -96,7 +101,9 @@ String *Boolean_toString(bool b) {
     char buf[_MAX_BOOL_STRLEN];
 
     str[0] = '\0';
+    // printing the string representation to the buffer
     sprintf(buf, "%s", b ? "true" : "false");
+    // creating the null-terminated string from the buffer
     strcat(str, buf);
     String *s = new_String(str);
     free(str);
@@ -117,9 +124,11 @@ bool Boolean_parseBoolean(String *s) {
     String *str = toLowerCase(trimmedStr);
     bool value = false;
 
+    // test if the string is equal to "true"
     if (equalsStr(str, trueStr)) {
         value = true;
     }
+    // test if the string is equal to "false"
     else if (equalsStr(str, falseStr)) {
         value = false;
     }

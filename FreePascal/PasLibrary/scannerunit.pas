@@ -15,6 +15,7 @@ type
    *)
   Scanner = class(Object_)
     private
+      // current line
       var line: ansiString;
       function readLine() : String_;
       function isEmptyOrWhiteSpace(l: ansiString) : boolean;
@@ -38,66 +39,94 @@ implementation
 uses
   SysUtils;
 
+(*
+    Reads the line from the standard input.
+*)
 function Scanner.readLine() : String_;
 var
   l: ansiString;
 begin
+  // reading the new line
   readLn(l);
   readLine := String_.create(l);
 end;
 
+(*
+    Returns TRUE if and only if there is only the white-space characters
+    left in the line or if the current scanned line is already empty.
+*)
 function Scanner.isEmptyOrWhiteSpace(l: ansiString) : boolean;
 var
   len, i: longInt;
 begin
   len := length(l);
 
+  // returning TRUE if the string is empty
   if len = 0 then begin
     exit(true);
   end;
 
+  // finding the first non-whitespace character
   for i := 1 to len do begin
     if l[i] > #32 then begin
       exit(false);
     end;
   end;
 
+  // returning TRUE if there are only whitespaces in the line
   isEmptyOrWhiteSpace := true;
 end;
 
+(*
+    Removes the part of the current line to the first white-space character
+    after the first sequence of non-whitespace characters and returns this
+    part as the scanned token.
+*)
 function Scanner.removeLineToWhiteSpace() : ansiString;
 var
   len, i: longInt;
   token: ansiString;
 begin
   len := length(line);
+  // removing all leading whitespaces from the line
   line := trimLeft(line);
 
+  // finding the first whitespace in the trimmed line
   for i := 1 to len do begin
     if line[i] <= #32 then begin
       break;
     end;
   end;
 
+  // decrementing index if whitespace was found (the token will not contain it)
   if i < len then begin
     dec(i);
   end;
 
+  // getting the next token
   token := copy(line, 1, i);
+  // removing the token from the current line
   delete(line, 1, i);
   removeLineToWhiteSpace := trim(token);
 end;
 
+(*
+    Returns the next token of the current line or reads the new line
+    from the standard input if the current line has been scanned completely.
+*)
 function Scanner.getNextToken() : String_;
 var
   l: String_;
 begin
+  // reading the next line if the current line is empty
   while isEmptyOrWhiteSpace(line) do begin
     l := readLine();
+    // removing all leading whitespaces
     line := trimLeft(l.strProperty);
     freeAndNil(l);
   end;
 
+  // returning the next scanned token
   getNextToken := String_.create(removeLineToWhiteSpace());
 end;
 
@@ -202,10 +231,12 @@ function Scanner.nextLine() : String_;
 var
   str: String_;
 begin
+  // reading the next line if the current is empty
   if length(line) = 0 then begin
      exit(readLine());
   end;
 
+  // returning the rest of the current line if not empty
   str := String_.create(line);
   line := '';
   nextLine := str;

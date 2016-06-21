@@ -27,7 +27,7 @@ namespace JavaClasses
         /// </param>
         public void print(bool b)
         {
-            Console.Write(b);
+            Console.Write(b.ToString().ToLower());
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace JavaClasses
         /// </param>
         public void println(bool x)
         {
-            Console.WriteLine(x);
+            Console.WriteLine(x.ToString().ToLower());
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace JavaClasses
     /// <author>Petr Kozler (A13B0359P)</author>
     public class InputStream : Object
     {
-        // really no code
+        // no code yet
     }
 
     /// <summary>

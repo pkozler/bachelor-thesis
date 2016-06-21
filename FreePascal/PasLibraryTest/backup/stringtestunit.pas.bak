@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An String class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   StringTest = class(TTestCase)
   published
        procedure stringTest1;
@@ -500,7 +505,7 @@ var
     b: boolean;
 begin
     // non-empty ansiString
-    a := String_.create('This is a test');
+    a := String_.create('This is a test.');
     b := a.isEmpty();
     AssertEquals(false, b);
     // non-empty ansiString with a single ansiChar

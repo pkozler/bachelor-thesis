@@ -4,8 +4,10 @@
 #include "test.h"
 #include "Integer.h"
 
-/*
- * Simple C Test Suite
+/**
+ * An Integer module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

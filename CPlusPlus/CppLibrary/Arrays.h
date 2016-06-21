@@ -13,6 +13,9 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Arrays {
+    /*
+     * default values used for copying one array to the another with greater length:
+     */
     static bool defaultBool;
     static int8_t defaultByte;
     static char defaultChar;
@@ -22,7 +25,8 @@ class Arrays {
     static int64_t defaultLong;
     static Object *defaultPointer;
     static int16_t defaultShort;
-    static void *currentComparator; // hack to make the Comparator compare function call work
+    // hack to make the Comparator compare function call work
+    static void *currentComparator;
     static bool equalsBool(bool a, bool b);
     static bool equalsB(int8_t a, int8_t b);
     static bool equalsC(char a, char b);
@@ -150,41 +154,62 @@ public:
     static String *toString(int16_t *a, int32_t length);
 };
 
+/*
+    Represents the type-agnostic function for binary searching
+    in the specified sorted part of any array according to a specified compare function.
+ */
 template <typename T> int32_t Arrays::binarySearchGeneric(T *a, int32_t fromIndex, int32_t toIndex, T key, int32_t (*c)(T, T)) {
+    // initial lower index
     int32_t lower = fromIndex;
+    // initial upper index
     int32_t upper = toIndex - 1;
 
     while (lower <= upper) {
+        // middle index
         int32_t middle = ((uint32_t)lower + (uint32_t)upper) >> 1;
         T middleValue = a[middle];
 
+        // middle index is the new lower index if the key is greater than middle value
         if (c(middleValue, key) < 0) {
             lower = middle + 1;
         }
+        // middle index is the new upper index if the key is greater than middle value
         else if (c(middleValue, key) > 0) {
             upper = middle - 1;
         }
+        // returning the element if middle index value is equal to the key
         else {
             return middle;
         }
     }
     
+    // returning the negative index if element not found
     return -(lower + 1);
 }
 
+/*
+    Represents the type-agnostic function for copying
+    the specified part of any array.
+ */
 template <typename T> T *Arrays::copyOfRangeGeneric(T *original, int32_t length, int32_t from, int32_t to, T defaultValue) {
+    // a new array with the length equal to the difference of boundaries of the original array
     T *a = new T[to - from]();
 
+    // the specified upper boundary if greater than the original array length
     if (to > length) {
+        // copying the values from the original array to its last element
         for (int32_t i = from; i < length; i++) {
             a[i - from] = original[i];
         }
 
+        // filling the rest of the new array with the default value of the given type
         for (int32_t i = length; i < to; i++) {
             a[i - from] = defaultValue;
         }
     }
+    // the specified upper boundary is less then the original array length
     else {
+        // copying the values from the original array to the element on the specified upper boundary
         for (int32_t i = from; i < to; i++) {
             a[i - from] = original[i];
         }
@@ -193,22 +218,31 @@ template <typename T> T *Arrays::copyOfRangeGeneric(T *original, int32_t length,
     return a;
 }
 
+/*
+    Represents the type-agnostic function for testing if two
+    specified arrays are equal.
+ */
 template <typename T> bool Arrays::equalsGeneric(T *a, int32_t length, T *a2, int32_t length2, bool (*equals)(T, T), bool isObjectArray) {
+    // comparing pointers
     if (a == a2) {
         return true;
     }
 
+    // testing the references for a NULL value
     if (a == nullptr || a2 == nullptr) {
         return false;
     }
 
+    // comparing the array lengths
     if (length2 != length) {
         return false;
     }
 
+    // comparing corresponding elements of arrays
     for (int32_t i = 0; i < length; i++) {
         bool e;
         
+        // checking NULL values for object pointers
         if (isObjectArray) {
             e = a[i] == 0 ? a2[i] == 0 : equals(a[i], a2[i]);
         }
@@ -224,32 +258,45 @@ template <typename T> bool Arrays::equalsGeneric(T *a, int32_t length, T *a2, in
     return true;
 }
 
+/*
+    Represents the type-agnostic function for filling
+    the specified part of any array with the specified value.
+ */
 template <typename T> void Arrays::fillGeneric(T *a, int32_t fromIndex, int32_t toIndex, T val) {
+    // setting each element to the value
     for (int32_t i = fromIndex; i < toIndex; i++) {
         a[i] = val;
     }
 }
 
+/*
+    Represents the type-agnostic function for sorting
+    the specified part of any array according to a specified compare function.
+ */
 template <typename T> void Arrays::sortGeneric(T *a, int32_t fromIndex, int32_t toIndex, bool (*c)(T, T), bool isObjectArray) {
-    if (c == nullptr) {
+    // unstable sort for primitive values
+    if (!isObjectArray) {
         std::sort(a + fromIndex, a + toIndex, c);
     }
+    // stable sort for object pointers
     else {
-        if (!isObjectArray) {
-            std::sort(a + fromIndex, a + toIndex, c);
-        }
-        else {
-            std::stable_sort(a + fromIndex, a + toIndex, c);
-        }
+        std::stable_sort(a + fromIndex, a + toIndex, c);
     }
 }
 
+/*
+    Represents the type-agnostic function for creating
+    the string representation of any array.
+ */
 template <typename T> String *Arrays::toStringGeneric(T *a, int32_t length, String *(*toString)(T), bool isObjectArray) {
+    // create ostringstream for appending the text
     std::ostringstream oss("");
     oss << "[";
     String *str;
 
+    // append first element string representation
     if (length > 0) {
+        // checking NULL values for object pointers
         if (isObjectArray) {
             str = a[0] == 0 ? new String("null") : toString(a[0]);
         }
@@ -261,7 +308,9 @@ template <typename T> String *Arrays::toStringGeneric(T *a, int32_t length, Stri
         delete str;
     }
 
+    // append another elements string representation
     for (int32_t i = 1; i < length; i++) {
+        // checking NULL values for object pointers
         if (isObjectArray) {
             str = a[i] == 0 ? new String("null") : toString(a[i]);
         }
@@ -275,6 +324,7 @@ template <typename T> String *Arrays::toStringGeneric(T *a, int32_t length, Stri
 
     oss << "]";
 
+    // create Java-like string
     return new String(oss.str());
 }
 

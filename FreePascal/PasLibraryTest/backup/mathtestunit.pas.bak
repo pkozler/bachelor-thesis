@@ -11,6 +11,11 @@ const DEFAULT_EPSILON = 1e-20;
 
 type
 
+  (**
+   * A Math class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   MathTest = class(TTestCase)
   published
        procedure absTest;
@@ -586,15 +591,15 @@ var
 begin
     // rounding to even value
     a := 1.5;
-    b := Math_.round_(a);
+    b := Math_.round(a);
     AssertEquals(2, b);
     // rounding to odd value
     a := 0.5;
-    b := Math_.round_(a);
+    b := Math_.round(a);
     AssertEquals(1, b);
     // rounding of negative value
     a := -0.5;
-    b := Math_.round_(a);
+    b := Math_.round(a);
     AssertEquals(0, b);
 end;
 
@@ -607,13 +612,13 @@ var
     b: longInt;
 begin
     a := 1.5;
-    b := Math_.round_(a);
+    b := Math_.round(a);
     AssertEquals(2, b);
     a := 0.5;
-    b := Math_.round_(a);
+    b := Math_.round(a);
     AssertEquals(1, b);
     a := -0.5;
-    b := Math_.round_(a);
+    b := Math_.round(a);
     AssertEquals(0, b);
 end;
 

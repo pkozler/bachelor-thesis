@@ -5,6 +5,7 @@
 #include <string.h>
 #include "math.h"
 
+// maximum possible string length of the double value used as the string buffer size
 #define _MAX_DOUBLE_STRLEN 13
 
 /**
@@ -20,6 +21,9 @@ Double *new_Double(double value) {
     return d;
 }
 
+/*
+    returns the "binary representation" of negative zero value for comparison purposes
+*/
 long _getNegativeZeroDoubleBits() {
     DoubleInt64 bitConverter;
     bitConverter.val = -0.0;
@@ -61,6 +65,9 @@ int32_t compareToD(Double *ptr, Double *anotherDouble) {
  * numerically greater than d2.
  */
 int32_t Double_compare(double d1, double d2) {
+    /* testing for NaN values (a NaN value is considered greated
+       than any other, including positive infinity,
+       and two NaN values are considered equal) */
     if (isnan(d1)) {
         if (isnan(d2)) {
             return 0;
@@ -78,6 +85,8 @@ int32_t Double_compare(double d1, double d2) {
     v2Bits.val = d2;
     int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
 
+    /* testing for +0.0 and -0.0 value (a positive zero
+       is considered greater than a negative zero) */
     if (vBits.bits == 0
             && v2Bits.bits == negativeZeroBits) {
         return 1;
@@ -88,6 +97,9 @@ int32_t Double_compare(double d1, double d2) {
         return -1;
     }
 
+    /* testing for other values and returning
+       1 if first value is greater, 0 if first value 
+       equals second value, -1 otherwise */
     return (d1 > d2 ? 1 : d1 < d2 ? -1 : 0);
 }
 
@@ -99,10 +111,12 @@ int32_t Double_compare(double d1, double d2) {
  * @return true if the structures are the same; false otherwise.
  */
 bool equalsD(Double *ptr, Double *obj) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
@@ -110,6 +124,7 @@ bool equalsD(Double *ptr, Double *obj) {
     double v = ptr->v;
     double v2 = obj->v;
 
+    // testing for NaN values (two NaN values are considered equal)
     if (isnan(v) && isnan(v2)) {
         return true;
     }
@@ -119,6 +134,7 @@ bool equalsD(Double *ptr, Double *obj) {
     v2Bits.val = v2;
     int64_t negativeZeroBits = _getNegativeZeroDoubleBits();
 
+    // testing for zero values (+0.0 is considered greater than -0.0)
     if (vBits.bits == negativeZeroBits) {
         return v2Bits.bits == negativeZeroBits;
     }
@@ -127,6 +143,7 @@ bool equalsD(Double *ptr, Double *obj) {
         return vBits.bits == negativeZeroBits;
     }
 
+    // testing other values
     return (v == v2);
 }
 
@@ -151,7 +168,9 @@ String *Double_toString(double d) {
     char buf[_MAX_DOUBLE_STRLEN];
 
     str[0] = '\0';
+    // printing the string representation to the buffer
     sprintf(buf, "%lG", d);
+    // creating the null-terminated string from the buffer
     strcat(str, buf);
     String *s = new_String(str);
     free(str);
@@ -169,7 +188,16 @@ String *Double_toString(double d) {
 double Double_parseDouble(String *s) {
     String *str = trim(s);
     double value = strtod(str->s, NULL);
-    free(str);
     
+    // negative zero handling
+    String *sign = new_String("-");
+    
+    if (value == 0 && startsWith(str, sign)) {
+        value = -0.0;
+    }
+    
+    free(str);
+    free(sign);
+
     return value;
 }

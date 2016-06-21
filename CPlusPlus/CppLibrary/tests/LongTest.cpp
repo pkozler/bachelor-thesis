@@ -4,8 +4,10 @@
 #include "test.h"
 #include "Long.h"
 
-/*
- * Simple C++ Test Suite
+/**
+ * A Long class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

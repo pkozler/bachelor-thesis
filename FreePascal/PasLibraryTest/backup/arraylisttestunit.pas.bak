@@ -235,13 +235,11 @@ begin
     a := toList(d);
     b := nil;
     c := a.equals(b);
-    WriteLn(c);
     AssertFalse(c);
     setLength(d, 1);
     d[0] := TestObject.create('first', 3);
     b := toList(d);
     c := a.equals(b);
-    WriteLn(c);
     AssertFalse(c);
     setLength(d, 5);
     d[0] := TestObject.create('first', 3);
@@ -251,7 +249,6 @@ begin
     d[4] := TestObject.create('fifth', 3);
     b := toList(d);
     c := a.equals(b);
-    WriteLn(c);
     AssertFalse(c);
     setLength(d, 5);
     d[0] := TestObject.create('sixth', 3);
@@ -261,11 +258,9 @@ begin
     d[4] := TestObject.create('tenth', 6);
     b := toList(d);
     c := a.equals(b);
-    WriteLn(c);
     AssertTrue(c);
     b := a;
     c := a.equals(b);
-    WriteLn(c);
     AssertTrue(c);
 end;
 

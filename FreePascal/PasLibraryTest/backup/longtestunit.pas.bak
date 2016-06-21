@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An Long class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   LongTest = class(TTestCase)
   published
        procedure longValueTest;
@@ -186,7 +191,7 @@ end;
  *)
 procedure LongTest.parseLongTest;
 var
-    b: int64;
+    a: int64;
 begin
     a := Long.parseLong('10000000000');
     AssertEquals(10000000000, a);

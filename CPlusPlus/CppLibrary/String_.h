@@ -53,6 +53,7 @@ public:
  * @author Petr Kozler (A13B0359P)
  */
 class String : public Comparable {
+    // an inner string
     std::string s;
     void init(int8_t *value, int32_t offset, int32_t length);
 public:

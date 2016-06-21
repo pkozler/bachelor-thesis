@@ -43,10 +43,12 @@ var
   length, i: longInt;
   e: boolean;
 begin
+  // comparing references
   if self = o then begin
     exit(true);
   end;
 
+  // testing the reference for a NULL value
   if o = nil then begin
     exit(false);
   end;
@@ -70,7 +72,7 @@ begin
     end;
 
     if not e then begin
-
+      exit(false);
     end;
   end;
 

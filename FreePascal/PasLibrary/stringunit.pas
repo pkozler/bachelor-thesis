@@ -56,6 +56,7 @@ type
    *)
   String_ = class(Comparable)
     private
+      // an inner string
       var str: ansiString;
     public
       property strProperty: ansiString read str;
@@ -179,14 +180,17 @@ end;
  *)
 function String_.equals_(anObject: Object_) : boolean;
 begin
+  // testing another object reference for a NULL value
   if anObject = nil then begin
     exit(false);
   end;
 
+  // testing object class equality
   if typeOf(self) <> typeOf(anObject) then begin
     exit(false);
   end;
 
+  // testing object fields equality
   equals_ := (ansiCompareStr(self.str, (anObject as String_).str) = 0);
 end;
 
@@ -212,6 +216,7 @@ function String_.substring(beginIndex: longInt; endIndex: longInt) : String_;
 var
   s: String_;
 begin
+  // copy the calculated count of characters beginning on the specified offset
   s := String_.create(copy(str, beginIndex + 1, endIndex - beginIndex));
   substring := s;
 end;
@@ -245,13 +250,17 @@ var
   substr: ansiString;
   i: longInt;
 begin
+  // copying the characters beginning on the specified offset
   substr := copy(str, fromIndex + 1, System.length(str) - fromIndex);
+  // finding the position of the specified character in the string
   i := pos(ansiChar(ch), substr) - 1;
 
+  // returning 0
   if i < 0 then begin
     exit(-1);
   end;
 
+  // adding the specified offset
   indexOf := i + fromIndex;
 end;
 
@@ -282,13 +291,17 @@ var
   substr: ansiString;
   i: longInt;
 begin
+  // copying the characters beginning on the specified offset
   substr := copy(str, fromIndex + 1, System.length(str) - fromIndex + 1);
+  // finding the position of the specified character in the string
   i := pos(s.str, substr) - 1;
 
+  // returning 0
   if i < 0 then begin
     exit(-1);
   end;
 
+  // adding the specified offset
   indexOf := i + fromIndex;
 end;
 

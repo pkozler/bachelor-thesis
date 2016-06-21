@@ -4,8 +4,10 @@
 #include "test.h"
 #include "Boolean.h"
 
-/*
- * Simple C++ Test Suite
+/**
+ * A Boolean class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

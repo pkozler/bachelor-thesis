@@ -119,20 +119,24 @@
         /// </returns>
         public override String toString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.append(new String("["));
+            // create StringBuilder for appending the text
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("[");
 
+            // append the first element string representation
             if (l.Count > 0)
             {
-                sb.append(l[0] == null ? "null" : l[0].toString());
+                sb.Append(l[0] == null ? "null" : a[0].ToString());
             }
 
+            // append another elements string representation
             for (int i = 1; i < l.Count; i++)
             {
-                sb.append(new String(", ")).append(l[i] == null ? "null" : l[i].toString());
+                sb.Append(", ").Append(l[i] == null ? "null" : l[i].ToString());
             }
 
-            return sb.append(new String("]")).toString();
+            // create Java-like string
+            return new String(sb.Append("]").ToString());
         }
         
     }

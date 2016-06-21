@@ -157,7 +157,7 @@ namespace JavaClasses
 
             int length = a.Length;
 
-            // compring the array lengths
+            // comparing the array lengths
             if (a2.Length != length)
             {
                 return false;
@@ -184,7 +184,7 @@ namespace JavaClasses
             int fromIndexValue = fromIndex ?? 0;
             int toIndexValue = toIndex ?? a.Length;
 
-            // setting each element with the value
+            // setting each element to the value
             for (int i = fromIndexValue; i < toIndexValue; i++)
             {
                 a[i] = val;
@@ -209,20 +209,24 @@ namespace JavaClasses
          */
         private static String toStringGeneric<T>(T[] a)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.append(new String("["));
+            // create StringBuilder for appending the text
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("[");
 
+            // append the first element string representation
             if (a.Length > 0)
             {
-                sb.append(a[0] == null ? "null" : a[0].ToString());
+                sb.Append(a[0] == null ? "null" : a[0].ToString());
             }
 
+            // append another elements string representation
             for (int i = 1; i < a.Length; i++)
             {
-                sb.append(new String(", ")).append(a[i] == null ? "null" : a[i].ToString());
+                sb.Append(", ").Append(a[i] == null ? "null" : a[i].ToString());
             }
 
-            return sb.append(new String("]")).toString();
+            // create Java-like string
+            return new String(sb.Append("]").ToString());
         }
 
         /// <summary>

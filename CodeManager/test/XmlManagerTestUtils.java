@@ -1,7 +1,8 @@
 
-import app.ADataManagementException;
-import app.xml.XmlKeyword;
-import app.xml.XmlManager;
+import main.Config;
+import main.app.ADataManagementException;
+import main.app.xml.XmlKeyword;
+import main.app.xml.XmlManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;

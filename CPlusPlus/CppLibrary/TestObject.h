@@ -4,13 +4,15 @@
 #include "String_.h"
 
 /**
- * The {@code TestObject} class represents a simple object that serves
+ * The TestObject class represents a simple object that serves
  * for demonstration the functionality of libraries working with objects.
  *
  * @author Petr Kozler
  */
 class TestObject : public Comparable {
+    // string value
     String *str;
+    // integer value
     int32_t i;
 public:
     TestObject(String *str, int32_t i);

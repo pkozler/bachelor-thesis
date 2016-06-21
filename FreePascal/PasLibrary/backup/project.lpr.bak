@@ -27,10 +27,34 @@ uses
   TestObjectUnit,
   TestObjectComparatorUnit;
 
+(**
+ * Prints a sequence of numbers between the specified values x and y.
+ * Returns true if and only if the value x is not greater than the value y.
+ *
+ * @param x the minimum value of the sequence
+ * @param y the maximum value of the sequence
+ * @return true if x is less than or equal to y; false otherwise
+ *)
+function printSequence(x: longInt; y: longInt): boolean; begin
+    if (x > y) then begin
+        exit(false);
+    end;
+
+    while (x <= y) do begin
+        System_.out_.println(x);
+        inc(x);
+    end;
+
+    exit(true);
+end;
+
 var
-  sc: Scanner;
+  b: boolean;
+
 begin
-    sc := Scanner.create(System_.in_);
-    System_.out_.print(sc.nextInt());
-    readln();
+  b := printSequence(0, 10);
+
+  writeLn(b);
+
+  readLn();
 end.

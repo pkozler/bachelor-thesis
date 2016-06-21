@@ -4,15 +4,15 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="37"/>
-        <CursorPos X="20" Y="46"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <CursorPos X="31" Y="50"/>
         <UsageCount Value="25"/>
-        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="..\PasLibraryTest\printstreamtestunit.pas"/>
@@ -53,68 +53,15 @@
         <CursorPos X="36" Y="58"/>
         <UsageCount Value="11"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="..\PasLibrary\scannerunit.pas"/>
+        <UnitName Value="ScannerUnit"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="103"/>
+        <CursorPos X="5" Y="13"/>
+        <UsageCount Value="10"/>
+      </Unit6>
     </Units>
-    <JumpHistory Count="15" HistoryIndex="14">
-      <Position1>
-        <Filename Value="project.lpr"/>
-        <Caret Line="8" Column="12"/>
-      </Position1>
-      <Position2>
-        <Filename Value="project.lpr"/>
-        <Caret Line="7" Column="60"/>
-      </Position2>
-      <Position3>
-        <Filename Value="project.lpr"/>
-        <Caret Line="6" Column="25"/>
-      </Position3>
-      <Position4>
-        <Filename Value="project.lpr"/>
-        <Caret Column="17"/>
-      </Position4>
-      <Position5>
-        <Filename Value="project.lpr"/>
-        <Caret Line="11" Column="14"/>
-      </Position5>
-      <Position6>
-        <Filename Value="project.lpr"/>
-        <Caret Line="17" Column="6"/>
-      </Position6>
-      <Position7>
-        <Filename Value="project.lpr"/>
-        <Caret Line="10" Column="15"/>
-      </Position7>
-      <Position8>
-        <Filename Value="project.lpr"/>
-        <Caret Line="19" Column="14"/>
-      </Position8>
-      <Position9>
-        <Filename Value="project.lpr"/>
-        <Caret Line="10" Column="14"/>
-      </Position9>
-      <Position10>
-        <Filename Value="project.lpr"/>
-        <Caret Line="12" TopLine="3"/>
-      </Position10>
-      <Position11>
-        <Filename Value="project.lpr"/>
-        <Caret Line="14" Column="71" TopLine="2"/>
-      </Position11>
-      <Position12>
-        <Filename Value="project.lpr"/>
-        <Caret Line="5" Column="30" TopLine="2"/>
-      </Position12>
-      <Position13>
-        <Filename Value="project.lpr"/>
-        <Caret Line="25" Column="41" TopLine="13"/>
-      </Position13>
-      <Position14>
-        <Filename Value="project.lpr"/>
-        <Caret Line="56" TopLine="5"/>
-      </Position14>
-      <Position15>
-        <Filename Value="project.lpr"/>
-        <Caret Line="58" Column="5" TopLine="35"/>
-      </Position15>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

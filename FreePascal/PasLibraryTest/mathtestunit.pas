@@ -7,10 +7,16 @@ interface
 uses
   Classes, SysUtils, fpcunit, testutils, testregistry, MathUnit, DoubleUnit, FloatUnit, LongUnit, IntegerUnit;
 
+// maximal difference between expected and actual value
 const DEFAULT_EPSILON = 1e-20;
 
 type
 
+  (**
+   * A Math class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   MathTest = class(TTestCase)
   published
        procedure absTest;

@@ -118,6 +118,9 @@ namespace JavaClasses
         /// </returns>
         public static int compare(float f1, float f2)
         {
+            /* testing for NaN values (a NaN value is considered greated
+               than any other, including positive infinity,
+               and two NaN values are considered equal) */
             if (float.IsNaN(f1))
             {
                 if (float.IsNaN(f2))
@@ -133,6 +136,8 @@ namespace JavaClasses
                 return -1;
             }
 
+            /* testing for +0.0 and -0.0 value (a positive zero
+               is considered greater than a negative zero) */
             if (floatToInt32Bits(f1) == 0
                 && floatToInt32Bits(f2) == negativeZeroBits)
             {
@@ -145,6 +150,9 @@ namespace JavaClasses
                 return -1;
             }
 
+            /* testing for other values and returning
+               1 if first value is greater, 0 if first value 
+               equals second value, -1 otherwise */
             return (f1 > f2 ? 1 : f1 < f2 ? -1 : 0);
         }
 
@@ -156,11 +164,13 @@ namespace JavaClasses
         /// </returns>
         public override bool equals(Object obj)
         {
+            // testing another object reference for a NULL value
             if (obj == null)
             {
                 return false;
             }
 
+            // testing object class equality
             if (GetType() != obj.GetType())
             {
                 return false;
@@ -168,11 +178,13 @@ namespace JavaClasses
 
             float v2 = (obj as Float).v;
 
+            // testing for NaN values (two NaN values are considered equal)
             if (float.IsNaN(v) && float.IsNaN(v2))
             {
                 return true;
             }
 
+            // testing for zero values (+0.0 is considered greater than -0.0)
             if (floatToInt32Bits(v) == negativeZeroBits)
             {
                 return floatToInt32Bits(v2) == negativeZeroBits;
@@ -183,6 +195,7 @@ namespace JavaClasses
                 return floatToInt32Bits(v) == negativeZeroBits;
             }
 
+            // testing other values
             return (v == v2);
         }
 
@@ -216,14 +229,16 @@ namespace JavaClasses
         /// </returns>
         public static float parseFloat(String s)
         {
-            float result = float.Parse(s.ToString(), CultureInfo.InvariantCulture);
+            // parsing with invariant culture formatting
+            float value = float.Parse(s.ToString(), CultureInfo.InvariantCulture);
 
-            if (result == 0 && s.startsWith("-"))
+            // negative zero handling
+            if (value == 0 && s.startsWith("-"))
             {
                 return -0.0f;
             }
 
-            return result;
+            return value;
         }
         
         public static implicit operator Float(float original)

@@ -4,8 +4,10 @@
 #include "test.h"
 #include "Byte.h"
 
-/*
- * Simple C Test Suite
+/**
+ * A Byte module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

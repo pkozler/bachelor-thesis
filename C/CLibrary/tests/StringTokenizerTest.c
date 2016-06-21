@@ -6,17 +6,22 @@
 #include "String.h"
 #include "Arrays.h"
 
-/*
- * Simple C Test Suite
+/**
+ * A StringTokenizer module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
+/*
+    StringArray structure wraps the array of tokens with its length.
+*/
 typedef struct {
     String **arr;
     int32_t len;
 } StringArray;
 
 /*
- Creates the array of tokens which are created the from tokenized string.
+    Creates the array of tokens which are created the from tokenized string.
  */
 StringArray toStringArray(StringTokenizer *a) {
     String **b;

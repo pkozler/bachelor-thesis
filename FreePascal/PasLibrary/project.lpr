@@ -27,10 +27,5 @@ uses
   TestObjectUnit,
   TestObjectComparatorUnit;
 
-var
-  sc: Scanner;
 begin
-    sc := Scanner.create(System_.in_);
-    System_.out_.print(sc.nextDouble());
-    readln();
 end.

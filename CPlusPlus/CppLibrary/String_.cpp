@@ -31,16 +31,21 @@ std::ostream &operator<<(std::ostream &s, Object &o) {
     return s << o.toString()->_s();
 }
 
+/*
+    Initializes the string with the specified part of the byte array.
+*/
 void String::init(int8_t *value, int32_t offset, int32_t length) {
     char *s = new char[length + 1];
     
+    // copying the bytes as characters
     int32_t i;
     for (i = 0; i < length; i++) {
         s[i] = value[i + offset];
     }
     
+    // adding the terminator
     s[i] = '\0';
-    this->s = s;
+    this->s = std::string(s);
     delete[] s;
 }
 
@@ -99,14 +104,17 @@ int32_t String::compareTo(Object *anotherString) {
  * string, false otherwise
  */
 bool String::equals(Object *anObject) {
+    // testing another object reference for a NULL value
     if (anObject == nullptr) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(this) != sizeof(*anObject)) {
         return false;
     }
-    
+
+    // testing object fields equality
     return !this->s.compare(((String *)anObject)->s);
 }
 
@@ -203,14 +211,18 @@ int32_t String::length() {
 String *String::trim() {
     const char* white_spaces = " \t\n\x0b\r\f";
 
+    // get the index of the first non-white character in the string
     int32_t first = this->s.find_first_not_of(white_spaces);
 
+    // return empty string if the original string contains only white-spaces
     if (first == std::string::npos) {
         return new String(std::string(""));
     }
 
+    // get the index of the last non-white character in the string
     int32_t last = this->s.find_last_not_of(white_spaces);
 
+    // return non-white substring
     return new String(this->s.substr(first, last - first + 1));
 }
 
@@ -222,6 +234,7 @@ String *String::trim() {
  */
 String *String::toLowerCase() {
     std::string lowerCaseStr = this->s;
+    // calling the "tolower" function over the each character of the string
     std::transform(lowerCaseStr.begin(), lowerCaseStr.end(), lowerCaseStr.begin(), ::tolower);
     return new String(lowerCaseStr);
 }
@@ -234,6 +247,7 @@ String *String::toLowerCase() {
  */
 String *String::toUpperCase() {
     std::string upperCaseStr = this->s;
+    // calling the "toupper" function over the each character of the string
     std::transform(upperCaseStr.begin(), upperCaseStr.end(), upperCaseStr.begin(), ::toupper);
     return new String(upperCaseStr);
 }
@@ -276,6 +290,7 @@ String *String::replace(char oldChar, char newChar) {
  * equals(Object) method.
  */
 bool String::startsWith(String *prefix) {
+    // test if the string is longer and the prefix index is on the beginning of the string
     return (s.size() >= prefix->_s().size() && s.find(prefix->_s()) == 0);
 }
 
@@ -290,6 +305,7 @@ bool String::startsWith(String *prefix) {
  * equals(Object) method.
  */
 bool String::endsWith(String *suffix) {
+    // test if the string is longer and the suffix index is on the end of the string (minus suffix size)
     return (s.size() >= suffix->_s().size() &&
             s.compare(s.size() - suffix->_s().size(), suffix->_s().size(), suffix->_s()) == 0);
 }

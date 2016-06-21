@@ -20,6 +20,10 @@ Object *Arrays::defaultPointer = 0;
 int16_t Arrays::defaultShort = 0;
 void *Arrays::currentComparator = nullptr;
 
+/*
+ * methods for testing if the two specified values are equal:
+ */
+
 bool Arrays::equalsBool(bool a, bool b) {
     Boolean x(a);
     Boolean y(b);
@@ -80,9 +84,16 @@ bool Arrays::equalsObj(Object *a, Object *b) {
     return a->equals(b);
 }
 
+/*
+ * method for returning the string representation of the specified object:
+ */
 String *Arrays::toStringObj(Object *a) {
     return a->toString();
 }
+
+/*
+ * methods for comparing the two specified values:
+ */
 
 bool Arrays::compareB(int8_t a, int8_t b) {
     return compareBI(a, b) < 0;
@@ -488,6 +499,7 @@ int32_t Arrays::binarySearch(int16_t *a, int32_t fromIndex, int32_t toIndex, int
  * the return value will be >= 0 if and only if the key is found.
  */
 int32_t Arrays::binarySearch(Object **a, int32_t length, Object *key, Comparator *c) {
+    // setting the comparator used by the specified comparison function
     currentComparator = c;
     return binarySearchGeneric(a, 0, length, key, compareObjCompI);
 }
@@ -512,6 +524,7 @@ int32_t Arrays::binarySearch(Object **a, int32_t length, Object *key, Comparator
  * if the key is found.
  */
 int32_t Arrays::binarySearch(Object **a, int32_t fromIndex, int32_t toIndex, Object *key, Comparator *c) {
+    // setting the comparator used by the specified comparison function
     currentComparator = c;
     return binarySearchGeneric(a, fromIndex, toIndex, key, compareObjCompI);
 }
@@ -1328,6 +1341,7 @@ void Arrays::sort(int16_t *a, int32_t fromIndex, int32_t toIndex) {
  * indicates that the elements' natural ordering should be used.
  */
 void Arrays::sort(Object **a, int32_t length, Comparator *c) {
+    // setting the comparator used by the specified comparison function
     currentComparator = c;
     sortGeneric(a, 0, length, compareObjComp, true);
 }
@@ -1343,6 +1357,7 @@ void Arrays::sort(Object **a, int32_t length, Comparator *c) {
  * indicates that the elements' natural ordering should be used.
  */
 void Arrays::sort(Object **a, int32_t fromIndex, int32_t toIndex, Comparator *c) {
+    // setting the comparator used by the specified comparison function
     currentComparator = c;
     sortGeneric(a, fromIndex, toIndex, compareObjComp, true);
 }

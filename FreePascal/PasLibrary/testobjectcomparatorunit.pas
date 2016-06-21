@@ -9,10 +9,10 @@ uses
 
 type
   (**
-   * The {@code TestObjectComparator} class represents a comparator
-   * for the {@code TestObject} class instances.
+   * The TestObjectComparator class represents a comparator
+   * for the TestObject class instances.
    *
-   * @author Petr Kozler
+   * @author Petr Kozler (A13B0359P)
    *)
   TestObjectComparator = class(Comparator)
     function compare(o1, o2: Object_): longInt; override;

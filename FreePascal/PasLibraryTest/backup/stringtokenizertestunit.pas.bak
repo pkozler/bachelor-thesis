@@ -10,6 +10,11 @@ uses
 type
   ObjectArray = array of Object_;
 
+  (**
+   * An StringTokenizer class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   StringTokenizerTest = class(TTestCase)
   private
        function toStringArray(a: StringTokenizer): ObjectArray;
@@ -72,7 +77,7 @@ begin
     d := Arrays.equals(b, c);
     AssertEquals(true, d);
     // without whitespaces
-    a := StringTokenizer.create('This_is_a_test');
+    a := StringTokenizer.create('This_is_a_test.');
     b := toStringArray(a);
     setLength(c, 1);
     c[0] := String_.create('This_is_a_test.');

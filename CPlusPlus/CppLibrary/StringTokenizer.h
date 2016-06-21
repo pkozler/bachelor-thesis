@@ -10,8 +10,11 @@
  * @author Petr Kozler (A13B0359P)
  */
 class StringTokenizer : public Object {
+    // current string array containing tokens
     std::string *tokens;
+    // token count
     int32_t tokensLength;
+    // current position in the array
     int32_t tokenCounter;
     void init(std::string str, std::string delim);
 public:

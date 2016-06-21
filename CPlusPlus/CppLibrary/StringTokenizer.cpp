@@ -5,14 +5,19 @@
 #include <cstring>
 #include <string.h>
 
+/*
+    Initializes the string tokenizer with the specified string and set of delimiters.
+*/
 void StringTokenizer::init(std::string str, std::string delim) {
     size_t pos = str.find_first_of(delim, 0);
     
+    // determining the greatest possible length of the token array
     for (tokensLength = 1; pos != str.npos; tokensLength++) {
         pos = str.find_first_of(delim, pos + 1);
     }
     
     tokenCounter = 0;
+    // creating the token array
     tokens = new std::string[tokensLength];
     
     char* tmpS = strdup(str.c_str());
@@ -20,6 +25,7 @@ void StringTokenizer::init(std::string str, std::string delim) {
     char *s = strtok(tmpS, delim.c_str());
     int32_t i = 0;
     
+    // inserting the tokens into the token array
     while (s != 0) {
         tokens[i] = s;
         i++;
@@ -29,6 +35,7 @@ void StringTokenizer::init(std::string str, std::string delim) {
     tokensLength = i;
     std::string *tempTokens = new std::string[tokensLength];
     
+    // moving the tokens to the new array with exact length
     for (int32_t j = 0; j < tokensLength; j++) {
         tempTokens[j] = tokens[j];
     }
@@ -56,6 +63,9 @@ StringTokenizer::StringTokenizer(String *str, String *delim) {
     init(str->_s(), delim->_s());
 }
 
+/*
+    Destructs the StringTokenizer.
+ */
 StringTokenizer::~StringTokenizer() {
     delete[] tokens;
 }

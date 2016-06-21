@@ -10,6 +10,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Byte : public Comparable {
+    // an inner value
     int8_t v;
 public:
     /**

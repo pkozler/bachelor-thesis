@@ -4,8 +4,10 @@
 #include "test.h"
 #include "String_.h"
 
-/*
- * Simple C++ Test Suite
+/**
+ * A String class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

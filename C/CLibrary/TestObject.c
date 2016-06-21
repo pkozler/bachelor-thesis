@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define _MAX_TO_STRLEN 255
+// default TestObject string buffer length (for testing purposes only)
+#define _TO_BUF_LEN 255
 
 /**
  * Creates a new structure.
@@ -85,8 +86,8 @@ bool equalsTo(TestObject *ptr, TestObject *obj) {
  * @return string representation
  */
 String *toStringTo(TestObject *ptr) {
-    char *str = malloc((_MAX_TO_STRLEN + 1) * sizeof(char));
-    char buf[_MAX_TO_STRLEN];
+    char *str = malloc((_TO_BUF_LEN + 1) * sizeof(char));
+    char buf[_TO_BUF_LEN];
 
     str[0] = '\0';
     sprintf(buf, "TestObject [str=%s, i=%d]", ptr->str->s, ptr->i);

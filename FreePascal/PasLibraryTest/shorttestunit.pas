@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A Short class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ShortTest = class(TTestCase)
   published
        procedure shortValueTest;

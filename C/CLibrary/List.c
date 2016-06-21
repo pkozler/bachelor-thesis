@@ -17,21 +17,25 @@
 bool equalsList(void *ptr, int32_t (*sizePtr)(void *), void *(*getPtr)(void *, int32_t), 
         void *o, int32_t (*sizeO)(void *), void *(*getO)(void *, int32_t), 
         bool (*equals)(const void *, const void *)) {
+    // comparing pointers
     if (ptr == o) {
         return true;
     }
     
+    // testing the pointer for a NULL value
     if (o == NULL) {
         return false;
     }
     
     int length = sizePtr(ptr);
     
+    // comparing the list sizes
     if (sizeO(o) != length) {
         return false;
     }
     
-    int i;
+    // comparing the corresponding elements of the lists
+    int32_t i;
     for (i = 0; i < length; i++) {
         void *o1 = getPtr(ptr, i);
         void *o2 = getO(o, i);

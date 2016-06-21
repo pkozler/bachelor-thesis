@@ -42,8 +42,13 @@ uses
  * the return value will be >= 0 if and only if the key is found.
  *)
 class function Collections.binarySearch(list: ArrayList; key: Object_) : longInt;
+var
+  comparator: ObjectComparator;
 begin
-  binarySearch := binarySearch(list, key, ObjectComparator.create());
+  // creating the default object comparator
+  comparator := ObjectComparator.create();
+  binarySearch := binarySearch(list, key, comparator);
+  freeAndNil(comparator);
 end;
 
 (**
@@ -65,26 +70,34 @@ var
   lower, upper, middle : longInt;
   middleValue : Object_;
 begin
+  // inner array of the list
   objectArray := list.arrProperty;
 
+  // initial lower index
   lower := 0;
+  // initial upper index
   upper := list.size() - 1;
 
   while lower <= upper do begin
+    // middle index
     middle := lower + ((upper - lower) div 2);
     middleValue := objectArray[middle];
 
+    // middle index is the new lower index if the key is greater than middle value
     if c.compare(middleValue, key) < 0 then begin
       lower := middle + 1;
     end
+    // middle index is the new upper index if the key is greater than middle value
     else if c.compare(middleValue, key) > 0 then begin
       upper := middle - 1;
     end
+    // returning the element if middle index value is equal to the key
     else begin
       exit(middle);
     end;
   end;
 
+  // returning the negative index if element not found
   binarySearch := -(lower + 1);
 end;
 
@@ -100,6 +113,7 @@ var
 begin
   length := src.size();
 
+  // replacing the elements of the destination list with the elements of the source list
   for i := 0 to length - 1 do begin
     dest.set_(i, src.get(i));
   end;
@@ -118,6 +132,7 @@ var
 begin
   length := list.size();
 
+  // replacing the elements of the list with the specified value
   for i := 0 to length - 1 do begin
     list.set_(i, obj);
   end;
@@ -146,7 +161,9 @@ var
   aux: array of Object_;
 begin
   a := list.arrProperty;
+  // creating the auxilliary array for the method implementing the stable sorting algoritm
   setLength(aux, list.size());
+  // sorting the array with the stable sorting MergeSort algoritm
   _java.mergeSort(a, aux, 0, list.size() - 1, c);
 end;
 

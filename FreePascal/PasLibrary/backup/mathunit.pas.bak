@@ -25,30 +25,30 @@ type
            * The double value that is closer than any other to pi, the ratio of the circumference of a circle to its diameter.
            *)
            PI = 3.14159265358979323846;
-      class function abs_(a: double) : double;
-      class function abs_(a: single) : single;
-      class function abs_(a: longInt) : longInt;
-      class function abs_(a: int64) : int64;
-      class function max_(a: double; b: double) : double;
-      class function max_(a: single; b: single) : single;
-      class function max_(a: longInt; b: longInt) : longInt;
-      class function max_(a: int64; b: int64) : int64;
-      class function min_(a: double; b: double) : double;
-      class function min_(a: single; b: single) : single;
-      class function min_(a: longInt; b: longInt) : longInt;
-      class function min_(a: int64; b: int64) : int64;
+      class function abs(a: double) : double;
+      class function abs(a: single) : single;
+      class function abs(a: longInt) : longInt;
+      class function abs(a: int64) : int64;
+      class function max(a: double; b: double) : double;
+      class function max(a: single; b: single) : single;
+      class function max(a: longInt; b: longInt) : longInt;
+      class function max(a: int64; b: int64) : int64;
+      class function min(a: double; b: double) : double;
+      class function min(a: single; b: single) : single;
+      class function min(a: longInt; b: longInt) : longInt;
+      class function min(a: int64; b: int64) : int64;
       class function pow(a: double; b: double) : double;
-      class function sqrt_(a: double) : double;
+      class function sqrt(a: double) : double;
       class function log(a: double) : double;
-      class function log10_(a: double) : double;
-      class function sin_(a: double) : double;
-      class function cos_(a: double) : double;
-      class function tan_(a: double) : double;
+      class function log10(a: double) : double;
+      class function sin(a: double) : double;
+      class function cos(a: double) : double;
+      class function tan(a: double) : double;
       class function asin(a: double) : double;
       class function acos(a: double) : double;
       class function atan(a: double) : double;
-      class function round_(a: double) : int64;
-      class function round_(a: single) : longInt;
+      class function round(a: double) : int64;
+      class function round(a: single) : longInt;
   end;
 
 implementation

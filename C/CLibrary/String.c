@@ -29,6 +29,7 @@ String *new_StringRangeB(int8_t *value, int32_t offset, int32_t length) {
     String *str = malloc(sizeof(String));
     str->s = malloc(sizeof(char) * (length + 1));
     str->s[0] = '\0';
+    // adding the terminator after the byte array to create a string
     strncat(str->s, (char *) value + offset, length);
     str->len = strlen(str->s);
 
@@ -44,12 +45,16 @@ String *new_StringRangeB(int8_t *value, int32_t offset, int32_t length) {
  */
 String *new_String(char *original) {
     String *str = malloc(sizeof(String));
+    // copying the string so the original one will not be affected
     str->s = strdup(original);
     str->len = strlen(str->s);
 
     return str;
 }
 
+/*
+    Destructs the String.
+ */
 void delete_String(String *ptr) {
     free(ptr->s);
     free(ptr);
@@ -78,14 +83,17 @@ int32_t compareToStr(String *ptr, String *anotherString) {
  * string, false otherwise
  */
 bool equalsStr(String *ptr, String *anObject) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || anObject == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*anObject)) {
         return false;
     }
     
+    // testing object fields equality
     return !strcmp(ptr->s, anObject->s);
 }
 
@@ -113,6 +121,7 @@ String *substringTo(String *ptr, int32_t beginIndex, int32_t endIndex) {
     char *to = (char*) malloc(len * sizeof(char));
     to[0] = '\0';
     
+    // copy the calculated count of characters beginning on the specified offset
     strncat(to, ptr->s + beginIndex, (size_t) len);
 
     String *str = new_String(to);
@@ -148,12 +157,14 @@ int32_t indexOfC(String *ptr, int32_t ch) {
  */
 int32_t indexOfFromC(String *ptr, int32_t ch, int32_t fromIndex) {
     char* str = ptr->s + fromIndex;
+    // finding the pointer to char in the char array
     char* c = strchr(str, ch);
     
     if (c == NULL) {
         return -1;
     }
     
+    // calculating the array index from the pointer
     size_t index = (size_t)(c - ptr->s);
 
     return (int32_t) index;
@@ -184,12 +195,14 @@ int32_t indexOfStr(String *ptr, String *str) {
  */
 int32_t indexOfFromStr(String *ptr, String *str, int32_t fromIndex) {
     char* str0 = ptr->s + fromIndex;
+    // finding the pointer to the beginning of substring in the char array
     char* s = strstr(str0, str->s);
 
     if (s == NULL) {
         return -1;
     }
     
+    // calculating the array index from the pointer
     size_t index = (size_t)(s - ptr->s);
 
     return (int32_t) index;
@@ -217,11 +230,14 @@ int32_t length(String *ptr) {
 String *trim(String *ptr) {
     int32_t i, j;
 
+    // get the index of the first non-white character in the string
     for (i = 0; isspace(ptr->s[i]); i++);
+    // get the index of the last non-white character in the string
     for (j = ptr->len - 1; isspace(ptr->s[j]); j--);
     int32_t num = j - i + 1;
 
     char *str = (char *) malloc(num + 1);
+    // copy the non-white substring
     strncpy(str, ptr->s + i, num);
     str[num] = '\0';
 
@@ -243,6 +259,7 @@ String *toLowerCase(String *ptr) {
 
     int32_t i = 0;
     char c;
+    // calling the "tolower" function over the each character of the string
     while (ptr->s[i]) {
         c = ptr->s[i];
         str[i] = tolower((int32_t)c);
@@ -268,6 +285,7 @@ String *toUpperCase(String *ptr) {
 
     int32_t i = 0;
     char c;
+    // calling the "toupper" function over the each character of the string
     while (ptr->s[i]) {
         c = ptr->s[i];
         str[i] = toupper((int32_t)c);
@@ -304,9 +322,11 @@ char charAt(String *ptr, int32_t index) {
  * of oldChar with newChar.
  */
 String *replace(String *ptr, char oldChar, char newChar) {
+    // copying the string
     char *str = strdup(ptr->s);
     int32_t i;
 
+    // replacing the old char with the new one
     for (i = 0; str[i]; i++) {
         if (str[i] == oldChar) {
             str[i] = newChar;
@@ -331,6 +351,7 @@ String *replace(String *ptr, char oldChar, char newChar) {
  * equalsStr(String *, String *) function.
  */
 bool startsWith(String *ptr, String *prefix) {
+    // test if the string is longer and the prefix index is on the beginning of the string
     return ptr->len < prefix->len ? false
             : strncmp(prefix->s, ptr->s, prefix->len) == 0;
 }
@@ -347,6 +368,7 @@ bool startsWith(String *ptr, String *prefix) {
  * equalsStr(String *, String *) function.
  */
 bool endsWith(String *ptr, String *suffix) {
+    // test if the string is longer and the suffix index is on the end of the string (minus suffix size)
     return ptr->len < suffix->len ? false
             : strncmp(suffix->s, ptr->s + (ptr->len - suffix->len), suffix->len) == 0;
 }

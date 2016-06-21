@@ -68,12 +68,15 @@ type
         out_: PrintStream;
   end;
 
+  // pointer to function for comparing the two specified values
   CompareFunction = function(a, b: pointer) : longInt;
 
+  // comparator class for objects
   ObjectComparator = class(Comparator)
     public function compare(o1, o2: Object_) : longInt; override;
   end;
 
+  // helper class containing the sorting algorithm implementations
   _java = class
     private
       class procedure merge(var arr, aux: array of Object_; left, right: longInt; c: Comparator);
@@ -87,11 +90,17 @@ implementation
 uses
   SysUtils;
 
+(*
+    Compares the two specified objects.
+ *)
 function ObjectComparator.compare(o1, o2: Object_) : longInt;
 begin
   compare := (o1 as Comparable).compareTo(o2 as Comparable);
 end;
 
+(*
+    Merges the specified subarrays for Merge sort.
+ *)
 class procedure _java.merge(var arr, aux: array of Object_; left, right: longInt; c: Comparator);
 var
   middleIndex, leftIndex, rightIndex, auxIndex: longInt;
@@ -101,7 +110,9 @@ begin
   rightIndex := middleIndex + 1;
   auxIndex := left;
 
+  // moving elements to the auxilliary array until one of the indices leaves the specified boundary
   while (leftIndex <= middleIndex) and (rightIndex <= right) do begin
+    // comparing the objects and setting the less one as the auxilliary array element
     if c.compare(arr[leftIndex], arr[rightIndex]) <= 0 then begin
       aux[auxIndex] := arr[leftIndex];
       inc(leftIndex);
@@ -111,15 +122,18 @@ begin
       inc(rightIndex);
     end;
 
+    // incrementing the auxilliary array index
     inc(auxIndex);
   end;
 
+  // setting the rest of the left subarray
   while leftIndex <= middleIndex do begin
     aux[auxIndex] := arr[leftIndex];
     inc(leftIndex);
     inc(auxIndex);
   end;
 
+  // setting the rest of the right subarray
   while rightIndex <= right do begin
     aux[auxIndex] := arr[rightIndex];
     inc(rightIndex);
@@ -127,6 +141,9 @@ begin
   end;
 end;
 
+(*
+    Implements the recursive Mergesort stable sorting algorithm for the object reference arrays.
+ *)
 class procedure _java.mergeSort(var arr, aux: array of Object_; left, right: longInt; c: Comparator);
 var
   i, middleIndex: longInt;
@@ -135,17 +152,25 @@ begin
     exit;
   end;
 
+  // setting the middle index for splitting the specified array into subarrays
   middleIndex := (left + right) div 2;
 
+  // sorting the left subarray recursively
   mergeSort(arr, aux, left, middleIndex, c);
+  // sorting the right subarray recursively
   mergeSort(arr, aux, middleIndex + 1, right, c);
+  // merging the sorted subarrays back into one array
   merge(arr, aux, left, right, c);
 
+  // setting the values from the auxilliary array into original array
   for i := left to right do begin
     arr[i] := aux[i];
   end;
 end;
 
+(*
+    Implements the recursive Quicksort unstable sorting algorithm for the primitive value arrays.
+ *)
 class procedure _java.quickSort(x: pointer; left, right, size: longInt; c: CompareFunction);
 var
   i, j: longInt;
@@ -154,17 +179,22 @@ var
 begin
   i := left;
   j := right;
+  // setting the pivot
   pivot := x + ((left + right) div 2) * size;
 
+  // splitting the specified array into subarrays by the pivot
   repeat
+    // comparing the values with the pivot to found the left boundary
     while c(pivot, x + i * size) > 0 do begin
       i := i + 1;
     end;
 
+    // comparing the values with the pivot to found the right boundary
     while c(pivot, x + j * size) < 0 do begin
       j := j - 1;
     end;
 
+    // sorting the elements
     if i <= j then begin
       tmp := getmem(size);
       tmpI := x + i * size;
@@ -179,15 +209,20 @@ begin
     end;
   until i > j;
 
+  // sorting the left subarray recursively
   if left < j then begin
     quickSort(x, left, j, size, c);
   end;
 
+  // sorting the right subarray recursively
   if i < right then begin
     quickSort(x, i, right, size, c);
   end;
 end;
 
+(*
+    Converts the array of characters to the standard string.
+ *)
 class function PrintStream.charArrayToString(s: array of ansiChar): ansiString;
 var
   str: ansiString;
@@ -195,6 +230,7 @@ var
 begin
   str := '';
 
+  // concatenating all the characters from the array to the string
   for i := low(s) to high(s) do begin
     str := str + s[i];
   end;
@@ -209,7 +245,12 @@ end;
  *)
 procedure PrintStream.print(b: boolean);
 begin
-  write(b);
+  if b then begin
+    write('true');
+  end
+  else begin
+    write('false');
+  end;
 end;
 
 (**
@@ -279,7 +320,7 @@ end;
  *)
 procedure PrintStream.print(obj: Object_);
 begin
-  write(obj.toString_());
+  write(obj.toString_().strProperty);
 end;
 
 (**
@@ -307,7 +348,12 @@ end;
  *)
 procedure PrintStream.println(x: boolean);
 begin
-  writeLn(x);
+  if x then begin
+    writeLn('true');
+  end
+  else begin
+    writeLn('false');
+  end;
 end;
 
 (**
@@ -377,7 +423,7 @@ end;
  *)
 procedure PrintStream.println(x: Object_);
 begin
-  writeLn(x.toString());
+  writeLn(x.toString_().strProperty);
 end;
 
 (**

@@ -67,8 +67,7 @@ namespace JavaClasses
         /// </returns>
         public static int compare(sbyte x, sbyte y)
         {
-            /* positive number if x is greater, 0 if x equals y, negative number otherwise
-             (same as for char and short types) */
+            // positive number if x is greater, 0 if x equals y, negative number otherwise
             return x - y;
         }
 
@@ -80,16 +79,19 @@ namespace JavaClasses
         /// </returns>
         public override bool equals(Object obj)
         {
+            // testing another object reference for a NULL value
             if (obj == null)
             {
                 return false;
             }
 
+            // testing object class equality
             if (GetType() != obj.GetType())
             {
                 return false;
             }
 
+            // testing object fields equality
             return v.Equals((obj as Byte).v);
         }
 

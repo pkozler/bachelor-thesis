@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A Long class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   LongTest = class(TTestCase)
   published
        procedure longValueTest;

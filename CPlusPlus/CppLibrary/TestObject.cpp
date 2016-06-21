@@ -14,6 +14,9 @@ TestObject::TestObject(String *str, int32_t i) {
     this->i = i;
 }
 
+/*
+ Destructs a TestObject.
+ */
 TestObject::~TestObject() {
     delete str;
 }

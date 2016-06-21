@@ -12,8 +12,11 @@
  */
 
 typedef struct {
+    // current element count
     int32_t count;
+    // current array capacity
     int32_t capacity;
+    // dynamically resized array
     void **dynamicArray;
 } ArrayList;
 

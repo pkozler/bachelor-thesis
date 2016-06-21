@@ -57,8 +57,7 @@ namespace JavaClasses
         /// </returns>
         public static int compare(bool x, bool y)
         {
-            /* 0 if x equals y, 1 if x is TRUE and y is FALSE, -1 otherwise 
-             (analogical for integer values) */
+            // 0 if x equals y, 1 if x is TRUE and y is FALSE, -1 otherwise
             return (x == y) ? 0 : (x ? 1 : -1);
         }
 
@@ -106,7 +105,7 @@ namespace JavaClasses
         /// </returns>
         public static String toString(bool b)
         {
-            return new String(b.ToString());
+            return new String(b.ToString().ToLower());
         }
 
         /// <summary>

@@ -4,8 +4,10 @@
 #include "test.h"
 #include "Boolean.h"
 
-/*
- * Simple C Test Suite
+/**
+ * A Boolean module test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
 /**

@@ -10,6 +10,11 @@ uses
 type
   ObjectArray = array of Object_;
 
+  (**
+   * A StringTokenizer class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   StringTokenizerTest = class(TTestCase)
   private
        function toStringArray(a: StringTokenizer): ObjectArray;

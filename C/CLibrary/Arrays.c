@@ -15,6 +15,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+/*
+ * default values used for copying one array to the another with greater length:
+ */
+
 bool _defaultBool = false;
 int8_t _defaultByte = 0;
 char _defaultChar = '\0';
@@ -24,6 +28,10 @@ int32_t _defaultInt = 0;
 int64_t _defaultLong = 0LL;
 void *_defaultPointer = NULL;
 int16_t _defaultShort = 0;
+
+/*
+ * functions for comparing the two specified values:
+ */
 
 int32_t _compareB(const void *a, const void *b) {
     return Byte_compare(*(int8_t*)a, *(int8_t*)b);
@@ -52,6 +60,10 @@ int32_t _compareL(const void *a, const void *b) {
 int32_t _compareS(const void *a, const void *b) {
     return Short_compare(*(int16_t*)a, *(int16_t*)b);
 }
+
+/*
+ * functions for testing if the two specified values are equal:
+ */
 
 bool _equalsBool(const void *a, const void *b) {
     Boolean *x = new_Boolean(*(bool*)a);
@@ -133,6 +145,10 @@ bool _equalsS(const void *a, const void *b) {
     return equal;
 }
 
+/*
+ * functions for returning the string representation of the specified value:
+ */
+
 String *_toStringBool(const void *a) {
     return Boolean_toString(*(bool*)a);
 }
@@ -165,53 +181,76 @@ String *_toStringS(const void *a) {
     return Short_toString(*(int16_t*)a);
 }
 
+/*
+    Represents the type-agnostic function for binary searching
+    in the specified sorted part of any array according to a specified compare function.
+ */
 int32_t _binarySearchPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, void *key, int32_t (*c)(const void *, const void *), bool isObjectArray) {
+    // initial lower index
     int32_t lower = fromIndex;
+    // initial upper index
     int32_t upper = toIndex - 1;
 
     while (lower <= upper) {
+        // middle index
         int32_t middle = ((uint32_t)lower + (uint32_t)upper) >> 1;
         int32_t cmp; 
         
+        // dereferencing the pointers to the struct pointers for comparing
         if (isObjectArray) {
             void **o1 = a + middle * size;
             void **o2 = key;
             cmp = c(*o1, *o2);
         }
+        // getting the value pointers for comparing
         else {
             void *o1 = a + middle * size;
             void *o2 = key;
             cmp = c(o1, o2);
         }
         
+        // middle index is the new lower index if the key is greater than middle value
         if (cmp < 0) {
             lower = middle + 1;
         }
+        // middle index is the new upper index if the key is greater than middle value
         else if (cmp > 0) {
             upper = middle - 1;
         }
+        // returning the element if middle index value is equal to the key
         else {
             return middle;
         }
     }
 
+    // returning the negative index if element not found
     return -(lower + 1);
 }
 
+/*
+    Represents the type-agnostic function for copying
+    the specified part of any array.
+ */
 void *_copyOfRangePointer(void *original, int32_t length, int32_t size, int32_t from, int32_t to, void *defaultValue) {
+    // a new array with the length equal to the difference of boundaries of the original array
     void *a = calloc(to - from, size);
     int32_t i;
 
+    // the specified upper boundary if greater than the original array length
     if (to > length) {
+        // copying the values from the original array to its last element
         for (i = from; i < length; i++) {
             memcpy(a + (i - from) * size, original + i * size, size);
         }
 
+        // filling the rest of the new array with the default value of the given type
         for (i = length; i < to; i++) {
             memcpy(a + (i - from) * size, defaultValue, size);
         }
     }
+    // the specified upper boundary is less then the original array length
     else {
+        // copying the values from the original array to the element on the specified upper boundary
         for (i = from; i < to; i++) {
             memcpy(a + (i - from) * size, original + i * size, size);
         }
@@ -220,23 +259,32 @@ void *_copyOfRangePointer(void *original, int32_t length, int32_t size, int32_t 
     return a;
 }
 
+/*
+    Represents the type-agnostic function for testing if two
+    specified arrays are equal.
+ */
 bool _equalsPointer(void *a, int32_t length, void *a2, int32_t length2, int32_t size, bool (*equals)(const void *, const void *), bool isObjectArray) {
+    // comparing pointers
     if (a == a2) {
         return true;
     }
     
+    // testing the pointers for a NULL value
     if (a == NULL || a2 == NULL) {
         return false;
     }
 
+    // comparing the array lengths
     if (length2 != length) {
         return false;
     }
     
+    // comparing corresponding elements of arrays
     int32_t i;
     for (i = 0; i < length; i++) {
         bool e;
         
+        // checking NULL values for object pointers
         if (isObjectArray) {
             void **o1 = a + i * size;
             void **o2 = a2 + i * size;
@@ -256,17 +304,28 @@ bool _equalsPointer(void *a, int32_t length, void *a2, int32_t length2, int32_t 
     return true;
 }
 
+/*
+    Represents the type-agnostic function for filling
+    the specified part of any array with the specified value.
+ */
 void _fillPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, void *val) {
+    // setting each element to the value
     int32_t i;
     for (i = fromIndex; i < toIndex; i++) {
         memcpy(a + i * size, val, size);
     }
 }
 
+/*
+    Represents the type-agnostic function for sorting
+    the specified part of any array according to a specified compare function.
+ */
 void _sortPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, int32_t (*c)(const void *, const void *), bool isObjectArray) {
+    // unstable sort for primitive values
     if (!isObjectArray) {
         qsort(a + fromIndex * size, toIndex - fromIndex, size, c);
     }
+    // stable sort for structure pointers
     else {
         void **aux = malloc(sizeof(void *) * (toIndex - fromIndex));
         _mergeSort((void **)a, aux, fromIndex, toIndex - 1, c);
@@ -274,13 +333,20 @@ void _sortPointer(void *a, int32_t fromIndex, int32_t toIndex, int32_t size, int
     }
 }
 
+/*
+    Represents the type-agnostic function for creating
+    the string representation of any array.
+ */
 String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toString)(const void *), bool isObjectArray) {
+    // create StringBuilder for appending the text
     StringBuilder *sb = new_StringBuilder();
     String *str = new_String("[");
     append(sb, str);
     delete_String(str);
 
+    // append first element string representation
     if (length > 0) {
+        // checking NULL values for struct pointers
         if (isObjectArray) {
             void **o = a;
             str = *o == NULL ? new_String("null") : toString(*o);
@@ -294,12 +360,14 @@ String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toStri
         delete_String(str);
     }
 
+    // append another elements string representation
     int32_t i;
     for (i = 1; i < length; i++) {
         str = new_String(", ");
         append(sb, str);
         delete_String(str);
         
+        // checking NULL values for struct pointers
         if (isObjectArray) {
             void **o = a + i * size;
             str = *o == NULL ? new_String("null") : toString(*o);
@@ -313,6 +381,7 @@ String *_toStringPointer(void *a, int32_t length, int32_t size, String *(*toStri
         delete_String(str);
     }
 
+    // create Java-like string
     str = new_String("]");
     append(sb, str);
     delete_String(str);

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// maximum possible string length of the int32_t value used as the string buffer size
 #define _MAX_INT_STRLEN 11
 
 /**
@@ -53,6 +54,7 @@ int32_t compareToI(Integer *ptr, Integer *anotherInteger) {
  * > y
  */
 int32_t Integer_compare(int32_t x, int32_t y) {
+    // 1 if x is greater, 0 if x equals y, -1 otherwise
     return (x < y) ? -1 : ((x == y) ? 0 : 1);
 }
 
@@ -64,14 +66,17 @@ int32_t Integer_compare(int32_t x, int32_t y) {
  * @return true if the structures are the same; false otherwise.
  */
 bool equalsI(Integer *ptr, Integer *obj) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 
+    // testing object fields equality
     return (ptr->v == obj->v);
 }
 
@@ -96,7 +101,9 @@ String *Integer_toString(int32_t i) {
     char buf[_MAX_INT_STRLEN];
 
     str[0] = '\0';
+    // printing the string representation to the buffer
     sprintf(buf, "%d", i);
+    // creating the null-terminated string from the buffer
     strcat(str, buf);
     String *s = new_String(str);
     free(str);

@@ -8,10 +8,13 @@
 #include "Float.h"
 #include "Double.h"
 
-/*
- * Simple C++ Test Suite
+/**
+ * A Math class test suite.
+ *
+ * @author Petr Kozler (A13B0359P)
  */
 
+// maximal difference between expected and actual value
 const double DEFAULT_EPSILON = 1E-0;
 
 /**

@@ -69,8 +69,7 @@ namespace JavaClasses
         /// </returns>
         public static int compare(int x, int y)
         {
-            /* 1 if x is greater, 0 if x equals y, -1 otherwise
-             (same as for a long type) */
+            // 1 if x is greater, 0 if x equals y, -1 otherwise
             return (x < y) ? -1 : ((x == y) ? 0 : 1);
         }
 
@@ -82,16 +81,19 @@ namespace JavaClasses
         /// </returns>
         public override bool equals(Object obj)
         {
+            // testing another object reference for a NULL value
             if (obj == null)
             {
                 return false;
             }
 
+            // testing object class equality
             if (GetType() != obj.GetType())
             {
                 return false;
             }
 
+            // testing object fields equality
             return v.Equals((obj as Integer).v);
         }
 

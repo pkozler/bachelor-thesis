@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// maximum possible string length of the int8_t value used as the string buffer size
 #define _MAX_BYTE_STRLEN 4
 
 /**
@@ -53,6 +54,7 @@ int32_t compareToB(Byte *ptr, Byte *anotherByte) {
  * > y
  */
 int32_t Byte_compare(int8_t x, int8_t y) {
+    // positive number if x is greater, 0 if x equals y, negative number otherwise
     return x - y;
 }
 
@@ -64,14 +66,17 @@ int32_t Byte_compare(int8_t x, int8_t y) {
  * @return true if the structures are the same; false otherwise.
  */
 bool equalsB(Byte *ptr, Byte *obj) {
+    // testing another object reference for a NULL value
     if (ptr == NULL || obj == NULL) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof(*ptr) != sizeof(*obj)) {
         return false;
     }
 
+    // testing object fields equality
     return (ptr->v == obj->v);
 }
 
@@ -96,7 +101,9 @@ String *Byte_toString(int8_t b) {
     char buf[_MAX_BYTE_STRLEN];
 
     str[0] = '\0';
+    // printing the string representation to the buffer
     sprintf(buf, "%hd", b);
+    // creating the null-terminated string from the buffer
     strcat(str, buf);
     String *s = new_String(str);
     free(str);

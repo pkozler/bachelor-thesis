@@ -43,10 +43,12 @@ var
   length, i: longInt;
   e: boolean;
 begin
+  // comparing references
   if self = o then begin
     exit(true);
   end;
 
+  // testing the reference for a NULL value
   if o = nil then begin
     exit(false);
   end;
@@ -54,10 +56,12 @@ begin
   other := List(o);
   length := size();
 
+  // comparing the list sizes
   if other.size() <> length then begin
     exit(false);
   end;
 
+  // comparing the corresponding elements of the lists
   for i := 0 to length - 1 do begin
     o1 := get(i);
     o2 := other.get(i);

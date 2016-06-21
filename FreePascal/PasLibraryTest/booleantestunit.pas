@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * A Boolean class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   BooleanTest = class(TTestCase)
   published
        procedure booleanValueTest;

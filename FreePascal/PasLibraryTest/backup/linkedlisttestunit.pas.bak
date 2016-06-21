@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An LinkedList class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   LinkedListTest = class(TTestCase)
   private
        function toList(arr: array of TestObject): LinkedList;
@@ -179,9 +184,7 @@ begin
     AssertTrue(c);
     // adding an element at the end
     b := TestObject.create('second', 2);
-    WriteLn('KOKOT');
     a.add(1, b);
-    WriteLn('KOKOT');
     setLength(d, 2);
     d[0] :=  TestObject.create('first', 1);
     d[1] := TestObject.create('second', 2);
@@ -190,7 +193,6 @@ begin
     // adding an element at the beginning
     b := TestObject.create('third', 3);
     a.add(0, b);
-    WriteLn('KOKOT');
     setLength(d, 3);
     d[0] :=  TestObject.create('third', 3);
     d[1] := TestObject.create('first', 1);
@@ -200,7 +202,6 @@ begin
     // adding an element in the middle
     b := TestObject.create('fourth', 4);
     a.add(1, b);
-    WriteLn('KOKOT');
     setLength(d, 4);
     d[0] :=  TestObject.create('third', 3);
     d[1] := TestObject.create('fourth', 4);
@@ -211,7 +212,6 @@ begin
     // adding an element in the middle
     b := TestObject.create('fifth', 5);
     a.add(2, b);
-    WriteLn('KOKOT');
     setLength(d, 5);
     d[0] :=  TestObject.create('third', 3);
     d[1] := TestObject.create('fourth', 4);
@@ -220,7 +220,6 @@ begin
     d[4] := TestObject.create('second', 2);
     c := a.equals(toList(d));
     AssertTrue(c);
-    WriteLn('KOKOT');
 end;
 
 (**

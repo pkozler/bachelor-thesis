@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<lists>
+	<!-- seznam dostupnych programovacich jazyku -->
+	<languages>
+		<language>C</language>
+		<language>C++</language>
+		<language>C#</language>
+		<language>Free Pascal</language>
+	</languages>
+	<!-- seznam dostupnych Java trid -->
+	<classes>
+		<class>Arrays</class>
+		<class>List</class>
+		<class>Math</class>
+		<class>String</class>
+	</classes>
+</lists>

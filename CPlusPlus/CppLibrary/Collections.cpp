@@ -2,6 +2,10 @@
 
 void *Collections::currentComparator = nullptr;
 
+/*
+ * methods for comparing the two specified values:
+ */
+
 int32_t Collections::compareObjI(Object *a, Object *b) {
     Comparable *x = ((Comparable *) a);
     Comparable *y = ((Comparable *) b);

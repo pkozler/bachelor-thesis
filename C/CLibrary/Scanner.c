@@ -15,17 +15,23 @@
 #include <wchar.h>
 #include <stdbool.h>
 
+/*
+    Reads the line from the standard input.
+*/
 String *_readLine() {
     StringBuilder *sb = new_StringBuilder();
     char c;
     
+    // reading characters until newline
     while (true) {
         scanf("%c", &c);
         
+        // skipping the carriage return newline
         if (c == '\r') {
             continue;
         }
         
+        // returning the scanned characters as the new line string
         if (c == '\n') {
             String *line = toStringSb(sb);
             delete_StringBuilder(sb);
@@ -33,10 +39,12 @@ String *_readLine() {
             return line;
         }
         
+        // converting the char to string
         char *s = malloc(sizeof(char) * 2);
         s[0] = c;
         s[1] = '\0';
         
+        // appending the char to the scanned line string
         String *str = new_String(s);
         append(sb, str);
         delete_String(str);
@@ -44,37 +52,55 @@ String *_readLine() {
     }
 }
 
+/*
+    Returns TRUE if and only if there is only the white-space characters
+    left in the line or if the current scanned line is already empty.
+*/
 bool _isEmptyOrWhiteSpace(char *line) {
     int32_t i;
     
+    // finding the first non-whitespace character
     for (i = 0; line[i]; i++) {
         if (!isspace((int) line[i])) {
             return false;
         }
     }
     
+    // returning TRUE if there are only whitespaces in the line
     return true;
 }
 
+/*
+    Removes all leading white-space characters from the line.
+*/
 char *_trimStart(char *line) {
     int32_t i;
     
+    // finding the first non-whitespace character
     for (i = 0; line[i]; i++) {
         if (!isspace((int) line[i])) {
             break;
         }
     }
     
+    // returning the substring without the leading whitespaces
     return strdup(line + i);
 }
 
+/*
+    Removes the part of the current line to the first white-space character
+    after the first sequence of non-whitespace characters and returns this
+    part as the scanned token.
+*/
 char *_removeLineToWhiteSpace(Scanner *ptr) {
     int32_t i;
     char *line;
     char *token;
     
+    // removing all leading whitespaces from the line
     ptr->line = _trimStart(ptr->line);
     
+    // finding the first whitespace in the trimmed line
     for (i = 0; ptr->line[i]; i++) {
         if (isspace((int) ptr->line[i])) {
             break;
@@ -84,25 +110,32 @@ char *_removeLineToWhiteSpace(Scanner *ptr) {
     token = malloc(sizeof(char) * i);
     token[0] = '\0';
     
+    // getting the next token
     strncat(token, ptr->line, (size_t) i);
     line = strdup(ptr->line + i);
+    // removing the token from the current line
     free(ptr->line);
     ptr->line = line;
     
     return token;
 }
 
+/*
+    Returns the next token of the current line or reads the new line
+    from the standard input if the current line has been scanned completely.
+*/
 String *_getNextToken(Scanner *ptr) {
+    // reading the next line if the current line is empty
     while (_isEmptyOrWhiteSpace(ptr->line)) {
         free(ptr->line);
         String *line = _readLine();
+        // removing all leading whitespaces
         ptr->line = _trimStart(line->s);
         delete_String(line);
     }
     
-    String *str = new_String(_removeLineToWhiteSpace(ptr));
-
-    return str;
+    // returning the next scanned token
+    return new_String(_removeLineToWhiteSpace(ptr));
 }
 
 /**
@@ -117,6 +150,14 @@ Scanner *new_Scanner(InputStream *source) {
     sc->line[0] = '\0';
     
     return sc;
+}
+
+/*
+    Destructs the StringTokenizer.
+ */
+void delete_Scanner(Scanner *ptr) {
+    free(ptr->line);
+    free(ptr);
 }
 
 /**
@@ -207,10 +248,12 @@ double nextDouble(Scanner *ptr) {
  * @return the line that was skipped
  */
 String *nextLine(Scanner *ptr) {
+    // reading the next line if the current is empty
     if (strlen(ptr->line) == 0) {
         return _readLine();
     }
     
+    // returning the rest of the current line if not empty
     String *str = new_String(ptr->line);
     free(ptr->line);
     ptr->line = malloc(sizeof(char));

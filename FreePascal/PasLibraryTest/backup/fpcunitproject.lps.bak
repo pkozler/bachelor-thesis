@@ -4,12 +4,12 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="24">
+    <Units Count="25">
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="8"/>
-        <CursorPos X="6" Y="24"/>
+        <TopLine Value="9"/>
+        <CursorPos Y="4"/>
         <UsageCount Value="242"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -17,9 +17,8 @@
         <Filename Value="mathtestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MathTestUnit"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="602"/>
-        <CursorPos X="21" Y="616"/>
+        <EditorIndex Value="12"/>
+        <CursorPos X="7" Y="15"/>
         <UsageCount Value="242"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -28,7 +27,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PrintStreamTestUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="16"/>
+        <TopLine Value="64"/>
         <CursorPos Y="16"/>
         <UsageCount Value="240"/>
       </Unit2>
@@ -36,18 +35,17 @@
         <Filename Value="stringtokenizertestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="StringTokenizerTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="217"/>
-        <CursorPos X="21" Y="77"/>
+        <EditorIndex Value="18"/>
+        <CursorPos X="7" Y="14"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="stringtestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="StringTestUnit"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="486"/>
-        <CursorPos X="16" Y="499"/>
+        <EditorIndex Value="17"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -55,26 +53,27 @@
         <Filename Value="stringbuildertestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="StringBuilderTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="10" Y="5"/>
+        <EditorIndex Value="16"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="shorttestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ShortTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="14"/>
+        <EditorIndex Value="15"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="scannertestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ScannerTestUnit"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="245"/>
-        <CursorPos X="24" Y="251"/>
+        <EditorIndex Value="14"/>
+        <TopLine Value="10"/>
+        <CursorPos X="7" Y="17"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit7>
@@ -82,17 +81,17 @@
         <Filename Value="longtestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LongTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="14"/>
+        <EditorIndex Value="11"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="linkedlisttestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="LinkedListTestUnit"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="199"/>
-        <CursorPos X="19" Y="217"/>
+        <EditorIndex Value="10"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -100,44 +99,44 @@
         <Filename Value="integertestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="IntegerTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="22"/>
+        <EditorIndex Value="9"/>
+        <CursorPos X="16" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="charactertestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CharacterTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="29"/>
-        <CursorPos X="20" Y="45"/>
+        <EditorIndex Value="8"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="floattestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="FloatTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="183"/>
-        <CursorPos X="29" Y="191"/>
+        <EditorIndex Value="7"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="doubletestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="DoubleTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="198"/>
-        <CursorPos X="32" Y="204"/>
+        <EditorIndex Value="6"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="collectionstestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CollectionsTestUnit"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="28"/>
-        <CursorPos Y="15"/>
+        <EditorIndex Value="5"/>
+        <CursorPos X="7" Y="14"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit14>
@@ -145,26 +144,27 @@
         <Filename Value="bytetestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ByteTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="28"/>
-        <CursorPos X="18" Y="36"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="7" Y="13"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit15>
       <Unit16>
         <Filename Value="booleantestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="BooleanTestUnit"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos Y="14"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="3" Y="12"/>
         <UsageCount Value="240"/>
+        <Loaded Value="True"/>
       </Unit16>
       <Unit17>
         <Filename Value="arraystestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ArraysTestUnit"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="160"/>
-        <CursorPos X="28" Y="79"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="15" Y="13"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit17>
@@ -172,9 +172,8 @@
         <Filename Value="arraylisttestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ArrayListTestUnit"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="52"/>
-        <CursorPos X="22" Y="263"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="6" Y="16"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit18>
@@ -182,9 +181,8 @@
         <Filename Value="printstreamtestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PrintStreamTestUnit"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="451"/>
-        <CursorPos X="14" Y="458"/>
+        <EditorIndex Value="13"/>
+        <CursorPos X="7" Y="14"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
       </Unit19>
@@ -219,6 +217,12 @@
         <CursorPos X="17" Y="127"/>
         <UsageCount Value="1"/>
       </Unit23>
+      <Unit24>
+        <Filename Value="..\PasLibrary\byteunit.pas"/>
+        <UnitName Value="ByteUnit"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit24>
     </Units>
     <JumpHistory Count="25" HistoryIndex="24">
       <Position1>

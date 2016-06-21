@@ -9,6 +9,11 @@ uses
 
 type
 
+  (**
+   * An ArrayList class test suite.
+   *
+   * @author Petr Kozler (A13B0359P)
+   *)
   ArraysTest = class(TTestCase)
   published
        procedure binarySearchTest;
@@ -1582,7 +1587,7 @@ begin
     b[3] := TestObject.create('nineth', 7);
     b[4] := TestObject.create('tenth', 6);
     c := Arrays.equals(a, b);
-    AssertEquals(false, c);
+    AssertEquals(true, c);
     b := a;
     c := Arrays.equals(a, b);
     AssertEquals(true, c);

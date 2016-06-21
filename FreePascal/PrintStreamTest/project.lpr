@@ -1,17 +1,30 @@
 program project;
 
+(**
+ * A PrintStream class test utility.
+ *
+ * @author Petr Kozler (A13B0359P)
+ *)
+
 uses sysutils, PrintStreamTestUnit;
 
+// a test method pointer array length
 const TEST_METHOD_COUNT = 19;
 
 type
+  // a test method pointer
   TestMethod = procedure of object;
 
 var
+  // a test class
   testClass: PrintStreamTest;
+  // an array of the test method pointers
   testMethods: array of TestMethod;
   n: longInt;
 
+(*
+  Prints help message if the specified method index is not valid.
+*)
 procedure usage;
 begin
   writeLn('Zadejte platné číslo testovací metody. ('
@@ -19,6 +32,10 @@ begin
   halt(-1);
 end;
 
+(**
+ * Calls the PrintStream test method with the index specified in the command-line argument
+ * and returns the count of errors found during the test as the exit status.
+ *)
 begin
   testClass := PrintStreamTest.create();
   setLength(testMethods, TEST_METHOD_COUNT);

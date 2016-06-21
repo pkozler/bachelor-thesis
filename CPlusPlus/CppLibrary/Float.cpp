@@ -23,6 +23,9 @@ Float::Float(float value) {
     v = value;
 }
 
+/*
+    returns the "binary representation" of negative zero value for comparison purposes
+*/
 int32_t Float::getNegativeZeroBits() {
     FloatInt32 bitConverter;
     bitConverter.val = -0.0;
@@ -62,6 +65,9 @@ int32_t Float::compareTo(Object *anotherFloat) {
  * numerically greater than f2.
  */
 int32_t Float::compare(float f1, float f2) {
+    /* testing for NaN values (a NaN value is considered greated
+       than any other, including positive infinity,
+       and two NaN values are considered equal) */
     if (std::isnan(f1)) {
         if (std::isnan(f2)) {
             return 0;
@@ -79,6 +85,8 @@ int32_t Float::compare(float f1, float f2) {
     v2Bits.val = f2;
     int32_t negativeZeroBits = getNegativeZeroBits();
 
+    /* testing for +0.0 and -0.0 value (a positive zero
+       is considered greater than a negative zero) */
     if (vBits.bits == 0
             && v2Bits.bits == negativeZeroBits) {
         return 1;
@@ -89,6 +97,9 @@ int32_t Float::compare(float f1, float f2) {
         return -1;
     }
 
+    /* testing for other values and returning
+       1 if first value is greater, 0 if first value 
+       equals second value, -1 otherwise */
     return (f1 > f2 ? 1 : f1 < f2 ? -1 : 0);
 }
 
@@ -99,16 +110,19 @@ int32_t Float::compare(float f1, float f2) {
  * @return true if the objects are the same; false otherwise.
  */
 bool Float::equals(Object *obj) {
+    // testing another object reference for a NULL value
     if (obj == nullptr) {
         return false;
     }
 
+    // testing object class equality
     if (sizeof (this) != sizeof (*obj)) {
         return false;
     }
 
     float v2 = ((Float *)obj)->v;
 
+    // testing for NaN values (two NaN values are considered equal)
     if (std::isnan(v) && std::isnan(v2)) {
         return true;
     }
@@ -118,6 +132,7 @@ bool Float::equals(Object *obj) {
     v2Bits.val = v2;
     int32_t negativeZeroBits = getNegativeZeroBits();
 
+    // testing for zero values (+0.0 is considered greater than -0.0)
     if (vBits.bits == negativeZeroBits) {
         return v2Bits.bits == negativeZeroBits;
     }
@@ -126,6 +141,7 @@ bool Float::equals(Object *obj) {
         return vBits.bits == negativeZeroBits;
     }
 
+    // testing other values
     return (v == v2);
 }
 
@@ -158,7 +174,15 @@ String *Float::toString(float f) {
 float Float::parseFloat(String *s) {
     String *str = s->trim();
     float value = strtof(str->_s().c_str(), nullptr);
-    delete str;
+    
+    // negative zero handling
+    String *sign = new String("-");
+    
+    if (value == 0 && s.startsWith(sign)) {
+        value = -0.0f;
+    }
+    
+    delete str, sign;
     
     return value;
 }

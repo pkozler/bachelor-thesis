@@ -13,6 +13,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 template <class E> class LinkedList : public List<E> {
+    // inner list for storing the elements
     std::list<E *> l;
 public:
     LinkedList();
@@ -43,6 +44,9 @@ template <class E> LinkedList<E>::LinkedList(LinkedList<E> *c) {
     l = c->l;
 }
 
+/*
+ Destructs a LinkedList.
+ */
 template <class E> LinkedList<E>::~LinkedList() {
     l.clear();
 }
@@ -67,6 +71,7 @@ template <class E> bool LinkedList<E>::add(E *e) {
  */
 template <class E> void LinkedList<E>::add(int32_t index, E *element) {
     auto it = l.begin();
+    // moving to the specified index
     std::advance(it, index);
     l.insert(it, element);
 }
@@ -79,6 +84,7 @@ template <class E> void LinkedList<E>::add(int32_t index, E *element) {
  */
 template <class E> E *LinkedList<E>::get(int32_t index) {
     auto it = l.begin();
+    // moving to the specified index
     std::advance(it, index);
 
     return *it;
@@ -95,6 +101,7 @@ template <class E> E *LinkedList<E>::get(int32_t index) {
 template <class E> E *LinkedList<E>::set(int32_t index, E *element) {
     E *original;
     auto it = l.begin();
+    // moving to the specified index
     std::advance(it, index);
     original = *it;
     *it = element;
@@ -111,6 +118,7 @@ template <class E> E *LinkedList<E>::set(int32_t index, E *element) {
 template <class E> E *LinkedList<E>::remove(int32_t index) {
     E *removed;
     auto it = l.begin();
+    // moving to the specified index
     std::advance(it, index);
     removed = *it;
     l.erase(it);
@@ -141,15 +149,18 @@ template <class E> void LinkedList<E>::clear() {
  */
 template <class E> String *LinkedList<E>::toString() {
     int32_t length = l.size();
+    // create ostringstream for appending the text
     std::ostringstream oss("");
     oss << "[";
 
+    // append first element string representation
     if (length > 0) {
         String *str = *l.begin() == nullptr ? new String("null") : ((Object *) *l.begin())->toString();
         oss << str->_s();
         delete str;
     }
 
+    // append another elements string representation
     for (int32_t i = 1; i < length; i++) {
         auto it = l.begin();
         std::advance(it, i);
@@ -160,6 +171,7 @@ template <class E> String *LinkedList<E>::toString() {
 
     oss << "]";
 
+    // create Java-like string
     return new String(oss.str());
 }
 

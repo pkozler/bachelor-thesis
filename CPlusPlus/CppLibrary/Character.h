@@ -10,6 +10,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Character : public Comparable {
+    // an inner value
     char v;
 public:
     Character(char value);

@@ -13,7 +13,9 @@
  * @author Petr Kozler (A13B0359P)
  */
 template <class E> class ArrayList : public List<E> {
+    // initial inner vector capacity
     static const int32_t DEFAULT_CAPACITY;
+    // inner vector for storing the elements
     std::vector<E *> v;
 public:
     std::vector<E *> _v() { return v; }
@@ -46,11 +48,15 @@ template <class E> ArrayList<E>::ArrayList() {}
 template <class E> ArrayList<E>::ArrayList(ArrayList<E> *c) {
     int32_t length = c->size();
     
+    // copying all elements from the specified list
     for (int32_t i = 0; i < length; i++) {
         add(c->get(i));
     }
 }
 
+/*
+ Destructs an ArrayList.
+ */
 template <class E> ArrayList<E>::~ArrayList() {
     v.clear();
 }
@@ -138,15 +144,18 @@ template <class E> void ArrayList<E>::clear() {
  */
 template <class E> String *ArrayList<E>::toString() {
     int32_t length = v.size();
+    // create ostringstream for appending the text
     std::ostringstream oss("");
     oss << "[";
 
+    // append first element string representation
     if (length > 0) {
         String *str = v[0] == nullptr ? new String("null") : ((Object *)v[0])->toString();
         oss << str->_s();
         delete str;
     }
 
+    // append another elements string representation
     for (int32_t i = 1; i < length; i++) {
         String *str = v[i] == nullptr ? new String("null") : ((Object *)v[i])->toString();
         oss << ", " << str->_s();
@@ -155,6 +164,7 @@ template <class E> String *ArrayList<E>::toString() {
 
     oss << "]";
 
+    // create Java-like string
     return new String(oss.str());
 }
 

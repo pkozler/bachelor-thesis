@@ -10,6 +10,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Long : public Comparable {
+    // an inner value
     int64_t v;
 public:
     /**

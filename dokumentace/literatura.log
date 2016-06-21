@@ -1,0 +1,1298 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdftex 2015.9.28)  19 JUN 2016 20:41
+entering extended mode
+**C:/Users/pkout/Dropbox/bp/dokumentace/literatura.bib
+(C:/Users/pkout/Dropbox/bp/dokumentace/literatura.bib
+Missing character: There is no √ in font cmr10!
+Missing character: There is no Ω in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no Ω in font cmr10!
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ì in font cmr10!
+
+Overfull \hbox (37.30171pt too wide) in paragraph at lines 25--32
+[]\tenrm @bookcs-book, au-thor="John Sharp", ti-tle="Microsoft Vi-sual C# 2010 
+Krok za krokem", pub-lisher="Computer|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm b
+.\kern0.27779
+.\tenrm o
+.etc.
+
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ° in font cmr10!
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+
+Overfull \hbox (15.07942pt too wide) in paragraph at lines 33--40
+[]\tenrm @bookpas-book, au-thor="Pavel Satrapa", ti-tle="Pascal pro ze-lene", p
+ub-lisher="Neocortex", year="2000",|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm b
+.\kern0.27779
+.\tenrm o
+.etc.
+
+
+Overfull \hbox (69.41293pt too wide) in paragraph at lines 53--58
+[]\tenrm @onlinejava-guide-java, ti-tle="java", url="http://docs.oracle.com/jav
+ase/7/docs/technotes/tools/windows/java.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (148.30087pt too wide) in paragraph at lines 59--64
+[]\tenrm @onlinejava-guide-object, ti-tle="Object (Java Plat-form SE 7 )", url=
+"http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (34.67429pt too wide) in paragraph at lines 65--70
+[]\tenrm @onlinec-guide, ti-tle="The GNU C Ref-er-ence Man-ual", url="http://ww
+w.gnu.org/software/gnu-c-manual/gnu-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (66.99489pt too wide) in paragraph at lines 71--76
+[]\tenrm @onlinecpp-guide-classes, ti-tle="Classes (I) - C++ Tu-to-ri-als", url
+="http://www.cplusplus.com/doc/tutorial/classes/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (132.55193pt too wide) in paragraph at lines 77--82
+[]\tenrm @onlinecs-guide-basic, ti-tle="Visual C# Lan-guage (C#)", url="https:/
+/msdn.microsoft.com/en-us/library/aa287558(v=vs.71).aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (96.71854pt too wide) in paragraph at lines 89--94
+[]\tenrm @onlinecs-guide-msil, ti-tle="Compiling to MSIL", url="https://msdn.mi
+crosoft.com/en-us/library/c5tkafs1(v=vs.100).aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (90.35733pt too wide) in paragraph at lines 101--106
+[]\tenrm @onlinepas-guide-about, ti-tle="About the Pas-cal lan-guage", url="htt
+p://www.freepascal.org/docs-html/ref/refli6.html#x7-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ñ in font cmr10!
+Missing character: There is no ¢ in font cmr10!
+
+Overfull \hbox (66.49632pt too wide) in paragraph at lines 107--112
+\tenrm > Lan-guage Ba-sics)", url="https://docs.oracle.com/javase/tutorial/java
+/nutsandbolts/datatypes.html", cited="3.12.2015",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm >
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\tenrm L
+.\tenrm a
+.\tenrm n
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--112
+
+
+\hbox(0.0+0.0)x469.75499
+.\glue(\rightskip) 0.0
+
+
+Overfull \hbox (110.10732pt too wide) in paragraph at lines 113--118
+[]\tenrm @onlinecpp-guide-types, ti-tle="Variables and types - C++ Tu-to-ri-als
+", url="http://www.cplusplus.com/doc/tutorial/variables/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (104.41298pt too wide) in paragraph at lines 119--124
+[]\tenrm @onlinecs-guide-types, title="Built-in Data Types", url="https://msdn.
+microsoft.com/en-us/library/cs7y5x0x(v=vs.90).aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (16.94046pt too wide) in paragraph at lines 125--130
+[]\tenrm @onlinepas-guide-types, ti-tle="3 Types", url="http://www.freepascal.o
+rg/docs-html/ref/refch3.html#x25-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (126.13422pt too wide) in paragraph at lines 131--136
+[]\tenrm @onlinejava-guide-byte, ti-tle="Byte (Java Plat-form SE 7 )", url="htt
+ps://docs.oracle.com/javase/7/docs/api/java/lang/Byte.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (135.99535pt too wide) in paragraph at lines 137--142
+[]\tenrm @onlinejava-guide-short, ti-tle="Short (Java Plat-form SE 7 )", url="h
+ttps://docs.oracle.com/javase/7/docs/api/java/lang/Short.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (156.77307pt too wide) in paragraph at lines 143--148
+[]\tenrm @onlinejava-guide-integer, ti-tle="Integer (Java Plat-form SE 7 )", ur
+l="https://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (127.8009pt too wide) in paragraph at lines 149--154
+[]\tenrm @onlinejava-guide-long, ti-tle="Long (Java Plat-form SE 7 )", url="htt
+ps://docs.oracle.com/javase/7/docs/api/java/lang/Long.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (131.68982pt too wide) in paragraph at lines 155--160
+[]\tenrm @onlinejava-guide-float, ti-tle="Float (Java Plat-form SE 7 )", url="h
+ttps://docs.oracle.com/javase/7/docs/api/java/lang/Float.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (156.68982pt too wide) in paragraph at lines 161--166
+[]\tenrm @onlinejava-guide-double, ti-tle="Double (Java Plat-form SE 7 )", url=
+"https://docs.oracle.com/javase/7/docs/api/java/lang/Double.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Overfull \hbox (192.96759pt too wide) in paragraph at lines 167--172
+[]\tenrm @onlinejava-guide-character, ti-tle="Character (Java Plat-form SE 7 )"
+, url="https://docs.oracle.com/javase/7/docs/api/java/lang/Character.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (170.02325pt too wide) in paragraph at lines 173--178
+[]\tenrm @onlinejava-guide-boolean, ti-tle="Boolean (Java Plat-form SE 7 )", ur
+l="https://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (34.07933pt too wide) in paragraph at lines 179--184
+[]\tenrm @onlinecs-guide-sbyte, ti-tle="sbyte (Ref-erenn doku-men-tace jazyka C
+#)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (33.02379pt too wide) in paragraph at lines 185--190
+[]\tenrm @onlinecs-guide-short, ti-tle="short (Ref-erenn doku-men-tace jazyka C
+#)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (49.91275pt too wide) in paragraph at lines 191--196
+[]\tenrm @onlinecs-guide-int, ti-tle="int (C# Ref-er-ence)", url="https://msdn.
+microsoft.com/en-us/library/5kzh1b5w.aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (57.7461pt too wide) in paragraph at lines 197--202
+[]\tenrm @onlinecs-guide-long, ti-tle="long (C# Ref-er-ence)", url="https://msd
+n.microsoft.com/en-us/library/ctetwysk.aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (27.30159pt too wide) in paragraph at lines 203--208
+[]\tenrm @onlinecs-guide-float, ti-tle="float (Ref-erenn doku-men-tace jazyka C
+#)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (46.1905pt too wide) in paragraph at lines 209--214
+[]\tenrm @onlinecs-guide-double, ti-tle="double (Ref-erenn doku-men-tace jazyka
+ C#)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (58.0794pt too wide) in paragraph at lines 215--220
+[]\tenrm @onlinecs-guide-char, ti-tle="char (C# Ref-er-ence)", url="https://msd
+n.microsoft.com/en-us/library/x9h8tsay.aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (26.1905pt too wide) in paragraph at lines 221--226
+[]\tenrm @onlinecs-guide-bool, ti-tle="bool (Ref-erenn doku-men-tace jazyka C#)
+", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (26.19044pt too wide) in paragraph at lines 227--232
+[]\tenrm @onlinecs-guide-byte, ti-tle="byte (Ref-erenn doku-men-tace jazyka C#)
+", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (44.13493pt too wide) in paragraph at lines 233--238
+[]\tenrm @onlinecs-guide-ushort, ti-tle="ushort (Ref-erenn doku-men-tace jazyka
+ C#)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (23.41267pt too wide) in paragraph at lines 239--244
+[]\tenrm @onlinecs-guide-uint, ti-tle="uint (Ref-erenn doku-men-tace jazyka C#)
+", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (36.1905pt too wide) in paragraph at lines 245--250
+[]\tenrm @onlinecs-guide-ulong, ti-tle="ulong (Ref-erenn doku-men-tace jazyka C
+#)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ƒ in font cmr10!
+Missing character: There is no ç in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (55.07939pt too wide) in paragraph at lines 251--256
+[]\tenrm @onlinecs-guide-decimal, ti-tle="decimal (Ref-erenn doku-men-tace jazy
+ka C#)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (70.63503pt too wide) in paragraph at lines 257--262
+[]\tenrm @onlinecs-guide-string, ti-tle="string (C# Ref-er-ence)", url="https:/
+/msdn.microsoft.com/en-us/library/362314fe.aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (77.69058pt too wide) in paragraph at lines 263--268
+[]\tenrm @onlinecs-guide-object, ti-tle="object (C# Ref-er-ence)", url="https:/
+/msdn.microsoft.com/en-us/library/9kkx3h3c.aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (55.02385pt too wide) in paragraph at lines 269--274
+[]\tenrm @onlinepas-guide-base-types, ti-tle="Base types", url="http://www.free
+pascal.org/docs-html/ref/refse12.html#x26-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (99.32947pt too wide) in paragraph at lines 275--280
+[]\tenrm @onlinepas-guide-character-types, ti-tle="Character types", url="http:
+//www.freepascal.org/docs-html/ref/refse13.html#x29-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (48.385pt too wide) in paragraph at lines 281--286
+[]\tenrm @onlinepas-guide-integer, ti-tle="Ordinal types", url="http://www.free
+pascal.org/docs-html/ref/refsu5.html#x27-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (52.52394pt too wide) in paragraph at lines 287--292
+[]\tenrm @onlinepas-guide-boolean, ti-tle="Ordinal types", url="http://www.free
+pascal.org/docs-html/ref/refsu5.html#x27-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (20.99602pt too wide) in paragraph at lines 293--298
+[]\tenrm @onlinepas-guide-real, ti-tle="Real types", url="http://www.freepascal
+.org/docs-html/ref/refsu6.html#x28-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (72.38501pt too wide) in paragraph at lines 299--304
+[]\tenrm @onlinepas-guide-ansichar, ti-tle="Char or An-siChar", url="http://www
+.freepascal.org/docs-html/ref/refsu7.html#x30-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (43.3294pt too wide) in paragraph at lines 305--310
+[]\tenrm @onlinepas-guide-widechar, ti-tle="WideChar", url="http://www.freepasc
+al.org/docs-html/ref/refsu8.html#x31-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ñ in font cmr10!
+Missing character: There is no ¢ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--316
+
+
+\hbox(0.0+0.0)x469.75499
+.\glue(\rightskip) 0.0
+
+
+Overfull \hbox (143.91199pt too wide) in paragraph at lines 317--322
+[]\tenrm @onlinejava-guide-arrays, ti-tle="Arrays (Java Plat-form SE 7 )", url=
+"http://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+[2]
+Overfull \hbox (191.41208pt too wide) in paragraph at lines 323--328
+[]\tenrm @onlinejava-guide-collection, ti-tle="Collection (Java Plat-form SE 7 
+)", url="https://docs.oracle.com/javase/7/docs/api/java/util/Collection.html",|
+
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (109.63414pt too wide) in paragraph at lines 329--334
+[]\tenrm @onlinejava-guide-list, ti-tle="List (Java Plat-form SE 7 )", url="htt
+ps://docs.oracle.com/javase/7/docs/api/java/util/List.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (183.13431pt too wide) in paragraph at lines 335--340
+[]\tenrm @onlinejava-guide-arraylist, ti-tle="ArrayList (Java Plat-form SE 7 )"
+, url="https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (194.91212pt too wide) in paragraph at lines 341--346
+[]\tenrm @onlinejava-guide-linkedlist, ti-tle="LinkedList (Java Plat-form SE 7 
+)", url="https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html",|
+
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (166.63425pt too wide) in paragraph at lines 347--352
+[]\tenrm @onlinejava-guide-hashset, ti-tle="HashSet (Java Plat-form SE 7 )", ur
+l="https://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (199.30096pt too wide) in paragraph at lines 353--358
+[]\tenrm @onlinejava-guide-collections, ti-tle="Collections (Java Plat-form SE 
+7 )", url="http://docs.oracle.com/javase/7/docs/api/java/util/Collections.html"
+,|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (184.91212pt too wide) in paragraph at lines 359--364
+[]\tenrm @onlinejava-guide-hashmap, ti-tle="HashMap (Java Plat-form SE 7 )", ur
+l="https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (43.16273pt too wide) in paragraph at lines 365--370
+[]\tenrm @onlinecpp-guide-array, ti-tle="Arrays - C++ Tu-to-ri-als", url="http:
+//www.cplusplus.com/doc/tutorial/arrays/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (67.10722pt too wide) in paragraph at lines 371--376
+[]\tenrm @onlinecpp-guide-pointer, ti-tle="Pointers - C++ Tu-to-ri-als", url="h
+ttp://www.cplusplus.com/doc/tutorial/pointers/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (73.3294pt too wide) in paragraph at lines 377--382
+[]\tenrm @onlinecpp-guide-malloc, ti-tle="malloc - C++ Ref-er-ence", url="http:
+//www.cplusplus.com/reference/cstdlib/malloc/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (61.66266pt too wide) in paragraph at lines 383--388
+[]\tenrm @onlinecpp-guide-calloc, ti-tle="calloc - C++ Ref-er-ence", url="http:
+//www.cplusplus.com/reference/cstdlib/calloc/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (65.32928pt too wide) in paragraph at lines 389--394
+[]\tenrm @onlinecpp-guide-vector, ti-tle="vector - C++ Ref-er-ence", url="http:
+//www.cplusplus.com/reference/vector/vector/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (12.107pt too wide) in paragraph at lines 395--400
+[]\tenrm @onlinecpp-guide-list, ti-tle="list - C++ Ref-er-ence", url="http://ww
+w.cplusplus.com/reference/list/list/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (7.66248pt too wide) in paragraph at lines 401--406
+[]\tenrm @onlinecpp-guide-set, ti-tle="set - C++ Ref-er-ence", url="http://www.
+cplusplus.com/reference/set/set/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (34.10712pt too wide) in paragraph at lines 407--412
+[]\tenrm @onlinecpp-guide-map, ti-tle="map - C++ Ref-er-ence", url="http://www.
+cplusplus.com/reference/map/map/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (145.02415pt too wide) in paragraph at lines 413--418
+[]\tenrm @onlinecs-guide-array-tutorial, ti-tle="Arrays Tu-to-rial (C#)", url="
+https://msdn.microsoft.com/cs-cz/library/aa288453(v=vs.71).aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ì in font cmr10!
+Missing character: There is no ≈ in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (121.80185pt too wide) in paragraph at lines 419--424
+[]\tenrm @onlinecs-guide-array, ti-tle="Array  tda (Sys-tem)", url="https://msd
+n.microsoft.com/cs-cz/library/system.array(v=vs.110).aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ì in font cmr10!
+Missing character: There is no ≈ in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (25.09209pt too wide) in paragraph at lines 425--430
+[]\tenrm @onlinecs-guide-list, ti-tle="List(T)  tda (Sys-tem.Collections.Generi
+c)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ì in font cmr10!
+Missing character: There is no ≈ in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no √ in font cmr10!
+Missing character: There is no ≠ in font cmr10!
+
+Overfull \hbox (80.78667pt too wide) in paragraph at lines 431--436
+[]\tenrm @onlinecs-guide-linkedlist, ti-tle="LinkedList(T)  tda (Sys-tem.Collec
+tions.Generic)", url="https://msdn.microsoft.com/cs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (110.77396pt too wide) in paragraph at lines 437--442
+[]\tenrm @onlinepas-guide-structured-types, ti-tle="Structured Types", url="htt
+p://www.freepascal.org/docs-html/ref/refse14.html#x38-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (43.49608pt too wide) in paragraph at lines 443--448
+[]\tenrm @onlinepas-guide-static-array, ti-tle="Arrays", url="http://www.freepa
+scal.org/docs-html/ref/refsu15.html#x39-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (56.49614pt too wide) in paragraph at lines 449--454
+[]\tenrm @onlinepas-guide-dynamic-array, ti-tle="Arrays", url="http://www.freep
+ascal.org/docs-html/ref/refsu15.html#x39-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (30.74605pt too wide) in paragraph at lines 455--460
+[]\tenrm @onlinepas-guide-pointer, ti-tle="Pointers", url="http://www.freepasca
+l.org/docs-html/ref/refse15.html#x43-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (6.16264pt too wide) in paragraph at lines 461--466
+[]\tenrm @onlinepas-guide-tlist, ti-tle="TList", url="http://www.freepascal.org
+/docs-html/rtl/classes/tlist.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (60.60725pt too wide) in paragraph at lines 467--472
+[]\tenrm @onlinepas-guide-tfplist, ti-tle="TFPList", url="http://www.freepascal
+.org/docs-html-3.0.0/rtl/classes/tfplist.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (60.78787pt too wide) in paragraph at lines 473--478
+[]\tenrm @onlinepas-guide-tfpglist, ti-tle="TFPGList", url="http://www.freepasc
+al.org/docs-html-3.0.0/rtl/fgl/tfpglist.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+[3]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ñ in font cmr10!
+Missing character: There is no ¢ in font cmr10!
+
+Overfull \hbox (140.38426pt too wide) in paragraph at lines 491--496
+[]\tenrm @onlinejava-guide-string, ti-tle="String (Java Plat-form SE 7 )", url=
+"http://docs.oracle.com/javase/7/docs/api/java/lang/String.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (219.35669pt too wide) in paragraph at lines 497--502
+[]\tenrm @onlinejava-guide-stringbuffer, ti-tle="StringBuffer (Java Plat-form S
+E 7 )", url="http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuffer.ht
+ml",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (235.19005pt too wide) in paragraph at lines 503--508
+[]\tenrm @onlinejava-guide-stringbuilder, ti-tle="StringBuilder (Java Plat-form
+ SE 7 )", url="http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder
+.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (260.46776pt too wide) in paragraph at lines 509--519
+[]\tenrm @onlinejava-guide-stringtokenizer, ti-tle="StringTokenizer (Java Plat-
+form SE 7 )", url="http://docs.oracle.com/javase/7/docs/api/java/util/StringTok
+enizer.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (178.07965pt too wide) in paragraph at lines 509--519
+\tenrm cited="7.12.2015",  @onlinecpp-guide-chararray, ti-tle="Character se-que
+nces - C++ Tu-to-ri-als", url="http://www.cplusplus.com/doc/tutorial/ntcs/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm c
+.\tenrm i
+.\tenrm t
+.\tenrm e
+.\tenrm d
+.etc.
+
+
+Overfull \hbox (90.71828pt too wide) in paragraph at lines 520--525
+[]\tenrm @onlinecpp-guide-cstdlib, ti-tle="<cstdlib> (stdlib.h) - C++ Ref-er-en
+ce", url="http://www.cplusplus.com/reference/cstdlib/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (93.05159pt too wide) in paragraph at lines 526--531
+[]\tenrm @onlinecpp-guide-cstring, ti-tle="<cstring> (string.h) - C++ Ref-er-en
+ce", url="http://www.cplusplus.com/reference/cstring/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (36.3015pt too wide) in paragraph at lines 532--537
+[]\tenrm @onlinecpp-guide-string, ti-tle="<string> - C++ Ref-er-ence", url="htt
+p://www.cplusplus.com/reference/string/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (122.35725pt too wide) in paragraph at lines 538--543
+[]\tenrm @onlinecpp-guide-stdstring, ti-tle="string - C++ Ref-er-ence", url="ht
+tp://www.cplusplus.com/reference/string/string/?kw=string",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (157.05193pt too wide) in paragraph at lines 544--549
+[]\tenrm @onlinecs-guide-stringclass, ti-tle="String Class (Sys-tem)", url="htt
+ps://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (135.13528pt too wide) in paragraph at lines 550--555
+[]\tenrm @onlinecs-guide-stringsplit, ti-tle="String.Split Method (String[], St
+ringSpli-tOp-tions) (Sys-tem)", url="https://msdn.microsoft.com/en-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (96.55176pt too wide) in paragraph at lines 556--561
+[]\tenrm @onlinepas-guide-strings, title="Single-byte String types", url="http:
+//www.freepascal.org/docs-html/ref/refsu10.html#x33-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (102.9961pt too wide) in paragraph at lines 574--579
+[]\tenrm @onlinepas-guide-system, ti-tle="Reference for unit 'Sys-tem': Pro-ce-
+dures and func-tions", url="http://www.freepascal.org/docs-|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (83.02394pt too wide) in paragraph at lines 580--585
+[]\tenrm @onlinepas-guide-tstringlist, ti-tle="TStringList", url="http://www.fr
+eepascal.org/docs-html/rtl/classes/tstringlist.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (51.21829pt too wide) in paragraph at lines 586--591
+[]\tenrm @onlinepas-guide-tstrings, ti-tle="TStrings", url="http://www.freepasc
+al.org/docs-html/rtl/classes/tstrings.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (217.55109pt too wide) in paragraph at lines 592--597
+[]\tenrm @onlinejava-guide-comparable, ti-tle="Comparable (Java Plat-form SE 7 
+)", url="http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (214.3011pt too wide) in paragraph at lines 598--603
+[]\tenrm @onlinejava-guide-comparator, ti-tle="Comparator (Java Plat-form SE 7 
+)", url="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (53.57928pt too wide) in paragraph at lines 604--609
+[]\tenrm @onlinecpp-guide-qsort, ti-tle="qsort - C++ Ref-er-ence", url="http://
+www.cplusplus.com/reference/cstdlib/qsort/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (85.24596pt too wide) in paragraph at lines 610--615
+[]\tenrm @onlinecpp-guide-bsearch, ti-tle="bsearch - C++ Ref-er-ence", url="htt
+p://www.cplusplus.com/reference/cstdlib/bsearch/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+
+Overfull \hbox (64.44046pt too wide) in paragraph at lines 616--621
+[]\tenrm @onlinecpp-guide-stdsort, ti-tle="sort - C++ Ref-er-ence", url="http:/
+/www.cplusplus.com/reference/algorithm/sort/",|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm o
+.\tenrm n
+.\tenrm l
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.624 ...cplusplus.com/reference/algorithm/stable_
+                                                  sort/",
+? 
+! Emergency stop.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.624 ...cplusplus.com/reference/algorithm/stable_
+                                                  sort/",
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

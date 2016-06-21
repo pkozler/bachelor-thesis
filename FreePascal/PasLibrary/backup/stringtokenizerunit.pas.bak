@@ -16,7 +16,9 @@ type
   StringTokenizer = class(Object_)
     private
       var
+        // string token array
         tokens: array of ansiString;
+        // current position in the token array
         tokenCounter: longInt;
     public
       constructor create(str: String_);
@@ -58,29 +60,37 @@ begin
   delimStr := delim.strProperty;
   len := length(strStr);
 
+  // determining the greatest possible length of the token array
   for i := 1 to len do begin
     if ansiContainsStr(delimStr, strStr[i]) then begin
       inc(count);
     end;
   end;
 
+  // creating the token array with the determined length
   setLength(tokens, count);
   index := 0;
   tmp := 1;
 
+  // iterating over the characters in the string to find delimiters
   for i := 1 to len do begin
+    // the delimiter was found
     if ansiContainsStr(delimStr, strStr[i]) then begin
+       // copying all the character in the string from the current offset to the delimiter position
        tmpStr := copy(strStr, tmp, i - tmp);
 
+       // inserting the non-empty string into the token array
        if length(tmpStr) > 0 then begin
           tokens[index] := tmpStr;
           inc(index);
        end;
 
+       // increasing the offset by the current position in the string
        tmp := i + 1;
     end;
   end;
 
+  // copying the rest of the characters
   tmpStr := copy(strStr, tmp, i - tmp + 1);
 
   if length(tmpStr) > 0 then begin
@@ -88,6 +98,7 @@ begin
      inc(index);
   end;
 
+  // resizing the token array with the determined length
   setLength(tokens, index);
 end;
 
@@ -111,7 +122,7 @@ end;
  *)
 function StringTokenizer.hasMoreTokens() : boolean;
 begin
-  hasMoreTokens := (countTokens() < 0);
+  hasMoreTokens := (countTokens() > 0);
 end;
 
 (**

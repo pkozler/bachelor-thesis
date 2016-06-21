@@ -10,6 +10,7 @@
  * @author Petr Kozler (A13B0359P)
  */
 class Boolean : public Comparable {
+    // an inner value
     bool v;
 public:
     Boolean(bool value);

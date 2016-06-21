@@ -16,6 +16,7 @@ type
   Character = class(Comparable)
     private
       var
+        // an inner value
         v: ansiChar;
     public
       constructor create(value: ansiChar);
@@ -78,6 +79,7 @@ end;
  *)
 class function Character.compare(x, y: ansiChar) : longInt;
 begin
+  // positive number if x is greater, 0 if x equals y, negative number otherwise
   compare := shortInt(x) - shortInt(y);
 end;
 
@@ -89,14 +91,17 @@ end;
  *)
 function Character.equals_(obj: Object_) : boolean;
 begin
+  // testing another object reference for a NULL value
   if obj = nil then begin
     exit(false);
   end;
 
+  // testing object class equality
   if typeOf(self) <> typeOf(obj) then begin
     exit(false);
   end;
 
+  // testing object fields equality
   equals_ := v = (obj as Character).v;
 end;
 
