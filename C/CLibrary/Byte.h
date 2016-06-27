@@ -1,7 +1,7 @@
 #ifndef BYTE_INCLUDED
 #define BYTE_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <stdbool.h>
 #include <stdint.h>
 

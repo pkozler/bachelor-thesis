@@ -17,15 +17,15 @@
       <itemPath>../CLibrary/List.h</itemPath>
       <itemPath>../CLibrary/Long.h</itemPath>
       <itemPath>../CLibrary/Math_.h</itemPath>
-      <itemPath>PrintStreamTest.h</itemPath>
+      <itemPath>../CLibraryTest/PrintStreamTest.h</itemPath>
       <itemPath>../CLibrary/Scanner.h</itemPath>
       <itemPath>../CLibrary/Short.h</itemPath>
-      <itemPath>../CLibrary/String.h</itemPath>
       <itemPath>../CLibrary/StringBuilder.h</itemPath>
       <itemPath>../CLibrary/StringTokenizer.h</itemPath>
+      <itemPath>../CLibrary/String_.h</itemPath>
       <itemPath>../CLibrary/System.h</itemPath>
       <itemPath>../CLibrary/TestObject.h</itemPath>
-      <itemPath>../CLibrary/test.h</itemPath>
+      <itemPath>../CLibraryTest/test.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -47,16 +47,16 @@
       <itemPath>../CLibrary/List.c</itemPath>
       <itemPath>../CLibrary/Long.c</itemPath>
       <itemPath>../CLibrary/Math_.c</itemPath>
-      <itemPath>PrintStreamTest.c</itemPath>
+      <itemPath>../CLibraryTest/PrintStreamTest.c</itemPath>
       <itemPath>../CLibrary/Scanner.c</itemPath>
       <itemPath>../CLibrary/Short.c</itemPath>
-      <itemPath>../CLibrary/String.c</itemPath>
       <itemPath>../CLibrary/StringBuilder.c</itemPath>
       <itemPath>../CLibrary/StringTokenizer.c</itemPath>
+      <itemPath>../CLibrary/String_.c</itemPath>
       <itemPath>../CLibrary/System.c</itemPath>
       <itemPath>../CLibrary/TestObject.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>../CLibrary/test.c</itemPath>
+      <itemPath>../CLibraryTest/test.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -82,10 +82,15 @@
         <cTool>
           <incDir>
             <pElem>../CLibrary</pElem>
+            <pElem>../CLibraryTest</pElem>
           </incDir>
           <commandLine>-std=c11 -lm -O2</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>../CLibrary</pElem>
+            <pElem>../CLibraryTest</pElem>
+          </incDir>
           <commandLine>-std=c++11 -lm -O2</commandLine>
         </ccTool>
       </compileType>
@@ -149,10 +154,6 @@
       </item>
       <item path="../CLibrary/Short.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../CLibrary/String.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../CLibrary/String.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../CLibrary/StringBuilder.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../CLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
@@ -160,6 +161,10 @@
       <item path="../CLibrary/StringTokenizer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../CLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../CLibrary/System.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -169,13 +174,13 @@
       </item>
       <item path="../CLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../CLibrary/test.c" ex="false" tool="0" flavor2="0">
+      <item path="../CLibraryTest/PrintStreamTest.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="../CLibrary/test.h" ex="false" tool="3" flavor2="0">
+      <item path="../CLibraryTest/PrintStreamTest.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PrintStreamTest.c" ex="false" tool="0" flavor2="0">
+      <item path="../CLibraryTest/test.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      <item path="../CLibraryTest/test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -260,10 +265,6 @@
       </item>
       <item path="../CLibrary/Short.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../CLibrary/String.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../CLibrary/String.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../CLibrary/StringBuilder.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../CLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
@@ -271,6 +272,10 @@
       <item path="../CLibrary/StringTokenizer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../CLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../CLibrary/System.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -280,13 +285,13 @@
       </item>
       <item path="../CLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../CLibrary/test.c" ex="false" tool="0" flavor2="0">
+      <item path="../CLibraryTest/PrintStreamTest.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="../CLibrary/test.h" ex="false" tool="3" flavor2="0">
+      <item path="../CLibraryTest/PrintStreamTest.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PrintStreamTest.c" ex="false" tool="0" flavor2="0">
+      <item path="../CLibraryTest/test.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      <item path="../CLibraryTest/test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>

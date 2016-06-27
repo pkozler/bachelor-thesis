@@ -1,3 +1,18 @@
+/*
+ *  Script file containig the application logic of the code convertion helper tool.
+ *  This tool performs some simple repetitive editings in the given Java source code
+ *  which are necessary for translating from the Java programming language to the
+ *  specified target language (for example, changing the data type identifiers)
+ *  using the objects containing the defined search pattern regular expressions
+ *  (the 'p' attribute) and the corresponding replacement strings (the 'r' attribute).
+ *  The objects are stored in arrays (one for each language) for easier configuration.
+ *
+ *  @author Petr Kozler
+ */
+
+/*
+ * Patterns for Java to C conversions:
+ */
 var cPatterns = [
     {p: /\bint/g, r: "int32_t"},
     {p: /\blong/g, r: "int64_t"},
@@ -11,6 +26,9 @@ var cPatterns = [
     {p: /([a-zA-z0-9_]+)\.([a-zA-z0-9_]+)/g, r: "$1->$2"},
 ];
 
+/*
+ * Patterns for Java to C++ conversions:
+ */
 var cppPatterns = [
     {p: /\bint/g, r: "int32_t"},
     {p: /\blong/g, r: "int64_t"},
@@ -22,6 +40,9 @@ var cppPatterns = [
     {p: /([a-z_][a-zA-z0-9_]*)\.([a-zA-z0-9_]+)/g, r: "$1->$2"},
 ];
 
+/*
+ * Patterns for Java to C# conversions:
+ */
 var csPatterns = [
     {p: /System\.in/g, r: "System_.in_"},
     {p: /System\.out/g, r: "System_.out_"},
@@ -29,6 +50,9 @@ var csPatterns = [
     {p: /\bbyte/g, r: "sbyte"},
 ];
 
+/*
+ * Patterns for Java to Pascal conversions:
+ */
 var pasPatterns = [
     {p: /System\.in/g, r: "System_.in_"},
     {p: /System\.out/g, r: "System_.out_"},
@@ -66,6 +90,9 @@ var pasPatterns = [
     {p: /(\s+)return (.*);/g, r: "$1exit($2);"},
 ];
 
+/*
+ * List of currently supported programming languages:
+ */
 var languages = {
     c: {name: "C", patterns: cPatterns},
     cpp: {name: "C++", patterns: cppPatterns},
@@ -76,19 +103,29 @@ var languages = {
 $(document).ready(function () {
 
     var wto;
+    // the programming language currently selected by the radio button
     var lang = $('input[name="language"]:checked', '#lang-select').val();
     var $original = $('#original');
     var $converted = $('#converted');
     var $converting = $('#converting');
 
+    /*
+        Shows the progress message.
+     */
     function showMessage() {
         $converting.text("Převádím do " + languages[lang].name + " ...");
     }
 
+    /*
+        Hides the progress message.
+     */
     function hideMessage() {
         $converting.text("");
     }
 
+    /*
+        Applies the replacement operations defined in the corresponding array.
+     */
     function convertCode() {
         var patterns = languages[lang].patterns;
         var converted = $original.val();
@@ -101,12 +138,20 @@ $(document).ready(function () {
         hideMessage();
     }
 
+    /*
+        Starts the new conversion automatically when the new target
+        programming language is selected.
+     */
     $('#lang-select input').on('change', function () {
         lang = $('input[name="language"]:checked', '#lang-select').val();
         showMessage();
         convertCode();
     });
 
+    /*
+        Starts the new conversion automatically when the original code
+        text area content is changed.
+     */
     $original.keydown(function () {
         clearTimeout(wto);
         showMessage();

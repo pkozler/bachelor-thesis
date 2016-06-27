@@ -1,7 +1,7 @@
 #ifndef LINKEDLIST_INCLUDED
 #define LINKEDLIST_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <stdbool.h>
 #include <stdint.h>
 

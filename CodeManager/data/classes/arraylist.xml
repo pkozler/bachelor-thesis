@@ -3,7 +3,7 @@
 <code lang="C">#ifndef ARRAYLIST_INCLUDED
 #define	ARRAYLIST_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdbool.h&gt;
 #include &lt;stdint.h&gt;
 
@@ -586,7 +586,7 @@ template &lt;class E&gt; String *ArrayList&lt;E&gt;::toString() {
             // append the first element string representation
             if (l.Count &gt; 0)
             {
-                sb.Append(l[0] == null ? "null" : a[0].ToString());
+                sb.Append(l[0] == null ? "null" : l[0].ToString());
             }
 
             // append another elements string representation

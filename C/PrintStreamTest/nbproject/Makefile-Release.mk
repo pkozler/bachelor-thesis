@@ -50,13 +50,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/2078953063/Math_.o \
 	${OBJECTDIR}/_ext/2078953063/Scanner.o \
 	${OBJECTDIR}/_ext/2078953063/Short.o \
-	${OBJECTDIR}/_ext/2078953063/String.o \
 	${OBJECTDIR}/_ext/2078953063/StringBuilder.o \
 	${OBJECTDIR}/_ext/2078953063/StringTokenizer.o \
+	${OBJECTDIR}/_ext/2078953063/String_.o \
 	${OBJECTDIR}/_ext/2078953063/System.o \
 	${OBJECTDIR}/_ext/2078953063/TestObject.o \
-	${OBJECTDIR}/_ext/2078953063/test.o \
-	${OBJECTDIR}/PrintStreamTest.o \
+	${OBJECTDIR}/_ext/941196391/PrintStreamTest.o \
+	${OBJECTDIR}/_ext/941196391/test.o \
 	${OBJECTDIR}/main.o
 
 
@@ -159,11 +159,6 @@ ${OBJECTDIR}/_ext/2078953063/Short.o: ../CLibrary/Short.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/Short.o ../CLibrary/Short.c
 
-${OBJECTDIR}/_ext/2078953063/String.o: ../CLibrary/String.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/String.o ../CLibrary/String.c
-
 ${OBJECTDIR}/_ext/2078953063/StringBuilder.o: ../CLibrary/StringBuilder.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
 	${RM} "$@.d"
@@ -173,6 +168,11 @@ ${OBJECTDIR}/_ext/2078953063/StringTokenizer.o: ../CLibrary/StringTokenizer.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/StringTokenizer.o ../CLibrary/StringTokenizer.c
+
+${OBJECTDIR}/_ext/2078953063/String_.o: ../CLibrary/String_.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/String_.o ../CLibrary/String_.c
 
 ${OBJECTDIR}/_ext/2078953063/System.o: ../CLibrary/System.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
@@ -184,15 +184,15 @@ ${OBJECTDIR}/_ext/2078953063/TestObject.o: ../CLibrary/TestObject.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/TestObject.o ../CLibrary/TestObject.c
 
-${OBJECTDIR}/_ext/2078953063/test.o: ../CLibrary/test.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/2078953063
+${OBJECTDIR}/_ext/941196391/PrintStreamTest.o: ../CLibraryTest/PrintStreamTest.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/941196391
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2078953063/test.o ../CLibrary/test.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/941196391/PrintStreamTest.o ../CLibraryTest/PrintStreamTest.c
 
-${OBJECTDIR}/PrintStreamTest.o: PrintStreamTest.c 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/_ext/941196391/test.o: ../CLibraryTest/test.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/941196391
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PrintStreamTest.o PrintStreamTest.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/941196391/test.o ../CLibraryTest/test.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

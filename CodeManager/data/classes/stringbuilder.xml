@@ -3,7 +3,7 @@
 <code lang="C">#ifndef STRINGBUILDER_INCLUDED
 #define	STRINGBUILDER_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdint.h&gt;
 
 /**
@@ -30,7 +30,7 @@ String *toStringSb(StringBuilder *ptr);
 
 #include "StringBuilder.h"
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
 

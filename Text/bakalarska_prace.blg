@@ -1,0 +1,24 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: bakalarska_prace.aux
+The style file: csplainnat.bst
+Database file #1: literatura.bib
+128 isn't valid ASCII for entry cs-guide-convert
+while executing---line 1435 of file csplainnat.bst
+128 isn't valid ASCII for entry java-guide-inputstream
+while executing---line 1435 of file csplainnat.bst
+129 isn't valid ASCII for entry java-guide-system
+while executing---line 1435 of file csplainnat.bst
+130 isn't valid ASCII for entry java-guide-outputstream
+while executing---line 1435 of file csplainnat.bst
+131 isn't valid ASCII for entry java-guide-printstream
+while executing---line 1435 of file csplainnat.bst
+`address' is a missing field, not a string, for entry java-book
+while executing---line 1470 of file csplainnat.bst
+`address' is a missing field, not a string, for entry c-book
+while executing---line 1470 of file csplainnat.bst
+`address' is a missing field, not a string, for entry cpp-book
+while executing---line 1470 of file csplainnat.bst
+`address' is a missing field, not a string, for entry cs-book
+while executing---line 1470 of file csplainnat.bst
+`address' is a missing field, not a string, for entry pas-book
+while executing---line 1470 of file csplainnat.bst
+(There were 10 error messages)

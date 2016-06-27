@@ -1,8 +1,5 @@
-build/Debug/Cygwin-Windows/Integer.o: Integer.c Integer.h String.h \
- string.h
+build/Debug/Cygwin-Windows/Integer.o: Integer.c Integer.h String_.h
 
 Integer.h:
 
-String.h:
-
-string.h:
+String_.h:

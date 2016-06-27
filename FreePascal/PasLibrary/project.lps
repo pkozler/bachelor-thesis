@@ -163,11 +163,10 @@
       <Unit20>
         <Filename Value="scannerunit.pas"/>
         <UnitName Value="ScannerUnit"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="108"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="221"/>
         <CursorPos X="38" Y="129"/>
         <UsageCount Value="109"/>
-        <Loaded Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="shortunit.pas"/>
@@ -195,10 +194,11 @@
       <Unit24>
         <Filename Value="systemunit.pas"/>
         <UnitName Value="SystemUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="294"/>
-        <CursorPos Y="203"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="239"/>
+        <CursorPos X="6" Y="248"/>
         <UsageCount Value="100"/>
+        <Loaded Value="True"/>
       </Unit24>
       <Unit25>
         <Filename Value="stringbuilderunit.pas"/>

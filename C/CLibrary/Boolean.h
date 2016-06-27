@@ -1,7 +1,7 @@
 #ifndef BOOLEAN_INCLUDED
 #define BOOLEAN_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <stdbool.h>
 #include <stdint.h>
 

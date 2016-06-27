@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<!--
+    Web-browser interface of the code convertion helper tool.
+-->
+
 <html>
     <head lang="cs">
         <meta charset="UTF-8">
@@ -9,20 +14,25 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+        <!-- stylesheet for defining the page footer -->
         <link rel="stylesheet" href="styles/code-converter.css">
+        <!-- script for performing the code conversion -->
         <script src="scripts/code-converter.js"></script>
     </head>
     <body>
         <div class="container-fluid">
+            <!-- the short description of the tool -->
             <div class="row">
                 <div class="col-xs-12">
                     <h1>Automatický převod kódu</h1>
                     <p class="lead">Tento nástroj slouží jako pomůcka pro převod zdrojového kódu jazyka Java do zdrojového kódu zvoleného jazyka využívajícího knihovny s definovaným rozhraním v duchu jazyka Java.<br/>Nástroj provádí automatický částečný převod některých odlišně vypadajících konstrukcí pomocí regulárních výrazů.<br/>Upozornění: jsou prováděny pouze hrubé základní úpravy bez komplexní analýzy, není produkován finální kód!
                     </p>
+                    <!-- the warning showed if the JS is disabled -->
                     <noscript><div class="alert alert-danger" role="alert">Nástroj vyžaduje spuštěný JavaScript.</div></noscript>
                 </div>
             </div>
             <div class="row">
+                <!-- the target programming language radio button group -->
                 <div class="col-xs-6">
                     <h3>Cílový programovací jazyk</h3>
                     <form class="form-horizontal" id="lang-select">
@@ -57,12 +67,14 @@
                 </div>
             </div>
             <div class="row">
+                <!-- the input Java source code text field (editable) -->
                 <div class="col-xs-6">
                     <h3>Původní zdrojový kód</h3>
                     <form class="form-horizontal">
                         <textarea lang="en" class="form-control" id="original" rows="30"></textarea>
                     </form>
                 </div>
+                <!-- the output source code text field (read-only) -->
                 <div class="col-xs-6">
                     <h3>Upravený zdrojový kód</h3>
                     <form class="form-horizontal">
@@ -71,6 +83,7 @@
                 </div>
             </div>
         </div>
+        <!-- the page footer -->
         <footer class="footer">
             <div class="container-fluid">
                 <p class="text-muted">Tento program byl vytvořen jako součást bakalářské práce <q>Vytvoření knihoven s definovaným rozhraním v jazycích C, C++, C# a FreePascal</q> v oboru Informatika na Fakultě aplikovaných věd Západočeské univerzity v Plzni.<br/>Copyright &copy; Petr Kozler, 2016</p>

@@ -56,8 +56,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1078017383/System.o \
 	${OBJECTDIR}/_ext/1078017383/TestObject.o \
 	${OBJECTDIR}/_ext/1078017383/TestObjectComparator.o \
-	${OBJECTDIR}/_ext/1078017383/test.o \
-	${OBJECTDIR}/PrintStreamTest.o \
+	${OBJECTDIR}/_ext/1725044071/PrintStreamTest.o \
+	${OBJECTDIR}/_ext/1725044071/test.o \
 	${OBJECTDIR}/main.o
 
 
@@ -190,15 +190,15 @@ ${OBJECTDIR}/_ext/1078017383/TestObjectComparator.o: ../CppLibrary/TestObjectCom
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/TestObjectComparator.o ../CppLibrary/TestObjectComparator.cpp
 
-${OBJECTDIR}/_ext/1078017383/test.o: ../CppLibrary/test.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
+${OBJECTDIR}/_ext/1725044071/PrintStreamTest.o: ../CppLibraryTest/PrintStreamTest.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1725044071
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/test.o ../CppLibrary/test.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1725044071/PrintStreamTest.o ../CppLibraryTest/PrintStreamTest.cpp
 
-${OBJECTDIR}/PrintStreamTest.o: PrintStreamTest.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/_ext/1725044071/test.o: ../CppLibraryTest/test.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1725044071
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PrintStreamTest.o PrintStreamTest.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1725044071/test.o ../CppLibraryTest/test.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

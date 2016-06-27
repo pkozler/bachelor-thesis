@@ -1,9 +1,8 @@
 #ifndef SCANNER_INCLUDED
 #define	SCANNER_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include "System.h"
-#include "String.h"
 #include <stdint.h>
 
 /**

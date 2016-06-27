@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>../CLibrary/ArrayList.h</itemPath>
+      <itemPath>../CLibrary/Arrays.h</itemPath>
+      <itemPath>../CLibrary/Boolean.h</itemPath>
+      <itemPath>../CLibrary/Byte.h</itemPath>
+      <itemPath>../CLibrary/Character.h</itemPath>
+      <itemPath>../CLibrary/Collections.h</itemPath>
+      <itemPath>../CLibrary/Double.h</itemPath>
+      <itemPath>../CLibrary/Float.h</itemPath>
+      <itemPath>../CLibrary/Integer.h</itemPath>
+      <itemPath>../CLibrary/LinkedList.h</itemPath>
+      <itemPath>../CLibrary/List.h</itemPath>
+      <itemPath>../CLibrary/Long.h</itemPath>
+      <itemPath>../CLibrary/Math_.h</itemPath>
+      <itemPath>PrintStreamTest.h</itemPath>
+      <itemPath>../CLibrary/Scanner.h</itemPath>
+      <itemPath>ScannerTest.h</itemPath>
+      <itemPath>../CLibrary/Short.h</itemPath>
+      <itemPath>../CLibrary/StringBuilder.h</itemPath>
+      <itemPath>../CLibrary/StringTokenizer.h</itemPath>
+      <itemPath>../CLibrary/String_.h</itemPath>
+      <itemPath>../CLibrary/System.h</itemPath>
+      <itemPath>../CLibrary/TestObject.h</itemPath>
+      <itemPath>test.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../CLibrary/ArrayList.c</itemPath>
+      <itemPath>../CLibrary/Arrays.c</itemPath>
+      <itemPath>../CLibrary/Boolean.c</itemPath>
+      <itemPath>../CLibrary/Byte.c</itemPath>
+      <itemPath>../CLibrary/Character.c</itemPath>
+      <itemPath>../CLibrary/Collections.c</itemPath>
+      <itemPath>../CLibrary/Double.c</itemPath>
+      <itemPath>../CLibrary/Float.c</itemPath>
+      <itemPath>../CLibrary/Integer.c</itemPath>
+      <itemPath>../CLibrary/LinkedList.c</itemPath>
+      <itemPath>../CLibrary/List.c</itemPath>
+      <itemPath>../CLibrary/Long.c</itemPath>
+      <itemPath>../CLibrary/Math_.c</itemPath>
+      <itemPath>PrintStreamTest.c</itemPath>
+      <itemPath>../CLibrary/Scanner.c</itemPath>
+      <itemPath>ScannerTest.c</itemPath>
+      <itemPath>../CLibrary/Short.c</itemPath>
+      <itemPath>../CLibrary/StringBuilder.c</itemPath>
+      <itemPath>../CLibrary/StringTokenizer.c</itemPath>
+      <itemPath>../CLibrary/String_.c</itemPath>
+      <itemPath>../CLibrary/System.c</itemPath>
+      <itemPath>../CLibrary/TestObject.c</itemPath>
+      <itemPath>main.c</itemPath>
+      <itemPath>test.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="ArrayListTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/ArrayListTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="ArraysTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/ArraysTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="BooleanTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/BooleanTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4" displayName="ByteTest" projectFiles="true" kind="TEST">
+        <itemPath>tests/ByteTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f8"
+                     displayName="CharacterTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/CharacterTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5"
+                     displayName="CollectionsTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/CollectionsTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6"
+                     displayName="DoubleTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/DoubleTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f7"
+                     displayName="FloatTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/FloatTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f9"
+                     displayName="IntegerTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/IntegerTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f10"
+                     displayName="LinkedListTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/LinkedListTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f11"
+                     displayName="LongTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/LongTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f12"
+                     displayName="MathTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/MathTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f13"
+                     displayName="ShortTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/ShortTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f14"
+                     displayName="StringBuilderTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/StringBuilderTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f15"
+                     displayName="StringTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/StringTest.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f16"
+                     displayName="StringTokenizerTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/StringTokenizerTest.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>../CLibrary</pElem>
+          </incDir>
+          <commandLine>-std=c11 -lm -O2</commandLine>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>../CLibrary</pElem>
+          </incDir>
+          <commandLine>-std=c++11 -lm -O2</commandLine>
+        </ccTool>
+      </compileType>
+      <item path="../CLibrary/ArrayList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PrintStreamTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ScannerTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ScannerTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f11">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f11</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f12">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f12</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f13">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f13</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f14">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f14</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f15">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f15</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f16">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f16</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f9">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+        </linkerTool>
+      </folder>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ArrayListTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/ArraysTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/BooleanTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/ByteTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/CharacterTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/CollectionsTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/DoubleTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/FloatTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/IntegerTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/LinkedListTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/LongTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/MathTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/ShortTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/StringBuilderTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/StringTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/StringTokenizerTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../CLibrary/ArrayList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/String_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../CLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PrintStreamTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ScannerTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ScannerTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f11">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f11</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f12">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f12</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f13">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f13</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f14">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f14</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f15">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f15</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f16">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f16</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f9">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+        </linkerTool>
+      </folder>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ArrayListTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/ArraysTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/BooleanTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/ByteTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/CharacterTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/CollectionsTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/DoubleTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/FloatTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/IntegerTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/LinkedListTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/LongTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/MathTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/ShortTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/StringBuilderTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/StringTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/StringTokenizerTest.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

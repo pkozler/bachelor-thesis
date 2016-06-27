@@ -164,10 +164,10 @@
         <Filename Value="scannerunit.pas"/>
         <UnitName Value="ScannerUnit"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="108"/>
-        <CursorPos X="40" Y="124"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="221"/>
+        <CursorPos X="38" Y="129"/>
         <UsageCount Value="109"/>
-        <Loaded Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="shortunit.pas"/>

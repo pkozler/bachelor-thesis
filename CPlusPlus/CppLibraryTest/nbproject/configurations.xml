@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>../CppLibrary/ArrayList.h</itemPath>
+      <itemPath>../CppLibrary/Arrays.h</itemPath>
+      <itemPath>../CppLibrary/Boolean.h</itemPath>
+      <itemPath>../CppLibrary/Byte.h</itemPath>
+      <itemPath>../CppLibrary/Character.h</itemPath>
+      <itemPath>../CppLibrary/Collections.h</itemPath>
+      <itemPath>../CppLibrary/Double.h</itemPath>
+      <itemPath>../CppLibrary/Float.h</itemPath>
+      <itemPath>../CppLibrary/Integer.h</itemPath>
+      <itemPath>../CppLibrary/LinkedList.h</itemPath>
+      <itemPath>../CppLibrary/List.h</itemPath>
+      <itemPath>../CppLibrary/Long.h</itemPath>
+      <itemPath>../CppLibrary/Math_.h</itemPath>
+      <itemPath>PrintStreamTest.h</itemPath>
+      <itemPath>../CppLibrary/Scanner.h</itemPath>
+      <itemPath>ScannerTest.h</itemPath>
+      <itemPath>../CppLibrary/Short.h</itemPath>
+      <itemPath>../CppLibrary/StringBuilder.h</itemPath>
+      <itemPath>../CppLibrary/StringTokenizer.h</itemPath>
+      <itemPath>../CppLibrary/String_.h</itemPath>
+      <itemPath>../CppLibrary/System.h</itemPath>
+      <itemPath>../CppLibrary/TestObject.h</itemPath>
+      <itemPath>../CppLibrary/TestObjectComparator.h</itemPath>
+      <itemPath>test.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../CppLibrary/ArrayList.cpp</itemPath>
+      <itemPath>../CppLibrary/Arrays.cpp</itemPath>
+      <itemPath>../CppLibrary/Boolean.cpp</itemPath>
+      <itemPath>../CppLibrary/Byte.cpp</itemPath>
+      <itemPath>../CppLibrary/Character.cpp</itemPath>
+      <itemPath>../CppLibrary/Collections.cpp</itemPath>
+      <itemPath>../CppLibrary/Double.cpp</itemPath>
+      <itemPath>../CppLibrary/Float.cpp</itemPath>
+      <itemPath>../CppLibrary/Integer.cpp</itemPath>
+      <itemPath>../CppLibrary/LinkedList.cpp</itemPath>
+      <itemPath>../CppLibrary/List.cpp</itemPath>
+      <itemPath>../CppLibrary/Long.cpp</itemPath>
+      <itemPath>../CppLibrary/Math_.cpp</itemPath>
+      <itemPath>PrintStreamTest.cpp</itemPath>
+      <itemPath>../CppLibrary/Scanner.cpp</itemPath>
+      <itemPath>ScannerTest.cpp</itemPath>
+      <itemPath>../CppLibrary/Short.cpp</itemPath>
+      <itemPath>../CppLibrary/StringBuilder.cpp</itemPath>
+      <itemPath>../CppLibrary/StringTokenizer.cpp</itemPath>
+      <itemPath>../CppLibrary/String_.cpp</itemPath>
+      <itemPath>../CppLibrary/System.cpp</itemPath>
+      <itemPath>../CppLibrary/TestObject.cpp</itemPath>
+      <itemPath>../CppLibrary/TestObjectComparator.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+      <itemPath>test.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f12"
+                     displayName="ArrayListTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/ArrayListTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f16"
+                     displayName="ArraysTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/ArraysTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="BooleanTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/BooleanTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="ByteTest" projectFiles="true" kind="TEST">
+        <itemPath>tests/ByteTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6"
+                     displayName="CharacterTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/CharacterTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f15"
+                     displayName="CollectionsTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/CollectionsTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="DoubleTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/DoubleTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5"
+                     displayName="FloatTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/FloatTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f7"
+                     displayName="IntegerTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/IntegerTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f13"
+                     displayName="LinkedListTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/LinkedListTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f8" displayName="LongTest" projectFiles="true" kind="TEST">
+        <itemPath>tests/LongTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f14"
+                     displayName="MathTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/MathTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f9"
+                     displayName="ShortTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/ShortTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f10"
+                     displayName="StringBuilderTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/StringBuilderTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="StringTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/StringTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f11"
+                     displayName="StringTokenizerTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/StringTokenizerTest.cpp</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>../CppLibrary</pElem>
+          </incDir>
+          <commandLine>-std=c11 -lm -O2</commandLine>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>../CppLibrary</pElem>
+          </incDir>
+          <commandLine>-std=c++11 -lm -O2</commandLine>
+        </ccTool>
+      </compileType>
+      <item path="../CppLibrary/ArrayList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="PrintStreamTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ScannerTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ScannerTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f11">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f11</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f12">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f12</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f13">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f13</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f14">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f14</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f15">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f15</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f16">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f16</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f9">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+        </linkerTool>
+      </folder>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ArrayListTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ArraysTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/BooleanTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ByteTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/CharacterTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/CollectionsTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/DoubleTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/FloatTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/IntegerTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/LinkedListTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/LongTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/MathTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ShortTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/StringBuilderTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/StringTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/StringTokenizerTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../CppLibrary/ArrayList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/ArrayList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Arrays.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Boolean.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Byte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Character.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Collections.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Double.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Float.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/List.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Long.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Math_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/Short.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/StringTokenizer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/String_.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/System.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../CppLibrary/TestObjectComparator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="PrintStreamTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ScannerTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ScannerTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f11">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f11</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f12">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f12</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f13">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f13</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f14">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f14</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f15">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f15</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f16">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f16</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f9">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+        </linkerTool>
+      </folder>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ArrayListTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ArraysTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/BooleanTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ByteTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/CharacterTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/CollectionsTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/DoubleTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/FloatTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/IntegerTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/LinkedListTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/LongTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/MathTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ShortTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/StringBuilderTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/StringTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/StringTokenizerTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

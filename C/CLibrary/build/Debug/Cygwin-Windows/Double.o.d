@@ -1,7 +1,5 @@
-build/Debug/Cygwin-Windows/Double.o: Double.c Double.h String.h string.h
+build/Debug/Cygwin-Windows/Double.o: Double.c Double.h String_.h
 
 Double.h:
 
-String.h:
-
-string.h:
+String_.h:

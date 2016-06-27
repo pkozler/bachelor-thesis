@@ -1,7 +1,7 @@
 #ifndef ARRAYS_INCLUDED
 #define	ARRAYS_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <stdbool.h>
 #include <stdint.h>
 

@@ -1,3 +1,4 @@
-build/Debug/Cygwin-Windows/main.o: main.cpp ScannerTest.h
+build/Debug/Cygwin-Windows/main.o: main.cpp \
+ ../CppLibraryTest/ScannerTest.h
 
-ScannerTest.h:
+../CppLibraryTest/ScannerTest.h:

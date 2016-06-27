@@ -1,3 +1,4 @@
-build/Debug/Cygwin-Windows/main.o: main.c PrintStreamTest.h
+build/Debug/Cygwin-Windows/main.o: main.c \
+ ../CLibraryTest/PrintStreamTest.h
 
-PrintStreamTest.h:
+../CLibraryTest/PrintStreamTest.h:

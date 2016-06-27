@@ -1,7 +1,5 @@
-build/Debug/Cygwin-Windows/Byte.o: Byte.c Byte.h String.h string.h
+build/Debug/Cygwin-Windows/Byte.o: Byte.c Byte.h String_.h
 
 Byte.h:
 
-String.h:
-
-string.h:
+String_.h:

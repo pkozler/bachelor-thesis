@@ -1,7 +1,7 @@
 #ifndef STRINGTOKENIZER_INCLUDED
 #define	STRINGTOKENIZER_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <stdbool.h>
 #include <stdint.h>
 

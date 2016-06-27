@@ -1,8 +1,5 @@
-build/Debug/Cygwin-Windows/Boolean.o: Boolean.c Boolean.h String.h \
- string.h
+build/Debug/Cygwin-Windows/Boolean.o: Boolean.c Boolean.h String_.h
 
 Boolean.h:
 
-String.h:
-
-string.h:
+String_.h:

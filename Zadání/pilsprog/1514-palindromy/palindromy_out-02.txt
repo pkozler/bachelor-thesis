@@ -1,0 +1,6 @@
+RADAR: palindrom
+
+JELENOVIPIVONELEJ: palindrom
+
+KOBYLAMAMALYBOK: palindrom
+

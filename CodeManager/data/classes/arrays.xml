@@ -3,7 +3,7 @@
 <code lang="C">#ifndef ARRAYS_INCLUDED
 #define	ARRAYS_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdbool.h&gt;
 #include &lt;stdint.h&gt;
 
@@ -114,7 +114,7 @@ String *Arrays_toStringS(int16_t *a, int32_t length);
 #include "Integer.h"
 #include "Long.h"
 #include "Short.h"
-#include "String.h"
+#include "String_.h"
 #include "StringBuilder.h"
 #include &lt;stdio.h&gt;
 #include &lt;string.h&gt;

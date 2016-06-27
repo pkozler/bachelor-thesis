@@ -3,7 +3,7 @@
 <code lang="C">#ifndef FLOAT_INCLUDED
 #define FLOAT_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdbool.h&gt;
 #include &lt;stdint.h&gt;
 
@@ -533,7 +533,7 @@ float Float::parseFloat(String *s) {
     // negative zero handling
     String *sign = new String("-");
     
-    if (value == 0 &amp;&amp; s.startsWith(sign)) {
+    if (value == 0 &amp;&amp; s-&gt;startsWith(sign)) {
         value = -0.0f;
     }
     

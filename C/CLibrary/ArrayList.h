@@ -1,7 +1,7 @@
 #ifndef ARRAYLIST_INCLUDED
 #define	ARRAYLIST_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include <stdbool.h>
 #include <stdint.h>
 

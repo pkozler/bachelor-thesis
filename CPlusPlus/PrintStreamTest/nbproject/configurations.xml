@@ -17,7 +17,7 @@
       <itemPath>../CppLibrary/List.h</itemPath>
       <itemPath>../CppLibrary/Long.h</itemPath>
       <itemPath>../CppLibrary/Math_.h</itemPath>
-      <itemPath>PrintStreamTest.h</itemPath>
+      <itemPath>../CppLibraryTest/PrintStreamTest.h</itemPath>
       <itemPath>../CppLibrary/Scanner.h</itemPath>
       <itemPath>../CppLibrary/Short.h</itemPath>
       <itemPath>../CppLibrary/StringBuilder.h</itemPath>
@@ -26,7 +26,7 @@
       <itemPath>../CppLibrary/System.h</itemPath>
       <itemPath>../CppLibrary/TestObject.h</itemPath>
       <itemPath>../CppLibrary/TestObjectComparator.h</itemPath>
-      <itemPath>../CppLibrary/test.h</itemPath>
+      <itemPath>../CppLibraryTest/test.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -48,7 +48,7 @@
       <itemPath>../CppLibrary/List.cpp</itemPath>
       <itemPath>../CppLibrary/Long.cpp</itemPath>
       <itemPath>../CppLibrary/Math_.cpp</itemPath>
-      <itemPath>PrintStreamTest.cpp</itemPath>
+      <itemPath>../CppLibraryTest/PrintStreamTest.cpp</itemPath>
       <itemPath>../CppLibrary/Scanner.cpp</itemPath>
       <itemPath>../CppLibrary/Short.cpp</itemPath>
       <itemPath>../CppLibrary/StringBuilder.cpp</itemPath>
@@ -58,7 +58,7 @@
       <itemPath>../CppLibrary/TestObject.cpp</itemPath>
       <itemPath>../CppLibrary/TestObjectComparator.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
-      <itemPath>../CppLibrary/test.cpp</itemPath>
+      <itemPath>../CppLibraryTest/test.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -82,11 +82,16 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <incDir>
+            <pElem>../CppLibrary</pElem>
+            <pElem>../CppLibraryTest</pElem>
+          </incDir>
           <commandLine>-std=c11 -lm -O2</commandLine>
         </cTool>
         <ccTool>
           <incDir>
             <pElem>../CppLibrary</pElem>
+            <pElem>../CppLibraryTest</pElem>
           </incDir>
           <commandLine>-std=c++11 -lm -O2</commandLine>
         </ccTool>
@@ -181,13 +186,19 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../CppLibrary/test.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../CppLibraryTest/PrintStreamTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="../CppLibrary/test.h" ex="false" tool="3" flavor2="0">
+      <item path="../CppLibraryTest/PrintStreamTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="PrintStreamTest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../CppLibraryTest/test.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      <item path="../CppLibraryTest/test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -302,13 +313,19 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../CppLibrary/test.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../CppLibraryTest/PrintStreamTest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="../CppLibrary/test.h" ex="false" tool="3" flavor2="0">
+      <item path="../CppLibraryTest/PrintStreamTest.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="PrintStreamTest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../CppLibraryTest/test.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PrintStreamTest.h" ex="false" tool="3" flavor2="0">
+      <item path="../CppLibraryTest/test.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

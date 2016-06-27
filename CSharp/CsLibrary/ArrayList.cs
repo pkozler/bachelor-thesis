@@ -126,7 +126,7 @@
             // append the first element string representation
             if (l.Count > 0)
             {
-                sb.Append(l[0] == null ? "null" : a[0].ToString());
+                sb.Append(l[0] == null ? "null" : l[0].ToString());
             }
 
             // append another elements string representation

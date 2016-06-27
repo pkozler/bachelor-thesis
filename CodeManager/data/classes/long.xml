@@ -3,7 +3,7 @@
 <code lang="C">#ifndef LONG_INCLUDED
 #define LONG_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdbool.h&gt;
 #include &lt;stdint.h&gt;
 

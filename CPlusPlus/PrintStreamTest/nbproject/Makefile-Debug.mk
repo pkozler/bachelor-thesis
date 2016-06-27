@@ -56,8 +56,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1078017383/System.o \
 	${OBJECTDIR}/_ext/1078017383/TestObject.o \
 	${OBJECTDIR}/_ext/1078017383/TestObjectComparator.o \
-	${OBJECTDIR}/_ext/1078017383/test.o \
-	${OBJECTDIR}/PrintStreamTest.o \
+	${OBJECTDIR}/_ext/1725044071/PrintStreamTest.o \
+	${OBJECTDIR}/_ext/1725044071/test.o \
 	${OBJECTDIR}/main.o
 
 
@@ -88,122 +88,122 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/printstreamtest.exe: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/1078017383/ArrayList.o: ../CppLibrary/ArrayList.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/ArrayList.o ../CppLibrary/ArrayList.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/ArrayList.o ../CppLibrary/ArrayList.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Arrays.o: ../CppLibrary/Arrays.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Arrays.o ../CppLibrary/Arrays.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Arrays.o ../CppLibrary/Arrays.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Boolean.o: ../CppLibrary/Boolean.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Boolean.o ../CppLibrary/Boolean.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Boolean.o ../CppLibrary/Boolean.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Byte.o: ../CppLibrary/Byte.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Byte.o ../CppLibrary/Byte.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Byte.o ../CppLibrary/Byte.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Character.o: ../CppLibrary/Character.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Character.o ../CppLibrary/Character.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Character.o ../CppLibrary/Character.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Collections.o: ../CppLibrary/Collections.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Collections.o ../CppLibrary/Collections.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Collections.o ../CppLibrary/Collections.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Double.o: ../CppLibrary/Double.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Double.o ../CppLibrary/Double.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Double.o ../CppLibrary/Double.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Float.o: ../CppLibrary/Float.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Float.o ../CppLibrary/Float.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Float.o ../CppLibrary/Float.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Integer.o: ../CppLibrary/Integer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Integer.o ../CppLibrary/Integer.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Integer.o ../CppLibrary/Integer.cpp
 
 ${OBJECTDIR}/_ext/1078017383/LinkedList.o: ../CppLibrary/LinkedList.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/LinkedList.o ../CppLibrary/LinkedList.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/LinkedList.o ../CppLibrary/LinkedList.cpp
 
 ${OBJECTDIR}/_ext/1078017383/List.o: ../CppLibrary/List.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/List.o ../CppLibrary/List.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/List.o ../CppLibrary/List.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Long.o: ../CppLibrary/Long.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Long.o ../CppLibrary/Long.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Long.o ../CppLibrary/Long.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Math_.o: ../CppLibrary/Math_.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Math_.o ../CppLibrary/Math_.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Math_.o ../CppLibrary/Math_.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Scanner.o: ../CppLibrary/Scanner.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Scanner.o ../CppLibrary/Scanner.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Scanner.o ../CppLibrary/Scanner.cpp
 
 ${OBJECTDIR}/_ext/1078017383/Short.o: ../CppLibrary/Short.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Short.o ../CppLibrary/Short.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/Short.o ../CppLibrary/Short.cpp
 
 ${OBJECTDIR}/_ext/1078017383/StringBuilder.o: ../CppLibrary/StringBuilder.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/StringBuilder.o ../CppLibrary/StringBuilder.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/StringBuilder.o ../CppLibrary/StringBuilder.cpp
 
 ${OBJECTDIR}/_ext/1078017383/StringTokenizer.o: ../CppLibrary/StringTokenizer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/StringTokenizer.o ../CppLibrary/StringTokenizer.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/StringTokenizer.o ../CppLibrary/StringTokenizer.cpp
 
 ${OBJECTDIR}/_ext/1078017383/String_.o: ../CppLibrary/String_.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/String_.o ../CppLibrary/String_.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/String_.o ../CppLibrary/String_.cpp
 
 ${OBJECTDIR}/_ext/1078017383/System.o: ../CppLibrary/System.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/System.o ../CppLibrary/System.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/System.o ../CppLibrary/System.cpp
 
 ${OBJECTDIR}/_ext/1078017383/TestObject.o: ../CppLibrary/TestObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/TestObject.o ../CppLibrary/TestObject.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/TestObject.o ../CppLibrary/TestObject.cpp
 
 ${OBJECTDIR}/_ext/1078017383/TestObjectComparator.o: ../CppLibrary/TestObjectComparator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/TestObjectComparator.o ../CppLibrary/TestObjectComparator.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/TestObjectComparator.o ../CppLibrary/TestObjectComparator.cpp
 
-${OBJECTDIR}/_ext/1078017383/test.o: ../CppLibrary/test.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1078017383
+${OBJECTDIR}/_ext/1725044071/PrintStreamTest.o: ../CppLibraryTest/PrintStreamTest.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1725044071
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1078017383/test.o ../CppLibrary/test.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1725044071/PrintStreamTest.o ../CppLibraryTest/PrintStreamTest.cpp
 
-${OBJECTDIR}/PrintStreamTest.o: PrintStreamTest.cpp 
-	${MKDIR} -p ${OBJECTDIR}
+${OBJECTDIR}/_ext/1725044071/test.o: ../CppLibraryTest/test.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1725044071
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PrintStreamTest.o PrintStreamTest.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1725044071/test.o ../CppLibraryTest/test.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../CppLibrary -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../CppLibrary -I../CppLibraryTest -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

@@ -3,7 +3,7 @@
 <code lang="C">#ifndef LINKEDLIST_INCLUDED
 #define LINKEDLIST_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdbool.h&gt;
 #include &lt;stdint.h&gt;
 

@@ -9,7 +9,7 @@
 #include "Integer.h"
 #include "Long.h"
 #include "Short.h"
-#include "String.h"
+#include "String_.h"
 #include "StringBuilder.h"
 #include <stdio.h>
 #include <string.h>

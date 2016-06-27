@@ -1,10 +1,8 @@
-build/Debug/Cygwin-Windows/ArrayList.o: ArrayList.c ArrayList.h String.h \
- StringBuilder.h string.h
+build/Debug/Cygwin-Windows/ArrayList.o: ArrayList.c ArrayList.h String_.h \
+ StringBuilder.h
 
 ArrayList.h:
 
-String.h:
+String_.h:
 
 StringBuilder.h:
-
-string.h:

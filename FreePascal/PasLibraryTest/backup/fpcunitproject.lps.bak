@@ -8,7 +8,8 @@
       <Unit0>
         <Filename Value="fpcunitproject.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="9"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="5"/>
         <CursorPos Y="4"/>
         <UsageCount Value="242"/>
         <Loaded Value="True"/>
@@ -18,7 +19,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="MathTestUnit"/>
         <EditorIndex Value="12"/>
-        <CursorPos X="7" Y="15"/>
+        <TopLine Value="7"/>
+        <CursorPos X="56" Y="10"/>
         <UsageCount Value="242"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -153,7 +155,6 @@
         <Filename Value="booleantestunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="BooleanTestUnit"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <CursorPos X="3" Y="12"/>
         <UsageCount Value="240"/>

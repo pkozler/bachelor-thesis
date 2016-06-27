@@ -1,10 +1,10 @@
-build/Debug/Cygwin-Windows/Arrays.o: Arrays.c Arrays.h String.h System.h \
+build/Debug/Cygwin-Windows/Arrays.o: Arrays.c Arrays.h String_.h System.h \
  Boolean.h Byte.h Character.h Double.h Float.h Integer.h Long.h Short.h \
- StringBuilder.h string.h
+ StringBuilder.h
 
 Arrays.h:
 
-String.h:
+String_.h:
 
 System.h:
 
@@ -25,5 +25,3 @@ Long.h:
 Short.h:
 
 StringBuilder.h:
-
-string.h:

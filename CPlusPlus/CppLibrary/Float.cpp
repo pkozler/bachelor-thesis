@@ -178,7 +178,7 @@ float Float::parseFloat(String *s) {
     // negative zero handling
     String *sign = new String("-");
     
-    if (value == 0 && s.startsWith(sign)) {
+    if (value == 0 && s->startsWith(sign)) {
         value = -0.0f;
     }
     

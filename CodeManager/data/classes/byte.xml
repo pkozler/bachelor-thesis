@@ -3,7 +3,7 @@
 <code lang="C">#ifndef BYTE_INCLUDED
 #define BYTE_INCLUDED
 
-#include "String.h"
+#include "String_.h"
 #include &lt;stdbool.h&gt;
 #include &lt;stdint.h&gt;
 

@@ -45,7 +45,7 @@ String *toStringStr(String *ptr);
 #endif	/* STRING_INCLUDED */
 
 
-#include "String.h"
+#include "String_.h"
 
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
