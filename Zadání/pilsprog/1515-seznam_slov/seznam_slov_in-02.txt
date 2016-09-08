@@ -1,8 +1,0 @@
-Algorithmics 
-The main goal of algorithmics is to advance
- our knowledge on what can be done
- efficiently by means of computers.
- This involves foundational research, as well
- as various research applications driven by the latest
- technical developments
-.
