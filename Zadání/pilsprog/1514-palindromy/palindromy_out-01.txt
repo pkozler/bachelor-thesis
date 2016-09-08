@@ -1,0 +1,8 @@
+NOTAPALINDROME: retezec
+
+ISAPALINILAPASI: palindrom
+
+2A3MEAS: zrcadlovy retezec
+
+ATOYOTA: zrcadlovy palindrom
+
