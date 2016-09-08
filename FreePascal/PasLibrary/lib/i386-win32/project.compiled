@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="C:\lazarus\fpc\2.6.4\bin\i386-win32\fpc.exe" Date="1195615086"/>
-  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -FiC:\Users\pkout\Dropbox\bp\FreePascal\PasLibrary\lib\i386-win32 -FuC:\Users\pkout\Dropbox\bp\FreePascal\PasLibrary\ -FUC:\Users\pkout\Dropbox\bp\FreePascal\PasLibrary\lib\i386-win32\ project.lpr"/>
-</CONFIG>

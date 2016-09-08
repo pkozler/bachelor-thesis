@@ -32,23 +32,53 @@ $testedLibraries = array(
     new TestedLibrary("Free Pascal", "FreePascal", "ScannerTest/project.exe", "PrintStreamTest/project.exe"),
 );
 
+// input library testing flag
+$isInputTestingEnabled = true;
+// output library testing flag
+$isOutputTestingEnabled = true;
+
 // printing usage info if command-line args was invalid
 if (count($argv) < 2 || !is_numeric($argv[1])) {
-    echoLine("=== Nástroj pro automatické spouštění testů knihoven pro vstup a výstup ===");
-    echoLine("\nTento nástroj byl vytvořen jako součást bakalářské práce "
+    echoLine("\n=== Nástroj pro automatické spouštění testů knihoven pro vstup a výstup ===\n");
+    echoLine("--- Nápověda: ---\n");
+    echoLine("Zadejte platné číslo programovacího jazyka pro otestování jeho obalových knihoven pro IO operace jako první parametr příkazové řádky při spuštění programu:\n"
+			. "\t0 - {$testedLibraries[0]}\n"
+			. "\t1 - {$testedLibraries[1]}\n"
+			. "\t2 - {$testedLibraries[2]}\n"
+			. "\t3 - {$testedLibraries[3]}\n");
+    echoLine("Jako druhý parametr může poté následovat jeden z platných volitelných příznaků pro omezení typu testovaných operací:\n"
+			. "\ti - pouze testy vstupu\n"
+			. "\to - pouze testy výstupu\n");
+    echoLine("Pokud volitelný druhý parametr není uveden, budou provedeny všechny podporované testy knihoven zvoleného jazyka, tzn. budou otestovány jak vstupní, tak i výstupní operace.\n");
+    echoLine("--- O programu: ---\n");
+    dieLine("Tento nástroj byl vytvořen jako součást bakalářské práce "
             . "\"Vytvoření knihoven s definovaným rozhraním v jazycích C, C++, C# a FreePascal\" "
             . "v oboru Informatika na Fakultě aplikovaných věd Západočeské univerzity v Plzni.\n\n"
             . "Copyright © Petr Kozler, 2016");
-    dieLine("\nZadejte platné číslo testované knihovny:
-			\t0 - {$testedLibraries[0]}
-			\t1 - {$testedLibraries[1]}
-			\t2 - {$testedLibraries[2]}
-			\t3 - {$testedLibraries[3]}");
 }
 
-// running the input library tests of the chosen programming language
-$inputTestRunner = new InputTestRunner($testedLibraries[$argv[1]]);
-$inputTestRunner->runTests();
-// running the output library tests of the chosen programming language
-$outputTestRunner = new OutputTestRunner($testedLibraries[$argv[1]]);
-$outputTestRunner->runTests();
+// optional disabling the input our output testing according to the next argument
+if (count($argv) > 2) {
+	$flag = strtolower($argv[2]);
+
+	switch ($flag) {
+		case 'i':
+			$isOutputTestingEnabled = false;
+			break;
+		case 'o':
+			$isInputTestingEnabled = false;
+			break;
+	}
+}
+
+// running the input library tests of the chosen programming language (if enabled)
+if ($isInputTestingEnabled) {
+	$inputTestRunner = new InputTestRunner($testedLibraries[$argv[1]]);
+	$inputTestRunner->runTests();
+}
+
+// running the output library tests of the chosen programming language (if enabled)
+if ($isOutputTestingEnabled) {
+	$outputTestRunner = new OutputTestRunner($testedLibraries[$argv[1]]);
+	$outputTestRunner->runTests();
+}

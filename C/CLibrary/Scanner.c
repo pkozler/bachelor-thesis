@@ -20,20 +20,14 @@
 */
 String *_readLine() {
     StringBuilder *sb = new_StringBuilder();
+    String *line;
     char c;
     
-    // reading characters until newline
-    while (true) {
-        scanf("%c", &c);
-        
-        // skipping the carriage return newline
-        if (c == '\r') {
-            continue;
-        }
-        
+    // reading characters until newline/EOF
+    while (scanf("%c", &c) != EOF) {
         // returning the scanned characters as the new line string
         if (c == '\n') {
-            String *line = toStringSb(sb);
+            line = toStringSb(sb);
             delete_StringBuilder(sb);
             
             return line;
@@ -50,6 +44,11 @@ String *_readLine() {
         delete_String(str);
         free(s);
     }
+    
+    line = toStringSb(sb);
+    delete_StringBuilder(sb);
+
+    return line;
 }
 
 /*
